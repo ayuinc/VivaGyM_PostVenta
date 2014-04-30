@@ -1,0 +1,89 @@
+﻿{exp:channel:entries channel="solicitudes_ch" sort="DESC" limit="10" }
+
+<table cellpadding="0" cellspacing="0" style="width: 100%" border="1">
+	<tr>
+		<td style="width: 128px">{entry_id}{tipo_problema}</td>
+		<td style="width: 87px">{ubicacion}</td>
+		<td style="width: 185px">{descripcion_problema} <br>status:
+			{relacion_status} {relacion_status:descripcion_status}<br>{/relacion_status}</td>
+		<td style="width: 150px"><img alt="" src="{foto_problema}" height="50" /></td>
+		<td style="width: 155px">{danhos_otros}</td>
+		<td>{otro_dep_afectado}</td>
+	</tr>
+</table>
+
+
+{/exp:channel:entries}	
+
+<?php
+
+
+
+ee()->load->library('api');
+ee()->api->instantiate('channel_entries');
+ee()->api->instantiate('channel_fields');
+
+$data = array(
+    'title'         => 'noticias',
+    'field_id_7'    => 'descripcion',
+    'field_id_8'    => 'Some data'
+);
+
+print_r($data); 
+
+ee()->api_channel_fields->setup_entry_settings(2, $data);
+
+if (ee()->api_channel_entries->submit_new_entry(2, $data) === FALSE)
+{
+    show_error('An Error Occurred Creating the Entry');
+}
+
+
+$resultado=mysql_query("insert into exp_relationships 
+(parent_id,child_id,field_id,grid_field_id,grid_col_id,grid_row_id) 
+values ('3','5','9','0','0','0')");
+
+
+?>
+
+{exp:channel:calendar switch="calendarToday|calendarCell"}
+
+<table class="calendarBG" border="0" cellpadding="6" cellspacing="1" summary="My Calendar">
+    <tr class="calendarHeader">
+        <th>
+            <div class="calendarMonthLinks"><a href="{previous_path='channel/index'}">&lt;&lt;</a>
+            </div>
+        </th>
+        <th colspan="5">
+            {date format="%F %Y"}
+        </th>
+        <th>
+            <div class="calendarMonthLinks">
+                <a class="calendarMonthLinks" href="{next_path='channel/index'}">&gt;&gt;</a>
+            </div>
+        </th>
+    </tr>
+    <tr>
+    {calendar_heading}
+    <td class="calendarDayHeading">{lang:weekday_long}</td>
+    {/calendar_heading}
+    </tr>
+    {calendar_rows}
+        {row_start}<tr>{/row_start}
+        {if entries}
+            <td class='{switch}' align='center'><a href="{day_path='channel/index'}">{day_number}</a>
+            </td>
+        {/if}
+        {if not_entries}
+            <td class='{switch}' align='center'>{day_number}</td>
+        {/if}
+        {if blank}
+            <td class='calendarBlank'>{day_number}</td>
+        {/if}
+        {row_end}</tr>{/row_end}
+    {/calendar_rows}
+    </table>
+{/exp:channel:calendar}
+
+
+

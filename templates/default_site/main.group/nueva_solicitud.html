@@ -1,0 +1,31 @@
+{exp:channel:form channel="solicitudes_ch"}
+
+<label for="title">Title</label>
+<input type="text" name="title" id="title" value="{title}" onkeyup="liveUrlTitle();">
+<p>
+<label for="title">Tipo de Problema</label>
+{field:tipo_problema}
+
+<p>
+<label for="title">Ubicacion</label>
+{field:ubicacion}
+
+<p>
+<label for="title">Descripcion del problema</label>
+{field:descripcion_problema}
+
+<p>
+<label for="title">Foto problema</label>
+{field:foto_problema}
+
+<p>
+<label for="title">Daños a otros depas</label>
+{field:danhos_otros}
+
+
+<p>
+<label for="title">Otro depa Afectado</label>
+{field:otro_dep_afectado}
+
+  <input type="submit" value="Submit">
+{/exp:channel:form}

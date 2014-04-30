@@ -1,0 +1,20 @@
+personas inscritas como members / completado
+
+modificar los datos de los miembros con un custom profile
+
+tratar las solicitudes como canales / completado
+
+buscar relationships en ee para subcanales los vamos a usar para el estatus detallado de las solicitudes. / completado
+
+Escribir un proceso para generar las relaciones en la bd / escrito 
+
+cuidar q el hack de escritura de las relaciones capture el id del ultimo entri y relacionar bien las tablas
+
+definir el uso del plugin calendar para completar las funcionalidades / 
+
+generar el proceso para agendar la visita
+
+En el dashboard de graña que se puedan administrar la cantidad maxima de visitas por dia
+
+Generar el contador de visitas maximas para bloquear el calendario si se pasan.
+

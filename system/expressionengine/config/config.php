@@ -1,7 +1,6 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-$config['ip2nation'] = "y";
-$config['ip2nation_db_date'] = "1335677198";
+$config['index_page'] = "index.php";
 $config['sc_paypal_account'] = "";
 $config['sc_encrypt_buttons'] = "n";
 $config['sc_certificate_id'] = "";
@@ -21,14 +20,14 @@ $config['sc_temp_path'] = "/tmp";
 */
 
 $config['app_version'] = '281';
-$config['license_number'] = '5343-3237-2705-9088';
+$config['license_number'] = "5343-3237-2705-9088";
 $config['debug'] = '1';
-$config['cp_url'] = 'http://localhost/VivaGyM_PostVenta/admin.php';
-$config['doc_url'] = 'http://ellislab.com/expressionengine/user-guide/';
-$config['is_system_on'] = 'y';
+$config['cp_url'] = 'http://localhost/gym/admin.php';
+$config['doc_url'] = "http://ellislab.com/expressionengine/user-guide/";
+$config['is_system_on'] = "y";
 $config['allow_extensions'] = 'y';
 $config['cookie_prefix'] = '';
-$config['cookie_httponly'] = 'y';
+$config['cookie_httponly'] = 'y';  
 
 
 /*
