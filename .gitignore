@@ -1,0 +1,3 @@
+# Ignore EE config and database files
+system/expressionengine/config/config.php
+system/expressionengine/config/database.php
