@@ -1,5 +1,7 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+$config['ip2nation'] = "y";
+$config['ip2nation_db_date'] = "1335677198";
 $config['sc_paypal_account'] = "";
 $config['sc_encrypt_buttons'] = "n";
 $config['sc_certificate_id'] = "";
