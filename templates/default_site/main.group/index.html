@@ -1,4 +1,15 @@
-{exp:member:login_form return="{site_url}index.php/main/bienvenido"}
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{site_name}</title>
+    <link rel="stylesheet" type="text/css" href="{site_url}stylesheets/viva.css" media="screen" />
+  </head>
+  <body>
+
+
+{exp:member:login_form return="{site_url}index.php/main/user_setup"}
         <p>
                 <label>Username</label><br>
                 <input type="text" name="username" value="" maxlength="32" size="25">
@@ -18,3 +29,6 @@
 {/exp:member:login_form}
 
 <a href="{path='logout'}">Log Out</a>
+
+</body>
+</html>

@@ -1,0 +1,276 @@
+// Margins
+@for $h from -7 to 11 {
+  .m-#{$h*7} {
+    margin: em($h*7)!important;
+  }
+}
+
+@for $i from -7 to 11 {
+  .mt-#{$i*7} {
+    margin-top: em($i*7)!important;
+  }
+}
+
+@for $j from -7 to 11 {
+  .mb-#{$j*7} {
+    margin-bottom: em($j*7)!important;
+  }
+}
+
+@for $k from -7 to 11 {
+  .ml-#{$k*7} {
+    margin-left: em($k*7)!important;
+  }
+}
+
+@for $l from -7 to 11 {
+  .mr-#{$l*7} {
+    margin-right: em($l*7)!important;
+  }
+}
+
+    // Paddings
+@for $m from -7 to 11 {
+  .pt-#{$m*7} {
+    padding-top: em($m*7)!important;
+  }
+}
+
+@for $n from -7 to 11 {
+  .pb-#{$n*7} {
+    padding-bottom: em($n*7)!important;
+  }
+}
+
+@for $o from -7 to 11 {
+  .pl-#{$o*7} {
+    padding-left: em($o*7)!important;
+  }
+}
+
+@for $p from -7 to 11 {
+  .pr-#{$p*7} {
+    padding-right: em($p*7)!important;
+  }
+}
+
+@for $q from -7 to 11 {
+  .p-#{$q*7} {
+    padding: em($q*7)!important;
+  }
+}
+
+// Margins mobile
+@for $h from -7 to 11 {
+  @media only screen and (max-width: $screen-phone) and (max-width: $screen-tablet) {
+    .m-#{$h*7}-mob {
+      margin: em($h*7)!important;
+    }
+  }
+}
+
+@for $i from -7 to 11 {
+  @media only screen and (max-width: $screen-phone) and (max-width: $screen-tablet) {
+    .mt-#{$i*7}-mob {
+      margin-top: em($i*7)!important;
+    }
+  }
+}
+
+@for $j from -7 to 11 {
+  @media only screen and (max-width: $screen-phone) and (max-width: $screen-tablet) {
+    .mb-#{$j*7}-mob {
+      margin-bottom: em($j*7)!important;
+    }
+  }
+}
+
+@for $k from -7 to 11 {
+  @media only screen and (max-width: $screen-phone) and (max-width: $screen-tablet) {
+    .ml-#{$k*7}-mob {
+      margin-left: em($k*7)!important;
+    }
+  }
+}
+
+@for $l from -7 to 11 {
+  @media only screen and (max-width: $screen-phone) and (max-width: $screen-tablet) {
+    .mr-#{$l*7}-mob {
+      margin-right: em($l*7)!important;
+    }
+  }
+}
+
+    // Paddings mobile
+@for $m from -7 to 11 {
+  @media only screen and (max-width: $screen-phone) and (max-width: $screen-tablet) {
+    .pt-#{$m*7}-mob {
+      padding-top: em($m*7)!important;
+    }
+  }
+}
+
+@for $n from -7 to 11 {
+  @media only screen and (max-width: $screen-phone) and (max-width: $screen-tablet) {
+    .pb-#{$n*7}-mob {
+      padding-bottom: em($n*7)!important;
+    }
+  }
+}
+
+@for $o from -7 to 11 {
+  @media only screen and (max-width: $screen-phone) and (max-width: $screen-tablet) {
+    .pl-#{$o*7}-mob {
+      padding-left: em($o*7)!important;
+    }
+  }
+}
+
+@for $p from -7 to 11 {
+  @media only screen and (max-width: $screen-phone) and (max-width: $screen-tablet) {
+    .pr-#{$p*7}-mob {
+      padding-right: em($p*7)!important;
+    }
+  }
+}
+
+@for $q from -7 to 11 {
+  @media only screen and (max-width: $screen-phone) and (max-width: $screen-tablet) {
+    .p-#{$q*7}-mob {
+      padding: em($q*7)!important;
+    }
+  }
+}
+
+// Min-Heights
+@for $r from 1 to 13 {
+  .mh-#{($r*7)*10} {
+    min-height: em(($r*7)*10)!important;
+  }
+}
+
+.vh-100 {
+  height: 100vh;
+}
+
+// Backgrounds
+.bg-primary {
+  background: $brand-primary!important;
+}
+
+.bg-white {
+  background: white !important;
+}
+
+.bg-info {
+  background: $brand-info!important;
+}
+
+.bg-success {
+  background: $brand-success!important;
+}
+
+.bg-danger {
+  background: $brand-danger!important;
+}
+
+.bg-warning {
+  background: $brand-warning!important;
+}
+
+.bg-warning-dark {
+  background: darken($brand-warning, 7%)!important;
+}
+
+.bg-inverse {
+  background: $gray-darker!important;
+}
+
+.bg-gray-dark {
+  background: $gray-dark!important;
+}
+
+.bg-gray {
+  background: $gray!important;
+}
+
+.bg-gray-light {
+  background: $gray-light!important;
+}
+
+.bg-gray-lighter {
+  background: $gray-lighter!important;
+}
+
+// Borders
+.border-rounded {
+  border-radius: $border-radius-base;
+}
+
+.border-rounded-1 {
+  border-radius: 1px;
+}
+
+.border-color-primary {
+  border: 1px solid $brand-primary;
+}
+
+.border-color-gray {
+  border: 2px solid $gray-lighter;
+}
+
+.border-color-info {
+  border: 1px solid $brand-info;
+}
+
+.border-color-success {
+  border: 2px solid $brand-success;
+}
+
+.borderless {
+  border: none!important;
+}
+
+// Box Shadows
+.box-shadow {
+  @include box-shadow(0 3px 3px 0 rgba(0,0,0,0.15));
+}
+
+// Z-Index
+@for $z from 1 to 4 {
+  .z-index#{($z)*10} {
+    z-index: ($z)*10!important;
+  }
+}
+
+// Positions
+.absolute {
+  position: absolute;
+}
+
+.relative {
+  position: relative;
+}
+
+// Displays
+.block {
+  display: block;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+// Form overrides 
+.select-override {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  position: relative;
+  text-indent: 1px;
+  text-overflow: "";
+  &.input-lg {
+    line-height: 28px;
+    background: white url(/img/arrow-down.svg) no-repeat 98%;
+  }
+}
