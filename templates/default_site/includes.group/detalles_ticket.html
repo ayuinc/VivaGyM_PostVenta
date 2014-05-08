@@ -1,0 +1,36 @@
+﻿<?php
+          $query_long  = "SELECT * FROM exp_freeform_form_entries_4 where form_field_18=$id_entrada ";
+          $result_long = mysql_query($query_long);
+          ?>
+          <?php while ($proy_long = mysql_fetch_array($result_long)) { ?>
+
+          <tbody class="bg-white">
+            <tr>
+              <td><?php echo $proy_long['form_field_17']; ?></td>
+              <td>Realizado</td>
+              <td><?php echo $proy_long['entry_date']; ?></td>
+              <td></td>
+            </tr>
+
+          <tr>
+              <td>Vista de inspección agendada</td>
+              <td>Realizado</td>
+              <td>19/01/2014 4:00 pm</td>
+              <td><a href="#" class="btn btn-sm btn-warning disabled small">Agendar</a></td>
+            </tr>
+            <tr>
+              <td>Inspector visitó el dpto.</td>
+              <td>Realizado</td>
+              <td>12/01/2014 8:00 am</td>
+              <td><a href="#" class="btn btn-sm btn-warning small">Ver reporte</a></td>
+            </tr>
+            <tr>
+              <td>Visita de arreglo agendada</td>
+              <td>Pendiente</td>
+              <td></td>
+              <td><a href="" class="btn btn-sm btn-warning small">Agendar</a></td>
+            </tr>
+
+          </tbody>
+
+          <?php } ; ?>

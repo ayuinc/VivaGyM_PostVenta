@@ -8,25 +8,51 @@
   </head>
   <body>
 
+       
+<section id="home">
+    <div class="container">
+      <nav class="mt-14">
+        <a href="#"><img src="{site_url}/images/logo-viva.png" style="width:14%; height: auto;"></a>
+      </nav>
+      <div class="row mt-35-100">
+        <div class="col-md-8">
+          <h4 class="m-0 text-muted book text-left">La mejor atención de</h4>
+          <h3 class="m-0 text-muted text-left">PostVenta en Línea</h3>
 
-{exp:member:login_form return="{site_url}index.php/main/user_setup"}
-        <p>
-                <label>Username</label><br>
-                <input type="text" name="username" value="" maxlength="32" size="25">
-        </p>
-        <p>
-                <label>Password</label><br>
-                <input type="password" name="password" value="" maxlength="32" size="25">
-        </p>
-        {if auto_login}
-                <p><input type="checkbox" name="auto_login" value="1"> Auto-login on future visits</p>
-        {/if}
+          {exp:member:login_form return="{site_url}index.php/main/user_setup" form_class="form-inline mt-14" } 
 
-        <p><input type="checkbox" name="anon" value="1" checked="checked"> Show my name in the online users list</p>
-        <p><input type="submit" name="submit" value="Submit"></p>
-        <p><a href="{path='member/forgot_password'}">Forgot your password?</a></p>
-	<p><a href="{path='member/register'}">Register as a new member</a></p>
-{/exp:member:login_form}
+          
+            <div class="form-group">
+              <input type="text" name="username" class="input-lg form-control" >
+            </div>
+            <div class="form-group">
+              <input type="password" name="password" class="input-lg form-control" >
+            </div>
+
+            <input type="submit" class="btn btn-lg btn-success uppercase form-control" name="submit" value="Ingresar">
+          
+          {/exp:member:login_form}
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-7 text-right text-muted light">
+          <ul class="list-unstyled">
+            <li><a href="#{path='member/forgot_password'}">Olvidé mi usuario</a></li>
+            <li><a href="{path='member/forgot_password'}">Olvidé mi contraseña</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="row mt-7-100">
+        <div class="col-md-12 text-muted">
+          <p>Copyright 2014. VivaGyM. Todos los derechos reservados</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
 
 <a href="{path='logout'}">Log Out</a>
 

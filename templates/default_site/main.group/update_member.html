@@ -1,0 +1,170 @@
+{embed="includes/header"  }
+
+
+  <div class="row mb-21">
+    <div class="col-md-3"></div>
+    <div class="col-md-9">
+      <h3 class="text-success book">Bienvenido al nuevo portal de post-venta de Viva GyM</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non, aspernatur, deserunt, minima voluptatem quisquam maiores cumque magnam saepe quaerat autem hic voluptas praesentium suscipit repudiandae fugit nesciunt minus dolorem inventore!</p>
+    </div>
+  </div>
+  <div class="row">
+    <!-- BEGIN FORM -->
+    <form>
+      <div class="col-md-3">
+        <div class="fileinput fileinput-new" data-provides="fileinput">
+          <div class="fileinput-new thumbnail">
+            <img data-src="/img/profile_soygus.png" alt="..." src="/img/profile_soygus.png" class="img-responsive">
+          </div>
+          <div class="fileinput-preview fileinput-exists thumbnail" style="max-width:263px; max-height: 263px;"></div>
+          <div class="clearfix pt-14 pb-14 bg-gray-lighter mt-7">
+            <div class="col-md-10">
+              <span class="btn btn-sm btn-default btn-file">
+                <span class="fileinput-new">SUBIR FOTO</span>
+                <span class="fileinput-exists">Cambiar</span>
+                <input type="file" name="...">
+              </span>
+              <a href="#" class="fileinput-exists small" data-dismiss="fileinput"> Quitar</a>
+            </div>
+            <div class="col-md-2 text-center pt-7">
+              <i class="icon-camera"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {exp:user:edit}
+
+      <div class="col-md-9">
+        <div class="bg-gray-lighter p-14">
+          <h4 class="uppercase text-warning">Cambia de clave</h4>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="password" name="password" class="form-control input-lg uppercase" placeholder="Ingresa tu nueva clave">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <input type="password" name="password_confirm" class="form-control input-lg uppercase" placeholder="Ingresa tu nueva clave">
+
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="password" name="current_password" class="form-control input-lg uppercase" placeholder="Clave actual">
+              </div>
+            </div>
+
+
+            <div class="col-md-6">
+              <div class="text-right">
+              <input type="submit" class="btn btn-lg btn-success uppercase" value="Actualizar" />
+              </div>
+
+            </div>
+          </div>
+
+
+        </div>
+        {/exp:user:edit}
+
+        <form method="post" enctype="multipart/form-data" name="frm" id="frm" action="update_profile" >
+          <input type="hidden" name="logged_in_member_id" value="{logged_in_member_id}">
+        {exp:member:custom_profile_data}
+
+        <div class="mh-490 bg-gray-lighter mt-21 p-14">
+          <div class="row">
+            <div class="col-md-6">
+              <h4>¿El departamento es alquilado?</h4>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <select name="propietario" class="form-control input-lg select-override">
+                  <option value="Si">Si</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+            </div>
+          </div>        
+          <p>Por favor completa los siguientes datos del inquilino del departamento:</p>
+          <p><sup class="text-danger h5">*</sup>Campo obligatorio</p>
+          
+          
+
+          
+          <h4 class="uppercase text-warning mt-21">Datos del Inquilino</h4>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" class="form-control input-lg uppercase" placeholder="* Apellido paterno" name="ap_pat_inq" value="{ap_pat_inq}">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control input-lg uppercase" placeholder="Telefono" name="telf_inq" value="{telf_inq}">
+              </div>
+              <div class="form-group">
+                <input type="email" class="form-control input-lg uppercase" placeholder="* E-mail" name="email_inquilino" 
+                value="">{email_inquilino}
+
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" class="form-control input-lg uppercase" placeholder="* Apellido materno" name="ap_mat_inq" value="{ap_mat_inq}">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control input-lg uppercase" placeholder="* Teléfono celular" name="telf_cel_inq" value="{telf_cel_inq}">
+              </div>
+            </div>
+          </div>
+          <h4 class="uppercase text-warning mt-21">Datos del propietario</h4>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" class="form-control input-lg uppercase" placeholder="* Nombre" name="nombre_propietario" value="{nombre_propietario}">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control input-lg uppercase" placeholder="* Apellido paterno" name="ap_pat" value="{ap_pat}">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control input-lg uppercase" placeholder="Teléfono fijo" name="t_fijo" 
+                value="{t_fijo}">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control input-lg uppercase" placeholder="Teléfono cónyuge" name="t_conyu" value="{t_conyu}">
+              </div>
+              {/exp:member:custom_profile_data} 
+              <div class="form-group">
+                <input type="email" class="form-control input-lg uppercase" placeholder="* E-mail" name="email" value="{email}">
+              </div>
+
+            </div>
+            {exp:member:custom_profile_data}
+            <div class="col-md-6">
+              <div class="form-group form-group-invisible hidden-sm hidden-xs"></div>
+              <div class="form-group">
+                <input type="text" class="form-control input-lg uppercase" placeholder="* Apellido materno" name="ap_mat" value="{ap_mat}">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control input-lg uppercase" placeholder="* Teléfono celular" name="t_cel" value="{t_cel}">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control input-lg uppercase" placeholder="Teléfono oficina" name="t_ofic" value="{t_ofic}">
+              </div>
+            </div>
+           {/exp:member:custom_profile_data} 
+          </div>
+          <div class="text-right">
+            <input type="submit" class="btn btn-lg btn-success uppercase" value="Procesar" />
+            
+          </div>
+        </div>
+
+        </form>
+      </div>
+    
+    <!-- END FORM -->
+  </div>
+
+{embed="includes/footer"}

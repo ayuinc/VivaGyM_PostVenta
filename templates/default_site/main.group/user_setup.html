@@ -1,4 +1,4 @@
-{embed="includes/header"  }
+{embed="includes/header" }
 
   <div class="row mb-21">
     <div class="col-md-3"></div>
@@ -9,11 +9,11 @@
   </div>
   <div class="row">
     <!-- BEGIN FORM -->
-    <form>
+      {exp:user:edit }
       <div class="col-md-3">
         <div class="fileinput fileinput-new" data-provides="fileinput">
           <div class="fileinput-new thumbnail">
-            <img data-src="/img/profile_soygus.png" alt="..." src="/img/profile_soygus.png" class="img-responsive">
+            <img data-src="" alt="..." src="{avatar_url}/{avatar_filename}" class="img-responsive">
           </div>
           <div class="fileinput-preview fileinput-exists thumbnail" style="max-width:263px; max-height: 263px;"></div>
           <div class="clearfix pt-14 pb-14 bg-gray-lighter mt-7">
@@ -21,8 +21,10 @@
               <span class="btn btn-sm btn-default btn-file">
                 <span class="fileinput-new">SUBIR FOTO</span>
                 <span class="fileinput-exists">Cambiar</span>
-                <input type="file" name="...">
+                <input type="file" name="avatar_filename" >
+                
               </span>
+              <input type="submit" value="Cargar" />
               <a href="#" class="fileinput-exists small" data-dismiss="fileinput"> Quitar</a>
             </div>
             <div class="col-md-2 text-center pt-7">
@@ -32,7 +34,9 @@
         </div>
       </div>
 
-      {exp:user:edit}
+      {/exp:user:edit }
+
+      {exp:user:edit return="main/user_dashboard" }
 
       <div class="col-md-9">
         <div class="bg-gray-lighter p-14">
@@ -46,13 +50,32 @@
             <div class="col-md-6">
               <input type="password" name="password_confirm" class="form-control input-lg uppercase" placeholder="Ingresa tu nueva clave">
 
-              <p>Current Password <input type="password" name="current_password" /></p>
-              <p><input type="submit" value="Submit" /></p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="password" name="current_password" class="form-control input-lg uppercase" placeholder="Clave actual">
+              </div>
+            </div>
+
+
+            <div class="col-md-6">
+              <div class="text-right">
+              <input type="submit" class="btn btn-lg btn-success uppercase" value="Actualizar" />
+              </div>
 
             </div>
           </div>
+
+
         </div>
         {/exp:user:edit}
+
+        {exp:user:edit return="main/user_dashboard"}
+          <input type="hidden" name="logged_in_member_id" value="{logged_in_member_id}">
+        {exp:member:custom_profile_data}
 
         <div class="mh-490 bg-gray-lighter mt-21 p-14">
           <div class="row">
@@ -60,35 +83,39 @@
               <h4>¿El departamento es alquilado?</h4>
             </div>
             <div class="col-md-6">
-              <div class="form-group">
-                <select name="" id="" class="form-control input-lg select-override">
-                  <option value="Si">Si</option>
-                  <option value="No">No</option>
+              <div class="form-group"><?php $prop={propietario}; ?>
+                <select name="propietario" class="form-control input-lg select-override">
+                  <option value="Si" <?php if($prop=="Si"){echo "selected";}; ?> >Si</option>
+                  <option value="No" <?php if($prop=="No"){echo "selected";}; ?> >No</option>
                 </select>
               </div>
             </div>
           </div>        
           <p>Por favor completa los siguientes datos del inquilino del departamento:</p>
           <p><sup class="text-danger h5">*</sup>Campo obligatorio</p>
+
+          
           <h4 class="uppercase text-warning mt-21">Datos del Inquilino</h4>
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
-                <input type="text" class="form-control input-lg uppercase" placeholder="* Apellido paterno" name="inquilino_apellido_paterno">
+                <input type="text" class="form-control input-lg uppercase" placeholder="* Apellido paterno" name="ap_pat_inq" value="{ap_pat_inq}">
               </div>
               <div class="form-group">
-                <input type="text" class="form-control input-lg uppercase" placeholder="Telefono" name="inquilino_telefono">
+                <input type="text" class="form-control input-lg uppercase" placeholder="Telefono" name="telf_inq" value="{telf_inq}">
               </div>
               <div class="form-group">
-                <input type="email" class="form-control input-lg uppercase" placeholder="* E-mail" name="inquilino_email">
+                <input type="email" class="form-control input-lg uppercase" placeholder="* E-mail" name="email_inquilino" 
+                value="{email_inquilino}">
+
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                <input type="text" class="form-control input-lg uppercase" placeholder="* Apellido materno" name="inquilino_apellido_materno">
+                <input type="text" class="form-control input-lg uppercase" placeholder="* Apellido materno" name="ap_mat_inq" value="{ap_mat_inq}">
               </div>
               <div class="form-group">
-                <input type="text" class="form-control input-lg uppercase" placeholder="* Teléfono celular" name="inquilino_telefono_celular">
+                <input type="text" class="form-control input-lg uppercase" placeholder="* Teléfono celular" name="telf_cel_inq" value="{telf_cel_inq}">
               </div>
             </div>
           </div>
@@ -96,43 +123,48 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
-                <input type="text" class="form-control input-lg uppercase" placeholder="* Nombre" name="propietario_nombre" value="{screen_name}">
+                <input type="text" class="form-control input-lg uppercase" placeholder="* Nombre" name="nombre_propietario" value="{nombre_propietario}">
               </div>
               <div class="form-group">
-                <input type="text" class="form-control input-lg uppercase" placeholder="* Apellido paterno" name="propietario_apellido_paterno">
+                <input type="text" class="form-control input-lg uppercase" placeholder="* Apellido paterno" name="ap_pat" value="{ap_pat}">
               </div>
               <div class="form-group">
-                <input type="text" class="form-control input-lg uppercase" placeholder="Teléfono fijo" name="propietario_telefono">
+                <input type="text" class="form-control input-lg uppercase" placeholder="Teléfono fijo" name="t_fijo" 
+                value="{t_fijo}">
               </div>
               <div class="form-group">
-                <input type="text" class="form-control input-lg uppercase" placeholder="Teléfono cónyuge" name="propietario_telefono_conyuge">
+                <input type="text" class="form-control input-lg uppercase" placeholder="Teléfono cónyuge" name="t_conyu" value="{t_conyu}">
               </div>
+              {/exp:member:custom_profile_data} 
               <div class="form-group">
-                <input type="email" class="form-control input-lg uppercase" placeholder="* E-mail" name="propietario_email" >
+                <input type="email" class="form-control input-lg uppercase" placeholder="* E-mail" name="email" value="{email}">
               </div>
 
             </div>
-            
+            {exp:member:custom_profile_data}
             <div class="col-md-6">
               <div class="form-group form-group-invisible hidden-sm hidden-xs"></div>
               <div class="form-group">
-                <input type="text" class="form-control input-lg uppercase" placeholder="* Apellido materno" name="propietario_apellido_materno">
+                <input type="text" class="form-control input-lg uppercase" placeholder="* Apellido materno" name="ap_mat" value="{ap_mat}">
               </div>
               <div class="form-group">
-                <input type="text" class="form-control input-lg uppercase" placeholder="* Teléfono celular" name="propietario_telefono_celular">
+                <input type="text" class="form-control input-lg uppercase" placeholder="* Teléfono celular" name="t_cel" value="{t_cel}">
               </div>
               <div class="form-group">
-                <input type="text" class="form-control input-lg uppercase" placeholder="Teléfono oficina" name="propietario_telefono_oficina">
+                <input type="text" class="form-control input-lg uppercase" placeholder="Teléfono oficina" name="t_ofic" value="{t_ofic}">
               </div>
             </div>
-            
+           {/exp:member:custom_profile_data} 
           </div>
           <div class="text-right">
-            <button type="submit" class="btn btn-lg btn-success uppercase">Procesar</button>
+            <input type="submit" class="btn btn-lg btn-success uppercase" value="Procesar" />
+            
           </div>
         </div>
+
+        {/exp:user:edit}
       </div>
-    </form>
+    
     <!-- END FORM -->
   </div>
 

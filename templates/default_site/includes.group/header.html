@@ -5,10 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{site_name}</title>
     <link rel="stylesheet" type="text/css" href="{site_url}stylesheets/viva.css" media="screen" />
+    
+    <script type="text/javascript" src="{site_url}lib/b3/jquery-2_1_1.js"></script>
+    <script type="text/javascript" src="{site_url}lib/b3/tab.js"></script>
+    <script type="text/javascript" src="{site_url}lib/b3/transition.js"></script>
+    <script type="text/javascript" src="{site_url}lib/b3/collapse.js"></script>
+
+
   </head>
   <body>
     
     {if logged_in}
+    {exp:user:edit }
   <header class="bg-gray-lighter">
     <div class="container-fluid pt-7 pb-7">
       <div class="row">
@@ -20,7 +28,7 @@
               <a href="{path='logout'}">Salir</a>
             </div>
             <div class="col-xs-2 col-md-2">
-              <img src="/img/profile_soygus.png" id="user-profile-pic">
+              <img src="{avatar_url}/{avatar_filename}" id="user-profile-pic">
             </div>
             <div class="col-xs-2 col-md-2">
               <a href="#" class="block text-center p-14 not-underline" id="user-notifications">
@@ -32,6 +40,7 @@
       </div>
     </div>
   </header>
+  {/exp:user:edit }
 
   {/if}
   {if logged_out}
@@ -40,3 +49,5 @@
         Have you <a href="{path='member/forgot'}">forgotten your password</a>?
 {/if}
 
+
+<div class="container pt-35 pb-35 mh-630">
