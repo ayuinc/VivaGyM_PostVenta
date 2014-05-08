@@ -65,7 +65,7 @@ echo $id_sol_garantia=$_GET['id_sol_garantia'];
 <?php
 echo "dia_sel: ".$dia_sel=$_GET['dia_sel'];
 echo "<br>hora: ".$hora=$_GET['hora'];
-$id_persona="{member_id}";
+$id_cliente="{member_id}";
 ?>
 
   <div class="container">
@@ -84,29 +84,36 @@ $id_persona="{member_id}";
 
           </div>
 
+            <form method="post" enctype="multipart/form-data" name="frm" id="frm" action="guardar_3er_paso" >
+              <input type="text" placeholder="fecha" name="fecha_atencion_ticket" class=" form-control input-lg" value="<?php echo $dia_sel; ?>">
 
+                    <input type="text" placeholder="hora" name="hora_atencion_ticket" class=" form-control input-lg" value="<?php echo $hora; ?>">
             <p class="light">Si no estarás en tu departamento asigna a una persona mayor de edad para coordinar la inspección<a data-toggle="collapse" href="#form-collapse"> aquí</a></p>
             <div id="form-collapse" class="collapse">
               <div class="row mt-21">
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
                   <div class="form-group">
-                    <select name="" class="form-control input-lg uppercase select-override">
-                      <option value="">Familiar</option>
+                    
+
+                    <select name="relacion_dueno_departamento" class="form-control input-lg uppercase select-override">
+                      <option value="0">Seleccione</option>
+                      <option value="Familiar">Familiar</option>
+                      <option value="Amigo">Amigo</option>
                     </select>
                   </div>
 
-                    <input type="text" placeholder="fecha" name="fecha" class=" form-control input-lg" value="<?php echo $dia_sel; ?>">
+                   <input type="hidden" name="XID" value="{XID_HASH}" /> 
 
-                    <input type="text" placeholder="hora" name="hora" class=" form-control input-lg" value="<?php echo $hora; ?>">
+                    
 
-                    <input type="text" placeholder="id_persona" name="id_persona" class=" form-control input-lg" 
-                    value="<?php echo $id_persona; ?>">
+                    <input type="hidden" placeholder="id_cliente" name="id_cliente" class=" form-control input-lg" 
+                    value="<?php echo $id_cliente; ?>">
 
-                    <input type="text" placeholder="id_sol_garantia" name="id_sol_garantia" class=" form-control input-lg" 
+                    <input type="hidden" placeholder="id_sol_garantia" name="id_sol_garantia" class=" form-control input-lg" 
                     value="<?php echo $id_sol_garantia; ?>">
 
-                    <input type="text" placeholder="orden_tramite" name="orden_tramite" class=" form-control input-lg" 
+                    <input type="hidden" placeholder="orden_tramite" name="orden_tramite" class=" form-control input-lg" 
                     value="2">
 
                     <p>
@@ -125,8 +132,11 @@ $id_persona="{member_id}";
               </div>
             </div>
             <div class="text-right">
-              <button type="submit" class="btn btn-lg uppercase btn-success">Agendar</button>
+              
+              <input type="submit" class="btn btn-lg uppercase btn-success" value="Agendar">
             </div>
+
+            </form>
           
 
         </div>
