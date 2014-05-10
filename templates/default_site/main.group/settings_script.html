@@ -1,0 +1,47 @@
+<?php echo ?>
+<script>
+
+  $(document).ready(function() {
+  
+    var date = new Date();
+    var d = date.getDate();
+    var m = date.getMonth();
+    var y = date.getFullYear();
+    
+    $('#calendar').fullCalendar({
+      editable: false,
+      events: [
+        {
+          id: 999,
+          title: 'Repeating Event',
+          start: new Date(y, m, d, 10, 30)
+        },
+        {
+          title: 'Meeting',
+          start: new Date(y, m, d, 10, 30),
+          allDay: false
+        },
+        {
+          title: 'Lunch',
+          start: new Date(y, m, d, 12, 0)
+        },
+        {
+          title: 'Birthday Party',
+          start: new Date(y, m, d+1, 19, 0)
+        },
+        {
+          title: 'Click for Google',
+          start: new Date(y, m, 28),
+          url: 'user_request_show?dia_sel=28-05-2014&hora=2:00pm&id_sol_garantia=<?php echo $id_sol_garantia; ?>',
+          color: 'yellow',    // an option!
+          textColor: 'black'
+        },
+      ]
+    });
+    
+  });
+
+
+</script>
+
+<?php ; ?>

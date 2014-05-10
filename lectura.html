@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" />
+
+
+<script type="text/javascript">
+
+var x = new XMLHttpRequest(); 
+x.open("GET","feed.txt",false); 
+x.send(); 
+myTextFile=x.responseText;
+
+document.write (myTextFile); 
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

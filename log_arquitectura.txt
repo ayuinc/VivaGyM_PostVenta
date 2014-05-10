@@ -18,3 +18,7 @@ En el dashboard de graña que se puedan administrar la cantidad maxima de visitas
 
 Generar el contador de visitas maximas para bloquear el calendario si se pasan.
 
+ya hemos definido el plugin del calendario, ahora debemos setearlo para presentar los horarios disponibles del mes actual y del siguiente cuidando de que solo ciertos dias esten activados, ademas que cada vez que el horario se toma desactivarlo del archivo.
+
+alimentar el calendario desde una bd para que sea administrable
+

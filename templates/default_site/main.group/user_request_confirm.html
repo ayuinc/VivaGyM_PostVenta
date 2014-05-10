@@ -1,6 +1,6 @@
 {embed="includes/header" }
 
-<?php $id_sol_garantia=$_GET['id_sol_garantia']; ?>
+
 
 
 <link href='{site_url}fullcalendar/fullcalendar.css' rel='stylesheet' />
@@ -12,10 +12,6 @@
 <?php //include("settings_script.php"); ?>
 
 <script>
-  
-  //var $id_sol_garantia=43;
-
-  var $id_sol = <?php echo json_encode($id_sol_garantia);?>
 
   $(document).ready(function() {
   
@@ -37,21 +33,12 @@
       day: 'Día'
        },
 
-      events: "http://localhost/VivaGyM_PostVenta/json-fechas.php?id_sol_garantia="+$id_sol,
+      events: "http://localhost/VivaGyM_PostVenta/json-fechas.php",
       
     });
     
   });
 
-
-
-</script>
-<script>
-if(!url.contains("user_request_show"))
-{
-  var ticket=$id_sol_garantia;
-   url = url+"&id_sol_garantia=$id_sol_garantia";
-}
 </script>
 <style>
 
