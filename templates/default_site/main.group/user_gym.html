@@ -1,0 +1,181 @@
+{embed="includes/header" }
+
+<script type="text/javascript" src="{site_url}lib/viva_dashboard.js"></script>
+
+  <div class="row">
+    <div class="col-xs-3">
+      <a href="#"><img src="{site_url}images/logo-viva.png" style="width:50%; height: auto;"></a>
+    </div>
+  </div>
+  <div class="row mt-21">
+    <div class="col-md-9 mb-14">
+      <div class="clearfix text-center">
+        <div class="col-md-1 pl-0 pr-0">
+          <div class="bg-gray p-7">
+            <i class="icon-bell text-muted"></i>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="p-7">
+            <span class="text-warning">1 </span><span>caso pendiente</span>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-7">
+            <span class="text-warning">4 </span><span>inspecciones por aprobar</span>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="p-7">
+            <span class="text-warning">3 </span><span>reportes por aprobar</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="mb-14 text-center">
+        <a href="#" class="btn btn-warning"><i class="icon-calendar"></i> Buscar por fecha</a>
+      </div>
+      <div class="mb-14 text-center">
+        <a href="#" class="btn btn-success"><i class="icon-tag"></i> Buscar por ticket</a>
+      </div>
+    </div>
+  </div>
+
+
+  
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel-group" id="accordion2">
+        <div class="panel bg-gray-lighter">
+
+      {exp:freeform:entries
+      form_id="2"
+      orderby="date"
+      sort="desc"
+      limit="20"
+      paginate="both" }
+
+      
+          <div class="panel-heading p-0">
+            <div class="panel-title bg-warning">
+              <div class="row text-muted">
+                <div class="col-md-2 text-center pr-0 col-xs-5 col-sm-2">
+                  <div class="bg-warning-dark pt-7 pb-7">
+                    No. <?php echo $id_sol_garantia="{freeform:entry_id}"; ?></div>
+                </div>
+                <div class="col-md-9 text-right pr-0 col-xs-7 col-sm-9">
+                  <a data-toggle="collapse" data-parent="#accordion2" 
+                  href="#collapseFour<?php echo $id_sol_garantia; ?>" class="not-underline block bg-warning pt-7 pb-7">Ver detalle</a>
+                </div>
+                <div class="col-md-1 text-center pl-0 hidden-xs col-sm-1">
+                  <div class="bg-warning pt-7 pb-7">
+                    <a data-toggle="collapse" data-parent="#accordion2" 
+                    href="#collapseFour<?php echo $id_sol_garantia; ?>" class="collapsed-icon not-underline lh-0"></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel-body borderless p-0">
+            <div class="clearfix bg-white pt-14 pb-14">
+              <div class="col-md-2">
+                <img src="{site_url}fotos_problemas/{freeform:field:foto_problema}" class="img-responsive">
+              </div>
+              <div class="col-md-4">
+                <ul class="list-unstyled">
+                  <li class="mb-14"><strong>Propietario:</strong> <?php  $id_cliente="{freeform:field:id_cliente}"; 
+
+                  $result=mysql_query("SELECT * FROM exp_members WHERE member_id=$id_cliente");
+                  $obten=mysql_fetch_row($result);
+                  echo $screen_name = $obten[3];
+
+                   ?></li>
+                  <li class="mb-14"><strong>Complejo: </strong> Parque Central, Torre T. Dpto 503</li>
+                  <li class="mb-14"><strong>Teléfono: </strong>
+
+                  <?php  
+                  $resultb=mysql_query("SELECT * FROM exp_member_data WHERE member_id=$id_cliente");
+                  $obtenb=mysql_fetch_row($resultb);
+                  echo $m_field_id_5 = $obtenb[6];
+
+                   ?></
+                 </li>
+                  <li class="mb-14"><strong>Atendido por:</strong> <span class="text-warning">Roberto Mendoza</span></li>
+                </ul>
+              </div>
+              <div class="col-md-4">
+                <ul class="list-unstyled">
+                  <li class="mb-14"><strong>Fecha de apertura:</strong> {freeform:entry_date format="%F %j, %Y a %g:%i %a"}</li>
+                  <li class="mb-14"><strong>Estatus: </strong> <span class="text-warning">
+                    <?php $estatus_ticket="{freeform:status}"; if ($estatus_ticket=="open"){echo "Pendiente";} else {echo "Realizado";}; ?>
+                  </span></li>
+                  <li class="mb-14"><strong>Descripción:</strong> {freeform:field:descripcion_problema}</li>
+                </ul>                
+              </div>
+            </div>
+            <div id="collapseFour<?php echo $id_sol_garantia; ?>" class="panel-collapse collapse mt-14">
+              <div class="table-responsive">
+
+                <table class="table table-hover">
+                  <thead class="uppercase bg-gray text-muted light">
+                    <tr>
+                      <td>Acción</td>
+                      <td>Estatus</td>
+                      <td>Día / Hora</td>
+                      <td>Acción</td>
+                    </tr>
+                  </thead> <!-- hacer otro include con los detalles del ticket {embed="includes/detalles_ticket" }-->
+
+                  <?php
+                    $query_long  = "SELECT * FROM exp_freeform_form_entries_4 where form_field_18=$id_sol_garantia ";
+                    $result_long = mysql_query($query_long);
+                    ?>
+                    <?php while ($proy_long = mysql_fetch_array($result_long)) { ?>
+
+                    <tbody class="bg-white">
+                      <tr>
+                        <td><?php echo $proy_long['form_field_17']; ?></td>
+                        <td><?php $var_estatus=$proy_long['status']; if ($var_estatus=="open"){echo "Pendiente";} else {echo "Realizado";}; ?></td>
+                        <td><?php  $fecha_time=$proy_long['entry_date']; echo date('m/d/Y G:i a', $fecha_time);?></td>
+                        <td><?php $paso=$proy_long['form_field_19']; ?>
+
+                          <?php if($paso==2){ echo $proy_long['form_field_27']; } ?>
+
+                          <?php if($paso==3){ echo $proy_long['form_field_25']." / ".$proy_long['form_field_26']; } ?>
+
+                          <?php if($paso==4){ echo $proy_long['form_field_27']; } ?>
+
+                          <?php if($paso==5){ echo $proy_long['form_field_27']; } ?>
+
+                          <?php if($paso==6){ echo $proy_long['form_field_27']; } ?>
+
+                          <?php if($paso==7){ echo $proy_long['form_field_25']." / ".$proy_long['form_field_26']; } ?>
+
+                          <?php if($paso==8){ echo $proy_long['form_field_27']; } ?>
+
+                          <?php if($paso==9){ ?> <a href="<?php echo 
+                          "user_gym_upload?id_sol_garantia=".$id_sol_garantia."&paso=9&id_cliente=".$id_cliente; ?>" 
+                          class="btn btn-sm btn-warning small">Subir reporte</a> <?php } ?>
+
+                        </td>
+                      </tr>
+
+                    </tbody>
+
+                    <?php } ; ?>
+
+                </table>
+
+              </div>
+            </div>
+          </div>
+        
+
+      {/exp:freeform:entries}
+
+    </div>
+      </div>
+
+    </div>
+  </div>

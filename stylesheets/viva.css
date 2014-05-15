@@ -1,4 +1,4 @@
-﻿/*! normalize.css v3.0.1 | MIT License | git.io/normalize */
+/*! normalize.css v3.0.1 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -415,9 +415,6 @@ a.text-warning:hover {
 
 a.text-danger:hover {
   color: #d02d0f; }
-
-.bg-blanco {
-  background-color: #fff; }
 
 .bg-primary {
   color: #fff; }
@@ -4464,7 +4461,7 @@ button.close {
 #home {
   width: 100%;
   min-height: 768px;
-  background: url(../images/home.jpg) no-repeat top center rgba(0, 0, 0, 0.7); }
+  background: url(http://localhost/VivaGyM_PostVenta/images/home.jpg) no-repeat top center rgba(0, 0, 0, 0.7); }
 
 #user-profile-pic {
   width: 50px;
@@ -5236,6 +5233,9 @@ button.close {
 .pl-0 {
   padding-left: 0em !important; }
 
+@media only screen and (max-width: 480px) and (max-width: 768px) {
+  .pl-0 {
+    padding-left: 14px !important; } }
 .pl-7 {
   padding-left: 0.4375em !important; }
 
@@ -5290,6 +5290,9 @@ button.close {
 .pr-0 {
   padding-right: 0em !important; }
 
+@media only screen and (max-width: 480px) and (max-width: 768px) {
+  .pr-0 {
+    padding-right: 14px !important; } }
 .pr-7 {
   padding-right: 0.4375em !important; }
 
@@ -5344,6 +5347,9 @@ button.close {
 .p-0 {
   padding: 0em !important; }
 
+@media only screen and (max-width: 480px) and (max-width: 768px) {
+  .p-0 {
+    padding: 14px !important; } }
 .p-7 {
   padding: 0.4375em !important; }
 
@@ -6346,4 +6352,4 @@ button.close {
   .input-group-lg > .select-override.input-group-addon,
   .input-group-lg > .input-group-btn > .select-override.btn {
     line-height: 28px;
-    background: white url(../images/arrow-down.svg) no-repeat 98%; }
+    background: white url(http://localhost/VivaGyM_PostVenta/stylesheets/images/arrow-down.svg) no-repeat 98%; }

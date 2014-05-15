@@ -1,0 +1,145 @@
+{embed="includes/header" }
+
+<?php $id_sol_garantia=$_GET['id_sol_garantia']; ?>
+
+
+<link href='{site_url}fullcalendar/fullcalendar.css' rel='stylesheet' />
+<link href='{site_url}fullcalendar/fullcalendar.print.css' rel='stylesheet' media='print' />
+<script src='{site_url}lib/jquery.min.js'></script>
+<script src='{site_url}lib/jquery-ui.custom.min.js'></script>
+<script src='{site_url}fullcalendar/fullcalendar.min.js'></script>
+
+<?php //include("settings_script.php"); ?>
+
+<script>
+  
+  //var $id_sol_garantia=43;
+
+  var $id_sol = <?php echo json_encode($id_sol_garantia);?>
+
+  $(document).ready(function() {
+  
+    $('#calendar').fullCalendar({
+    
+      editable: false,
+
+      weekends: false,
+
+      monthNames: ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" ], 
+     monthNamesShort: ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
+     dayNames: [ 'Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+     dayNamesShort: [ 'Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+
+     buttonText: {
+      today: 'Hoy',
+      month: 'Mes',
+      week: 'Semana',
+      day: 'Día'
+       },
+
+      events: "http://localhost/VivaGyM_PostVenta/json-fechas_arr.php?id_sol_garantia="+$id_sol,
+      
+    });
+    
+  });
+
+
+
+</script>
+<style>
+
+  #calendar {
+    width: auto;
+    margin: 0 auto;
+    }
+
+</style>
+
+<?php
+$dia_sel=$_GET['dia_sel'];
+$hora=$_GET['hora'];
+$id_cliente="{member_id}";
+?>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <div class="bg-gray-lighter p-14">
+          <a href="{{ pathFor 'userDashboard' }}" class="icon-arrow-left3 not-underline text-danger"></a>
+          <h4 class="uppercase text-warning"><i class="icon-calendar"></i> Agenda tu arreglo</h4>
+          <p class="light">Asegúrate que puedes estar en tu departamento en la fecha y hora que agendas tu cita. Te enviaremos una notificación y un correo el día anterior para recordarte.</p>
+          <strong>Horarios de arreglos</strong>
+          <p class="light">9:00 am - 2:00 pm de lunes a viernes</p>
+          
+
+            <div class="bg-blanco p-70 text-center mb-21"><div id='calendar'></div>
+
+          </div>
+
+            <form method="post" enctype="multipart/form-data" name="frm" id="frm" action="guardar_4to_paso" >
+
+              <?php if(!empty($dia_sel)) { ?> 
+              <div>
+              <div class="row mt-21">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                  <div class="form-group">
+              Fecha seleccionada: <input type="text" placeholder="fecha" name="fecha_atencion_ticket" class=" form-control input-lg" value="<?php echo $dia_sel; ?>">
+
+              Hora seleccionada: <input type="text" placeholder="hora" name="hora_atencion_ticket" class=" form-control input-lg" value="<?php echo $hora; ?>">
+
+              <input type="hidden" name="XID" value="{XID_HASH}" /> 
+
+              <input type="text" placeholder="id_cliente" name="id_cliente" class=" form-control input-lg" value="<?php echo $id_cliente; ?>">
+
+              <input type="text" placeholder="id_sol_garantia" name="id_sol_garantia" class=" form-control input-lg" 
+              value="<?php echo $id_sol_garantia; ?>">
+
+              <input type="text" placeholder="orden_tramite" name="orden_tramite" class=" form-control input-lg" value="4">
+            </div>
+            </div>
+            </div>
+            </div>
+
+            <p class="light">Si no estarás en tu departamento asigna a una persona mayor de edad para coordinar la inspección<a data-toggle="collapse" href="#form-collapse"> aquí</a></p>
+            <div id="form-collapse" class="collapse">
+              <div class="row mt-21">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                  <div class="form-group">
+                    
+
+                    <select name="relacion_dueno_departamento" class="form-control input-lg uppercase select-override">
+                      <option value="0">Seleccione</option>
+                      <option value="Familiar">Familiar</option>
+                      <option value="Amigo">Amigo</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <input type="text" placeholder="Nombre" name="nombre_encargado_atencion" class="uppercase form-control input-lg">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" placeholder="Celular" name="celular_encargado_atencion" class="uppercase form-control input-lg">
+                  </div>
+                  <div class="form-group">
+                    <input type="email" placeholder="Correo electrónico" name="email_encargado_atencion" class="uppercase form-control input-lg">
+                  </div>
+                </div>
+                <div class="col-md-2"></div>
+              </div>
+            </div>
+            <div class="text-right">
+             <input type="submit" class="btn btn-lg uppercase btn-success" value="Agendar"> <?php } ?> 
+            </div>
+
+            </form>
+          
+
+        </div>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+  </div>
+{embed="includes/footer"}

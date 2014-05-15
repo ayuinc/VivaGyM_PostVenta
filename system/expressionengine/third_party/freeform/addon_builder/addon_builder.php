@@ -11,7 +11,7 @@
  * @copyright	Copyright (c) 2008-2014, Solspace, Inc.
  * @link		http://solspace.com/docs/
  * @license		http://www.solspace.com/license_agreement/
- * @version		1.5.6
+ * @version		1.5.7
  * @filesource 	addon_builder/addon_builder.php
  */
 
@@ -36,7 +36,7 @@ class Addon_builder_freeform
 	 *
 	 * @var string
 	 */
-	static $class_version		= '1.5.6';
+	static $class_version		= '1.5.7';
 
 	/**
 	 * Current EE version
@@ -702,10 +702,10 @@ class Addon_builder_freeform
 			'addon_theme_url'			=> $theme_url . $this->lower_name . '/',
 			'addon_theme_path'			=> $theme_path . $this->lower_name . '/',
 			'csrf_name'					=> (
-				version_compare($this->version, '2.8', '>=')
+				version_compare($this->ee_version, '2.8', '>=')
 			) ? 'csrf_token' : 'XID',
 			'csrf_js_name'					=> (
-				version_compare($this->version, '2.8', '>=')
+				version_compare($this->ee_version, '2.8', '>=')
 			) ? 'CSRF_TOKEN' : 'XID',
 		);
 	}

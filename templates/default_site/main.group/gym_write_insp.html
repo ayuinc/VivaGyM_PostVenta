@@ -1,0 +1,43 @@
+<?php
+
+echo "<br> id ".$id_cliente=$_POST['id_cliente'];
+
+echo "<br> sol ".$id_sol_garantia=$_POST['id_sol_garantia'];
+
+echo "<br> persona ".$persona_asignada=$_POST['persona_asignada'];
+
+echo "<br> paso ".$paso=$_POST['paso'];
+
+$prox_paso=$paso+1;
+
+if($paso=="4") {
+echo "<br> texto caso 4 ".$texto_paso="Inspector visita departamento";
+}
+
+if($paso=="8") {
+echo "<br> texto caso 8 ".$texto_paso="GyM ejecuta el arreglo";
+}	
+
+$ip=$_SERVER["REMOTE_ADDR"];
+
+echo "<br> mensaje ".$mensaje_asig= "Asignado / ".$persona_asignada;
+
+$date = date_create();
+$entry_date=date_timestamp_get($date);
+
+$resultado=mysql_query("insert into exp_freeform_form_entries_4 
+(site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19) 
+values ('1','$id_cliente','y','$ip','$entry_date','open','$id_cliente','$texto_paso','$id_sol_garantia','$prox_paso')");
+
+$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_4 
+SET status = 'closed',
+form_field_27 = '$mensaje_asig'
+WHERE form_field_18 = $id_sol_garantia AND form_field_19 = $paso ");
+
+?>
+
+<body>
+<script type="text/javascript">
+window.location="gym_dashboard";
+</script>
+</body>

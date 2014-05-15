@@ -8,7 +8,7 @@
  * @copyright	Copyright (c) 2008-2014, Solspace, Inc.
  * @link		http://solspace.com/docs/freeform
  * @license		http://www.solspace.com/license_agreement
- * @version		4.1.7
+ * @version		4.1.8
  * @filesource	freeform/language/english/freeform_lang.php
  */
 
@@ -22,10 +22,10 @@ $lang = array(
 //----------------------------------------
 
 
+
+
 "freeform_module_name" =>
-"Freeform",
-
-
+"Freeform Pro",
 
 
 'go_pro' =>

@@ -1,0 +1,54 @@
+<?php
+
+$id_cliente=$_POST['id_cliente'];
+$relacion_dueno_departamento=$_POST['relacion_dueno_departamento'];
+$fecha_atencion_ticket=$_POST['fecha_atencion_ticket'];
+$hora_atencion_ticket=$_POST['hora_atencion_ticket'];
+
+$id_sol_garantia=$_POST['id_sol_garantia'];
+//$orden_tramite=$_POST['orden_tramite'];
+
+$prox_paso=$orden_tramite+1;
+
+$nombre_encargado_atencion=$_POST['nombre_encargado_atencion'];
+$celular_encargado_atencion=$_POST['celular_encargado_atencion'];
+$email_encargado_atencion=$_POST['email_encargado_atencion'];
+
+$ip=$_SERVER["REMOTE_ADDR"];
+
+$date = date_create();
+$entry_date=date_timestamp_get($date);
+
+if ($relacion_dueno_departamento=0){
+	$dueno_atiende_ticket="si";
+	} else {
+	$dueno_atiende_ticket="no";
+	}
+
+$resultado=mysql_query("insert into exp_freeform_form_entries_4 
+(site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19,
+	form_field_20,form_field_21,form_field_22,form_field_23,form_field_24,form_field_25,form_field_26) 
+values ('1','$id_cliente','y','$ip','$entry_date','open','$id_cliente','GyM asigna personal al arreglo','$id_sol_garantia','8'
+	,'$dueno_atiende_ticket','$relacion_dueno_departamento','$nombre_encargado_atencion','$celular_encargado_atencion','$email_encargado_atencion','$fecha_atencion_ticket','$hora_atencion_ticket')"); 
+
+$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_4 
+SET status = 'closed',
+form_field_20 = '$dueno_atiende_ticket',
+form_field_21 = '$relacion_dueno_departamento',
+form_field_22 = '$nombre_encargado_atencion',
+form_field_23 = '$celular_encargado_atencion',
+form_field_24 = '$email_encargado_atencion',
+form_field_25 = '$fecha_atencion_ticket',
+form_field_26 = '$hora_atencion_ticket'
+WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 7");
+
+
+?>
+
+<body>
+
+<script type="text/javascript">
+window.location="user_dashboard";
+</script>
+
+</body>

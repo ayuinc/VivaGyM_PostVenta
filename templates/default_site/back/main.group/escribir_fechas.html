@@ -1,0 +1,36 @@
+<?php  
+    //include('connect.php'); 
+//error_reporting(0);	
+//include('funciones.php');	
+$year = date('Y');
+
+
+for ($i = 1; $i <= 372; $i++) {
+    
+   //$mes=1;
+   //$cont=31;
+
+if ($i>$cont){ 
+	$cont=$cont+31;
+	$mes=$mes+1;
+	$dia=0;
+}
+
+$dia++;
+
+	for ($y = 1; $y <=3; $y++) { 
+		$hora=$y.":00 pm";
+		echo "<br>".$dia."-".$mes."-".$year."-".$hora; 
+
+	$url="user_request_show?year=$year&month=$mes&day=$dia&hora=$hora";
+
+	$resultado=mysql_query("insert into eventos (dia_evento,mes_evento,anio_evento,hora_evento,color_evento,textcolor_evento,url_evento,estatus_evento)
+	values ('$dia','$mes','$year','$hora','#78BE20','black','$url','0')");
+
+	}
+
+
+}
+
+
+?>

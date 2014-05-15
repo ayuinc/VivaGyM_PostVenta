@@ -1140,7 +1140,6 @@ function EventManager(options, _sources) {
 				e.title = event.title;
 				e.url = event.url;
 				e.allDay = event.allDay;
-				e.id = event."var";
 				e.className = event.className;
 				e.editable = event.editable;
 				e.color = event.color;

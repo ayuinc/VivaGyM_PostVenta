@@ -20,5 +20,5 @@ Generar el contador de visitas maximas para bloquear el calendario si se pasan.
 
 ya hemos definido el plugin del calendario, ahora debemos setearlo para presentar los horarios disponibles del mes actual y del siguiente cuidando de que solo ciertos dias esten activados, ademas que cada vez que el horario se toma desactivarlo del archivo.
 
-alimentar el calendario desde una bd para que sea administrable
+alimentar el calendario desde una bd para que sea administrable y regenerar el archivo de alimentacion cada que se necesita, marcar cada evento cuando se confirma y no leerlo cuando se ha confirmado o solo cambiar de color
 
