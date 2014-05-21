@@ -37,7 +37,7 @@
       day: 'Día'
        },
 
-      events: "http://localhost/VivaGyM_PostVenta/json-fechas.php?id_sol_garantia="+$id_sol,
+      events: "http://162.243.222.54/json-fechas.php?id_sol_garantia="+$id_sol,
       
     });
     
@@ -71,11 +71,11 @@ $id_cliente="{member_id}";
           <p class="light">Asegúrate que puedes estar en tu departamento en la fecha y hora que agendas tu cita. Te enviaremos una notificación y un correo el día anterior para recordarte.</p>
           <strong>Horarios de arreglos</strong>
           <p class="light">9:00 am - 2:00 pm de lunes a viernes</p>
-          
 
-            <div class="bg-blanco p-70 text-center mb-21"><div id='calendar'></div>
-
-          </div>
+          <?php if(empty($dia_sel)) { ?>
+            <div class="bg-blanco p-70 text-center mb-21">
+              <div id='calendar'></div>
+            </div><?php } ?>
 
             <form method="post" enctype="multipart/form-data" name="frm" id="frm" action="guardar_3er_paso" >
 
@@ -87,16 +87,16 @@ $id_cliente="{member_id}";
                   <div class="form-group">
               Fecha seleccionada: <input type="text" placeholder="fecha" name="fecha_atencion_ticket" class=" form-control input-lg" value="<?php echo $dia_sel; ?>">
 
-              Hora seleccionada: <input type="text" placeholder="hora" name="hora_atencion_ticket" class=" form-control input-lg" value="<?php echo $hora; ?>">
+              <!--Hora seleccionada: <input type="text" placeholder="hora" name="hora_atencion_ticket" class=" form-control input-lg" value="<?php echo $hora; ?>">-->
 
               <input type="hidden" name="XID" value="{XID_HASH}" /> 
 
-              <input type="text" placeholder="id_cliente" name="id_cliente" class=" form-control input-lg" value="<?php echo $id_cliente; ?>">
+              <input type="hidden" placeholder="id_cliente" name="id_cliente" class=" form-control input-lg" value="<?php echo $id_cliente; ?>">
 
-              <input type="text" placeholder="id_sol_garantia" name="id_sol_garantia" class=" form-control input-lg" 
+              <input type="hidden" placeholder="id_sol_garantia" name="id_sol_garantia" class=" form-control input-lg" 
               value="<?php echo $id_sol_garantia; ?>">
 
-              <input type="text" placeholder="orden_tramite" name="orden_tramite" class=" form-control input-lg" value="2">
+              <input type="hidden" placeholder="orden_tramite" name="orden_tramite" class=" form-control input-lg" value="2">
             </div>
             </div>
             </div>

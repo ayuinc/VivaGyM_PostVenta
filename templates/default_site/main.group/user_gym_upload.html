@@ -25,6 +25,7 @@ $resultc=mysql_query("SELECT * FROM exp_freeform_form_entries_2 WHERE entry_id=$
 $obtenc=mysql_fetch_row($resultc);
 $entry_date = $obtenc[5]; //fecha
 $desc_problema = $obtenc[15]; //resumen problema
+$ubic_problema = $obtenc[16]; //ubicacion problema
 $foto = $obtenc[11]; //foto
 $detalles = $obtenc[20]; //fecha
 
@@ -75,10 +76,24 @@ $detalles = $obtenc[20]; //fecha
                 </div>
               </div>
             </div>
-            <p>Tipo de problema</p>
-            <div class="form-group">
-              <input type="text" placeholder="Tipo de Problema" name="tipo_de_problema" value="<?php echo $desc_problema; ?>" class="uppercase form-control input-lg" readonly="readonly">
+
+            <div class="row">
+            <div class="col-md-7">
+              <div class="form-group">Tipo de problema
+                <input type="text" placeholder="Tipo de Problema" name="tipo_de_problema" value="<?php echo $desc_problema; ?>" class="uppercase form-control input-lg" readonly="readonly">
+              </div>
             </div>
+            <div class="col-md-5">
+              <div class="form-group">Ubicación
+
+                  <input type="text" name="ubicacion" value="<?php echo $ubic_problema; ?>" class="uppercase form-control input-lg" readonly="readonly">           
+
+              </div>
+            </div>
+
+            </div>
+
+
             <div class="form-group"> 
 
               <div class="row">
@@ -127,11 +142,11 @@ $detalles = $obtenc[20]; //fecha
               <!--<input type="text" name="departamento_en_consulta" value="{cod_depa}" >
               <input type="text" name="email" value="{email}" >-->
 
-              <input type="text" name="id_cliente" value="<?php echo $id_cliente; ?>" >
+              <input type="hidden" name="id_cliente" value="<?php echo $id_cliente; ?>" >
 
-              <input type="text" name="id_sol_garantia" value="<?php echo $id_sol_garantia; ?>" >
+              <input type="hidden" name="id_sol_garantia" value="<?php echo $id_sol_garantia; ?>" >
 
-              <input type="text" name="paso" value="<?php echo $paso; ?>" >
+              <input type="hidden" name="paso" value="<?php echo $paso; ?>" >
 
               <input type="hidden" name="XID" value="{XID_HASH}" />
 

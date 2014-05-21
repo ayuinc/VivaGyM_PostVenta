@@ -51,29 +51,39 @@
 
       {exp:freeform:entries
       form_id="2"
-      orderby="date"
+      orderby="entry_id"
       sort="desc"
-      limit="20"
+      limit="5" status="open|closed"
       paginate="both" }
 
-      
+      <?php $estatus_ticket="{freeform:status}"; ?>
+
           <div class="panel-heading p-0">
-            <div class="panel-title bg-warning">
+
+              <div <?php if ($estatus_ticket=="closed") {echo " class='panel-title bg-warning-green' ";} 
+                    else {echo " class='panel-title bg-warning' ";} ?> >
+
               <div class="row text-muted">
                 <div class="col-md-2 text-center pr-0 col-xs-5 col-sm-2">
-                  <div class="bg-warning-dark pt-7 pb-7">
-                    No. <?php echo $id_sol_garantia="{freeform:entry_id}"; ?></div>
+
+                  <div <?php if ($estatus_ticket=="closed") {echo " class='bg-green-dark pt-7 pb-7' ";} 
+                    else {echo " class='bg-warning-dark pt-7 pb-7' ";} ?> > No. <?php echo $id_sol_garantia="{freeform:entry_id}"; ?></div>
                 </div>
+
                 <div class="col-md-9 text-right pr-0 col-xs-7 col-sm-9">
-                  <a data-toggle="collapse" data-parent="#accordion2" 
-                  href="#collapseFour<?php echo $id_sol_garantia; ?>" class="not-underline block bg-warning pt-7 pb-7">Ver detalle</a>
+                  <a data-toggle="collapse" data-parent="#accordion2" href="#collapseFour<?php echo $id_sol_garantia; ?>" 
+                  <?php if ($estatus_ticket=="closed") {echo " class='not-underline block bg-warning-green pt-7 pb-7' ";} 
+                    else {echo " class='not-underline block bg-warning pt-7 pb-7' ";} ?> >Ver detalle</a>
                 </div>
+
                 <div class="col-md-1 text-center pl-0 hidden-xs col-sm-1">
-                  <div class="bg-warning pt-7 pb-7">
+                  <div <?php if ($estatus_ticket=="closed") {echo " class='bg-warning-green pt-7 pb-7' ";} 
+                    else {echo " class='bg-warning pt-7 pb-7' ";} ?> >
                     <a data-toggle="collapse" data-parent="#accordion2" 
                     href="#collapseFour<?php echo $id_sol_garantia; ?>" class="collapsed-icon not-underline lh-0"></a>
                   </div>
                 </div>
+
               </div>
             </div>
           </div>
@@ -99,7 +109,7 @@
                   $obtenb=mysql_fetch_row($resultb);
                   echo $m_field_id_5 = $obtenb[6];
 
-                   ?></
+                   ?>
                  </li>
                   <li class="mb-14"><strong>Atendido por:</strong> <span class="text-warning">Roberto Mendoza</span></li>
                 </ul>
@@ -137,26 +147,31 @@
                       <tr>
                         <td><?php echo $proy_long['form_field_17']; ?></td>
                         <td><?php $var_estatus=$proy_long['status']; if ($var_estatus=="open"){echo "Pendiente";} else {echo "Realizado";}; ?></td>
-                        <td><?php  $fecha_time=$proy_long['entry_date']; echo date('m/d/Y G:i a', $fecha_time);?></td>
+
+                        <td><?php  $fecha_time=$proy_long['entry_date']; 
+                          if ($fecha_time>0) {echo date('d-m-Y G:i a', $fecha_time);}
+                          ?></td>
+
                         <td><?php $paso=$proy_long['form_field_19']; ?>
 
                           <?php if($paso==2){ echo $proy_long['form_field_27']; } ?>
 
-                          <?php if($paso==3){ echo $proy_long['form_field_25']." / ".$proy_long['form_field_26']; } ?>
+                          <?php if($paso==3){ echo $proy_long['form_field_25']; } ?>
 
                           <?php if($paso==4){ echo $proy_long['form_field_27']; } ?>
 
-                          <?php if($paso==5){ echo $proy_long['form_field_27']; } ?>
+                          <?php if($paso==5){ echo $proy_long['form_field_28']; } ?>
 
                           <?php if($paso==6){ echo $proy_long['form_field_27']; } ?>
 
-                          <?php if($paso==7){ echo $proy_long['form_field_25']." / ".$proy_long['form_field_26']; } ?>
+                          <?php if($paso==7){ echo $proy_long['form_field_25']; } ?>
 
                           <?php if($paso==8){ echo $proy_long['form_field_27']; } ?>
 
-                          <?php if($paso==9){ ?> <a href="<?php echo 
+                          <?php $file=$proy_long['form_field_28']; if($paso==9){ 
+                            if (empty($file)) { ?> <a href="<?php echo 
                           "user_gym_upload?id_sol_garantia=".$id_sol_garantia."&paso=9&id_cliente=".$id_cliente; ?>" 
-                          class="btn btn-sm btn-warning small">Subir reporte</a> <?php } ?>
+                          class="btn btn-sm btn-warning small">Subir reporte</a> <?php } else { echo $file; } } ?>
 
                         </td>
                       </tr>

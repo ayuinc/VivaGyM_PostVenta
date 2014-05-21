@@ -23,11 +23,11 @@ return $String;
 }
 
 
-echo "<br>sol :".$id_sol_garantia=$_POST['id_sol_garantia'];
-echo "<br>paso :".$paso=$_POST['paso'];
-echo "<br>cliente :".$id_cliente=$_POST['id_cliente'];
+$id_sol_garantia=$_POST['id_sol_garantia'];
+$paso=$_POST['paso'];
+$id_cliente=$_POST['id_cliente'];
 
-echo "<br>com :".$comentarios=$_POST['comentarios'];
+$comentarios=$_POST['comentarios'];
 $aprobar_paso=$_POST['aprobar_paso'];
 
 
@@ -44,12 +44,13 @@ if($aprobar_paso=="si"){
 
 $sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_4 
 SET status = 'closed',
+entry_date = '$entry_date',
 form_field_27 = '$mensaje'
 WHERE form_field_18 = $id_sol_garantia AND form_field_19 = $paso ");
 
 $resultado=mysql_query("insert into exp_freeform_form_entries_4 
 (site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19,form_field_27,form_field_29) 
-values ('1','$id_cliente','y','$ip','$entry_date','open','$id_cliente','Viva evalua arreglo','$id_sol_garantia','$prox_paso','','$comentarios')");
+values ('1','$id_cliente','y','$ip','','open','$id_cliente','Viva evalua arreglo','$id_sol_garantia','$prox_paso','','$comentarios')");
 
 }
 
@@ -58,16 +59,14 @@ if($aprobar_paso=="no"){
 
 $sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_4 
 SET status = 'closed',
+entry_date = '$entry_date',
 form_field_27 = '$mensaje'
 WHERE form_field_18 = $id_sol_garantia AND form_field_19 = $paso ");
 
   $resultado=mysql_query("insert into exp_freeform_form_entries_4 
 (site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19,form_field_27,form_field_29) 
-values ('1','$id_cliente','y','$ip','$entry_date','open','$id_cliente','Viva evalua arreglo','$id_sol_garantia','$prox_paso','','$comentarios')");
+values ('1','$id_cliente','y','$ip','$entry_date','closed','$id_cliente','Viva evalua arreglo','$id_sol_garantia','$prox_paso','','$comentarios')");
 
-  $sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_4 
-SET status = 'closed'
-WHERE form_field_18 = $id_sol_garantia AND form_field_19 = $prox_paso ");
 }
 
 
@@ -141,6 +140,9 @@ if (!empty($informe_inspeccion)) {
 ?>
 
 <body>
+
+{embed="includes/carga" }
+<?php sleep(3); ?>
 
 <script type="text/javascript">
 window.location="insp_viva";

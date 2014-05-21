@@ -15,56 +15,38 @@
 	
 		array(
 			'id' => 111,
-			'title' => "2:00 pm",
-			'start' => "$year-$month-09",
+			'title' => "23-$month-$year",
+			'start' => "$year-$month-23",
 			'color' => "#78BE20", 
 			'textColor' => "black",
-			'url' => "user_request_show?dia_sel=09-$month-$year&hora=2:00 pm&id_sol_garantia=$id_sol_garantia"
+			'url' => "user_request_show?dia_sel=23-$month-$year&id_sol_garantia=$id_sol_garantia"
 		),
 		
 		array(
 			'id' => 111,
-			'title' => "3:00 pm",
-			'start' => "$year-$month-09",
-			'color' => "#DF8822",
-			'textColor' => "black",
-			'url' => "user_request_show?dia_sel=09-$month-$year&hora=2:00pm&id_sol_garantia=$id_sol_garantia"
-		),
-
-		array(
-			'id' => 111,
-			'title' => "1:00 pm",
-			'start' => "$year-$month-09",
+			'title' => "30-$month-$year",
+			'start' => "$year-$month-30",
 			'color' => "#78BE20",
 			'textColor' => "black",
-			'url' => "user_request_show?dia_sel=09-$month-$year&hora=2:00pm&id_sol_garantia=$id_sol_garantia"
+			'url' => "user_request_show?dia_sel=30-$month-$year&id_sol_garantia=$id_sol_garantia"
 		),
 		
 		array(
 			'id' => 111,
-			'title' => "2:00 pm",
-			'start' => "$year-$month-13",
+			'title' => "20-$month-$year",
+			'start' => "$year-$month-20",
 			'color' => "#78BE20", 
 			'textColor' => "black",
-			'url' => "user_request_show?dia_sel=13-$month-$year&hora=2:00pm&id_sol_garantia=$id_sol_garantia"
+			'url' => "user_request_show?dia_sel=20-$month-$year&id_sol_garantia=$id_sol_garantia"
 		),
 		
 		array(
 			'id' => 111,
-			'title' => "3:00 pm",
-			'start' => "$year-$month-13",
-			'color' => "#DF8822",
-			'textColor' => "black",
-			'url' => "user_request_show?dia_sel=13-$month-$year&hora=2:00pm&id_sol_garantia=$id_sol_garantia"
-		),
-
-		array(
-			'id' => 111,
-			'title' => "1:00 pm",
-			'start' => "$year-$month-13",
+			'title' => "27-$month-$year",
+			'start' => "$year-$month-27",
 			'color' => "#78BE20",
 			'textColor' => "black",
-			'url' => "user_request_show?dia_sel=13-$month-$year&hora=2:00pm&id_sol_garantia=$id_sol_garantia"
+			'url' => "user_request_show?dia_sel=27-$month-$year&id_sol_garantia=$id_sol_garantia"
 		),
 
 	

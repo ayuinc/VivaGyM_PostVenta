@@ -19,11 +19,32 @@ function mostrar(sel) {
            divT.style.display = "";
       }
 }
+
+//var seleccion="si";
+
+function mostrardep(seleccion) {
+      if (seleccion.value=="si"){
+           divB = document.getElementById("yes");
+           divB.style.display = "";
+
+           divF = document.getElementById("not");
+           divF.style.display = "none";
+
+      }else{
+
+           divB = document.getElementById("yes");
+           divB.style.display="none";
+
+           divF = document.getElementById("not");
+           divF.style.display = "";
+      }
+}
+
 </script>
 
-<div class="col-md-12">
+<!--<div class="col-md-12">
  {embed="includes/user_subnav" }
-</div>
+</div>-->
 
   <div class="row">
     <div class="col-md-3">
@@ -42,12 +63,12 @@ function mostrar(sel) {
         </div>
       </div>
       <ul class="nav nav-tabs nav-justified uppercase">
-        <li class="active"><a href="#mi-depa" data-toggle="tab">Mi Depa</a></li>
-        <li><a href="#solicitudes-abiertas" data-toggle="tab">Solicitudes Abiertas</a></li>
+        <li><a href="#mi-depa" data-toggle="tab">Mi Depa</a></li>
+        <li class="active"><a href="#solicitudes-abiertas" data-toggle="tab">Solicitudes Abiertas</a></li>
         <li><a href="#nueva-solicitud" data-toggle="tab">Nueva Solicitud</a></li>
       </ul>
       <div class="tab-content bg-gray-lighter">
-        <div class="tab-pane fade active in" id="mi-depa">
+        <div class="tab-pane fade" id="mi-depa">
           <div class="panel-group" id="accordion">
             <div class="panel bg-gray-lighter pt-21">
               <div class="panel-heading">
@@ -136,7 +157,7 @@ function mostrar(sel) {
           </div>
         </div>
 
-        <div class="tab-pane fade" id="solicitudes-abiertas"> <!-- inicio solicitudes abiertas -->
+        <div class="tab-pane fade active in" id="solicitudes-abiertas"> <!-- inicio solicitudes abiertas -->
           <div class="panel-group" id="accordion2">
             <div class="panel bg-gray-lighter pt-21">
 
@@ -151,8 +172,6 @@ function mostrar(sel) {
             <div class="col-md-2"></div>
             <div class="col-md-8">
               <h4 class="mb-21">¿Qué necesitas hacer?</h4>
-
-              
 
                 <div class="form-group">
                   <select name="pago" id="nueva-solicitud-select" 

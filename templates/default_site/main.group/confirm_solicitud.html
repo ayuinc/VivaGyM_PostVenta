@@ -24,16 +24,16 @@ values ('1','$id_cliente','y','$ip','$entry_date','closed','$id_cliente','Solici
 
 $resultadob=mysql_query("insert into exp_freeform_form_entries_4 
 (site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19) 
-values ('1','$id_cliente','y','$ip','$entry_date','open','$id_cliente','Viva evalua solicitud','$id_sol_garantia','2')");
-
+values ('1','$id_cliente','y','$ip','','open','$id_cliente','Viva evalua solicitud','$id_sol_garantia','2')");
 }
 
 ?>
-{exp:email_from_template to="jmoron82@hotmail.com" from="server@ee.com" subject="Hello!"}
-   This tag content is being viewed at {uri_string} by {httpagent}. Sending notification to {to}.
-{/exp:email_from_template}
 
 <body>
+
+{embed="includes/carga" }
+<?php sleep(3); ?>
+
 <script type="text/javascript">
 window.location="user_dashboard";
 </script>

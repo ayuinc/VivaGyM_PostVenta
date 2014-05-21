@@ -708,8 +708,9 @@ a.not-underline:hover {
 
 @font-face {
   font-family: 'icomoon';
-  src: url("http://localhost/VivaGyM_PostVenta/stylesheets/fonts/icomoon.eot?-t7nlng");
-  src: url("http://localhost/VivaGyM_PostVenta/stylesheets/fonts/icomoon.eot?#iefix-t7nlng") format("embedded-opentype"), url("http://localhost/VivaGyM_PostVenta/stylesheets/fonts/icomoon.woff?-t7nlng") format("woff"), url("/fonts/icomoon.ttf?-t7nlng") format("truetype"), url("/fonts/icomoon.svg?-t7nlng#icomoon") format("svg");
+  src: url("http://162.243.222.54/stylesheets/fonts/icomoon.eot?-t7nlng");
+  src: url("http://162.243.222.54/stylesheets/fonts/icomoon.eot?#iefix-t7nlng") format("embedded-opentype"), 
+  url("http://162.243.222.54/stylesheets/fonts/icomoon.woff?-t7nlng") format("woff"), url("/fonts/icomoon.ttf?-t7nlng") format("truetype"), url("/fonts/icomoon.svg?-t7nlng#icomoon") format("svg");
   font-weight: normal;
   font-style: normal; }
 [class^="icon-"], [class*=" icon-"] {
@@ -4461,7 +4462,7 @@ button.close {
 #home {
   width: 100%;
   min-height: 768px;
-  background: url(http://localhost/VivaGyM_PostVenta/images/home.jpg) no-repeat top center rgba(0, 0, 0, 0.7); }
+  background: url(http://162.243.222.54/images/home.jpg) no-repeat top center rgba(0, 0, 0, 0.7); }
 
 #user-profile-pic {
   width: 50px;
@@ -6277,8 +6278,14 @@ button.close {
 .bg-warning {
   background: #fcb514 !important; }
 
+.bg-warning-green {
+  background: #78be20 !important; }
+
 .bg-warning-dark {
   background: #e9a303 !important; }
+
+.bg-green-dark {
+  background: #629f37 !important; } 
 
 .bg-inverse {
   background: #313233 !important; }
@@ -6352,4 +6359,4 @@ button.close {
   .input-group-lg > .select-override.input-group-addon,
   .input-group-lg > .input-group-btn > .select-override.btn {
     line-height: 28px;
-    background: white url(http://localhost/VivaGyM_PostVenta/stylesheets/images/arrow-down.svg) no-repeat 98%; }
+    background: white url(http://162.243.222.54/stylesheets/images/arrow-down.svg) no-repeat 98%; }

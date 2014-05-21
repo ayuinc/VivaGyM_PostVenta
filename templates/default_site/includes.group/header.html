@@ -16,6 +16,33 @@
     
     {if logged_in}
     {exp:user:edit }
+
+    {exp:member:custom_profile_data}
+    <?php $user_id="{member_id}"; ?>
+
+      {exp:switchee variable = "{tipo_usuario}" parse="inward"}
+      
+      {case value="user_dep"}<!-- lectura php -->
+          <?php 
+          $query_long  = "SELECT * FROM exp_freeform_form_entries_2 where form_field_5='$user_id' and status='open' ";
+          $result_long = mysql_query($query_long);
+          $numero = mysql_num_rows($result_long);
+          ?>
+
+      {/case}
+      
+      {case value="admin_viva" default="Yes"} <!-- lectura php -->
+          <?php 
+          $query_long  = "SELECT * FROM exp_freeform_form_entries_2 where  status='open' ";
+          $result_long = mysql_query($query_long);
+          $numero = mysql_num_rows($result_long);
+          ?>
+      {/case}
+    
+  
+    {/exp:switchee}
+    {/exp:member:custom_profile_data}
+
   <header class="bg-gray-lighter">
     <div class="container-fluid pt-7 pb-7">
       <div class="row">
@@ -31,7 +58,7 @@
             </div>
             <div class="col-xs-2 col-md-2">
               <a href="#" class="block text-center p-14 not-underline" id="user-notifications">
-                <span class="h4 text-muted m-0 book">3</span>
+                <span class="h4 text-muted m-0 book"><?php echo $numero; ?></span>
               </a>
             </div>
           </div>

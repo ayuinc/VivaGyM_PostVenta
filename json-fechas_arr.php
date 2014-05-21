@@ -15,56 +15,38 @@
 	
 		array(
 			'id' => 111,
-			'title' => "2:00 pm",
-			'start' => "$year-$month-14",
+			'title' => "21-$month-$year",
+			'start' => "$year-$month-21",
 			'color' => "#78BE20", 
 			'textColor' => "black",
-			'url' => "user_request_fixing?dia_sel=14-$month-$year&hora=2:00 pm&id_sol_garantia=$id_sol_garantia"
+			'url' => "user_request_fixing?dia_sel=21-$month-$year&id_sol_garantia=$id_sol_garantia"
 		),
 		
 		array(
 			'id' => 111,
-			'title' => "3:00 pm",
-			'start' => "$year-$month-14",
-			'color' => "#DF8822",
-			'textColor' => "black",
-			'url' => "user_request_fixing?dia_sel=14-$month-$year&hora=2:00pm&id_sol_garantia=$id_sol_garantia"
-		),
-
-		array(
-			'id' => 111,
-			'title' => "1:00 pm",
-			'start' => "$year-$month-14",
+			'title' => "28-$month-$year",
+			'start' => "$year-$month-28",
 			'color' => "#78BE20",
 			'textColor' => "black",
-			'url' => "user_request_fixing?dia_sel=14-$month-$year&hora=2:00pm&id_sol_garantia=$id_sol_garantia"
+			'url' => "user_request_fixing?dia_sel=28-$month-$year&id_sol_garantia=$id_sol_garantia"
 		),
 		
 		array(
 			'id' => 111,
-			'title' => "2:00 pm",
+			'title' => "22-$month-$year",
 			'start' => "$year-$month-22",
 			'color' => "#78BE20", 
 			'textColor' => "black",
-			'url' => "user_request_fixing?dia_sel=22-$month-$year&hora=2:00pm&id_sol_garantia=$id_sol_garantia"
+			'url' => "user_request_fixing?dia_sel=22-$month-$year&id_sol_garantia=$id_sol_garantia"
 		),
 		
 		array(
 			'id' => 111,
-			'title' => "3:00 pm",
-			'start' => "$year-$month-22",
-			'color' => "#DF8822",
-			'textColor' => "black",
-			'url' => "user_request_fixing?dia_sel=22-$month-$year&hora=2:00pm&id_sol_garantia=$id_sol_garantia"
-		),
-
-		array(
-			'id' => 111,
-			'title' => "1:00 pm",
-			'start' => "$year-$month-22",
+			'title' => "29-$month-$year",
+			'start' => "$year-$month-29",
 			'color' => "#78BE20",
 			'textColor' => "black",
-			'url' => "user_request_fixing?dia_sel=22-$month-$year&hora=2:00pm&id_sol_garantia=$id_sol_garantia"
+			'url' => "user_request_fixing?dia_sel=29-$month-$year&id_sol_garantia=$id_sol_garantia"
 		),
 
 	
