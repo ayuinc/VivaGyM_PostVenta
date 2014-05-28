@@ -32,13 +32,13 @@ class Mandrillapp {
 		return $buffer;
 	}
 		
-	function send_email_notification(){
+	function send_email_test(){
 		global $TMPL;
 		$this->EE =& get_instance(); // EEv2 syntax
 		$TMPL = $this->EE->TMPL;
 
  		require_once 'mailchimp-mandrill-api-php/src/Mandrill.php'; 
- 		$mandrill = new Mandrill('Y86YbFBQBDYap7qxJbpmvA');
+ 		$mandrill = new Mandrill('Svqgcw575OLrORu2WiD09g');
  		
  		$to= $TMPL->fetch_param('to');
  		$name= $TMPL->fetch_param('name');
