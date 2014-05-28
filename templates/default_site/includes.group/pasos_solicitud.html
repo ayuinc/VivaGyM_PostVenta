@@ -16,7 +16,8 @@
     $result_long = mysql_query($query_long);
     ?>
     <?php while ($proy_long = mysql_fetch_array($result_long)) { ?>
-
+      <?php $paso_gen=$proy_long['form_field_19']; ?>
+      <?php if (($paso_gen=="1") or ($paso_gen=="2") or ($paso_gen=="3") or ($paso_gen=="5") or ($paso_gen=="6") or ($paso_gen=="7") or ($paso_gen=="9") or ($paso_gen=="10")) { ?>
       <tr>
         <td><?php echo $proy_long['form_field_17']; ?></td> <!-- actividad  -->
 
@@ -55,9 +56,14 @@
 
           <?php if($paso==6){ echo "Su arreglo ha sido ".$proy_long['form_field_27']; } ?>
 
-          <?php $fecha_siete=$proy_long['form_field_25']; if($paso==7){ 
-            if (empty($fecha_siete)) { ?> <a href="{site_url}index.php/main/<?php echo "user_request_fixing/".$id_sol_garantia; ?>" 
-          class="btn btn-sm btn-warning small">Agendar</a> <?php } else { echo "Arreglo agendado para ".$fecha_siete; } } ?> 
+          <?php $fecha_siete=$proy_long['form_field_25']; 
+          if($paso==7){ 
+                if (empty($fecha_siete)) { ?> <a href="{site_url}index.php/main/<?php echo "user_request_fixing/".$id_sol_garantia; ?>" 
+          class="btn btn-sm btn-warning small">Agendar</a> <?php } 
+          else { echo "Arreglo agendado para ".$fecha_siete; ?>
+          <a href="{site_url}index.php/main/<?php echo "user_request_book/".$id_sol_garantia; ?>" 
+          class="btn btn-sm btn-warning small">Cancelar</a><?php }
+              } ?> 
 
           <?php $fecha_nueve=$proy_long['form_field_25']; if($paso==9){ 
             if (empty($fecha_nueve)) { ?> <a href="{site_url}index.php/main/<?php echo "user_request_fixing/".$id_sol_garantia; ?>" 
@@ -84,10 +90,11 @@
 
           <?php if($paso==8){ } ?>
 
-          <?php if($paso==9){ ?> <a href="#" class="btn btn-sm btn-warning small">Ver reporte</a> <?php } ?>
+          <?php if($paso==9){ } ?>
 
         </td>
       </tr>
+      <?php } ?>
 
     <?php } ; ?>
     </tbody>
