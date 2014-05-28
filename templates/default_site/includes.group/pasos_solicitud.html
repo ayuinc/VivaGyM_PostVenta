@@ -53,6 +53,20 @@
           <?php $fecha_re=$proy_long['form_field_25']; ?>
           <?php if($paso==5){ if (!empty($fecha_re)) { echo "Inspección realizada el ".$proy_long['form_field_25'];} } ?>
 
+          <?php if($paso==6){ echo "Su arreglo ha sido ".$proy_long['form_field_27']; } ?>
+
+          <?php $fecha_siete=$proy_long['form_field_25']; if($paso==7){ 
+            if (empty($fecha_siete)) { ?> <a href="{site_url}index.php/main/<?php echo "user_request_fixing/".$id_sol_garantia; ?>" 
+          class="btn btn-sm btn-warning small">Agendar</a> <?php } else { echo "Arreglo agendado para ".$fecha_siete; } } ?> 
+
+          <?php $fecha_nueve=$proy_long['form_field_25']; if($paso==9){ 
+            if (empty($fecha_nueve)) { ?> <a href="{site_url}index.php/main/<?php echo "user_request_fixing/".$id_sol_garantia; ?>" 
+          class="btn btn-sm btn-warning small">Agendar</a> <?php } else { echo "Arreglo realizado el ".$fecha_nueve; } } ?> 
+
+          <?php $estatus=$proy_long['form_field_27']; if($paso==10){ 
+            if ($estatus=="Cerrado") { ?> <a href="{site_url}index.php/main/<?php echo "user_encuesta/".$id_sol_garantia; ?>" 
+          class="btn btn-sm btn-warning small">Encuesta</a> <?php } else { } } ?> 
+
         </td> <!-- detalle  -->
 
         <td> <!-- archivo  -->
@@ -60,17 +74,15 @@
 
           <?php if($paso==3){ } ?>   
 
-          <?php if($paso==4){ echo substr($proy_long['form_field_27'],0,8); } ?>
+          <?php if($paso==4){ } ?>
 
-          <?php if($paso==5){ ?> <a href="#" class="btn btn-sm btn-warning small">Ver reporte</a> <?php } ?>
+          <?php if($paso==5){ } ?>
 
-          <?php if($paso==6){ echo $proy_long['form_field_27']; } ?>
+          <?php if($paso==6){ } ?>
 
-          <?php $fecha_siete=$proy_long['form_field_25']; if($paso==7){ 
-            if (empty($fecha_siete)) { ?> <a href="{site_url}index.php/main/<?php echo "user_request_fixing/".$id_sol_garantia; ?>" 
-          class="btn btn-sm btn-warning small">Agendar</a> <?php } else { echo $fecha_siete; } } ?>  
+          <?php if($paso==7){ } ?> 
 
-          <?php if($paso==8){ echo substr($proy_long['form_field_27'],0,8); } ?>
+          <?php if($paso==8){ } ?>
 
           <?php if($paso==9){ ?> <a href="#" class="btn btn-sm btn-warning small">Ver reporte</a> <?php } ?>
 

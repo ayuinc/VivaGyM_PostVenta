@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>		<html class="no-js ie6"> <![endif]-->
+<!--[if IE 7]>			<html class="no-js ie7"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie8"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html class="no-js"> <!--<![endif]-->
+	<head lang="en">
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>Month | Calendar | Solspace Addon Documentation</title>
+		<meta name="description" content="" />
+		<meta name="copyright" content="(c) 2010 Copyright content: Copyright design: Solspace, Inc."/>
+		<meta name="viewport" content="width=device-width" />
+		<link rel="stylesheet" href="assets/css/normalize.css" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="assets/fancybox/jquery.fancybox-1.3.4.css" />
+		<link href="assets/syntaxhighlighter/styles/shCore.css" rel="stylesheet" type="text/css" />
+		<link href="assets/syntaxhighlighter/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+		<script src="assets/js/modernizr.min.js"></script>
+	</head>
+	<body>
+		<!--[if lt IE 8]>
+			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+		<![endif]-->
+
+		<header>
+			<div class="header-inner">
+				<div class="logo">
+					<img src="assets/images/logo.png" />
+				</div>
+
+				<div class="bread_crumbs">
+					<ul class="crumbs">
+						<li class="first"><a href="index.html">Calendar</a></li>
+						<li>Month</li>
+					</ul>
+				</div>
+			</div>
+		</header>
+
+		<div class="content-wrapper">
+			<nav class="toc">
+				<ul>
+<li><a href="http://www.solspace.com/software/detail/calendar/">More Info | Purchase</a></li>
+<li><a href="change_log.html">Change Log</a></li>
+<li><a href="install_update.html">Install / Update</a></li>
+<li><a href="getting_started.html">Getting Started</a></li>
+<li><a href="control_panel.html">Control Panel</a></li>
+<li><a href="cp_ui.html">CP Publish UI</a></li>
+<li><a href="date_formatting.html">Date Parameter Formatting</a></li>
+<li><a href="group_permissions.html">Group Permissions</a></li>
+<li><a href="channel_form.html">Using with Channel Form</a></li>
+<li><p><a href="extension_hooks.html">Extension Hooks</a></p></li>
+<li class="template_tags"><h3>Template Tags</h3>
+
+<ul>
+<li><a href="calendar.html">Cal</a></li>
+<li><a href="calendars.html">Calendars</a></li>
+<li><a href="date.html">Date</a></li>
+<li><a href="day.html">Day</a></li>
+<li><a href="events.html">Events</a></li>
+<li><a href="icalendar.html">iCalendar</a></li>
+<li><a href="ics_update.html">ICS Update</a></li>
+<li><a href="mini.html">Mini Calendar</a></li>
+<li class="current"><a href="month.html">Month</a></li>
+<li><a href="month_list.html">Month List</a></li>
+<li><a href="occurrences.html">Occurrences</a></li>
+<li><a href="week.html">Week</a></li>
+<li><a href="year_list.html">Year List</a></li>
+</ul></li>
+<li><h3>Requirements</h3><div class="requirements">
+
+<ul>
+<li>EE 2.5.x - 2.8.x</li>
+<li>PHP 5.2+</li>
+<li>MySQL 5+</li>
+</ul></div></li>
+</ul>
+			</nav>
+
+			<article class="docs">
+				<p>The <em>Calendar:Month</em> loop outputs a one month calendar view showing a specific months events. It's a shortcut to using the complex <a href="calendar.html" title="Calendar:Cal Documentation">Calendar:Cal</a> function. Unlike most ExpressionEngine tags, the <strong>{exp:calendar:month}{/exp:calendar:month}</strong> tags alone will output a pre-templated display. Using the parameters and variables below, you can filter and format the results further. Defaults to displaying events for current month.</p>
+
+<pre class="brush: html;">{exp:calendar:month} content {/exp:calendar:month} </pre>
+
+<ul>
+<li><a href="#parameters">Parameters</a></li>
+<li><a href="#variables">Variables</a></li>
+<li><a href="#conditionals">Conditionals</a></li>
+<li><a href="#examples">Examples</a></li>
+</ul>
+
+<p><a name="parameters"></a></p>
+
+<h2>Parameters</h2>
+
+<p>The following parameters are available for use:</p>
+
+<ul>
+<li><a href="#site_id">site_id</a></li>
+<li><a href="#calendar_id">calendar_id</a></li>
+<li><a href="#calendar_name">calendar_name</a></li>
+<li><a href="#event_id">event_id</a></li>
+<li><a href="#event_name">event_name</a></li>
+<li><a href="#first_day_of_week">first_day_of_week</a></li>
+<li><a href="#date_range_start">date_range_start</a></li>
+<li><a href="#enable">enable</a></li>
+</ul>
+
+<p><a name="site_id"></a></p>
+
+<h3>site_id=</h3>
+
+<pre class="brush: html;">site_id="1" </pre>
+
+<p>If using MSM, you can specify a Site ID in this parameter to filter
+entries down to that site.</p>
+
+<p><a name="calendar_id"></a></p>
+
+<h3>calendar_id=</h3>
+
+<pre class="brush: html;">calendar_id="1|3" </pre>
+
+<p>This parameter allows you to display specific calendars by specifying
+their entry ID(s). You can hardcode a calendar ID, pass it through an
+embed, or grab it from the URI. Seperate multiples with the pipe
+character.</p>
+
+<p><a name="calendar_name"></a></p>
+
+<h3>calendar_name=</h3>
+
+<pre class="brush: html;">calendar_name="soccer|baseball|dodgeball" </pre>
+
+<p>This parameter allows you to display specific calendars by specifying
+their short_names (entry url_title). You can hardcode a short_name,
+pass it through an embed, or grab it from the URI. Seperate multiples
+with the pipe character.</p>
+
+<p><a name="event_id"></a></p>
+
+<h3>event_id=</h3>
+
+<pre class="brush: html;">event_id="23|77" </pre>
+
+<p>This parameter allows you to display specific events by specifying their
+entry ID(s). You can hardcode an event ID, pass it through an embed, or
+grab it from the URI. Seperate multiples with the pipe character.</p>
+
+<p><a name="event_name"></a></p>
+
+<h3>event_name=</h3>
+
+<pre class="brush: html;">event_name="best_event_evar|christmas|pie_day" </pre>
+
+<p>This parameter allows you to display specific events by specifying their
+short_names (entry url_title). You can hardcode a short_name, pass it
+through an embed, or grab it from the URI. Seperate multiples with the
+pipe character.</p>
+
+<p><a name="first_day_of_week"></a></p>
+
+<h3>first_day_of_week=</h3>
+
+<pre class="brush: html;">first_day_of_week="0" </pre>
+
+<p>By default, Calendar considers Sunday as the first day of the week. This
+parameter allows you to override that by specifying the numeric value of
+a weekday (ex: Sunday = <strong>0</strong>, Monday = <strong>1</strong>, etc).</p>
+
+<p><a name="date_range_start"></a></p>
+
+<h3>date_range_start=</h3>
+
+<pre class="brush: html;">date_range_start="2010-01-01" </pre>
+
+<p>This parameter allows you to specify a specific month to display events
+for. If this parameter is NOT specified, then the current month is
+displayed. Both <a href="date_formatting.html" title="Date Formatting Documentation">standard and easy-to-use text date
+formatting</a>
+apply to this parameter.</p>
+
+<p><a name="enable"></a></p>
+
+<h3>enable=</h3>
+
+<pre class="brush: html;">enable="categories|category_fields|custom_fields|member_data|pagination" </pre>
+
+<p>By default, this function does not grab any advanced channel data in order to improve performance. However, opposite to the EE Channel module's <a href="http://ellislab.com/expressionengine/user-guide/add-ons/channel/channel_entries.html#disable" title="EE Channel module Documentation">disable</a> parameter, this parameter allows you to enable some or all of those features when you need them. Seperate multiples with the pipe character. Options are: <strong>categories</strong>, <strong>category_fields</strong>, <strong>custom_fields</strong>, <strong>member_data</strong> and <strong>pagination</strong>.</p>
+
+<p><a name="variables"></a></p>
+
+<h2>Variables</h2>
+
+<p>Most of the <a href="events.html#variables" title="Calendar:Events Documentation">variables listed in
+Calendar:Events</a>
+are available for use here. Formatting variables are not needed as the
+<em>Calendar:Month</em> loop will do that for you. However, should you need to
+use any, all relevant <a href="calendar.html#variables" title="Calendar:Cal Documentation">variables from
+Calendar:Cal</a>
+(prepended with <em>month_</em>) are available for use here.</p>
+
+<p><a name="conditionals"></a></p>
+
+<h2>Conditionals</h2>
+
+<p>Most of the <a href="events.html#conditionals" title="Calendar:Events Documentation">conditionals listed in
+Calendar:Events</a>
+are available for use here. Formatting conditionals are not needed as
+the <em>Calendar:Month</em> loop will do that for you. However, should you need
+to use any, all relevant <a href="calendar.html#conditionals" title="Calendar:Cal Documentation">conditionals from
+Calendar:Cal</a>
+(prepended with <em>month_</em>) are available for use here.</p>
+
+<p><a name="examples"></a></p>
+
+<h2>Examples</h2>
+
+<p><a name="easy"></a></p>
+
+<h3>Easy</h3>
+
+<p>This single set of code will output a monthly Calendar for you. This is
+thanks to the preloaded template pack included with Calendar. The
+<strong>{exp:calendar:month}{/exp:calendar:month}</strong> tags act almost like an
+<strong>{events}{/events}</strong> variable pair for formatting the events (see
+<a href="events.html">Calendar:Events Documentation</a> for list of
+available variables and conditionals):</p>
+
+<pre class="brush: html;">&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Month Calendar&lt;/title&gt;
+        &lt;link rel="stylesheet"
+            type="text/css"
+            href="/themes/third_party/calendar/templates/month.css" /&gt;
+        &lt;!--[if gte IE 7]&gt;
+        &lt;style type="text/css"&gt;
+            #fc_calendar .event { width: 137px; }
+        &lt;/style&gt;
+        &lt;![endif]--&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id="fc_calendar"&gt;
+            {exp:calendar:month
+                {if segment_3}
+                    date_range_start="{segment_3}-{segment_4}-01"
+                {/if}
+            }
+                &lt;a href="{path='calendar/events'}/{event_id}/"&gt;
+                    {event_title}
+                &lt;/a&gt;
+            {/exp:calendar:month}
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<p><a name="moderate"></a></p>
+
+<h3>Moderate</h3>
+
+<p>If you’d like a little more control over the output of your Calendar so
+that it includes times and accommodates for multi-day events, etc, you
+might be interested in trying out the below example:</p>
+
+<pre class="brush: html;">&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Month Calendar&lt;/title&gt;
+        &lt;link rel="stylesheet" type="text/css" href="/themes/third_party/calendar/templates/month.css" /&gt;
+        &lt;!--[if gte IE 7]&gt;
+        &lt;style type="text/css"&gt;
+            #fc_calendar .event { width: 137px; }
+        &lt;/style&gt;
+        &lt;![endif]--&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+
+    &lt;div id="fc_calendar"&gt;
+    {exp:calendar:month
+        {if segment_3}
+            date_range_start="{segment_3}-{segment_4}-01"
+        {/if}
+    }
+        &lt;div
+            class="
+                event
+                {if event_all_day}all_day{/if}
+                {if event_multi_day}multi_day{/if}
+                {if event_first_day}first_day{/if}
+                {if event_last_day}last_day{/if}
+                {if all_day_event_index_difference &gt; 0}
+                    index_difference_{all_day_event_index_difference}
+                {/if}
+            "&gt;
+         {if event_multi_day}
+            &lt;a href="{path='calendar/events'}/{event_id}/"&gt;{event_title}&lt;/a&gt;
+            {if event_all_day == FALSE}
+                {if event_first_day}
+                    ({event_start_time}
+                {/if}
+                {if event_last_day}
+                    {event_end_time})
+                {/if}
+            {/if}
+        {if:else}
+            &lt;a href="{path='calendar/events'}/{event_id}/"&gt;{event_title}&lt;/a&gt;
+            {if event_all_day == ''}
+                (
+                    {event_start_date format="%g"}
+                    {if event_start_minute &gt; 0}
+                        :{event_start_minute}
+                    {/if}
+                    {if event_end_time != event_start_time &amp;&amp; event_end_time != '00:00'}
+                        &amp;ndash;
+                        {event_end_date format="%g"}
+                        {if event_end_minute &gt; 0}
+                            :{event_end_minute}
+                        {/if}
+                        {event_end_date format="%a"}
+                    {if:else}
+                        {event_start_date format="%a"}
+                    {/if}
+                )
+            {/if}
+        {/if}
+        &lt;/div&gt;
+    {/exp:calendar:month}
+    &lt;/div&gt;
+
+    &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<p><a name="advanced"></a></p>
+
+<h3>Advanced</h3>
+
+<p>If you’re interested in working the code from scratch, you’ll need to
+use the full <a href="calendar.html">Calendar:Cal</a> function to generate
+the code:</p>
+
+<pre class="brush: html;">&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Month Calendar&lt;/title&gt;
+        &lt;link rel="stylesheet" type="text/css" href="/themes/third_party/calendar/templates/month.css" /&gt;
+        &lt;!--[if gte IE 7]&gt;
+        &lt;style type="text/css"&gt;
+            #fc_calendar .event { width: 137px; }
+        &lt;/style&gt;
+        &lt;![endif]--&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id="fc_calendar"&gt;
+            {exp:calendar:cal
+            {if segment_3 == ''}
+                date_range_start="year-month-01"
+                date_range_end="year-month-last"
+            {/if}
+            {if segment_3 != ""}
+                date_range_start="{segment_3}-{segment_4}-01"
+                date_range_end="{segment_3}-{segment_4}-last"
+            {/if}
+            }
+            {display_each_month}
+            &lt;table id="fc_outer"&gt;
+                &lt;thead&gt;
+                    &lt;tr id="month_year"&gt;
+                        &lt;th colspan="2"&gt;&amp;laquo;
+                            &lt;a href="{path='calendar/month'}/{prev_month format="%Y/%m"}/"&gt;
+                                {prev_month format="%F"}
+                            &lt;/a&gt;
+                        &lt;/th&gt;
+                        &lt;th colspan="3"&gt;{date format="%F %Y"}&lt;/th&gt;
+                        &lt;th colspan="2"&gt;
+                            &lt;a href="{path='calendar/month'}/{next_month format="%Y/%m"}/"&gt;
+                                {next_month format="%F"}
+                            &lt;/a&gt;
+                            &amp;raquo;
+                        &lt;/th&gt;
+                    &lt;/tr&gt;
+                &lt;/thead&gt;
+                &lt;tbody&gt;
+                    &lt;tr&gt;
+                        &lt;td colspan="7"&gt;
+                            &lt;div class="wrap"&gt;
+                                &lt;table id="fc_inner"&gt;
+                                    &lt;thead&gt;
+                                        &lt;tr id="days_of_week"&gt;
+                                            {display_each_day_of_week}
+                                            &lt;th class="day_of_week {day_of_week}"&gt;
+                                                {day_of_week}
+                                            &lt;/th&gt;
+                                            {/display_each_day_of_week}
+                                        &lt;/tr&gt;
+                                    &lt;/thead&gt;
+                                    &lt;tbody&gt;
+                                        {display_each_week}
+                                         &lt;tr&gt;
+                                            {display_each_day}
+                                            {if day_in_current_month}
+                                                &lt;td class="day_cell"&gt;
+                                                    &lt;div class="date"&gt;
+                                                        &lt;a class="num"
+                                                            href="{path='calendar/day'}/{date format="%Y/%m/%d"}/"&gt;
+                                                            {date format="%j"}
+                                                        &lt;/a&gt;
+                                                    &lt;/div&gt;
+                                            {if:else}
+                                                &lt;td class="day_cell out_of_range"&gt;
+                                                    &lt;div class="date"&gt;
+                                                    &lt;span class="num"&gt;
+                                                        {date format="%j"}
+                                                    &lt;/span&gt;
+                                                &lt;/div&gt;
+                                            {/if}
+                                            {display_each_hour}
+                                                {events}
+                                                    &lt;div
+                                                      class="
+                                                        event {if event_all_day}all_day{/if}
+                                                        {if event_multi_day}multi_day{/if}
+                                                        {if event_first_day}first_day{/if}
+                                                        {if event_last_day}last_day{/if}
+                                                        {if all_day_event_index_difference &gt; 0}
+                                                            index_difference_{all_day_event_index_difference}
+                                                        {/if}
+                                                      "&gt;
+                                                    {if event_multi_day}
+                                                        {if event_all_day == FALSE}
+                                                            {if event_first_day}
+                                                                {event_start_time}
+                                                            {/if}
+                                                            {if event_last_day}
+                                                                {event_end_time}
+                                                            {/if}
+                                                        {/if}
+                                                        &lt;a href="{path='calendar/events'}/{event_id}/"&gt;{event_title}&lt;/a&gt;
+                                                    {if:else}
+                                                        {if event_all_day == ''}
+                                                            {event_start_date format="%g"}
+                                                            {if event_start_minute &gt; 0}
+                                                                :{event_start_minute}
+                                                            {/if}
+                                                            {if event_end_time != event_start_time &amp;&amp; event_end_time != '00:00'}
+                                                                &amp;ndash;
+                                                                {event_end_date format="%g"}
+                                                                {if event_end_minute &gt; 0}
+                                                                    :{event_end_minute}
+                                                                {/if}
+                                                                {event_end_date format="%a"}
+                                                            {if:else}
+                                                                {event_start_date format="%a"}
+                                                            {/if}
+                                                        {/if}
+                                                         &lt;a href="{path='calendar/events'}/{event_id}/"&gt;{event_title}&lt;/a&gt;
+                                                    {/if}
+                                                    &lt;/div&gt;
+                                                    {/events}
+                                                {/display_each_hour}
+                                            &lt;/td&gt;
+                                            {/display_each_day}
+                                        &lt;/tr&gt;
+                                        {/display_each_week}
+                                    &lt;/tbody&gt;
+                                &lt;/table&gt;
+                            &lt;/div&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/tbody&gt;
+            &lt;/table&gt;
+            {/display_each_month}
+            {/exp:calendar:cal}
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+			</article>
+		</div>
+
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shCore.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shAutoloader.js"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
+</html>

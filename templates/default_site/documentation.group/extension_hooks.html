@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>		<html class="no-js ie6"> <![endif]-->
+<!--[if IE 7]>			<html class="no-js ie7"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie8"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html class="no-js"> <!--<![endif]-->
+	<head lang="en">
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>Extension Hooks | Calendar | Solspace Addon Documentation</title>
+		<meta name="description" content="" />
+		<meta name="copyright" content="(c) 2010 Copyright content: Copyright design: Solspace, Inc."/>
+		<meta name="viewport" content="width=device-width" />
+		<link rel="stylesheet" href="assets/css/normalize.css" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="assets/fancybox/jquery.fancybox-1.3.4.css" />
+		<link href="assets/syntaxhighlighter/styles/shCore.css" rel="stylesheet" type="text/css" />
+		<link href="assets/syntaxhighlighter/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+		<script src="assets/js/modernizr.min.js"></script>
+	</head>
+	<body>
+		<!--[if lt IE 8]>
+			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+		<![endif]-->
+
+		<header>
+			<div class="header-inner">
+				<div class="logo">
+					<img src="assets/images/logo.png" />
+				</div>
+
+				<div class="bread_crumbs">
+					<ul class="crumbs">
+						<li class="first"><a href="index.html">Calendar</a></li>
+						<li>Extension Hooks</li>
+					</ul>
+				</div>
+			</div>
+		</header>
+
+		<div class="content-wrapper">
+			<nav class="toc">
+				<ul>
+<li><a href="http://www.solspace.com/software/detail/calendar/">More Info | Purchase</a></li>
+<li><a href="change_log.html">Change Log</a></li>
+<li><a href="install_update.html">Install / Update</a></li>
+<li><a href="getting_started.html">Getting Started</a></li>
+<li><a href="control_panel.html">Control Panel</a></li>
+<li><a href="cp_ui.html">CP Publish UI</a></li>
+<li><a href="date_formatting.html">Date Parameter Formatting</a></li>
+<li><a href="group_permissions.html">Group Permissions</a></li>
+<li><a href="channel_form.html">Using with Channel Form</a></li>
+<li class="current"><p><a href="extension_hooks.html">Extension Hooks</a></p></li>
+<li class="template_tags"><h3>Template Tags</h3>
+
+<ul>
+<li><a href="calendar.html">Cal</a></li>
+<li><a href="calendars.html">Calendars</a></li>
+<li><a href="date.html">Date</a></li>
+<li><a href="day.html">Day</a></li>
+<li><a href="events.html">Events</a></li>
+<li><a href="icalendar.html">iCalendar</a></li>
+<li><a href="ics_update.html">ICS Update</a></li>
+<li><a href="mini.html">Mini Calendar</a></li>
+<li><a href="month.html">Month</a></li>
+<li><a href="month_list.html">Month List</a></li>
+<li><a href="occurrences.html">Occurrences</a></li>
+<li><a href="week.html">Week</a></li>
+<li><a href="year_list.html">Year List</a></li>
+</ul></li>
+<li><h3>Requirements</h3><div class="requirements">
+
+<ul>
+<li>EE 2.5.x - 2.8.x</li>
+<li>PHP 5.2+</li>
+<li>MySQL 5+</li>
+</ul></div></li>
+</ul>
+			</nav>
+
+			<article class="docs">
+				<ul>
+<li><a href="#module_class">Calendar Module Class Hooks</a></li>
+<li><a href="#event_class">Calendar Event Class Hooks</a></li>
+<li><a href="#parameter_class">Calendar Parameter Class Hooks</a></li>
+<li><a href="#control_panel_class">Calendar Module Control Panel Class Hooks</a></li>
+</ul>
+
+<p><a name="module_class"></a></p>
+
+<h2>Calendar Module Class Hooks</h2>
+
+<p><strong>./mod.calendar.php</strong></p>
+
+<h3>calendar_calendars_channel_query</h3>
+
+<p>Manipulate the <strong>{exp:calendar:calendars}</strong> channel query before data is processed.</p>
+
+<pre class="brush: php;">$channel-&gt;query = ee()-&gt;extensions-&gt;call(
+    'calendar_calendars_channel_query',
+    $channel-&gt;query,
+    $calendar_array
+);
+if (ee()-&gt;extensions-&gt;end_script === TRUE) return;
+</pre>
+
+<h5>$channel->query</h5>
+
+<p>The channel query object. <strong>$channel->query->result</strong> has already been set at this point and is an array of results.</p>
+
+<h5>$calendar_array</h5>
+
+<p>An array of calendar info data for each calendar to be listed in <strong>{exp:calendar:calendars}</strong>.</p>
+
+<h5>Return: <strong>object</strong></h5>
+
+<p>You must return the <strong>$channel->query</strong> object. Remember to leave <strong>$channel->query->result</strong> as an array of results.</p>
+
+<h3>calendar_events_event_ids</h3>
+
+<p>Manipulate the event ID results for <strong>{exp:calendar:events}</strong> and <strong>{exp:calendar:occurrences}</strong></p>
+
+<pre class="brush: php;">$ids = ee()-&gt;extensions-&gt;call(
+    'calendar_events_event_ids',
+    $ids
+);
+</pre>
+
+<h5>$ids</h5>
+
+<p>An array of ID's of channel entries for the events to be shown.</p>
+
+<h5>Return: <strong>array</strong></h5>
+
+<p>You must return an array of channel entry ID's from the Calendar Events channel.</p>
+
+<h3>calendar_build_calendar_create_pagination</h3>
+
+<p>(Calendar 1.7.1+)</p>
+
+<p>Lets you manipulate the pagination data output for <strong>{exp:calendar:mini}</strong>, <strong>{exp:calendar:month}</strong>, <strong>{exp:calendar:week}</strong>, <strong>{exp:calendar:today}</strong>, <strong>{exp:calendar:day}</strong>,  and <strong>{exp:calendar:cal}</strong>.</p>
+
+<pre class="brush: php;">$pagination_data = ee()-&gt;extensions-&gt;call(
+    'calendar_build_calendar_create_pagination',
+    $this,
+    $pagination_data
+);
+</pre>
+
+<h5>$this</h5>
+
+<p>Instance of the Calendar object (<strong>mod.calendar.php</strong>).</p>
+
+<p><strong>$this->parent_method</strong> is a string which will notate which function is being called. e.g. <em>mini</em>, <em>cal</em>, etc.</p>
+
+<h5>$pagination_data</h5>
+
+<p>The <strong>$pagination_data</strong> array</p>
+
+<ul>
+<li><strong>paginate</strong>                 (boolean)   are we paginating?</li>
+<li><strong>page_next</strong>                (string)    next page URL</li>
+<li><strong>page_previous</strong>            (string)    previous page URL</li>
+<li><strong>pagination_page</strong>          (int)       pagination page from URL (e.g. 5,10,15)</li>
+<li><strong>current_page</strong>             (int)       current numeric page (e.g. 1,2,3)</li>
+<li><strong>pagination_links</strong>         (string)    {pagination_links} output</li>
+<li><strong>base_url</strong>                 (string)    base URL of pagination</li>
+<li><strong>total_pages</strong>              (int)       total pages</li>
+<li><strong>paginate_tagpair_data</strong>    (string)    the tagdata from {paginate} tag pair</li>
+<li><strong>page_count</strong>               (string)    {page_count} output.</li>
+</ul>
+
+<h5>Return: <strong>array</strong></h5>
+
+<p>You must return the <strong>$pagination_data</strong> array with all parameters included from above as their proper types.</p>
+
+<h3>calendar_events_channel_query</h3>
+
+<p>Manipulate the <strong>$channel->query</strong> object for <strong>{exp:calendar:events}</strong> and <strong>{exp:calendar:occurrences}</strong></p>
+
+<pre class="brush: php;">$channel-&gt;query = ee()-&gt;extensions-&gt;call(
+    'calendar_events_channel_query',
+    $channel-&gt;query,
+    $ids
+);
+</pre>
+
+<h5>$channel->query</h5>
+
+<p>The channel query object. <strong>$channel->query->result</strong> has already been set at this point and is an array of results from the <strong>$ids</strong> array sent.</p>
+
+<h5>$ids</h5>
+
+<p>An array of ID's of channel entries for the events to be shown.</p>
+
+<h5>Return: <strong>object</strong></h5>
+
+<p>You must return the <strong>$channel->query</strong> object. Remember to leave <strong>$channel->query->result</strong> as an array of results.</p>
+
+<h3>calendar_events_create_pagination</h3>
+
+<p>(Calendar 1.7.1+)</p>
+
+<p>Lets you manipulate the pagination data output for <strong>{exp:calendar:events}</strong> and <strong>{exp:calendar:occurrences}</strong>.</p>
+
+<pre class="brush: php;">$pagination_data = ee()-&gt;extensions-&gt;call(
+    'calendar_events_create_pagination',
+    $this,
+    $pagination_data
+);
+</pre>
+
+<h5>$this</h5>
+
+<p>Instance of the Calendar object (<strong>mod.calendar.php</strong>).</p>
+
+<p><strong>$this->parent_method</strong> is a string which will notate which function is being called. e.g. <em>events</em> or <em>occurrences</em>.</p>
+
+<h5>$pagination_data</h5>
+
+<p>The <strong>$pagination_data</strong> array</p>
+
+<ul>
+<li><strong>paginate</strong>                 (boolean)   are we paginating?</li>
+<li><strong>page_next</strong>                (string)    current page URL</li>
+<li><strong>page_previous</strong>            (string)    previous page URL</li>
+<li><strong>pagination_page</strong>          (int)       pagination page from URL (e.g. 5,10,15)</li>
+<li><strong>current_page</strong>             (int)       current numeric page (e.g. 1,2,3)</li>
+<li><strong>pagination_links</strong>         (string)    {pagination_links} output</li>
+<li><strong>base_url</strong>                 (string)    base url of pagination</li>
+<li><strong>total_pages</strong>              (int)       total pages</li>
+<li><strong>paginate_tagpair_data</strong>    (string)    the tagdata from {paginate} tag pair</li>
+<li><strong>page_count</strong>               (string)    {page_count} output.</li>
+</ul>
+
+<h5>Return: <strong>array</strong></h5>
+
+<p>You must return the <strong>$pagination_data</strong> array with all parameters included from above as their proper types.</p>
+
+<p><a name="event_class"></a></p>
+
+<h2>Calendar Event Class Hooks</h2>
+
+<p><strong>./calendar.event.php</strong></p>
+
+<h3>calendar_event_end</h3>
+
+<p>Add additional processing after an event has been created.</p>
+
+<pre class="brush: php;">ee()-&gt;extensions-&gt;call(
+    'calendar_event_end',
+    $this
+);
+</pre>
+
+<h5>$this</h5>
+
+<p>Event object.</p>
+
+<p><a name="parameter_class"></a></p>
+
+<h2>Calendar Parameter Class Hooks</h2>
+
+<p><strong>./calendar.parameters.php</strong></p>
+
+<h3>calendar_parameters_valid_values</h3>
+
+<p>Allows you to modify valid values coming into the parameter checker.</p>
+
+<pre class="brush: php;">$valid_values = ee()-&gt;extensions-&gt;call(
+    'calendar_parameters_valid_values',
+    $valid_values
+);
+if (ee()-&gt;extensions-&gt;end_script === TRUE) return;
+</pre>
+
+<h5>$valid_values</h5>
+
+<p>A starting array of valid values for passed in params.</p>
+
+<pre class="brush: php;">$valid_values = array(
+    'required'          =&gt; array(FALSE, TRUE),
+    'type'              =&gt; array(
+        'string',
+        'integer',
+        'number',
+        'date',
+        'time',
+        'bool'
+    ),
+    'multi'             =&gt; array(FALSE, TRUE),
+    'method'            =&gt; array(
+        'tmpl',
+        'GET',
+        'POST',
+        'cookie'
+    ),
+    'case_sensitive'    =&gt; array(FALSE, TRUE)
+);
+</pre>
+
+<h5>Returns: <strong>array</strong></h5>
+
+<p>Manipulated valid param array.</p>
+
+<h3>calendar_parameters_default_values</h3>
+
+<p>Allows you to modify default values coming into the parameter checker.</p>
+
+<pre class="brush: php;">$default = ee()-&gt;extensions-&gt;call(
+    'calendar_parameters_default_values',
+    $default
+);
+if (ee()-&gt;extensions-&gt;end_script === TRUE) return;
+</pre>
+
+<h5>$default</h5>
+
+<p>A starting array of valid values for passed in params.</p>
+
+<pre class="brush: php;">$default = array(
+    'name'              =&gt; $name,
+    'required'          =&gt; FALSE,
+    'type'              =&gt; array('string'),
+    'default'           =&gt; '',
+    'multi'             =&gt; FALSE,
+    'min_value'         =&gt; FALSE,
+    'max_value'         =&gt; FALSE,
+    'allowed_values'    =&gt; array(),
+    'method'            =&gt; $this-&gt;choose_method($name),
+    'case_sensitive'    =&gt; FALSE,
+    'not'               =&gt; FALSE
+);
+</pre>
+
+<h5>Returns: <strong>array</strong></h5>
+
+<p>Manipulated default param array.</p>
+
+<h3>calendar_parameters_additional_method</h3>
+
+<p>Add an additional fetching method to the fetch_value method.</p>
+
+<h4>Note:</h4>
+
+<p>This will not override previously named fetch types of <em>tmpl</em>, <em>GET</em>, <em>POST</em>, <em>cookie</em> when the variable looked for is available in the passed array.</p>
+
+<p>For example, given the function called like so:</p>
+
+<pre class="brush: php;">$P = new Calendar_parameters();
+$value = $P-&gt;fetch_value('my_variable', 'POST');
+</pre>
+
+<p>And given that <strong>$_POST['my_variable']</strong> is available, then the hook will not be called. However, if <strong>$_POST['my_variable']</strong> is not available, the hook will be called and give the extension a chance to provide a variable.</p>
+
+<p>This can be used to effectively give defaults in situations where an input is absolutely expected to be present or else a method will return 0 results.</p>
+
+<pre class="brush: php;">$value = ee()-&gt;extensions-&gt;call(
+    'calendar_parameters_additional_method',
+    $method,
+    $name
+);
+</pre>
+
+<h5>$method</h5>
+
+<p>The method that is being searched for the name. Default types available are: <em>tmpl</em>, <em>GET</em>, <em>POST</em>, <em>cookie</em>, where <em>tmpl</em> is looking for template tag parameters.</p>
+
+<h5>$name</h5>
+
+<p>The name of the value being searched for.</p>
+
+<h5>returns <strong>mixed</strong></h5>
+
+<p>You must return a value for this function. If you only wish to observe a missed value and not to return anything unless a certain criteria is met, return boolean <strong>FALSE</strong>.</p>
+
+<h3>calendar_parameters_additional_type_validation</h3>
+
+<pre class="brush: php;">return ee()-&gt;extensions-&gt;call(
+    'calendar_parameters_additional_type_validation',
+    $value,
+    $details
+);
+</pre>
+
+<p><a name="control_panel_class"></a></p>
+
+<h2>Calendar Module Control Panel Class Hooks</h2>
+
+<p><strong>./mcp.calendar.php</strong></p>
+
+<h3>calendar_delete_events</h3>
+
+<p>Perform additional actions before calendar entry deletion.</p>
+
+<pre class="brush: php;">$edata = ee()-&gt;extensions-&gt;call(
+    'calendar_delete_events',
+    $this
+);
+if (ee()-&gt;extensions-&gt;end_script === TRUE) return;
+</pre>
+
+<p>This is called expecting <strong>$_POST['delete']</strong> to be a numeric ID or an array of IDS of calendar events that is then sent to the <strong>Publish->delete_events()</strong> in ExpressionEngine 1.x or <strong>api_channel_entries->delete_entry()</strong> in ExpressionEngine 2.x.</p>
+
+<p>Once channel entries are deleted, any extra calendar event data and rules are deleted.</p>
+
+<h5>$this</h5>
+
+<p>The Calendar Module Control Panel object instance.</p>
+			</article>
+		</div>
+
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shCore.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shAutoloader.js"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
+</html>
