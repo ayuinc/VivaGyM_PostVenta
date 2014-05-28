@@ -1,12 +1,11 @@
 {embed="includes/header" }
 
 {exp:member:custom_profile_data}
-{tipo_usuario}
 
 {exp:switchee variable = "{tipo_usuario}" parse="inward"}
     
     {case value="user_dep"}
-        <script type="text/javascript"> window.location="user_setup"; </script> <!-- dueño de departamento -->
+        <script type="text/javascript"> window.location="cambio_de_clave"; </script> <!-- dueño de departamento -->
     {/case}
     
     {case value="admin_viva"}

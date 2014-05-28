@@ -2,11 +2,7 @@
 
 <script type="text/javascript" src="{site_url}lib/viva_dashboard.js"></script>
 
-  <div class="row">
-    <div class="col-xs-3">
-      <a href="#"><img src="{site_url}images/logo-viva.png" style="width:50%; height: auto;"></a>
-    </div>
-  </div>
+  <!--
   <div class="row mt-21">
     <div class="col-md-9 mb-14">
       <div class="clearfix text-center">
@@ -40,40 +36,42 @@
         <a href="#" class="btn btn-success"><i class="icon-tag"></i> Buscar por ticket</a>
       </div>
     </div>
-  </div>
-
-
+  </div>-->
   
   <div class="row">
     <div class="col-md-12">
       <div class="panel-group" id="accordion2">
         <div class="panel bg-gray-lighter">
 
-      {exp:freeform:entries
-      form_id="2"
-      orderby="date"
-      sort="desc"
-      limit="20"
-      paginate="both" }
+      {exp:freeform:entries form_id="2" orderby="entry_id" sort="desc" status="open|closed" limit="10" paginate="both" }
+       <?php $estatus_ticket="{freeform:status}"; ?>
 
-      
           <div class="panel-heading p-0">
-            <div class="panel-title bg-warning">
+
+            <div <?php if ($estatus_ticket=="closed") {echo " class='panel-title bg-warning-green' ";} 
+                    else {echo " class='panel-title bg-warning' ";} ?> >
               <div class="row text-muted">
                 <div class="col-md-2 text-center pr-0 col-xs-5 col-sm-2">
-                  <div class="bg-warning-dark pt-7 pb-7">
+
+                  <div <?php if ($estatus_ticket=="closed") {echo " class='bg-green-dark pt-7 pb-7' ";} 
+                    else {echo " class='bg-warning-dark pt-7 pb-7' ";} ?> >
                     No. <?php echo $id_sol_garantia="{freeform:entry_id}"; ?></div>
                 </div>
+
                 <div class="col-md-9 text-right pr-0 col-xs-7 col-sm-9">
-                  <a data-toggle="collapse" data-parent="#accordion2" 
-                  href="#collapseFour<?php echo $id_sol_garantia; ?>" class="not-underline block bg-warning pt-7 pb-7">Ver detalle</a>
+                  <a data-toggle="collapse" data-parent="#accordion2" href="#collapseFour<?php echo $id_sol_garantia; ?>" 
+        <?php if ($estatus_ticket=="closed") {echo " class='not-underline block bg-warning-green pt-7 pb-7' ";} 
+                    else {echo " class='not-underline block bg-warning pt-7 pb-7' ";} ?> >Ver detalle</a>
                 </div>
+
                 <div class="col-md-1 text-center pl-0 hidden-xs col-sm-1">
-                  <div class="bg-warning pt-7 pb-7">
+                  <div <?php if ($estatus_ticket=="closed") {echo " class='bg-warning-green pt-7 pb-7' ";} 
+                    else {echo " class='bg-warning pt-7 pb-7' ";} ?> >
                     <a data-toggle="collapse" data-parent="#accordion2" 
                     href="#collapseFour<?php echo $id_sol_garantia; ?>" class="collapsed-icon not-underline lh-0"></a>
                   </div>
                 </div>
+
               </div>
             </div>
           </div>
@@ -135,30 +133,35 @@
 
                     <tbody class="bg-white">
                       <tr>
-                        <td><?php echo $proy_long['form_field_17']; ?></td>
+                        <td><?php $entry_id=$proy_long['entry_id']; echo $proy_long['form_field_17']; ?></td>
                         <td><?php $var_estatus=$proy_long['status']; if ($var_estatus=="open"){echo "Pendiente";} else {echo "Realizado";}; ?></td>
-                        <td><?php  $fecha_time=$proy_long['entry_date']; echo date('m/d/Y G:i a', $fecha_time);?></td>
+                        <td><?php  $fecha_time=$proy_long['entry_date']; $edit_time=$proy_long['edit_date'];
+                        if ($fecha_time>0) {echo date('d-m-Y G:i a', $fecha_time); }
+                        elseif ($edit_time>0) {echo date('d-m-Y G:i a', $edit_time); }  ?></td>
                         <td><?php $paso=$proy_long['form_field_19']; ?>
 
-                          <?php if($paso==2){ ?>
-                          <a href="<?php echo "viva_approve_sol?id_sol_garantia=".$id_sol_garantia."&acc=si&paso=3"; ?>" class="btn btn-sm small btn-default">Procede</a> 
-                          <a href="<?php echo "viva_approve_sol?id_sol_garantia=".$id_sol_garantia."&acc=no&paso=3"; ?>" class="btn btn-sm btn-warning small">No procede</a> <?php } ?>
 
-                          <?php if($paso==3){ echo $proy_long['form_field_25']." / ".$proy_long['form_field_26']; } ?>
+                          <?php $procede=$proy_long['form_field_27']; if($paso==2){ 
+                            if (empty($procede)) { ?> <a href="<?php echo "viva_preview_sol?id_sol_garantia=".$id_sol_garantia."&paso=2&entry_id=".$entry_id; ?>" class="btn btn-sm btn-warning small">Ver detalles</a>
+                            <?php } else { echo $procede; } } ?> 
+
+                          <?php if($paso==3){ echo $proy_long['form_field_25']; } ?>
 
                           <?php if($paso==4){ echo $proy_long['form_field_27']; } ?>
 
                           <?php if($paso==5){ ?> <a href="#" class="btn btn-sm btn-warning small">Ver reporte</a> <?php } ?>
 
-                          <?php if($paso==6){ ?>
-                          <a href="<?php echo "viva_approve_sol?id_sol_garantia=".$id_sol_garantia."&acc=si&paso=6"; ?>" class="btn btn-sm small btn-default">Procede</a> 
-                          <a href="<?php echo "viva_approve_sol?id_sol_garantia=".$id_sol_garantia."&acc=no&paso=6"; ?>" class="btn btn-sm btn-warning small">No procede</a> <?php } ?>
+                          <?php $procedeb=$proy_long['form_field_27']; if($paso==6){ 
+                            if (empty($procedeb)) { ?> <a href="<?php echo "viva_preview_fix?id_sol_garantia=".$id_sol_garantia."&paso=6&entry_id=".$entry_id; ?>" class="btn btn-sm small btn-default">Ver detalles</a> <?php } else { echo $procedeb; } } ?>
 
-                          <?php if($paso==7){ echo $proy_long['form_field_25']." / ".$proy_long['form_field_26']; } ?>
+                          <?php if($paso==7){ echo $proy_long['form_field_25']; } ?>
 
                           <?php if($paso==8){ echo $proy_long['form_field_27']; } ?>
 
                           <?php if($paso==9){ ?> <a href="#" class="btn btn-sm btn-warning small">Ver reporte</a> <?php } ?>
+
+                          <?php $procedec=$proy_long['form_field_27']; if($paso==10){ 
+                            if (empty($procedeb)) { ?> <a href="<?php echo "viva_close?id_sol_garantia=".$id_sol_garantia."&paso=10&entry_id=".$entry_id; ?>" class="btn btn-sm btn-warning small">Cerrar</a> <?php } else { echo $procedec; } } ?>
 
                         </td>
                       </tr>

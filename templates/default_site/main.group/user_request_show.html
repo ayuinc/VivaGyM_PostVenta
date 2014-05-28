@@ -1,145 +1,71 @@
 {embed="includes/header" }
 
-<?php $id_sol_garantia=$_GET['id_sol_garantia']; ?>
+<?php $id_sol_garantia="{segment_3}"; ?>
 
+<ol class="breadcrumb">
+    <li><a href="#">Panel de control</a></li>
+    <li><a href="#">Mis solicitudes</a></li>
+    <li class="active">Solicitud</li>
+  </ol>
 
-<link href='{site_url}fullcalendar/fullcalendar.css' rel='stylesheet' />
-<link href='{site_url}fullcalendar/fullcalendar.print.css' rel='stylesheet' media='print' />
-<script src='{site_url}lib/jquery.min.js'></script>
-<script src='{site_url}lib/jquery-ui.custom.min.js'></script>
-<script src='{site_url}fullcalendar/fullcalendar.min.js'></script>
+  <div class="row">
+    <div class="col-md-3">
+      {embed="includes/user_dashboard_aside" seccion="1"}
+    </div>
 
-<?php //include("settings_script.php"); ?>
+    {exp:freeform:entries form_id="2" entry_id="{segment_3}" limit="1" status="open|closed" }
 
-<script>
-  
-  //var $id_sol_garantia=43;
-
-  var $id_sol = <?php echo json_encode($id_sol_garantia);?>
-
-  $(document).ready(function() {
-  
-    $('#calendar').fullCalendar({
-    
-      editable: false,
-
-      weekends: false,
-
-      monthNames: ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" ], 
-     monthNamesShort: ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
-     dayNames: [ 'Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-     dayNamesShort: [ 'Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-
-     buttonText: {
-      today: 'Hoy',
-      month: 'Mes',
-      week: 'Semana',
-      day: 'Día'
-       },
-
-      events: "http://localhost/VivaGyM_PostVenta/json-fechas.php?id_sol_garantia="+$id_sol,
-      
-    });
-    
-  });
-
-
-
-</script>
-<style>
-
-  #calendar {
-    width: auto;
-    margin: 0 auto;
-    }
-
-</style>
-
-<?php
-$dia_sel=$_GET['dia_sel'];
-$hora=$_GET['hora'];
-$id_cliente="{member_id}";
-?>
-
-  <div class="container">
-    <div class="row">
-      <div class="col-md-1"></div>
-      <div class="col-md-10">
-        <div class="bg-gray-lighter p-14">
-          <a href="{{ pathFor 'userDashboard' }}" class="icon-arrow-left3 not-underline text-danger"></a>
-          <h4 class="uppercase text-warning"><i class="icon-calendar"></i> Agenda tu cita de inspección</h4>
-          <p class="light">Asegúrate que puedes estar en tu departamento en la fecha y hora que agendas tu cita. Te enviaremos una notificación y un correo el día anterior para recordarte.</p>
-          <strong>Horarios de arreglos</strong>
-          <p class="light">9:00 am - 2:00 pm de lunes a viernes</p>
-          
-
-            <div class="bg-blanco p-70 text-center mb-21"><div id='calendar'></div>
-
-          </div>
-
-            <form method="post" enctype="multipart/form-data" name="frm" id="frm" action="guardar_3er_paso" >
-
-              <?php if(!empty($dia_sel)) { ?> 
-              <div>
-              <div class="row mt-21">
-                <div class="col-md-2"></div>
-                <div class="col-md-8">
-                  <div class="form-group">
-              Fecha seleccionada: <input type="text" placeholder="fecha" name="fecha_atencion_ticket" class=" form-control input-lg" value="<?php echo $dia_sel; ?>">
-
-              Hora seleccionada: <input type="text" placeholder="hora" name="hora_atencion_ticket" class=" form-control input-lg" value="<?php echo $hora; ?>">
-
-              <input type="hidden" name="XID" value="{XID_HASH}" /> 
-
-              <input type="text" placeholder="id_cliente" name="id_cliente" class=" form-control input-lg" value="<?php echo $id_cliente; ?>">
-
-              <input type="text" placeholder="id_sol_garantia" name="id_sol_garantia" class=" form-control input-lg" 
-              value="<?php echo $id_sol_garantia; ?>">
-
-              <input type="text" placeholder="orden_tramite" name="orden_tramite" class=" form-control input-lg" value="2">
-            </div>
-            </div>
-            </div>
-            </div>
-
-            <p class="light">Si no estarás en tu departamento asigna a una persona mayor de edad para coordinar la inspección<a data-toggle="collapse" href="#form-collapse"> aquí</a></p>
-            <div id="form-collapse" class="collapse">
-              <div class="row mt-21">
-                <div class="col-md-2"></div>
-                <div class="col-md-8">
-                  <div class="form-group">
-                    
-
-                    <select name="relacion_dueno_departamento" class="form-control input-lg uppercase select-override">
-                      <option value="0">Seleccione</option>
-                      <option value="Familiar">Familiar</option>
-                      <option value="Amigo">Amigo</option>
-                    </select>
-                  </div>
-
-                  <div class="form-group">
-                    <input type="text" placeholder="Nombre" name="nombre_encargado_atencion" class="uppercase form-control input-lg">
-                  </div>
-                  <div class="form-group">
-                    <input type="text" placeholder="Celular" name="celular_encargado_atencion" class="uppercase form-control input-lg">
-                  </div>
-                  <div class="form-group">
-                    <input type="email" placeholder="Correo electrónico" name="email_encargado_atencion" class="uppercase form-control input-lg">
-                  </div>
-                </div>
-                <div class="col-md-2"></div>
+    <div class="col-md-9 col-sm-3">
+      <div class="panel p-14 box-shadow" >
+        <div class="panel-heading bg-white p-0">
+          <div class="panel-title mb-14">
+            <div class="clearfix">
+              <div class="col-md-6 col-sm-6 col-xs-6">
+                <h2 class="medium m-0"><span class="h4">No. de caso:</span> <?php echo $id_sol_garantia; ?></h2>
+              </div>
+              <div class="col-md-6 col-sm-6 col-xs-6 text-right pt-7">
+                <a href="#" class="btn disabled btn-success">Agenda tu cita aquí</a>
               </div>
             </div>
-            <div class="text-right">
-             <input type="submit" class="btn btn-lg uppercase btn-success" value="Agendar"> <?php } ?> 
+          </div>
+          <hr class="m-0">
+        </div>
+        <div class="panel-body p-0">
+          <div class="row mt-14">
+            <div class="col-md-4">
+              <img src="{site_url}fotos_problemas/{freeform:field:foto_problema}" alt="" class="img-responsive img-thumbnail">
             </div>
+            <div class="col-md-8 pl-0">
+              <h4 class="medium mt-0">{freeform:field:descripcion_problema}</h4>
+              <div class="row">
+                <div class="col-md-6 pt-14">
+                  <ul class="list-unstyled">
+                    <li class="mb-7"><strong>Fecha de apertura: </strong>{freeform:entry_date format="%j %F %Y"}</li>
+                    <li class="mb-7"><strong>Atendido por: </strong>Jorge Perestroiffer</li>
 
-            </form>
-          
+                    <li class="mb-7"><strong>Tipo de problema: </strong>{freeform:field:tipo_de_problema}</li>
+                    <!--<li class="mb-7"><strong>Ubicación: </strong>{freeform:field:ubicacion}</li>-->
+                  </ul>
+                </div>
+                <!--<div class="col-md-6 pt-14">
+                  <ul class="list-unstyled">
+                    <li class="mb-7"><strong>Lista 3</strong><br>27/04/2014</li>
+                    <li class="mb-7"><strong>Lista 4</strong><br>Jorge Perestroiffer</li>
+                  </ul>
+                </div>-->
+              </div>
+            </div>
+          </div>
 
+          <div class="table-responsive">
+            {embed="includes/pasos_solicitud" id_sol_garantia="<?php echo $id_sol_garantia; ?>"}
+
+          </div>
         </div>
       </div>
-      <div class="col-md-1"></div>
     </div>
+
+    {/exp:freeform:entries}
+
   </div>
 {embed="includes/footer"}

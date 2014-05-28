@@ -1,0 +1,109 @@
+{embed="includes/header"}
+{embed="includes/carga" }
+
+<?php
+echo "<br>id sol ".$id_sol_garantia=$_POST['id_sol_garantia'];
+echo "<br>apr sol ".$acc=$_POST['aprobar_paso'];
+echo "<br>paso sol ".$paso=$_POST['paso'];
+
+echo "<br>comm sol ". $comentarios=$_POST['comentarios'];
+
+$result=mysql_query("SELECT * FROM exp_freeform_form_entries_2 WHERE entry_id=$id_sol_garantia");
+$obten=mysql_fetch_row($result);
+$id_cliente = $obten[2];
+$tit_problema = $obten[15];
+
+// leer email cuando lo tomas de ee no funca
+	$result_email=mysql_query("SELECT * FROM exp_members WHERE member_id=$id_cliente");
+	$obten_email=mysql_fetch_row($result_email);
+	$screen_name = $obten_email[3];
+	$dir = $obten_email[9];
+
+$ant_paso=$paso-1;
+
+$prox_paso=$paso+1;
+
+if($paso=="2") { $mensaje="Agendar visita de inspección";};
+
+if($paso=="6") { $mensaje="Agendar visita de arreglo";};
+
+$ip=$_SERVER["REMOTE_ADDR"];
+
+$date = date_create();
+$entry_date=date_timestamp_get($date);
+
+$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_4 
+SET status = 'closed'
+WHERE form_field_18 = $id_sol_garantia AND form_field_19 = $paso ");
+
+if ($acc=="si"){
+
+$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_4 
+SET form_field_27 = 'Procede',
+entry_date = '$entry_date',
+form_field_29 = '$comentarios'
+WHERE form_field_18 = $id_sol_garantia AND form_field_19 = $paso ");
+
+$resultado=mysql_query("insert into exp_freeform_form_entries_4 
+(site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19) 
+values ('1','$id_cliente','y','$ip','','open','$id_cliente','$mensaje','$id_sol_garantia','$prox_paso')");
+
+	$sub=" Arreglo Procede - Viva GyM";
+	echo "<br> correo ".$txt_mail="Estimado/a $screen_name<p>
+	Tras analizar su solicitud de requerimiento número $id_sol_garantia le confirmamos que se ha determinado que el arreglo reportado: ".'"'.$tit_problema .'"'.", procede. Para que se acerque un especialista a arreglar el daño debe agendar una cita ingresando a nuestro portal de post-venta en línea aquí. Link a Calendario.<p>
+Es importante precisar que en caso se presentara alguna solicitud, observación y/o requerimiento adicional tras el arreglo debe llenar un nuevo reclamo en nuestro portal de post-venta en línea o comunicarte a nuestro Call Center de Atención al Cliente 206-7270. Este es el único mecanismo que garantiza la atención de su solicitud de post-venta, cualquier otra forma de solicitud no será atendida.<p>
+Atentamente";
+
+
+	ee()->load->library('email');
+	ee()->load->helper('text');
+
+	ee()->email->wordwrap = true;
+	ee()->email->mailtype = 'html';
+	ee()->email->from('admin@gym.com');
+	ee()->email->to($dir);
+	ee()->email->subject($sub);
+	ee()->email->message(entities_to_ascii($txt_mail));
+	ee()->email->Send();
+
+} elseif ($acc=="no"){ 
+
+$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_4 
+SET form_field_27 = 'No procede',
+status = 'closed',
+entry_date = '$entry_date',
+form_field_29 = '$comentarios'
+WHERE form_field_18 = $id_sol_garantia AND form_field_19 = $paso ");
+
+	$sub=" Arreglo no Procede - Viva GyM";
+	echo "<br> mensaje ".$txt_mail="Estimado/a $screen_name<p>
+	Tras analizar su solicitud de requerimiento número $id_sol_garantia le informamos que los especialistas de GyM han determinado que su arreglo no procede. La razón de esta decisión es: $comentarios.<p>
+Aprovechamos para recordarle que en el Manual del Propietario otorgado al momento de la entrega de su departamento se especifica el correcto uso y mantenimiento preventivo que se le debe realizar a sus instalaciones a fin de evitar que estas fallen por el propio uso que provoca el desgaste natural.  Puede encontrar el Manual en nuestro portal de post-venta en línea. Link a Manual.<p>
+Quedamos como siempre a su disposición si tiene alguna consulta o solicitud adicional puede llamar a nuestro Call Center de Atención al Cliente al 206-7270.<p>
+Atentamente";
+
+
+	ee()->load->library('email');
+	ee()->load->helper('text');
+
+	ee()->email->wordwrap = true;
+	ee()->email->mailtype = 'html';
+	ee()->email->from('admin@gym.com');
+	ee()->email->to($dir);
+	ee()->email->subject($sub);
+	ee()->email->message(entities_to_ascii($txt_mail));
+	ee()->email->Send();
+
+};
+
+?>
+
+<body>
+
+
+<?php sleep(3); ?>
+
+<script type="text/javascript">
+window.location="viva_dashboard";
+</script>
+</body>

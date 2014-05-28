@@ -16,6 +16,12 @@ $email_encargado_atencion=$_POST['email_encargado_atencion'];
 
 $ip=$_SERVER["REMOTE_ADDR"];
 
+// leer email cuando lo tomas de ee no funca
+	$result_email=mysql_query("SELECT * FROM exp_members WHERE member_id=$id_cliente");
+	$obten_email=mysql_fetch_row($result_email);
+	$screen_name = $obten_email[3];
+	echo "<br> dir: ".$dir = $obten_email[9];
+
 $date = date_create();
 $entry_date=date_timestamp_get($date);
 
@@ -27,11 +33,12 @@ if ($relacion_dueno_departamento=0){
 
 $resultado=mysql_query("insert into exp_freeform_form_entries_4 
 (site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19) 
-values ('1','$id_cliente','y','$ip','$entry_date','open','$id_cliente','GyM asigna inspector','$id_sol_garantia','4')");
+values ('1','$id_cliente','y','$ip','','open','$id_cliente','GyM asigna inspector','$id_sol_garantia','4')");
 
 
 $sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_4 
 SET status = 'closed',
+entry_date = '$entry_date',
 form_field_20 = '$dueno_atiende_ticket',
 form_field_21 = '$relacion_dueno_departamento',
 form_field_22 = '$nombre_encargado_atencion',
@@ -41,11 +48,37 @@ form_field_25 = '$fecha_atencion_ticket',
 form_field_26 = '$hora_atencion_ticket'
 WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 3 ");
 
+$sub="Cita de Inspección Agendada - Viva GyM";
+	echo "<br> correo ".$txt_mail="Estimado/a $screen_name<p>
+	Muchas gracias por agendar su cita de inspección en el  el portal de post-venta en línea de Viva GyM. Su inspección se realizará según la siguiente información:<p>
+Número de solicitud: $id_sol_garantia<p>
+Fecha de Inspección: $fecha_atencion_ticket<p>
+Horario de Inspección: 9:00 am - 2:00 pm de lunes a viernes<p>
+Recuerde que usted o alguien responsable de su departamento debe estar presente en el momento de la inspección.  En caso no pueda estar presente deberá reagendar su cita en el portal de post-venta de Viva GyM con al menos 24 horas de anticipación a la misma. Si tiene una emergencia el mismo día de la cita y no podrá estar presente por favor comuníquese al 206-7270.<p>
+Recuerde que si reagenda su cita deberá pasar nuevamente por todo el proceso. Tiene, además, un máximo de dos oportunidades para reagendar su cita.<p>
+Quedamos como siempre a su disposición si tiene alguna consulta o solicitud adicional puede llamar a nuestro Call Center de Atención al Cliente al 206-7270.<p>
+Atentamente";
+
+	ee()->load->library('email');
+	ee()->load->helper('text');
+
+	ee()->email->wordwrap = true;
+	ee()->email->mailtype = 'html';
+	ee()->email->from('admin@gym.com');
+	ee()->email->to($dir);
+	ee()->email->subject($sub);
+	ee()->email->message(entities_to_ascii($txt_mail));
+	ee()->email->Send();
 
 ?>
 
 <body>
+
+{embed="includes/carga" }
+<?php sleep(6); ?>
+
 <script type="text/javascript">
 window.location="user_dashboard";
 </script>
+
 </body>

@@ -1,6 +1,8 @@
 {embed="includes/header" }
 
 <?php 
+
+$entry_id=$_GET['entry_id'];
 $id_sol_garantia=$_GET['id_sol_garantia'];
 $paso=$_GET['paso'];
 $id_cliente=$_GET['id_cliente'];
@@ -25,6 +27,7 @@ $resultc=mysql_query("SELECT * FROM exp_freeform_form_entries_2 WHERE entry_id=$
 $obtenc=mysql_fetch_row($resultc);
 $entry_date = $obtenc[5]; //fecha
 $desc_problema = $obtenc[15]; //resumen problema
+$ubic_problema = $obtenc[16]; //ubicacion problema
 $foto = $obtenc[11]; //foto
 $detalles = $obtenc[20]; //fecha
 
@@ -48,7 +51,19 @@ $detalles = $obtenc[20]; //fecha
       <div class="tab-content bg-gray-lighter">
         <div class="tab-pane fade active in" id="inspeccion">
 
-          <form method="post" enctype="multipart/form-data" name="frm" id="frm" action="user_gym_write" class="p-14">
+     
+         
+         <!--<form method="post" enctype="multipart/form-data" name="frm" id="frm" action="insp_write_file" class="p-14">-->
+
+          <div class="p-14"> <!-- inicio form -->
+
+            {exp:freeform:edit
+            form_name="detalles_ticket"
+            entry_id="<?php echo $entry_id; ?>"
+            restrict_edit_to_author="no"
+            return="main/insp_viva"
+            allow_status_edit="yes" 
+          }
 
             <div class="form-group">
               <div class="row">
@@ -75,18 +90,33 @@ $detalles = $obtenc[20]; //fecha
                 </div>
               </div>
             </div>
-            <p>Tipo de problema</p>
-            <div class="form-group">
-              <input type="text" placeholder="Tipo de Problema" name="tipo_de_problema" value="<?php echo $desc_problema; ?>" class="uppercase form-control input-lg" readonly="readonly">
+
+            <div class="row">
+            <div class="col-md-7">
+              <div class="form-group">Tipo de problema
+                <input type="text" placeholder="Tipo de Problema" name="tipo_de_problema" value="<?php echo $desc_problema; ?>" class="uppercase form-control input-lg" readonly="readonly">
+              </div>
             </div>
+            <div class="col-md-5">
+              <div class="form-group">Ubicación
+
+                  <input type="text" name="ubicacion" value="<?php echo $ubic_problema; ?>" class="uppercase form-control input-lg" readonly="readonly">           
+
+              </div>
+            </div>
+
+            </div>
+
             <div class="form-group"> 
 
               <div class="row">
                 <div class="col-sm-6">
-                  <!--<p>Colgar foto</p>-->
+                  <p>Cargar archivo: </p>
                   <div class="fileinput fileinput-new input-group" data-provides="fileinput">
 
-                    <input type="file" name="informe_inspeccion">
+                    {freeform:field:informe_inspeccion}
+
+                    <!--<input type="file" name="informe_inspeccion">-->
 
                     <!--{freeform:field:informe_inspeccion show="1"}
                     <div class="form-control" data-trigger="fileinput">
@@ -105,13 +135,15 @@ $detalles = $obtenc[20]; //fecha
               </div>
             </div>
             <div class="form-group">
-              <textarea name="comentarios" id="" rows="7" class="form-control" placeholder="Nota"></textarea>
+              <textarea name="comentarios" id="" rows="7" class="form-control" placeholder="Nota">
+              {freeform:edit_data:comentarios}</textarea>
               <p class="help-block text-right text-warning">Máximo 250 caracteres</p>
             </div>
-            <div class="form-group">
+
+            <!--<div class="form-group">
               <div class="row">
                 <div class="col-sm-6">
-                  <p class="text-center pt-14">Reparación aprobada por cliente?</p>
+                  <p class="text-center pt-14">Procede la reparación?</p>
                 </div>
                 <div class="col-sm-6">
                   <select name="aprobar_paso" id="" class="form-control input-lg select-override">
@@ -121,23 +153,30 @@ $detalles = $obtenc[20]; //fecha
                   </select>
                 </div>
               </div>
-            </div>
+            </div>-->
+
             <div class="text-right">
 
               <!--<input type="text" name="departamento_en_consulta" value="{cod_depa}" >
               <input type="text" name="email" value="{email}" >-->
 
-              <input type="text" name="id_cliente" value="<?php echo $id_cliente; ?>" >
 
-              <input type="text" name="id_sol_garantia" value="<?php echo $id_sol_garantia; ?>" >
+              <input type="hidden" name="status" value="closed" >
 
-              <input type="text" name="paso" value="<?php echo $paso; ?>" >
+              <input type="hidden" name="id_cliente" value="<?php echo $id_cliente; ?>" >
+
+              <input type="hidden" name="id_sol_garantia" value="<?php echo $id_sol_garantia; ?>" >
+
+              <input type="hidden" name="paso" value="<?php echo $paso; ?>" >
 
               <input type="hidden" name="XID" value="{XID_HASH}" />
 
-              <input type="submit" name="submit" class="btn btn-lg btn-warning uppercase" value="Procesar">
+              <input type="submit" class="btn btn-lg uppercase btn-success" name="submit" value="Procesar" />
+
             </div>
-          </form>
+          </div> <!-- ex form-->
+              
+          {/exp:freeform:edit}
 
         </div>
         

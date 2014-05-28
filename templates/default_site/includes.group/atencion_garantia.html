@@ -36,7 +36,7 @@
     <div class="fileinput fileinput-new input-group" data-provides="fileinput">
       <!--<div class="form-control" data-trigger="fileinput">
       <i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span>-->
-
+        Adjuntar foto: Max. 2mb.
         {freeform:field:foto_problema show="1"}
       
       <!--</div>
@@ -53,21 +53,28 @@
   <div class="col-md-7">
     <p>¿El daño involucra a otro departamento?</p>
     <div class="form-group">
-      <select name="dano_otro_departamento" id="nueva-solicitud-select" class="form-control input-lg uppercase">
-        <option value="No">No</option>
-        <option value="Si">Sí</option>
+      <select name="dano_otro_departamento" onchange="mostrardep(this)" 
+      id="nueva-solicitud-select" class="form-control input-lg uppercase">
+        <option value="no">No</option>
+        <option value="si">Sí</option>
       </select>
     </div>
   </div>
 </div>
-<div class="row mt-14">
-  <div class="col-md-9">
-    <p>¿Qué departamento?</p>
-    <div class="form-group">
-      <input type="text" placeholder="Número del departamento" name="nro_otro_departamento_afectado" class="uppercase form-control input-lg">
+
+<div id="yes">
+  <div class="row mt-14">
+    <div class="col-md-9">
+      <p>¿Qué departamento?</p>
+      <div class="form-group">
+        <input type="text" placeholder="Número del departamento" name="nro_otro_departamento_afectado" class="uppercase form-control input-lg">
+      </div>
     </div>
   </div>
 </div>
+
+<div id="not"></div>
+
 <div class="form-group text-right">
 <input type="hidden" name="etapa_solicitud" value="1" >
 {exp:member:custom_profile_data}

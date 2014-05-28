@@ -1,0 +1,191 @@
+{embed="includes/header" }
+
+<?php $id_sol_garantia="{segment_3}";
+$site_url="{site_url}"; ?>
+
+<link href='{site_url}fullcalendar/fullcalendar.css' rel='stylesheet' />
+<link href='{site_url}fullcalendar/fullcalendar.print.css' rel='stylesheet' media='print' />
+<script src='{site_url}lib/jquery.min.js'></script>
+<script src='{site_url}lib/jquery-ui.custom.min.js'></script>
+<script src='{site_url}fullcalendar/fullcalendar.min.js'></script>
+
+<?php //include("settings_script.php"); ?>
+
+<script>
+  
+  //var $id_sol_garantia=43;
+
+  var $id_sol = <?php echo json_encode($id_sol_garantia);?>
+
+  $(document).ready(function(){
+    if ($(window).width() < 768) {
+        $('#calendar').fullCalendar({
+          defaultView: "agendaDay",
+          allDaySlot: false,
+          minTime: 8,
+          maxTime: 22,
+          timeFormat: {
+            agenda: 'h:mm{ - h:mm}TT'
+          },
+          header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month,agendaDay'
+          },
+          buttonText: {
+            prev:     '&lsaquo;', // <
+            next:     '&rsaquo;', // >
+            prevYear: '&laquo;',  // <<
+            nextYear: '&raquo;',  // >>
+            today:    'Ver el día de hoy',
+            month:    'mes',
+            week:     'semana',
+            day:      'día'
+          },
+          columnFormat: {
+            month: 'ddd',    // Mon
+            week: 'ddd d/M', // 9/7 Mon
+            day: 'dddd M/d'  // 9/7 Monday 
+          },
+          monthNamesShort: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+          dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+          dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+          editable: false,
+          hiddenDays: [0, 6],
+
+          events: "http://162.243.222.54/json-fechas.php?id_sol_garantia="+$id_sol,
+
+        });
+      } else {
+        $('#calendar').fullCalendar({
+          defaultView: "month",
+          allDaySlot: false,
+          minTime: 8,
+          maxTime: 22,
+          timeFormat: {
+            agenda: 'h:mm{ - h:mm}TT'
+          },
+          header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month,basicWeek'
+          },
+          buttonText: {
+            prev:     '&lsaquo;', // <
+            next:     '&rsaquo;', // >
+            prevYear: '&laquo;',  // <<
+            nextYear: '&raquo;',  // >>
+            today:    'Ver el día de hoy',
+            month:    'mes',
+            week:     'semana',
+            day:      'día'
+          },
+          columnFormat: {
+            month: 'ddd',    // Mon
+            week: 'ddd d/M', // 9/7 Mon
+            day: 'dddd M/d'  // 9/7 Monday 
+          },
+          monthNamesShort: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+          dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+          dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+          editable: false,
+          hiddenDays: [0, 6],
+
+          events: "http://162.243.222.54/json-fechas.php?id_sol_garantia="+$id_sol,
+
+        });
+      }
+    }
+  );
+
+</script>
+
+<?php
+$dia_sel="{segment_4}";
+$hora=$_GET['hora'];
+$id_cliente="{member_id}";
+?>
+
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+      <ol class="breadcrumb">
+        <li><a href="#">Panel de control</a></li>
+        <li><a href="#">Mis solicitudes</a></li>
+        <li><a href="#">Solicitud</a></li>
+        <li class="active">Agendar solicitud</li>
+      </ol>
+    </div>
+    <div class="col-sm-1"></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-6">
+      <div class="panel bg-white box-shadow">
+        <div class="panel-heading">
+          <div class="clearfix">
+            <div class="col-sm-6 pl-0">
+              <h4 class="uppercase medium"><i class="icon-calendar"></i> Agendar Solicitud</h4>
+            </div>
+            <div class="col-sm-6 text-right">
+              <div>
+                <small>
+                  <span class="bold">Horarios de arreglos</span><br>
+                  9:00 am - 2:00 pm de lunes a viernes
+                </small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body p-0">
+          <div id="calendar"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="box-shadow border-rounded bg-white p-14">
+
+        <form method="post" enctype="multipart/form-data" name="frm" id="frm" action="<?php echo $site_url;?>index.php/main/guardar_3er_paso" >
+
+          <label for="">Fecha seleccionada:</label>
+          <div class="input-group">
+            <span class="input-group-addon"><i class="icon-calendar"></i></span>
+            <input type="text" class="form-control" placeholder="DD/MM/AAAA" name="fecha_atencion_ticket" value="<?php echo $dia_sel; ?>">
+          </div>
+          <div class="form-group pt-14">
+            <small>Asegúrate que puedes estar en tu departamento en la fecha y hora que agendas tu cita. Te enviaremos una notificación y un correo el día anterior para recordarte.</small>
+          </div>
+          <div class="form-group">
+            <small>Asigna a alguien para coordinar la inspección <a data-toggle="collapse" href="#form-collapse" class="underline">aquí</a></small>
+
+          </div>
+          <div id="form-collapse" class="collapse">
+            <div class="form-group">
+              <select name="relacion_dueno_departamento" class="form-control select-override">
+                <option value="Familiar">Familiar</option>
+                <option value="Amigo">Amigo</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <input type="text" placeholder="Nombre" name="nombre_encargado_atencion" class=" form-control">
+            </div>
+            <div class="form-group">
+              <input type="text" placeholder="Celular" name="celular_encargado_atencion" class=" form-control">
+            </div>
+            <div class="form-group">
+              <input type="email" placeholder="Correo electrónico" name="email_encargado_atencion" class=" form-control">
+            </div>
+        </div>
+              <input type="hidden" name="XID" value="{XID_HASH}" /> 
+              <input type="hidden" placeholder="id_cliente" name="id_cliente" class=" form-control input-lg" value="<?php echo $id_cliente; ?>">
+              <input type="hidden" placeholder="id_sol_garantia" name="id_sol_garantia" class=" form-control input-lg" 
+              value="<?php echo $id_sol_garantia; ?>">
+              <input type="hidden" placeholder="orden_tramite" name="orden_tramite" class=" form-control input-lg" value="2">
+              <input type="submit" class="btn btn-sm btn-info" value="Agendar">
+        </form>
+
+      </div>
+    </div>
+    <div class="col-sm-1"></div>
+  </div>
+{embed="includes/footer"}

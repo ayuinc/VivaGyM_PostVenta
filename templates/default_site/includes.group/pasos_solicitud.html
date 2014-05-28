@@ -1,0 +1,82 @@
+﻿<table class="table table-hover table-striped mt-14">
+  <thead class="uppercase medium">
+    <tr>
+      <td>Actividad</td>
+      <td>Estatus</td>
+      <td>Fecha</td>
+      <td>Detalle</td>
+      <td>Archivo</td>
+    </tr>
+  </thead>
+  <tbody>
+
+  <?php
+    $id_sol_garantia="{embed:id_sol_garantia}";
+    $query_long  = "SELECT * FROM exp_freeform_form_entries_4 where form_field_18=$id_sol_garantia order by form_field_19";
+    $result_long = mysql_query($query_long);
+    ?>
+    <?php while ($proy_long = mysql_fetch_array($result_long)) { ?>
+
+      <tr>
+        <td><?php echo $proy_long['form_field_17']; ?></td> <!-- actividad  -->
+
+        <td><?php $var_estatus=$proy_long['status']; 
+          switch ($var_estatus) {
+            case "pending":
+                echo "<span class='label label-default'>Cancelado</span>";
+                break;
+            case "open":
+                echo "<span class='label label-danger'>Pendiente</span>";
+                break;
+            case "closed":
+                echo "<span class='label label-default'>Realizado</span>";
+                break;
+        }; ?>
+        </td><!-- estatus / pending open closed  -->
+
+        <td><?php  $fecha_time=$proy_long['entry_date']; $edit_time=$proy_long['edit_date'];
+                        if ($fecha_time>0) {echo date('d-m-Y', $fecha_time); }
+                        elseif ($edit_time>0) {echo date('d-m-Y', $edit_time); }  ?></td> <!-- fecha  -->
+
+        <td><?php $paso=$proy_long['form_field_19']; $fecha_insp=$proy_long['form_field_27']; ?>
+          <?php if (!empty($fecha_insp)) { if($paso==2){ echo "Su solicitud de inspección ".$proy_long['form_field_27']; } } ?>
+
+          <?php $fecha=$proy_long['form_field_25']; 
+          if($paso==3){ 
+                if (empty($fecha)) { ?> <a href="{site_url}index.php/main/<?php echo "user_request_book/".$id_sol_garantia; ?>" 
+              class="btn btn-sm btn-warning small">Agendar</a> <?php } 
+          else { echo "Inspección agendada para ".$fecha; ?> 
+          <a href="{site_url}index.php/main/<?php echo "user_request_book/".$id_sol_garantia; ?>" 
+          class="btn btn-sm btn-warning small">Cancelar</a><?php } 
+              }; ?>
+
+          <?php $fecha_re=$proy_long['form_field_25']; ?>
+          <?php if($paso==5){ if (!empty($fecha_re)) { echo "Inspección realizada el ".$proy_long['form_field_25'];} } ?>
+
+        </td> <!-- detalle  -->
+
+        <td> <!-- archivo  -->
+          <?php if($paso==2){ } ?>
+
+          <?php if($paso==3){ } ?>   
+
+          <?php if($paso==4){ echo substr($proy_long['form_field_27'],0,8); } ?>
+
+          <?php if($paso==5){ ?> <a href="#" class="btn btn-sm btn-warning small">Ver reporte</a> <?php } ?>
+
+          <?php if($paso==6){ echo $proy_long['form_field_27']; } ?>
+
+          <?php $fecha_siete=$proy_long['form_field_25']; if($paso==7){ 
+            if (empty($fecha_siete)) { ?> <a href="{site_url}index.php/main/<?php echo "user_request_fixing/".$id_sol_garantia; ?>" 
+          class="btn btn-sm btn-warning small">Agendar</a> <?php } else { echo $fecha_siete; } } ?>  
+
+          <?php if($paso==8){ echo substr($proy_long['form_field_27'],0,8); } ?>
+
+          <?php if($paso==9){ ?> <a href="#" class="btn btn-sm btn-warning small">Ver reporte</a> <?php } ?>
+
+        </td>
+      </tr>
+
+    <?php } ; ?>
+    </tbody>
+</table>

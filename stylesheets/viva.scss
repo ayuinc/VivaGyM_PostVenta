@@ -28,13 +28,16 @@
 @import "b3/_navs.scss";
 @import "b3/_panels.scss";
 @import "b3/_badges.scss";
+@import "b3/_labels.scss";
+@import "b3/_breadcrumbs.scss";
 @import "b3/_wells.scss";
 @import "b3/_list-group.scss";
 @import "b3/_tooltip.scss";
 @import "b3/_close.scss";
 
 // Templates
-@import "app/_users.scss";
+@import "app/_users.scss"; 
+@import "app/_fullcalendar_rails.scss";
 
 
 // Components w/ JavaScript
@@ -45,4 +48,22 @@
 @import "b3/_responsive-utilities.scss";
 @import "b3/_utilities.scss";
 @import "b3/_utilities_custom.scss";
+
+// Animations
+// http://daneden.github.io/animate.css/
+
+@import "animate/animate-init";
+@import "animate/animation-delays";
+
+// @import "animate/attention";
+@import "animate/bounce-in";
+// @import "animate/bounce-out";
+// @import "animate/fade-in";
+// @import "animate/fade-out";
+// @import "animate/flippers";
+// @import "animate/lightspeed";
+// @import "animate/rotate-in";
+// @import "animate/rotate-out";
+// @import "animate/sliders";
+// @import "animate/specials";
 

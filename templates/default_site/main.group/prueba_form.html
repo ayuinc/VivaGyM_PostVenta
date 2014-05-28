@@ -1,0 +1,22 @@
+{exp:freeform:edit
+    form_name="contact" restrict_edit_to_author="no"
+    entry_id="1"
+    return="contact_us/thank_you"
+}
+    <dl>
+    {freeform:all_form_fields}
+        <dt><label>{freeform:field_label}</label></dt>
+        <dd>{freeform:field_output}</dd>
+    {/freeform:all_form_fields}
+    </dl>
+    <p>{freeform:submit}</p>
+    {if freeform:no_results}
+        <p>
+            Specified form or entry was not found.
+            Please make sure you have specified the
+            correct short name of the form in the
+            <b>form_name</b> parameter, or a valid
+            entry ID.
+        </p>
+    {/if}
+{/exp:freeform:edit}

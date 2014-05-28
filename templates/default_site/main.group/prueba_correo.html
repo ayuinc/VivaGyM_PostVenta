@@ -1,0 +1,51 @@
+{embed="includes/header" }
+
+<?php echo "dir correo ".$dir="jcmoron82@gmail.com"; ?>
+<!--value="<?php echo $dir; ?>" 
+
+{exp:email:contact_form user_recipients="yes" charset="utf-8" }
+
+        <h2>Support Form</h2>
+
+                <input type="hidden" id="from" name="from" size="40" maxlength="35" value="admin@gym.com" />
+
+        <p>
+                <label for="from">a enviar :</label><br />
+                <input type="text" name="to" size="40" value="<?php echo $dir; ?>"/>
+        </p>
+        <p>
+                <label for="subject">Subject:</label><br />
+                <input type="text" id="subject" name="subject" size="40" value="Contact Form" />
+        </p>
+        <p>
+                <label for="message">Message:</label><br />
+                <textarea id="message" name="message" rows="18" cols="40">
+                        Support Email from: {member_name}
+                        Sent at:  {current_time format="%Y %m %d"}
+                </textarea>
+        </p>
+        <p>
+                <input name="submit" type='submit' value='Submit Form' />
+                
+        </p>     
+{/exp:email:contact_form}-->
+
+<?php 
+echo "<br> dir a enviar : ".$dir;
+
+$sub="Bienvenido al Sistema Posventa Viva GyM";
+$mensaje="prueba<br><b>peru</b>, correo enviado a: ".$dir;
+
+
+ee()->load->library('email');
+ee()->load->helper('text');
+
+ee()->email->wordwrap = true;
+ee()->email->mailtype = 'html';
+ee()->email->from('admin@gym.com');
+ee()->email->to($dir);
+ee()->email->subject($sub);
+ee()->email->message(entities_to_ascii($mensaje));
+ee()->email->Send();
+
+?>

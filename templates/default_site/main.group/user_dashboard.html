@@ -1,185 +1,34 @@
-{embed="includes/header" }
+{embed="includes/header"}
 
-<script type="text/javascript">
-
-function mostrar(sel) {
-      if (sel.value=="a"){
-           divC = document.getElementById("garantia");
-           divC.style.display = "";
-
-           divT = document.getElementById("solicitud");
-           divT.style.display = "none";
-
-      }else{
-
-           divC = document.getElementById("garantia");
-           divC.style.display="none";
-
-           divT = document.getElementById("solicitud");
-           divT.style.display = "";
-      }
-}
-</script>
-
-<div class="col-md-12">
- {embed="includes/user_subnav" }
-</div>
-
+  <ol class="breadcrumb">
+    <li><a href="user_dashboard">Panel de control</a></li>
+    <li class="active">Mis solicitudes</li>
+  </ol>
+  
   <div class="row">
     <div class="col-md-3">
-  {embed="includes/user_dashboard_aside" }
+      {embed="includes/user_dashboard_aside" seccion="1"}
     </div>
-    <div class="col-md-9">
-      <div class="viva-alert viva-alert-success alert-dismissable">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <div class="clearfix">
-          <div class="col-md-1 viva-icon-wrapper">
-            <i></i>
+    <div class="col-md-6">
+      <div class="panel p-14 box-shadow">
+        <div class="panel-heading bg-white p-0">
+          <div class="panel-title mb-14">
+            <h4 class="uppercase medium"><i class="icon-docs"></i> Mis solicitudes</h4>
           </div>
-          <div class="col-md-11">
-            <p>Tu solicitud <span class="medium">N.23453</span> ha sido revisada. Un inspector irá a tu departamento.<br>Escoge la fecha y hora en el siguiente <a href="#">calendario</a>.</p>
+          <hr class="m-0">
+        </div>
+        <div class="panel-body p-0">
+          <div class="table-responsive">
+
+              {embed="includes/solicitudes_abiertas"}          
+
           </div>
         </div>
       </div>
-      <ul class="nav nav-tabs nav-justified uppercase">
-        <li class="active"><a href="#mi-depa" data-toggle="tab">Mi Depa</a></li>
-        <li><a href="#solicitudes-abiertas" data-toggle="tab">Solicitudes Abiertas</a></li>
-        <li><a href="#nueva-solicitud" data-toggle="tab">Nueva Solicitud</a></li>
-      </ul>
-      <div class="tab-content bg-gray-lighter">
-        <div class="tab-pane fade active in" id="mi-depa">
-          <div class="panel-group" id="accordion">
-            <div class="panel bg-gray-lighter pt-21">
-              <div class="panel-heading">
-                <div class="panel-title">
-                  <div class="row">
-                    <div class="col-xs-1 text-center">
-                      <i class="icon-book h4"></i>
-                    </div>
-                    <div class="col-xs-8">
-                      <h4 class="uppercase mt-0 mb-0">Manual de uso y mantenimiento</h4>
-                      <p class="light mb-0">Consejos fundamentales para cuidar tu departamento todos los días</p>
-                    </div>
-                    <div class="col-xs-2 text-right">
-                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="collapsed-icon not-underline"></a>
-                    </div>
-                  </div>                
-                </div>
-              </div>
-              <div id="collapseOne" class="panel-collapse collapse in">
-                <div class="panel-body pt-0 borderless">
-                  <div class="row">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-8 pt-21">
-                      <div class="row mb-21">
-                        <div class="col-md-12">
-                          <div class="mh-350 bg-inverse"></div>
-                        </div>
-                      </div>
-                      <i class="icon-book"> </i><a href="#" class="text-success">Descargar manual</a>
-                    </div>
-                    <div class="col-md-2"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="panel bg-gray-lighter borderless">
-              <div class="panel-heading">
-                <div class="panel-title">
-                  <div class="row">
-                    <div class="col-xs-1 text-center">
-                      <i class="icon-tag h4"></i>
-                    </div>
-                    <div class="col-xs-8">
-                      <h4 class="uppercase m-0">Garantía</h4>
-                    </div>
-                    <div class="col-xs-2 text-right">
-                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="collapsed-icon not-underline"></a>
-                    </div>
-                  </div>                
-                </div>
-              </div>
-              <div id="collapseTwo" class="panel-collapse collapse">
-                <div class="panel-body pt-0 borderless">
-                  <div class="row">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-8 pt-21 light">
-                      <p>Viva GyM basa sus políticas de garantía en el código de Protección y Defensa del Consumidor (Ley 29571). En el artículo 80º del mismo se señala que el período de garantía se informa de acuerdo con los siguientes criterios:</p>
-                      <p><span class="medium">(i)</span> Si son componentes o materiales, de acuerdo a lo establecido por el proveedor de los mismos</p>
-                      <p><span class="medium">(ii)</span> Si son aspectos estructurales, como mínimo cinco (5) años desde emitido el certificado de finalización de obra y recepción de obra por parte de la municipalidad.</p>
-                      <p>Viva GyM ofrece la siguiente garantía:</p>
-                      <h5 class="uppercase">Acabados</h5>
-                      <p>Tiempo de duración: 6 meses</p>
-                      <p>Incluye daños en:</p>
-                      <ul class="list-unstyled pl-21">
-                        <li>- Pisos</li>
-                        <li>- Puertas</li>
-                        <li>- Paredes</li>
-                        <li>- Closets</li>
-                      </ul>
-                      <h5 class="uppercase">Instalaciones</h5>
-                      <p>Tiempo de duración: 6 meses</p>
-                      <p>Incluye daños en:</p>
-                      <ul class="list-unstyled pl-21">
-                        <li>- Sanitarias</li>
-                        <li>- Eléctricas</li>
-                      </ul>
-                      <h5 class="uppercase">Estructura</h5>
-                      <p>Tiempo de duración: 6 meses</p>
-                      <p>Incluye daños en:</p>
-                    </div>
-                    <div class="col-md-2"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="tab-pane fade" id="solicitudes-abiertas"> <!-- inicio solicitudes abiertas -->
-          <div class="panel-group" id="accordion2">
-            <div class="panel bg-gray-lighter pt-21">
-
-              {embed="includes/solicitudes_abiertas" }
-
-            </div>
-          </div>
-        </div> <!-- fin solicitudes abiertas -->
-        
-        <div class="tab-pane fade p-14" id="nueva-solicitud">
-          <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-8">
-              <h4 class="mb-21">¿Qué necesitas hacer?</h4>
-
-              
-
-                <div class="form-group">
-                  <select name="pago" id="nueva-solicitud-select" 
-                  class="form-control input-lg uppercase" onchange="mostrar(this)">
-                    <option value="a">Requerimiento de atención por garantía</option>
-                    <option value="b">Solicitud de documentos</option>
-
-                  </select>
-                </div>
-                <!--<div class="form-group text-right">
-                  <button type="submit" class="btn btn-lg uppercase btn-success">Ingresar</button>
-                </div>-->
-
-                <div id="garantia"> {embed="includes/atencion_garantia" } </div>
-
-                <div id="solicitud" style="display:none;"> {embed="includes/solicitud_documentos" } </div>
-   
-            </div>
-            <div class="col-md-2"></div>
-          </div>
-        </div>
-
-        
-
-      </div>
+    </div>
+    <div class="col-md-3">
+      {embed="includes/user_new_request_aside"}
     </div>
   </div>
-
 
 {embed="includes/footer"}

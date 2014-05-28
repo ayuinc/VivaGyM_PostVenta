@@ -3,6 +3,7 @@
 	$id_sol_garantia=$_GET['id_sol_garantia'];
 	$year = date('Y');
 	$month = date('m');
+	$site_url="http://162.243.222.54";
 
 	//$year = '2014';
 	//$month = '05';
@@ -15,56 +16,38 @@
 	
 		array(
 			'id' => 111,
-			'title' => "2:00 pm",
-			'start' => "$year-$month-14",
+			'title' => "21-$month-$year",
+			'start' => "$year-$month-21",
 			'color' => "#78BE20", 
 			'textColor' => "black",
-			'url' => "user_request_fixing?dia_sel=14-$month-$year&hora=2:00 pm&id_sol_garantia=$id_sol_garantia"
+			'url' => "$site_url/index.php/main/user_request_fixing/$id_sol_garantia/21-$month-$year"
 		),
 		
 		array(
 			'id' => 111,
-			'title' => "3:00 pm",
-			'start' => "$year-$month-14",
-			'color' => "#DF8822",
-			'textColor' => "black",
-			'url' => "user_request_fixing?dia_sel=14-$month-$year&hora=2:00pm&id_sol_garantia=$id_sol_garantia"
-		),
-
-		array(
-			'id' => 111,
-			'title' => "1:00 pm",
-			'start' => "$year-$month-14",
+			'title' => "28-$month-$year",
+			'start' => "$year-$month-28",
 			'color' => "#78BE20",
 			'textColor' => "black",
-			'url' => "user_request_fixing?dia_sel=14-$month-$year&hora=2:00pm&id_sol_garantia=$id_sol_garantia"
+			'url' => "$site_url/index.php/main/user_request_fixing/$id_sol_garantia/28-$month-$year"
 		),
 		
 		array(
 			'id' => 111,
-			'title' => "2:00 pm",
+			'title' => "22-$month-$year",
 			'start' => "$year-$month-22",
 			'color' => "#78BE20", 
 			'textColor' => "black",
-			'url' => "user_request_fixing?dia_sel=22-$month-$year&hora=2:00pm&id_sol_garantia=$id_sol_garantia"
+			'url' => "$site_url/index.php/main/user_request_fixing/$id_sol_garantia/22-$month-$year"
 		),
 		
 		array(
 			'id' => 111,
-			'title' => "3:00 pm",
-			'start' => "$year-$month-22",
-			'color' => "#DF8822",
-			'textColor' => "black",
-			'url' => "user_request_fixing?dia_sel=22-$month-$year&hora=2:00pm&id_sol_garantia=$id_sol_garantia"
-		),
-
-		array(
-			'id' => 111,
-			'title' => "1:00 pm",
-			'start' => "$year-$month-22",
+			'title' => "29-$month-$year",
+			'start' => "$year-$month-29",
 			'color' => "#78BE20",
 			'textColor' => "black",
-			'url' => "user_request_fixing?dia_sel=22-$month-$year&hora=2:00pm&id_sol_garantia=$id_sol_garantia"
+			'url' => "$site_url/index.php/main/user_request_fixing/$id_sol_garantia/29-$month-$year"
 		),
 
 	

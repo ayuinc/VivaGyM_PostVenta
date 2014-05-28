@@ -1,0 +1,146 @@
+{embed="includes/header"}
+
+<SCRIPT type="text/javascript">
+
+  function SwitchHiddenDiv(){
+    var evento = document.getElementById("SelectedType").options[document.getElementById("SelectedType").selectedIndex].value;
+  switch (evento){
+    case 'no': 
+  document.getElementById('casilla').style.display="none";
+  break;
+    case 'si':
+  document.getElementById('casilla').style.display="block";
+  break;
+    default:
+  alert("Unknown type");
+  }
+
+  }
+
+</SCRIPT>
+
+
+<ol class="breadcrumb">
+    <li><a href="user_dashboard">Panel de control</a></li>
+    <li class="active">Nueva solicitud</li>
+  </ol>
+
+{exp:freeform:form
+    form_name="atencion_por_garantia"
+    return="main/confirm_solicitud"
+}
+
+  <div class="row">
+    <div class="col-md-3">
+      {embed="includes/user_dashboard_aside" seccion="1"}
+    </div>
+
+    <div class="col-md-6">
+      
+      <div class="bg-white border-rounded box-shadow p-14">
+        <h4 class="uppercase medium">Nueva solicitud<br>
+        <small>Requerimiento de atención por garantía</small></h4>
+        <hr>
+        <form action="">
+          <div class="row">
+            <div class="col-md-7">
+              <div class="form-group">
+                <select name="tipo_de_problema" class="form-control select-override">
+                  <option value="">Tipo de Problema</option>
+                  <option value="Pisos">Pisos</option>
+                  <option value="Paredes">Paredes</option>
+                  <option value="Instalaciones eléctricas">Instalaciones eléctricas</option>
+                  <option value="Instalaciones sanitarias">Instalaciones sanitarias</option>
+                  <option value="Carpintería metálica">Carpintería metálica</option>
+                  <option value="Carpintería de madera">Carpintería de madera</option>
+                </select>
+
+              </div>
+            </div>
+            <div class="col-md-5">
+              <!--<div class="form-group">
+                <select name="ubicacion" id="nueva-solicitud-select" class="form-control select-override">
+                  <option value="">Ubicación</option>
+                  <option value="Techos">Techos</option>
+                  <option value="Paredes">Paredes</option>
+                  <option value="Pasillos">Pasillos</option>
+                  <option value="Puertas">Puertas</option>
+                  <option value="Ventanas">Ventanas</option>
+                </select>
+              </div>-->
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <textarea name="descripcion_problema" class="form-control" rows="4" placeholder="Describe aquí el problema. Por favor se lo más específico posible detallando lo ocurrido."></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mt-14">
+            <div class="col-md-7">
+              <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+
+                Adjuntar foto: Max. 2mb.
+                {freeform:field:foto_problema show="1" attr:class="fileinput"}
+                <!--<input type="file" name="foto_problema">-->
+
+              </div>
+            </div>
+          </div>
+
+         <!-- <div class="row mt-14">
+            <div class="col-md-7">
+              <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                <div class="form-control" data-trigger="fileinput">
+                  <i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span>
+                </div>
+                <span class="input-group-addon btn btn-default btn-file">
+                  <span class="fileinput-new"><i class="icon-camera"></i></span>
+                  <span class="fileinput-exists">Cambiar</span>
+                  <input type="file" name="foto_problema">
+                </span>
+                <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Quitar</a>
+              </div>
+            </div>
+          </div>-->
+
+          <div class="row mt-14">
+            <div class="col-md-7">
+              <p>¿El daño involucra a otro departamento?</p>
+              <div class="form-group">
+                <select name="dano_otro_departamento" id='SelectedType' onchange="SwitchHiddenDiv()" class="form-control select-override">
+                  <option value="no" >No</option>
+                  <option value="si" >Sí</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-14" id="casilla" style="display:none;">
+            <div class="col-md-9">
+              <p>¿Qué departamento?</p>
+              <div class="form-group" >
+                <input type="text" placeholder="Número del departamento" name="nro_otro_departamento_afectado" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="form-group" >
+
+            <input type="hidden" name="etapa_solicitud" value="1" >
+              {exp:member:custom_profile_data}
+              <input type="hidden" name="departamento_en_consulta" value="{cod_depa}" >
+              {/exp:member:custom_profile_data}
+              <input type="hidden" name="email" value="{email}" >
+              <input type="hidden" name="id_cliente" value="{member_id}" >
+              <input type="submit" name="submit" class="btn uppercase btn-success" value="Procesar">
+
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+  
+{/exp:freeform:form}
+{embed="includes/footer"}

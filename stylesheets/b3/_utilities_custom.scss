@@ -46,17 +46,100 @@
   .pl-#{$o*7} {
     padding-left: em($o*7)!important;
   }
+  @media only screen and (max-width: $screen-phone) and (max-width: $screen-tablet) {
+    @if $o == 0 {
+      .pl-0 {
+        padding-left: 14px!important;
+      }
+    }
+  }
 }
 
 @for $p from -7 to 11 {
   .pr-#{$p*7} {
     padding-right: em($p*7)!important;
   }
+  @media only screen and (max-width: $screen-phone) and (max-width: $screen-tablet) {
+    @if $p == 0 {
+      .pr-0 {
+        padding-right: 14px!important;
+      }
+    }
+  }
 }
 
 @for $q from -7 to 11 {
   .p-#{$q*7} {
     padding: em($q*7)!important;
+  }
+  @media only screen and (max-width: $screen-phone) and (max-width: $screen-tablet) {
+    @if $q == 0 {
+      .p-0 {
+        padding: 14px!important;
+      }
+    }
+  }
+}
+
+// Margins PERCENTAGE
+@for $h from 1 to 11 {
+  .m-#{$h*7}-100 {
+    margin: percentage(($h*0.07)) !important;
+  }
+}
+
+@for $i from 1 to 11 {
+  .mt-#{$i*7}-100 {
+    margin-top: percentage(($i*0.07)) !important;
+  }
+}
+
+@for $j from 1 to 11 {
+  .mb-#{$j*7}-100 {
+    margin-bottom: percentage(($j*0.07)) !important;
+  }
+}
+
+@for $k from 1 to 11 {
+  .ml-#{$k*7}-100 {
+    margin-left: percentage(($k*0.07)) !important;
+  }
+}
+
+@for $l from 1 to 11 {
+  .mr-#{$l*7}-100 {
+    margin-right: percentage(($l*0.07)) !important;
+  }
+}
+
+// Paddings PERCENTAGE
+@for $m from 1 to 11 {
+  .pt-#{$m*7}-100 {
+    padding-top: percentage($m*0.07)!important;
+  }
+}
+
+@for $n from 1 to 11 {
+  .pb-#{$n*7}-100 {
+    padding-bottom: percentage($n*0.07)!important;
+  }
+}
+
+@for $o from 1 to 11 {
+  .pl-#{$o*7}-100 {
+    padding-left: percentage($o*0.07)!important;
+  }
+}
+
+@for $p from 1 to 11 {
+  .pr-#{$p*7}-100 {
+    padding-right: percentage($p*0.07)!important;
+  }
+}
+
+@for $q from 1 to 11 {
+  .p-#{$q*7}-100 {
+    padding: percentage($q*0.07)!important;
   }
 }
 
@@ -269,8 +352,8 @@
   position: relative;
   text-indent: 1px;
   text-overflow: "";
-  &.input-lg {
+  &.form-control {
     line-height: 28px;
-    background: white url(/img/arrow-down.svg) no-repeat 98%;
+    background: white url(http://162.243.222.54/images/arrow-down.svg) no-repeat 98%;
   }
 }

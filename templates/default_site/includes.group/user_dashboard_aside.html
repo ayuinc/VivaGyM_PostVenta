@@ -1,25 +1,14 @@
 
-  {exp:member:custom_profile_data}
-  <img src="{site_url}/images/apt1.jpg" class="img-responsive">
-  <h4 class="uppercase">Mi Departamento</h4>
-  <p>Parque Central Club Residencial.<br><span class="light">Colonia Presbítero García Villón cdra. 6 s/n, cdra 5 de Av. Óscar Benavides (ex.colonial)</span></p>
-  <p>Torre <span class="light">A</span></p>
-  <p>Departamento <span class="light">502</span></p>
-  <p>Fecha de entrega del departamento<br><span class="light">20-12-2013</span></p>
-  <hr>
-  <h4 class="uppercase">Datos del propietario</h4>
-  <p>Inquilino<br><span class="light">{nombre_propietario}</span></p>
-  <p>Teléfono<br><span class="light">{t_fijo}</span></p>
-  <p>E-MAIL<br><span class="light">{email}</span></p>
-  <hr>
-  <div class="viva-alert viva-alert-warning viva-alert-aside hidden-xs hidden-sm">
-    <div class="clearfix">
-      <div class="col-md-2 viva-icon-wrapper">
-        <i></i>
-      </div>
-      <div class="col-md-10">
-        <p>Entérate aquí de las últimas novedades de Viva GyM</p>
-      </div>
-    </div>
+<div class="bg-white border-rounded box-shadow p-14">
+<?php $sec_var="{embed:seccion}"; ?>
+  <img src="{site_url}images/apt1.jpg" class="img-responsive img-thumbnail">
+  <div class="text-center mt-14">
+    <p class="medium m-0">Los Parques de San Martín de Porres</p>
   </div>
-  {/exp:member:custom_profile_data}
+  <div class="list-group mt-21 mb-0">
+    <a href="{site_url}index.php/main/user_dashboard" class="list-group-item <?php if($sec_var==1){echo 'active';} ?>"><i class="icon-docs"></i> Mis solicitudes</a>
+    <a href="{site_url}index.php/main/user_apartment_show" class="list-group-item <?php if($sec_var==2){echo 'active';} ?>"><i class="icon-house"></i> Mi departamento</a>
+    <a href="{site_url}index.php/main/user_profile_show" class="list-group-item <?php if($sec_var==3){echo 'active';} ?>"><i class="icon-user"></i> Mi perfil</a>
+    <a href="{site_url}index.php/main/" class="list-group-item <?php if($sec_var==4){echo 'active';} ?>"><i class="icon-bell"></i> Mis notificaciones</a>
+  </div>
+</div>

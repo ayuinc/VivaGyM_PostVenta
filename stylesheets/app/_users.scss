@@ -1,3 +1,14 @@
+// USERS HOME
+#home {
+  width: 100%;
+  min-height: 768px;
+  background: url(http://162.243.222.54/images/home.jpg) no-repeat top center;
+  background-size: 100%;
+  @media only screen and (max-width: $screen-phone) and (max-width: $screen-tablet) {
+    background-size: auto;
+  }
+}
+
 // User TOP NAV
 #user-profile-pic {
   width: 50px;
@@ -99,7 +110,11 @@
 
 // User SETUP Form-Group Propietario
 .form-group-invisible {
-  padding: 25px;
+  padding: 18px;
+}
+
+.fileinput {
+  width: 100%;
 }
 
 // User Dashboard TAB-PANE "Mi DEPA"
@@ -114,5 +129,17 @@
         content: "\e6d6";
       }
     }
+  }
+}
+
+
+// USERS PROFILE 
+.input-blank {
+  @include appearance(none);
+  @include box-shadow(none);
+  border: none;
+  &:focus {
+    border: none;
+    @include box-shadow(none);
   }
 }

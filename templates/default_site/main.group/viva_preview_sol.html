@@ -1,0 +1,181 @@
+{embed="includes/header" }
+
+<?php 
+
+$entry_id=$_GET['entry_id'];
+$id_sol_garantia=$_GET['id_sol_garantia'];
+$paso=$_GET['paso'];
+$id_cliente=$_GET['id_cliente'];
+
+if($paso=="4") { $titulo="Asignar Inspector";
+$texto="Seleccione la persona encargada de la inspección";
+}
+
+if($paso=="8") { $titulo="Asignar Personal";
+$texto="Seleccione la persona encargada de ejecutar el arreglo";
+}
+
+$result=mysql_query("SELECT * FROM exp_members WHERE member_id=$id_cliente");
+$obten=mysql_fetch_row($result);
+$screen_name = $obten[3];
+
+$resultb=mysql_query("SELECT * FROM exp_member_data WHERE member_id=$id_cliente");
+$obtenb=mysql_fetch_row($resultb);
+$m_field_id_5 = $obtenb[6]; //telefono
+
+$resultc=mysql_query("SELECT * FROM exp_freeform_form_entries_2 WHERE entry_id=$id_sol_garantia");
+$obtenc=mysql_fetch_row($resultc);
+$entry_date = $obtenc[5]; //fecha
+$desc_problema = $obtenc[15]; //resumen problema
+$ubic_problema = $obtenc[16]; //ubicacion problema
+$foto = $obtenc[11]; //foto
+$detalles = $obtenc[20]; //fecha
+
+ ?>
+ 
+<div class="row mb-14">
+    <div class="col-xs-3 col-xs-offset-2">
+      <a href="#"><img src="{site_url}images/logo-viva.png" style="width:50%; height: auto;"></a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+      <ul class="nav nav-tabs nav-justified uppercase">
+        <li class="active">
+          <a href="#inspeccion" data-toggle="tab">Reporte de reparación</a>
+        </li>
+
+      </ul>
+      <div class="tab-content bg-gray-lighter">
+        <div class="tab-pane fade active in" id="inspeccion">
+
+         <form method="post" enctype="multipart/form-data" name="frm" id="frm" action="viva_approve_sol" class="p-14">
+
+          <div class="p-14"> <!-- inicio form -->
+
+            <div class="form-group">
+              <div class="row">
+                <div class="col-sm-4">Nro de Ticket: <?php echo $id_sol_garantia; ?>
+                  <input type="hidden" value="<?php echo $id_sol_garantia; ?>" name="id_sol_garantia" class="uppercase form-control input-lg">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-sm-3">
+
+                  <img src="{site_url}fotos_problemas/<?php echo $foto ?>" class="img-responsive">
+                </div>
+                <div class="col-sm-9">
+                  <ul class="list-unstyled">
+                    <li class="mb-14"><strong>Estatus: </strong> <span class="text-warning">Abierto</span></li>
+                    <li class="mb-14"><strong>Propietario:</strong> <?php echo $screen_name; ?></li>
+                    <li class="mb-14"><strong>Complejo: </strong> Parque Central, Torre T. Dpto 503</li>
+                    <li class="mb-14"><strong>Teléfono: </strong> <?php echo $m_field_id_5; ?></li>
+                    <li class="mb-14"><strong>Fecha de apertura:</strong> <?php echo $entry_date; ?></li>
+                    <li class="mb-14"><strong>Caso:</strong> <?php echo $detalles; ?> </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+            <div class="col-md-7">
+              <div class="form-group">Tipo de problema
+                <input type="text" placeholder="Tipo de Problema" name="tipo_de_problema" value="<?php echo $desc_problema; ?>" class="uppercase form-control input-lg" readonly="readonly">
+              </div>
+            </div>
+            <div class="col-md-5">
+              <div class="form-group">Ubicación
+
+                  <input type="text" name="ubicacion" value="<?php echo $ubic_problema; ?>" class="uppercase form-control input-lg" readonly="readonly">           
+
+              </div>
+            </div>
+
+            </div>
+
+            <!--<div class="form-group"> 
+
+              <div class="row">
+                <div class="col-sm-6">
+                  <p>Cargar archivo: </p>
+                  <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+
+                    {freeform:field:informe_inspeccion}
+
+                    <input type="file" name="informe_inspeccion">
+
+                    {freeform:field:informe_inspeccion show="1"}
+                    <div class="form-control" data-trigger="fileinput">
+                      <i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span>
+                    </div>
+                    <span class="input-group-addon btn btn-default btn-file">
+                      <span class="fileinput-new"><i class="icon-camera"></i></span>
+                      <span class="fileinput-exists">Cambiar</span>
+                      <input type="file" name="imagen">
+
+                    </span>
+                    <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Quitar</a>
+
+                  </div>
+                </div>
+              </div>-->
+
+            </div>
+
+            <!--<div class="form-group">
+              <textarea name="comentarios" id="" rows="7" class="form-control" placeholder="Nota">
+              {freeform:edit_data:comentarios}</textarea>
+              <p class="help-block text-right text-warning">Máximo 250 caracteres</p>
+            </div>-->
+
+            <div class="form-group">
+              <div class="row">
+                <div class="col-sm-6">
+                  <p class="text-center pt-14">Procede la inpección?</p>
+                </div>
+                <div class="col-sm-6">
+                  <select name="aprobar_paso" id="" class="form-control input-lg select-override">
+                    <option value="">Seleccione</option>
+                    <option value="si">Sí</option>
+                    <option value="no">No</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <textarea name="comentarios" id="" rows="7" class="form-control" placeholder="En caso No proceda la inpección por favor detallar las razones, este texto sera enviado en un correo al usuario."></textarea>
+              <p class="help-block text-right text-warning">Máximo 250 caracteres</p>
+            </div>
+
+            <div class="text-right">
+
+              <!--<input type="text" name="departamento_en_consulta" value="{cod_depa}" >
+              <input type="text" name="email" value="{email}" >-->
+
+
+              <input type="hidden" name="status" value="closed" >
+
+              <input type="hidden" name="id_cliente" value="<?php echo $id_cliente; ?>" >
+
+              <input type="text" name="id_sol_garantia" value="<?php echo $id_sol_garantia; ?>" >
+
+              <input type="hidden" name="paso" value="<?php echo $paso; ?>" >
+
+              <input type="hidden" name="XID" value="{XID_HASH}" />
+
+              <input type="submit" class="btn btn-lg uppercase btn-success" name="submit" value="Procesar" />
+
+            </div>
+          </form> <!-- ex form-->
+
+        </div>
+        
+      </div>
+    </div>
+    <div class="col-sm-2"></div>
+  </div>
