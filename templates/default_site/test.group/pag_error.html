@@ -1,33 +1,74 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
 
-{embed="includes/header"}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-{form_declaration}
+    <title>{site_name}</title>
+    <link rel="stylesheet" type="text/css" href="http://162.243.222.54/stylesheets/viva.css" media="screen" />
+    
+    <script type="text/javascript" src="http://162.243.222.54/lib/b3/jquery-2_1_1.js"></script>
+    <script type="text/javascript" src="http://162.243.222.54/lib/b3/tab.js"></script>
+    <script type="text/javascript" src="http://162.243.222.54/lib/b3/transition.js"></script>
+    <script type="text/javascript" src="http://162.243.222.54/lib/b3/collapse.js"></script>
+    <script type="text/javascript" src="http://162.243.222.54/lib/vendor/fileinput.js"></script>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
+    <!-- FAVICON -->
+    <link rel="shortcut icon" href="http://162.243.222.54/img/favicon.ico">
 
-	<table class="tableborder" cellpadding="0" cellspacing="0" border="0" style="width:560px;" align="center">
-	<tr>
-		<td class="profileHeadingBG" colspan="2">
-			<div class="tableHeading">{lang:mbr_reset_password}</div>
-		</td>
-		<td class="tableCellOne" colspan="2">
-		
-			<p>
-			<label for="password">{lang:mbr_password}</label> 
-			<input type="password" name="password" value="" class="input" maxlength="50" size="40" style="width:100%" />
-			</p>
-			
-			<p>
-			<label for="password_confirm">{lang:mbr_password_confirm}</label> <input type="password" name="password_confirm" value="" class="input" maxlength="50" size="40" style="width:100%" />
-			</p>
-			
-			<p><input type="submit" value="{lang:submit}" class="submit" /></p>
-		</td>
-	</tr>
-	</table>
-  </div>
-</div>
+    <!-- WebFonts  -->
+    <script type="text/javascript" src="//use.typekit.net/jfc4vgc.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
-</form>
-{embed="includes/footer"}
+  </head>
+  <body>
+  <header class="bg-inverse text-muted">
+    <div class="container-fluid pt-7 pb-7">
+      <div class="row">
+        <div class="col-md-4">
+          <a href="http://162.243.222.54/index.php/main/user_select"><img src="http://162.243.222.54//images/logo-viva.png" style="width:120px; height: auto;"></a>
+        </div>
+        <div class="col-md-8 hidden-xs">
+          <div class="row">
+            <div class="col-xs-11 col-md-11 col-sm-11 text-right">
+            </div>
+            <div class="col-xs-1 col-md-1 col-sm-1">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="container-fluid pt-35 pb-35 mh-630">
+	
+	
+	<div class="row">
+	  <div class="col-md-3"></div>
+	  <div class="col-md-6 col-md-offset-3">
+		  <h1>{heading}</h1>
+		  {content}
+		  <p>{link}</p>	  
+	  </div>
+	  <div class="col-md-3"></div>
+	</div>
+	
+   </div>
+   <footer class="bg-inverse">
+	    <div class="container-fluid">
+	      <div class="row pt-14 pb-14 text-center">
+	        <div class="col-md-3 pt-7">
+	          <p class="small">Copyright 2012. VivaGyM.<br>Todos los derechos reservados</p>
+	        </div>
+	        <div class="col-md-3 pt-14">
+	          <a href="#" class="text-gray">Libro de reclamaciones</a>
+	        </div>
+	        <div class="col-md-3 pt-14">
+	          <a href="#" class="uppercase text-gray">Preguntas frecuentes </a> <i class="icon-help"></i>
+	        </div>
+	        <div class="col-md-3 pt-14">
+	          <a href="#"  class="uppercase text-gray">Emergencia </a> <i class="icon-warning"></i>
+	        </div>
+	      </div>
+	    </div>
+	</footer>

@@ -19,7 +19,18 @@
     <tr>
       <td><?php echo $id_sol_garantia="{freeform:entry_id}"; ?></td>
       <td>{freeform:field:descripcion_problema}</td>
-      <td><span class="label label-primary">{freeform:status}</span></td>
+      <td><?php $var_est="{freeform:status}"; 
+          switch ($var_est) {
+            case "pending":
+                echo "<span class='label label-default'>Cancelado</span>";
+                break;
+            case "open":
+                echo "<span class='label label-danger'>Pendiente</span>";
+                break;
+            case "closed":
+                echo "<span class='label label-default'>Realizado</span>";
+                break;
+        }; ?></td>
       <td class="text-center"><a href="<?php echo "user_request_show/$id_sol_garantia"; ?>" class="underline">Ver detalle</a></td>
     </tr>
 
