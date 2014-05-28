@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>		<html class="no-js ie6"> <![endif]-->
+<!--[if IE 7]>			<html class="no-js ie7"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie8"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html class="no-js"> <!--<![endif]-->
+	<head lang="en">
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>Control Panel | Calendar | Solspace Addon Documentation</title>
+		<meta name="description" content="" />
+		<meta name="copyright" content="(c) 2010 Copyright content: Copyright design: Solspace, Inc."/>
+		<meta name="viewport" content="width=device-width" />
+		<link rel="stylesheet" href="assets/css/normalize.css" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="assets/fancybox/jquery.fancybox-1.3.4.css" />
+		<link href="assets/syntaxhighlighter/styles/shCore.css" rel="stylesheet" type="text/css" />
+		<link href="assets/syntaxhighlighter/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+		<script src="assets/js/modernizr.min.js"></script>
+	</head>
+	<body>
+		<!--[if lt IE 8]>
+			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+		<![endif]-->
+
+		<header>
+			<div class="header-inner">
+				<div class="logo">
+					<img src="assets/images/logo.png" />
+				</div>
+
+				<div class="bread_crumbs">
+					<ul class="crumbs">
+						<li class="first"><a href="index.html">Calendar</a></li>
+						<li>Control Panel</li>
+					</ul>
+				</div>
+			</div>
+		</header>
+
+		<div class="content-wrapper">
+			<nav class="toc">
+				<ul>
+<li><a href="http://www.solspace.com/software/detail/calendar/">More Info | Purchase</a></li>
+<li><a href="change_log.html">Change Log</a></li>
+<li><a href="install_update.html">Install / Update</a></li>
+<li><a href="getting_started.html">Getting Started</a></li>
+<li class="current"><a href="control_panel.html">Control Panel</a></li>
+<li><a href="cp_ui.html">CP Publish UI</a></li>
+<li><a href="date_formatting.html">Date Parameter Formatting</a></li>
+<li><a href="group_permissions.html">Group Permissions</a></li>
+<li><a href="channel_form.html">Using with Channel Form</a></li>
+<li><p><a href="extension_hooks.html">Extension Hooks</a></p></li>
+<li class="template_tags"><h3>Template Tags</h3>
+
+<ul>
+<li><a href="calendar.html">Cal</a></li>
+<li><a href="calendars.html">Calendars</a></li>
+<li><a href="date.html">Date</a></li>
+<li><a href="day.html">Day</a></li>
+<li><a href="events.html">Events</a></li>
+<li><a href="icalendar.html">iCalendar</a></li>
+<li><a href="ics_update.html">ICS Update</a></li>
+<li><a href="mini.html">Mini Calendar</a></li>
+<li><a href="month.html">Month</a></li>
+<li><a href="month_list.html">Month List</a></li>
+<li><a href="occurrences.html">Occurrences</a></li>
+<li><a href="week.html">Week</a></li>
+<li><a href="year_list.html">Year List</a></li>
+</ul></li>
+<li><h3>Requirements</h3><div class="requirements">
+
+<ul>
+<li>EE 2.5.x - 2.8.x</li>
+<li>PHP 5.2+</li>
+<li>MySQL 5+</li>
+</ul></div></li>
+</ul>
+			</nav>
+
+			<article class="docs">
+				<p>The Calendar module Control Panel area allows you to view calendars,
+events and occurrences, as well as adjust preferences.</p>
+
+<ul>
+<li><a href="#calendars">Calendars</a></li>
+<li><a href="#events">Events</a></li>
+<li><a href="#permissions">Permissions</a></li>
+<li><a href="#preferences">Preferences</a></li>
+<li><a href="#demo_templates">Demo Templates</a></li>
+<li><a href="#documentation">Documentation</a></li>
+</ul>
+
+<p><a name="calendars"></a></p>
+
+<h2>Calendars</h2>
+
+<p>This tab displays a list of all existing Calendars you've created with
+the Calendar module. Calendars are just channel entries - to create a
+new one, just create a new channel entry in the Calendar: Calendars
+channel.</p>
+
+<p><a href="images/calendar_cp_1.jpg"><img src="images/calendar_cp_1.jpg" alt="" /></a></p>
+
+<p><a name="events"></a></p>
+
+<h2>Events</h2>
+
+<p>This tab displays a list of all existing events for your Calendars.
+Events are just channel entries - to create a new one, just create a new
+channel entry in the Calendar: Events channel. To edit one, use either
+the Edit tab in the ExpressionEngine control panel, or click on an event
+in the Events list tab of the Calendar module CP area.</p>
+
+<p><a href="images/calendar_cp_2.jpg"><img src="images/calendar_cp_2.jpg" alt="" /></a></p>
+
+<p><a name="permissions"></a></p>
+
+<h2>Permissions</h2>
+
+<p>This tab allows you to control member group permissions for each
+calendar and member group. For more information on permissions, please
+see <a href="group_permissions.html">Group Permissions</a> documentation.</p>
+
+<p><a href="images/calendar_cp_4.jpg"><img src="images/calendar_cp_4.jpg" alt="" /></a></p>
+
+<p><a name="preferences"></a></p>
+
+<h2>Preferences</h2>
+
+<p>This tab allows you to control a variety of settings for your site in
+regards to Calendar data. You can modify which day is to be the first
+day of the week, the clock type (12/24 hour), timezone, and time
+formatting.</p>
+
+<p><a href="images/calendar_cp_3.jpg"><img src="images/calendar_cp_3.jpg" alt="" /></a></p>
+
+<p><a name="demo_templates"></a></p>
+
+<h2>Demo Templates</h2>
+
+<p>If you wish to load the demo templates for Calendar, go to this tab. Then just create a prefix name for the sample data such as <em>test&#95;</em> or <em>calendar&#95;</em>, and click the <strong>Install Demo Templates</strong> button.</p>
+
+<p><a name="documentation"></a></p>
+
+<h2>Documentation</h2>
+
+<p>All documentation is available on the Solspace site. This tab will take
+you directly to the Solspace site documentation area.</p>
+			</article>
+		</div>
+
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shCore.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shAutoloader.js"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
+</html>

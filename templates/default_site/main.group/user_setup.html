@@ -1,10 +1,12 @@
 {embed="includes/header" }
+<script src='{site_url}lib/user_setup.js'></script>
+
 
   <div class="row">
     <!-- BEGIN FORM -->
       {exp:user:edit }
-      <div class="col-md-3">
-        <div class="fileinput fileinput-new box-shadow bg-white border-rounded" data-provides="fileinput">
+      <div class="col-sm-2">
+        <!-- <div class="fileinput fileinput-new box-shadow bg-white border-rounded" data-provides="fileinput">
           <div class="fileinput-new thumbnail text-center">
             <img data-src="{site_url}images/user.jpg" alt="..." src="{site_url}images/user.jpg" class="img-responsive">
           </div>
@@ -22,17 +24,18 @@
               <i class="icon-camera"></i>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
 
       {/exp:user:edit }
 
       <!-- {exp:user:edit return="main/user_dashboard" } -->
 
-      <div class="col-md-9">
+      <div class="col-sm-8">
         <!-- EDIT -->
         <h4 class="bold">Bienvenido al nuevo portal de posventa de Viva GyM</h4>
-        <p>En Viva GyM hemos creado una plataforma web para que sea fácil cuidar de tu depa todos los días. A través de esta plataforma podrás canalizar de manera rápida y efectiva los arreglos de tu depa cubiertos por tu garantía. Empieza completando tu perfil.</p>
+        <p>En Viva GyM hemos creado una plataforma web para que sea fácil cuidar de tu depa todos los días. A través de esta plataforma podrás canalizar de manera rápida y efectiva los arreglos de tu depa cubiertos por tu garantía.</p>
+        <strong>Empieza completando tu perfil:</strong>
         <!-- <div class="bg-white border-rounded box-shadow p-14">
           <h4 class=" text-warning">Cambia de clave</h4>          
           <div class="row">
@@ -89,96 +92,110 @@
         {exp:user:edit return="main/user_dashboard"}
           <input type="hidden" name="logged_in_member_id" value="{logged_in_member_id}">
         {exp:member:custom_profile_data}
+        
+        <div class="row" id="#user-setup">
+          <div class="col-sm-8">
+            <div class="bg-white border-rounded box-shadow mt-21 p-14">
+              <h4 class=" text-warning">Datos del Propietario - <small>(<span class="text-danger">*</span>) Campo obligatorio</small></h4>              
+              <div class="row mt-14">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="nombre_propietario">Nombre <sup class="text-danger">*</sup></label>
+                    <input type="text" class="form-control " placeholder="* Nombre" name="nombre_propietario" value="{nombre_propietario}">
+                  </div>
+                  <div class="form-group">
+                    <label for="ap_pat">Apellido paterno <sup class="text-danger">*</sup></label>
+                    <input type="text" class="form-control " placeholder="* Apellido paterno" name="ap_pat" value="{ap_pat}">
+                  </div>
+                  <div class="form-group">
+                    <label for="t_cel">Teléfono celular<sup class="text-danger">*</sup></label>
+                    <input type="text" class="form-control " placeholder="* Teléfono celular" name="t_cel" value="{t_cel}">
+                  </div>
+                  <div class="form-group">
+                    <label for="t_fijo">Teléfono fijo</label>
+                    <input type="text" class="form-control " placeholder="Teléfono fijo" name="t_fijo" 
+                    value="{t_fijo}">
+                  </div>
+                  {/exp:member:custom_profile_data} 
 
-        <div class="bg-white border-rounded box-shadow mt-21 p-14">
-          <div class="row">
-            <div class="col-md-6">
-              <h4>¿El departamento es alquilado?</h4>
+                </div>
+                {exp:member:custom_profile_data}
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="ap_mat">Apellido materno <sup class="text-danger">*</sup></label>
+                    <input type="text" class="form-control " placeholder="* Apellido materno" name="ap_mat" value="{ap_mat}">
+                  </div>
+                  <div class="form-group">
+                    <label for="email">E-mail <sup class="text-danger">*</sup></label>
+                    <input type="email" class="form-control " placeholder="* E-mail" name="email" value="{email}">
+                  </div>
+                  <div class="form-group">
+                    <label for="t_ofic">Teléfono oficina</label>
+                    <input type="text" class="form-control " placeholder="Teléfono oficina" name="t_ofic" value="{t_ofic}">
+                  </div>
+                  <div class="form-group">
+                    <label for="t_conyu">Teléfono cónyuge</label>
+                    <input type="text" class="form-control " placeholder="Teléfono cónyuge" name="t_conyu" value="{t_conyu}">
+                  </div> 
+                </div>
+               {/exp:member:custom_profile_data} 
+              </div>
             </div>
-            <div class="col-md-6">
+            <div class="bg-white border-rounded box-shadow mt-21 p-14 hidden datos-inquilino">
+              <h4 class=" text-warning">Datos del Inquilino</h4>
+              <small class="help-block">Por favor completa los siguientes datos del inquilino del departamento:</small>
+              <span><sup class="text-danger h5">*</sup>Campo obligatorio</span>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="ap_pat_inq">Apellido paterno <sup class="text-danger">*</sup></label>
+                    <input type="text" class="form-control " placeholder="* Apellido paterno" name="ap_pat_inq" value="{ap_pat_inq}">
+                  </div>
+                  <div class="form-group">
+                    <label for="telf_inq">Teléfono</label>
+                    <input type="text" class="form-control " placeholder="Telefono" name="telf_inq" value="{telf_inq}">
+                  </div>
+                  <div class="form-group">
+                    <label for="email_inquilino">E-mail <sup class="text-danger">*</sup></label>
+                    <input type="email" class="form-control " placeholder="* E-mail" name="email_inquilino" 
+                    value="{email_inquilino}">
+
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="ap_pat_inq">Apellido materno <sup class="text-danger">*</sup></label>
+                    <input type="text" class="form-control " placeholder="* Apellido materno" name="ap_mat_inq" value="{ap_mat_inq}">
+                  </div>
+                  <div class="form-group">
+                    <label for="telf_cel_inq">Teléfono celular <sup class="text-danger">*</sup></label>
+                    <input type="text" class="form-control " placeholder="* Teléfono celular" name="telf_cel_inq" value="{telf_cel_inq}">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="bg-white border-rounded box-shadow mt-21 p-14">
+              <h4>¿El departamento es alquilado?</h4>
               <div class="form-group"><?php $prop={propietario}; ?>
-                <select name="propietario" class="form-control  select-override">
-                  <option value="Si" <?php if($prop=="Si"){echo "selected";}; ?> >Si</option>
-                  <option value="No" <?php if($prop=="No"){echo "selected";}; ?> >No</option>
+                <select name="propietario" class="form-control select-override option-select">
+                  <option value="default">Selecciona una opción</option>
+                  <option value="Si" <?php // if($prop=="Si"){echo "selected";}; ?> >Si</option>
+                  <option value="No" <?php // if($prop=="No"){echo "selected";}; ?> >No</option>
                 </select>
               </div>
-            </div>
-          </div>        
-          <p>Por favor completa los siguientes datos del inquilino del departamento:</p>
-          <p><sup class="text-danger h5">*</sup>Campo obligatorio</p>
-
-          <div class="hidden">
-            <h4 class=" text-warning mt-21">Datos del Propietario</h4>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <input type="text" class="form-control " placeholder="* Apellido paterno" name="ap_pat_inq" value="{ap_pat_inq}">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control " placeholder="Telefono" name="telf_inq" value="{telf_inq}">
-                </div>
-                <div class="form-group">
-                  <input type="email" class="form-control " placeholder="* E-mail" name="email_inquilino" 
-                  value="{email_inquilino}">
-
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <input type="text" class="form-control " placeholder="* Apellido materno" name="ap_mat_inq" value="{ap_mat_inq}">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control " placeholder="* Teléfono celular" name="telf_cel_inq" value="{telf_cel_inq}">
-                </div>
+              <div class="text-right hidden button-submit">
+                <input type="submit" class="btn uppercase btn-success form-control" value="Procesar" />
               </div>
             </div>
-          </div>
-        </div>
-        <div class="bg-white border-rounded box-shadow mt-21 p-14 hidden">
-          <h4 class=" text-warning mt-21">Datos del inquilino</h4>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <input type="text" class="form-control " placeholder="* Nombre" name="nombre_propietario" value="{nombre_propietario}">
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control " placeholder="* Apellido paterno" name="ap_pat" value="{ap_pat}">
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control " placeholder="Teléfono fijo" name="t_fijo" 
-                value="{t_fijo}">
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control " placeholder="Teléfono cónyuge" name="t_conyu" value="{t_conyu}">
-              </div>
-              {/exp:member:custom_profile_data} 
-              <div class="form-group">
-                <input type="email" class="form-control " placeholder="* E-mail" name="email" value="{email}">
-              </div>
-
-            </div>
-            {exp:member:custom_profile_data}
-            <div class="col-md-6">
-              <div class="form-group form-group-invisible hidden-sm hidden-xs"></div>
-              <div class="form-group">
-                <input type="text" class="form-control " placeholder="* Apellido materno" name="ap_mat" value="{ap_mat}">
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control " placeholder="* Teléfono celular" name="t_cel" value="{t_cel}">
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control " placeholder="Teléfono oficina" name="t_ofic" value="{t_ofic}">
-              </div>
-            </div>
-           {/exp:member:custom_profile_data} 
-          </div>
-          <div class="text-right">
-            <input type="submit" class="btn uppercase btn-success" value="Procesar" />
           </div>
         </div>
 
         {/exp:user:edit}
       </div>
+
+      <div class="col-sm-2"></div>
     
     <!-- END FORM -->
   </div>

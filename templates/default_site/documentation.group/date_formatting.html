@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>		<html class="no-js ie6"> <![endif]-->
+<!--[if IE 7]>			<html class="no-js ie7"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie8"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html class="no-js"> <!--<![endif]-->
+	<head lang="en">
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>Date Parameter Formatting | Calendar | Solspace Addon Documentation</title>
+		<meta name="description" content="" />
+		<meta name="copyright" content="(c) 2010 Copyright content: Copyright design: Solspace, Inc."/>
+		<meta name="viewport" content="width=device-width" />
+		<link rel="stylesheet" href="assets/css/normalize.css" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="assets/fancybox/jquery.fancybox-1.3.4.css" />
+		<link href="assets/syntaxhighlighter/styles/shCore.css" rel="stylesheet" type="text/css" />
+		<link href="assets/syntaxhighlighter/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+		<script src="assets/js/modernizr.min.js"></script>
+	</head>
+	<body>
+		<!--[if lt IE 8]>
+			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+		<![endif]-->
+
+		<header>
+			<div class="header-inner">
+				<div class="logo">
+					<img src="assets/images/logo.png" />
+				</div>
+
+				<div class="bread_crumbs">
+					<ul class="crumbs">
+						<li class="first"><a href="index.html">Calendar</a></li>
+						<li>Date Parameter Formatting</li>
+					</ul>
+				</div>
+			</div>
+		</header>
+
+		<div class="content-wrapper">
+			<nav class="toc">
+				<ul>
+<li><a href="http://www.solspace.com/software/detail/calendar/">More Info | Purchase</a></li>
+<li><a href="change_log.html">Change Log</a></li>
+<li><a href="install_update.html">Install / Update</a></li>
+<li><a href="getting_started.html">Getting Started</a></li>
+<li><a href="control_panel.html">Control Panel</a></li>
+<li><a href="cp_ui.html">CP Publish UI</a></li>
+<li class="current"><a href="date_formatting.html">Date Parameter Formatting</a></li>
+<li><a href="group_permissions.html">Group Permissions</a></li>
+<li><a href="channel_form.html">Using with Channel Form</a></li>
+<li><p><a href="extension_hooks.html">Extension Hooks</a></p></li>
+<li class="template_tags"><h3>Template Tags</h3>
+
+<ul>
+<li><a href="calendar.html">Cal</a></li>
+<li><a href="calendars.html">Calendars</a></li>
+<li><a href="date.html">Date</a></li>
+<li><a href="day.html">Day</a></li>
+<li><a href="events.html">Events</a></li>
+<li><a href="icalendar.html">iCalendar</a></li>
+<li><a href="ics_update.html">ICS Update</a></li>
+<li><a href="mini.html">Mini Calendar</a></li>
+<li><a href="month.html">Month</a></li>
+<li><a href="month_list.html">Month List</a></li>
+<li><a href="occurrences.html">Occurrences</a></li>
+<li><a href="week.html">Week</a></li>
+<li><a href="year_list.html">Year List</a></li>
+</ul></li>
+<li><h3>Requirements</h3><div class="requirements">
+
+<ul>
+<li>EE 2.5.x - 2.8.x</li>
+<li>PHP 5.2+</li>
+<li>MySQL 5+</li>
+</ul></div></li>
+</ul>
+			</nav>
+
+			<article class="docs">
+				<p><a name="date_formatting"></a></p>
+
+<h2>Date Formatting</h2>
+
+<p>In addition to standard EE date formatting, Calendar supports
+easy-to-use text format versions of dates for all parameters that accept
+date values. Text dates are relative to today. So for example, you can
+specify dates like this:</p>
+
+<ul>
+<li><strong>today</strong></li>
+<li><strong>tomorrow</strong></li>
+<li><strong>yesterday</strong></li>
+<li><strong>X day(s)</strong> (where X is a number of days greater than or equal to 1)</li>
+<li><strong>X week(s)</strong> (where X is a number of weeks greater than or equal to 1)</li>
+<li><strong>X month(s)</strong> (where X is a number of months greater than or equal to 1)</li>
+<li><strong>X year(s)</strong> (where X is a number of years greater than or equal to 1)</li>
+</ul>
+
+<p>So to display all events that fall within today’s date, up to 3 months in
+the future, you can do something like this:</p>
+
+<pre class="brush: html;">date_range_start="today" date_range_end="3 months" </pre>
+
+<ul>
+<li>The word <strong>ago</strong> can also be appended to refer to dates in the past. For
+example, <strong>1 week</strong> means one week from today, while <strong>1 week ago</strong> means
+one week ago.</li>
+<li><strong>+5 days</strong> / <strong>-5 days</strong> (days, weeks, months, years / begin, end)
+
+<ul>
+<li>Preceding the number with <strong>+</strong> will look into the future, while
+<strong>-</strong> into the past.</li>
+<li>The number can be any integer.</li>
+<li>Any of days, weeks, months, or years can be provided.</li>
+<li>An optional <strong>begin</strong> or <strong>end</strong> suffix may be added for weeks,
+months, and years. Doing so will adjust the date to the first or last
+day of the week, month, or year.</li>
+</ul></li>
+</ul>
+
+<p>So to display all events that fall within today’s date, up to 5 days into the
+future, you can do something like this:</p>
+
+<pre class="brush: html;">date_range_start="today" date_range_end="+5 days" </pre>
+
+<ul>
+<li><strong>YYYYMMDD</strong></li>
+<li><strong>YYYY-MM-DD</strong></li>
+<li><strong>MM-DD-YYYY</strong></li>
+<li><strong>MM/DD/YYYY</strong></li>
+<li><strong>year-month-day</strong></li>
+<li>When using either <strong>YYYY-MM-DD</strong> or <strong>MM-DD-YYYY</strong>, you may replace one
+or more of the numeric values with the literal words <em>year</em>, <em>month</em>,
+and/or <em>day</em>. Calendar will then replace that word with the relevant
+value for the current date. Examples:
+
+<ul>
+<li><em>year-12-25</em> = Christmas Day in the current year.</li>
+<li><em>2004-month-15</em> = The fifteenth day of the current month in 2004.</li>
+</ul></li>
+<li>The literal value <em>year-month-day</em> is equivalent to “today”.</li>
+<li>You may use the word “last” instead of “day”. Doing so will set the
+date to the final day of the relevant month. Examples:
+
+<ul>
+<li><em>2010-02-last</em> = February 28, 2010.</li>
+<li><em>2012-02-last</em> = February 29, 2010</li>
+<li><em>year-month-last</em> = The last day of the current month of the
+current year.</li>
+</ul></li>
+</ul>
+
+<p><a name="time_formatting"></a></p>
+
+<h2>Time Formatting</h2>
+
+<p>Calendar takes a somewhat unconventional approach to Time Formatting.
+Rather than specifying a date/time like this <em>YYYY-MM-DD HH:MM AM</em>, you
+actually need to specify it like this <em>YYYY-MM-DD @ HH:MM AM</em> (with
+<em>[space] @ [space]</em> seperating the date and the time). You can also call
+Times in a variety of formats and easy-to-use text format versions. So
+for example, you can specify dates like this:</p>
+
+<ul>
+<li><strong>@ now</strong></li>
+<li><strong>@ noon</strong></li>
+<li><strong>@ midnight</strong> (start of day, not end of day)</li>
+<li><strong>@ 0800</strong> (four digits, 24h time)</li>
+<li><strong>@ 16:00</strong> (24h time)</li>
+<li><strong>@ 8:00 am</strong> (am/pm time)</li>
+</ul>
+
+<p>So some complete formatting examples would look like:</p>
+
+<pre class="brush: html;">date_range_start="yesterday @ noon" date_range_end="today @ 5:00 pm" </pre>
+
+<pre class="brush: html;">date_range_start="today @ midnight" date_range_end="2 weeks @ 8:00 pm" </pre>
+
+<pre class="brush: html;">date_range_start="2010-02-01 @ 0800" date_range_end="2010-02-last @ 1600" </pre>
+			</article>
+		</div>
+
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shCore.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shAutoloader.js"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
+</html>

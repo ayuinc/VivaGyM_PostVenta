@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>		<html class="no-js ie6"> <![endif]-->
+<!--[if IE 7]>			<html class="no-js ie7"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie8"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html class="no-js"> <!--<![endif]-->
+	<head lang="en">
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>Events | Calendar | Solspace Addon Documentation</title>
+		<meta name="description" content="" />
+		<meta name="copyright" content="(c) 2010 Copyright content: Copyright design: Solspace, Inc."/>
+		<meta name="viewport" content="width=device-width" />
+		<link rel="stylesheet" href="assets/css/normalize.css" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="assets/fancybox/jquery.fancybox-1.3.4.css" />
+		<link href="assets/syntaxhighlighter/styles/shCore.css" rel="stylesheet" type="text/css" />
+		<link href="assets/syntaxhighlighter/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+		<script src="assets/js/modernizr.min.js"></script>
+	</head>
+	<body>
+		<!--[if lt IE 8]>
+			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+		<![endif]-->
+
+		<header>
+			<div class="header-inner">
+				<div class="logo">
+					<img src="assets/images/logo.png" />
+				</div>
+
+				<div class="bread_crumbs">
+					<ul class="crumbs">
+						<li class="first"><a href="index.html">Calendar</a></li>
+						<li>Events</li>
+					</ul>
+				</div>
+			</div>
+		</header>
+
+		<div class="content-wrapper">
+			<nav class="toc">
+				<ul>
+<li><a href="http://www.solspace.com/software/detail/calendar/">More Info | Purchase</a></li>
+<li><a href="change_log.html">Change Log</a></li>
+<li><a href="install_update.html">Install / Update</a></li>
+<li><a href="getting_started.html">Getting Started</a></li>
+<li><a href="control_panel.html">Control Panel</a></li>
+<li><a href="cp_ui.html">CP Publish UI</a></li>
+<li><a href="date_formatting.html">Date Parameter Formatting</a></li>
+<li><a href="group_permissions.html">Group Permissions</a></li>
+<li><a href="channel_form.html">Using with Channel Form</a></li>
+<li><p><a href="extension_hooks.html">Extension Hooks</a></p></li>
+<li class="template_tags"><h3>Template Tags</h3>
+
+<ul>
+<li><a href="calendar.html">Cal</a></li>
+<li><a href="calendars.html">Calendars</a></li>
+<li><a href="date.html">Date</a></li>
+<li><a href="day.html">Day</a></li>
+<li class="current"><a href="events.html">Events</a></li>
+<li><a href="icalendar.html">iCalendar</a></li>
+<li><a href="ics_update.html">ICS Update</a></li>
+<li><a href="mini.html">Mini Calendar</a></li>
+<li><a href="month.html">Month</a></li>
+<li><a href="month_list.html">Month List</a></li>
+<li><a href="occurrences.html">Occurrences</a></li>
+<li><a href="week.html">Week</a></li>
+<li><a href="year_list.html">Year List</a></li>
+</ul></li>
+<li><h3>Requirements</h3><div class="requirements">
+
+<ul>
+<li>EE 2.5.x - 2.8.x</li>
+<li>PHP 5.2+</li>
+<li>MySQL 5+</li>
+</ul></div></li>
+</ul>
+			</nav>
+
+			<article class="docs">
+				<p>The <em>Calendar:Events</em> loop outputs information about events.</p>
+
+<pre class="brush: html;">{exp:calendar:events} content {/exp:calendar:events} </pre>
+
+<ul>
+<li><a href="#parameters">Parameters</a></li>
+<li><a href="#variables">Variables</a></li>
+<li><a href="#variable_pairs">Variable Pairs</a></li>
+<li><a href="#conditionals">Conditionals</a></li>
+<li><a href="#examples">Examples</a></li>
+</ul>
+
+<p><a name="parameters"></a></p>
+
+<h2>Parameters</h2>
+
+<p>Most parameters available in the <em>Channel:Entries</em> loop are available
+here. Additionally, these are also available:</p>
+
+<ul>
+<li><a href="#author_id">author_id</a></li>
+<li><a href="#site">site</a></li>
+<li><a href="#calendar_id">calendar_id</a></li>
+<li><a href="#calendar_name">calendar_name</a></li>
+<li><a href="#category">category</a></li>
+<li><a href="#dynamic">dynamic</a></li>
+<li><a href="#event_id">event_id</a></li>
+<li><a href="#event_name">event_name</a></li>
+<li><a href="#event_limit">event_limit</a></li>
+<li><a href="#event_offset">event_offset</a></li>
+<li><a href="#date_range_start">date_range_start</a></li>
+<li><a href="#date_range_end">date_range_end</a></li>
+<li><a href="#show_days">show_days</a></li>
+<li><a href="#show_weeks">show_weeks</a></li>
+<li><a href="#show_months">show_months</a></li>
+<li><a href="#show_years">show_years</a></li>
+<li><a href="#orderby">orderby</a></li>
+<li><a href="#paginate">paginate</a></li>
+</ul>
+
+<p><a name="author_id"></a></p>
+
+<h3>author_id=</h3>
+
+<pre class="brush: html;">author_id="{segment_3}" </pre>
+
+<p>Allows you to filter your event results by the member(s) that authored
+them.</p>
+
+<p><a name="site"></a></p>
+
+<h3>site=</h3>
+
+<pre class="brush: html;">site="default_site" </pre>
+
+<p>If using MSM, you can specify a Site short name in this parameter to
+filter entries down to that site.</p>
+
+<p><a name="calendar_id"></a></p>
+
+<h3>calendar_id=</h3>
+
+<pre class="brush: html;">calendar_id="1|3" </pre>
+
+<p>This parameter allows you to display specific calendars by specifying
+their entry ID(s). You can hardcode a calendar ID, pass it through an
+embed, or grab it from the URI. Seperate multiples with the pipe
+character.</p>
+
+<p><a name="calendar_name"></a></p>
+
+<h3>calendar_name=</h3>
+
+<pre class="brush: html;">calendar_name="soccer|baseball|dodgeball" </pre>
+
+<p>This parameter allows you to display specific calendars by specifying
+their short_names (entry url_title). You can hardcode a short_name,
+pass it through an embed, or grab it from the URI. Seperate multiples
+with the pipe character.</p>
+
+<p><a name="category"></a></p>
+
+<h3>category=</h3>
+
+<pre class="brush: html;">category="12|15" </pre>
+
+<p>This parameter allows you to filter your results by events that belong
+to specific categories. You can specify a category ID or a category
+url_title. You can hardcode the value, pass it through an embed, or
+grab it from the URI. Seperate multiples with the pipe character.</p>
+
+<p><a name="dynamic"></a></p>
+
+<h3>dynamic=</h3>
+
+<pre class="brush: html;">dynamic="no" </pre>
+
+<p>This parameter allows you to enable/disable this template tag from
+looking into the URI for entry ID's or url titles. This is OFF by
+default. To enable, add this parameter and specify <strong>yes</strong>.</p>
+
+<p><a name="event_id"></a></p>
+
+<h3>event_id=</h3>
+
+<pre class="brush: html;">event_id="23|77" </pre>
+
+<p>This parameter allows you to display specific events by specifying their
+entry ID(s). You can hardcode an event ID, pass it through an embed, or
+grab it from the URI. Seperate multiples with the pipe character.</p>
+
+<p><a name="event_name"></a></p>
+
+<h3>event_name=</h3>
+
+<pre class="brush: html;">event_name="best_event_evar|christmas|pie_day" </pre>
+
+<p>This parameter allows you to display specific events by specifying their
+short_names (entry url_title). You can hardcode a short_name, pass it
+through an embed, or grab it from the URI. Seperate multiples with the
+pipe character.</p>
+
+<p><a name="event_limit"></a></p>
+
+<h3>event_limit=</h3>
+
+<pre class="brush: html;">event_limit="5" </pre>
+
+<p>This parameter lets you limit the number of events and occurrences to be
+displayed.</p>
+
+<p><a name="event_offset"></a></p>
+
+<h3>event_offset=</h3>
+
+<pre class="brush: html;">event_offset="1" </pre>
+
+<p>This parameter lets you offset the results of events and occurrences
+displayed. For example, if you'd like the first result to be skipped
+from the results, specify a value of <strong>1</strong>.</p>
+
+<p><a name="date_range_start"></a></p>
+
+<h3>date_range_start=</h3>
+
+<pre class="brush: html;">date_range_start="2010-01-31 @ 8:00 AM" </pre>
+
+<p>Limits output to events on or after this date. If not specified, this
+value defaults to Today. Both <a href="date_formatting.html" title="Date Formatting Documentation">standard and easy-to-use text date
+formatting</a>
+apply to this parameter.</p>
+
+<p><a name="date_range_end"></a></p>
+
+<h3>date_range_end=</h3>
+
+<pre class="brush: html;">date_range_end="2010-02-14 @ noon" </pre>
+
+<p>Limits output to events on or before this date. If not specified, this
+value defaults to Today. Both <a href="date_formatting.html" title="Date Formatting Documentation">standard and easy-to-use text date
+formatting</a>
+apply to this parameter.</p>
+
+<p><a name="show_days"></a></p>
+
+<h3>show_days=</h3>
+
+<pre class="brush: html;">show_days="14" </pre>
+
+<p>Specifies the number of days to show going forward from
+<a href="#date_range_start">date_range_start</a>, or backward from
+<a href="#date_range_end">date_range_end</a>. If set to a value like <strong>1</strong>, it will
+show the remainder of today only (as opposed to a 24hr period). If set
+to a value like <strong>3</strong>, it will show remainder of today +2 days. Used in
+conjunction with either <a href="#date_range_start">date_range_start</a> or
+<a href="#date_range_end">date_range_end</a> parameters, and used in place of the
+one not used.</p>
+
+<p><a name="show_weeks"></a></p>
+
+<h3>show_weeks=</h3>
+
+<pre class="brush: html;">show_weeks="3" </pre>
+
+<p>Specifies the number of weeks to show going forward from
+<a href="#date_range_start">date_range_start</a>, or backward from
+<a href="#date_range_end">date_range_end</a>. If set to a value like <strong>1</strong>, it will
+show the remainder of the current week only (as opposed to a 7 day
+period). If set to a value like <strong>3</strong>, it will show the remainder of the
+current week +2 weeks. This respects the
+<a href="#first_day_of_week">first_day_of_week</a> parameter. So if today is
+<em>Thursday, March 10</em>, and your <a href="#date_range_start">date_range_start</a>
+parameter is set to <strong>today</strong> and <em>show_weeks</em> parameter is set to <strong>1</strong>, it will show events from <em>Thursday, March 10</em> to <em>Saturday, March 12</em>. If you were to use the <a href="#date_range_end">date_range_end</a> parameter set to <strong>today</strong>
+and <em>show_weeks</em> parameter is set to <strong>1</strong>, it will show events from <em>Sunday,
+March 6</em> to <em>Thursday, March 10</em>. Used in conjunction with either
+<a href="#date_range_start">date_range_start</a> or
+<a href="#date_range_end">date_range_end</a> parameters, and used in place of the
+one not used.</p>
+
+<p><a name="show_months"></a></p>
+
+<h3>show_months=</h3>
+
+<pre class="brush: html;">show_months="6" </pre>
+
+<p>Specifies the number of months to show going forward from
+<a href="#date_range_start">date_range_start</a>, or backward from
+<a href="#date_range_end">date_range_end</a>. If set to a value like <strong>1</strong>, it will
+show the remainder of the current month only (as opposed to a 30/31 day
+period). If set to a value like <strong>3</strong>, it will show the remainder of the
+current month +2 months. So if today is <em>March 11</em>, and your
+<a href="#date_range_start">date_range_start</a> parameter is set to <strong>today</strong> and
+<em>show_months</em> parameter is set to <strong>1</strong>, it will show events from <em>March 11</em> to <em>March 31</em>. If you were to use the <a href="#date_range_end">date_range_end</a>
+parameter set to <strong>today</strong> and <em>show_months</em> parameter is set to <strong>1</strong>, it will show events from <em>March 1</em> to <em>March 11</em>. Used in conjunction with either <a href="#date_range_start">date_range_start</a> or
+<a href="#date_range_end">date_range_end</a> parameters, and used in place of the
+one not used.</p>
+
+<p><a name="show_years"></a></p>
+
+<h3>show_years=</h3>
+
+<pre class="brush: html;">show_years="2" </pre>
+
+<p>Specifies the number of years to show going forward from
+<a href="#date_range_start">date_range_start</a>, or backward from
+<a href="#date_range_end">date_range_end</a>. If set to a value like <strong>1</strong>, it will
+show the remainder of the current year only (as opposed to a 365 day
+period). If set to a value like <strong>3</strong>, it will show the remainder of the
+current year +2 years. So if today is <em>March 11, 2011</em>, and your
+<a href="#date_range_start">date_range_start</a> parameter is set to <strong>today</strong> and
+<em>show_years</em> parameter is set to <strong>1</strong>, it will show events from <em>March 11,
+2011</em> to <em>December 31, 2011</em>. If you were to use the
+<a href="#date_range_end">date_range_end</a> parameter set to <strong>today</strong> and
+<em>show_months</em> parameter is set to <strong>1</strong>, it will show events from <em>January 1,
+2011</em> to <em>March 11, 2011</em>. Used in conjunction with either
+<a href="#date_range_start">date_range_start</a> or
+<a href="#date_range_end">date_range_end</a> parameters, and used in place of the
+one not used.</p>
+
+<p><a name="orderby"></a></p>
+
+<h3>orderby=</h3>
+
+<pre class="brush: html;">orderby="event_start_date" </pre>
+
+<p>This parameter allows you to control the ordering of the event results.
+Options are:</p>
+
+<ul>
+<li><strong>event_start_date</strong> (orders by DATE and TIME)</li>
+<li><strong>event_start_time</strong> (orders by the TIME only - ignores dates)</li>
+<li><strong>event_title</strong> (orders by TITLE of the event)</li>
+</ul>
+
+<p>Default is <strong>event_start_date</strong>. Use the <em>sort</em> parameter to control whether the results should be <strong>ascending</strong> or <strong>descending</strong>.</p>
+
+<p><a name="paginate"></a></p>
+
+<h3>paginate=</h3>
+
+<pre class="brush: html;">paginate="both" </pre>
+
+<p>This parameter allows you to control where the pagination will display.
+Options are <strong>top</strong>, <strong>bottom</strong>, or <strong>both</strong>. Used in conjunction with the
+<a href="#paginate">paginate</a> variable pair.</p>
+
+<p><a name="variables"></a></p>
+
+<h2>Variables</h2>
+
+<p>Most variables available in the <em>Channel:Entries</em> loop are available
+here. Additionally, these are also available:</p>
+
+<ul>
+<li><a href="#event_calendar_title">event_calendar_title</a></li>
+<li><a href="#event_calendar_url_title">event_calendar_url_title</a></li>
+<li><a href="#event_calendar_id">event_calendar_id</a></li>
+<li><a href="#event_calendar_tz_offset">event_calendar_tz_offset</a></li>
+<li><a href="#event_calendar_ics_url">event_calendar_ics_url</a></li>
+<li><a href="#calendar_status">calendar_status</a></li>
+<li><a href="#calendar_author">calendar_author</a></li>
+<li><a href="#calendar_author_id">calendar_author_id</a></li>
+<li><a href="#event_title">event_title</a></li>
+<li><a href="#event_url_title">event_url_title</a></li>
+<li><a href="#event_id">event_id</a></li>
+<li><a href="#event_parent_id">event_parent_id</a></li>
+<li><a href="#event_status">event_status</a></li>
+<li><a href="#event_author">event_author</a></li>
+<li><a href="#event_author_id">event_author_id</a></li>
+<li><a href="#event_start_date">event_start_date</a></li>
+<li><a href="#event_end_date">event_end_date</a></li>
+<li><a href="#event_first_date">event_first_date</a></li>
+<li><a href="#event_last_date">event_last_date</a></li>
+<li><a href="#event_duration_days">event_duration_days</a></li>
+<li><a href="#event_duration_hours">event_duration_hours</a></li>
+<li><a href="#event_duration_minutes">event_duration_minutes</a></li>
+<li><a href="#event_timeframe_total">event_timeframe_total</a></li>
+<li><a href="#rule_type">rule_type</a></li>
+<li><a href="#rule_repeat_years">rule_repeat_years</a></li>
+<li><a href="#rule_repeat_months">rule_repeat_months</a></li>
+<li><a href="#rule_repeat_weeks">rule_repeat_weeks</a></li>
+<li><a href="#rule_repeat_days">rule_repeat_days</a></li>
+<li><a href="#rule_days_of_week">rule_days_of_week</a></li>
+<li><a href="#rule_relative_dow">rule_relative_dow</a></li>
+<li><a href="#rule_days_of_month">rule_days_of_month</a></li>
+<li><a href="#rule_months_of_year">rule_months_of_year</a></li>
+<li><a href="#rule_stop_by">rule_stop_by</a></li>
+<li><a href="#rule_stop_after">rule_stop_after</a></li>
+<li><a href="#rule_start_date">rule_start_date</a></li>
+<li><a href="#rule_end_date">rule_end_date</a></li>
+<li><a href="#calendar_ignore_title">calendar_ignore_title</a></li>
+<li><a href="#calendar_ignore_url_title">calendar_ignore_url_title</a></li>
+</ul>
+
+<p><a name="event_calendar_title"></a></p>
+
+<h3>event_calendar_title</h3>
+
+<pre class="brush: html;">{event_calendar_title} </pre>
+
+<p>This variable outputs the <strong>title</strong> of the calendar channel entry.</p>
+
+<p><a name="event_calendar_url_title"></a></p>
+
+<h3>event_calendar_url_title</h3>
+
+<pre class="brush: html;">{event_calendar_url_title} </pre>
+
+<p>This variable outputs the <strong>URL title</strong> of the calendar channel entry.</p>
+
+<p><a name="event_calendar_id"></a></p>
+
+<h3>event_calendar_id</h3>
+
+<pre class="brush: html;">{event_calendar_id} </pre>
+
+<p>This variable outputs the <strong>entry ID</strong> of the calendar channel entry.</p>
+
+<p><a name="event_calendar_tz_offset"></a></p>
+
+<h3>event_calendar_tz_offset</h3>
+
+<pre class="brush: html;">{event_calendar_tz_offset} </pre>
+
+<p>This variable outputs the timezone offset selected for the calendar.</p>
+
+<p><a name="event_calendar_ics_url"></a></p>
+
+<h3>event_calendar_ics_url</h3>
+
+<pre class="brush: html;">{event_calendar_ics_url} </pre>
+
+<p>This variable outputs the URL of ICS file(s) to be imported into this
+calendar.</p>
+
+<p><a name="calendar_status"></a></p>
+
+<h3>calendar_status</h3>
+
+<pre class="brush: html;">{calendar_status} </pre>
+
+<p>This variable outputs the status of the calendar entry.</p>
+
+<p><a name="calendar_author"></a></p>
+
+<h3>calendar_author</h3>
+
+<pre class="brush: html;">{calendar_author} </pre>
+
+<p>This variable outputs the screen name of the author of the calendar
+entry.</p>
+
+<p><a name="calendar_author_id"></a></p>
+
+<h3>calendar_author_id</h3>
+
+<pre class="brush: html;">{calendar_author_id} </pre>
+
+<p>This variable outputs the member ID of the author of the calendar entry.</p>
+
+<p><a name="event_title"></a></p>
+
+<h3>event_title</h3>
+
+<pre class="brush: html;">{event_title} </pre>
+
+<p>This variable outputs the <strong>title</strong> of the event channel entry.</p>
+
+<p><a name="event_url_title"></a></p>
+
+<h3>event_url_title</h3>
+
+<pre class="brush: html;">{event_url_title} </pre>
+
+<p>This variable outputs the <strong>URL title</strong> of the event channel entry.</p>
+
+<p><a name="event_id"></a></p>
+
+<h3>event_id</h3>
+
+<pre class="brush: html;">{event_id} </pre>
+
+<p>This variable outputs the <strong>entry ID</strong> of the event channel entry.</p>
+
+<p><a name="event_parent_id"></a></p>
+
+<h3>event_parent_id</h3>
+
+<pre class="brush: html;">{event_parent_id} </pre>
+
+<p>If the given occurrence has been manually edited through the Calendar
+CP, this will parse to the event ID of the parent event. You would
+usually use this in conjunction with the <a href="#if_edited_occurrence">if
+edited_occurrence</a> conditional so you can
+generate a proper link to the parent event ID.</p>
+
+<p><a name="event_status"></a></p>
+
+<h3>event_status</h3>
+
+<pre class="brush: html;">{event_status} </pre>
+
+<p>This variable outputs the status of the event entry.</p>
+
+<p><a name="event_author"></a></p>
+
+<h3>event_author</h3>
+
+<pre class="brush: html;">{event_author} </pre>
+
+<p>This variable outputs the screen name of the author of the event entry.</p>
+
+<p><a name="event_author_id"></a></p>
+
+<h3>event_author_id</h3>
+
+<pre class="brush: html;">{event_author_id} </pre>
+
+<p>This variable outputs the member ID of the author of the event entry.</p>
+
+<p><a name="event_start_date"></a></p>
+
+<h3>event_start_date</h3>
+
+<pre class="brush: html;">{event_start_date format="%F %j, %Y"} </pre>
+
+<p>Displays the start date of the event, formatted using <a href="http://expressionengine.com/user_guide/templates/date_variable_formatting.html">EE-style format
+characters</a>.
+If <em>format=""</em> is not specified, it will parse as <strong>YYYYMMDD</strong> (ex: <strong>20091231</strong>).</p>
+
+<p><a name="event_end_date"></a></p>
+
+<h3>event_end_date</h3>
+
+<pre class="brush: html;">{event_end_date format="%F %j, %Y"} </pre>
+
+<p>Displays the end date of the event, formatted using <a href="http://expressionengine.com/user_guide/templates/date_variable_formatting.html">EE-style format
+characters</a>.
+If <em>format=""</em> is not specified, it will parse as <strong>YYYYMMDD</strong> (ex: <strong>20091231</strong>).</p>
+
+<p><a name="event_first_date"></a></p>
+
+<h3>event_first_date</h3>
+
+<pre class="brush: html;">{event_first_date format="%F %j, %Y"} </pre>
+
+<p>Displays the date of the very first occurrence of the event, formatted
+using EE-style format characters. If <em>format=""</em> is not specified, it will parse as <strong>YYYYMMDD</strong> (ex: <strong>20091231</strong>).</p>
+
+<p><a name="event_last_date"></a></p>
+
+<h3>event_last_date</h3>
+
+<pre class="brush: html;">{event_last_date format="%F %j, %Y"} </pre>
+
+<p>Displays the date of the very last occurrence of the event, formatted
+using EE-style format characters. If <em>format=""</em> is not specified, it will parse as <strong>YYYYMMDD</strong> (ex: <strong>20091231</strong>).</p>
+
+<p><a name="event_duration_days"></a></p>
+
+<h3>event_duration_days</h3>
+
+<pre class="brush: html;">{event_duration_days} </pre>
+
+<p>Displays the number of days the event lasts.</p>
+
+<p><a name="event_duration_hours"></a></p>
+
+<h3>event_duration_hours</h3>
+
+<pre class="brush: html;">{event_duration_hours} </pre>
+
+<p>Displays the number of hours the event lasts.</p>
+
+<p><a name="event_duration_minutes"></a></p>
+
+<h3>event_duration_minutes</h3>
+
+<pre class="brush: html;">{event_duration_minutes} </pre>
+
+<p>Displays the number of minutes the event lasts.</p>
+
+<p><a name="event_timeframe_total"></a></p>
+
+<h3>event_timeframe_total</h3>
+
+<pre class="brush: html;">{event_timeframe_total} </pre>
+
+<p>Displays the number of occurrences that happen within the specified
+date/time range.</p>
+
+<p><a name="rule_type"></a></p>
+
+<h3>rule_type</h3>
+
+<pre class="brush: html;">{rule_type} </pre>
+
+<p>Displays whether the rule is an addition or subtraction from the
+occurrences (ex: <strong>+</strong> or <strong>-</strong>). Available only within the <a href="#rules">rules</a>
+variable pair.</p>
+
+<p><a name="rule_repeat_years"></a></p>
+
+<h3>rule_repeat_years</h3>
+
+<pre class="brush: html;">{rule_repeat_years} </pre>
+
+<p>If the event repeats on a yearly interval, this variable displays the
+selected year(s) interval (ex: <strong>2</strong>). Available only within the
+<a href="#rules">rules</a> variable pair.</p>
+
+<p><a name="rule_repeat_months"></a></p>
+
+<h3>rule_repeat_months</h3>
+
+<pre class="brush: html;">{rule_repeat_months} </pre>
+
+<p>If the event repeats on a monthly interval, this variable displays the
+selected month(s) interval (ex: <strong>6</strong>). Available only within the
+<a href="#rules">rules</a> variable pair.</p>
+
+<p><a name="rule_repeat_weeks"></a></p>
+
+<h3>rule_repeat_weeks</h3>
+
+<pre class="brush: html;">{rule_repeat_weeks} </pre>
+
+<p>If the event repeats on a weekly interval, this variable displays the
+selected week(s) interval (ex: <strong>2</strong>). Available only within the
+<a href="#rules">rules</a> variable pair.</p>
+
+<p><a name="rule_repeat_days"></a></p>
+
+<h3>rule_repeat_days</h3>
+
+<pre class="brush: html;">{rule_repeat_days} </pre>
+
+<p>If the event repeats on a daily interval, this variable displays the
+selected day(s) interval (ex: <strong>5</strong>). Available only within the
+<a href="#rules">rules</a> variable pair.</p>
+
+<p><a name="rule_days_of_week"></a></p>
+
+<h3>rule_days_of_week</h3>
+
+<pre class="brush: html;">{rule_days_of_week backspace="2"}{day_of_week}, {/rule_days_of_week} </pre>
+
+<p>If the event repeats on specific days of the week, this variable and
+variable pair displays the selected day(s) (ex: <strong>Monday, Thursday</strong>).
+Available only within the <a href="#rules">rules</a> variable pair.</p>
+
+<p><a name="rule_relative_dow"></a></p>
+
+<h3>rule_relative_dow</h3>
+
+<pre class="brush: html;">{rule_relative_dow backspace="2"}{relative_dow}, {/rule_relative_dow} </pre>
+
+<p>If the event repeats on specific relative days of the week, this
+variable and variable pair displays the selected day(s) (ex: <strong>1, 3, 5</strong>).
+Available only within the <a href="#rules">rules</a> variable pair.</p>
+
+<p><a name="rule_days_of_month"></a></p>
+
+<h3>rule_days_of_month</h3>
+
+<pre class="brush: html;">{rule_days_of_month backspace="2"}{day_of_month}, {/rule_days_of_month} </pre>
+
+<p>If the event repeats on specific days of the month, this variable and
+variable pair displays the selected day(s) (ex: <strong>7, 22</strong>). Available only
+within the <a href="#rules">rules</a> variable pair.</p>
+
+<p><a name="rule_months_of_year"></a></p>
+
+<h3>rule_months_of_year</h3>
+
+<pre class="brush: html;">{rule_months_of_year backspace="2"}{months_of_year}, {/rule_months_of_year} </pre>
+
+<p>If the event repeats on specific months of the year, this variable and
+variable pair displays the selected month(s) (ex: <strong>04, 05, 06</strong>). Available
+only within the <a href="#rules">rules</a> variable pair.</p>
+
+<p><a name="rule_stop_by"></a></p>
+
+<h3>rule_stop_by</h3>
+
+<pre class="brush: html;">{rule_stop_by format="%F %j, %Y"} </pre>
+
+<p>If set, displays the stop-by date of the event or series of occurrences,
+formatted using EE-style format characters. If <em>format=""</em> is not
+specified, it will parse as <strong>YYYYMMDD</strong> (ex: <strong>20091231</strong>). Available only
+within the <a href="#rules">rules</a> variable pair.</p>
+
+<p><a name="rule_stop_after"></a></p>
+
+<h3>rule_stop_after</h3>
+
+<pre class="brush: html;">{rule_stop_after format="%F %j, %Y"} </pre>
+
+<p>If set, displays the number of occurrences the event was set (ex: 5).
+Available only within the <a href="#rules">rules</a> variable pair.</p>
+
+<p><a name="rule_start_date"></a></p>
+
+<h3>rule_start_date</h3>
+
+<pre class="brush: html;">{rule_start_date format="%F %j, %Y"} </pre>
+
+<p>Displays the start date of the rule for the event, formatted using
+<a href="http://expressionengine.com/user_guide/templates/date_variable_formatting.html">EE-style format
+characters</a>.</p>
+
+<p><a name="rule_end_date"></a></p>
+
+<h3>rule_end_date</h3>
+
+<pre class="brush: html;">{rule_end_date format="%F %j, %Y"} </pre>
+
+<p>Displays the end date of the rule for the event, formatted using
+<a href="http://expressionengine.com/user_guide/templates/date_variable_formatting.html">EE-style format
+characters</a>.</p>
+
+<p><a name="calendar_ignore_title"></a></p>
+
+<h3>calendar_ignore_title</h3>
+
+<pre class="brush: html;">{calendar_ignore_title} </pre>
+
+<p>Due to the way Calendar works, it can cause trouble when trying to parse
+data with other addons (such as displaying related entries). By
+specifying this variable, it'll parse the equivelant of <strong>{title}</strong> and tell
+Calendar to leave the variable alone.</p>
+
+<p><a name="calendar_ignore_url_title"></a></p>
+
+<h3>calendar_ignore_url_title</h3>
+
+<pre class="brush: html;">{calendar_ignore_url_title} </pre>
+
+<p>Due to the way Calendar works, it can cause trouble when trying to parse
+data with other addons (such as displaying related entries). By
+specifying this variable, it'll parse the equivelant of <strong>{url_title}</strong> and
+tell Calendar to leave the variable alone.</p>
+
+<p><a name="variable_pairs"></a></p>
+
+<h2>Variable Pairs</h2>
+
+<p>Most variable pairs available in the <em>Channel:Entries</em> loop are available
+here. Additionally, these are also available:</p>
+
+<ul>
+<li><a href="#occurrences">occurrences</a></li>
+<li><a href="#rules">rules</a></li>
+<li><a href="#paginate_vp">paginate</a></li>
+</ul>
+
+<p><a name="occurrences"></a></p>
+
+<h3>occurrences</h3>
+
+<pre class="brush: html;">{occurrences}{/occurrences} </pre>
+
+<p>This variable pair is used to display details of each occurrence of an
+event if it repeats. All
+<a href="occurrences.html#variables" title="Calendar:Occurrences Variables">variables</a>
+and
+<a href="occurrences.html#conditionals" title="Calendar:Occurrences Conditionals">conditionals</a>
+as available in
+<a href="occurrences.html" title="Calendar:Occurrences Documentation">Calendar:Occurrences</a>
+become available within this variable pair.</p>
+
+<p><a name="rules"></a></p>
+
+<h3>rules</h3>
+
+<pre class="brush: html;">{rules}{/rules} </pre>
+
+<p>This variable pair is used to display details of all rules for an event
+if it repeats. An additional set of variables become available within
+this variable pair (<a href="index.html#rule_type">see above</a>).</p>
+
+<p><a name="paginate"></a></p>
+
+<h3>paginate</h3>
+
+<pre class="brush: html;">{paginate}Page {current_page} of {total_pages} pages &amp;nbsp; {pagination_links}{/paginate} </pre>
+
+<p>Pagination is available for this tag and works just like regular
+pagination. Used in conjunction with the <a href="#paginate">paginate</a>
+parameter.</p>
+
+<p><a name="conditionals"></a></p>
+
+<h2>Conditionals</h2>
+
+<p>Most conditionals available in the <em>Channel:Entries</em> loop are available
+here. Additionally, these are also available:</p>
+
+<ul>
+<li><a href="#if_calendar_no_results">if calendar_no_results</a></li>
+<li><a href="#if_edited_occurrence">if edited_occurrence</a></li>
+<li><a href="#if_event_recurs">if event_recurs</a></li>
+<li><a href="#if_event_all_day">if event_all_day</a></li>
+<li><a href="#if_event_multi_day">if event_multi_day</a></li>
+<li><a href="#if_event_has_rules">if event_has_rules</a></li>
+<li><a href="#if_event_first_day">if event_first_day</a></li>
+<li><a href="#if_event_last_day">if event_last_day</a></li>
+<li><a href="#if_event_never_ends">if event_never_ends</a></li>
+</ul>
+
+<p><a name="if_calendar_no_results"></a></p>
+
+<h3>if calendar_no_results</h3>
+
+<pre class="brush: html;">{if calendar_no_results}{/if} </pre>
+
+<p>Works just like the regular <strong>{if no_results}</strong> conditional - displays its
+contents when there is no results for the given parameters.</p>
+
+<p><a name="if_edited_occurrence"></a></p>
+
+<h3>if edited_occurrence</h3>
+
+<pre class="brush: html;">{if edited_occurrence}{/if} </pre>
+
+<p>This conditional will display its contents if the given occurrence
+itself has been manually edited through the Calendar CP. You would
+usually use this in conjunction with the
+<a href="#event_parent_id">event_parent_id</a> variable so you can generate a
+proper link to the parent event ID.</p>
+
+<p><a name="if_event_recurs"></a></p>
+
+<h3>if event_recurs</h3>
+
+<pre class="brush: html;">{if event_recurs}{/if} </pre>
+
+<p>This conditional will displays it's contents if the event recurs.</p>
+
+<p><a name="if_event_all_day"></a></p>
+
+<h3>if event_all_day</h3>
+
+<pre class="brush: html;">{if event_all_day}{/if} </pre>
+
+<p>This conditional will displays it's contents if the event is an all day
+event.</p>
+
+<p><a name="if_event_multi_day"></a></p>
+
+<h3>if event_multi_day</h3>
+
+<pre class="brush: html;">{if event_multi_day}{/if} </pre>
+
+<p>This conditional will displays it's contents if the event occurs on
+multiple days.</p>
+
+<p><a name="if_event_has_rules"></a></p>
+
+<h3>if event_has_rules</h3>
+
+<pre class="brush: html;">{if event_has_rules}{/if} </pre>
+
+<p>This conditional will displays it's contents if the event has any
+recurrence rules applied to it.</p>
+
+<p><a name="if_event_first_day"></a></p>
+
+<h3>if event_first_day</h3>
+
+<pre class="brush: html;">{if event_first_day}{/if} </pre>
+
+<p>This conditional will displays it's contents if it's the first day of
+the event occurrence.</p>
+
+<p><a name="if_event_last_day"></a></p>
+
+<h3>if event_last_day</h3>
+
+<pre class="brush: html;">{if event_last_day}{/if} </pre>
+
+<p>This conditional will displays it's contents if it's the last day of the
+event occurrence.</p>
+
+<p><a name="if_event_never_ends"></a></p>
+
+<h3>if event_never_ends</h3>
+
+<pre class="brush: html;">{if event_never_ends}{/if} </pre>
+
+<p>This conditional will displays it's contents if the event repeats
+forever (no end date).</p>
+
+<p><a name="examples"></a></p>
+
+<h2>Examples</h2>
+
+<p><a name="displaying_an_individual_event"></a></p>
+
+<h3>Displaying an Individual Event</h3>
+
+<p>The below code example is what you would use to display details about a
+specific event. You would link to this template with the event ID from
+other Calendar pages, and then pull the event ID from the URI:</p>
+
+<pre class="brush: html;">{exp:calendar:events
+    orderby="title"
+    sort="asc"
+    event_id="{segment_3}"
+    date_range_start="today"
+    show_months="3"
+}
+
+    {if calendar_no_results}
+        No Results
+    {/if}
+    &lt;div class="event"&gt;
+        &lt;h2&gt;{event_title}&lt;/h2&gt;
+        &lt;p&gt;From Calendar:
+            &lt;a href="{path='calendar/calendars'}/{event_calendar_id}/"&gt;
+                {event_calendar_title}
+            &lt;/a&gt;
+        &lt;/p&gt;
+        &lt;p&gt;Details:{event_summary}&lt;/p&gt;
+        &lt;p&gt;Location: {event_location}&lt;/p&gt;
+        &lt;h3&gt;Upcoming Occurrences in the next 3 months:&lt;/h3&gt;
+        &lt;ul&gt;
+            {occurrences}
+            &lt;li&gt;
+                &lt;a href="{path='calendar/day'}/{occurrence_start_date format="%Y/%m/%d"}/"&gt;
+                {occurrence_start_date format="%l, %F %j, %Y at %g:%i%a"}
+                &lt;/a&gt; - {occurrence_end_date format="%l, %F %j, %Y at %g:%i%a"}
+            &lt;/li&gt;
+            {/occurrences}
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;hr /&gt;
+{/exp:calendar:events}
+</pre>
+
+<p><a name="hardcoding_an_events_list_within_a_date_range"></a></p>
+
+<h3>Hardcoding an Events List within a Date Range</h3>
+
+<p>The below example code will generate you a simple list of events that
+have occurrences within the next 3 months. Underneath each event details
+will be a list of upcoming occurrences within the next 3 months.</p>
+
+<pre class="brush: html;">&lt;ul&gt;
+    {exp:calendar:events
+        orderby="title"
+        sort="asc"
+        date_range_start="today"
+        show_months="3"
+        dynamic="off"
+    }
+
+        {if calendar_no_results}
+            &lt;li&gt;No Results&lt;/li&gt;
+        {/if}
+        &lt;li&gt;
+            &lt;a href="{path='calendar/events'}/{event_id}/"&gt;
+                &lt;b&gt;{event_title}&lt;/b&gt;
+            &lt;/a&gt;
+            from
+            &lt;a href="{path='calendar/calendars'}/{event_calendar_id}/"&gt;
+                {event_calendar_title}
+            &lt;/a&gt;
+            &lt;br /&gt;
+            Upcoming Occurrences in the next 3 months:
+            &lt;ul&gt;
+                {occurrences}
+                &lt;li&gt;{occurrence_start_date format="%l, %F %j, %Y at %g:%i%a"}&lt;/li&gt;
+                {/occurrences}
+            &lt;/ul&gt;
+        &lt;/li&gt;
+    {/exp:calendar:events}
+&lt;/ul&gt;
+</pre>
+
+<p>The below example code will generate you a slightly more advanced list
+of events that have occurrences within the next 3 months. Underneath
+each event details will be a list of upcoming occurrences within the
+next 3 months.</p>
+
+<pre class="brush: html;">{exp:calendar:events
+    orderby="title"
+    sort="asc"
+    date_range_start="today"
+    show_months="3"
+    dynamic="off"
+}
+
+    {if calendar_no_results}
+        No Results
+    {/if}
+
+    &lt;div class="event"&gt;
+        &lt;h2&gt;&lt;a href="{path='calendar/events'}/{event_id}/"&gt;{event_title}&lt;/a&gt;&lt;/h2&gt;
+        &lt;p&gt;Starts:
+            &lt;a href="{path='calendar/day'}/{event_start_date format="%Y/%m/%d"}/"&gt;
+                {event_start_date format="%l, %F %j, %Y"}
+            &lt;/a&gt;
+        &lt;/p&gt;
+        &lt;p&gt;From Calendar:
+            &lt;a href="{path='calendar/calendars'}/{event_calendar_id}/"&gt;
+                {event_calendar_title}
+            &lt;/a&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            This event lasts {event_duration_days} days,
+            {event_duration_hours} hours,
+            and {event_duration_minutes} minutes.
+        &lt;/p&gt;
+        &lt;p&gt;Details: {event_summary}&lt;/p&gt;
+        &lt;p&gt;Location: {event_location}&lt;/p&gt;
+        &lt;h3&gt;Upcoming Occurrences in the next 3 months:&lt;/h3&gt;
+        &lt;ul&gt;
+            {occurrences}
+            &lt;li&gt;&lt;a href="{path='calendar/day'}/{occurrence_start_date format="%Y/%m/%d"}/"&gt;{occurrence_start_date format="%l, %F %j, %Y at %g:%i%a"}&lt;/a&gt; - {occurrence_end_date format="%l, %F %j, %Y at %g:%i%a"}&lt;/li&gt;
+            {/occurrences}
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;hr /&gt;
+{/exp:calendar:events}
+</pre>
+			</article>
+		</div>
+
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shCore.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shAutoloader.js"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
+</html>

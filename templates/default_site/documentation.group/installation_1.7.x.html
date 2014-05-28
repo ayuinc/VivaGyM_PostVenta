@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>		<html class="no-js ie6"> <![endif]-->
+<!--[if IE 7]>			<html class="no-js ie7"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie8"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html class="no-js"> <!--<![endif]-->
+	<head lang="en">
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>Installation 1.7.x | Calendar | Solspace Addon Documentation</title>
+		<meta name="description" content="" />
+		<meta name="copyright" content="(c) 2010 Copyright content: Copyright design: Solspace, Inc."/>
+		<meta name="viewport" content="width=device-width" />
+		<link rel="stylesheet" href="assets/css/normalize.css" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="assets/fancybox/jquery.fancybox-1.3.4.css" />
+		<link href="assets/syntaxhighlighter/styles/shCore.css" rel="stylesheet" type="text/css" />
+		<link href="assets/syntaxhighlighter/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+		<script src="assets/js/modernizr.min.js"></script>
+	</head>
+	<body>
+		<!--[if lt IE 8]>
+			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+		<![endif]-->
+
+		<header>
+			<div class="header-inner">
+				<div class="logo">
+					<img src="assets/images/logo.png" />
+				</div>
+
+				<div class="bread_crumbs">
+					<ul class="crumbs">
+						<li class="first"><a href="index.html">Calendar</a></li>
+						<li>Installation 1.7.x</li>
+					</ul>
+				</div>
+			</div>
+		</header>
+
+		<div class="content-wrapper">
+			<nav class="toc">
+				<ul>
+<li><a href="http://www.solspace.com/software/detail/calendar/">More Info | Purchase</a></li>
+<li><a href="change_log.html">Change Log</a></li>
+<li><a href="install_update.html">Install / Update</a></li>
+<li><a href="getting_started.html">Getting Started</a></li>
+<li><a href="control_panel.html">Control Panel</a></li>
+<li><a href="cp_ui.html">CP Publish UI</a></li>
+<li><a href="date_formatting.html">Date Parameter Formatting</a></li>
+<li><a href="group_permissions.html">Group Permissions</a></li>
+<li><a href="channel_form.html">Using with Channel Form</a></li>
+<li><p><a href="extension_hooks.html">Extension Hooks</a></p></li>
+<li class="template_tags"><h3>Template Tags</h3>
+
+<ul>
+<li><a href="calendar.html">Cal</a></li>
+<li><a href="calendars.html">Calendars</a></li>
+<li><a href="date.html">Date</a></li>
+<li><a href="day.html">Day</a></li>
+<li><a href="events.html">Events</a></li>
+<li><a href="icalendar.html">iCalendar</a></li>
+<li><a href="ics_update.html">ICS Update</a></li>
+<li><a href="mini.html">Mini Calendar</a></li>
+<li><a href="month.html">Month</a></li>
+<li><a href="month_list.html">Month List</a></li>
+<li><a href="occurrences.html">Occurrences</a></li>
+<li><a href="week.html">Week</a></li>
+<li><a href="year_list.html">Year List</a></li>
+</ul></li>
+<li><h3>Requirements</h3><div class="requirements">
+
+<ul>
+<li>EE 2.5.x - 2.8.x</li>
+<li>PHP 5.2+</li>
+<li>MySQL 5+</li>
+</ul></div></li>
+</ul>
+			</nav>
+
+			<article class="docs">
+				<h2>Installation for Calendar 1.7.x on EE 1.x</h2>
+
+<p>These instructions are for installing Calendar 1.7.x on ExpressionEngine 1.x only. If you're installing the latest version of Calendar, please refer to the applicable <a href="install_update.html#install">installation instructions</a>.</p>
+
+<p><a name="1"></a></p>
+
+<h3>1. Copy Add-on Files</h3>
+
+<p>This add-on requires that you use the Solspace Bridge software with
+ExpressionEngine 1.x. It will be included with your download in a
+separate folder. Additionally, Calendar includes the Code Pack module
+software to install the Calendar Code Pack sample templates and data
+(optional). It will be included with your download in a separate folder.</p>
+
+<ul>
+<li>Within the <strong>/EE1/system/</strong> directory, copy the bridge folder into your
+sites’ <strong>./system/</strong> directory.</li>
+<li>Within the <strong>/EE1/system/modules/</strong> directory, copy all folders into
+your sites’ <strong>./system/modules/</strong> directory.</li>
+<li>Within the <strong>/EE1/system/extensions/</strong> directory, copy all folders and
+files into your sites’ <strong>./system/extensions/</strong> directory.</li>
+<li>Within the <strong>/EE1/system/language/english/</strong> directory, copy the
+<strong>lang.calendar_code_pack.php</strong> file into your sites’
+<strong>./system/language/english/</strong> directory.</li>
+<li>Within the <strong>/EE1/themes/</strong> directory, copy all folders into your sites’
+<strong>./themes/</strong> directory.</li>
+</ul>
+
+<p><a name="2"></a></p>
+
+<h3>2. Installing the Add-On</h3>
+
+<ul>
+<li>Upon installation, Calendar creates two new weblogs (<em>Calendar:
+Calendars</em> and <em>Calendar: Events</em>) as well as two new custom weblog
+field groups (<em>Calendar: Calendars</em> and <em>Calendar: Events</em>) with a few
+sample fields. These weblogs and field groups are tied in together
+with Calendar.</li>
+<li>Go to the Modules tab in the ExpressionEngine Control Panel, find
+<em>Calendar</em> in the list, and click <strong>Install</strong>.</li>
+<li>Go to the Extensions Manager area in the ExpressionEngine Control
+Panel, and make sure the <a href="http://expressionengine.com/docs/cp/admin/utilities/extension_manager.html#jquery_extension">jQuery for the CP</a>
+extension exists and is enabled.</li>
+</ul>
+
+<p><a name="3"></a></p>
+
+<h3>3. Loading the Calendar Code Pack sample data (optional)</h3>
+
+<p>To make use of the Calendar Code Pack sample templates, you’ll need to
+make sure the Code Pack module and Calendar Code Pack extension is
+installed:</p>
+
+<ul>
+<li>Go to the Extensions area in the ExpressionEngine Control Panel,
+find <em>Calendar Code Pack</em> in the list, and click <strong>Enable</strong>.</li>
+<li>Go to the Modules tab in the ExpressionEngine Control Panel, find
+<em>Code Pack</em> in the list and make sure it is installed. If not, click
+<strong>Install</strong>. Then, click the link for <em>Code Pack</em>.</li>
+<li>In the list of available Code Packs, click <em>Calendar Code Pack</em>.</li>
+<li>Create a prefix name for the sample data such as <strong>test_</strong> or
+<strong>calendar_</strong>.</li>
+<li>Select the <em>Default</em> code pack and click the Submit button. The Code
+Pack module will output sample templates and other data, all
+prefixed with the value you specified.</li>
+</ul>
+
+<p><a name="4"></a></p>
+
+<h3>4. Setup &amp; Configuring</h3>
+
+<ul>
+<li>To create your first calendar, select the <em>Calendar: Calendars</em> weblog
+from the Publish tab in the ExpressionEngine control panel. Each
+calendar is actually just a glorified weblog entry. You can add more
+this way, or edit existing ones as usual.</li>
+<li>To create your first event, select the <em>Calendar: Events</em> weblog from
+the Publish tab in the ExpressionEngine control panel. Each event is
+actually just a glorified weblog entry that is related to a Calendar
+weblog entry.</li>
+<li>To adjust any settings in Calendar, click on the <em>Preferences</em> tab in
+the <a href="control_panel.html" title="Control Panel Documentation">Control
+Panel</a>
+area and then modify as necessary.</li>
+<li>Please update the EE <a href="http://expressionengine.com/docs/cp/admin/utilities/extension_manager.html#jquery_extension">jQuery for the
+CP</a>
+extension to the latest versions of jQuery and jQuery UI for maximum
+compatibility.</li>
+</ul>
+
+<p><a name="5"></a></p>
+
+<h3>5. Troubleshooting and Support</h3>
+
+<p>For Support and Troubleshooting, visit the <a href="http://www.solspace.com/forums/">Solspace Support
+Forums</a>.</p>
+			</article>
+		</div>
+
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shCore.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shAutoloader.js"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
+</html>
