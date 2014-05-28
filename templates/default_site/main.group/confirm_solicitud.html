@@ -42,7 +42,6 @@ Adjunto encontrará el reporte de su reclamo para su referencia (esto podría se
 Esperamos servirle de la mejor manera durante este proceso. No olvide revisar el Manual del Propietario para cuidar de su departamento todos los días.<p>
 Atentamente";
 
-
 ee()->load->library('email');
 ee()->load->helper('text');
 
@@ -55,6 +54,14 @@ ee()->email->message(entities_to_ascii($txt_mail));
 ee()->email->Send();
 
 ?>
+{exp:mandrillapp:send_email_confirm_solicitud
+  to=""<?php echo $dir; ?>"
+  name="<?php echo $screen_name; ?>"
+  subject="Recepción de Solicitud de Requerimientos Viva GyM"
+  from="admin@gym.com"
+  dias="4"}
+    
+  {/exp:mandrillapp:send_email_confirm_solicitud}  
 
 
 <body>

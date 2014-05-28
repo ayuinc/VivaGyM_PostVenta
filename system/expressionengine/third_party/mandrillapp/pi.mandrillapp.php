@@ -32,7 +32,7 @@ class Mandrillapp {
 		return $buffer;
 	}
 		
-	function send_email_test(){
+	function send_email_confirm_solicitud(){
 		global $TMPL;
 		$this->EE =& get_instance(); // EEv2 syntax
 		$TMPL = $this->EE->TMPL;
@@ -44,7 +44,15 @@ class Mandrillapp {
  		$name= $TMPL->fetch_param('name');
  		$subject= $TMPL->fetch_param('subject');
  		$from= $TMPL->fetch_param('from');
- 		$text = $TMPL->tagdata;
+ 		$dias=  $TMPL->fetch_param('dias');
+ 		//$text = $TMPL->tagdata;
+ 		$text = 'Estimado/a '.$name.'<p>
+Gracias por enviar su solicitud de requerimientos por el portal de post-venta en línea de Viva GyM. <p>
+En los próximos '.$dias.' días le estaremos informando por correo electrónico y mediante el portal de post-venta si la inspección por un técnico de nuestro equipo procede. Recuerde que en la mayoría de los casos, la vigencia de la garantía es necesaria para que los arreglos procedan. <p>
+Adjunto encontrará el reporte de su reclamo para su referencia (esto podría ser un pantallaso del reclamo que llenaron en línea). <p>
+Esperamos servirle de la mejor manera durante este proceso. No olvide revisar el Manual del Propietario para cuidar de su departamento todos los días.<p>
+Atentamente';
+ 		
  		/*'html' => '<p>FELICIDADES!!!</p><p>Ganaste el tema'.$topic.' ve a nuestro menú de temas y sigue participando</p>',*/
  		$message = array(
  		    'subject' => $subject,
@@ -77,75 +85,5 @@ class Mandrillapp {
 		$mandrill->messages->sendTemplate($template_name, $template_content, $message);
 		return "";
 	}
-
-	function send_email_notification_alltopic(){
- 		global $TMPL;
-		$this->EE =& get_instance(); // EEv2 syntax
-		$TMPL = $this->EE->TMPL;
-
- 		require_once 'mailchimp-mandrill-api-php/src/Mandrill.php'; 
- 		$mandrill = new Mandrill('Y86YbFBQBDYap7qxJbpmvA');
- 		
- 		$to= $TMPL->fetch_param('to');
- 		$member_id= $TMPL->fetch_param('member_id');
- 		$name= $TMPL->fetch_param('name');
- 		$subject= $TMPL->fetch_param('subject');
- 		$from= $TMPL->fetch_param('from');
- 		$text = $TMPL->tagdata;
- 		/*
- 		'html' => '<p>FELICIDADES!!!</p><p>Terminaste todos los temas y ahora tendrás mas opciones de ganar el premio.</p>',*/
-        $verify = ee()->db->get_where('exp_member_data', array('member_id' => $member_id,
-        	'm_field_id_9'=> '1',
-        	'm_field_id_10'=> '1',
-        	'm_field_id_11'=> '1',
-        	'm_field_id_13'=> '1',
-        	'm_field_id_14'=> '1',
-        	'm_field_id_16'=> '1',
-        	));
-        if ($verify->result() == null){
-        	return '</div>
-				</div>
-				<div class="row seccion">
-					<div class="small-6 medium-4 large-4 large-centered columns">				
-						<a href="{site_url}categorias" class="button expand">Juega de Nuevo</a>
-					</div>
-				</div>';
-        }
-        else{
-	 		$message = array(
-	 		    'subject' => $subject,
-	 		    'from_email' => $from,
-	 		    'html' => $text,
-	 		    'to' => array(array('email' => $to, 'name' => $name)),
-	 		    'merge_vars' => array(array(
-		 		        'rcpt' => 'recipient1@domain.com',
-		 		        'vars' =>
-		 		        array(
-		 		            array(
-		 		                'name' => 'FIRSTNAME',
-		 		                'content' => 'Recipient 1 first name'),
-		 		            array(
-		 		                'name' => 'LASTNAME',
-		 		                'content' => 'Last name')
-		 		    ))));
-
-	 		$template_name = 'test';
-
-	 		$template_content = array(
-	 		    array(
-	 		        'name' => 'main',
-	 		        'content' => 'Hi *|FIRSTNAME|* *|LASTNAME|*, thanks for signing up.'),
-	 		    array(
-	 		        'name' => 'footer',
-	 		        'content' => 'Copyright 2012.')
-
-	 		);
-			$mandrill->messages->sendTemplate($template_name, $template_content, $message);
-			return '</div>
-				</div>';
-		}
-	}
-
-	
 }
 // END CLASS
