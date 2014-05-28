@@ -9,14 +9,15 @@ $sub="Recepción de Solicitud de Requerimientos Viva GyM";
 
 
 ?>
-{exp:mandrillapp:send_email_confirm_solicitud
-  to="{email}"
-  name="{screen_name}"
-  subject="Recepción de Solicitud de Requerimientos Viva GyM"
-  from="admin@gym.com"
-  dias="4"}
-{/exp:mandrillapp:send_email_confirm_solicitud}  
-
+{exp:user:stats}
+	{exp:mandrillapp:send_email_confirm_solicitud
+	  to="{email}"
+	  name="{screen_name}"
+	  subject="Recepción de Solicitud de Requerimientos Viva GyM"
+	  from="admin@gym.com"
+	  dias="4"}
+	{/exp:mandrillapp:send_email_confirm_solicitud}  
+{/exp:user:stats}
 
 <body>
 {email} - {screen_name}
