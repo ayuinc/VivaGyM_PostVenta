@@ -49,7 +49,7 @@ form_field_26 = '$hora_atencion_ticket'
 WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 3 ");
 
 $sub="Cita de Inspección Agendada - Viva GyM";
-	echo "<br> correo ".$txt_mail="Estimado/a $screen_name<p>
+	$txt_mail="Estimado/a $screen_name<p>
 	Muchas gracias por agendar su cita de inspección en el  el portal de post-venta en línea de Viva GyM. Su inspección se realizará según la siguiente información:<p>
 Número de solicitud: $id_sol_garantia<p>
 Fecha de Inspección: $fecha_atencion_ticket<p>
@@ -71,7 +71,18 @@ Atentamente";
 	ee()->email->Send();
 
 ?>
-
+{exp:get_post_vars parse="inward"}
+	{exp:user:stats}
+		{exp:mandrillapp:send_email_confirm_solicitud
+		  to="{email}"
+		  name="{screen_name}"
+		  subject="Recepción de Solicitud de Requerimientos Viva GyM"
+		  from="admin@gym.com"
+		  id_sol_garantia="{post_id_sol_garantia}"
+		  fecha_atencion_ticket="{post_fecha_atencion_ticket}"}
+		{/exp:mandrillapp:send_email_confirm_solicitud}  
+	{/exp:user:stats}
+{/exp:get_post_vars}
 <body>
 
 {embed="includes/carga" }

@@ -85,6 +85,64 @@ Atentamente';
 		$mandrill->messages->sendTemplate($template_name, $template_content, $message);
 		return "";
 	}
-	
+	function send_email_guardar_3er_paso(){
+		global $TMPL;
+		$this->EE =& get_instance(); // EEv2 syntax
+		$TMPL = $this->EE->TMPL;
+
+ 		require_once 'mailchimp-mandrill-api-php/src/Mandrill.php'; 
+ 		$mandrill = new Mandrill('Svqgcw575OLrORu2WiD09g');
+ 		
+ 		$to= $TMPL->fetch_param('to');
+ 		$name= $TMPL->fetch_param('name');
+ 		$subject= $TMPL->fetch_param('subject');
+ 		$from= $TMPL->fetch_param('from');
+ 		$dias=  $TMPL->fetch_param('dias');
+ 		$id_sol_garantia = $TMPL->fetch_param('id_sol_garantia');
+ 		$fecha_atencion_ticket = $TMPL->fetch_param('fecha_atencion_ticket');
+ 		//$text = $TMPL->tagdata;
+ 		$text = 'Estimado/a '.$name.'<p>
+ 			Muchas gracias por agendar su cita de inspección en el  el portal de post-venta en línea de Viva GyM. Su inspección se realizará según la siguiente información:<p>
+ 		Número de solicitud: '.$id_sol_garantia.'<p>
+ 		Fecha de Inspección: '.$fecha_atencion_ticket.'<p>
+ 		Horario de Inspección: 9:00 am - 2:00 pm de lunes a viernes<p>
+ 		Recuerde que usted o alguien responsable de su departamento debe estar presente en el momento de la inspección.  En caso no pueda estar presente deberá reagendar su cita en el portal de post-venta de Viva GyM con al menos 24 horas de anticipación a la misma. Si tiene una emergencia el mismo día de la cita y no podrá estar presente por favor comuníquese al 206-7270.<p>
+ 		Recuerde que si reagenda su cita deberá pasar nuevamente por todo el proceso. Tiene, además, un máximo de dos oportunidades para reagendar su cita.<p>
+ 		Quedamos como siempre a su disposición si tiene alguna consulta o solicitud adicional puede llamar a nuestro Call Center de Atención al Cliente al 206-7270.<p>
+ 		Atentamente';
+ 		
+ 		/*'html' => '<p>FELICIDADES!!!</p><p>Ganaste el tema'.$topic.' ve a nuestro menú de temas y sigue participando</p>',*/
+ 		$message = array(
+ 		    'subject' => $subject,
+ 		    'from_email' => $from,
+ 		    'html' => $text,
+ 		    'to' => array(array('email' => $to, 'name' => $name)),
+ 		    'merge_vars' => array(array(
+	 		        'rcpt' => 'recipient1@domain.com',
+	 		        'vars' =>
+	 		        array(
+	 		            array(
+	 		                'name' => 'FIRSTNAME',
+	 		                'content' => 'Recipient 1 first name'),
+	 		            array(
+	 		                'name' => 'LASTNAME',
+	 		                'content' => 'Last name')
+	 		    ))));
+
+ 		$template_name = 'test';
+
+ 		$template_content = array(
+ 		    array(
+ 		        'name' => 'main',
+ 		        'content' => 'Hi *|FIRSTNAME|* *|LASTNAME|*, thanks for signing up.'),
+ 		    array(
+ 		        'name' => 'footer',
+ 		        'content' => 'Copyright 2012.')
+
+ 		);
+		$mandrill->messages->sendTemplate($template_name, $template_content, $message);
+		return "";
+	}
+
 }
 // END CLASS
