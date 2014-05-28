@@ -2,11 +2,12 @@
 
 <script type="text/javascript" src="{site_url}lib/viva_dashboard.js"></script>
 
-  <div class="row">
+  <!--<div class="row">
     <div class="col-xs-3">
       <a href="#"><img src="{site_url}images/logo-viva.png" style="width:50%; height: auto;"></a>
     </div>
-  </div>
+  </div>-->
+
   <div class="row mt-21">
     <div class="col-md-9 mb-14">
       <div class="clearfix text-center">
@@ -145,12 +146,12 @@
 
                     <tbody class="bg-white">
                       <tr>
-                        <td><?php echo $proy_long['form_field_17']; ?></td>
+                        <td><?php $entry_id=$proy_long['entry_id']; echo $proy_long['form_field_17']; ?></td>
                         <td><?php $var_estatus=$proy_long['status']; if ($var_estatus=="open"){echo "Pendiente";} else {echo "Realizado";}; ?></td>
 
-                        <td><?php  $fecha_time=$proy_long['entry_date']; 
-                          if ($fecha_time>0) {echo date('d-m-Y G:i a', $fecha_time);}
-                          ?></td>
+                        <td><?php  $fecha_time=$proy_long['entry_date']; $edit_time=$proy_long['edit_date'];
+                        if ($fecha_time>0) {echo date('d-m-Y G:i a', $fecha_time); }
+                        elseif ($edit_time>0) {echo date('d-m-Y G:i a', $edit_time); }  ?></td>
 
                         <td><?php $paso=$proy_long['form_field_19']; ?>
 
@@ -170,7 +171,7 @@
 
                           <?php $file=$proy_long['form_field_28']; if($paso==9){ 
                             if (empty($file)) { ?> <a href="<?php echo 
-                          "user_gym_upload?id_sol_garantia=".$id_sol_garantia."&paso=9&id_cliente=".$id_cliente; ?>" 
+                          "user_gym_upload?id_sol_garantia=".$id_sol_garantia."&paso=5&id_cliente=".$id_cliente."&entry_id=".$entry_id; ?>" 
                           class="btn btn-sm btn-warning small">Subir reporte</a> <?php } else { echo $file; } } ?>
 
                         </td>

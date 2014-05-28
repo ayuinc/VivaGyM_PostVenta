@@ -1,0 +1,89 @@
+﻿<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>{site_name}</title>
+    <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="{site_url}stylesheets/viva.css" media="screen" />
+    
+    <!--<script type="text/javascript" src="{site_url}lib/b3/jquery-2_1_1.js"></script>
+    <script type="text/javascript" src="{site_url}lib/b3/tab.js"></script>
+    <script type="text/javascript" src="{site_url}lib/b3/transition.js"></script>
+    <script type="text/javascript" src="{site_url}lib/b3/collapse.js"></script>-->
+
+    <!-- FAVICON -->
+    <link rel="shortcut icon" href="img/favicon.ico">
+
+  </head>
+  <body>
+    
+    {if logged_in}
+    {exp:user:edit }
+
+    {exp:member:custom_profile_data}
+    <?php $user_id="{member_id}"; ?>
+
+      {exp:switchee variable = "{tipo_usuario}" parse="inward"}
+      
+      {case value="user_dep"}<!-- lectura php -->
+          <?php 
+          $query_long  = "SELECT * FROM exp_freeform_form_entries_2 where form_field_5='$user_id' and status='open' ";
+          $result_long = mysql_query($query_long);
+          $numero = mysql_num_rows($result_long);
+          ?>
+
+      {/case}
+      
+      {case value="admin_viva" default="Yes"} <!-- lectura php -->
+          <?php 
+          $query_long  = "SELECT * FROM exp_freeform_form_entries_2 where  status='open' ";
+          $result_long = mysql_query($query_long);
+          $numero = mysql_num_rows($result_long);
+          ?>
+      {/case}
+    
+  
+    {/exp:switchee}
+    {/exp:member:custom_profile_data}
+
+  <header class="bg-inverse text-muted">
+    <div class="container-fluid pt-7 pb-7">
+      <div class="row">
+        <div class="col-md-4">
+          <a href="#"><img src="{site_url}/images/logo-viva.png" style="width:120px; height: auto;"></a>
+        </div>
+        <div class="col-md-8 hidden-xs">
+          <div class="row">
+            <div class="col-xs-11 col-md-11 col-sm-11 text-right">
+              <h5 class="thin mb-0">Bienvenido, <span class="medium">{screen_name}</span></h5>
+              <a href="{path='logout'}">Salir</a>
+            </div>
+
+            <div class="col-xs-1 col-md-1 col-sm-1">
+              <a href="#" class="block text-center p-14 not-underline" id="user-notifications">
+                <span class="h4 text-muted m-0 book"><?php echo $numero; ?></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+            <!--<div class="col-xs-2 col-md-2">
+              <img src="{avatar_url}/{avatar_filename}" id="user-profile-pic">
+            </div>-->
+  {/exp:user:edit }
+
+  {/if}
+  {if logged_out}
+        Are you a member? Please <a href="{path='member/login'}">log-in</a>.<br>
+        Not a member? <a href="{path='member/register'}">Register</a>.<br>
+        Have you <a href="{path='member/forgot'}">forgotten your password</a>?
+{/if}
+
+
+<div class="container pt-35 pb-35 mh-630">

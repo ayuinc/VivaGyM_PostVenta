@@ -30,7 +30,15 @@ $id_cliente=$_POST['id_cliente'];
 $comentarios=$_POST['comentarios'];
 $aprobar_paso=$_POST['aprobar_paso'];
 
+$result=mysql_query("SELECT * FROM exp_freeform_form_entries_2 WHERE entry_id=$id_sol_garantia");
+$obten=mysql_fetch_row($result);
+$id_cliente = $obten[2];
 
+// leer email cuando lo tomas de ee no funca
+  $result_email=mysql_query("SELECT * FROM exp_members WHERE member_id=$id_cliente");
+  $obten_email=mysql_fetch_row($result_email);
+  $screen_name = $obten_email[3];
+  echo "<br> dir: ".$dir = $obten_email[9];
 
 $prox_paso=$paso+1;
 
@@ -55,6 +63,26 @@ values ('1','$id_cliente','y','$ip','','open','$id_cliente','Encuesta usuario','
 $sqlUpdateb = mysql_query("UPDATE exp_freeform_form_entries_2 
 SET status = 'closed'
 WHERE entry_id = $id_sol_garantia ");
+
+$sub="Cita de Inspección Agendada - Viva GyM";
+  echo "<br> correo ".$txt_mail="Estimado/a $screen_name<p>
+  Gracias por culminar el proceso de atención de su solicitud número $id_sol_garantia.<p>
+Adjunto encontrará el reporte del arreglo realizado por GyM.<p>
+Aprovechamos para recordarle que en el Manual del Propietario otorgado al momento de la entrega de su departamento se especifica el correcto uso y mantenimiento preventivo que se le debe realizar a sus instalaciones a fin de evitar que estas fallen por el propio uso que provoca el desgaste natural.  Puede encontrar el Manual en nuestro portal de post-venta en línea. Link a Manual.<p>
+Es importante precisar que en caso se presentara alguna solicitud, observación y/o requerimiento adicional tras el arreglo debe llenar un nuevo reclamo en nuestro portal de post-venta en línea o comunicarte a nuestro Call Center de Atención al Cliente 206-7270. Este es el único mecanismo que garantiza la atención de su solicitud de post-venta, cualquier otra forma de solicitud no será atendida.<p>
+Quedamos como siempre a su disposición si tiene alguna consulta o solicitud adicional.<p>
+Atentamente";
+
+  ee()->load->library('email');
+  ee()->load->helper('text');
+
+  ee()->email->wordwrap = true;
+  ee()->email->mailtype = 'html';
+  ee()->email->from('admin@gym.com');
+  ee()->email->to($dir);
+  ee()->email->subject($sub);
+  ee()->email->message(entities_to_ascii($txt_mail));
+  ee()->email->Send();
 
 }
 
@@ -140,12 +168,12 @@ if (!empty($informe_inspeccion)) {
 ?>
 
 <body>
-  
+<!--  
 {embed="includes/carga" }
 <?php sleep(3); ?>
 
 <script type="text/javascript">
 window.location="user_gym";
-</script>
+</script>-->
 
 </body>

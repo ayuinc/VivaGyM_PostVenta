@@ -3,6 +3,7 @@
 	$id_sol_garantia=$_GET['id_sol_garantia'];
 	$year = date('Y');
 	$month = date('m');
+	$site_url="http://162.243.222.54";
 
 	//$year = '2014';
 	//$month = '05';
@@ -19,7 +20,7 @@
 			'start' => "$year-$month-23",
 			'color' => "#78BE20", 
 			'textColor' => "black",
-			'url' => "user_request_show?dia_sel=23-$month-$year&id_sol_garantia=$id_sol_garantia"
+			'url' => "$site_url/index.php/main/user_request_book/$id_sol_garantia/23-$month-$year"
 		),
 		
 		array(
@@ -28,7 +29,7 @@
 			'start' => "$year-$month-30",
 			'color' => "#78BE20",
 			'textColor' => "black",
-			'url' => "user_request_show?dia_sel=30-$month-$year&id_sol_garantia=$id_sol_garantia"
+			'url' => "$site_url/index.php/main/user_request_book/$id_sol_garantia/30-$month-$year"
 		),
 		
 		array(
@@ -37,7 +38,7 @@
 			'start' => "$year-$month-20",
 			'color' => "#78BE20", 
 			'textColor' => "black",
-			'url' => "user_request_show?dia_sel=20-$month-$year&id_sol_garantia=$id_sol_garantia"
+			'url' => "$site_url/index.php/main/user_request_book/$id_sol_garantia/20-$month-$year"
 		),
 		
 		array(
@@ -46,7 +47,7 @@
 			'start' => "$year-$month-27",
 			'color' => "#78BE20",
 			'textColor' => "black",
-			'url' => "user_request_show?dia_sel=27-$month-$year&id_sol_garantia=$id_sol_garantia"
+			'url' => "$site_url/index.php/main/user_request_book/$id_sol_garantia/27-$month-$year"
 		),
 
 	

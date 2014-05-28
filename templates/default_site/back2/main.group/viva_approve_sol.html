@@ -1,0 +1,61 @@
+<?php
+
+$id_sol_garantia=$_GET['id_sol_garantia'];
+
+$acc=$_GET['acc'];
+
+$paso=$_GET['paso'];
+
+$ant_paso=$paso-1;
+
+$prox_paso=$paso+1;
+
+if($paso=="2") { $mensaje="Usuario agenda visita";};
+
+if($paso=="6") { $mensaje="Usuario agenda arreglo";};
+
+$ip=$_SERVER["REMOTE_ADDR"];
+
+$date = date_create();
+$entry_date=date_timestamp_get($date);
+
+$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_4 
+SET status = 'closed'
+WHERE form_field_18 = $id_sol_garantia AND form_field_19 = $paso ");
+
+if ($acc=="si"){
+
+$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_4 
+SET form_field_27 = 'Procede',
+entry_date = '$entry_date'
+WHERE form_field_18 = $id_sol_garantia AND form_field_19 = $paso ");
+
+$result=mysql_query("SELECT * FROM exp_freeform_form_entries_4 WHERE entry_id=$id_sol_garantia");
+$obten=mysql_fetch_row($result);
+$id_cliente = $obten[2];
+
+$resultado=mysql_query("insert into exp_freeform_form_entries_4 
+(site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19) 
+values ('1','$id_cliente','y','$ip','','open','$id_cliente','$mensaje','$id_sol_garantia','$prox_paso')");
+
+} elseif ($acc=="no"){ 
+
+$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_4 
+SET form_field_27 = 'No procede',
+status = 'closed',
+entry_date = '$entry_date'
+WHERE form_field_18 = $id_sol_garantia AND form_field_19 = $paso ");
+
+};
+
+?>
+
+<body>
+
+{embed="includes/carga" }
+<?php sleep(3); ?>
+
+<script type="text/javascript">
+window.location="viva_dashboard";
+</script>
+</body>

@@ -1,0 +1,37 @@
+﻿<h4 class="text-warning uppercase"><i class="icon-text2"></i> Solicitud de documentos</h4>
+
+{exp:freeform:form
+    form_name="solicitud_de_documentos"
+    return="main/user_dashboard"
+}
+                
+                <div class="row mt-14">
+                  <div class="col-md-7">
+                    <p>¿Qué documento deseas?</p>
+                    <div class="form-group">
+                      <select name="documento_solicitado" class="form-control input-lg uppercase">
+                        <option value="Planos">Planos</option>
+                        <option value="Contratos">Contratos</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mt-14">
+                  <div class="col-md-7">
+                    <p>Confirma el correo donde te enviaremos la información:</p>
+                    <div class="form-group">
+                      <input type="email" placeholder="Correo electrónico" name="email" class="uppercase form-control input-lg">
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group text-right">
+
+                {exp:member:custom_profile_data}
+                <input type="hidden" name="departamento_en_consulta" value="{cod_depa}" >
+                {/exp:member:custom_profile_data}
+                
+                <input type="hidden" name="id_cliente" value="{member_id}" >
+                  <input type="submit" name="submit" class="btn btn-lg uppercase btn-success" value="Procesar">
+                </div>
+              
+{/exp:freeform:form}

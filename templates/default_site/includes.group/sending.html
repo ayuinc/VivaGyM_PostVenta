@@ -1,0 +1,13 @@
+﻿<?php
+ee()->load->library('email');
+ee()->load->helper('text');
+
+ee()->email->wordwrap = true;
+ee()->email->mailtype = 'html';
+ee()->email->from('admin@gym.com');
+ee()->email->to($dir);
+ee()->email->subject($sub);
+ee()->email->message(entities_to_ascii($mensaje));
+ee()->email->Send();
+
+?>

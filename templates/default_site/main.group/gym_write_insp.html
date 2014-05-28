@@ -6,17 +6,9 @@ $id_sol_garantia=$_POST['id_sol_garantia'];
 
 $persona_asignada=$_POST['persona_asignada'];
 
-$paso=$_POST['paso'];
+echo "<br>paso ".$paso=$_POST['paso'];
 
-$prox_paso=$paso+1;
-
-if($paso=="4") {
-$texto_paso="Inspector visita departamento";
-}
-
-if($paso=="8") {
-$texto_paso="GyM ejecuta el arreglo";
-}	
+$prox_paso=$paso+1;	
 
 $ip=$_SERVER["REMOTE_ADDR"];
 
@@ -24,6 +16,27 @@ $mensaje_asig= "Asignado / ".$persona_asignada;
 
 $date = date_create();
 $entry_date=date_timestamp_get($date);
+
+
+
+if($paso=="4") {
+
+$texto_paso="Realizar inspección";
+
+$resultadoc=mysql_query("insert into exp_freeform_form_entries_4 
+(site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19,form_field_27,form_field_29) 
+values ('1','$id_cliente','y','$ip','','open','$id_cliente','Viva evalua arreglo','$id_sol_garantia','6','','$comentarios')"); 
+}
+
+if($paso=="8") {
+
+$texto_paso="GyM ejecuta el arreglo";
+
+$resultadob=mysql_query("insert into exp_freeform_form_entries_4 
+(site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19) 
+values ('1','$id_cliente','y','$ip','','open','$id_cliente','Viva cierra el caso','$id_sol_garantia','10')");  
+
+}
 
 $resultado=mysql_query("insert into exp_freeform_form_entries_4 
 (site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19) 

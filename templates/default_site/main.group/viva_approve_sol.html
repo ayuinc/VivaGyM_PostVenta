@@ -1,18 +1,32 @@
+{embed="includes/header"}
+{embed="includes/carga" }
+
 <?php
+$id_sol_garantia=$_POST['id_sol_garantia'];
+$acc=$_POST['aprobar_paso'];
+$paso=$_POST['paso'];
 
-$id_sol_garantia=$_GET['id_sol_garantia'];
+$comentarios=$_POST['comentarios'];
 
-$acc=$_GET['acc'];
+$result=mysql_query("SELECT * FROM exp_freeform_form_entries_2 WHERE entry_id=$id_sol_garantia");
+$obten=mysql_fetch_row($result);
+echo "<br>id cliente: ".$id_cliente = $obten[2];
+$tit_problema = $obten[15];
 
-$paso=$_GET['paso'];
+
+// leer email cuando lo tomas de ee no funca
+	$result_email=mysql_query("SELECT * FROM exp_members WHERE member_id=$id_cliente");
+	$obten_email=mysql_fetch_row($result_email);
+	$screen_name = $obten_email[3];
+	echo "<br> dir: ".$dir = $obten_email[9];
 
 $ant_paso=$paso-1;
 
 $prox_paso=$paso+1;
 
-if($paso=="2") { $mensaje="Usuario agenda visita";};
+if($paso=="2") { $mensaje="Agendar visita de inspección";};
 
-if($paso=="6") { $mensaje="Usuario agenda arreglo";};
+if($paso=="6") { $mensaje="Agendar visita de arreglo";};
 
 $ip=$_SERVER["REMOTE_ADDR"];
 
@@ -27,35 +41,74 @@ if ($acc=="si"){
 
 $sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_4 
 SET form_field_27 = 'Procede',
-entry_date = '$entry_date'
+entry_date = '$entry_date',
+form_field_29 = '$comentarios'
 WHERE form_field_18 = $id_sol_garantia AND form_field_19 = $paso ");
-
-$result=mysql_query("SELECT * FROM exp_freeform_form_entries_4 WHERE entry_id=$id_sol_garantia");
-$obten=mysql_fetch_row($result);
-$id_cliente = $obten[2];
 
 $resultado=mysql_query("insert into exp_freeform_form_entries_4 
 (site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19) 
 values ('1','$id_cliente','y','$ip','','open','$id_cliente','$mensaje','$id_sol_garantia','$prox_paso')");
+
+	$sub="Procede Inspección Viva GyM";
+	echo "<br> correo ".$txt_mail="Estimado/a $screen_name<p>
+	Tras analizar su solicitud de requerimiento número $id_sol_garantia, le confirmamos que se realizará la inspección del daño reportado 
+	'$tit_problema' a través del sistema de post-venta en línea de Viva GyM. Para proceder con la inspección debe agendar su cita en nuestro portal de post-venta en línea. Por favor siga en siguiente link para acceder al calendario. Link Calendario. Ahí deberá seleccionar un horario en el que con seguridad usted o alguien más se encontrará en su hogar para que reciba al especialista que inspeccionará el problema.<p>
+Quedamos como siempre a su disposición si tiene alguna consulta o solicitud adicional puede llamar a nuestro Call Center de Atención al Cliente al 206-7270.<p>
+Atentamente";
+
+
+	ee()->load->library('email');
+	ee()->load->helper('text');
+
+	ee()->email->wordwrap = true;
+	ee()->email->mailtype = 'html';
+	ee()->email->from('admin@gym.com');
+	ee()->email->to($dir);
+	ee()->email->subject($sub);
+	ee()->email->message(entities_to_ascii($txt_mail));
+	ee()->email->Send();
 
 } elseif ($acc=="no"){ 
 
 $sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_4 
 SET form_field_27 = 'No procede',
 status = 'closed',
-entry_date = '$entry_date'
+entry_date = '$entry_date',
+form_field_29 = '$comentarios'
 WHERE form_field_18 = $id_sol_garantia AND form_field_19 = $paso ");
 
+
+	$sub="No Procede Inspección Viva GyM";
+	echo "<br> mensaje ".$txt_mail="Estimado/a $screen_name<p>
+	Tras analizar su solicitud de requerimiento número $id_sol_garantia, le confirmamos que se ha determinado que su requerimiento es improcedente debido a: $comentarios.<p>
+	Por esta razón no corresponde enviar a un especialista a verificar el problema.
+Aprovechamos para recordarle que en el Manual del Propietario otorgado al momento de la entrega de su departamento se especifica el correcto uso y mantenimiento preventivo que se le debe realizar a sus instalaciones a fin de evitar que estas fallen por el propio uso que provoca el desgaste natural.  Puede encontrar el Manual en nuestro portal de post-venta en línea. Link a Manual.<p>
+Quedamos como siempre a su disposición si tiene alguna consulta o solicitud adicional puede llamar a nuestro Call Center de Atención al Cliente al 206-7270.<p>
+Atentamente";
+
+
+	ee()->load->library('email');
+	ee()->load->helper('text');
+
+	ee()->email->wordwrap = true;
+	ee()->email->mailtype = 'html';
+	ee()->email->from('admin@gym.com');
+	ee()->email->to($dir);
+	ee()->email->subject($sub);
+	ee()->email->message(entities_to_ascii($txt_mail));
+	ee()->email->Send();
+
+
 };
+
+sleep(3);
 
 ?>
 
 <body>
 
-{embed="includes/carga" }
-<?php sleep(3); ?>
-
 <script type="text/javascript">
 window.location="viva_dashboard";
 </script>
+
 </body>
