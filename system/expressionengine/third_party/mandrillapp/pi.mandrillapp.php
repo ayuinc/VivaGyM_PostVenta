@@ -83,7 +83,7 @@ Atentamente';
 
  		);
 		$mandrill->messages->sendTemplate($template_name, $template_content, $message);
-		return "";
+		return "Mensaje Enviado";
 	}
 }
 // END CLASS

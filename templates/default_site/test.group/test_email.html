@@ -1,7 +1,26 @@
-{exp:mandrillapp:send_email_test
-  to="gms122@gmail.com"
-  name="Gianfranco"
-  subject="Tema Terminado: TEST"
-  from="ayu@ayuinc.com"}
-    <p>FELICIDADES,Gianfranco:</p><p>Ganaste el tema "TEST" ve a nuestro menú de temas y sigue participando.</p>
-  {/exp:mandrillapp:send_email_test}   
+{embed="includes/header"}
+<?php
+
+//$result_email= "gms122@gmail.com";
+//$obten_email="gms122@gmail.com";
+$screen_name = "Gianfranco Montoya";
+$dir = "gms122@gmail.com";
+$sub="Recepción de Solicitud de Requerimientos Viva GyM";
+
+
+?>
+{exp:mandrillapp:send_email_confirm_solicitud
+  to=""<?php echo $dir; ?>"
+  name="<?php echo $screen_name; ?>"
+  subject="<?php echo $sub; ?>"
+  from="admin@gym.com"
+  dias="4"}
+    
+  {/exp:mandrillapp:send_email_confirm_solicitud}  
+
+
+<body>
+
+{embed="includes/carga" }
+
+</body>
