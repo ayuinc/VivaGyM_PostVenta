@@ -104,6 +104,8 @@ Atentamente";
 
 
 ?>
+
+<body>
 {exp:get_post_vars parse="inward"}
 	{exp:user:stats}
 		{exp:mandrillapp:send_email_viva_approve_sol 
@@ -116,8 +118,6 @@ Atentamente";
 		{/exp:mandrillapp:send_email_viva_approve_sol}  
 	{/exp:user:stats}
 {/exp:get_post_vars}
-<body>
-
 {post_aprobar_paso} - {post_id_sol_garantia} - {post_comentarios}
 <script type="text/javascript">
 //window.location="viva_dashboard";

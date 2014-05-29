@@ -100,6 +100,9 @@ Atentamente";
 }
 
 ?>
+
+
+<body>
 {exp:get_post_vars parse="inward"}
 	{exp:user:stats}
 		{exp:mandrillapp:send_email_viva_approve_fix 
@@ -112,9 +115,6 @@ Atentamente";
 		{/exp:mandrillapp:send_email_viva_approve_fix}  
 	{/exp:user:stats}
 {/exp:get_post_vars}
-
-<body>
-
 {post_aprobar_paso} - {post_id_sol_garantia} - {post_comentarios}
 
 <?php sleep(3); ?>

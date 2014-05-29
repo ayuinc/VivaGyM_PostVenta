@@ -55,7 +55,8 @@ WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 7");
 		  from="admin@gym.com"
 		  acc="{post_aprobar_paso}"
 		  id_sol_garantia="{post_id_sol_garantia}"
-		  comentarios="{post_comentarios}" }
+		  fecha_atencion_ticket="{post_fecha_atencion_ticket}" 
+			}
 		{/exp:mandrillapp:send_email_guardar_4to_paso}  
 	{/exp:user:stats}
 {/exp:get_post_vars}
