@@ -1,3 +1,4 @@
+
 ﻿<table class="table table-hover table-striped mt-14">
   <thead class="uppercase medium">
     <tr>
@@ -50,6 +51,8 @@
           <a href="{site_url}index.php/main/<?php echo "user_cancel_book/".$id_sol_garantia; ?>" 
           class="btn btn-sm btn-warning small">Cancelar</a><?php } 
               }; ?>
+
+          <?php if($paso==4){ } ?>
 
           <?php $fecha_re=$proy_long['form_field_25']; ?>
           <?php if($paso==5){ if (!empty($fecha_re)) { echo "Inspección realizada el ".$proy_long['form_field_25'];} } ?>

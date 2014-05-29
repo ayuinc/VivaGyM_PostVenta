@@ -89,7 +89,10 @@ Atentamente";
 <?php sleep(6); ?>
 
 <script type="text/javascript">
-window.location="user_dashboard";
+var $id_sol = <?php echo json_encode($id_sol_garantia);?>
+
+window.location="user_request_show/"+$id_sol;
 </script>
+
 
 </body>
