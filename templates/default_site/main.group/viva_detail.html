@@ -2,6 +2,8 @@
 
 <script type="text/javascript" src="{site_url}lib/viva_dashboard.js"></script>
 
+{segment_3}
+
   <!--
   <div class="row mt-21">
     <div class="col-md-9 mb-14">
@@ -49,56 +51,149 @@
               <h4 class="uppercase medium"><i class="icon-docs"></i> Solicitudes</h4>
             </div>
             <div class="col-sm-3 col-sm-offset-3">
-              <form>
-                <div class="form-group">
-                  <select name="" id="" class="select-override form-control">
-                    <option value="">Ordenar por</option>
-                  </select>
-                </div>
-              </form>
+              
             </div>
           </div>
           <hr class="m-0">
         </div>
         <div class="panel-body">
-          <div class="table-responsive">
-            <table class="table table-hover table-striped">
-              <thead>
-                <tr class="medium">
-                  <td>Caso</td>
-                  <td>Fecha</td>
-                  <td>Propietario</td>
-                  <!--<td>Complejo</td>
-                  <td>Torre</td>-->
-                  <td>Dpto.</td>
-                  <td>Estatus</td>
-                  <td>Tipo</td>
-                  <td></td>
-                  <td>Responsable</td>
-                  <td></td>
-                </tr>
-              </thead>
-              <tbody>
-                {exp:freeform:entries form_id="2" orderby="entry_id" sort="desc" status="open|closed" limit="10" paginate="both" }
-                <?php $estatus_ticket="{freeform:status}"; ?>
-                <tr>
-                  <td>No. <?php echo $id_sol_garantia="{freeform:entry_id}"; ?></td>
-                  <td>{freeform:entry_date format="%d-%m-%Y a %g:%i %a"}</td>
-                  <td>{freeform:author}</td>
-                  <!--<td>Complejo</td>
-                  <td>Torre</td>-->
-                  <td>{freeform:field:departamento_en_consulta}</td>
-                  <td>{freeform:status}</td>
-                  <td>{freeform:field:tipo_de_problema}</td>
-                  <td></td>
-                  <td></td>
-                  <td><a href="{site_url}index.php/main/viva_detail/{freeform:entry_id}" class="small text-danger underline">Ver detalle</a></td>
-                </tr>
-                {/exp:freeform:entries}
 
-              </tbody>
-            </table>
+
+          <div class="panel-heading p-0">
+
+            <div <?php if ($estatus_ticket=="closed") {echo " class='panel-title bg-warning-green' ";} 
+                    else {echo " class='panel-title bg-warning' ";} ?> >
+              <div class="row text-muted">
+                <div class="col-md-2 text-center pr-0 col-xs-5 col-sm-2">
+
+                  <div <?php if ($estatus_ticket=="closed") {echo " class='bg-green-dark pt-7 pb-7' ";} 
+                    else {echo " class='bg-warning-dark pt-7 pb-7' ";} ?> >
+                    No. <?php echo $id_sol_garantia="{freeform:entry_id}"; ?></div>
+                </div>
+
+                <div class="col-md-9 text-right pr-0 col-xs-7 col-sm-9">
+                  <a data-toggle="collapse" data-parent="#accordion2" href="#collapseFour<?php echo $id_sol_garantia; ?>" 
+        <?php if ($estatus_ticket=="closed") {echo " class='not-underline block bg-warning-green pt-7 pb-7' ";} 
+                    else {echo " class='not-underline block bg-warning pt-7 pb-7' ";} ?> >Ver detalle</a>
+                </div>
+
+                <div class="col-md-1 text-center pl-0 hidden-xs col-sm-1">
+                  <div <?php if ($estatus_ticket=="closed") {echo " class='bg-warning-green pt-7 pb-7' ";} 
+                    else {echo " class='bg-warning pt-7 pb-7' ";} ?> >
+                    <a data-toggle="collapse" data-parent="#accordion2" 
+                    href="#collapseFour<?php echo $id_sol_garantia; ?>" class="collapsed-icon not-underline lh-0"></a>
+                  </div>
+                </div>
+
+              </div>
+            </div>
           </div>
+          <div class="panel-body borderless p-0">
+            <div class="clearfix bg-white pt-14 pb-14">
+              <div class="col-md-2">
+                <img src="{site_url}fotos_problemas/{freeform:field:foto_problema}" class="img-responsive">
+              </div>
+              <div class="col-md-4">
+                <ul class="list-unstyled">
+                  <li class="mb-14"><strong>Propietario:</strong> <?php  $id_cliente="{freeform:field:id_cliente}"; 
+
+                  $result=mysql_query("SELECT * FROM exp_members WHERE member_id=$id_cliente");
+                  $obten=mysql_fetch_row($result);
+                  echo $screen_name = $obten[3];
+
+                   ?></li>
+                  <li class="mb-14"><strong>Complejo: </strong> Parque Central, Torre T. Dpto 503</li>
+                  <li class="mb-14"><strong>Teléfono: </strong>
+
+                  <?php  
+                  $resultb=mysql_query("SELECT * FROM exp_member_data WHERE member_id=$id_cliente");
+                  $obtenb=mysql_fetch_row($resultb);
+                  echo $m_field_id_5 = $obtenb[6];
+
+                   ?>
+                 </li>
+                  <li class="mb-14"><strong>Atendido por:</strong> <span class="text-warning">Roberto Mendoza</span></li>
+                </ul>
+              </div>
+              <div class="col-md-4">
+                <ul class="list-unstyled">
+                  <li class="mb-14"><strong>Fecha de apertura:</strong> {freeform:entry_date format="%F %j, %Y a %g:%i %a"}</li>
+                  <li class="mb-14"><strong>Estatus: </strong> <span class="text-warning">
+                    <?php $estatus_ticket="{freeform:status}"; if ($estatus_ticket=="open"){echo "Pendiente";} else {echo "Realizado";}; ?>
+                  </span></li>
+                  <li class="mb-14"><strong>Descripción:</strong> {freeform:field:descripcion_problema}</li>
+                </ul>                
+              </div>
+            </div>
+            <div id="collapseFour<?php echo $id_sol_garantia; ?>" class="panel-collapse collapse mt-14">
+              <div class="table-responsive">
+
+                <table class="table table-hover">
+                  <thead class="uppercase bg-gray text-muted light">
+                    <tr>
+                      <td>Acción</td>
+                      <td>Estatus</td>
+                      <td>Día / Hora</td>
+                      <td>Acción</td>
+                    </tr>
+                  </thead> <!-- hacer otro include con los detalles del ticket {embed="includes/detalles_ticket" }-->
+
+                 <?php
+                    $query_long  = "SELECT * FROM exp_freeform_form_entries_4 where form_field_18=$id_sol_garantia ";
+                    $result_long = mysql_query($query_long);
+                    ?>
+                    <?php while ($proy_long = mysql_fetch_array($result_long)) { ?>
+
+                    <tbody class="bg-white">
+                      <tr>
+                        <td><?php $entry_id=$proy_long['entry_id']; echo $proy_long['form_field_17']; ?></td>
+                        <td><?php $var_estatus=$proy_long['status']; if ($var_estatus=="open"){echo "Pendiente";} else {echo "Realizado";}; ?></td>
+                        <td><?php  $fecha_time=$proy_long['entry_date']; $edit_time=$proy_long['edit_date'];
+                        if ($fecha_time>0) {echo date('d-m-Y G:i a', $fecha_time); }
+                        elseif ($edit_time>0) {echo date('d-m-Y G:i a', $edit_time); }  ?></td>
+                        <td><?php $paso=$proy_long['form_field_19']; ?>
+
+
+                          <?php $procede=$proy_long['form_field_27']; if($paso==2){ 
+                            if (empty($procede)) { ?> <a class="btn btn-sm small btn-default" href="{site_url}index.php/main/<?php echo "viva_approve_sol?id_sol_garantia=".$id_sol_garantia."&acc=si&paso=2"; ?>">Procede</a>
+                                  <a class="btn btn-sm btn-warning small" href="{site_url}index.php/main/<?php echo "viva_approve_sol?id_sol_garantia=".$id_sol_garantia."&acc=no&paso=2"; ?>">No procede</a>
+                            <?php } else { echo $procede; } } ?> 
+
+
+
+                          <?php if($paso==3){ echo $proy_long['form_field_25']; } ?>
+
+                          <?php if($paso==4){ echo $proy_long['form_field_27']; } ?>
+
+                          <?php if($paso==5){ ?> <a href="#" class="btn btn-sm btn-warning small">Ver reporte</a> <?php } ?>
+
+                          <?php $procedeb=$proy_long['form_field_27']; if($paso==6){ 
+                            if (empty($procedeb)) { ?> <a href="<?php echo "viva_preview_fix?id_sol_garantia=".$id_sol_garantia."&paso=6&entry_id=".$entry_id; ?>" class="btn btn-sm small btn-default">Ver detalles</a> <?php } else { echo $procedeb; } } ?>
+
+                          <?php if($paso==7){ echo $proy_long['form_field_25']; } ?>
+
+                          <?php if($paso==8){ echo $proy_long['form_field_27']; } ?>
+
+                          <?php if($paso==9){ ?> <a href="#" class="btn btn-sm btn-warning small">Ver reporte</a> <?php } ?>
+
+                          <?php $procedec=$proy_long['form_field_27']; if($paso==10){ 
+                            if (empty($procedeb)) { ?> <a href="<?php echo "viva_close?id_sol_garantia=".$id_sol_garantia."&paso=10&entry_id=".$entry_id; ?>" class="btn btn-sm btn-warning small">Cerrar</a> <?php } else { echo $procedec; } } ?>
+
+                        </td>
+                      </tr>
+
+                    </tbody>
+
+                    <?php } ; ?>
+
+                </table>
+
+              </div>
+            </div>
+          </div>
+
+
+          
         </div>
       </div>
     </div>
