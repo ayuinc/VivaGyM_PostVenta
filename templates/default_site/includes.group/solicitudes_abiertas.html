@@ -3,7 +3,7 @@
   <thead class="uppercase medium">
     <tr>
       <td>Casos</td>
-      <td>Descripción</td>
+      <td>Tipo de problema</td>
       <td>Estatus</td>
       <td></td>
     </tr>
@@ -21,9 +21,27 @@
 }
     <tr>
       <td><?php echo $id_sol_garantia="{freeform:entry_id}"; ?></td>
-      <td>{freeform:field:descripcion_problema}</td>
+      <td>{freeform:field:tipo_de_problema}</td>
       <td>
-        <?php $var_est="{freeform:status}"; 
+
+        <?php $var_est="{freeform:field:etapa_solicitud}";
+          switch ($var_est) {
+            case "1":
+                echo "<span class='label label-default'>Solicitud en revisión</span>";
+                break;
+            case "2":
+                echo "<span class='label label-danger'>Inspección pendiente</span>";
+                break;
+            case "3":
+                echo "<span class='label label-default'>Arreglo pendiente</span>";
+                break;
+            case "4":
+                echo "<span class='label label-default'>Caso cerrado</span>";
+                break;
+        }; ?>
+
+
+        <!--<?php /*$var_est="{freeform:status}"; 
           switch ($var_est) {
             case "pending":
                 echo "<span class='label label-default'>Cancelado</span>";
@@ -34,7 +52,7 @@
             case "closed":
                 echo "<span class='label label-default'>Realizado</span>";
                 break;
-        }; ?>
+        }; */ ?>-->
       </td>
       <td class="text-center"><a href="{site_url}index.php/main/<?php echo "user_request_show/$id_sol_garantia"; ?>" class="underline">Ver detalle</a></td>
     </tr>
