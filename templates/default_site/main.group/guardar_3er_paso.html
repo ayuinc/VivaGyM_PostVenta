@@ -73,14 +73,14 @@ Atentamente";
 ?>
 {exp:get_post_vars parse="inward"}
 	{exp:user:stats}
-		{exp:mandrillapp:send_email_confirm_solicitud
+		{exp:mandrillapp:send_email_guardar_3er_paso
 		  to="{email}"
 		  name="{screen_name}"
 		  subject="Recepción de Solicitud de Requerimientos Viva GyM"
 		  from="admin@gym.com"
 		  id_sol_garantia="{post_id_sol_garantia}"
 		  fecha_atencion_ticket="{post_fecha_atencion_ticket}"}
-		{/exp:mandrillapp:send_email_confirm_solicitud}  
+		{/exp:mandrillapp:send_email_guardar_3er_paso}  
 	{/exp:user:stats}
 {/exp:get_post_vars}
 <body>

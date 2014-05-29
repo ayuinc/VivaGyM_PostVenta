@@ -102,14 +102,14 @@ Atentamente";
 ?>
 {exp:get_post_vars parse="inward"}
 	{exp:user:stats}
-		{exp:mandrillapp:send_email_confirm_solicitud
+		{exp:mandrillapp:send_email_viva_approve_fix 
 		  to="{email}"
 		  name="{screen_name}"
 		  from="admin@gym.com"
 		  acc="{post_acc}"
 		  id_sol_garantia="{post_id_sol_garantia}"
 		  comentarios="{post_comentarios}" }
-		{/exp:mandrillapp:send_email_confirm_solicitud}  
+		{/exp:mandrillapp:send_email_viva_approve_fix}  
 	{/exp:user:stats}
 {/exp:get_post_vars}
 

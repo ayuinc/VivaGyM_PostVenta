@@ -49,7 +49,7 @@ $resultado=mysql_query("insert into exp_freeform_form_entries_4
 (site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19) 
 values ('1','$id_cliente','y','$ip','','open','$id_cliente','$mensaje','$id_sol_garantia','$prox_paso')");
 
-
+/*
 	$sub="Procede Inspección Viva GyM";
 	$txt_mail="Estimado/a $screen_name<p>
 	Tras analizar su solicitud de requerimiento número $id_sol_garantia, le confirmamos que se realizará la inspección del daño reportado 
@@ -57,7 +57,7 @@ values ('1','$id_cliente','y','$ip','','open','$id_cliente','$mensaje','$id_sol_
 Quedamos como siempre a su disposición si tiene alguna consulta o solicitud adicional puede llamar a nuestro Call Center de Atención al Cliente al 206-7270.<p>
 Atentamente";
 
-/*
+
 	ee()->load->library('email');
 	ee()->load->helper('text');
 
@@ -77,7 +77,7 @@ status = 'closed',
 entry_date = '$entry_date',
 form_field_29 = '$comentarios'
 WHERE form_field_18 = $id_sol_garantia AND form_field_19 = $paso ");
-
+/*
 
 	$sub="No Procede Inspección Viva GyM";
 	$txt_mail="Estimado/a $screen_name<p>
@@ -87,7 +87,7 @@ Aprovechamos para recordarle que en el Manual del Propietario otorgado al moment
 Quedamos como siempre a su disposición si tiene alguna consulta o solicitud adicional puede llamar a nuestro Call Center de Atención al Cliente al 206-7270.<p>
 Atentamente";
 
-/*
+
 	ee()->load->library('email');
 	ee()->load->helper('text');
 
@@ -104,7 +104,18 @@ Atentamente";
 
 
 ?>
-
+{exp:get_post_vars parse="inward"}
+	{exp:user:stats}
+		{exp:mandrillapp:send_email_viva_approve_sol 
+		  to="{email}"
+		  name="{screen_name}"
+		  from="admin@gym.com"
+		  acc="{post_acc}"
+		  id_sol_garantia="{post_id_sol_garantia}"
+		  comentarios="{post_comentarios}" }
+		{/exp:mandrillapp:send_email_viva_approve_sol}  
+	{/exp:user:stats}
+{/exp:get_post_vars}
 <body>
 
 <script type="text/javascript">
