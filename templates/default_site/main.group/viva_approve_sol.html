@@ -2,11 +2,11 @@
 {embed="includes/carga" }
 
 <?php
-$id_sol_garantia=$_GET['id_sol_garantia'];
-$acc=$_GET['acc'];
-$paso=$_GET['paso'];
+echo "<br>sol ".$id_sol_garantia=$_POST['id_sol_garantia'];
+echo "<br>aprobar ".$acc=$_POST['aprobar_paso'];
+echo "<br>paso ".$paso=$_POST['paso'];
 
-$comentarios=$_POST['comentarios'];
+echo "<br>com ".$comentarios=$_POST['comentarios'];
 
 $result=mysql_query("SELECT * FROM exp_freeform_form_entries_2 WHERE entry_id=$id_sol_garantia");
 $obten=mysql_fetch_row($result);
@@ -110,15 +110,15 @@ Atentamente";
 		  to="{email}"
 		  name="{screen_name}"
 		  from="admin@gym.com"
-		  acc="{get_acc}"
-		  id_sol_garantia="{get_id_sol_garantia}"
+		  acc="{post_aprobar_paso}"
+		  id_sol_garantia="{post_id_sol_garantia}"
 		  comentarios="{post_comentarios}" }
 		{/exp:mandrillapp:send_email_viva_approve_sol}  
 	{/exp:user:stats}
 {/exp:get_post_vars}
 <body>
 
-{get_acc} - {get_id_sol_garantia} - {post_comentarios}
+{post_aprobar_paso} - {post_id_sol_garantia} - {post_comentarios}
 <script type="text/javascript">
 //window.location="viva_dashboard";
 </script>

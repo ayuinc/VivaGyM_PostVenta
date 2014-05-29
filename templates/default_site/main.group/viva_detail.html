@@ -143,7 +143,7 @@
                     ?>
                     <?php while ($proy_long = mysql_fetch_array($result_long)) { ?>
 
-                    <tbody class="bg-white">
+                    <tbody class="bg-white"> <!-- mover hacia un detalle por q se debe enviar una explicacion al usuario  -->
                       <tr>
                         <td><?php $entry_id=$proy_long['entry_id']; echo $proy_long['form_field_17']; ?></td>
                         <td><?php $var_estatus=$proy_long['status']; if ($var_estatus=="open"){echo "Pendiente";} else {echo "Realizado";}; ?></td>
@@ -152,13 +152,15 @@
                         elseif ($edit_time>0) {echo date('d-m-Y G:i a', $edit_time); }  ?></td>
                         <td><?php $paso=$proy_long['form_field_19']; ?>
 
-
+                            <!--
                           <?php $procede=$proy_long['form_field_27']; if($paso==2){ 
                             if (empty($procede)) { ?> <a class="btn btn-sm small btn-default" href="{site_url}index.php/main/<?php echo "viva_approve_sol?id_sol_garantia=".$id_sol_garantia."&acc=si&paso=2"; ?>">Procede</a>
                                   <a class="btn btn-sm btn-warning small" href="{site_url}index.php/main/<?php echo "viva_approve_sol?id_sol_garantia=".$id_sol_garantia."&acc=no&paso=2"; ?>">No procede</a>
+                            <?php } else { echo $procede; } } ?> -->
+
+                            <?php $procede=$proy_long['form_field_27']; if($paso==2){ 
+                            if (empty($procede)) { ?> <a href="{site_url}index.php/main/<?php echo "viva_preview_sol?id_sol_garantia=".$id_sol_garantia."&paso=2&entry_id=".$entry_id; ?>" class="btn btn-sm btn-warning small">Ver detalles</a>
                             <?php } else { echo $procede; } } ?> 
-
-
 
                           <?php if($paso==3){ echo $proy_long['form_field_25']; } ?>
 
