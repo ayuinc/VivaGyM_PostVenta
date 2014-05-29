@@ -67,10 +67,22 @@ Atentamente";
 */
 
 ?>
-
+{exp:get_post_vars parse="inward"}
+	{exp:user:stats}
+		{exp:mandrillapp:send_email_viva_close 
+		  to="{email}"
+		  name="{screen_name}"
+		  from="admin@gym.com"
+		  id_sol_garantia="{post_id_sol_garantia}"
+		  }
+		{/exp:mandrillapp:send_email_viva_close}  
+	{/exp:user:stats}
+{/exp:get_post_vars}
 <body>
 
 <script type="text/javascript">
 window.location="viva_dashboard";
 </script>
 </body>
+
+
