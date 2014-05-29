@@ -85,6 +85,105 @@ Atentamente';
 		$mandrill->messages->sendTemplate($template_name, $template_content, $message);
 		return "";
 	}
+	
+	function send_email_viva_approve_fix(){
+		global $TMPL;
+		$this->EE =& get_instance(); // EEv2 syntax
+		$TMPL = $this->EE->TMPL;
+
+ 		require_once 'mailchimp-mandrill-api-php/src/Mandrill.php'; 
+ 		$mandrill = new Mandrill('Svqgcw575OLrORu2WiD09g');
+ 		
+ 		$to= $TMPL->fetch_param('to');
+ 		$name= $TMPL->fetch_param('name');
+ 		$from= $TMPL->fetch_param('from');
+ 		$acc= $TMPL->fetch_param('acc');
+ 		$id_sol_garantia = $TMPL->fetch_param('id_sol_garantia');
+ 		$comentarios = $TMPL->fetch_param('comentarios');
+
+ 		if ($acc = "si"){
+
+ 			$result=mysql_query("SELECT * FROM exp_freeform_form_entries_2 WHERE entry_id=$id_sol_garantia");
+ 			$obten=mysql_fetch_row($result);
+ 			$tit_problema = $obten[15];
+
+ 			$subject = " Arreglo Procede - Viva GyM";
+ 			$text = 'Estimado/a '.$screen_name.'<p>
+					 Tras analizar su solicitud de requerimiento número '.$id_sol_garantia.' le confirmamos que se ha determinado que el arreglo reportado: '.$tit_problema.', procede. Para que se acerque un especialista a arreglar el daño debe agendar una cita ingresando a nuestro portal de post-venta en línea aquí. Link a Calendario.<p>
+					 Es importante precisar que en caso se presentara alguna solicitud, observación y/o requerimiento adicional tras el arreglo debe llenar un nuevo reclamo en nuestro portal de post-venta en línea o comunicarte a nuestro Call Center de Atención al Cliente 206-7270. Este es el único mecanismo que garantiza la atención de su solicitud de post-venta, cualquier otra forma de solicitud no será atendida.<p>
+					 Atentamente';
+	  		$message = array(
+	  		    'subject' => $subject,
+	  		    'from_email' => $from,
+	  		    'html' => $text,
+	  		    'to' => array(array('email' => $to, 'name' => $name)),
+	  		    'merge_vars' => array(array(
+	 	 		        'rcpt' => 'recipient1@domain.com',
+	 	 		        'vars' =>
+	 	 		        array(
+	 	 		            array(
+	 	 		                'name' => 'FIRSTNAME',
+	 	 		                'content' => 'Recipient 1 first name'),
+	 	 		            array(
+	 	 		                'name' => 'LASTNAME',
+	 	 		                'content' => 'Last name')
+	 	 		    ))));
+
+	  		$template_name = 'test';
+
+	  		$template_content = array(
+	  		    array(
+	  		        'name' => 'main',
+	  		        'content' => 'Hi *|FIRSTNAME|* *|LASTNAME|*, thanks for signing up.'),
+	  		    array(
+	  		        'name' => 'footer',
+	  		        'content' => 'Copyright 2012.')
+
+	  		);
+	 		$mandrill->messages->sendTemplate($template_name, $template_content, $message);
+	 		return "";
+ 		}
+ 		else if($acc = "no"){
+
+ 			$subject=" Arreglo no Procede - Viva GyM";
+ 			$text='Estimado/a '.$screen_name.'<p>
+ 				Tras analizar su solicitud de requerimiento número '.$id_sol_garantia.' le informamos que los especialistas de GyM han determinado que su arreglo no procede. La razón de esta decisión es: '.$comentarios.'.<p>
+ 			Aprovechamos para recordarle que en el Manual del Propietario otorgado al momento de la entrega de su departamento se especifica el correcto uso y mantenimiento preventivo que se le debe realizar a sus instalaciones a fin de evitar que estas fallen por el propio uso que provoca el desgaste natural.  Puede encontrar el Manual en nuestro portal de post-venta en línea. Link a Manual.<p>
+ 			Quedamos como siempre a su disposición si tiene alguna consulta o solicitud adicional puede llamar a nuestro Call Center de Atención al Cliente al 206-7270.<p>
+ 			Atentamente';
+ 			$message = array(
+	  		    'subject' => $subject,
+	  		    'from_email' => $from,
+	  		    'html' => $text,
+	  		    'to' => array(array('email' => $to, 'name' => $name)),
+	  		    'merge_vars' => array(array(
+	 	 		        'rcpt' => 'recipient1@domain.com',
+	 	 		        'vars' =>
+	 	 		        array(
+	 	 		            array(
+	 	 		                'name' => 'FIRSTNAME',
+	 	 		                'content' => 'Recipient 1 first name'),
+	 	 		            array(
+	 	 		                'name' => 'LASTNAME',
+	 	 		                'content' => 'Last name')
+	 	 		    ))));
+
+	  		$template_name = 'test';
+
+	  		$template_content = array(
+	  		    array(
+	  		        'name' => 'main',
+	  		        'content' => 'Hi *|FIRSTNAME|* *|LASTNAME|*, thanks for signing up.'),
+	  		    array(
+	  		        'name' => 'footer',
+	  		        'content' => 'Copyright 2012.')
+
+	  		);
+	 		$mandrill->messages->sendTemplate($template_name, $template_content, $message);
+	 		return "";
+ 		}
+	}
+
 	function send_email_guardar_3er_paso(){
 		global $TMPL;
 		$this->EE =& get_instance(); // EEv2 syntax
