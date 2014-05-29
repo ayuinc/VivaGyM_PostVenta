@@ -38,6 +38,10 @@ $resultc=mysql_query("SELECT * FROM exp_freeform_form_entries_4 WHERE entry_id=$
 $obtenc=mysql_fetch_row($resultc);
 $archivo = $obtenc[20]; //foto
 
+$resultado=mysql_query("insert into exp_freeform_form_entries_4 
+(site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19) 
+values ('1','$id_cliente','y','$ip','','open','$id_cliente','Completar encuesta de satisfacción','$id_sol_garantia','11')");
+
 /*
 	$sub=" Reporte de Arreglo y Cierre de Caso - Viva GyM";
 	$txt_mail="Estimado/a $screen_name<p>
@@ -59,7 +63,9 @@ Atentamente";
 	ee()->email->message(entities_to_ascii($txt_mail));
 	//ee()->email->attach('/var/www/vivagymposventa/html/informes_viva/$archivo');
 	ee()->email->Send();
+<<<<<<< HEAD
 */
+
 ?>
 
 <body>

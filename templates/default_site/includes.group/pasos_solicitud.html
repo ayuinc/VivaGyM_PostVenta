@@ -72,8 +72,11 @@
           class="btn btn-sm btn-warning small">Agendar</a> <?php } else { echo "Arreglo realizado el ".$fecha_nueve; } } ?> 
 
           <?php $estatus=$proy_long['form_field_27']; if($paso==10){ 
-            if ($estatus=="Cerrado") { ?> <a href="{site_url}index.php/main/<?php echo "user_encuesta/".$id_sol_garantia; ?>" 
-          class="btn btn-sm btn-warning small">Encuesta</a> <?php } else { } } ?> 
+            if ($estatus=="Cerrado") { ?> Cerrado <?php } else { } } ?> 
+
+          <?php if($paso==11){ 
+            ?> <a href="{site_url}index.php/main/<?php echo "user_encuesta/".$id_sol_garantia; ?>" 
+          class="btn btn-sm btn-warning small">Encuesta</a> <?php } else { } ?> 
 
         </td> <!-- detalle  -->
 
