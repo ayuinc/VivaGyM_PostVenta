@@ -1,11 +1,12 @@
 {embed="includes/header" }
+{exp:user:stats}
 {exp:mandrillapp:send_email_bienvenida
 		  to="{email}"
 		  name="{screen_name}"
 		  from="admin@gym.com"
 			}
 {/exp:mandrillapp:send_email_bienvenida}  
-
+{/exp:user:stats}
 
 <script type="text/javascript">
 	window.location="user_dashboard/{member_id}";
