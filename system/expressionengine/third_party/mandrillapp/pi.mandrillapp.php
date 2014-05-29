@@ -303,7 +303,7 @@ Atentamente';
  			$tit_problema = $obten[15];
 
  			$subject=" No Procede Inspección Viva GyM";
- 			$text='Estimado/a '.$template_name.'<p>
+ 			$text='Estimado/a '.$name.'<p>
 	Tras analizar su solicitud de requerimiento número '.$id_sol_garantia.', le confirmamos que se ha determinado que su requerimiento es improcedente debido a: '.$comentarios.'.<p>
 	Por esta razón no corresponde enviar a un especialista a verificar el problema.
 Aprovechamos para recordarle que en el Manual del Propietario otorgado al momento de la entrega de su departamento se especifica el correcto uso y mantenimiento preventivo que se le debe realizar a sus instalaciones a fin de evitar que estas fallen por el propio uso que provoca el desgaste natural.  Puede encontrar el Manual en nuestro portal de post-venta en línea. Link a Manual.<p>
