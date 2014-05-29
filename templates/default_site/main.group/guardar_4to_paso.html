@@ -47,10 +47,15 @@ WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 7");
 ?>
 
 <body>
+
 {embed="includes/carga" }
-<?php sleep(3); ?>
+<?php sleep(6); ?>
 
 <script type="text/javascript">
-window.location="user_dashboard";
+var $id_sol = <?php echo json_encode($id_sol_garantia);?>
+
+window.location="user_request_show/"+$id_sol;
 </script>
+
+
 </body>

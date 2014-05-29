@@ -31,6 +31,8 @@ $ubic_problema = $obtenc[16]; //ubicacion problema
 $foto = $obtenc[11]; //foto
 $detalles = $obtenc[20]; //fecha
 
+$fecha_atencion_ticket=date('d-m-Y');
+
  ?>
  
 <div class="row mb-14">
@@ -168,6 +170,8 @@ $detalles = $obtenc[20]; //fecha
               <input type="hidden" name="id_sol_garantia" value="<?php echo $id_sol_garantia; ?>" >
 
               <input type="hidden" name="paso" value="<?php echo $paso; ?>" >
+
+              <input type="text" name="fecha_atencion_ticket" value="<?php echo $fecha_atencion_ticket; ?>" >
 
               <input type="hidden" name="XID" value="{XID_HASH}" />
 

@@ -32,7 +32,7 @@ $foto = $obtenc[11]; //foto
 $detalles = $obtenc[20]; //fecha
 
 $entry_rev=($entry_id-1);
-$resultd=mysql_query("SELECT * FROM exp_freeform_form_entries_4 WHERE entry_id=$entry_rev");
+$resultd=mysql_query("SELECT * FROM exp_freeform_form_entries_4 WHERE form_field_18=$id_sol_garantia and form_field_19=5 ");
 $obtend=mysql_fetch_row($resultd);
 $archivo = $obtend[20]; //foto
 
