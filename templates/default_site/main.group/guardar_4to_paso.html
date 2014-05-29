@@ -47,7 +47,18 @@ WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 7");
 ?>
 
 <body>
-
+{exp:get_post_vars parse="inward"}
+	{exp:user:stats}
+		{exp:mandrillapp:send_email_guardar_4to_paso 
+		  to="{email}"
+		  name="{screen_name}"
+		  from="admin@gym.com"
+		  acc="{post_aprobar_paso}"
+		  id_sol_garantia="{post_id_sol_garantia}"
+		  comentarios="{post_comentarios}" }
+		{/exp:mandrillapp:send_email_guardar_4to_paso}  
+	{/exp:user:stats}
+{/exp:get_post_vars}
 {embed="includes/carga" }
 <?php sleep(6); ?>
 
