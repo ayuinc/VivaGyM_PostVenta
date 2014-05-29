@@ -2,7 +2,7 @@
 
 <script type="text/javascript" src="{site_url}lib/viva_dashboard.js"></script>
 
-{segment_3}
+<?php $id_sol_garantia="{segment_3}"; ?>
 
   <!--
   <div class="row mt-21">
@@ -39,16 +39,14 @@
       </div>
     </div>
   </div>-->
-  
-
-  <h3 class="text-success medium">Panel de Control</h3>
+  <h3 class="text-success medium"><a href="{site_url}index.php/main/viva_dashboard" >Panel de Control</a></h3>
   <div class="row">
     <div class="col-sm-12">
       <div class="panel bg-white">
         <div class="panel-heading">
           <div class="row">
             <div class="col-sm-6">
-              <h4 class="uppercase medium"><i class="icon-docs"></i> Solicitudes</h4>
+              <h4 class="uppercase medium"><i class="icon-docs"></i> Detalle de Solicitud</h4>
             </div>
             <div class="col-sm-3 col-sm-offset-3">
               
@@ -58,7 +56,8 @@
         </div>
         <div class="panel-body">
 
-
+          {exp:freeform:entries form_id="2" orderby="entry_id" sort="desc" status="open|closed" entry_id="{segment_3}"  }
+                <?php $estatus_ticket="{freeform:status}"; ?>
           <div class="panel-heading p-0">
 
             <div <?php if ($estatus_ticket=="closed") {echo " class='panel-title bg-warning-green' ";} 
@@ -125,7 +124,7 @@
                 </ul>                
               </div>
             </div>
-            <div id="collapseFour<?php echo $id_sol_garantia; ?>" class="panel-collapse collapse mt-14">
+            <div id="collapseFour<?php echo $id_sol_garantia; ?>" class="panel-collapse mt-14">
               <div class="table-responsive">
 
                 <table class="table table-hover">
@@ -168,7 +167,7 @@
                           <?php if($paso==5){ ?> <a href="#" class="btn btn-sm btn-warning small">Ver reporte</a> <?php } ?>
 
                           <?php $procedeb=$proy_long['form_field_27']; if($paso==6){ 
-                            if (empty($procedeb)) { ?> <a href="<?php echo "viva_preview_fix?id_sol_garantia=".$id_sol_garantia."&paso=6&entry_id=".$entry_id; ?>" class="btn btn-sm small btn-default">Ver detalles</a> <?php } else { echo $procedeb; } } ?>
+                            if (empty($procedeb)) { ?> <a href="{site_url}index.php/main/<?php echo "viva_preview_fix?id_sol_garantia=".$id_sol_garantia."&paso=6&entry_id=".$entry_id; ?>" class="btn btn-sm small btn-default">Ver detalles</a> <?php } else { echo $procedeb; } } ?>
 
                           <?php if($paso==7){ echo $proy_long['form_field_25']; } ?>
 
@@ -177,7 +176,7 @@
                           <?php if($paso==9){ ?> <a href="#" class="btn btn-sm btn-warning small">Ver reporte</a> <?php } ?>
 
                           <?php $procedec=$proy_long['form_field_27']; if($paso==10){ 
-                            if (empty($procedeb)) { ?> <a href="<?php echo "viva_close?id_sol_garantia=".$id_sol_garantia."&paso=10&entry_id=".$entry_id; ?>" class="btn btn-sm btn-warning small">Cerrar</a> <?php } else { echo $procedec; } } ?>
+                            if (empty($procedeb)) { ?> <a href="{site_url}index.php/main/<?php echo "viva_close?id_sol_garantia=".$id_sol_garantia."&paso=10&entry_id=".$entry_id; ?>" class="btn btn-sm btn-warning small">Cerrar</a> <?php } else { echo $procedec; } } ?>
 
                         </td>
                       </tr>
@@ -191,6 +190,7 @@
               </div>
             </div>
           </div>
+           {/exp:freeform:entries}
 
 
           

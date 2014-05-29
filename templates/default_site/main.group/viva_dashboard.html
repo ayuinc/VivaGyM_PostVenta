@@ -39,7 +39,7 @@
   </div>-->
   
 
-  <h3 class="text-success medium">Panel de Control</h3>
+  <h3 class="text-success medium"><a href="{site_url}index.php/main/viva_dashboard" >Panel de Control</a></h3>
   <div class="row">
     <div class="col-sm-12">
       <div class="panel bg-white">
@@ -88,7 +88,20 @@
                   <!--<td>Complejo</td>
                   <td>Torre</td>-->
                   <td>{freeform:field:departamento_en_consulta}</td>
-                  <td>{freeform:status}</td>
+                  <td>
+                  <?php  
+                      switch ($estatus_ticket) {
+                        case "pending":
+                            echo "<span class='label label-default'>Cancelado</span>";
+                            break;
+                        case "open":
+                            echo "<span class='label label-danger'>Pendiente</span>";
+                            break;
+                        case "closed":
+                            echo "<span class='label label-default'>Realizado</span>";
+                            break;
+                    }; ?>
+                  </td>
                   <td>{freeform:field:tipo_de_problema}</td>
                   <td></td>
                   <td></td>
