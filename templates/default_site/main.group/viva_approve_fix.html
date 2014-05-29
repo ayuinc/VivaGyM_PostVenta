@@ -48,6 +48,7 @@ $resultado=mysql_query("insert into exp_freeform_form_entries_4
 (site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19) 
 values ('1','$id_cliente','y','$ip','','open','$id_cliente','$mensaje','$id_sol_garantia','$prox_paso')");
 
+/*
 	$sub=" Arreglo Procede - Viva GyM";
 	echo "<br> correo ".$txt_mail="Estimado/a $screen_name<p>
 	Tras analizar su solicitud de requerimiento número $id_sol_garantia le confirmamos que se ha determinado que el arreglo reportado: ".'"'.$tit_problema .'"'.", procede. Para que se acerque un especialista a arreglar el daño debe agendar una cita ingresando a nuestro portal de post-venta en línea aquí. Link a Calendario.<p>
@@ -65,6 +66,7 @@ Atentamente";
 	ee()->email->subject($sub);
 	ee()->email->message(entities_to_ascii($txt_mail));
 	ee()->email->Send();
+	*/
 
 } elseif ($acc=="no"){ 
 
@@ -75,6 +77,7 @@ entry_date = '$entry_date',
 form_field_29 = '$comentarios'
 WHERE form_field_18 = $id_sol_garantia AND form_field_19 = $paso ");
 
+/*
 	$sub=" Arreglo no Procede - Viva GyM";
 	echo "<br> mensaje ".$txt_mail="Estimado/a $screen_name<p>
 	Tras analizar su solicitud de requerimiento número $id_sol_garantia le informamos que los especialistas de GyM han determinado que su arreglo no procede. La razón de esta decisión es: $comentarios.<p>
@@ -93,7 +96,7 @@ Atentamente";
 	ee()->email->subject($sub);
 	ee()->email->message(entities_to_ascii($txt_mail));
 	ee()->email->Send();
-
+*/
 };
 
 ?>

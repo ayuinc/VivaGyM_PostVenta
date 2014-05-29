@@ -1,15 +1,6 @@
-﻿<table class="table table-hover m-0">
+{embed:miembro_id}
 
-  <thead class="uppercase medium">
-    <tr>
-      <td>Casos</td>
-      <td>Descripción</td>
-      <td>Estatus</td>
-      <td></td>
-    </tr>
-  </thead>
-  
-  <tbody>
+<?php $contador_entradas=0; ?>
 
 {exp:freeform:entries
     form_id="2"
@@ -17,11 +8,16 @@
     sort="desc"
     limit="10" status="open|closed"
     paginate="both"
-    search:author_id="{last_segment}"
+    search:author_id="21"
 }
+
+
+	<?php $contador_entradas++; ?>
+
+	{if freeform:field:descripcion_problema!=''}
     <tr>
       <td><?php echo $id_sol_garantia="{freeform:entry_id}"; ?></td>
-      <td>{freeform:field:descripcion_problema}</td>
+      <td>{freeform:field:tipo_de_problema}</td>
       <td>
         <?php $var_est="{freeform:status}"; 
           switch ($var_est) {
@@ -36,14 +32,6 @@
                 break;
         }; ?>
       </td>
-      <td class="text-center"><a href="{site_url}index.php/main/<?php echo "user_request_show/$id_sol_garantia"; ?>" class="underline">Ver detalle</a></td>
+      <td class="text-center"><a href="<?php echo "user_request_show/$id_sol_garantia"; ?>" class="underline">Ver detalle</a></td>
     </tr>
-
-    {if freeform:no_results}
-        <p>Aun no tienes solicitudes abiertas. Cuando crees una solicitud podras hacer seguimiento aqui.</p>
-    {/if}
-
 {/exp:freeform:entries}
-
-  </tbody>
-</table>

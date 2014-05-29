@@ -38,6 +38,7 @@ $resultc=mysql_query("SELECT * FROM exp_freeform_form_entries_4 WHERE entry_id=$
 $obtenc=mysql_fetch_row($resultc);
 $archivo = $obtenc[20]; //foto
 
+/*
 	$sub=" Reporte de Arreglo y Cierre de Caso - Viva GyM";
 	$txt_mail="Estimado/a $screen_name<p>
 	Gracias por culminar el proceso de atención de su solicitud número: $id_sol_garantia.
@@ -58,7 +59,7 @@ Atentamente";
 	ee()->email->message(entities_to_ascii($txt_mail));
 	//ee()->email->attach('/var/www/vivagymposventa/html/informes_viva/$archivo');
 	ee()->email->Send();
-
+*/
 ?>
 
 <body>

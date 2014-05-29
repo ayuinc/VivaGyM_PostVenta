@@ -142,8 +142,11 @@
 
 
                           <?php $procede=$proy_long['form_field_27']; if($paso==2){ 
-                            if (empty($procede)) { ?> <a href="<?php echo "viva_preview_sol?id_sol_garantia=".$id_sol_garantia."&paso=2&entry_id=".$entry_id; ?>" class="btn btn-sm btn-warning small">Ver detalles</a>
+                            if (empty($procede)) { ?> <a class="btn btn-sm small btn-default" href="{site_url}index.php/main/<?php echo "viva_approve_sol?id_sol_garantia=".$id_sol_garantia."&acc=si&paso=2"; ?>">Procede</a>
+                                  <a class="btn btn-sm btn-warning small" href="{site_url}index.php/main/<?php echo "viva_approve_sol?id_sol_garantia=".$id_sol_garantia."&acc=no&paso=2"; ?>">No procede</a>
                             <?php } else { echo $procede; } } ?> 
+
+
 
                           <?php if($paso==3){ echo $proy_long['form_field_25']; } ?>
 

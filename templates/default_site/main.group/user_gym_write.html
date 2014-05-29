@@ -64,6 +64,7 @@ $sqlUpdateb = mysql_query("UPDATE exp_freeform_form_entries_2
 SET status = 'closed'
 WHERE entry_id = $id_sol_garantia ");
 
+/*
 $sub="Cita de Inspección Agendada - Viva GyM";
   echo "<br> correo ".$txt_mail="Estimado/a $screen_name<p>
   Gracias por culminar el proceso de atención de su solicitud número $id_sol_garantia.<p>
@@ -83,6 +84,7 @@ Atentamente";
   ee()->email->subject($sub);
   ee()->email->message(entities_to_ascii($txt_mail));
   ee()->email->Send();
+  */
 
 }
 
@@ -168,12 +170,12 @@ if (!empty($informe_inspeccion)) {
 ?>
 
 <body>
-<!--  
+  
 {embed="includes/carga" }
 <?php sleep(3); ?>
 
 <script type="text/javascript">
 window.location="user_gym";
-</script>-->
+</script>
 
 </body>

@@ -40,14 +40,14 @@
                         elseif ($edit_time>0) {echo date('d-m-Y', $edit_time); }  ?></td> <!-- fecha  -->
 
         <td><?php $paso=$proy_long['form_field_19']; $fecha_insp=$proy_long['form_field_27']; ?>
-          <?php if (!empty($fecha_insp)) { if($paso==2){ echo "Su solicitud de inspección ".$proy_long['form_field_27']; } } ?>
+          <?php if (!empty($fecha_insp)) { if($paso==2){ echo "Su solicitud de inspección ha sido ".$proy_long['form_field_27']; } } ?>
 
           <?php $fecha=$proy_long['form_field_25']; 
           if($paso==3){ 
                 if (empty($fecha)) { ?> <a href="{site_url}index.php/main/<?php echo "user_request_book/".$id_sol_garantia; ?>" 
               class="btn btn-sm btn-warning small">Agendar</a> <?php } 
           else { echo "Inspección agendada para ".$fecha; ?> 
-          <a href="{site_url}index.php/main/<?php echo "user_request_book/".$id_sol_garantia; ?>" 
+          <a href="{site_url}index.php/main/<?php echo "user_cancel_book/".$id_sol_garantia; ?>" 
           class="btn btn-sm btn-warning small">Cancelar</a><?php } 
               }; ?>
 

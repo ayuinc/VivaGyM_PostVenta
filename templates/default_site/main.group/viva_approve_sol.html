@@ -2,9 +2,9 @@
 {embed="includes/carga" }
 
 <?php
-$id_sol_garantia=$_POST['id_sol_garantia'];
-$acc=$_POST['aprobar_paso'];
-$paso=$_POST['paso'];
+$id_sol_garantia=$_GET['id_sol_garantia'];
+$acc=$_GET['acc'];
+$paso=$_GET['paso'];
 
 $comentarios=$_POST['comentarios'];
 
@@ -49,14 +49,15 @@ $resultado=mysql_query("insert into exp_freeform_form_entries_4
 (site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19) 
 values ('1','$id_cliente','y','$ip','','open','$id_cliente','$mensaje','$id_sol_garantia','$prox_paso')");
 
+
 	$sub="Procede Inspección Viva GyM";
-	echo "<br> correo ".$txt_mail="Estimado/a $screen_name<p>
+	$txt_mail="Estimado/a $screen_name<p>
 	Tras analizar su solicitud de requerimiento número $id_sol_garantia, le confirmamos que se realizará la inspección del daño reportado 
 	'$tit_problema' a través del sistema de post-venta en línea de Viva GyM. Para proceder con la inspección debe agendar su cita en nuestro portal de post-venta en línea. Por favor siga en siguiente link para acceder al calendario. Link Calendario. Ahí deberá seleccionar un horario en el que con seguridad usted o alguien más se encontrará en su hogar para que reciba al especialista que inspeccionará el problema.<p>
 Quedamos como siempre a su disposición si tiene alguna consulta o solicitud adicional puede llamar a nuestro Call Center de Atención al Cliente al 206-7270.<p>
 Atentamente";
 
-
+/*
 	ee()->load->library('email');
 	ee()->load->helper('text');
 
@@ -66,7 +67,7 @@ Atentamente";
 	ee()->email->to($dir);
 	ee()->email->subject($sub);
 	ee()->email->message(entities_to_ascii($txt_mail));
-	ee()->email->Send();
+	ee()->email->Send();*/
 
 } elseif ($acc=="no"){ 
 
@@ -79,14 +80,14 @@ WHERE form_field_18 = $id_sol_garantia AND form_field_19 = $paso ");
 
 
 	$sub="No Procede Inspección Viva GyM";
-	echo "<br> mensaje ".$txt_mail="Estimado/a $screen_name<p>
+	$txt_mail="Estimado/a $screen_name<p>
 	Tras analizar su solicitud de requerimiento número $id_sol_garantia, le confirmamos que se ha determinado que su requerimiento es improcedente debido a: $comentarios.<p>
 	Por esta razón no corresponde enviar a un especialista a verificar el problema.
 Aprovechamos para recordarle que en el Manual del Propietario otorgado al momento de la entrega de su departamento se especifica el correcto uso y mantenimiento preventivo que se le debe realizar a sus instalaciones a fin de evitar que estas fallen por el propio uso que provoca el desgaste natural.  Puede encontrar el Manual en nuestro portal de post-venta en línea. Link a Manual.<p>
 Quedamos como siempre a su disposición si tiene alguna consulta o solicitud adicional puede llamar a nuestro Call Center de Atención al Cliente al 206-7270.<p>
 Atentamente";
 
-
+/*
 	ee()->load->library('email');
 	ee()->load->helper('text');
 
@@ -96,19 +97,18 @@ Atentamente";
 	ee()->email->to($dir);
 	ee()->email->subject($sub);
 	ee()->email->message(entities_to_ascii($txt_mail));
-	ee()->email->Send();
+	ee()->email->Send();*/
 
 
 };
 
-sleep(3);
 
 ?>
 
 <body>
 
-<script type="text/javascript">
+<!--<script type="text/javascript">
 window.location="viva_dashboard";
-</script>
+</script>-->
 
 </body>
