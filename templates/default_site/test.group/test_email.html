@@ -1,23 +1,63 @@
 {embed="includes/header"}
-<?php
-
-//$result_email= "gms122@gmail.com";
-//$obten_email="gms122@gmail.com";
-$screen_name = "Gianfranco Montoya";
-$dir = "gms122@gmail.com";
-$sub="Recepción de Solicitud de Requerimientos Viva GyM";
-
-
-?>
-{exp:user:stats}
-	{exp:mandrillapp:send_email_confirm_solicitud
-	  to="{email}"
-	  name="{screen_name}"
-	  subject="Recepción de Solicitud de Requerimientos Viva GyM"
-	  from="admin@gym.com"
-	  dias="4"}
-	{/exp:mandrillapp:send_email_confirm_solicitud}  
-{/exp:user:stats}
+{exp:get_post_vars parse="inward"}
+	{exp:user:stats}
+		{exp:mandrillapp:send_email_viva_close 
+		  to="gms122@gmail.com"
+		  name="{screen_name}"
+		  from="admin@gym.com"
+		  id_sol_garantia="test_24"
+		  }
+		{/exp:mandrillapp:send_email_viva_close}  
+	{/exp:user:stats}
+{/exp:get_post_vars}
+{exp:get_post_vars parse="inward"}
+	{exp:user:stats}
+		{exp:mandrillapp:send_email_viva_approve_fix 
+		  to="gms122@gmail.com"
+		  name="{screen_name}"
+		  from="admin@gym.com"
+		  acc="si"
+		  id_sol_garantia="test_24"
+		  comentarios="sol_aceptada" }
+		{/exp:mandrillapp:send_email_viva_approve_fix}  
+	{/exp:user:stats}
+{/exp:get_post_vars}
+{exp:get_post_vars parse="inward"}
+	{exp:user:stats}
+		{exp:mandrillapp:send_email_viva_approve_sol 
+		  to="gms122@gmail.com"
+		  name="{screen_name}"
+		  from="admin@gym.com"
+		  acc="si"
+		  id_sol_garantia="test_24"
+		  comentarios="sol_aceptada" }
+		{/exp:mandrillapp:send_email_viva_approve_sol}  
+	{/exp:user:stats}
+{/exp:get_post_vars}
+{exp:get_post_vars parse="inward"}
+	{exp:user:stats}
+		{exp:mandrillapp:send_email_viva_approve_fix 
+		  to="gms122@gmail.com"
+		  name="{screen_name}"
+		  from="admin@gym.com"
+		  acc="no"
+		  id_sol_garantia="test_24"
+		  comentarios="sol_no_aceptada" }
+		{/exp:mandrillapp:send_email_viva_approve_fix}  
+	{/exp:user:stats}
+{/exp:get_post_vars}
+{exp:get_post_vars parse="inward"}
+	{exp:user:stats}
+		{exp:mandrillapp:send_email_viva_approve_sol 
+		  to="gms122@gmail.com"
+		  name="{screen_name}"
+		  from="admin@gym.com"
+		  acc="no"
+		  id_sol_garantia="test_24"
+		  comentarios="sol_no_aceptada" }
+		{/exp:mandrillapp:send_email_viva_approve_sol}  
+	{/exp:user:stats}
+{/exp:get_post_vars}
 
 <body>
 {email} - {screen_name}
