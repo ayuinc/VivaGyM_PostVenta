@@ -2,17 +2,17 @@
 {exp:user:stats}
     {exp:freeform:entries
         form_id="4"
-        orderby="date"
+        orderby="{freeform:field:tramite}"
         sort="desc"
-        limit="5"    
+        status="open|closed" 
+        limit="20"    
         search:id_cliente="{member_id}" 
     }
         {if freeform:no_results}
             <li>No Results</li>
         {/if}
         <li>
-            <p><b>Proceso:</b>{freeform:field:accion_ticket}</p>
-            <p><b>Fecha de notificación:</b>{freeform:entry_date format="%F %j, %Y at %g:%i %a"}</p>
+            <p><b>PASO NUMERO:</b>{freeform:field:tramite}<b>Proceso:</b>{freeform:field:accion_ticket}</p>
         </li>
     {/exp:freeform:entries}
 {/exp:user:stats}
