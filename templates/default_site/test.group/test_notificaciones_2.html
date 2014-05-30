@@ -2,7 +2,7 @@
 {exp:user:stats}
     {exp:freeform:entries
         form_id="4"
-        orderby="{freeform:field:tramite}"
+        orderby="{freeform:field:orden_tramite}"
         sort="desc"
         status="open|closed" 
         limit="20"    
@@ -12,7 +12,7 @@
             <li>No Results</li>
         {/if}
         <li>
-            <p><b>PASO NUMERO:</b>{freeform:field:tramite}<b>Proceso:</b>{freeform:field:accion_ticket}</p>
+            <p><b>PASO NUMERO:</b>{freeform:field:orden_tramite}<b>Proceso:</b>{freeform:field:accion_ticket}</p>
         </li>
     {/exp:freeform:entries}
 {/exp:user:stats}
