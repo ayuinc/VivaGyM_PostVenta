@@ -1,0 +1,17 @@
+<h1>Tus notificaciones {screen_name}</h1>
+{exp:freeform:entries
+    form_id="4"
+    orderby="date"
+    sort="desc"
+    limit="5"    
+    search:id_cliente="{member_id}" 
+}
+    {if freeform:no_results}
+        <li>No Results</li>
+    {/if}
+    <li>
+        <p><b>Proceso:</b>{freeform:field:accion_ticket}</p>
+        <p><b>Fecha de notificación:</b>{freeform:entry_date format="%F %j, %Y at %g:%i %a"}</p>
+    </li>
+    
+{/exp:freeform:entries}
