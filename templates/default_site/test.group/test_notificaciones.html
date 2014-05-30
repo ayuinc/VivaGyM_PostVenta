@@ -1,0 +1,45 @@
+{exp:freeform:entries
+    form_id="2"
+    orderby="date"
+    sort="desc"
+    limit="20"
+    paginate="both"
+}
+ 
+    <p>
+        Submitted:
+        {freeform:entry_date format="%F %j, %Y at %g:%i %a"}
+    </p>
+ 
+    <h3>
+        By: {freeform:field:name}
+        {if freeform:field:urgent == "yes"}
+            (URGENT!)
+        {/if}
+    </h3>
+ 
+    <p>Email Address: {freeform:field:email}</p>
+ 
+    <p>Home Phone: {freeform:field:home_phone}</p>
+ 
+    {if freeform:field:cell_phone}
+        <p>Cell Phone: {freeform:field:cell_phone}</p>
+    {/if}
+ 
+    <p>Subject: {freeform:field:subject}</p>
+    <p>Questions or Comments:<br />{freeform:field:question}</p>
+ 
+    {if freeform:no_results}
+        <p>No results found.</p>
+    {/if}
+ 
+    {freeform:paginate}
+        <p>
+            Page {freeform:current_page}
+            of {freeform:total_pages}
+            pages &nbsp;
+            {freeform:pagination_links}
+        </p>
+    {/freeform:paginate}
+ 
+{/exp:freeform:entries}
