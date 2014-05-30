@@ -357,3 +357,12 @@
     background: white url(http://162.243.222.54/images/arrow-down.svg) no-repeat 98%;
   }
 }
+
+// Horizontal Rule Double
+hr.double {
+  padding: 1px;
+  border-bottom: 1px solid $gray-light;
+  border-top: 1px solid $gray-light;
+  margin-top: 22px;
+  margin-bottom: 22px;
+}

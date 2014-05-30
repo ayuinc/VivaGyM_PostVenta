@@ -6970,6 +6970,13 @@ table.fc-border-separate {
     line-height: 28px;
     background: white url(http://162.243.222.54/images/arrow-down.svg) no-repeat 98%; }
 
+hr.double {
+  padding: 1px;
+  border-bottom: 1px solid #d2d3d4;
+  border-top: 1px solid #d2d3d4;
+  margin-top: 22px;
+  margin-bottom: 22px; }
+
 /*!
 Animate.css - http://daneden.me/animate
 Licensed under the MIT license
