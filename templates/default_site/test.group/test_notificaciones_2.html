@@ -52,9 +52,7 @@
             <p>Tu solicitud #{freeform:field:id_sol_garantia} ha sido cerrada.&nbsp <a href="http://162.243.222.54/main/user_request_show/{freeform:field:id_sol_garantia}">Ver detalles.</a></p>
         </li>
         {if:else}
-        <li>
-            <p><b>PASO NUMERO:</b>&nbsp{freeform:field:orden_tramite}&nbsp<b>Proceso:</b>{freeform:field:accion_ticket}&nbsp <a href="http://162.243.222.54/main/user_request_show/{freeform:field:id_sol_garantia}"> Ver Detalle Aquí</a></p>
-        </li>
+       
         {/if}
     {/exp:freeform:entries}
 {/exp:user:stats}
