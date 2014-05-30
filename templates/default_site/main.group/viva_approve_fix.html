@@ -2,11 +2,11 @@
 {embed="includes/carga" }
 
 <?php
-echo "<br>id sol ".$id_sol_garantia=$_POST['id_sol_garantia'];
-echo "<br>apr sol ".$acc=$_POST['aprobar_paso'];
-echo "<br>paso sol ".$paso=$_POST['paso'];
+$id_sol_garantia=$_POST['id_sol_garantia'];
+$acc=$_POST['aprobar_paso'];
+$paso=$_POST['paso'];
 
-echo "<br>comm sol ". $comentarios=$_POST['comentarios'];
+$comentarios=$_POST['comentarios'];
 
 $result=mysql_query("SELECT * FROM exp_freeform_form_entries_2 WHERE entry_id=$id_sol_garantia");
 $obten=mysql_fetch_row($result);
@@ -23,9 +23,9 @@ $ant_paso=$paso-1;
 
 $prox_paso=$paso+1;
 
-if($paso=="2") { $mensaje="Agendar visita de inspección";};
+if($paso=="2") { $mensaje="Agendar Inspección";};
 
-if($paso=="6") { $mensaje="Agendar visita de arreglo";};
+if($paso=="6") { $mensaje="Agendar Arreglo";};
 
 $ip=$_SERVER["REMOTE_ADDR"];
 
@@ -117,9 +117,10 @@ Atentamente";
 
 {post_aprobar_paso} - {post_id_sol_garantia} - {post_comentarios}
 {/exp:get_post_vars}
-<?php sleep(3); ?>
+
+<?php sleep(10); ?>
 
 <script type="text/javascript">
-//window.location="viva_dashboard";
+window.location="{site_url}main/viva_dashboard";
 </script>
 </body>

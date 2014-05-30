@@ -107,12 +107,14 @@ $id_cliente="{member_id}";
   <div class="row">
     <div class="col-sm-1"></div>
     <div class="col-sm-10">
+      {exp:user:stats}
       <ol class="breadcrumb">
-        <li><a href="#">Panel de control</a></li>
+        <li><a href="{site_url}main/user_dashboard/{member_id}">Panel de control</a></li>
         <li><a href="#">Mis solicitudes</a></li>
         <li><a href="#">Solicitud</a></li>
         <li class="active">Agendar solicitud</li>
       </ol>
+      {/exp:user:stats}
     </div>
     <div class="col-sm-1"></div>
   </div>

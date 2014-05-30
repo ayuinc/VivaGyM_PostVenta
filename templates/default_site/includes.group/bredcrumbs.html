@@ -1,0 +1,28 @@
+  {exp:user:stats}
+      <ol class="breadcrumb">
+        <li><a href="{site_url}main/user_dashboard/{member_id}">Panel de control</a></li>
+        
+        {if segment_2=='user_dashboard'}
+		<li class="active">Mis solicitudes</li>
+		{if:else}
+		<li class="active"><a href="{site_url}main/user_dashboard/{member_id}">Mis solicitudes</a></li>
+		{/if}
+		
+		{if segment_2=='user_apartment_show'}
+		<li class="active">Mi departamento</li>
+		{/if}
+		
+		{if segment_2=='user_profile_show'}
+		<li class="active">Mi perfil</li>
+		{/if}
+		
+		{if segment_2=='user_request_new'}
+		<li class="active">Nueva solicitud</li>
+		{/if}	
+		
+		{if segment_2=='user_request_show'}
+		<li class="active">Solicitud</li>
+		{/if}			
+		
+      </ol>
+  {/exp:user:stats} 

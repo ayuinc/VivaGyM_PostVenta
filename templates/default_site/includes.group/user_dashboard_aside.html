@@ -6,9 +6,11 @@
     <p class="medium m-0">Los Parques de San Martín de Porres</p>
   </div>
   <div class="list-group mt-21 mb-0">
-    <a href="{site_url}index.php/main/user_dashboard/{member_id}" class="list-group-item <?php if($sec_var==1){echo 'active';} ?>"><i class="icon-docs"></i> Mis solicitudes</a>
-    <a href="{site_url}index.php/main/user_apartment_show" class="list-group-item <?php if($sec_var==2){echo 'active';} ?>"><i class="icon-house"></i> Mi departamento</a>
-    <a href="{site_url}index.php/main/user_profile_show" class="list-group-item <?php if($sec_var==3){echo 'active';} ?>"><i class="icon-user"></i> Mi perfil</a>
-    <a href="{site_url}index.php/main/" class="list-group-item <?php if($sec_var==4){echo 'active';} ?>"><i class="icon-bell"></i> Mis notificaciones</a>
+  	  {exp:user:stats}
+  	  <a href="{site_url}main/user_dashboard/{member_id}" class="list-group-item <?php if($sec_var==1){echo 'active';} ?>"><i class="icon-docs"></i> Mis solicitudes</a>
+  	  <a href="{site_url}main/user_apartment_show/{member_id}" class="list-group-item <?php if($sec_var==2){echo 'active';} ?>"><i class="icon-house"></i> Mi departamento</a>
+  	  <a href="{site_url}main/user_profile_show/{member_id}" class="list-group-item <?php if($sec_var==3){echo 'active';} ?>"><i class="icon-user"></i> Mi perfil</a>
+    <!--<a href="{site_url}main/" class="list-group-item <?php if($sec_var==4){echo 'active';} ?>"><i class="icon-bell"></i> Mis notificaciones</a>-->
+      {/exp:user:stats}
   </div>
 </div>

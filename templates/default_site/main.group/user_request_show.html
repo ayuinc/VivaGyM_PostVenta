@@ -1,12 +1,6 @@
 {embed="includes/header" }
 
-<?php $id_sol_garantia="{segment_3}"; ?>
-
-<ol class="breadcrumb">
-    <li><a href="#">Panel de control</a></li>
-    <li><a href="#">Mis solicitudes</a></li>
-    <li class="active">Solicitud</li>
-  </ol>
+ {embed="includes/bredcrumbs"}
 
   <div class="row">
     <div class="col-md-3 hidden-sm hidden-xs">
@@ -21,7 +15,7 @@
           <div class="panel-title mb-14">
             <div class="clearfix">
               <div class="col-md-6 col-sm-6 col-xs-6 pl-0">
-                <h2 class="medium m-0"><span class="h4">No. de caso:</span> <?php echo $id_sol_garantia; ?></h2>
+                <h2 class="medium m-0"><span class="h4">No. de caso:</span> {segment_3}</h2>
                 <small>Fecha de apertura: {freeform:entry_date format="%j %F %Y"}</small>
               </div>
               <div class="col-md-6 col-sm-6 col-xs-6 text-right pt-7">
@@ -48,7 +42,7 @@
               <hr class="double">
               <h4 class="light">Proceso</h4>
               <div class="table-responsive">
-                {embed="includes/pasos_solicitud" id_sol_garantia="<?php echo $id_sol_garantia; ?>"}
+                {embed="includes/pasos_solicitud" id_sol_garantia="{segment_3}"}
               </div>
             </div>
           </div>
@@ -75,22 +69,7 @@
     </div>
 
     <div class="col-md-3 col-sm-4">
-      <div class="bg-white border-rounded box-shadow p-14">
-        <h4 class="medium">Enlaces de interés</h4>
-        <ul class="list-unstyled">
-          <li><a href="#">Preguntas frecuentes</a></li>
-          <li><a href="#">Emergencias</a></li>
-          <li><a href="#">Libro de reclamaciones</a></li>
-        </ul>
-        <!-- <hr class="double"> -->
-        <!-- <ul class="list-unstyled">
-          <li class="mb-7"><strong>Fecha de apertura: </strong><br>{freeform:entry_date format="%j %F %Y"}</li>
-          <li class="mb-7"><strong>Atendido por: </strong><br>Jorge Perestroiffer</li>
-
-          <li class="mb-7"><strong>Tipo de problema: </strong><br>{freeform:field:tipo_de_problema}</li>
-          <li class="mb-7"><strong>Ubicación: </strong>{freeform:field:ubicacion}</li>
-        </ul> -->
-      </div>
+		{embed="includes/user_new_request_aside"}
     </div>
 
     {/exp:freeform:entries}

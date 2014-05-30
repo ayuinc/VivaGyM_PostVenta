@@ -65,7 +65,7 @@
             <table class="table table-hover table-striped">
               <thead>
                 <tr class="medium">
-                  <td>Caso</td>
+                  <td>No. de Caso </td>
                   <td>Fecha</td>
                   <td>Propietario</td>
                   <!--<td>Complejo</td>
@@ -82,7 +82,7 @@
                 {exp:freeform:entries form_id="2" orderby="entry_id" sort="desc" status="open|closed" limit="10" paginate="both" }
                 <?php $estatus_ticket="{freeform:status}"; ?>
                 <tr>
-                  <td>No. <?php echo $id_sol_garantia="{freeform:entry_id}"; ?></td>
+                  <td><?php echo $id_sol_garantia="{freeform:entry_id}"; ?></td>
                   <td>{freeform:entry_date format="%d-%m-%Y a %g:%i %a"}</td>
                   <td>{freeform:author}</td>
                   <!--<td>Complejo</td>
@@ -105,7 +105,7 @@
                   <td>{freeform:field:tipo_de_problema}</td>
                   <td></td>
                   <td></td>
-                  <td><a href="{site_url}index.php/main/viva_detail/{freeform:entry_id}" class="small text-danger underline">Ver detalle</a></td>
+                  <td><a href="{site_url}main/viva_detail/{freeform:entry_id}" class="small text-danger underline">Ver detalle</a></td>
                 </tr>
                 {/exp:freeform:entries}
 

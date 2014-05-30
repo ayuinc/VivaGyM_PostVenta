@@ -20,7 +20,7 @@
 			'start' => "$year-$month-23",
 			'color' => "#78BE20", 
 			'textColor' => "black",
-			'url' => "$site_url/index.php/main/user_request_book/$id_sol_garantia/23-$month-$year"
+			'url' => "$site_url/main/user_request_book/$id_sol_garantia/23-$month-$year"
 		),
 		
 		array(
@@ -29,7 +29,7 @@
 			'start' => "$year-$month-30",
 			'color' => "#78BE20",
 			'textColor' => "black",
-			'url' => "$site_url/index.php/main/user_request_book/$id_sol_garantia/30-$month-$year"
+			'url' => "$site_url/main/user_request_book/$id_sol_garantia/30-$month-$year"
 		),
 		
 		array(
@@ -38,7 +38,7 @@
 			'start' => "$year-$month-20",
 			'color' => "#78BE20", 
 			'textColor' => "black",
-			'url' => "$site_url/index.php/main/user_request_book/$id_sol_garantia/20-$month-$year"
+			'url' => "$site_url/main/user_request_book/$id_sol_garantia/20-$month-$year"
 		),
 		
 		array(
@@ -47,7 +47,7 @@
 			'start' => "$year-$month-27",
 			'color' => "#78BE20",
 			'textColor' => "black",
-			'url' => "$site_url/index.php/main/user_request_book/$id_sol_garantia/27-$month-$year"
+			'url' => "$site_url/main/user_request_book/$id_sol_garantia/27-$month-$year"
 		),
 
 	

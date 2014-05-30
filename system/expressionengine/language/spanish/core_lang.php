@@ -39,7 +39,7 @@ $lang = array(
 'Gracias!',
 
 'page' => 
-'Pagina',
+'Página',
 
 'of' => 
 'de',
@@ -72,7 +72,7 @@ $lang = array(
 'Haz click aqui si no eres redireccionado automaticamente',
 
 'return_to_previous' => 
-'Retornar a Pagina Anterior',
+'Retornar a Página Anterior',
 
 'not_available' => 
 'No disponible',
@@ -105,7 +105,7 @@ $lang = array(
 'No enviastes la palabra exactamente como aparece en la imagen',
 
 'nonexistent_page' => 
-'La pagina que has solicitado no se encuentra',
+'La página que has solicitado no se encuentra',
 
 'banned' => 
 'Blockeado',
@@ -144,16 +144,16 @@ $lang = array(
 'No se pudo enviar el correo en este momento.',
 
 'no_email_found' => 
-'Le direccion de correo que has enviado no se encuentra en la base de datos.',
+'Le dirección de correo que has enviado no se encuentra en la base de datos.',
 
 'your_new_login_info' => 
-'Informacion de acceso',
+'Información de acceso',
 
 'reset_link' => 
-'Para reestablecer tu contraseña, por favor ve a la siguiente pagina:',
+'Para reestablecer tu contraseña, por favor ve a la siguiente página:',
 
 'password_will_be_reset' => 
-'Tu contraseña sera reestablcida automaticamente, y una nueva sera enviada a tu correo.',
+'Tu contraseña sera reestablcida automáticamente, y una nueva sera enviada a tu correo.',
 
 'ignore_password_message' => 
 'Si no deseas reestablecer tu contraseña, ignora este mensaje. Expirara en 24 horas.',
@@ -162,7 +162,7 @@ $lang = array(
 'Tu contraseña ha sido repuesta y una nueva se te ha sido enviada por correo.',
 
 'new_login_info' => 
-'Aqui esta tu nueva informacion de acceso:',
+'Aquí esta tu nueva información de acceso:',
 
 'year' => 
 'año',

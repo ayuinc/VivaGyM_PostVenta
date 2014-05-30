@@ -23,18 +23,21 @@ if($paso=="4") {
 
 $texto_paso="Realizar inspección";
 
+// enviar este paso a otro archivo 
+/*
 $resultadoc=mysql_query("insert into exp_freeform_form_entries_4 
 (site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19,form_field_27,form_field_29) 
 values ('1','$id_cliente','y','$ip','','open','$id_cliente','Procesar Informe de Inspección','$id_sol_garantia','6','','$comentarios')"); 
+*/
 }
 
 if($paso=="8") {
 
 $texto_paso="Realizar Arreglo";
 
-$resultadob=mysql_query("insert into exp_freeform_form_entries_4 
+/*$resultadob=mysql_query("insert into exp_freeform_form_entries_4 
 (site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19) 
-values ('1','$id_cliente','y','$ip','','open','$id_cliente','Viva cierra el caso','$id_sol_garantia','10')");  
+values ('1','$id_cliente','y','$ip','','open','$id_cliente','Viva cierra el caso','$id_sol_garantia','10')"); */ 
 
 }
 
@@ -56,6 +59,6 @@ WHERE form_field_18 = $id_sol_garantia AND form_field_19 = $paso ");
 <?php sleep(3); ?>
 
 <script type="text/javascript">
-window.location="gym_dashboard";
+window.location="{site_url}main/gym_dashboard";
 </script>
 </body>

@@ -10,94 +10,94 @@ $lang = array(
 'No',
 
 'yes' =>
-'Yes',
+'Si',
 
 'on' =>
-'on',
+'encendido',
 
 'off' =>
-'off',
+'apagado',
 
 'first' =>
-'First',
+'Primero',
 
 'last' =>
-'Last',
+'Ultimo',
 
 'enabled' =>
-'enabled',
+'habilitar',
 
 'disabled' =>
-'disabled',
+'deshabilitar',
 
 'back' =>
-'Back',
+'Atras',
 
 'submit' =>
-'Submit',
+'Enviar',
 
 'update' =>
-'Update',
+'Actualizar',
 
 'thank_you' =>
-'Thank You!',
+'¡Gracias!',
 
 'page' =>
-'Page',
+'página',
 
 'of' =>
-'of',
+'de',
 
 'by' =>
-'by',
+'por',
 
 'at' =>
-'at',
+'en',
 
 'dot' =>
-'dot',
+'punto',
 
 'and' =>
-'and',
+'y',
 
 'or' =>
-'or',
+'o',
 
 'id' =>
 'ID',
 
 'encoded_email' =>
-'(JavaScript must be enabled to view this email address)',
+'(JavaScript debe estar habilitado para ver esta dirección de correo electrónico)',
 
 'search' =>
-'Search',
+'Buscar',
 
 'system_off_msg' =>
 'This site is currently inactive.',
 
 'not_authorized' =>
-'You are not authorized to perform this action',
+'Usted no está autorizado para realizar esta acción',
 
 'auto_redirection' =>
-'You will be redirected automatically in %x seconds',
+'Usted será redirigido en %x segundos',
 
 'click_if_no_redirect' =>
-'Click here if you are not redirected automatically',
+'Haga clic aquí si no redirige automáticamente',
 
 'return_to_previous' =>
-'Return to Previous Page',
+'Volver a la página anterior',
 
 'not_available' =>
-'Not available',
+'No disponible',
 
 'setting' =>
-'Setting',
+'Ajustes',
 
 'preference' =>
-'Preference',
+'Preferencias',
 
-'pag_first_link' => '&lsaquo; First',
-'pag_last_link' => 'Last &rsaquo;',
+'pag_first_link' => '&lsaquo; Primera',
+'pag_last_link' => 'Ultima &rsaquo;',
 
 //----------------------------
 // Errors
@@ -107,38 +107,38 @@ $lang = array(
 'Error',
 
 'invalid_url' =>
-'The URL you submitted is not valid.',
+'La URL que has enviado no es válida.',
 
 'submission_error' =>
 'The form you submitted contained the following errors',
 
 'general_error' =>
-'The following errors were encountered',
+'Se han encontrado los siguientes errores',
 
 'invalid_action' =>
 'The action you have requested is invalid.',
 
 'csrf_token_expired' =>
-'This form has expired. Please refresh and try again.',
+'Esta forma ha expirado. Por favor, recargue la página e inténtelo de nuevo.',
 
 'current_password_required' =>
-'Your current password is required.',
+'Se requiere su contraseña actual.',
 
 'current_password_incorrect' =>
-'Your current password was not submitted correctly.',
+'Su contraseña actual no se presentó correctamente.',
 
 'captcha_required' =>
-'You must submit the word that appears in the image',
+'Usted debe presentar la palabra que aparece en la imagen',
 
 'captcha_incorrect' =>
-'You did not submit the word exactly as it appears in the image',
+'Usted no presentó la palabra tal y como aparece en la imagen',
 
 'nonexistent_page' =>
-'The page you requested was not found',
+'La página solicitada no fue encontrada',
 
 'unable_to_load_field_type' =>
-'Unable to load requested field type file:  %s.<br />
-Confirm the fieldtype file is located in the expressionengine/third_party/ directory',
+'No se puede cargar el archivo solicitado tipo de campo:. %s <br /> 
+Confirme el archivo FieldType se encuentra en el directorio ExpressionEngine / third_party /',
 
 //----------------------------
 // Member Groups
@@ -165,25 +165,25 @@ Confirm the fieldtype file is located in the expressionengine/third_party/ direc
 //----------------------------
 
 'error_tag_syntax' =>
-'The following tag has a syntax error:',
+'La siguiente etiqueta tiene un error de sintaxis:',
 
 'error_fix_syntax' =>
-'Please correct the syntax in your template.',
+'Corrija la sintaxis de la plantilla.',
 
 'error_tag_module_processing' =>
-'The following tag cannot be processed:',
+'La siguiente etiqueta no puede ser procesada:',
 
 'error_fix_module_processing' =>
-'Please check that the \'%x\' module is installed and that \'%y\' is an available method of the module',
+'Compruebe que está instalado el módulo \'%x\' y que \'%y\' es un método disponible del módulo',
 
 'template_loop' =>
-'You have caused a template loop due to improperly nested sub-templates (\'%s\' recursively called)',
+'Has causado un bucle de plantilla debido a la sub-plantillas incorrectamente anidados (\'%s\' recursiva llamada)',
 
 'template_load_order' =>
-'Template load order',
+'Orden de carga de plantillas',
 
 'error_multiple_layouts' =>
-'Multiple Layouts found, please ensure you only have one layout tag per template',
+'Se han encontrado varios diseños, por favor asegúrese de que sólo tiene una etiqueta de diseño por plantilla',
 
 'error_layout_too_late' =>
 'Plugin or module tag found before layout declaration. Please move the layout tag to the top of your template.',
@@ -193,19 +193,19 @@ Confirm the fieldtype file is located in the expressionengine/third_party/ direc
 //----------------------------
 
 'forgotten_email_sent' =>
-'If this email address is associated with an account, instructions for resetting your password have just been emailed to you.',
+'Si la dirección de correo electrónico está asociada a una cuenta, las instrucciones para restablecerla sólo serán enviadas por correo electrónico.',
 
 'error_sending_email' =>
-'Unable to send email at this time.',
+'No se puede enviar un correo electrónico en este momento.',
 
 'no_email_found' =>
-'The email address you submitted was not found in the database.',
+'La dirección de correo electrónico que ha enviado no se encontró en la base de datos.',
 
 'your_new_login_info' =>
-'Login information',
+'Información de acceso',
 
 'password_has_been_reset' =>
-'Your password was reset and a new one has been emailed to you.',
+'Su contraseña se ha restablecido y una nueva se ha enviado por correo electrónico.',
 
 //----------------------------
 // Date
@@ -317,25 +317,25 @@ Confirm the fieldtype file is located in the expressionengine/third_party/ direc
 'S',
 
 'Sunday' =>
-'Sunday',
+'Doming',
 
 'Monday' =>
-'Monday',
+'Lunes',
 
 'Tuesday' =>
-'Tuesday',
+'Martes',
 
 'Wednesday' =>
-'Wednesday',
+'Miércoles',
 
 'Thursday' =>
-'Thursday',
+'Jueves',
 
 'Friday' =>
-'Friday',
+'Viernes',
 
 'Saturday' =>
-'Saturday',
+'Sábado',
 
 
 'Jan' =>
@@ -375,40 +375,40 @@ Confirm the fieldtype file is located in the expressionengine/third_party/ direc
 'Dec',
 
 'January' =>
-'January',
+'Enero',
 
 'February' =>
-'February',
+'Febrero',
 
 'March' =>
-'March',
+'Marzo',
 
 'April' =>
-'April',
+'Abril',
 
 'May_l' =>
-'May',
+'Mayo',
 
 'June' =>
-'June',
+'Junio',
 
 'July' =>
-'July',
+'Julio',
 
 'August' =>
-'August',
+'Augosto',
 
 'September' =>
-'September',
+'Septiembre',
 
 'October' =>
-'October',
+'Octubre',
 
 'November' =>
-'November',
+'Noviembre',
 
 'December' =>
-'December',
+'Deciembre',
 
 
 'UM12'		=>	'(UTC -12:00) Baker/Howland Island',

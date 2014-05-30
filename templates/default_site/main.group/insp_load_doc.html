@@ -2,13 +2,13 @@
 
 <?php 
 
-echo $id_sol_garantia="{segment_4}";
+echo "<br>sol ".$id_sol_garantia="{segment_3}";
 
-echo $paso="{segment_5}";
+echo "<br>paso ".$paso="{segment_4}";
 
-echo $id_cliente="{segment_6}";
+echo "<br>id ".$id_cliente="{segment_5}";
 
-echo $entry_id="{segment_7}";
+echo "<br>entry ".$entry_id="{segment_6}";
 
 if($paso=="4") { $titulo="Asignar Inspector";
 $texto="Seleccione la persona encargada de la inspección";
@@ -89,9 +89,9 @@ $mod_date=date_timestamp_get($date);
 
             {exp:freeform:edit
             form_name="detalles_ticket"
-            entry_id="{segment_7}"
+            entry_id="{segment_6}"
             restrict_edit_to_author="no"
-            return="main/insp_write_proc/{segment_4}/{segment_5}/{segment_6}"
+            return="main/insp_write_proc/{segment_3}/{segment_4}/{segment_5}/{segment_6}"
             allow_status_edit="yes" 
           }
 

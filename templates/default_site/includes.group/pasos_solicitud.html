@@ -18,9 +18,9 @@
     ?>
     <?php while ($proy_long = mysql_fetch_array($result_long)) { ?>
       <?php $paso_gen=$proy_long['form_field_19']; ?>
-      <?php if (($paso_gen=="1") or ($paso_gen=="2") or ($paso_gen=="3") or ($paso_gen=="5") or ($paso_gen=="7") or ($paso_gen=="9") or ($paso_gen=="10") or ($paso_gen=="11")) { ?>
+      <?php if (($paso_gen=="1") or ($paso_gen=="2") or ($paso_gen=="3") or ($paso_gen=="5") or ($paso_gen=="6") or ($paso_gen=="7") or ($paso_gen=="9") or ($paso_gen=="10") or ($paso_gen=="11")) { ?>
       <tr>
-        <td><?php echo $proy_long['form_field_17']; ?></td> <!-- actividad  -->
+        <td><?php echo $proy_long['form_field_19']." - ".$proy_long['form_field_17']; ?></td> <!-- actividad  -->
 
         <td><?php $var_estatus=$proy_long['status']; 
           switch ($var_estatus) {
@@ -45,11 +45,11 @@
 
           <?php $fecha=$proy_long['form_field_25']; 
           if($paso==3){ 
-                if (empty($fecha)) { ?> <a href="{site_url}index.php/main/<?php echo "user_request_book/".$id_sol_garantia; ?>" 
+                if (empty($fecha)) { ?> <a href="{site_url}main/<?php echo "user_request_book/".$id_sol_garantia; ?>" 
               class="btn btn-sm btn-warning small">Agendar</a> <?php } 
           else { echo "Inspección agendada para ".$fecha; ?> 
-          <a href="{site_url}index.php/main/<?php echo "user_cancel_book/".$id_sol_garantia; ?>" 
-          class="btn btn-sm btn-warning small">Cancelar</a><?php } 
+          <!--<a href="{site_url}index.php/main/<?php echo "user_cancel_book/".$id_sol_garantia; ?>" 
+          class="btn btn-sm btn-warning small">Cancelar</a>--><?php } 
               }; ?>
 
           <?php $fecha_re=$proy_long['form_field_25']; ?>
@@ -60,22 +60,21 @@
 
           <?php $fecha_siete=$proy_long['form_field_25']; 
           if($paso==7){ 
-                if (empty($fecha_siete)) { ?> <a href="{site_url}index.php/main/<?php echo "user_request_fixing/".$id_sol_garantia; ?>" 
+                if (empty($fecha_siete)) { ?> <a href="{site_url}main/<?php echo "user_request_fixing/".$id_sol_garantia; ?>" 
           class="btn btn-sm btn-warning small">Agendar</a> <?php } 
           else { echo "Arreglo agendado para ".$fecha_siete; ?>
-          <a href="{site_url}index.php/main/<?php echo "user_request_book/".$id_sol_garantia; ?>" 
-          class="btn btn-sm btn-warning small">Cancelar</a><?php }
+          <!--<a href="{site_url}index.php/main/<?php echo "user_request_book/".$id_sol_garantia; ?>" 
+          class="btn btn-sm btn-warning small">Cancelar</a>--><?php }
               } ?> 
 
           <?php $fecha_nueve=$proy_long['form_field_25']; if($paso==9){ 
-            if (empty($fecha_nueve)) { ?> <a href="{site_url}index.php/main/<?php echo "user_request_fixing/".$id_sol_garantia; ?>" 
-          class="btn btn-sm btn-warning small">Agendar</a> <?php } else { echo "Arreglo realizado el ".$fecha_nueve; } } ?> 
+            if (empty($fecha_nueve)) {  } else { echo "Arreglo realizado el ".$fecha_nueve; } } ?> 
 
           <?php $estatus=$proy_long['form_field_27']; if($paso==10){ 
             if ($estatus=="Cerrado") { ?> Cerrado <?php } else { } } ?> 
 
           <?php if($paso==11){ 
-            ?> <a href="{site_url}index.php/main/<?php echo "user_encuesta/".$id_sol_garantia; ?>" 
+            ?> <a href="{site_url}main/<?php echo "user_encuesta/".$id_sol_garantia; ?>" 
           class="btn btn-sm btn-warning small">Encuesta</a> <?php } else { } ?> 
 
         </td> <!-- detalle  -->

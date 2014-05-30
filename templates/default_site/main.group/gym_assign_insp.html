@@ -5,11 +5,11 @@ $id_sol_garantia=$_GET['id_sol_garantia'];
 $paso=$_GET['paso'];
 $id_cliente=$_GET['id_cliente'];
 
-if($paso=="4") { $titulo="Asignar Inspector";
+if($paso=="4") { $titulo="GyM Asignar Inspector";
 $texto="Seleccione la persona encargada de la inspección";
 }
 
-if($paso=="8") { $titulo="Asignar Personal";
+if($paso=="8") { $titulo="GyM Asignar Responsable";
 $texto="Seleccione la persona encargada de ejecutar el arreglo";
 }
 
@@ -49,7 +49,7 @@ $detalles = $obtenc[20]; //fecha
       <div class="tab-content bg-gray-lighter">
         <div class="tab-pane fade active in" id="inspeccion">
 
-            <form method="post" enctype="multipart/form-data" name="frm" id="frm" action="gym_write_insp" class="p-14">
+            <form method="post" enctype="multipart/form-data" name="frm" id="frm" action="/?/main/gym_write_insp" class="p-14">
             <div class="form-group">
               <div class="row">
                 <div class="col-sm-4">Nro de Ticket: <?php echo $id_sol_garantia; ?>

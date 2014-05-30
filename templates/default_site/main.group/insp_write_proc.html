@@ -1,15 +1,32 @@
+{embed="includes/header" }
+{embed="includes/carga" }
 <?php 
-
-echo "<br>id ".$id_cliente="{segment_4}";
 
 echo "<br>sol ".$id_sol_garantia="{segment_3}";
 
-echo "<br>entry ".$entry_id="{segment_3}";
+echo "<br>paso ".$paso="{segment_4}";
 
-$paso=$_POST['paso'];
+echo "<br>id ".$id_cliente="{segment_5}";
 
-/*$resultadoc=mysql_query("insert into exp_freeform_form_entries_4 
+echo "<br>entry ".$entry_id="{segment_6}";
+
+$ip=$_SERVER["REMOTE_ADDR"];
+
+$date = date_create();
+$entry_date=date_timestamp_get($date);
+
+$resultadoc=mysql_query("insert into exp_freeform_form_entries_4 
 (site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19,form_field_27,form_field_29) 
-values ('1','$id_cliente','y','$ip','','open','$id_cliente','Procesar Informe de Inspección','$id_sol_garantia','6','','$comentarios')"); */
+values ('1','$id_cliente','y','$ip','','open','$id_cliente','Procesar Informe de Inspección','$id_sol_garantia','6','','$comentarios')");
 
 ?>
+
+<body>
+
+<?php sleep(10); ?>
+
+<script type="text/javascript">
+window.location="{site_url}main/insp_viva";
+</script>
+
+</body>

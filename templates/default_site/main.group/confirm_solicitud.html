@@ -21,39 +21,12 @@ if ($id_cliente=$author_id){
 
 	$resultado=mysql_query("insert into exp_freeform_form_entries_4 
 	(site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19) 
-	values ('1','$id_cliente','y','$ip','$entry_date','closed','$id_cliente','Ingresar solicitud de inspección','$id_sol_garantia','1')");
+	values ('1','$id_cliente','y','$ip','$entry_date','closed','$id_cliente','Ingresar Solicitud de Inspección','$id_sol_garantia','1')");
 
 	$resultadob=mysql_query("insert into exp_freeform_form_entries_4 
 	(site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19) 
-	values ('1','$id_cliente','y','$ip','','open','$id_cliente','Procesar solicitud de inspección','$id_sol_garantia','2')");
+	values ('1','$id_cliente','y','$ip','','open','$id_cliente','Procesar Solicitud de Inspección','$id_sol_garantia','2')");
 } // fin if 
-
-// leer email cuando lo tomas de ee no funca
-/*
-$result_email=mysql_query("SELECT * FROM exp_members WHERE member_id=$id_cliente");
-$obten_email=mysql_fetch_row($result_email);
-$screen_name = $obten_email[3];
-$dir = $obten_email[9];
-
-$sub="Recepción de Solicitud de Requerimientos Viva GyM";
-$txt_mail="Estimado/a $screen_name<p>
-Gracias por enviar su solicitud de requerimientos por el portal de post-venta en línea de Viva GyM. <p>
-En los próximos ___ días le estaremos informando por correo electrónico y mediante el portal de post-venta si la inspección por un técnico de nuestro equipo procede. Recuerde que en la mayoría de los casos, la vigencia de la garantía es necesaria para que los arreglos procedan. <p>
-Adjunto encontrará el reporte de su reclamo para su referencia (esto podría ser un pantallaso del reclamo que llenaron en línea). <p>
-Esperamos servirle de la mejor manera durante este proceso. No olvide revisar el Manual del Propietario para cuidar de su departamento todos los días.<p>
-Atentamente";
-
-ee()->load->library('email');
-ee()->load->helper('text');
-
-ee()->email->wordwrap = true;
-ee()->email->mailtype = 'html';
-ee()->email->from('admin@gym.com');
-ee()->email->to($dir);
-ee()->email->subject($sub);
-ee()->email->message(entities_to_ascii($txt_mail));
-ee()->email->Send();
-*/
 ?>
 {exp:user:stats}
 	{exp:mandrillapp:send_email_confirm_solicitud
@@ -65,12 +38,16 @@ ee()->email->Send();
 	{/exp:mandrillapp:send_email_confirm_solicitud}  
 {/exp:user:stats}
 
-<body>
 
-{embed="includes/carga" }
-<?php sleep(3); ?>
+  <div class="container-fluid pt-35 pb-35 mh-630">
+	<div class="row">
+	  <div class="col-md-6 col-md-offset-3">
+		  <h1>Gracias por su requerimiento</h1>
+		  <p>Mantengase pendiente de sus notificaciones para continuar el proceso.</p>
+		  <p><a href="{site_url}main/user_dashboard/{member_id}">Ir a mis solicitudes</a></p>	  
+	  </div>
+	</div>
+   </div>
 
-<script type="text/javascript">
-window.location="{site_url}/?/main/user_dashboard/{member_id}";
-</script>
-</body>
+
+{embed="includes/footer"}
