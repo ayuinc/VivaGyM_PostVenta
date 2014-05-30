@@ -295,7 +295,7 @@ Atentamente';
 
 	  		);
 	 		$mandrill->messages->sendTemplate($template_name, $template_content, $message);
-	 		return "";
+	 		return "Procede Inspección Viva GyM";
  		}
  		else if($acc == "no"){
  			$result=mysql_query("SELECT * FROM exp_freeform_form_entries_2 WHERE entry_id=$id_sol_garantia");
@@ -338,7 +338,7 @@ Atentamente';
 
 	  		);
 	 		$mandrill->messages->sendTemplate($template_name, $template_content, $message);
-	 		return "";
+	 		return " No Procede Inspección Viva GyM";
  		}
 	}
 
