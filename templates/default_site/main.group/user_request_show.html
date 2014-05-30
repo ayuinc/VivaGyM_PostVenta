@@ -9,22 +9,22 @@
   </ol>
 
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-3 hidden-sm hidden-xs">
       {embed="includes/user_dashboard_aside" seccion="1"}
     </div>
 
     {exp:freeform:entries form_id="2" entry_id="{segment_3}" limit="1" status="open|closed" }
 
-    <div class="col-md-9 col-sm-3">
+    <div class="col-md-6 col-sm-8">
       <div class="panel p-14 box-shadow" >
         <div class="panel-heading bg-white p-0">
           <div class="panel-title mb-14">
             <div class="clearfix">
-              <div class="col-md-6 col-sm-6 col-xs-6">
+              <div class="col-md-6 col-sm-6 col-xs-6 pl-0">
                 <h2 class="medium m-0"><span class="h4">No. de caso:</span> <?php echo $id_sol_garantia; ?></h2>
               </div>
               <div class="col-md-6 col-sm-6 col-xs-6 text-right pt-7">
-                <a href="#" class="btn disabled btn-success">Agenda tu cita aquí</a>
+                <!-- <a href="#" class="btn disabled btn-success">Agenda tu cita aquí</a> -->
               </div>
             </div>
           </div>
@@ -32,20 +32,24 @@
         </div>
         <div class="panel-body p-0">
           <div class="row mt-14">
-            <div class="col-md-4">
-              <img src="{site_url}fotos_problemas/{freeform:field:foto_problema}" alt="" class="img-responsive img-thumbnail">
+            <div class="col-sm-12">
+              <h4 class="light">Descripción</h4>
+                <p>{freeform:field:descripcion_problema}</p>
+              <hr>
+              <h4 class="light">Proceso</h4>
+              <div class="table-responsive">
+                {embed="includes/pasos_solicitud" id_sol_garantia="<?php echo $id_sol_garantia; ?>"}
+              </div>
             </div>
-            <div class="col-md-8 pl-0">
-              <h4 class="medium mt-0">{freeform:field:descripcion_problema}</h4>
+          </div>
+          <div class="row mt-14">
+            <div class="col-sm-3">
+              
+            </div>
+            <div class="col-sm-8 pl-0">
               <div class="row">
-                <div class="col-md-6 pt-14">
-                  <ul class="list-unstyled">
-                    <li class="mb-7"><strong>Fecha de apertura: </strong>{freeform:entry_date format="%j %F %Y"}</li>
-                    <li class="mb-7"><strong>Atendido por: </strong>Jorge Perestroiffer</li>
-
-                    <li class="mb-7"><strong>Tipo de problema: </strong>{freeform:field:tipo_de_problema}</li>
-                    <!--<li class="mb-7"><strong>Ubicación: </strong>{freeform:field:ubicacion}</li>-->
-                  </ul>
+                <div class="col-sm-6">
+                  
                 </div>
                 <!--<div class="col-md-6 pt-14">
                   <ul class="list-unstyled">
@@ -56,12 +60,21 @@
               </div>
             </div>
           </div>
-
-          <div class="table-responsive">
-            {embed="includes/pasos_solicitud" id_sol_garantia="<?php echo $id_sol_garantia; ?>"}
-
-          </div>
         </div>
+      </div>
+    </div>
+
+    <div class="col-md-3 col-sm-4">
+      <div class="bg-white border-rounded box-shadow p-14">
+        <img src="{site_url}fotos_problemas/{freeform:field:foto_problema}" alt="" class="img-responsive img-thumbnail">
+        <hr>
+        <ul class="list-unstyled">
+          <li class="mb-7"><strong>Fecha de apertura: </strong><br>{freeform:entry_date format="%j %F %Y"}</li>
+          <li class="mb-7"><strong>Atendido por: </strong><br>Jorge Perestroiffer</li>
+
+          <li class="mb-7"><strong>Tipo de problema: </strong><br>{freeform:field:tipo_de_problema}</li>
+          <!--<li class="mb-7"><strong>Ubicación: </strong>{freeform:field:ubicacion}</li>-->
+        </ul>
       </div>
     </div>
 

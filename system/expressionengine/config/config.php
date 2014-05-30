@@ -1,6 +1,6 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-$config['index_page'] = "index.php";
+$config['index_page'] = "";
 $config['sc_paypal_account'] = "";
 $config['sc_encrypt_buttons'] = "n";
 $config['sc_certificate_id'] = "";

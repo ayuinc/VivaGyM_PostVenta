@@ -4525,6 +4525,28 @@ button.close {
   border: 0;
   -webkit-appearance: none; }
 
+p, ul, tr, td {
+  font-family: "raleway", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-weight: 300; }
+
+thead tr td {
+  color: #545657; }
+
+tbody tr td {
+  font-family: "raleway", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-weight: 300;
+  font-size: 0.875em; }
+
+blockquote {
+  background: #f6f6f7;
+  padding: 11px 14px;
+  border-left: 5px solid #77be42; }
+
+.label.label-default {
+  background: white !important;
+  border: 1px solid #d2d3d4;
+  color: #77797c; }
+
 #home {
   width: 100%;
   min-height: 768px;
@@ -4609,6 +4631,14 @@ button.close {
 .panel-group a.collapsed-icon.collapsed:before {
   content: "\e6d6"; }
 
+#user-profile-form label {
+  font-size: 14px;
+  font-family: "raleway", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-weight: 500;
+  margin-bottom: 0; }
+#user-profile-form .form-group {
+  margin-bottom: 4px; }
+
 .input-blank {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -4617,7 +4647,9 @@ button.close {
   appearance: none;
   -webkit-box-shadow: none;
   box-shadow: none;
-  border: none; }
+  border: none;
+  padding-left: 0;
+  height: 21px; }
   .input-blank:focus {
     border: none;
     -webkit-box-shadow: none;

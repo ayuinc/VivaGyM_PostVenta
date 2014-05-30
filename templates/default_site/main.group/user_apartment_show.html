@@ -17,62 +17,47 @@
           <hr class="m-0">
         </div>
         <div class="panel-body p-0">
-          <h5 class="bold">Información</h5>
+          <h4 class="light">Información</h4>
           <ul class="list-unstyled">
-            <li><strong>Complejo:</strong> Los Parques de San Martín de Porres</li>
-            <li><strong>Torre:</strong> B</li>
-            <li><strong>Dpto:</strong> 396</li>
-            <li><strong>Dirección:</strong> Av. 10 de Junio s/n Cdra.8 - San Martín de Porres</li>
-            <li><strong>Fecha de entrega:</strong> 22/12/2013</li>
+            <li class="mb-7"><strong>Complejo:</strong> <br>Los Parques de San Martín de Porres</li>
+            <li class="mb-7"><strong>Torre:</strong> <br>B</li>
+            <li class="mb-7"><strong>Dpto:</strong> <br>396</li>
+            <li class="mb-7"><strong>Dirección:</strong> <br>Av. 10 de Junio s/n Cdra.8 - San Martín de Porres</li>
+            <li class="mb-7"><strong>Fecha de entrega:</strong> <br>22/12/2013</li>
           </ul>
           <hr class="double">
-          <h5 class="bold">Manual de uso</h5>
+          <h4 class="light">Manual de uso</h4>
           <p>Descarga el manual de uso para saber como cuidar de tu departamento todos los días</p>
-          <a href="{site_url}images/LPDA_II_RI_y_Junta_Propietarios.pdf" class="btn btn-default btn-sm">Descargar PDF</a>
+          <a href="#" class="btn btn-default btn-sm">Descargar PDF</a>
           <hr class="double">
-          <h5 class="bold">Garantía</h5>
+          <h4 class="light">Garantía</h4>
           <p>Descarga la política de garantía de VivaGyM para conocer qué arreglos están cubiertos</p>
-          <a href="{site_url}images/resultados_viva_gym_3t2013.pdf" class="btn btn-default btn-sm">Descargar PDF</a>
+          <a href="#" class="btn btn-default btn-sm">Descargar PDF</a>
           <em class="block mt-14">Te recordamos algunos periodos</em>
           <ul class="list-unstyled">
-            <li><strong>- Acabados:</strong> 6 meses</li>
-            <li><strong>- Instalaciones:</strong> 6 meses</li>
-            <li><strong>- Estructura:</strong> 5 años</li>
+            <li class="mb-7"><strong>Acabados:</strong> <br>6 meses</li>
+            <li class="mb-7"><strong>Instalaciones:</strong> <br>6 meses</li>
+            <li class="mb-7"><strong>Estructura:</strong> <br>5 años</li>
           </ul>
           <hr class="double">
 
-          <h5 class="bold">Documentos</h5>
+          <h4 class="light">Documentos</h4>
           <p>Para obtener los planos de tu depa o una copia de tu contrato, completa el siguiente formulario:</p>
-          
-          {exp:freeform:form
-            form_name="solicitud_de_documentos"
-            return="main/user_dashboard" }
-
+          <form>
             <div class="row">
               <div class="col-sm-6">
                 <div class="form-group">
-                  <select name="documento_solicitado" id="" class="form-control select-override">
+                  <select name="" id="" class="form-control select-override">
                     <option value="">Documento</option>
-                    <option value="Planos">Planos</option>
-                    <option value="Contratos">Contratos</option>
                   </select>
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" name="email" placeholder="Email para envío">
+                  <input type="text" class="form-control" placeholder="Email para envío">
                 </div>
-
-                {exp:member:custom_profile_data}
-                <input type="hidden" name="departamento_en_consulta" value="{cod_depa}" >
-                {/exp:member:custom_profile_data}
-                
-                <input type="hidden" name="id_cliente" value="{member_id}" >
-                <input type="submit" name="submit" class="btn btn-sm btn-success" value="Procesar">
+                <button type="submit" class="btn btn-sm btn-success">Enviar</button>
               </div>
             </div>
           </form>
-
-          {/exp:freeform:form}
-
           <hr class="double">
 
         </div>

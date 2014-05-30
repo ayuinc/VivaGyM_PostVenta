@@ -5,23 +5,23 @@
 {exp:switchee variable = "{member_group}" parse="inward"}
     
     {case value="user_dep"}
-        <script type="text/javascript"> window.location="cambio_de_clave"; </script> <!-- dueño de departamento -->
+        <script type="text/javascript"> window.location="{site_url}main/cambio_de_clave"; </script> <!-- dueño de departamento -->
     {/case}
     
     {case value="admin_viva"}
-        <script type="text/javascript"> window.location="viva_dashboard"; </script><!-- admin viva -->
+        <script type="text/javascript"> window.location="{site_url}main/viva_dashboard"; </script><!-- admin viva -->
     {/case}
 
     {case value="admin_gym"}
-        <script type="text/javascript"> window.location="gym_dashboard"; </script><!-- admin GyM -->
+        <script type="text/javascript"> window.location="{site_url}main/gym_dashboard"; </script><!-- admin GyM -->
     {/case}
 
     {case value="insp_viva"}
-        <script type="text/javascript"> window.location="insp_viva"; </script><!-- inspector viva -->
+        <script type="text/javascript"> window.location="{site_url}main/insp_viva"; </script><!-- inspector viva -->
     {/case}
 
     {case value="user_gym"}
-        <script type="text/javascript"> window.location="user_gym"; </script><!-- personal GyM que ejecuta el arreglo -->
+        <script type="text/javascript"> window.location="{site_url}main/user_gym"; </script><!-- personal GyM que ejecuta el arreglo -->
     {/case}
     
   

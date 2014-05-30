@@ -1,3 +1,6 @@
+{embed="includes/header" }
+{embed="includes/carga" }
+
 <?php
 
 $id_cliente=$_POST['id_cliente'];
@@ -20,7 +23,7 @@ $ip=$_SERVER["REMOTE_ADDR"];
 	$result_email=mysql_query("SELECT * FROM exp_members WHERE member_id=$id_cliente");
 	$obten_email=mysql_fetch_row($result_email);
 	$screen_name = $obten_email[3];
-	echo "<br> dir: ".$dir = $obten_email[9];
+	$dir = $obten_email[9];
 
 $date = date_create();
 $entry_date=date_timestamp_get($date);
@@ -35,6 +38,9 @@ $resultado=mysql_query("insert into exp_freeform_form_entries_4
 (site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19) 
 values ('1','$id_cliente','y','$ip','','open','$id_cliente','GyM asigna inspector','$id_sol_garantia','4')");
 
+$resultadob=mysql_query("insert into exp_freeform_form_entries_4 
+(site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19) 
+values ('1','$id_cliente','y','$ip','','open','$id_cliente','Realizar inspección','$id_sol_garantia','5')");
 
 $sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_4 
 SET status = 'closed',
@@ -85,14 +91,12 @@ Atentamente";
 {/exp:get_post_vars}
 <body>
 
-{embed="includes/carga" }
-<?php sleep(6); ?>
+<?php sleep(10); ?>
 
 <script type="text/javascript">
 var $id_sol = <?php echo json_encode($id_sol_garantia);?>
 
-window.location="user_request_show/"+$id_sol;
+window.location="{site_url}main/user_request_show/"+$id_sol;
 </script>
-
 
 </body>

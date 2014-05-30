@@ -25,7 +25,7 @@
   <body>
     
     {if logged_in}
-    {exp:user:edit}
+    {exp:user:edit }
 
     {exp:member:custom_profile_data}
     <?php $user_id="{member_id}"; ?>
@@ -53,25 +53,21 @@
     {/exp:switchee}
     {/exp:member:custom_profile_data}
 
-{/exp:user:edit }
-	
   <header class="bg-inverse text-muted">
     <div class="container-fluid pt-7 pb-7">
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4 col-sm-4">
           <a href="{site_url}index.php/main/user_select"><img src="{site_url}/images/logo-viva.png" style="width:120px; height: auto;"></a>
         </div>
-        <div class="col-md-8 hidden-xs">
+        <div class="col-md-8 hidden-xs col-sm-8">
           <div class="row">
             <div class="col-xs-11 col-md-11 col-sm-11 text-right">
               <h5 class="thin mb-0">Bienvenido, <span class="medium">{screen_name}</span></h5>
-              {exp:user:logout return="main/index"}
-			    <a href="{url}">Salir</a>
-			  {/exp:user:logout}
+              <a href="{path='logout'}">Salir</a>
             </div>
 
             <div class="col-xs-1 col-md-1 col-sm-1">
-              <a href="#" class="block text-center p-14 not-underline" id="user-notifications">
+              <a href="#" class="block text-center p-14 not-underline border-rounded" id="user-notifications">
                 <span class="h4 text-muted m-0 book"><?php echo $numero; ?></span>
               </a>
             </div>
@@ -84,7 +80,7 @@
             <!--<div class="col-xs-2 col-md-2">
               <img src="{avatar_url}/{avatar_filename}" id="user-profile-pic">
             </div>-->
-  
+  {/exp:user:edit }
 
   {/if}
 

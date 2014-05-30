@@ -2,15 +2,15 @@
 {embed="includes/carga" }
 
 <?php
-echo "<br>sol ".$id_sol_garantia=$_POST['id_sol_garantia'];
-echo "<br>aprobar ".$acc=$_POST['aprobar_paso'];
-echo "<br>paso ".$paso=$_POST['paso'];
+$id_sol_garantia=$_POST['id_sol_garantia'];
+$acc=$_POST['aprobar_paso'];
+$paso=$_POST['paso'];
 
-echo "<br>com ".$comentarios=$_POST['comentarios'];
+$comentarios=$_POST['comentarios'];
 
 $result=mysql_query("SELECT * FROM exp_freeform_form_entries_2 WHERE entry_id=$id_sol_garantia");
 $obten=mysql_fetch_row($result);
-echo "<br>id cliente: ".$id_cliente = $obten[2];
+$id_cliente = $obten[2];
 $tit_problema = $obten[15];
 
 
@@ -18,7 +18,7 @@ $tit_problema = $obten[15];
 	$result_email=mysql_query("SELECT * FROM exp_members WHERE member_id=$id_cliente");
 	$obten_email=mysql_fetch_row($result_email);
 	$screen_name = $obten_email[3];
-	echo "<br> dir: ".$dir = $obten_email[9];
+	$dir = $obten_email[9];
 
 $ant_paso=$paso-1;
 
@@ -104,8 +104,6 @@ Atentamente";
 
 
 ?>
-
-<body>
 {exp:get_post_vars parse="inward"}
 	{exp:user:stats}
 		{exp:mandrillapp:send_email_viva_approve_sol 
@@ -118,10 +116,12 @@ Atentamente";
 		{/exp:mandrillapp:send_email_viva_approve_sol}  
 	{/exp:user:stats}
 
+<body>
+
 {post_aprobar_paso} - {post_id_sol_garantia} - {post_comentarios}
 {/exp:get_post_vars}
 <script type="text/javascript">
-//window.location="viva_dashboard";
+window.location="{site_url}/main/viva_dashboard";
 </script>
 
 </body>
