@@ -3,10 +3,10 @@
 <table class="table table-hover table-striped mt-14">
   <thead class="uppercase medium">
     <tr>
-      <td>Acción</td>
+      <td>Actividad</td>
       <td>Estatus</td>
       <td>Día / Hora</td>
-      <td>Acción</td>
+      <td>Detalle</td>
       <td>Archivo</td>
     </tr>
   </thead> <!-- hacer otro include con los detalles del ticket {embed="includes/detalles_ticket" }-->
@@ -20,7 +20,9 @@
     <tbody class="bg-white">
       <tr>
         <td><?php $entry_id=$proy_long['entry_id']; $id_cliente=$proy_long['form_field_5']; echo $proy_long['form_field_17']; ?></td>
-        <td><?php $var_estatus=$proy_long['status']; if ($var_estatus=="open"){echo "Pendiente";} else {echo "Realizado";}; ?></td>
+        <td><?php $var_estatus=$proy_long['status']; if ($var_estatus=="open"){
+          echo "<span class='label label-danger'>Pendiente</span>";} else {
+            echo "<span class='label label-default'>Realizado</span>";}; ?></td>
 
         <td><?php  $fecha_time=$proy_long['entry_date']; $edit_time=$proy_long['edit_date'];
         if ($fecha_time>0) {echo date('d-m-Y G:i a', $fecha_time); }
@@ -48,6 +50,7 @@
           class="btn btn-sm btn-warning small">Subir reporte</a> <?php } else { echo $file; } } ?>
 
         </td>
+        <td></td>
       </tr>
 
     </tbody>
