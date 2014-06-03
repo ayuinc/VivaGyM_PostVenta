@@ -5,7 +5,11 @@
 $entry_id=$_GET['entry_id'];
 $id_sol_garantia=$_GET['id_sol_garantia'];
 $paso=$_GET['paso'];
-$id_cliente=$_GET['id_cliente'];
+//$id_cliente=$_GET['id_cliente']; // hacer q se lea esta variable
+
+$result=mysql_query("SELECT * FROM exp_freeform_form_entries_4 WHERE entry_id=$id_sol_garantia");
+$obten=mysql_fetch_row($result);
+$id_cliente = $obten[2];
 
 if($paso=="4") { $titulo="Asignar Inspector";
 $texto="Seleccione la persona encargada de la inspección";
@@ -33,11 +37,11 @@ $detalles = $obtenc[20]; //fecha
 
  ?>
  
-<div class="row mb-14">
+<!--<div class="row mb-14">
     <div class="col-xs-3 col-xs-offset-2">
       <a href="#"><img src="{site_url}images/logo-viva.png" style="width:50%; height: auto;"></a>
     </div>
-  </div>
+  </div>-->
 
   <div class="row">
     <div class="col-sm-2"></div>
@@ -162,11 +166,13 @@ $detalles = $obtenc[20]; //fecha
 
               <input type="hidden" name="id_cliente" value="<?php echo $id_cliente; ?>" >
 
-              <input type="text" name="id_sol_garantia" value="<?php echo $id_sol_garantia; ?>" >
+              <input type="hidden" name="id_sol_garantia" value="<?php echo $id_sol_garantia; ?>" >
 
               <input type="hidden" name="paso" value="<?php echo $paso; ?>" >
 
               <input type="hidden" name="XID" value="{XID_HASH}" />
+
+              <input type="hidden" name="persona_asignada_gym" value="{screen_name}" />
 
               <input type="submit" class="btn btn-lg uppercase btn-success" name="submit" value="Procesar" />
 

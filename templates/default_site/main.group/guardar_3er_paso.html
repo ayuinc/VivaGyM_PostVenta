@@ -1,22 +1,15 @@
 {embed="includes/header" }
-{embed="includes/carga" }
-
 <?php
-
 $id_cliente=$_POST['id_cliente'];
 $relacion_dueno_departamento=$_POST['relacion_dueno_departamento'];
 $fecha_atencion_ticket=$_POST['fecha_atencion_ticket'];
 $hora_atencion_ticket=$_POST['hora_atencion_ticket'];
-
 $id_sol_garantia=$_POST['id_sol_garantia'];
 $orden_tramite=$_POST['orden_tramite'];
-
 $prox_paso=$orden_tramite+1;
-
 $nombre_encargado_atencion=$_POST['nombre_encargado_atencion'];
 $celular_encargado_atencion=$_POST['celular_encargado_atencion'];
 $email_encargado_atencion=$_POST['email_encargado_atencion'];
-
 $ip=$_SERVER["REMOTE_ADDR"];
 
 // leer email cuando lo tomas de ee no funca
@@ -53,29 +46,6 @@ form_field_24 = '$email_encargado_atencion',
 form_field_25 = '$fecha_atencion_ticket',
 form_field_26 = '$hora_atencion_ticket'
 WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 3 ");
-/*
-$sub="Cita de Inspección Agendada - Viva GyM";
-	$txt_mail="Estimado/a $screen_name<p>
-	Muchas gracias por agendar su cita de inspección en el  el portal de post-venta en línea de Viva GyM. Su inspección se realizará según la siguiente información:<p>
-Número de solicitud: $id_sol_garantia<p>
-Fecha de Inspección: $fecha_atencion_ticket<p>
-Horario de Inspección: 9:00 am - 2:00 pm de lunes a viernes<p>
-Recuerde que usted o alguien responsable de su departamento debe estar presente en el momento de la inspección.  En caso no pueda estar presente deberá reagendar su cita en el portal de post-venta de Viva GyM con al menos 24 horas de anticipación a la misma. Si tiene una emergencia el mismo día de la cita y no podrá estar presente por favor comuníquese al 206-7270.<p>
-Recuerde que si reagenda su cita deberá pasar nuevamente por todo el proceso. Tiene, además, un máximo de dos oportunidades para reagendar su cita.<p>
-Quedamos como siempre a su disposición si tiene alguna consulta o solicitud adicional puede llamar a nuestro Call Center de Atención al Cliente al 206-7270.<p>
-Atentamente";
-
-	ee()->load->library('email');
-	ee()->load->helper('text');
-
-	ee()->email->wordwrap = true;
-	ee()->email->mailtype = 'html';
-	ee()->email->from('admin@gym.com');
-	ee()->email->to($dir);
-	ee()->email->subject($sub);
-	ee()->email->message(entities_to_ascii($txt_mail));
-	ee()->email->Send();*/
-
 ?>
 {exp:get_post_vars parse="inward"}
 	{exp:user:stats}
@@ -89,14 +59,17 @@ Atentamente";
 		{/exp:mandrillapp:send_email_guardar_3er_paso}  
 	{/exp:user:stats}
 {/exp:get_post_vars}
-<body>
 
-<?php sleep(10); ?>
 
-<script type="text/javascript">
-var $id_sol = <?php echo json_encode($id_sol_garantia);?>
+  <div class="container-fluid pt-35 pb-35 mh-630">
+	<div class="row">
+	  <div class="col-md-6 col-md-offset-3">
+		  <h1>Gracias por agendar su visita de inspección</h1>
+		  <p><a href="{site_url}main/user_request_show/<?php echo $id_sol_garantia;?>">Ir al detalle de mi solicitud</a></p>	  
+	  </div>
+	</div>
+   </div>
 
-window.location="{site_url}main/user_request_show/"+$id_sol;
-</script>
+{embed="includes/footer"}
 
-</body>
+

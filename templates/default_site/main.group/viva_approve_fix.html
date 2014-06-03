@@ -48,6 +48,11 @@ $resultado=mysql_query("insert into exp_freeform_form_entries_4
 (site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19) 
 values ('1','$id_cliente','y','$ip','','open','$id_cliente','$mensaje','$id_sol_garantia','$prox_paso')");
 
+// caso si pasas el ticket a "Inspección pendiente" sino lo cierras
+$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_2 
+SET form_field_12 = '3'
+WHERE entry_id = $id_sol_garantia ");
+
 /*
 	$sub=" Arreglo Procede - Viva GyM";
 	echo "<br> correo ".$txt_mail="Estimado/a $screen_name<p>
@@ -76,6 +81,12 @@ status = 'closed',
 entry_date = '$entry_date',
 form_field_29 = '$comentarios'
 WHERE form_field_18 = $id_sol_garantia AND form_field_19 = $paso ");
+
+// caso si pasas el ticket a "Inspección pendiente" sino lo cierras
+$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_2 
+SET form_field_12 = '4',
+status = 'closed'
+WHERE entry_id = $id_sol_garantia ");
 
 /*
 	$sub=" Arreglo no Procede - Viva GyM";
@@ -121,6 +132,6 @@ Atentamente";
 <?php sleep(10); ?>
 
 <script type="text/javascript">
-window.location="{site_url}main/viva_dashboard";
+window.location="{site_url}main/admin_dashboard";
 </script>
 </body>

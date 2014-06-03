@@ -1,5 +1,5 @@
 {embed="includes/header" }
-{embed="includes/carga" }
+
 <?php
 
 $id_cliente=$_POST['id_cliente'];
@@ -54,7 +54,7 @@ WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 7");
 
 ?>
 
-<body>
+
 {exp:get_post_vars parse="inward"}
 	{exp:user:stats}
 		{exp:mandrillapp:send_email_guardar_4to_paso 
@@ -69,13 +69,19 @@ WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 7");
 	{/exp:user:stats}
 {/exp:get_post_vars}
 
-<?php sleep(10); ?>
+  <div class="container-fluid pt-35 pb-35 mh-630">
+	<div class="row">
+	  <div class="col-md-6 col-md-offset-3">
+		  <h1>Solicitud de Inspección Aprobada</h1>
+		  <p>Mantengase pendiente de sus notificaciones para continuar el proceso.</p>
+		  <?php echo $id_sol_garantia;?>
+		  {post_id_sol_garantia}
+		  <p><a href="{site_url}main/user_request_show/<?php echo $id_sol_garantia;?>">Ir a mis solicitudes</a></p>	  
+	  </div>
+	</div>
+   </div>
 
-<script type="text/javascript">
-var $id_sol = <?php echo json_encode($id_sol_garantia);?>
-
-window.location="{site_url}main/user_request_show/"+$id_sol;
-</script>
+{embed="includes/footer"}
 
 
 </body>

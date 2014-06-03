@@ -26,11 +26,11 @@
           <hr class="double">
           <h4 class="light">Manual de uso</h4>
           <p>Descarga el manual de uso para saber como cuidar de tu departamento todos los días</p>
-          <a href="#" class="btn btn-default btn-sm">Descargar PDF</a>
+          <a target="_blank" href="{site_url}images/LPDA_II_RI_y_Junta_Propietarios.pdf" class="btn btn-default btn-sm">Descargar PDF</a>
           <hr class="double">
           <h4 class="light">Garantía</h4>
           <p>Descarga la política de garantía de VivaGyM para conocer qué arreglos están cubiertos</p>
-          <a href="#" class="btn btn-default btn-sm">Descargar PDF</a>
+          <a target="_blank" href="{site_url}images/resultados_viva_gym_3t2013.pdf" class="btn btn-default btn-sm">Descargar PDF</a>
           <em class="block mt-14">Te recordamos algunos periodos</em>
           <ul class="list-unstyled">
             <li class="mb-7"><strong>Acabados:</strong> <br>6 meses</li>
@@ -41,22 +41,36 @@
 
           <h4 class="light">Documentos</h4>
           <p>Para obtener los planos de tu depa o una copia de tu contrato, completa el siguiente formulario:</p>
-          <form>
+
+            {exp:freeform:form
+                form_id="3"
+                return="main/user_request_doc" }
+
             <div class="row">
               <div class="col-sm-6">
                 <div class="form-group">
-                  <select name="" id="" class="form-control select-override">
+
+                  <select name="documento_solicitado" id="" class="form-control select-override">
                     <option value="">Documento</option>
+                    <option value="Planos">Planos</option>
+                    <option value="Contratos">Contratos</option>
                   </select>
+
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Email para envío">
+                  <input type="text" class="form-control" name="email" placeholder="Email para envío">
                 </div>
+                {exp:member:custom_profile_data}
+                <input type="hidden" name="departamento_en_consulta" value="{cod_depa}" >
+                {/exp:member:custom_profile_data}
+
+                <input type="hidden" name="id_cliente" value="{member_id}" >
                 <button type="submit" class="btn btn-sm btn-success">Enviar</button>
+
               </div>
             </div>
-          </form>
-          <hr class="double">
+
+            {/exp:freeform:form}
 
         </div>
       </div>

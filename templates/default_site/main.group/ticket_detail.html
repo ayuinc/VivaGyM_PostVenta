@@ -1,0 +1,78 @@
+{embed="includes/header" }
+
+<?php $id_sol_garantia="{segment_3}"; ?>
+
+<div class="row">
+    
+
+    {exp:freeform:entries form_id="2" entry_id="{segment_3}" limit="1" status="open|closed" }
+
+    <div class="col-md-12 col-sm-12">
+      <div class="panel p-14 box-shadow" >
+        <div class="panel-heading bg-white p-0">
+          <div class="panel-title mb-14">
+            <h2 class="medium m-0"><span class="h4">No. de caso:</span> {segment_3}</h2>
+          </div>
+          <hr class="m-0">
+        </div>
+        <div class="panel-body p-0">
+          <div class="row mt-14">
+            <div class="col-sm-3">
+              <img src="{site_url}fotos_problemas/{freeform:field:foto_problema}" alt="" class="img-responsive img-thumbnail">
+            </div>
+            <div class="col-sm-3">
+              <ul class="list-unstyled">
+                <li class="mb-7"><strong>Tipo de problema</strong><br>{freeform:field:tipo_de_problema}</li>
+                <li class="mb-7"><strong>Fecha</strong><br>{freeform:entry_date format="%j %F %Y"}</li>
+                <li class="mb-7"><strong>Responsable</strong><br>{freeform:field:persona_asignada_gym}</li>
+              </ul>
+            </div>
+            <div class="col-sm-6">
+              <div class="descripcion p-14 box-shadow">
+                <h5 class="light uppercase">Descripción</h5>
+                <hr class="double">
+                <p>{freeform:field:descripcion_problema}</p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="table-responsive">
+
+                {exp:member:custom_profile_data}
+                    {exp:switchee variable = "{group_id}" parse="inward"}
+                      
+                      {case value="7"}<!-- admin viva 7 -->
+                        {embed="includes/pasos_viva" entrada="{segment_3}"}
+                      {/case}
+
+                      {case value="8"}<!-- admin GyM 8 -->
+                        {embed="includes/pasos_gym" entrada="{segment_3}"}
+                      {/case}
+
+                      {case value="9"}<!-- inspector viva 9 -->
+                        {embed="includes/pasos_insp" entrada="{segment_3}"}
+                      {/case}
+
+                      {case value="10"}<!-- personal GyM que ejecuta el arreglo  10 -->
+                        {embed="includes/pasos_cons" entrada="{segment_3}"}
+                      {/case}
+                      
+                    {/exp:switchee}
+                    {/exp:member:custom_profile_data}
+
+                
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/exp:freeform:entries}
+
+  </div>
+  
+
+                

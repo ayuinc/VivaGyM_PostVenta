@@ -6,7 +6,7 @@
       <td>Estatus</td>
       <td>Fecha</td>
       <td>Detalle</td>
-      <td>Archivo</td>
+      <!--<td>Archivo</td>-->
     </tr>
   </thead>
   <tbody>
@@ -20,7 +20,7 @@
       <?php $paso_gen=$proy_long['form_field_19']; ?>
       <?php if (($paso_gen=="1") or ($paso_gen=="2") or ($paso_gen=="3") or ($paso_gen=="5") or ($paso_gen=="6") or ($paso_gen=="7") or ($paso_gen=="9") or ($paso_gen=="10") or ($paso_gen=="11")) { ?>
       <tr>
-        <td><?php echo $proy_long['form_field_19']." - ".$proy_long['form_field_17']; ?></td> <!-- actividad  -->
+        <td><?php echo $proy_long['form_field_17']; ?></td> <!-- actividad  -->
 
         <td><?php $var_estatus=$proy_long['status']; 
           switch ($var_estatus) {
@@ -79,7 +79,7 @@
 
         </td> <!-- detalle  -->
 
-        <td> <!-- archivo  -->
+        <!-- <td> archivo  
           <?php if($paso==2){ } ?>
 
           <?php if($paso==3){ } ?>   
@@ -96,7 +96,7 @@
 
           <?php if($paso==9){ } ?>
 
-        </td>
+        </td>-->
       </tr>
       <?php } ?>
 

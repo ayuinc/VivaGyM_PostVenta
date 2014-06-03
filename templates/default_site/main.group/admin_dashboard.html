@@ -1,0 +1,94 @@
+{embed="includes/header" }
+
+<!--{group_id}
+<script type="text/javascript" src="{site_url}lib/viva_dashboard.js"></script>-->
+
+<h3 class="text-success medium"><a href="{site_url}main/admin_dashboard" >Panel de Control</a></h3>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="panel bg-white">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-sm-6">
+              <h4 class="uppercase medium"><i class="icon-docs"></i> Solicitudes</h4>
+            </div>
+            <div class="col-sm-3 col-sm-offset-3">
+              <form>
+                <div class="form-group">
+                  <select name="" id="" class="select-override form-control">
+                    <option value="">Ordenar por</option>
+                  </select>
+                </div>
+              </form>
+            </div>
+          </div>
+          <hr class="m-0">
+        </div>
+        <div class="panel-body">
+          <div class="table-responsive"> <!-- selector de sesion para muestra de lista-->
+
+            <table class="table table-hover table-striped">
+              <thead>
+                <tr class="medium">
+                  <td>No. de Caso </td>
+                  <td>Fecha</td>
+                  <td>Propietario</td>
+                  <!--<td>Complejo</td>
+                  <td>Torre</td>-->
+                  <td>Dpto.</td>
+                  <td>Estatus</td>
+                  <td>Tipo</td>
+                  <td></td>
+                  <td>Responsable</td>
+                  <td></td>
+                </tr>
+              </thead>
+              <tbody>
+                {exp:freeform:entries form_id="2" orderby="entry_id" sort="desc" status="open|closed" limit="10" paginate="both" }
+                <?php $estatus_ticket="{freeform:status}"; ?>
+                <tr>
+                  <td><?php echo $id_sol_garantia="{freeform:entry_id}"; ?></td>
+                  <td>{freeform:entry_date format="%d-%m-%Y a %g:%i %a"}</td>
+                  <td>{freeform:author}</td>
+                  <!--<td>Complejo</td>
+                  <td>Torre</td>-->
+                  <td>{freeform:field:departamento_en_consulta}</td>
+                  <td>
+
+                    <?php $var_est="{freeform:field:etapa_solicitud}";
+                        switch ($var_est) {
+                          case "1":
+                              echo "<span class='label label-default'>Solicitud en revisión</span>";
+                              break;
+                          case "2":
+                              echo "<span class='label label-default'>Inspección pendiente</span>";
+                              break;
+                          case "3":
+                              echo "<span class='label label-default'>Arreglo pendiente</span>";
+                              break;
+                          case "4":
+                              echo "<span class='label label-default'>Caso cerrado</span>";
+                              break;
+                      }; ?>
+
+                  </td>
+                  <td>{freeform:field:tipo_de_problema}</td>
+                  <td></td>
+                  <td>{freeform:field:persona_asignada_gym}</td>
+
+                  <td>
+                    <a href="{site_url}main/ticket_detail/{freeform:entry_id}" class="small text-danger underline">
+                          Ver detalle</a></td>
+                </tr>
+                {/exp:freeform:entries}
+
+              </tbody>
+            </table>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

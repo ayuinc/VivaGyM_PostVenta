@@ -89,7 +89,24 @@
                   <td>Torre</td>-->
                   <td>{freeform:field:departamento_en_consulta}</td>
                   <td>
-                  <?php  
+
+                    <?php $var_est="{freeform:field:etapa_solicitud}";
+                        switch ($var_est) {
+                          case "1":
+                              echo "<span class='label label-default'>Solicitud en revisión</span>";
+                              break;
+                          case "2":
+                              echo "<span class='label label-danger'>Inspección pendiente</span>";
+                              break;
+                          case "3":
+                              echo "<span class='label label-default'>Arreglo pendiente</span>";
+                              break;
+                          case "4":
+                              echo "<span class='label label-default'>Caso cerrado</span>";
+                              break;
+                      }; ?>
+
+                  <?php /* 
                       switch ($estatus_ticket) {
                         case "pending":
                             echo "<span class='label label-default'>Cancelado</span>";
@@ -100,11 +117,12 @@
                         case "closed":
                             echo "<span class='label label-default'>Realizado</span>";
                             break;
-                    }; ?>
+                    }; */ ?>
+
                   </td>
                   <td>{freeform:field:tipo_de_problema}</td>
                   <td></td>
-                  <td></td>
+                  <td>{freeform:field:persona_asignada_gym}</td>
                   <td><a href="{site_url}main/viva_detail/{freeform:entry_id}" class="small text-danger underline">Ver detalle</a></td>
                 </tr>
                 {/exp:freeform:entries}

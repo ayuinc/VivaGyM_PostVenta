@@ -16,7 +16,7 @@
     orderby="entry_id"
     sort="desc"
     limit="10" status="open|closed"
-    paginate="both"
+    paginate="top"
     search:author_id="{last_segment}"
 }
     <tr>
@@ -30,7 +30,7 @@
                 echo "<span class='label label-default'>Solicitud en revisión</span>";
                 break;
             case "2":
-                echo "<span class='label label-danger'>Inspección pendiente</span>";
+                echo "<span class='label label-default'>Inspección pendiente</span>";
                 break;
             case "3":
                 echo "<span class='label label-default'>Arreglo pendiente</span>";

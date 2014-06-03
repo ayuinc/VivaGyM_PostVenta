@@ -1,0 +1,57 @@
+﻿<?php $id_sol_garantia="{embed:entrada}"; ?>
+
+<table class="table table-hover table-striped mt-14">
+  <thead class="uppercase medium">
+    <tr>
+      <td>Acción</td>
+      <td>Estatus</td>
+      <td>Día / Hora</td>
+      <td>Acción</td>
+      <td>Archivo</td>
+    </tr>
+  </thead> <!-- hacer otro include con los detalles del ticket {embed="includes/detalles_ticket" }-->
+
+  <?php
+    $query_long  = "SELECT * FROM exp_freeform_form_entries_4 where form_field_18=$id_sol_garantia ";
+    $result_long = mysql_query($query_long);
+    ?>
+    <?php while ($proy_long = mysql_fetch_array($result_long)) { ?>
+
+    <tbody class="bg-white">
+      <tr>
+        <td><?php $entry_id=$proy_long['entry_id']; $id_cliente=$proy_long['form_field_5']; echo $proy_long['form_field_17']; ?></td>
+        <td><?php $var_estatus=$proy_long['status']; if ($var_estatus=="open"){echo "Pendiente";} else {echo "Realizado";}; ?></td>
+
+        <td><?php  $fecha_time=$proy_long['entry_date']; $edit_time=$proy_long['edit_date'];
+        if ($fecha_time>0) {echo date('d-m-Y G:i a', $fecha_time); }
+        elseif ($edit_time>0) {echo date('d-m-Y G:i a', $edit_time); }  ?></td>
+
+        <td><?php $paso=$proy_long['form_field_19']; ?>
+
+          <?php if($paso==2){ echo $proy_long['form_field_27']; } ?>
+
+          <?php if($paso==3){ echo $proy_long['form_field_25']; } ?>
+
+          <?php if($paso==4){ echo $proy_long['form_field_27']; } ?>
+
+          <?php if($paso==5){ echo $proy_long['form_field_28']; } ?>
+
+          <?php if($paso==6){ echo $proy_long['form_field_27']; } ?>
+
+          <?php if($paso==7){ echo $proy_long['form_field_25']; } ?>
+
+          <?php if($paso==8){ echo $proy_long['form_field_27']; } ?>
+
+          <?php $file=$proy_long['form_field_28']; if($paso==9){ 
+            if (empty($file)) { ?> <a href="<?php echo 
+          "{site_url}main/user_gym_upload/".$id_sol_garantia."/9/".$id_cliente."/".$entry_id; ?>" 
+          class="btn btn-sm btn-warning small">Subir reporte</a> <?php } else { echo $file; } } ?>
+
+        </td>
+      </tr>
+
+    </tbody>
+
+    <?php } ; ?>
+
+</table>

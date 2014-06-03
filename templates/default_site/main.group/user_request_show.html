@@ -9,67 +9,46 @@
 
     {exp:freeform:entries form_id="2" entry_id="{segment_3}" limit="1" status="open|closed" }
 
-    <div class="col-md-6 col-sm-8">
+    <div class="col-md-9 col-sm-8">
       <div class="panel p-14 box-shadow" >
         <div class="panel-heading bg-white p-0">
           <div class="panel-title mb-14">
-            <div class="clearfix">
-              <div class="col-md-6 col-sm-6 col-xs-6 pl-0">
-                <h2 class="medium m-0"><span class="h4">No. de caso:</span> {segment_3}</h2>
-                <small>Fecha de apertura: {freeform:entry_date format="%j %F %Y"}</small>
-              </div>
-              <div class="col-md-6 col-sm-6 col-xs-6 text-right pt-7">
-                <!-- <a href="#" class="btn disabled btn-success">Agenda tu cita aquí</a> -->
-              </div>
-            </div>
+            <h2 class="medium m-0"><span class="h4">No. de caso:</span> {segment_3}</h2>
           </div>
           <hr class="m-0">
+
+          {embed="includes/barra_accion" id_sol_garantia="{segment_3}"}
+
         </div>
         <div class="panel-body p-0">
           <div class="row mt-14">
-            <div class="col-sm-12">
-              <h4 class="light">Descripción</h4>
-              <p>{freeform:field:descripcion_problema}</p>
-              <hr class="double">
-              <h4 class="light">Tipo de problema</h4>
-              <p>{freeform:field:tipo_de_problema}</p>
-              <hr class="double">
-              <h4 class="light">Responsable</h4>
-              <p>Jorge Perestroiffer</p>
-              <hr class="double">
-              <h4 class="light">Detalles del caso</h4>
+            <div class="col-sm-3">
               <img src="{site_url}fotos_problemas/{freeform:field:foto_problema}" alt="" class="img-responsive img-thumbnail">
-              <hr class="double">
-              <h4 class="light">Proceso</h4>
+            </div>
+            <div class="col-sm-3">
+              <ul class="list-unstyled">
+                <li class="mb-7"><strong>Tipo de problema</strong><br>{freeform:field:tipo_de_problema}</li>
+                <li class="mb-7"><strong>Fecha</strong><br>{freeform:entry_date format="%j %F %Y"}</li>
+                <li class="mb-7"><strong>Responsable</strong><br>{freeform:field:persona_asignada_gym}</li>
+              </ul>
+            </div>
+            <div class="col-sm-6">
+              <div class="descripcion p-14 box-shadow">
+                <h5 class="light uppercase">Descripción</h5>
+                <hr class="double">
+                <p>{freeform:field:descripcion_problema}</p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
               <div class="table-responsive">
                 {embed="includes/pasos_solicitud" id_sol_garantia="{segment_3}"}
               </div>
             </div>
           </div>
-          <div class="row mt-14">
-            <div class="col-sm-3">
-              
-            </div>
-            <div class="col-sm-8 pl-0">
-              <div class="row">
-                <div class="col-sm-6">
-                  
-                </div>
-                <!--<div class="col-md-6 pt-14">
-                  <ul class="list-unstyled">
-                    <li class="mb-7"><strong>Lista 3</strong><br>27/04/2014</li>
-                    <li class="mb-7"><strong>Lista 4</strong><br>Jorge Perestroiffer</li>
-                  </ul>
-                </div>-->
-              </div>
-            </div>
-          </div>
         </div>
       </div>
-    </div>
-
-    <div class="col-md-3 col-sm-4">
-		{embed="includes/user_new_request_aside"}
     </div>
 
     {/exp:freeform:entries}

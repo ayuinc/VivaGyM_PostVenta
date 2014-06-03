@@ -43,99 +43,6 @@ blockquote {
   height: auto;
 }
 
-// Notifications
-
-#user-notifications {
-  width: 50px;
-  padding: 14px;
-  background: $brand-danger;
-  &:hover {
-    background: darken($brand-danger, 7%);
-  }
-}
-
-// Viva Notifications
-.viva-notifications {
-  .col-xs-3 {
-    padding-left: 0;
-  }
-  span {
-    display: block;
-    padding: 14px;
-    text-align: center;
-    color: $text-muted;
-  }
-  p {
-    padding-top: 28px;
-  }
-  &.viva-notifications-warning {
-    border: 2px solid $brand-warning;
-    span {
-      background: $brand-warning;
-      i:before {
-        font-family: "icomoon";
-        content: "\e62f";
-        font-size: em(21);
-      }
-    }
-  }
-}
-
-// Viva Alerts 
-.viva-alert {
-  margin-bottom: 21px;
-  position: relative;
-  .viva-icon-wrapper {
-    text-align: center;
-  }
-  .viva-icon-wrapper {
-    padding: 14px;
-    color: $text-muted;
-    i:before {
-      font-family: "icomoon";
-      font-size: em(28);
-    }
-  }
-  p {
-    padding-top: 0.99%;
-  }
-  &.viva-alert-success {
-    border: 2px solid $brand-success;
-    .viva-icon-wrapper {
-      background: $brand-success;
-      i:before {
-        content: "\e627";
-      }
-    }
-  }
-  &.viva-alert-warning {
-    border: 2px solid $brand-warning;
-    .viva-icon-wrapper {
-      background: $brand-warning;
-      i:before {
-        content: "\e62f";
-      }
-    }
-  }
-  &.viva-alert-aside {
-    .viva-icon-wrapper {
-      i:before {
-        font-size: em(21);
-      }
-    }
-    p {
-      padding-top: 5%;
-    }
-  }
-  button {
-    &.close {
-      position: absolute;
-      right: 7px;
-      z-index: 30;
-    }
-  }
-}
-
 // User SETUP Form-Group Propietario
 .form-group-invisible {
   padding: 18px;
@@ -184,3 +91,83 @@ blockquote {
     @include box-shadow(none);
   }
 }
+
+// USER REQUEST SHOW 
+.descripcion {
+  background: lighten($brand-warning, 42%);
+}
+
+.action-alert {
+  background: lighten($brand-success, 42%);
+  padding: 14px;
+}
+
+// USER NOTIFICATIONS
+#user-notifications {
+  border-radius: $border-radius-base;
+  background: lighten($gray-darker, 7%);
+  position: relative;
+  display: block;
+  text-align: center;
+  width: 42px;
+  height: 42px;
+  text-decoration: none;
+  padding: 12px;
+  span {
+    i {
+      color: $gray-darker;
+    }
+  }
+  &:hover,
+  &.active {
+    background: darken($brand-danger, 7%);
+    text-decoration: none;
+    span i {
+      color: white;
+    }
+  }
+}
+
+.popover {
+  border: none;
+  border-radius: 0px;
+  max-width: 560px;
+  .list-group {
+    margin-bottom: 0;
+  }
+  .list-group-item {
+    width: 350px;
+  }
+  .popover-content {
+    padding: 0;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

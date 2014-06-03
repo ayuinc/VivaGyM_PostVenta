@@ -194,7 +194,7 @@ html {
   -webkit-tap-highlight-color: transparent; }
 
 body {
-  font-family: "raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "brandon-grotesque", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 1.42857;
   color: #65686a;
@@ -568,42 +568,42 @@ address {
   line-height: 1.42857; }
 
 .thin {
-  font-family: "raleway", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-family: "brandon-grotesque", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
   font-weight: 100; }
 
 .thin-italic {
-  font-family: "raleway", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-family: "brandon-grotesque", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
   font-weight: 100;
   font-style: italic; }
 
 .light {
-  font-family: "raleway", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-family: "brandon-grotesque", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
   font-weight: 300; }
 
 .light-italic {
-  font-family: "raleway", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-family: "brandon-grotesque", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
   font-weight: 300;
   font-style: italic; }
 
 .book {
-  font-family: "raleway", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-family: "brandon-grotesque", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
   font-weight: 400; }
 
 .book-italic {
-  font-family: "raleway", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-family: "brandon-grotesque", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
   font-weight: 400;
   font-style: italic; }
 
 .medium {
-  font-family: "raleway", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-family: "brandon-grotesque", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
   font-weight: 500; }
 
 .bold {
-  font-family: "raleway", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-family: "brandon-grotesque", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
   font-weight: 700; }
 
 strong {
-  font-family: "raleway", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-family: "brandon-grotesque", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
   font-weight: 500; }
 
 .small {
@@ -4502,6 +4502,113 @@ a.list-group-item-danger {
   border-width: 0 5px 5px;
   border-bottom-color: black; }
 
+.popover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1060;
+  display: none;
+  max-width: 276px;
+  padding: 1px;
+  text-align: left;
+  background-color: white;
+  background-clip: padding-box;
+  border: 1px solid #cccccc;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  white-space: normal; }
+  .popover.top {
+    margin-top: -10px; }
+  .popover.right {
+    margin-left: 10px; }
+  .popover.bottom {
+    margin-top: 10px; }
+  .popover.left {
+    margin-left: -10px; }
+
+.popover-title {
+  margin: 0;
+  padding: 8px 14px;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 18px;
+  background-color: #f7f7f7;
+  border-bottom: 1px solid #ebebeb;
+  border-radius: 4px 4px 0 0; }
+
+.popover-content {
+  padding: 9px 14px; }
+
+.popover > .arrow, .popover > .arrow:after {
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid; }
+
+.popover > .arrow {
+  border-width: 11px; }
+
+.popover > .arrow:after {
+  border-width: 10px;
+  content: ""; }
+
+.popover.top > .arrow {
+  left: 50%;
+  margin-left: -11px;
+  border-bottom-width: 0;
+  border-top-color: #999999;
+  border-top-color: rgba(0, 0, 0, 0.05);
+  bottom: -11px; }
+  .popover.top > .arrow:after {
+    content: " ";
+    bottom: 1px;
+    margin-left: -10px;
+    border-bottom-width: 0;
+    border-top-color: white; }
+.popover.right > .arrow {
+  top: 50%;
+  left: -11px;
+  margin-top: -11px;
+  border-left-width: 0;
+  border-right-color: #999999;
+  border-right-color: rgba(0, 0, 0, 0.05); }
+  .popover.right > .arrow:after {
+    content: " ";
+    left: 1px;
+    bottom: -10px;
+    border-left-width: 0;
+    border-right-color: white; }
+.popover.bottom > .arrow {
+  left: 50%;
+  margin-left: -11px;
+  border-top-width: 0;
+  border-bottom-color: #999999;
+  border-bottom-color: rgba(0, 0, 0, 0.05);
+  top: -11px; }
+  .popover.bottom > .arrow:after {
+    content: " ";
+    top: 1px;
+    margin-left: -10px;
+    border-top-width: 0;
+    border-bottom-color: white; }
+.popover.left > .arrow {
+  top: 50%;
+  right: -11px;
+  margin-top: -11px;
+  border-right-width: 0;
+  border-left-color: #999999;
+  border-left-color: rgba(0, 0, 0, 0.05); }
+  .popover.left > .arrow:after {
+    content: " ";
+    right: 1px;
+    border-right-width: 0;
+    border-left-color: white;
+    bottom: -10px; }
+
 .close {
   float: right;
   font-size: 24px;
@@ -4526,14 +4633,14 @@ button.close {
   -webkit-appearance: none; }
 
 p, ul, tr, td {
-  font-family: "raleway", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-family: "brandon-grotesque", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
   font-weight: 300; }
 
 thead tr td {
   color: #545657; }
 
 tbody tr td {
-  font-family: "raleway", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-family: "brandon-grotesque", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
   font-weight: 300;
   font-size: 0.875em; }
 
@@ -4560,65 +4667,6 @@ blockquote {
   width: 50px;
   height: auto; }
 
-#user-notifications {
-  width: 50px;
-  padding: 14px;
-  background: #ef4323; }
-  #user-notifications:hover {
-    background: #de3010; }
-
-.viva-notifications .col-xs-3 {
-  padding-left: 0; }
-.viva-notifications span {
-  display: block;
-  padding: 14px;
-  text-align: center;
-  color: #f6f6f7; }
-.viva-notifications p {
-  padding-top: 28px; }
-.viva-notifications.viva-notifications-warning {
-  border: 2px solid #fcb514; }
-  .viva-notifications.viva-notifications-warning span {
-    background: #fcb514; }
-    .viva-notifications.viva-notifications-warning span i:before {
-      font-family: "icomoon";
-      content: "\e62f";
-      font-size: 1.3125em; }
-
-.viva-alert {
-  margin-bottom: 21px;
-  position: relative; }
-  .viva-alert .viva-icon-wrapper {
-    text-align: center; }
-  .viva-alert .viva-icon-wrapper {
-    padding: 14px;
-    color: #f6f6f7; }
-    .viva-alert .viva-icon-wrapper i:before {
-      font-family: "icomoon";
-      font-size: 1.75em; }
-  .viva-alert p {
-    padding-top: 0.99%; }
-  .viva-alert.viva-alert-success {
-    border: 2px solid #77be42; }
-    .viva-alert.viva-alert-success .viva-icon-wrapper {
-      background: #77be42; }
-      .viva-alert.viva-alert-success .viva-icon-wrapper i:before {
-        content: "\e627"; }
-  .viva-alert.viva-alert-warning {
-    border: 2px solid #fcb514; }
-    .viva-alert.viva-alert-warning .viva-icon-wrapper {
-      background: #fcb514; }
-      .viva-alert.viva-alert-warning .viva-icon-wrapper i:before {
-        content: "\e62f"; }
-  .viva-alert.viva-alert-aside .viva-icon-wrapper i:before {
-    font-size: 1.3125em; }
-  .viva-alert.viva-alert-aside p {
-    padding-top: 5%; }
-  .viva-alert button.close {
-    position: absolute;
-    right: 7px;
-    z-index: 30; }
-
 .form-group-invisible {
   padding: 18px; }
 
@@ -4633,7 +4681,7 @@ blockquote {
 
 #user-profile-form label {
   font-size: 14px;
-  font-family: "raleway", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-family: "brandon-grotesque", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
   font-weight: 500;
   margin-bottom: 0; }
 #user-profile-form .form-group {
@@ -4654,6 +4702,42 @@ blockquote {
     border: none;
     -webkit-box-shadow: none;
     box-shadow: none; }
+
+.descripcion {
+  background: #fff8e8; }
+
+.action-alert {
+  background: #eaf5e1;
+  padding: 14px; }
+
+#user-notifications {
+  border-radius: 3px;
+  background: #424445;
+  position: relative;
+  display: block;
+  text-align: center;
+  width: 42px;
+  height: 42px;
+  text-decoration: none;
+  padding: 12px; }
+  #user-notifications span i {
+    color: #313233; }
+  #user-notifications:hover, #user-notifications.active {
+    background: #de3010;
+    text-decoration: none; }
+    #user-notifications:hover span i, #user-notifications.active span i {
+      color: white; }
+
+.popover {
+  border: none;
+  border-radius: 0px;
+  max-width: 560px; }
+  .popover .list-group {
+    margin-bottom: 0; }
+  .popover .list-group-item {
+    width: 350px; }
+  .popover .popover-content {
+    padding: 0; }
 
 /*!
  * FullCalendar v1.6.1 Stylesheet
@@ -5104,7 +5188,7 @@ table.fc-border-separate {
 .fc-event-vert .fc-event-time {
   white-space: nowrap;
   font-size: 11px;
-  font-family: "raleway", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-family: "brandon-grotesque", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
   font-weight: 300; }
 
 .fc-event-vert .fc-event-inner {

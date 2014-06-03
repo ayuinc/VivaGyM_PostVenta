@@ -1,0 +1,35 @@
+﻿<?php 
+$id_cliente="{member_id}";
+$id_sol_garantia="{embed:id_sol_garantia}";
+
+$result_cond=mysql_query("SELECT * FROM exp_freeform_form_entries_4 WHERE form_field_18=$id_sol_garantia and form_field_19='3' ");
+$obten_cond=mysql_fetch_row($result_cond);
+$paso_insp = $obten_cond[7];
+
+if ($paso_insp=="open"){ ?>
+<div class="action-alert clearfix">
+  <div class="col-sm-8 pt-7 text-right">
+    <span>Usted tiene una actividad pendiente</span>
+  </div>
+  <div class="col-sm-4 text-center">
+    <a href="{site_url}main/<?php echo "user_request_book/".$id_sol_garantia; ?>" class="btn btn-success btn-sm">Agendar</a>
+  </div>
+</div> 
+<?php } ?>
+
+<?php 
+
+$result_con2=mysql_query("SELECT * FROM exp_freeform_form_entries_4 WHERE form_field_18=$id_sol_garantia and form_field_19='7' ");
+$obten_con2=mysql_fetch_row($result_con2);
+$paso_arr = $obten_con2[7];
+
+if ($paso_arr=="open"){ ?>
+<div class="action-alert clearfix">
+  <div class="col-sm-8 pt-7 text-right">
+    <span>Usted tiene una actividad pendiente</span>
+  </div>
+  <div class="col-sm-4 text-center">
+    <a href="{site_url}main/<?php echo "user_request_fixing/".$id_sol_garantia; ?>" class="btn btn-success btn-sm">Agendar</a>
+  </div>
+</div> 
+<?php } ?>

@@ -2,11 +2,11 @@
 
 	$id_sol_garantia=$_GET['id_sol_garantia'];
 	$year = date('Y');
-	$month = date('m');
+	//$month = date('m');
 	$site_url="http://162.243.222.54";
 
 	//$year = '2014';
-	//$month = '05';
+	$month = '06';
 	
 	//$query_rub  = "select * from eventos where mes_evento=5 "; $result_rub = mysql_query($query_rub);
 
@@ -16,38 +16,47 @@
 	
 		array(
 			'id' => 111,
-			'title' => "23-$month-$year",
-			'start' => "$year-$month-23",
+			'title' => "03-$month-$year",
+			'start' => "$year-$month-03",
 			'color' => "#78BE20", 
 			'textColor' => "black",
-			'url' => "$site_url/main/user_request_book/$id_sol_garantia/23-$month-$year"
+			'url' => "$site_url/main/user_request_book/$id_sol_garantia/03-$month-$year"
 		),
 		
 		array(
 			'id' => 111,
-			'title' => "30-$month-$year",
-			'start' => "$year-$month-30",
+			'title' => "10-$month-$year",
+			'start' => "$year-$month-10",
 			'color' => "#78BE20",
 			'textColor' => "black",
-			'url' => "$site_url/main/user_request_book/$id_sol_garantia/30-$month-$year"
+			'url' => "$site_url/main/user_request_book/$id_sol_garantia/10-$month-$year"
 		),
 		
 		array(
 			'id' => 111,
-			'title' => "20-$month-$year",
-			'start' => "$year-$month-20",
+			'title' => "17-$month-$year",
+			'start' => "$year-$month-17",
 			'color' => "#78BE20", 
 			'textColor' => "black",
-			'url' => "$site_url/main/user_request_book/$id_sol_garantia/20-$month-$year"
+			'url' => "$site_url/main/user_request_book/$id_sol_garantia/17-$month-$year"
 		),
 		
 		array(
 			'id' => 111,
-			'title' => "27-$month-$year",
-			'start' => "$year-$month-27",
+			'title' => "06-$month-$year",
+			'start' => "$year-$month-06",
 			'color' => "#78BE20",
 			'textColor' => "black",
-			'url' => "$site_url/main/user_request_book/$id_sol_garantia/27-$month-$year"
+			'url' => "$site_url/main/user_request_book/$id_sol_garantia/06-$month-$year"
+		),
+
+		array(
+			'id' => 111,
+			'title' => "13-$month-$year",
+			'start' => "$year-$month-13",
+			'color' => "#78BE20",
+			'textColor' => "black",
+			'url' => "$site_url/main/user_request_book/$id_sol_garantia/13-$month-$year"
 		),
 
 	

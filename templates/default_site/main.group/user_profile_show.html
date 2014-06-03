@@ -9,7 +9,13 @@
     </div>
     <div class="col-md-6 col-sm-9">
       <div class="panel p-14">
-        <form id="user-profile-form">
+        <!--<form id="user-profile-form">-->
+              {exp:user:stats}
+              {exp:user:edit 
+              	return='main/user_profile_show/{member_id}' 
+              	group_id="6" 
+              	form:id="user-profile-form" 
+              }        
           <div class="panel-heading bg-white p-0">
             <div class="panel-title mb-14">
               <div class="clearfix">
@@ -21,7 +27,8 @@
                 <div class="col-sm-6 col-xs-6">                  
                     <a href="#" class="text-info block pt-14 edit-form-trigger lowercase not-underline icon-pencil text-right"></a>
                   <div class="mt-7 hidden submit-form text-right">
-                    <!-- <a href="#" class="text-danger small edit-form-cancel hidden">Cancelar</a> --> <button type="submit" class="btn btn-sm btn-default">Hecho</button>
+                    <!-- <a href="#" class="text-danger small edit-form-cancel hidden">Cancelar</a> --> 
+                    <input type="submit" class="btn btn-sm btn-default" value="Guardar">
                   </div>
                 </div>
               </div>
@@ -33,39 +40,88 @@
               <div class="col-sm-2">
                 <img src="{site_url}images/user.jpg" alt="" class="img-responsive img-thumbnail">
               </div>
+
               <div class="col-sm-5">
                 <h4 class="mt-0">Datos del propietario</h4>
                 <div class="form-group">
                   <label for="">Nombre</label>
-                  <input type="text" class="form-control input-blank input-sm" placeholder="Manuel Casas" value="Manuel Casas">
+                  <input type="text" class="form-control input-blank input-sm" name="nombre_propietario" placeholder="{nombre_propietario}" value="{nombre_propietario}">
                 </div>
+
+                <div class="form-group">
+                  <label for="">Apellido paterno</label>
+                  <input type="text" class="form-control input-blank input-sm" name="ap_pat" placeholder="{ap_pat}" value="{ap_pat}">
+                </div>
+
+                <div class="form-group">
+                  <label for="">Apellido materno</label>
+                  <input type="text" class="form-control input-blank input-sm" name="ap_mat" placeholder="{ap_mat}" value="{ap_mat}">
+                </div>
+
                 <div class="form-group">
                   <label for="">E-mail</label>
-                  <input type="text" class="form-control input-blank input-sm" placeholder="mcasas@mail.com" value="mcasas@mail.com">
+                  <input type="text" class="form-control input-blank input-sm" name="email" placeholder="{email}" value="{email}">
                 </div>
+
                 <div class="form-group">
                   <label for="">Télf. celular</label>
-                  <input type="text" class="form-control input-blank input-sm" placeholder="+51 1 84756473" value="+51 1 98837464">
+                  <input type="text" class="form-control input-blank input-sm" name="t_fijo" placeholder="{t_fijo}" value="{t_fijo}">
                 </div>
+
+                <div class="form-group">
+                  <label for="">Télf. oficina</label>
+                  <input type="text" class="form-control input-blank input-sm" name="t_ofic" placeholder="{t_ofic}" value="{t_ofic}">
+                </div>
+
+                <div class="form-group">
+                  <label for="">Télf. fijo</label>
+                  <input type="text" class="form-control input-blank input-sm" name="t_fijo" placeholder="{t_fijo}" value="{t_fijo}">
+                </div>
+
+                <div class="form-group">
+                  <label for="">Télf. conyugue</label>
+                  <input type="text" class="form-control input-blank input-sm" name="t_conyu" placeholder="{t_conyu}" value="{t_conyu}">
+                </div>
+
               </div>
+
               <div class="col-sm-5">
                 <h4 class="mt-0">Datos del inquilino</h4>
                 <div class="form-group">
                   <label for="">Nombre</label>
-                  <input type="text" class="form-control input-blank input-sm" placeholder="Jorge Drexler" value="Jorge Drexler">
+                  <input type="text" class="form-control input-blank input-sm" name="nombre_inq" placeholder="{nombre_inq}" value="{nombre_inq}">
                 </div>
+
+                <div class="form-group">
+                  <label for="">Apellido paterno</label>
+                  <input type="text" class="form-control input-blank input-sm" name="ap_pat_inq" placeholder="{ap_pat_inq}" value="{ap_pat_inq}">
+                </div>
+
+                <div class="form-group">
+                  <label for="">Apellido materno</label>
+                  <input type="text" class="form-control input-blank input-sm" name="ap_mat_inq" placeholder="{ap_mat_inq}" value="{ap_mat_inq}">
+                </div>
+
                 <div class="form-group">
                   <label for="">E-mail</label>
-                  <input type="text" class="form-control input-blank input-sm" placeholder="inquilino@mail.com" value="inquilino@mail.com">
+                  <input type="text" class="form-control input-blank input-sm" name="email_inquilino" placeholder="{email_inquilino}" value="{email_inquilino}">
                 </div>
                 <div class="form-group">
                   <label for="">Télf. celular</label>
-                  <input type="text" class="form-control input-blank input-sm" placeholder="+51 1 84756473" value="+51 1 98837464">
-                </div>    
+                  <input type="text" class="form-control input-blank input-sm" name="telf_cel_inq" placeholder="{telf_cel_inq}" value="{telf_cel_inq}">
+                </div>   
+
+                <div class="form-group">
+                  <label for="">Télf. fijo</label>
+                  <input type="text" class="form-control input-blank input-sm" name="telf_inq" placeholder="{telf_inq}" value="{telf_inq}">
+                </div>  
               </div>
+
             </div>
           </div>
-        </form>
+        {/exp:user:edit}
+        {/exp:user:stats}  
+        <!--</form>-->
       </div>
     </div>
     <div class="col-md-3 col-sm-3">
