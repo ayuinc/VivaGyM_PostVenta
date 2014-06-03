@@ -254,7 +254,7 @@ Atentamente';
  		$id_sol_garantia = $TMPL->fetch_param('id_sol_garantia');
  		$comentarios = $TMPL->fetch_param('comentarios');
 
- 		if ($acc == "si"){
+ 		if ($acc == 'si'){
 
  			$result=mysql_query("SELECT * FROM exp_freeform_form_entries_2 WHERE entry_id=$id_sol_garantia");
  			$obten=mysql_fetch_row($result);
@@ -297,7 +297,7 @@ Atentamente';
 	 		$mandrill->messages->sendTemplate($template_name, $template_content, $message);
 	 		return "Procede Inspección Viva GyM";
  		}
- 		else if($acc == "no"){
+ 		else if($acc == 'no'){
  			$result=mysql_query("SELECT * FROM exp_freeform_form_entries_2 WHERE entry_id=$id_sol_garantia");
  			$obten=mysql_fetch_row($result);
  			$tit_problema = $obten[15];
@@ -339,6 +339,9 @@ Atentamente';
 	  		);
 	 		$mandrill->messages->sendTemplate($template_name, $template_content, $message);
 	 		return " No Procede Inspección Viva GyM";
+ 		}
+ 		else{
+ 			return " No llega a ningun lado";
  		}
 	}
 
