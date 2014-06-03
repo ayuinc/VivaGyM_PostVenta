@@ -43,6 +43,9 @@ class Getuser {
 
 	public function getscreenname(){
 		$id_sol_garantia = ee()->TMPL->fetch_param('id_sol_garantia');
+		$result=mysql_query("SELECT * FROM exp_freeform_form_entries_2 WHERE entry_id=$id_sol_garantia");
+		$obten=mysql_fetch_row($result);
+		$id_cliente = $obten[2];
 		$result_email=mysql_query("SELECT * FROM exp_members WHERE member_id=$id_cliente");
 		$obten_email=mysql_fetch_row($result_email);
 		$screen_name = $obten_email[3];
@@ -52,6 +55,9 @@ class Getuser {
 	
 	public function getemail(){
 		$id_sol_garantia = ee()->TMPL->fetch_param('id_sol_garantia');
+		$result=mysql_query("SELECT * FROM exp_freeform_form_entries_2 WHERE entry_id=$id_sol_garantia");
+		$obten=mysql_fetch_row($result);
+		$id_cliente = $obten[2];
 		$result_email=mysql_query("SELECT * FROM exp_members WHERE member_id=$id_cliente");
 		$obten_email=mysql_fetch_row($result_email);
 		$dir = $obten_email[9];
