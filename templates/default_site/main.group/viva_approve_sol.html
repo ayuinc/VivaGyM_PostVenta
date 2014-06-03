@@ -123,8 +123,8 @@ Atentamente";
 {exp:get_post_vars parse="inward"}
 	{exp:user:stats}
 		{exp:mandrillapp:send_email_viva_approve_sol 
-		  to='{exp:getuser:getemail id_sol_garantia="{post_id_sol_garantia}"}'
-		  name='{exp:getuser:getscreenname id_sol_garantia="{post_id_sol_garantia}"}'
+		  to='{exp:getuser:getemail parse="inward" id_sol_garantia="{post_id_sol_garantia}"}'
+		  name='{exp:getuser:getscreenname parse="inward" id_sol_garantia="{post_id_sol_garantia}"}'
 		  from="admin@gym.com"
 		  acc="{post_aprobar_paso}"
 		  id_sol_garantia="{post_id_sol_garantia}"
