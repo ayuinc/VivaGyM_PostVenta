@@ -131,13 +131,17 @@ Atentamente";
 		  comentarios="{post_comentarios}" }
 		{/exp:mandrillapp:send_email_viva_approve_sol}  
 	{/exp:user:stats}
-
-<body>
-
+-/-
+{exp:getuser:getemail id_sol_garantia="{post_id_sol_garantia}"}
+-/-
+{exp:getuser:getscreenname id_sol_garantia="{post_id_sol_garantia}"}
+-/- 
 {post_aprobar_paso} - {post_id_sol_garantia} - {post_comentarios}
 {/exp:get_post_vars}
+
+<body>
 <script type="text/javascript">
-window.location="{site_url}main/admin_dashboard";
+//window.location="{site_url}main/admin_dashboard";
 </script>
 
 </body>
