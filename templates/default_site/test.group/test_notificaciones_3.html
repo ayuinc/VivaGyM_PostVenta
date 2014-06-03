@@ -51,7 +51,9 @@
         Tu solicitud #{freeform:field:id_sol_garantia} ha sido cerrada.
       </a>
     {if:else}
-      {freeform:field:accion_ticket}
+      <a href="{site_url}main/user_request_show/{freeform:field:id_sol_garantia}" class="list-group-item">
+      {freeform:field:accion_ticket} - {freeform:field:id_sol_garantia}
+      </a>
     {/if}
   {/exp:freeform:entries}
 {/exp:user:stats}
