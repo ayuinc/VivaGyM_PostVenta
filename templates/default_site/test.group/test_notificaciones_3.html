@@ -1,12 +1,5 @@
 {exp:user:stats}
-  {exp:freeform:entries
-    form_id="4"
-    orderby="id_sol_garantia"
-    sort="desc"
-    status="open|close" 
-    limit="10"    
-    search:id_cliente="{member_id}" 
-  }
+  {exp:freeform:entries form_id="4" orderby="id_sol_garantia" sort="desc" status="open|close" limit="10" search:id_cliente="{member_id}"}
     {if freeform:no_results}
       <a href="{site_url}main/user_request_show/{freeform:field:id_sol_garantia}" class="list-group-item">
         No tiene notificaciones
@@ -51,11 +44,6 @@
         Tu solicitud #{freeform:field:id_sol_garantia} ha sido cerrada.
       </a>
     {if:else}
-      <!--
-      <a href="{site_url}main/user_request_show/{freeform:field:id_sol_garantia}" class="list-group-item">
-      {freeform:field:accion_ticket} - {freeform:field:id_sol_garantia}
-      </a>
-      -->
     {/if}
   {/exp:freeform:entries}
 {/exp:user:stats}
