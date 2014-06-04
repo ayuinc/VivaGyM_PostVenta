@@ -340,9 +340,6 @@ Atentamente';
 	 		$mandrill->messages->sendTemplate($template_name, $template_content, $message);
 	 		return " No Procede Inspección Viva GyM";
  		}
- 		else{
- 			return " No llega a ningun lado";
- 		}
 	}
 
 	function send_email_guardar_3er_paso(){
