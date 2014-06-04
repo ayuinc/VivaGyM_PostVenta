@@ -118,23 +118,19 @@ Atentamente";
 };
 ?>
 {exp:get_post_vars parse="inward"}
-		{exp:user:stats dynamic="off"
-			  member_id="19"}
-			{exp:mandrillapp:send_email_viva_approve_sol 
-			  to="{email}"
-			  name="{screen_name}"
-			  from="admin@gym.com"
-			  acc="{post_aprobar_paso}"
-			  id_sol_garantia="{post_id_sol_garantia}"
-			  comentarios="{post_comentarios}" }
-			{/exp:mandrillapp:send_email_viva_approve_sol}
-		{/exp:user:stats}  
-		
--/-
-
+	{exp:user:stats 
+		  member_id="19"}
+		{exp:mandrillapp:send_email_viva_approve_sol 
+		  to="{email}"
+		  name="{screen_name}"
+		  from="admin@gym.com"
+		  acc="{post_aprobar_paso}"
+		  id_sol_garantia="{post_id_sol_garantia}"
+		  comentarios="{post_comentarios}" }
+		{/exp:mandrillapp:send_email_viva_approve_sol}
+	{/exp:user:stats}  
 {exp:getuser:getemail id_sol_garantia="{post_id_sol_garantia}"}
 {exp:getuser:getscreenname id_sol_garantia="{post_id_sol_garantia}"}
-
 {post_aprobar_paso} - {post_id_sol_garantia} - {post_comentarios}
 {/exp:get_post_vars}
 
