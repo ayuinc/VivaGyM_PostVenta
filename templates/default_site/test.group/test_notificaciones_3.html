@@ -1,7 +1,7 @@
 {exp:user:stats}
   {exp:freeform:entries
     form_id="4"
-    orderby="id_sol_garantia"
+    orderby="orden_tramite"
     sort="asc"
     status="open|closed" 
     limit="15"    
@@ -29,9 +29,9 @@
         Has agendado tu visita de inspección para la solictud #{freeform:field:id_sol_garantia}.
       </a>
     {if:elseif freeform:field:accion_ticket == "Procesar Informe de Inspección"}
-      <a href="{site_url}main/user_request_show/{freeform:field:id_sol_garantia}" class="list-group-item">
+      <!--<a href="{site_url}main/user_request_show/{freeform:field:id_sol_garantia}" class="list-group-item">
         La inspección de tu solicitud #{freeform:field:id_sol_garantia} ha sido realizada.
-      </a>
+      </a>-->
     {if:elseif freeform:field:accion_ticket == "Agendar Arreglo"}
       <a href="{site_url}main/user_request_show/{freeform:field:id_sol_garantia}" class="list-group-item">
         Tu solicitud #{freeform:field:id_sol_garantia} ha sido aprobada para arreglo.
