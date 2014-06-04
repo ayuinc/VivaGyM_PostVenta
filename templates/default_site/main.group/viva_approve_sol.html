@@ -71,7 +71,7 @@ SET form_field_12 = '4',
 status = 'closed',
 form_field_14 = '$persona_asignada_gym'
 WHERE entry_id = $id_sol_garantia ");?>
-<!-- EN ESTA PARTE CAMBIAR EL {email} por {last_segment}-->
+<!-- EN ESTA PARTE CAMBIAR EL "19" por {last_segment}-->
 {exp:get_post_vars parse="inward"}
 	{exp:user:stats 
 		  member_id="19"}
@@ -84,10 +84,6 @@ WHERE entry_id = $id_sol_garantia ");?>
 		  comentarios="{post_comentarios}" }
 		{/exp:mandrillapp:send_email_viva_approve_sol}
 	{/exp:user:stats}  
-{exp:getuser:getemail id_sol_garantia="{post_id_sol_garantia}"}
-{exp:getuser:getscreenname id_sol_garantia="{post_id_sol_garantia}"}
-{post_aprobar_paso} - {post_id_sol_garantia} - {post_comentarios}
-
 
   <div class="container-fluid pt-35 pb-35 mh-630">
 	<div class="row">
@@ -99,9 +95,7 @@ WHERE entry_id = $id_sol_garantia ");?>
    </div>
 
 {/exp:get_post_vars}
-<script type="text/javascript">
-window.location="{site_url}main/admin_dashboard";
-</script>
+
 </body>
 
 {embed="includes/footer"}

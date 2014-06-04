@@ -53,26 +53,6 @@ $sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_2
 SET form_field_12 = '3'
 WHERE entry_id = $id_sol_garantia ");
 
-/*
-	$sub=" Arreglo Procede - Viva GyM";
-	echo "<br> correo ".$txt_mail="Estimado/a $screen_name<p>
-	Tras analizar su solicitud de requerimiento número $id_sol_garantia le confirmamos que se ha determinado que el arreglo reportado: ".'"'.$tit_problema .'"'.", procede. Para que se acerque un especialista a arreglar el daño debe agendar una cita ingresando a nuestro portal de post-venta en línea aquí. Link a Calendario.<p>
-Es importante precisar que en caso se presentara alguna solicitud, observación y/o requerimiento adicional tras el arreglo debe llenar un nuevo reclamo en nuestro portal de post-venta en línea o comunicarte a nuestro Call Center de Atención al Cliente 206-7270. Este es el único mecanismo que garantiza la atención de su solicitud de post-venta, cualquier otra forma de solicitud no será atendida.<p>
-Atentamente";
-
-
-	ee()->load->library('email');
-	ee()->load->helper('text');
-
-	ee()->email->wordwrap = true;
-	ee()->email->mailtype = 'html';
-	ee()->email->from('admin@gym.com');
-	ee()->email->to($dir);
-	ee()->email->subject($sub);
-	ee()->email->message(entities_to_ascii($txt_mail));
-	ee()->email->Send();
-	*/
-
 } elseif ($acc=="no"){ 
 
 $sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_4 
@@ -88,32 +68,14 @@ SET form_field_12 = '4',
 status = 'closed'
 WHERE entry_id = $id_sol_garantia ");
 
-/*
-	$sub=" Arreglo no Procede - Viva GyM";
-	echo "<br> mensaje ".$txt_mail="Estimado/a $screen_name<p>
-	Tras analizar su solicitud de requerimiento número $id_sol_garantia le informamos que los especialistas de GyM han determinado que su arreglo no procede. La razón de esta decisión es: $comentarios.<p>
-Aprovechamos para recordarle que en el Manual del Propietario otorgado al momento de la entrega de su departamento se especifica el correcto uso y mantenimiento preventivo que se le debe realizar a sus instalaciones a fin de evitar que estas fallen por el propio uso que provoca el desgaste natural.  Puede encontrar el Manual en nuestro portal de post-venta en línea. Link a Manual.<p>
-Quedamos como siempre a su disposición si tiene alguna consulta o solicitud adicional puede llamar a nuestro Call Center de Atención al Cliente al 206-7270.<p>
-Atentamente";
 
-
-	ee()->load->library('email');
-	ee()->load->helper('text');
-
-	ee()->email->wordwrap = true;
-	ee()->email->mailtype = 'html';
-	ee()->email->from('admin@gym.com');
-	ee()->email->to($dir);
-	ee()->email->subject($sub);
-	ee()->email->message(entities_to_ascii($txt_mail));
-	ee()->email->Send();
-*/
 }
 
 ?>
 
 
 <body>
+<!-- EN ESTA PARTE CAMBIAR EL "19" por {last_segment}-->
 {exp:get_post_vars parse="inward"}
 		{exp:user:stats dynamic="off"
 					  member_id="19"}
