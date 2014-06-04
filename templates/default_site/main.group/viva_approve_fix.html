@@ -115,14 +115,17 @@ Atentamente";
 
 <body>
 {exp:get_post_vars parse="inward"}
+		{exp:user:stats dynamic="off"
+					  member_id="19"}
 		{exp:mandrillapp:send_email_viva_approve_fix 
-		  to='{exp:getuser:getemail parse="inward" id_sol_garantia="{post_id_sol_garantia}"}'
-		  name='{exp:getuser:getscreenname parse="inward" id_sol_garantia="{post_id_sol_garantia}"}'
+		  to='{email}'
+		  name='{screen_name}'
 		  from="admin@gym.com"
 		  acc="{post_aprobar_paso}"
 		  id_sol_garantia="{post_id_sol_garantia}"
 		  comentarios="{post_comentarios}" }
-		{/exp:mandrillapp:send_email_viva_approve_fix}  
+		{/exp:mandrillapp:send_email_viva_approve_fix}
+		{/exp:user:stats}   
 
 {post_aprobar_paso} - {post_id_sol_garantia} - {post_comentarios}
 {/exp:get_post_vars}
