@@ -132,17 +132,21 @@ Atentamente";
 		  comentarios="{post_comentarios}" }
 		{/exp:mandrillapp:send_email_viva_approve_sol}
 	{/exp:user:stats}  
-
 <body>
+<!-- HERMAN, si colocas php dentro de tags se rompe la logica de expression engine, comente esto para que no sucediera esto, 
+	los correos ya estan enviando.
 <div class="container-fluid pt-35 pb-35 mh-630">
- 	<div class="row">
+<div class="row">
   <div class="col-md-6 col-md-offset-3">
- 		  <h1>La solicitid #{post_id_sol_garantia} ha sido <?php if ($acc=='si') { ?>APROBADA<?php } else { ?>RECHAZADA<?php } ?></h1>
- 		  <p><a href="{site_url}main/user_request_show/<?php echo $id_sol_garantia;?>">Ir a Detalle de Solicitud</a></p>	  
- 	  </div>
- 	</div>
-    </div>
-{/exp:get_post_vars}
+		  <h1>La solicitid #{post_id_sol_garantia} ha sido <?php if ($acc=='si') { ?>APROBADA<?php } else { ?>RECHAZADA<?php } ?></h1>
+	  <p><a href="{site_url}main/user_request_show/<?php echo $id_sol_garantia;?>">Ir a Detalle de Solicitud</a></p>	  
+	  </div>
+	</div>
+   </div>-->
 
+{/exp:get_post_vars}
+<script type="text/javascript">
+window.location="{site_url}main/admin_dashboard";
+</script>
 
 </body>
