@@ -1,14 +1,23 @@
 ﻿<table class="table table-hover m-0">
-
+ 
   <thead class="uppercase medium">
+{exp:freeform:entries
+    form_id="2"
+    orderby="entry_id"
+    sort="desc"
+    limit="10" status="open|closed"
+    paginate="top"
+    search:author_id="{last_segment}"
+}    
     <tr>
       <td>Casos</td>
       <td>Tipo de problema</td>
       <td>Estatus</td>
       <td></td>
     </tr>
+{/exp:freeform:entries}      
   </thead>
-  
+
   <tbody>
 
 {exp:freeform:entries

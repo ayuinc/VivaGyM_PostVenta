@@ -1,5 +1,4 @@
-{embed="includes/header"}
-{embed="includes/carga" }
+{embed="includes/header" }
 
 <?php
 $id_sol_garantia=$_POST['id_sol_garantia'];
@@ -117,8 +116,6 @@ Atentamente";
 
 
 };
-
-
 ?>
 {exp:get_post_vars parse="inward"}
 		{exp:mandrillapp:send_email_viva_approve_sol 
@@ -129,17 +126,19 @@ Atentamente";
 		  id_sol_garantia="{post_id_sol_garantia}"
 		  comentarios="{post_comentarios}" }
 		{/exp:mandrillapp:send_email_viva_approve_sol}  
--/-
 {exp:getuser:getemail id_sol_garantia="{post_id_sol_garantia}"}
--/-
 {exp:getuser:getscreenname id_sol_garantia="{post_id_sol_garantia}"}
--/- 
 {post_aprobar_paso} - {post_id_sol_garantia} - {post_comentarios}
 {/exp:get_post_vars}
 
-<body>
-<script type="text/javascript">
-//window.location="{site_url}main/admin_dashboard";
-</script>
+  <div class="container-fluid pt-35 pb-35 mh-630">
+	<div class="row">
+	  <div class="col-md-6 col-md-offset-3">
+		  <h1>La solicitid #{post_id_sol_garantia} ha sido <?php if ($acc=='si') { ?>APROBADA<?php } else { ?>RECHAZADA<?php } ?></h1>
+		  <p><a href="{site_url}main/user_request_show/<?php echo $id_sol_garantia;?>">Ir a Detalle de Solicitud</a></p>	  
+	  </div>
+	</div>
+   </div>
 
-</body>
+
+{embed="includes/footer"}

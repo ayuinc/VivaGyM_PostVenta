@@ -72,16 +72,13 @@ WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 7");
   <div class="container-fluid pt-35 pb-35 mh-630">
 	<div class="row">
 	  <div class="col-md-6 col-md-offset-3">
-		  <h1>Solicitud de Inspección Aprobada</h1>
-		  <p>Mantengase pendiente de sus notificaciones para continuar el proceso.</p>
+		  <h1>Gracias por agendar su visita de arreglo</h1>
+		  <p>Puedes hacerle seguimiento a tu solicitud en la sección de “Mis Solicitudes”</p>
 		  <?php echo $id_sol_garantia;?>
-		  {post_id_sol_garantia}
-		  <p><a href="{site_url}main/user_request_show/<?php echo $id_sol_garantia;?>">Ir a mis solicitudes</a></p>	  
+		  <!--{post_id_sol_garantia}-->
+		  <p><a href="{site_url}main/user_request_show/<?php echo $id_sol_garantia;?>">Ir a Mis Solicitudes</a></p>	  
 	  </div>
 	</div>
    </div>
 
 {embed="includes/footer"}
-
-
-</body>
