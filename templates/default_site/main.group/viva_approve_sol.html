@@ -74,7 +74,7 @@ WHERE entry_id = $id_sol_garantia ");?>
 
 {exp:get_post_vars parse="inward"}
 	{exp:user:stats 
-		  member_id="19"}
+		  }
 		{exp:mandrillapp:send_email_viva_approve_sol 
 		  to="{email}"
 		  name="{screen_name}"
