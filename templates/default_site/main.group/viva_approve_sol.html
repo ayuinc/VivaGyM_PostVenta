@@ -71,10 +71,10 @@ SET form_field_12 = '4',
 status = 'closed',
 form_field_14 = '$persona_asignada_gym'
 WHERE entry_id = $id_sol_garantia ");?>
-
+<!-- EN ESTA PARTE CAMBIAR EL {email} por {last_segment}-->
 {exp:get_post_vars parse="inward"}
 	{exp:user:stats 
-		  }
+		  member_id="19"}
 		{exp:mandrillapp:send_email_viva_approve_sol 
 		  to="{email}"
 		  name="{screen_name}"
@@ -99,4 +99,9 @@ WHERE entry_id = $id_sol_garantia ");?>
    </div>
 
 {/exp:get_post_vars}
+<script type="text/javascript">
+window.location="{site_url}main/admin_dashboard";
+</script>
+</body>
+
 {embed="includes/footer"}
