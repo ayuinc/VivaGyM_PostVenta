@@ -1,5 +1,4 @@
 {embed="includes/header" }
-{embed="includes/carga" }
 
 <?php
 
@@ -40,34 +39,6 @@ $resultc=mysql_query("SELECT * FROM exp_freeform_form_entries_4 WHERE entry_id=$
 $obtenc=mysql_fetch_row($resultc);
 $archivo = $obtenc[20]; //foto
 
-/*
-$resultado=mysql_query("insert into exp_freeform_form_entries_4 
-(site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19) 
-values ('1','$id_cliente','y','$ip','','open','$id_cliente','Completar encuesta de satisfacción','$id_sol_garantia','11')");
-
-
-	$sub=" Reporte de Arreglo y Cierre de Caso - Viva GyM";
-	$txt_mail="Estimado/a $screen_name<p>
-	Gracias por culminar el proceso de atención de su solicitud número: $id_sol_garantia.
-Adjunto encontrará el reporte del arreglo realizado por GyM.<p>
-Aprovechamos para recordarle que en el Manual del Propietario otorgado al momento de la entrega de su departamento se especifica el correcto uso y mantenimiento preventivo que se le debe realizar a sus instalaciones a fin de evitar que estas fallen por el propio uso que provoca el desgaste natural.  Puede encontrar el Manual en nuestro portal de post-venta en línea. Link a Manual.<p>
-Es importante precisar que en caso se presentara alguna solicitud, observación y/o requerimiento adicional tras el arreglo debe llenar un nuevo reclamo en nuestro portal de post-venta en línea o comunicarte a nuestro Call Center de Atención al Cliente 206-7270. Este es el único mecanismo que garantiza la atención de su solicitud de post-venta, cualquier otra forma de solicitud no será atendida.<p>
-Quedamos como siempre a su disposición si tiene alguna consulta o solicitud adicional.<p>
-Atentamente";
-
-	ee()->load->library('email');
-	ee()->load->helper('text');
-
-	ee()->email->wordwrap = true;
-	ee()->email->mailtype = 'html';
-	ee()->email->from('admin@gym.com');
-	ee()->email->to($dir);
-	ee()->email->subject($sub);
-	ee()->email->message(entities_to_ascii($txt_mail));
-	//ee()->email->attach('/var/www/vivagymposventa/html/informes_viva/$archivo');
-	ee()->email->Send();
-
-*/
 
 ?>
 
@@ -85,12 +56,18 @@ Atentamente";
 	{/exp:user:stats}
 {/exp:get_post_vars} -->
 
+<div class="container-fluid pt-35 pb-35 mh-630">
+	<div class="row">
+	  <div class="col-md-6 col-md-offset-3">
+ 
+	  		<h1>Ha ingresado su informe de reparacion a la solicitud Nro. <?php echo $id_sol_garantia; ?></h1>
 
-<?php sleep(10); ?>
+		  <p>Puedes hacerle seguimiento a las solicitudes en la sección de “Panel de control”</p>
+		  <p><a href="{site_url}main/admin_dashboard">Ir a Panel de control</a></p>	  
+	  </div>
+	</div>
+</div>
 
-<script type="text/javascript">
-window.location="{site_url}main/admin_dashboard";
-</script>
 </body>
 
 
