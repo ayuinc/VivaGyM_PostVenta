@@ -96,7 +96,7 @@ Atentamente';
  		
  		$to= $TMPL->fetch_param('to');
  		$name= $TMPL->fetch_param('name');
- 		$subject= 'Reporte de Arreglo y Cierre de Caso - Viva GyM';
+ 		$subject= 'Cierre de Caso';
  		$from= $TMPL->fetch_param('from');
  		$id_sol_garantia = $TMPL->fetch_param('id_sol_garantia');
  		//$text = $TMPL->tagdata;
@@ -162,7 +162,7 @@ Atentamente';
  			$obten=mysql_fetch_row($result);
  			$tit_problema = $obten[15];
 
- 			$subject = " Arreglo Procede - Viva GyM";
+ 			$subject = " Arreglo procede.";
  			$text = 'Estimado/a '.$name.'<p>
 					 Tras analizar su solicitud de requerimiento número '.$id_sol_garantia.' le confirmamos que se ha determinado que el arreglo reportado: '.$tit_problema.', procede. Para que se acerque un especialista a arreglar el daño debe agendar una cita ingresando a nuestro portal de post-venta en línea aquí. Link a Calendario.<p>
 					 Es importante precisar que en caso se presentara alguna solicitud, observación y/o requerimiento adicional tras el arreglo debe llenar un nuevo reclamo en nuestro portal de post-venta en línea o comunicarte a nuestro Call Center de Atención al Cliente 206-7270. Este es el único mecanismo que garantiza la atención de su solicitud de post-venta, cualquier otra forma de solicitud no será atendida.<p>
@@ -200,7 +200,7 @@ Atentamente';
  		}
  		else if($acc == "no"){
 
- 			$subject=" Arreglo no Procede - Viva GyM";
+ 			$subject=" Arreglo no procede.";
  			$text='Estimado/a '.$name.'<p>
  				Tras analizar su solicitud de requerimiento número '.$id_sol_garantia.' le informamos que los especialistas de GyM han determinado que su arreglo no procede. La razón de esta decisión es: '.$comentarios.'.<p>
  			Aprovechamos para recordarle que en el Manual del Propietario otorgado al momento de la entrega de su departamento se especifica el correcto uso y mantenimiento preventivo que se le debe realizar a sus instalaciones a fin de evitar que estas fallen por el propio uso que provoca el desgaste natural.  Puede encontrar el Manual en nuestro portal de post-venta en línea. Link a Manual.<p>
@@ -260,7 +260,7 @@ Atentamente';
  			$obten=mysql_fetch_row($result);
  			$tit_problema = $obten[15];
 
- 			$subject = "Procede Inspección Viva GyM";
+ 			$subject = "Inspección Procede.";
  			$text = 'Estimado/a '.$name.'.<p>
 	Tras analizar su solicitud de requerimiento número '.$id_sol_garantia.', le confirmamos que se realizará la inspección del daño reportado 
 	'.$tit_problema.' a través del sistema de post-venta en línea de Viva GyM. Para proceder con la inspección debe agendar su cita en nuestro portal de post-venta en línea. Por favor siga en siguiente link para acceder al calendario. Link Calendario. Ahí deberá seleccionar un horario en el que con seguridad usted o alguien más se encontrará en su hogar para que reciba al especialista que inspeccionará el problema.<p>
@@ -302,7 +302,7 @@ Atentamente';
  			$obten=mysql_fetch_row($result);
  			$tit_problema = $obten[15];
 
- 			$subject=" No Procede Inspección Viva GyM";
+ 			$subject="Inspección no procede.";
  			$text='Estimado/a '.$name.'<p>
 	Tras analizar su solicitud de requerimiento número '.$id_sol_garantia.', le confirmamos que se ha determinado que su requerimiento es improcedente debido a: '.$comentarios.'.<p>
 	Por esta razón no corresponde enviar a un especialista a verificar el problema.
