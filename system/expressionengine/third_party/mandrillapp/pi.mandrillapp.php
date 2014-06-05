@@ -43,7 +43,7 @@ class Mandrillapp {
  		$to= $TMPL->fetch_param('to');
  		$name= $TMPL->fetch_param('name');
  		$subject= "Ingreso de nueva solicitud.";
- 		$from= "VIVA GyM";
+ 		$from= $TMPL->fetch_param('from');
  		$dias=  $TMPL->fetch_param('dias');
  		//$text = $TMPL->tagdata;
  		$text = 'Estimado/a '.$name.'<p>
