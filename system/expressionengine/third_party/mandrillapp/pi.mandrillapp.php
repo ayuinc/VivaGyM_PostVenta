@@ -352,7 +352,7 @@ Atentamente';
  		
  		$to= $TMPL->fetch_param('to');
  		$name= $TMPL->fetch_param('name');
- 		$subject= $TMPL->fetch_param('subject');
+ 		$subject= "Ingreso de nueva solicitud.";
  		$from= $TMPL->fetch_param('from');
  		$id_sol_garantia = $TMPL->fetch_param('id_sol_garantia');
  		$fecha_atencion_ticket = $TMPL->fetch_param('fecha_atencion_ticket');
