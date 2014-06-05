@@ -3,13 +3,10 @@
 
 <?php
 
-echo "<br>sol ".$id_sol_garantia="{segment_3}";
-
-echo "<br>paso ".$paso="{segment_4}";
-
-echo "<br>id ".$id_cliente="{segment_5}";
-
-echo "<br>entry ".$entry_id="{segment_6}";
+$id_sol_garantia="{segment_3}";
+$paso="{segment_4}";
+$id_cliente="{segment_5}";
+$entry_id="{segment_6}";
 
 /**/
 $result=mysql_query("SELECT * FROM exp_freeform_form_entries_2 WHERE entry_id=$id_sol_garantia");
@@ -75,18 +72,19 @@ Atentamente";
 ?>
 
 <body>
-{exp:get_post_vars parse="inward"}
-{exp:user:stats}
-	{exp:mandrillapp:send_email_viva_close 
-	  to="{email}"
-	  name="{screen_name}"
-	  from="admin@gym.com"
-	  id_sol_garantia="{get_id_sol_garantia}"
-	  }
-	{/exp:mandrillapp:send_email_viva_close}  
-{/exp:user:stats}
-{/exp:get_post_vars}
-{get_id_sol_garantia} - 
+	
+<!-- {exp:get_post_vars parse="inward"}
+	{exp:user:stats member_id="{post_id_cliente}" }
+		{exp:mandrillapp:send_email_viva_close 
+		  to="{email}"
+		  name="{screen_name}"
+		  from="admin@gym.com"
+		  id_sol_garantia="{post_id_sol_garantia}"
+		  }
+		{/exp:mandrillapp:send_email_viva_close}  
+	{/exp:user:stats}
+{/exp:get_post_vars} -->
+
 
 <?php sleep(10); ?>
 

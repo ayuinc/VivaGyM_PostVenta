@@ -11,85 +11,71 @@
     </tr>
   </thead> <!-- hacer otro include con los detalles del ticket {embed="includes/detalles_ticket" }-->
 
-  <?php
-    $query_long  = "SELECT * FROM exp_freeform_form_entries_4 where form_field_18=$id_sol_garantia ";
-    $result_long = mysql_query($query_long);
-    ?>
-    <?php while ($proy_long = mysql_fetch_array($result_long)) { ?>
+    <?php
+      $query_long  = "SELECT * FROM exp_freeform_form_entries_4 where form_field_18=$id_sol_garantia and form_field_19=5 ";
+      $result_long = mysql_query($query_long);
+      ?>
+      <?php while ($proy_long = mysql_fetch_array($result_long)) { ?>
 
-    <tbody class="bg-white">
-      <tr>
-        <td><?php $entry_id=$proy_long['entry_id']; $id_cliente=$proy_long['form_field_5']; echo $proy_long['form_field_17']; ?>
-        </td>
-        
-        <td><?php $var_estatus=$proy_long['status']; if ($var_estatus=="open"){
-          echo "<span class='label label-danger'>Pendiente</span>";} else {
-            echo "<span class='label label-default'>Realizado</span>";}; ?></td>
+      <?php $paso_gen=$proy_long['form_field_19']; ?>
+        <?php if ($paso_gen=="5") { ?> 
 
-        <td><?php  $fecha_time=$proy_long['entry_date']; $edit_time=$proy_long['edit_date'];
-        if ($fecha_time>0) {echo date('d-m-Y G:i a', $fecha_time); }
-        elseif ($edit_time>0) {echo date('d-m-Y G:i a', $edit_time); } ?></td>
+      <tbody class="bg-white">
+        <tr>
+          <td><?php $entry_id=$proy_long['entry_id']; $id_cliente=$proy_long['form_field_5']; echo $proy_long['form_field_17']; ?>
+          </td>
+          
+          <td><?php $var_estatus=$proy_long['status']; if ($var_estatus=="open"){
+            echo "<span class='label label-danger'>Pendiente</span>";} else {
+              echo "<span class='label label-default'>Realizado</span>";}; ?></td>
 
-        <td><?php $paso=$proy_long['form_field_19']; ?>
+          <td><?php  $fecha_time=$proy_long['entry_date']; $edit_time=$proy_long['edit_date'];
+          if ($fecha_time>0) {echo date('d-m-Y G:i a', $fecha_time); }
+          elseif ($edit_time>0) {echo date('d-m-Y G:i a', $edit_time); } ?></td>
 
-          <?php if($paso==2){ echo $proy_long['form_field_27']; } ?>
+          <td><?php $paso=$proy_long['form_field_19']; ?>
 
-          <?php if($paso==3){ echo $proy_long['form_field_25']; } ?>
+            <?php if($paso==2){ echo $proy_long['form_field_27']; } ?>
 
-          <?php if($paso==4){ echo $proy_long['form_field_27']; } ?>
+            <?php if($paso==3){ echo $proy_long['form_field_25']; } ?>
 
-          <?php $file=$proy_long['form_field_28']; 
-          if($paso==5){ 
-            if(!empty($file)){ ?> 
-            
+            <?php if($paso==4){ echo $proy_long['form_field_27']; } ?>
 
-          <?php } else { ?>
-          <!-- <a href="<?php echo 
-          "{site_url}main/insp_load_doc/".$id_sol_garantia."/5/".$id_cliente."/".$entry_id; ?>" 
-          class="btn btn-sm btn-warning small">Subir reporte</a> -->
+            <?php $file=$proy_long['form_field_28']; 
+            if($paso==5){ 
+              if(!empty($file)){ ?> 
+              
+              <?php } else { ?>
+              <!-- <a href="<?php echo 
+              "{site_url}main/insp_load_doc/".$id_sol_garantia."/5/".$id_cliente."/".$entry_id; ?>" 
+              class="btn btn-sm btn-warning small">Subir reporte</a> -->
 
-          {embed="includes/form_insp" 
-          id_sol_garantia="<?php echo $id_sol_garantia; ?>"
-          paso="5"
-          id_cliente="<?php echo $id_cliente; ?>"
-          entry_id="<?php echo $entry_id; ?>" }
+              {embed="includes/form_insp" 
+              id_sol_garantia="<?php echo $id_sol_garantia; ?>"
+              paso="5"
+              id_cliente="<?php echo $id_cliente; ?>"
+              entry_id="<?php echo $entry_id; ?>" }
 
-            <!-- {exp:freeform:edit
-            form_name="detalles_ticket"
-            entry_id="{segment_3}"
-            restrict_edit_to_author="no"
-            return="main/insp_write_proc/{segment_3}/{segment_4}/{segment_5}/{segment_6}"
-            allow_status_edit="yes" 
-          }
-          {freeform:field:informe_inspeccion}
 
-          <input type="hidden" name="status" value="closed" >
-          <input type="hidden" name="id_cliente" value="<?php echo $id_cliente; ?>" >
-          <input type="hidden" name="id_sol_garantia" value="<?php echo $id_sol_garantia; ?>" >
-          <input type="hidden" name="paso" value="<?php echo $paso; ?>" >
-          <input type="hidden" name="fecha_atencion_ticket" value="<?php echo $fecha_atencion_ticket; ?>" >
-          <input type="hidden" name="XID" value="{XID_HASH}" />
-          <input type="submit" name="submit" value="Submit" />
+              <?php } } ?>
 
-          {/exp:freeform:edit} -->
+              <?php if($paso==6){ echo $proy_long['form_field_27']; } ?>
 
-          <?php } } ?>
+              <?php if($paso==7){ echo $proy_long['form_field_25']; } ?>
 
-          <?php if($paso==6){ echo $proy_long['form_field_27']; } ?>
+              <?php if($paso==8){ echo $proy_long['form_field_27']; } ?>
 
-          <?php if($paso==7){ echo $proy_long['form_field_25']; } ?>
+              <?php if($paso==9){ ?> <a href="#" class="btn btn-sm btn-warning small">Ver reporte</a> 
 
-          <?php if($paso==8){ echo $proy_long['form_field_27']; } ?>
+            <?php } ?>
 
-          <?php if($paso==9){ ?> <a href="#" class="btn btn-sm btn-warning small">Ver reporte</a> 
+          </td>
+          <td><?php echo $file;?></td>
+        </tr>
 
-          <?php } ?>
+      </tbody>
 
-        </td>
-        <td><?php echo $file;?></td>
-      </tr>
-
-    </tbody>
+      <?php } ?>
 
     <?php } ; ?>
 

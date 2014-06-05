@@ -1,0 +1,18 @@
+﻿<?php $fecha_atencion_ticket=date('d-m-Y'); ?>
+{exp:freeform:edit
+  form_name="detalles_ticket"
+  entry_id="{embed:entry_id}"
+  restrict_edit_to_author="no"
+  return="main/user_close/{embed:id_sol_garantia}/{embed:paso}/{embed:id_cliente}/{embed:entry_id}"
+  allow_status_edit="yes" 
+}
+  {freeform:field:informe_inspeccion}
+
+  <input type="hidden" name="status" value="closed" >
+  <input type="hidden" name="id_cliente" value="{embed:id_cliente}" >
+  <input type="hidden" name="id_sol_garantia" value="{embed:id_sol_garantia}" >
+  <input type="hidden" name="paso" value="{embed:paso}" >
+  <input type="hidden" name="fecha_atencion_ticket" value="<?php echo $fecha_atencion_ticket; ?>" >
+  <input type="submit" name="submit" value="Submit" />
+
+{/exp:freeform:edit}

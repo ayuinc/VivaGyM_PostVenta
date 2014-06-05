@@ -3,9 +3,10 @@
 
 <?php
 $id_sol_garantia=$_POST['id_sol_garantia'];
+$id_cliente=$_POST['id_cliente'];
 $acc=$_POST['aprobar_paso'];
-$paso=$_POST['paso'];
-
+$paso="6";
+$dir=$_POST['dir'];
 $comentarios=$_POST['comentarios'];
 
 $result=mysql_query("SELECT * FROM exp_freeform_form_entries_2 WHERE entry_id=$id_sol_garantia");
@@ -68,17 +69,12 @@ SET form_field_12 = '4',
 status = 'closed'
 WHERE entry_id = $id_sol_garantia ");
 
-
 }
 
 ?>
 
-
-<body>
-<!-- EN ESTA PARTE CAMBIAR EL "19" por {last_segment}-->
 {exp:get_post_vars parse="inward"}
-		{exp:user:stats dynamic="off"
-					  member_id="19"}
+	{exp:user:stats dynamic="off" member_id="{post_id_cliente}"}
 		{exp:mandrillapp:send_email_viva_approve_fix 
 		  to='{email}'
 		  name='{screen_name}'
@@ -87,14 +83,18 @@ WHERE entry_id = $id_sol_garantia ");
 		  id_sol_garantia="{post_id_sol_garantia}"
 		  comentarios="{post_comentarios}" }
 		{/exp:mandrillapp:send_email_viva_approve_fix}
-		{/exp:user:stats}   
-
-{post_aprobar_paso} - {post_id_sol_garantia} - {post_comentarios}
+	{/exp:user:stats}   
 {/exp:get_post_vars}
 
-<?php sleep(10); ?>
+<body>
+
+<?php
+// dormir durante 10 segundos
+sleep(10);
+?>
 
 <script type="text/javascript">
 window.location="{site_url}main/admin_dashboard";
 </script>
+
 </body>

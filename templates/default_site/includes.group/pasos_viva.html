@@ -1,5 +1,17 @@
 ﻿<?php $id_sol_garantia="{embed:entrada}"; ?>
 
+<?php 
+$result=mysql_query("SELECT * FROM exp_freeform_form_entries_2 WHERE entry_id=$id_sol_garantia");
+$obten=mysql_fetch_row($result);
+$id_cliente = $obten[2];
+$tit_problema = $obten[15];
+
+// leer email cuando lo tomas de ee no funca
+  $result_email=mysql_query("SELECT * FROM exp_members WHERE member_id=$id_cliente");
+  $obten_email=mysql_fetch_row($result_email);
+  $screen_name = $obten_email[3];
+  $dir = $obten_email[9]; ?>
+
 <table class="table table-hover table-striped mt-14">
   <thead class="uppercase medium">
     <tr>
@@ -37,17 +49,81 @@
             <?php } else { echo $procede; } } ?> -->
 
             <?php $procede=$proy_long['form_field_27']; if($paso==2){ 
-            if (empty($procede)) { ?> <a href="{site_url}main/<?php echo "viva_preview_sol?id_sol_garantia=".$id_sol_garantia."&paso=2&entry_id=".$entry_id; ?>" class="btn btn-sm btn-warning small">Ver detalles</a>
+            if (empty($procede)) { ?> 
+            <!--<a href="{site_url}main/<?php echo "viva_preview_sol?id_sol_garantia=".$id_sol_garantia."&paso=2&entry_id=".$entry_id; ?>" class="btn btn-sm btn-warning small">Ver detalles</a>-->
+
+            <form method="post" enctype="multipart/form-data" name="frm" id="frm" action="/?/main/viva_approve_sol" class="p-14">
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <p class="text-center pt-14">Procede la inpección?</p>
+                  </div>
+                  <div class="col-sm-6">
+                    <select name="aprobar_paso" id="" class="form-control input-lg select-override">
+                      <option value="">Seleccione</option>
+                      <option value="si">Sí</option>
+                      <option value="no">No</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <textarea name="comentarios" id="" rows="7" class="form-control" placeholder="En caso No proceda la inpección por favor detallar las razones, este texto sera enviado en un correo al usuario."></textarea>
+                <p class="help-block text-right text-warning">Máximo 250 caracteres</p>
+              </div>
+
+                <input type="hidden" name="id_cliente" value="<?php echo $id_cliente; ?>" >
+                <input type="hidden" name="dir" value="<?php echo $dir; ?>" >
+                <input type="hidden" name="id_sol_garantia" value="<?php echo $id_sol_garantia; ?>" >
+                <input type="hidden" name="persona_asignada_gym" value="{screen_name}" />
+                <input type="hidden" name="XID" value="{XID_HASH}" />
+                <input type="submit" class="btn btn-lg uppercase btn-success" name="submit" value="Procesar" />
+
+            </form>
+
             <?php } else { echo $procede; } } ?> 
 
           <?php if($paso==3){ echo $proy_long['form_field_25']; } ?>
 
           <?php if($paso==4){ echo $proy_long['form_field_27']; } ?>
 
-          <?php if($paso==5){ ?> <a href="#" class="btn btn-sm btn-warning small">Ver reporte</a> <?php } ?>
+          <?php $file=$proy_long['form_field_28'];
+          if($paso==5){ ?> <!--<a href="#" class="btn btn-sm btn-warning small">Ver reporte</a>--> <?php } ?>
 
           <?php $procedeb=$proy_long['form_field_27']; if($paso==6){ 
-            if (empty($procedeb)) { ?> <a href="{site_url}main/<?php echo "viva_preview_fix?id_sol_garantia=".$id_sol_garantia."&paso=6&entry_id=".$entry_id; ?>" class="btn btn-sm small btn-default">Ver detalles</a> <?php } else { echo $procedeb; } } ?>
+            if (empty($procedeb)) { ?> 
+            <!-- <a href="{site_url}main/<?php echo "viva_preview_fix?id_sol_garantia=".$id_sol_garantia."&paso=6&entry_id=".$entry_id; ?>" class="btn btn-sm small btn-default">Ver detalles</a>  -->
+
+            <form method="post" enctype="multipart/form-data" name="frm" id="frm" action="/?/main/viva_approve_fix" class="p-14">
+
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <p class="text-center pt-14">Procede la reparación?</p>
+                  </div>
+                  <div class="col-sm-6">
+                    <select name="aprobar_paso" id="" class="form-control input-lg select-override">
+                      <option value="">Seleccione</option>
+                      <option value="si">Sí</option>
+                      <option value="no">No</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <textarea name="comentarios" id="" rows="7" class="form-control" placeholder="En caso No proceda la reparación por favor detallar las razones, este texto sera enviado en un correo al usuario."></textarea>
+                <p class="help-block text-right text-warning">Máximo 250 caracteres</p>
+              </div>
+
+              <input type="hidden" name="id_cliente" value="<?php echo $id_cliente; ?>" >
+              <input type="hidden" name="dir" value="<?php echo $dir; ?>" >
+              <input type="hidden" name="id_sol_garantia" value="<?php echo $id_sol_garantia; ?>" >
+              <input type="hidden" name="XID" value="{XID_HASH}" />
+              <input type="submit" class="btn btn-lg uppercase btn-success" name="submit" value="Procesar" />
+            </form>
+
+            <?php } else { echo $procedeb; } } ?>
 
           <?php if($paso==7){ echo $proy_long['form_field_25']; } ?>
 
@@ -56,10 +132,11 @@
           <?php if($paso==9){ ?> <a href="#" class="btn btn-sm btn-warning small">Ver reporte</a> <?php } ?>
 
           <?php $procedec=$proy_long['form_field_27']; if($paso==10){ 
-            if (empty($procedeb)) { ?> <a href="{site_url}main/<?php echo "viva_close/".$id_sol_garantia."/10/".$entry_id; ?>" class="btn btn-sm btn-warning small">Cerrar</a> <?php } else { echo $procedec; } } ?>
+            if (empty($procedeb)) { ?> 
+            <a href="{site_url}main/<?php echo "viva_close/".$id_sol_garantia."/10/".$id_cliente."/".$entry_id; ?>" class="btn btn-sm btn-warning small">Cerrar</a> <?php } else { echo $procedec; } } ?>
 
         </td>
-        <td></td>
+        <td><?php echo $file;?></td>
       </tr>
 
     </tbody>

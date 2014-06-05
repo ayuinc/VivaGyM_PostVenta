@@ -44,44 +44,32 @@
                   <td></td>
                 </tr>
               </thead>
-              <tbody>
-                {exp:freeform:entries form_id="2" orderby="entry_id" sort="desc" status="open|closed" limit="10" paginate="both" }
-                <?php $estatus_ticket="{freeform:status}"; ?>
-                <tr>
-                  <td><?php echo $id_sol_garantia="{freeform:entry_id}"; ?></td>
-                  <td>{freeform:entry_date format="%d-%m-%Y a %g:%i %a"}</td>
-                  <td>{freeform:author}</td>
-                  <!--<td>Complejo</td>
-                  <td>Torre</td>-->
-                  <td>{freeform:field:departamento_en_consulta}</td>
-                  <td>
+              <tbody> <!-- search:etapa_solicitud="2" -->
 
-                    <?php $var_est="{freeform:field:etapa_solicitud}";
-                        switch ($var_est) {
-                          case "1":
-                              echo "<span class='label label-default'>Solicitud en revisión</span>";
-                              break;
-                          case "2":
-                              echo "<span class='label label-default'>Inspección pendiente</span>";
-                              break;
-                          case "3":
-                              echo "<span class='label label-default'>Arreglo pendiente</span>";
-                              break;
-                          case "4":
-                              echo "<span class='label label-default'>Caso cerrado</span>";
-                              break;
-                      }; ?>
+                
 
-                  </td>
-                  <td>{freeform:field:tipo_de_problema}</td>
-                  <td></td>
-                  <td>{freeform:field:persona_asignada_gym}</td>
+                {exp:member:custom_profile_data}
+                    {exp:switchee variable = "{group_id}" parse="inward"}
+                      
+                      {case value="7"}<!-- admin viva 7 -->
+                        {embed="main/lista_admin" filtro="1|2|3|4"}
+                      {/case}
 
-                  <td>
-                    <a href="{site_url}main/ticket_detail/{freeform:entry_id}" class="small text-danger underline">
-                          Ver detalle</a></td>
-                </tr>
-                {/exp:freeform:entries}
+                      {case value="8"}<!-- admin GyM 8 -->
+                        {embed="main/lista_admin" filtro="1|2|3|4"}
+                      {/case}
+
+                      {case value="9"}<!-- inspector viva 9 -->
+                        {embed="main/lista_admin" filtro="2"}
+                      {/case}
+
+                      {case value="10"}<!-- personal GyM que ejecuta el arreglo  10 -->
+                        {embed="main/lista_admin" filtro="3"}
+                      {/case}
+                      
+                    {/exp:switchee}
+                {/exp:member:custom_profile_data}
+
 
               </tbody>
             </table>
