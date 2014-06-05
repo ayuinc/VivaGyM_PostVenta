@@ -410,7 +410,7 @@ Atentamente';
 		
 		$to= $TMPL->fetch_param('to');
 		$name= $TMPL->fetch_param('name');
-		$subject= "Visita de arreglo agendada."
+		$subject= "Visita de arreglo agendada.";
 		$from= $TMPL->fetch_param('from');
 		$id_sol_garantia = $TMPL->fetch_param('id_sol_garantia');
 		$fecha_atencion_ticket = $TMPL->fetch_param('fecha_atencion_ticket');
