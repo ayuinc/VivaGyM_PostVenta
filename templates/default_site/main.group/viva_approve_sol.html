@@ -47,7 +47,7 @@ WHERE form_field_18 = $id_sol_garantia AND form_field_19 = $paso ");
 
 // caso si pasas el ticket a "Inspección pendiente" sino lo cierras
 $sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_2 
-SET form_field_12 = '2',
+SET form_field_12 = '3',
 form_field_14 = '$persona_asignada_gym'
 WHERE entry_id = $id_sol_garantia ");
 
@@ -67,7 +67,7 @@ WHERE form_field_18 = $id_sol_garantia AND form_field_19 = $paso ");
 
 // caso si pasas el ticket a "Inspección pendiente" sino lo cierras
 $sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_2 
-SET form_field_12 = '4',
+SET form_field_12 = '10',
 status = 'closed',
 form_field_14 = '$persona_asignada_gym'
 WHERE entry_id = $id_sol_garantia ");
@@ -75,6 +75,18 @@ WHERE entry_id = $id_sol_garantia ");
 };
 
 ?>
+
+<!-- {exp:get_post_vars parse="inward"}
+	{exp:approve_sol
+	id_sol_garantia="{post_id_sol_garantia}"
+	acc="{post_aprobar_paso}"
+	paso="2"
+	comentarios="{post_comentarios}"
+	persona_asignada_gym="{post_persona_asignada_gym}"
+	}
+	{/exp:approve_sol}
+{/exp:get_post_vars} -->
+
 
 {exp:get_post_vars parse="inward"}
 	{exp:user:stats member_id="{post_id_cliente}"}

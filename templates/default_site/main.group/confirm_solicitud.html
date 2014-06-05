@@ -1,33 +1,11 @@
 {embed="includes/header"}
 <?php
 
-$id_cliente="{member_id}";
+$id_cliente="{member_id}"; ?>
 
-$rs = mysql_query("SELECT MAX(entry_id) AS id FROM exp_freeform_form_entries_2 ");
-if ($row = mysql_fetch_row($rs)) {
-	$id_sol_garantia = $row[0];
-}
+{exp:confirm_sol}
 
-$result=mysql_query("SELECT * FROM exp_freeform_form_entries_2 WHERE entry_id=$id_sol_garantia");
-$obten=mysql_fetch_row($result);
-$author_id = $obten[2];
 
-if ($id_cliente=$author_id){
-
-	$ip=$_SERVER["REMOTE_ADDR"];
-
-	$date = date_create();
-	$entry_date=date_timestamp_get($date);
-
-	$resultado=mysql_query("insert into exp_freeform_form_entries_4 
-	(site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19) 
-	values ('1','$id_cliente','y','$ip','$entry_date','closed','$id_cliente','Ingresar Solicitud de Inspección','$id_sol_garantia','1')");
-
-	$resultadob=mysql_query("insert into exp_freeform_form_entries_4 
-	(site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19) 
-	values ('1','$id_cliente','y','$ip','','open','$id_cliente','Procesar Solicitud de Inspección','$id_sol_garantia','2')");
-} // fin if 
-?>
 {exp:user:stats}
 	{exp:mandrillapp:send_email_confirm_solicitud
 	  to="{email}"
@@ -39,7 +17,7 @@ if ($id_cliente=$author_id){
 {/exp:user:stats}
 
 
-  <div class="container-fluid pt-35 pb-35 mh-630">
+<div class="container-fluid pt-35 pb-35 mh-630">
 	<div class="row">
 	  <div class="col-md-6 col-md-offset-3">
 		  <h1>Gracias por ingresar una nueva solicitud</h1>
@@ -47,7 +25,7 @@ if ($id_cliente=$author_id){
 		  <p><a href="{site_url}main/user_dashboard/{member_id}">Ir a Mis Solicitudes</a></p>	  
 	  </div>
 	</div>
-   </div>
+</div>
 
 
 {embed="includes/footer"}

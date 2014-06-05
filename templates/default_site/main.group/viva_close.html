@@ -1,5 +1,4 @@
 {embed="includes/header"}
-{embed="includes/carga" }
 
 <?php
 
@@ -68,11 +67,19 @@ WHERE entry_id = $id_sol_garantia ");
 	{/exp:user:stats}
 {/exp:get_post_vars}
 
-<?php sleep(10); ?>
 
-<script type="text/javascript">
-window.location="{site_url}main/admin_dashboard";
-</script>
+<div class="container-fluid pt-35 pb-35 mh-630">
+	<div class="row">
+	  <div class="col-md-6 col-md-offset-3">
+
+	  		<h1>Ha cerrado la solicitud Nro. <?php echo $id_sol_garantia; ?></h1>
+
+		  <p>Puedes hacerle seguimiento a las solicitudes en la sección de “Panel de control”</p>
+		  <p><a href="{site_url}main/admin_dashboard">Ir a Panel de control</a></p>	  
+	  </div>
+	</div>
+</div>
+
 </body>
 
 

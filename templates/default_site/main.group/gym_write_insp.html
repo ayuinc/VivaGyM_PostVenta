@@ -50,6 +50,10 @@ entry_date = '$entry_date',
 form_field_27 = '$mensaje_asig'
 WHERE form_field_18 = $id_sol_garantia AND form_field_19 = $paso ");
 
+$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_2 
+	SET form_field_12 = '5'
+	WHERE entry_id = $id_sol_garantia ");
+
 ?>
 
 <body>
