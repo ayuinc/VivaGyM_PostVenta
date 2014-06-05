@@ -410,13 +410,13 @@ Atentamente';
 		
 		$to= $TMPL->fetch_param('to');
 		$name= $TMPL->fetch_param('name');
-		$subject= $TMPL->fetch_param('subject');
+		$subject= "Visita de arreglo agendada."
 		$from= $TMPL->fetch_param('from');
 		$id_sol_garantia = $TMPL->fetch_param('id_sol_garantia');
 		$fecha_atencion_ticket = $TMPL->fetch_param('fecha_atencion_ticket');
 		//$text = $TMPL->tagdata;
 		$text = 'Estimado/a '.$name.'<p>
-				Muchas gracias por agendar su arreglo en el  el portal de post-venta en línea de Viva GyM. Su inspección se realizará según la siguiente información:<p>
+				Muchas gracias por agendar su arreglo en el portal de post-venta en línea de Viva GyM. Su inspección se realizará según la siguiente información:<p>
 				Número de solicitud: '.$id_sol_garantia.'<p>
 				Fecha de Inspección: '.$fecha_atencion_ticket.'<p>
 				Horario de Inspección: 9:00 am - 2:00 pm de lunes a viernes<p>
