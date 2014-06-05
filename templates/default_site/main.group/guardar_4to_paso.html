@@ -51,6 +51,9 @@ form_field_25 = '$fecha_atencion_ticket',
 form_field_26 = '$hora_atencion_ticket'
 WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 7");
 
+$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_2 
+	SET form_field_12 = '7'
+	WHERE entry_id = $id_sol_garantia ");
 
 ?>
 
