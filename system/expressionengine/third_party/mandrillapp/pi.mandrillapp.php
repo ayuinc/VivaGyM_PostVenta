@@ -94,13 +94,13 @@ Atentamente';
  		require_once 'mailchimp-mandrill-api-php/src/Mandrill.php'; 
  		$mandrill = new Mandrill('Svqgcw575OLrORu2WiD09g');
  		
- 		 		$to= $TMPL->fetch_param('to');
- 		 		$name= $TMPL->fetch_param('name');
- 		 		$subject= 'Cierre de Caso';
- 		 		$from= $TMPL->fetch_param('from');
- 		 		$id_sol_garantia = $TMPL->fetch_param('id_sol_garantia');
- 		 		//$text = $TMPL->tagdata;
- 		 		$text = 'Estimado/a '.$name.'<p>
+ 		$to= $TMPL->fetch_param('to');
+ 		$name= $TMPL->fetch_param('name');
+ 		$subject= 'Cierre de Caso';
+ 		$from= $TMPL->fetch_param('from');
+ 		$id_sol_garantia = $TMPL->fetch_param('id_sol_garantia');
+ 		//$text = $TMPL->tagdata;
+ 		$text = 'Estimado/a '.$name.'<p>
  			Gracias por culminar el proceso de atención de su solicitud número: '.$id_sol_garantia.'.
  		Adjunto encontrará el reporte del arreglo realizado por GyM.<p>
  		Aprovechamos para recordarle que en el Manual del Propietario otorgado al momento de la entrega de su departamento se especifica el correcto uso y mantenimiento preventivo que se le debe realizar a sus instalaciones a fin de evitar que estas fallen por el propio uso que provoca el desgaste natural.  Puede encontrar el Manual en nuestro portal de post-venta en línea. Link a Manual.<p>
@@ -138,7 +138,18 @@ Atentamente';
 
  		);
 		$mandrill->messages->sendTemplate($template_name, $template_content, $message);
-		return "";
+		return '<div class="container-fluid pt-35 pb-35 mh-630">
+	<div class="row">
+	  <div class="col-md-6 col-md-offset-3">
+
+	  		<h1>Ha cerrado la solicitud Nro. <?php echo $id_sol_garantia; ?></h1>
+
+		  <p>Puedes hacerle seguimiento a las solicitudes en la sección de “Panel de control”</p>
+		  <p><a href="{site_url}main/admin_dashboard">Ir a Panel de control</a></p>	  
+	  </div>
+	</div>
+</div>
+';
 	}
 
 	function send_email_viva_approve_fix(){
