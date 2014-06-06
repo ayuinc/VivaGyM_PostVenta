@@ -1,3 +1,12 @@
 <ol class="breadcrumb">
-  <li><a href="{site_url}main/admin_dashboard">Panel de control</a></li>
+
+  {if segment_2=='admin_dashboard'}
+		<li><a href="{site_url}main/admin_dashboard">Panel de control</a></li>
+	{/if}	
+		
+	{if segment_2=='ticket_detail'}
+		<li><a href="{site_url}main/admin_dashboard">Panel de control</a></li>
+		<li class="active">Solicitud #{last_segment}</li>
+	{/if}	
+
 </ol>
