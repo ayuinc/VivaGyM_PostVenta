@@ -54,18 +54,15 @@ WHERE entry_id = $id_sol_garantia ");
 ?>
 
 <body>
-<!-- EN ESTA PARTE CAMBIAR EL "19" por {last_segment}-->
-{exp:get_post_vars parse="inward"}
-	{exp:user:stats dynamic="off" member_id="{segment_5}"}
-		{exp:mandrillapp:send_email_viva_close 
-		  to="{email}"
-		  name="{screen_name}"
-		  from="admin@gym.com"
-		  id_sol_garantia="{segment_3}"
-		  }
-		{/exp:mandrillapp:send_email_viva_close}  
-	{/exp:user:stats}
-{/exp:get_post_vars}
+{exp:user:stats dynamic="off" member_id="{segment_5}"}
+	{exp:mandrillapp:send_email_viva_close 
+	  to="{email_propietario}"
+	  name="{screen_name}"
+	  from="admin@gym.com"
+	  id_sol_garantia="{segment_3}"
+	  }
+	{/exp:mandrillapp:send_email_viva_close}  
+{/exp:user:stats}
 
 
 <div class="container-fluid pt-35 pb-35 mh-630">
