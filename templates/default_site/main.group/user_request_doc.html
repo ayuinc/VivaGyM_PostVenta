@@ -1,15 +1,18 @@
 {embed="includes/header"}
 
 <!-- formatear para el envio del correo de rq de documentos si es q hay ese correo -->
-<!--{exp:user:stats}
-	{exp:mandrillapp:send_email_confirm_solicitud
-	  to="{email}"
-	  name="{screen_name}"
-	  subject="Recepción de Solicitud de Requerimientos Viva GyM"
-	  from="admin@gym.com"
-	  dias="4"}
-	{/exp:mandrillapp:send_email_confirm_solicitud}  
-{/exp:user:stats}-->
+{exp:user:stats}
+	{exp:mandrillapp:send_email_request_doc
+	  email_propietario="{email_propietario}"
+	  nombre_propietario="{nombre_propietario}"
+	  apellido_propietario="{ap_pat}"
+	  telefono_propietario= "{t_cel}/{t_ofic}"
+	  complejo_propietario= "{complejo_depa}"
+	  torre_propietario= "{torre_depa}"
+	  departamento_propietario= "{cod_depa}"
+	  documento = "documento"
+	{/exp:mandrillapp:send_email_request_doc}  
+{/exp:user:stats}
 
 
   <div class="container-fluid pt-35 pb-35 mh-630">
