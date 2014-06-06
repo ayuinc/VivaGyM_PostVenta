@@ -52,14 +52,14 @@ form_field_26 = '$hora_atencion_ticket'
 WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 7");
 
 $sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_2 
-	SET form_field_12 = '7'
+	SET form_field_12 = '8'
 	WHERE entry_id = $id_sol_garantia ");
 
 ?>
 
 
 {exp:get_post_vars parse="inward"}
-	{exp:user:stats}
+	{exp:user:stats member_id="{post_id_cliente}" }
 		{exp:mandrillapp:send_email_guardar_4to_paso 
 		  to="{email}"
 		  name="{screen_name}"
@@ -79,7 +79,7 @@ $sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_2
 		  <p>Puedes hacerle seguimiento a tu solicitud en la sección de “Mis Solicitudes”</p>
 		  <?php echo $id_sol_garantia;?>
 		  <!--{post_id_sol_garantia}-->
-		  <p><a href="{site_url}main/user_request_show/<?php echo $id_sol_garantia;?>">Ir a Mis Solicitudes</a></p>	  
+		  <p><a href="{site_url}main/user_dashboard/{member_id}">Ir a Mis Solicitudes</a></p>	  
 	  </div>
 	</div>
    </div>

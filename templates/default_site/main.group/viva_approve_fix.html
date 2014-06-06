@@ -50,7 +50,7 @@ values ('1','$id_cliente','y','$ip','','open','$id_cliente','$mensaje','$id_sol_
 
 // caso si pasas el ticket a "Inspección pendiente" sino lo cierras
 $sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_2 
-SET form_field_12 = '6'
+SET form_field_12 = '7'
 WHERE entry_id = $id_sol_garantia ");
 
 } elseif ($acc=="no"){ 
@@ -67,6 +67,10 @@ $sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_2
 SET form_field_12 = '10',
 status = 'closed'
 WHERE entry_id = $id_sol_garantia ");
+
+$resultadog=mysql_query("insert into exp_freeform_form_entries_4 
+(site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19,form_field_27) 
+values ('1','$id_cliente','y','$ip','$entry_date','closed','$id_cliente','Cerrar el caso','$id_sol_garantia','10','Cerrado')");
 
 }
 

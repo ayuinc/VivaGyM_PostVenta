@@ -24,6 +24,9 @@ $ant_paso=$paso-1;
 
 $prox_paso=$paso+1;
 
+$date = date_create();
+$entry_date=date_timestamp_get($date);
+
 if($paso=="2") { $mensaje="Agendar Inspección";};
 
 if($paso=="6") { $mensaje="Agendar Arreglo";};
@@ -71,6 +74,10 @@ SET form_field_12 = '10',
 status = 'closed',
 form_field_14 = '$persona_asignada_gym'
 WHERE entry_id = $id_sol_garantia ");
+
+$resultadog=mysql_query("insert into exp_freeform_form_entries_4 
+(site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19,form_field_27) 
+values ('1','$id_cliente','y','$ip','$entry_date','closed','$id_cliente','Cerrar el caso','$id_sol_garantia','10','Cerrado')");
 
 };
 

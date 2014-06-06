@@ -39,22 +39,13 @@ $resultc=mysql_query("SELECT * FROM exp_freeform_form_entries_4 WHERE entry_id=$
 $obtenc=mysql_fetch_row($resultc);
 $archivo = $obtenc[20]; //foto
 
+$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_2 
+	SET form_field_12 = '9'
+	WHERE entry_id = $id_sol_garantia ");
 
 ?>
 
 <body>
-	
-<!-- {exp:get_post_vars parse="inward"}
-	{exp:user:stats member_id="{post_id_cliente}" }
-		{exp:mandrillapp:send_email_viva_close 
-		  to="{email}"
-		  name="{screen_name}"
-		  from="admin@gym.com"
-		  id_sol_garantia="{post_id_sol_garantia}"
-		  }
-		{/exp:mandrillapp:send_email_viva_close}  
-	{/exp:user:stats}
-{/exp:get_post_vars} -->
 
 <div class="container-fluid pt-35 pb-35 mh-630">
 	<div class="row">

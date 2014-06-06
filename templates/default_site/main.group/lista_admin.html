@@ -1,9 +1,14 @@
-{exp:freeform:entries form_id="2" orderby="entry_id" sort="desc" search:etapa_solicitud="{embed:filtro}" status="open|closed" limit="10" paginate="both" }
+{exp:freeform:entries form_id="2" orderby="entry_id" sort="desc" search:etapa_solicitud="{embed:filtro}" status="open|closed" limit="30" paginate="both" }
 <?php $estatus_ticket="{freeform:status}"; ?>
 <tr>
   <td><?php echo $id_sol_garantia="{freeform:entry_id}"; ?></td>
   <td>{freeform:entry_date format="%d-%m-%Y a %g:%i %a"}</td>
-  <td>{freeform:author}</td>
+  <td>
+    {exp:user:stats member_id="{freeform:field:id_cliente}"}
+      {nombre_propietario}
+    {/exp:user:stats}
+
+  </td>
   <!--<td>Complejo</td>
   <td>Torre</td>-->
   <td>{freeform:field:departamento_en_consulta}</td>

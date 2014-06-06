@@ -14,13 +14,13 @@
               <h4 class="uppercase medium"><i class="icon-docs"></i> Solicitudes</h4>
             </div>
             <div class="col-sm-3 col-sm-offset-3">
-              <form>
+              <!-- <form>
                 <div class="form-group">
                   <select name="" id="" class="select-override form-control">
                     <option value="">Ordenar por</option>
                   </select>
                 </div>
-              </form>
+              </form> -->
             </div>
           </div>
           <hr class="m-0">
@@ -46,8 +46,6 @@
               </thead>
               <tbody> <!-- search:etapa_solicitud="2" -->
 
-                
-
                 {exp:member:custom_profile_data}
                     {exp:switchee variable = "{group_id}" parse="inward"}
                       
@@ -64,16 +62,14 @@
                       {/case}
 
                       {case value="10"}<!-- personal GyM que ejecuta el arreglo  10 -->
-                        {embed="main/lista_admin" filtro="9"}
+                        {embed="main/lista_admin" filtro="8"}
                       {/case}
                       
                     {/exp:switchee}
                 {/exp:member:custom_profile_data}
 
-
               </tbody>
             </table>
-
 
           </div>
         </div>
