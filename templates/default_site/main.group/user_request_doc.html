@@ -1,6 +1,28 @@
 {embed="includes/header"}
 
 <!-- formatear para el envio del correo de rq de documentos si es q hay ese correo -->
+{embed:cliente}
+
+{exp:freeform:entries form_id="3" orderby="entry_id" sort="desc" search:id_cliente="{embed:cliente}" status="open" limit="1" }
+
+
+{exp:user:stats}
+   {exp:freeform:entries form_id="3" orderby="entry_id" sort="desc" search:id_cliente="{member_id}" status="open" limit="1" }
+	   {exp:mandrillapp:send_email_request_doc
+	     email_propietario="{email_propietario}"
+	     nombre_propietario="{nombre_propietario}"
+	     apellido_propietario="{ap_pat}"
+	     telefono_propietario= "{t_cel}/{t_ofic}"
+	     complejo_propietario= "{complejo_depa}"
+	     torre_propietario= "{torre_depa}"
+	     departamento_propietario= "{cod_depa}"
+	     documento = "{freeform:field:documento_solicitado}"
+	   {/exp:mandrillapp:send_email_request_doc}  
+   {freeform:field:documento_solicitado}
+{/exp:user:stats}
+
+
+{/exp:freeform:entries}
 {exp:user:stats}
 	{exp:mandrillapp:send_email_request_doc
 	  email_propietario="{email_propietario}"
