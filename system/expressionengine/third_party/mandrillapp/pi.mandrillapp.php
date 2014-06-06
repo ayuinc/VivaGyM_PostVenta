@@ -86,7 +86,7 @@ Atentamente';
 		return "";
 	}
 	
-	function send_email_viva_close(){
+	function send_email_viva_cierre(){
 		global $TMPL;
 		$this->EE =& get_instance(); // EEv2 syntax
 		$TMPL = $this->EE->TMPL;
