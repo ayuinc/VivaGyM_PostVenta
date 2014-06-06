@@ -94,19 +94,19 @@ Atentamente';
  		require_once 'mailchimp-mandrill-api-php/src/Mandrill.php'; 
  		$mandrill = new Mandrill('Svqgcw575OLrORu2WiD09g');
  		
- 		$to= $TMPL->fetch_param('to');
- 		$name= $TMPL->fetch_param('name');
- 		$subject= 'Cierre de Caso';
- 		$from= $TMPL->fetch_param('from');
- 		$id_sol_garantia = $TMPL->fetch_param('id_sol_garantia');
- 		//$text = $TMPL->tagdata;
- 		$text = 'Estimado/a '.$name.'<p>
-	Gracias por culminar el proceso de atención de su solicitud número: '.$id_sol_garantia.'.
-Adjunto encontrará el reporte del arreglo realizado por GyM.<p>
-Aprovechamos para recordarle que en el Manual del Propietario otorgado al momento de la entrega de su departamento se especifica el correcto uso y mantenimiento preventivo que se le debe realizar a sus instalaciones a fin de evitar que estas fallen por el propio uso que provoca el desgaste natural.  Puede encontrar el Manual en nuestro portal de post-venta en línea. Link a Manual.<p>
-Es importante precisar que en caso se presentara alguna solicitud, observación y/o requerimiento adicional tras el arreglo debe llenar un nuevo reclamo en nuestro portal de post-venta en línea o comunicarte a nuestro Call Center de Atención al Cliente 206-7270. Este es el único mecanismo que garantiza la atención de su solicitud de post-venta, cualquier otra forma de solicitud no será atendida.<p>
-Quedamos como siempre a su disposición si tiene alguna consulta o solicitud adicional.<p>
-Atentamente';
+ 		 		$to= $TMPL->fetch_param('to');
+ 		 		$name= $TMPL->fetch_param('name');
+ 		 		$subject= 'Cierre de Caso';
+ 		 		$from= $TMPL->fetch_param('from');
+ 		 		$id_sol_garantia = $TMPL->fetch_param('id_sol_garantia');
+ 		 		//$text = $TMPL->tagdata;
+ 		 		$text = 'Estimado/a '.$name.'<p>
+ 			Gracias por culminar el proceso de atención de su solicitud número: '.$id_sol_garantia.'.
+ 		Adjunto encontrará el reporte del arreglo realizado por GyM.<p>
+ 		Aprovechamos para recordarle que en el Manual del Propietario otorgado al momento de la entrega de su departamento se especifica el correcto uso y mantenimiento preventivo que se le debe realizar a sus instalaciones a fin de evitar que estas fallen por el propio uso que provoca el desgaste natural.  Puede encontrar el Manual en nuestro portal de post-venta en línea. Link a Manual.<p>
+ 		Es importante precisar que en caso se presentara alguna solicitud, observación y/o requerimiento adicional tras el arreglo debe llenar un nuevo reclamo en nuestro portal de post-venta en línea o comunicarte a nuestro Call Center de Atención al Cliente 206-7270. Este es el único mecanismo que garantiza la atención de su solicitud de post-venta, cualquier otra forma de solicitud no será atendida.<p>
+ 		Quedamos como siempre a su disposición si tiene alguna consulta o solicitud adicional.<p>
+ 		Atentamente';
  		
  		/*'html' => '<p>FELICIDADES!!!</p><p>Ganaste el tema'.$topic.' ve a nuestro menú de temas y sigue participando</p>',*/
  		$message = array(
