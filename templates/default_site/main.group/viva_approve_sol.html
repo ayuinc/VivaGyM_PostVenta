@@ -98,8 +98,8 @@ values ('1','$id_cliente','y','$ip','$entry_date','closed','$id_cliente','Cerrar
 {exp:get_post_vars parse="inward"}
 	{exp:user:stats member_id="{post_id_cliente}"}
 		{exp:mandrillapp:send_email_viva_approve_sol 
-		  to="{email}"
-		  name="{screen_name}"
+		  to="{email_propietario}"
+		  name="{nombre_propietario}"
 		  from="admin@gym.com"
 		  acc="{post_aprobar_paso}"
 		  id_sol_garantia="{post_id_sol_garantia}"

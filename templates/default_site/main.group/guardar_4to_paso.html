@@ -61,8 +61,8 @@ $sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_2
 {exp:get_post_vars parse="inward"}
 	{exp:user:stats member_id="{post_id_cliente}" }
 		{exp:mandrillapp:send_email_guardar_4to_paso 
-		  to="{email}"
-		  name="{screen_name}"
+		  to="{email_propietario}"
+		  name="{nombre_propietario}"
 		  from="admin@gym.com"
 		  acc="{post_aprobar_paso}"
 		  id_sol_garantia="{post_id_sol_garantia}"

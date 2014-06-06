@@ -55,8 +55,8 @@ $sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_2
 {exp:get_post_vars parse="inward"}
 	{exp:user:stats member_id="{post_id_cliente}" }
 		{exp:mandrillapp:send_email_guardar_3er_paso
-		  to="{email}"
-		  name="{screen_name}"
+		  to="{email_propietario}"
+		  name="{nombre_propietario}"
 		  subject="Recepción de Solicitud de Requerimientos Viva GyM"
 		  from="admin@gym.com"
 		  id_sol_garantia="{post_id_sol_garantia}"
