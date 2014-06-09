@@ -54,15 +54,15 @@ WHERE entry_id = $id_sol_garantia ");
 ?>
 
 <body>
-{exp:user:stats dynamic="off" member_id="{segment_5}"}
-	{exp:mandrillapp:send_email_viva_cierre 
-	  to="{email_propietario}"
-	  name="{nombre_propietario}"
+
+
+{exp:mandrillapp:send_email_viva_cierre 
+	  to="gms122@gmail.com"
+	  name="gianfranco"
 	  from="admin@gym.com"
-	  id_sol_garantia="{segment_3}"
+	  id_sol_garantia="84"
 	  }
-	{/exp:mandrillapp:send_email_viva_cierre}  
-{/exp:user:stats}
+{/exp:mandrillapp:send_email_viva_cierre}  
 
 </body>
 
