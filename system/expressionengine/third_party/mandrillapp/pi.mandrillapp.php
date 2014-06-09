@@ -287,7 +287,7 @@ Atentamente';
 	<div class="row">
 	  <div class="col-md-6 col-md-offset-3">
 
-	  		<h1>Ha cerrado la solicitud Nro. <?php echo $id_sol_garantia; ?></h1>
+	  		<h1>Ha cerrado la solicitud Nro.'.$id_sol_garantia.'</h1>
 
 		  <p>Puedes hacerle seguimiento a las solicitudes en la sección de “Panel de control”</p>
 		  <p><a href="{site_url}main/admin_dashboard">Ir a Panel de control</a></p>	  
