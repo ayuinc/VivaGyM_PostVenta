@@ -98,7 +98,16 @@ class Mandrillapp {
 
 	);
 	$mandrill->messages->sendTemplate($template_name, $template_content, $message);
-	return '';
+	return '
+<div class="container-fluid pt-35 pb-35 mh-630">
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+	  <h1>Gracias por su solicitud de documentos</h1>
+	  <p>Le enviaremos su documento en menos de 24 horas.</p>
+	  <p><a href="{site_url}main/user_apartment_show/{member_id}">Ir a mi departamento</a></p>	  
+  </div>
+</div>
+</div>';
 	}
 		
 	function send_email_confirm_solicitud(){
@@ -274,18 +283,16 @@ Atentamente';
 
  		);
 		$mandrill->messages->sendTemplate($template_name, $template_content, $message);
-		return '<div class="container-fluid pt-35 pb-35 mh-630">
-	<div class="row">
-	  <div class="col-md-6 col-md-offset-3">
+		return '
+				<div class="row">
+				  <div class="col-md-6 col-md-offset-3">
 
-	  		<h1>Ha cerrado la solicitud Nro.'.$id_sol_garantia.'</h1>
+				  		<h1>¡Listo! El caso de la solicitud #.'.$id_sol_garantia.' ha sido CERRADO</h1>
 
-		  <p>Puedes hacerle seguimiento a las solicitudes en la sección de “Panel de control”</p>
-		  <p><a href="{site_url}main/admin_dashboard">Ir a Panel de control</a></p>	  
-	  </div>
-	</div>
-</div>
-'	;
+					  <p>Puedes hacerle seguimiento a las solicitudes en la sección de “Panel de control”</p>
+					  <p><a href="{site_url}main/admin_dashboard">Ir a Panel de control</a></p>	  
+				  </div>
+				</div>'	;
 	}
 
 	function send_email_viva_approve_fix(){ //no llega
