@@ -10,7 +10,7 @@
       <td>Archivo</td>
     </tr>
   </thead> <!-- hacer otro include con los detalles del ticket {embed="includes/detalles_ticket" }-->
-
+  <tbody>
     <?php
       $query_long  = "SELECT * FROM exp_freeform_form_entries_4 where form_field_18=$id_sol_garantia and form_field_19=5 ";
       $result_long = mysql_query($query_long);
@@ -20,7 +20,6 @@
       <?php $paso_gen=$proy_long['form_field_19']; ?>
         <?php if ($paso_gen=="5") { ?> 
 
-      <tbody class="bg-white">
         <tr>
           <td><?php $entry_id=$proy_long['entry_id']; $id_cliente=$proy_long['form_field_5']; echo $proy_long['form_field_17']; ?>
           </td>

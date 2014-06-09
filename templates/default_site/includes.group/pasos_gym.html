@@ -22,6 +22,7 @@ $tit_problema = $obten[15];
       <td>Archivo</td>
     </tr>
   </thead> <!-- hacer otro include con los detalles del ticket {embed="includes/detalles_ticket" }-->
+  <tbody>
 
  <?php
     $query_long  = "SELECT * FROM exp_freeform_form_entries_4 where form_field_18=$id_sol_garantia ";
@@ -29,7 +30,6 @@ $tit_problema = $obten[15];
     ?>
     <?php while ($proy_long = mysql_fetch_array($result_long)) { ?>
 
-    <tbody class="bg-white">
       <tr>
         <td><?php echo $proy_long['form_field_17']; ?></td>
         <td><?php $var_estatus=$proy_long['status']; if ($var_estatus=="open"){

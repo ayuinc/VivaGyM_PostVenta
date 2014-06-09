@@ -2,22 +2,10 @@
 
 <?php
 
-$id_sol_garantia="{segment_3}";
-$paso="{segment_4}";
-$id_cliente="{segment_5}";
-$entry_id="{segment_6}";
-
-
-$result=mysql_query("SELECT * FROM exp_freeform_form_entries_2 WHERE entry_id=$id_sol_garantia");
-$obten=mysql_fetch_row($result);
-$id_cliente = $obten[2];
-$tit_problema = $obten[15];
-
-// leer email cuando lo tomas de ee no funca
-	$result_email=mysql_query("SELECT * FROM exp_members WHERE member_id=$id_cliente");
-	$obten_email=mysql_fetch_row($result_email);
-	$screen_name = $obten_email[3];
-	$dir = $obten_email[9];
+echo "<br>sol ".$id_sol_garantia=$_POST['id_sol_garantia'];
+echo "<br>cli ".$id_cliente=$_POST['id_cliente'];
+echo "<br>pas ".$paso="10";
+echo "<br>ent ".$entry_id=$_POST['entry_id'];
 
 $ip=$_SERVER["REMOTE_ADDR"];
 
@@ -52,12 +40,15 @@ status = 'closed'
 WHERE entry_id = $id_sol_garantia ");
 
 ?>
+{exp:get_post_vars parse="inward"}
+	{exp:user:stats dynamic="off" member_id="{post_id_cliente}"}
+		{exp:mandrillapp:send_email_viva_cierre 
+		  to="{email_propietario}"
+		  name="{nombre_propietario}"
+		  from="admin@gym.com"
+		  id_sol_garantia="{segment_3}"
+		  }
+	{/exp:user:stats}
+{/exp:get_post_vars}
 
-{exp:user:stats dynamic="off" member_id="{segment_5}"}
-	{exp:mandrillapp:send_email_viva_cierre 
-	  to="{email_propietario}"
-	  name="{nombre_propietario}"
-	  from="admin@gym.com"
-	  id_sol_garantia="{segment_3}"
-	  }
-{/exp:user:stats}
+{embed="includes/footer"}

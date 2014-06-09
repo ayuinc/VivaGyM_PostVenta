@@ -22,14 +22,14 @@ $tit_problema = $obten[15];
       <td>Archivo</td>
     </tr>
   </thead> <!-- hacer otro include con los detalles del ticket {embed="includes/detalles_ticket" }-->
-
+  <tbody>
  <?php
     $query_long  = "SELECT * FROM exp_freeform_form_entries_4 where form_field_18=$id_sol_garantia ";
     $result_long = mysql_query($query_long);
     ?>
     <?php while ($proy_long = mysql_fetch_array($result_long)) { ?>
 
-    <tbody class="bg-white"> <!-- mover hacia un detalle por q se debe enviar una explicacion al usuario  -->
+     <!-- mover hacia un detalle por q se debe enviar una explicacion al usuario  -->
       <tr>
         <td><?php $entry_id=$proy_long['entry_id']; echo $proy_long['form_field_17']; ?></td>
 
@@ -127,7 +127,18 @@ $tit_problema = $obten[15];
 
           <?php $procedec=$proy_long['form_field_27']; if($paso==10){ 
             if (empty($procedeb)) { ?> 
-            <a href="{site_url}main/<?php echo "viva_close/".$id_sol_garantia."/10/".$id_cliente."/".$entry_id; ?>" class="btn btn-sm btn-warning small">Cerrar</a> <?php } else { echo $procedec; } } ?>
+            <!-- <a href="{site_url}main/<?php echo "viva_close/".$id_sol_garantia."/10/".$id_cliente."/".$entry_id; ?>" class="btn btn-sm btn-warning small">Cerrar</a> -->
+
+            <form method="post" enctype="multipart/form-data" name="frm" id="frm" action="/?/main/viva_close">
+
+              <input type="hidden" name="id_cliente" value="<?php echo $id_cliente; ?>" >
+              <input type="hidden" name="id_sol_garantia" value="<?php echo $id_sol_garantia; ?>" >
+              <input type="hidden" name="entry_id" value="<?php echo $entry_id; ?>" >
+              <input type="hidden" name="XID" value="{XID_HASH}" />
+              <input type="submit" class="btn btn-sm btn-warning small" name="submit" value="Procesar" />
+            </form> 
+
+            <?php } else { echo $procedec; } } ?>
 
         </td>
         <td><?php echo $file;?></td>
