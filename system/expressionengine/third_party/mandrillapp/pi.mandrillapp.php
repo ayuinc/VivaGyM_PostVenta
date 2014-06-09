@@ -215,7 +215,7 @@ Atentamente';
  		        'content' => 'Copyright 2012.')
 
  		);
-		$mandrill->messages->sendTemplate($template_name, $template_content, $message);
+		//$mandrill->messages->sendTemplate($template_name, $template_content, $message);
 		return '<div class="container-fluid pt-35 pb-35 mh-630">
 	<div class="row">
 	  <div class="col-md-6 col-md-offset-3">
