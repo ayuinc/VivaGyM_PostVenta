@@ -64,13 +64,15 @@ $tit_problema = $obten[15];
                 <input type="hidden" name="dir" value="<?php echo $dir; ?>" >
                 <input type="hidden" name="id_sol_garantia" value="<?php echo $id_sol_garantia; ?>" >
                 <input type="hidden" name="XID" value="{XID_HASH}" />
-                <input type="hidden" name="paso" value="4" /> 
+                <input type="hidden" name="paso" value="4" />
+                <input type="hidden" name="persona_asignada_gym" value="{screen_name}" />
                 <input type="submit" class="btn btn-sm btn-warning small" value="Procesar">
             </form>
 
           <?php } else { echo $asig; } } ?> 
 
-          <?php if($paso==5){ ?> <a href="#" class="btn btn-sm btn-warning small">Ver reporte</a> <?php } ?>
+          <?php $file=$proy_long['form_field_28'];
+           if($paso==5){ ?> <!-- <a href="#" class="btn btn-sm btn-warning small">Ver reporte</a> --> <?php } ?>
 
           <?php if($paso==6){ echo $proy_long['form_field_27']; } ?>
 
@@ -99,10 +101,10 @@ $tit_problema = $obten[15];
 
             <?php } else { echo $asigb; } } ?>
 
-          <?php if($paso==9){ ?> <a href="#" class="btn btn-sm btn-warning small">Ver reporte</a> <?php } ?>
+          <?php if($paso==9){ ?> <!-- <a href="#" class="btn btn-sm btn-warning small">Ver reporte</a> --> <?php } ?>
 
         </td>
-        <td></td>
+        <td><?php echo $file;?></td>
       </tr>
 
     </tbody>

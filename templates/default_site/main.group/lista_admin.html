@@ -9,9 +9,17 @@
     {/exp:user:stats}
 
   </td>
-  <!--<td>Complejo</td>
-  <td>Torre</td>-->
-  <td>{freeform:field:departamento_en_consulta}</td>
+  <td>{exp:user:stats member_id="{freeform:field:id_cliente}"}
+      {complejo_depa}
+      {/exp:user:stats}</td>
+
+  <td>{exp:user:stats member_id="{freeform:field:id_cliente}"}
+      {torre_depa}
+      {/exp:user:stats}</td>
+
+  <td>{exp:user:stats member_id="{freeform:field:id_cliente}"}
+      {cod_depa}
+      {/exp:user:stats}</td>
   <td>
 
     <?php $var_est="{freeform:field:etapa_solicitud}";

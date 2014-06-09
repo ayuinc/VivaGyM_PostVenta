@@ -4710,6 +4710,16 @@ blockquote {
   background: #eaf5e1;
   padding: 14px; }
 
+.viva-alerts {
+  border-radius: 3px;
+  border: 1px solid #77be42; }
+  .viva-alerts .icon-col {
+    padding: 14px;
+    padding: rem(14);
+    background: #77be42;
+    text-align: center;
+    color: white; }
+
 #user-notifications {
   border-radius: 3px;
   background: #424445;

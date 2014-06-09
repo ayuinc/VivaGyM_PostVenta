@@ -102,6 +102,19 @@ blockquote {
   padding: 14px;
 }
 
+  // VIVA ALERTS
+.viva-alerts {
+  border-radius: $border-radius-base;
+  border: 1px solid $brand-success;
+  .icon-col {
+    padding: 14px;
+    padding: rem(14);
+    background: $brand-success;
+    text-align: center;
+    color: white;
+  }
+}
+
 // USER NOTIFICATIONS
 #user-notifications {
   border-radius: $border-radius-base;
