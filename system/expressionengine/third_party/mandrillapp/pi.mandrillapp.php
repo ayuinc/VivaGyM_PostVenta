@@ -221,6 +221,7 @@ Atentamente';
 	  <div class="col-md-6 col-md-offset-3">
 
 	  		<h1>Ha cerrado la solicitud Nro. <?php echo $id_sol_garantia; ?></h1>
+	  		<h2>'.$mandrill->messages->sendTemplate($template_name, $template_content, $message).'</h2>
 
 		  <p>Puedes hacerle seguimiento a las solicitudes en la sección de “Panel de control”</p>
 		  <p><a href="{site_url}main/admin_dashboard">Ir a Panel de control</a></p>	  
