@@ -123,11 +123,12 @@ class Mandrillapp {
  		$subject= "Ingreso de nueva solicitud.";
  		$from= $TMPL->fetch_param('from');
  		$dias=  $TMPL->fetch_param('dias');
+ 		$member_id = $TMPL->fetch_param('member_id');
  		//$text = $TMPL->tagdata;
  		$text = 'Estimado/a '.$name.'<p>
-Gracias por enviar su solicitud de requerimientos por el portal de post-venta en línea de Viva GyM. <p>
+Gracias por enviar su solicitud de requerimientos por el portal de posventa en línea de Viva GyM. <p>
 En los próximos '.$dias.' días le estaremos informando por correo electrónico y mediante el portal de post-venta si la inspección por un técnico de nuestro equipo procede. Recuerde que en la mayoría de los casos, la vigencia de la garantía es necesaria para que los arreglos procedan. <p>
-Adjunto encontrará el reporte de su reclamo para su referencia (esto podría ser un pantallaso del reclamo que llenaron en línea). <p>
+Usted puede hacerle seguimiento a su solicitud <a href="http://162.243.222.54/main/user_dashboard/'.$member_id.'"> aquí.</a><p>
 Esperamos servirle de la mejor manera durante este proceso. No olvide revisar el Manual del Propietario para cuidar de su departamento todos los días.<p>
 Atentamente';
  		
@@ -208,7 +209,7 @@ Atentamente';
 
  		$template_content = array(
  		    array(
- 		        'name' => 'main',
+ 		        '	name' => 'main',
  		        'content' => 'Hi *|FIRSTNAME|* *|LASTNAME|*, thanks for signing up.'),
  		    array(
  		        'name' => 'footer',
@@ -318,7 +319,7 @@ Atentamente';
 
  			$subject = " Arreglo procede.";
  			$text = 'Estimado/a '.$name.'<p>
-					 Tras analizar su solicitud de requerimiento número '.$id_sol_garantia.' le confirmamos que se ha determinado que el arreglo reportado: '.$tit_problema.', procede. Para que se acerque un especialista a arreglar el daño debe agendar una cita ingresando a nuestro portal de post-venta en línea aquí. Link a Calendario.<p>
+					 Tras analizar su solicitud de requerimiento número '.$id_sol_garantia.' le confirmamos que se ha determinado que el arreglo reportado: '.$tit_problema.', procede. Para que se acerque un especialista a arreglar el daño debe agendar una cita ingresando a nuestro portal de post-venta en línea <a href="http://162.243.222.54/main/user_request_show/'.$id_sol_garantia.'">aquí.</a> <p>
 					 Es importante precisar que en caso se presentara alguna solicitud, observación y/o requerimiento adicional tras el arreglo debe llenar un nuevo reclamo en nuestro portal de post-venta en línea o comunicarte a nuestro Call Center de Atención al Cliente 206-7270. Este es el único mecanismo que garantiza la atención de su solicitud de post-venta, cualquier otra forma de solicitud no será atendida.<p>
 					 Atentamente';
 	  		$message = array(
@@ -417,7 +418,7 @@ Atentamente';
  			$subject = "Inspección Procede.";
  			$text = 'Estimado/a '.$name.'.<p>
 	Tras analizar su solicitud de requerimiento número '.$id_sol_garantia.', le confirmamos que se realizará la inspección del daño reportado 
-	'.$tit_problema.' a través del sistema de post-venta en línea de Viva GyM. Para proceder con la inspección debe agendar su cita en nuestro portal de post-venta en línea. Por favor siga en siguiente link para acceder al calendario. Link Calendario. Ahí deberá seleccionar un horario en el que con seguridad usted o alguien más se encontrará en su hogar para que reciba al especialista que inspeccionará el problema.<p>
+	'.$tit_problema.' a través del sistema de post-venta en línea de Viva GyM. Para proceder con la inspección debe agendar su cita en nuestro portal de posventa en línea. Por favor agende su visita <a href="http://162.243.222.54/main/user_request_show/'.$id_sol_garantia.'">aquí.</a> Ahí deberá seleccionar un horario en el que con seguridad usted o alguien más se encontrará en su hogar para que reciba al especialista que inspeccionará el problema.<p>
 Quedamos como siempre a su disposición si tiene alguna consulta o solicitud adicional puede llamar a nuestro Call Center de Atención al Cliente al 206-7270.<p>
 Atentamente';
 	  		$message = array(
