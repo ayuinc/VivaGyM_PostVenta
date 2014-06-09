@@ -1,5 +1,5 @@
-/*! normalize.css v3.0.1 | MIT License | git.io/normalize */ 
-html {
+/*! normalize.css v3.0.1 | MIT License | git.io/normalize */
+ html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%; }
@@ -4704,7 +4704,7 @@ blockquote {
     box-shadow: none; }
 
 .descripcion {
-  background: #fff8e8; }
+  background: #f6f6f7; }
 
 .action-alert {
   background: #eaf5e1;
@@ -4719,6 +4719,18 @@ blockquote {
     background: #77be42;
     text-align: center;
     color: white; }
+  .viva-alerts .message {
+    padding-top: 10px;
+    padding-top: rem(10); }
+  .viva-alerts .button {
+    padding-top: 6px;
+    padding-top: rem(6); }
+    @media only screen and (max-width: 480px) and (max-width: 768px) {
+      .viva-alerts .button {
+        padding-top: 12px;
+        padding-top: rem(12);
+        padding-bottom: 12px;
+        padding-bottom: rem(12); } }
 
 #user-notifications {
   border-radius: 3px;

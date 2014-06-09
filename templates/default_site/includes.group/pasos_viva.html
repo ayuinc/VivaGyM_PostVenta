@@ -53,7 +53,7 @@ $tit_problema = $obten[15];
                     <p class="text-center pt-14">Procede la inpección?</p>
                   </div>
                   <div class="col-sm-6">
-                    <select name="aprobar_paso" id="" class="form-control input-lg select-override">
+                    <select name="aprobar_paso" id="" class="form-control input-sm select-override">
                       <option value="">Seleccione</option>
                       <option value="si">Sí</option>
                       <option value="no">No</option>
@@ -63,7 +63,7 @@ $tit_problema = $obten[15];
               </div>
 
               <div class="form-group">
-                <textarea name="comentarios" id="" rows="7" class="form-control" placeholder="En caso No proceda la inpección por favor detallar las razones, este texto sera enviado en un correo al usuario."></textarea>
+                <textarea name="comentarios" id="" rows="2" class="form-control" placeholder="En caso No proceda la inpección por favor detallar las razones, este texto sera enviado en un correo al usuario."></textarea>
                 <p class="help-block text-right text-warning">Máximo 250 caracteres</p>
               </div>
 
@@ -72,7 +72,7 @@ $tit_problema = $obten[15];
                 <input type="hidden" name="id_sol_garantia" value="<?php echo $id_sol_garantia; ?>" >
                 <input type="hidden" name="persona_asignada_gym" value="{screen_name}" />
                 <input type="hidden" name="XID" value="{XID_HASH}" />
-                <input type="submit" class="btn btn-lg uppercase btn-success" name="submit" value="Procesar" />
+                <input type="submit" class="btn btn-sm uppercase btn-success" name="submit" value="Procesar" />
 
             </form>
 

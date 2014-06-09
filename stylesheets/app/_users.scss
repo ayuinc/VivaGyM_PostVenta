@@ -94,7 +94,8 @@ blockquote {
 
 // USER REQUEST SHOW 
 .descripcion {
-  background: lighten($brand-warning, 42%);
+  // background: lighten($brand-warning, 42%);
+  background: $gray-lighter;
 }
 
 .action-alert {
@@ -112,6 +113,20 @@ blockquote {
     background: $brand-success;
     text-align: center;
     color: white;
+  }
+  .message {
+    padding-top: 10px;
+    padding-top: rem(10);
+  }
+  .button {
+    padding-top: 6px;
+    padding-top: rem(6);
+    @media only screen and (max-width: $screen-phone) and (max-width: $screen-tablet) {
+      padding-top: 12px;
+      padding-top: rem(12);
+      padding-bottom: 12px;
+      padding-bottom: rem(12);
+    }
   }
 }
 

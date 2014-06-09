@@ -7,14 +7,17 @@ $obten_cond=mysql_fetch_row($result_cond);
 $paso_insp = $obten_cond[7];
 
 if ($paso_insp=="open"){ ?>
-<div class="action-alert clearfix">
-  <div class="col-sm-8 pt-7 text-right">
-    <span>Usted tiene una actividad pendiente</span>
+<div class="viva-alerts clearfix box-shadow mt-14 mb-14">
+  <div class="col-sm-1 icon-col">
+    <i class="icon-bell"></i>
   </div>
-  <div class="col-sm-4 text-center">
-    <a href="{site_url}main/<?php echo "user_request_book/".$id_sol_garantia; ?>" class="btn btn-success btn-sm">Agendar</a>
+  <div class="col-sm-8 message">
+    <strong>Importante:</strong> <span>Usted tiene pendiente agendar una visita de inspección</span>
   </div>
-</div> 
+  <div class="col-sm-3 text-right button">
+    <a href="{site_url}main/<?php echo "user_request_book/".$id_sol_garantia; ?>" class="btn btn-sm btn-success">Agendar ahora</a>
+  </div>
+</div>
 <?php } ?>
 
 <?php 
@@ -24,12 +27,15 @@ $obten_con2=mysql_fetch_row($result_con2);
 $paso_arr = $obten_con2[7];
 
 if ($paso_arr=="open"){ ?>
-<div class="action-alert clearfix">
-  <div class="col-sm-8 pt-7 text-right">
-    <span>Usted tiene una actividad pendiente</span>
+<div class="viva-alerts clearfix box-shadow mt-14 mb-14">
+  <div class="col-sm-1 icon-col">
+    <i class="icon-bell"></i>
   </div>
-  <div class="col-sm-4 text-center">
-    <a href="{site_url}main/<?php echo "user_request_fixing/".$id_sol_garantia; ?>" class="btn btn-success btn-sm">Agendar</a>
+  <div class="col-sm-8 message">
+    <strong>Importante:</strong> <span>Usted tiene pendiente agendar una visita de arreglo</span>
   </div>
-</div> 
+  <div class="col-sm-3 text-right button">
+    <a href="{site_url}main/<?php echo "user_request_fixing/".$id_sol_garantia; ?>" class="btn btn-sm btn-success">Agendar ahora</a>
+  </div>
+</div>
 <?php } ?>
