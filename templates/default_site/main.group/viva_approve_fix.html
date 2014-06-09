@@ -89,21 +89,16 @@ values ('1','$id_cliente','y','$ip','$entry_date','closed','$id_cliente','Cerrar
 	{/exp:user:stats}   
 {/exp:get_post_vars}
 
-<body>
 
-<div class="container-fluid pt-35 pb-35 mh-630">
-	<div class="row">
-	  <div class="col-md-6 col-md-offset-3">
-	  	<?php 
-	  	if ($acc=="si"){ ?>
-	  		<h1>Ha aprobado la solicitud Nro. <?php echo $id_sol_garantia; ?></h1>
-	  	<?php } else { ?> 
-	  		<h1>Ha rechazado la solicitud Nro. <?php echo $id_sol_garantia; ?></h1>
-	  	<?php } ?>
-		  <p>Puedes hacerle seguimiento a las solicitudes en la sección de “Panel de control”</p>
-		  <p><a href="{site_url}main/admin_dashboard">Ir a Panel de control</a></p>	  
-	  </div>
-	</div>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+  	<?php 
+  	if ($acc=="si"){ ?>
+  		<h1>¡Listo! El arreglo para la solicitud #<?php echo $id_sol_garantia; ?> ha sido APROBADO</h1>
+  	<?php } else { ?> 
+  		<h1>¡Listo! El arreglo para la solicitud #<?php echo $id_sol_garantia; ?> ha sido RECHAZADO</h1>
+  	<?php } ?>
+	  <p>Puedes hacerle seguimiento a las solicitudes en la sección de “Panel de control”</p>
+	  <p><a href="{site_url}main/admin_dashboard">Ir a Panel de control</a></p>	  
+  </div>
 </div>
-
-</body>

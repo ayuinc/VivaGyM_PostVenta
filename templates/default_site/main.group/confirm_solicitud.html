@@ -1,10 +1,7 @@
 {embed="includes/header"}
-<?php
-
-$id_cliente="{member_id}"; ?>
+<?php $id_cliente="{member_id}"; ?>
 
 {exp:confirm_sol}
-
 
 {exp:user:stats}
 	{exp:mandrillapp:send_email_confirm_solicitud
@@ -16,16 +13,12 @@ $id_cliente="{member_id}"; ?>
 	{/exp:mandrillapp:send_email_confirm_solicitud}  
 {/exp:user:stats}
 
-
-<div class="container-fluid pt-35 pb-35 mh-630">
-	<div class="row">
-	  <div class="col-md-6 col-md-offset-3">
-		  <h1>Gracias por ingresar una nueva solicitud</h1>
-		  <p>Puedes hacerle seguimiento a tu solicitud en la sección de “Mis Solicitudes”</p>
-		  <p><a href="{site_url}main/user_dashboard/{member_id}">Ir a Mis Solicitudes</a></p>	  
-	  </div>
-	</div>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+	  <h1>Gracias por ingresar una nueva solicitud</h1>
+	  <p>Puedes hacerle seguimiento a tu solicitud en la sección de “Mis Solicitudes”</p>
+	  <p><a href="{site_url}main/user_dashboard/{member_id}">Ir a Mis Solicitudes</a></p>	  
+  </div>
 </div>
-
 
 {embed="includes/footer"}
