@@ -69,23 +69,18 @@ WHERE form_field_18 = $id_sol_garantia AND form_field_19 = $paso ");
 
 ?>
 
-<body>
 
-<div class="container-fluid pt-35 pb-35 mh-630">
-	<div class="row">
-	  <div class="col-md-6 col-md-offset-3">
-	  		<?php if($paso=="4") { ?> 
-			<h1>Ha asignado inspector a la solicitud Nro. <?php echo $id_sol_garantia; ?></h1>
-	  		<?php } ?>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+	<?php if($paso=="4") { ?> 
+	<h1>¡Listo! El Inspector <?php echo $persona_asignada; ?> ha sido asignado a la solicitud #<?php echo $id_sol_garantia; ?></h1>
+		<?php } ?>
 
-	  		<?php if($paso=="8") { ?> 
-			<h1>Ha asignado constructor a la solicitud Nro. <?php echo $id_sol_garantia; ?></h1>
-	  		<?php } ?>
-	  	  
-		  <p>Puedes hacerle seguimiento a las solicitudes en la sección de “Panel de control”</p>
-		  <p><a href="{site_url}main/admin_dashboard">Ir a Panel de control</a></p>	  
-	  </div>
-	</div>
+	<?php if($paso=="8") { ?> 
+	<h1>¡Listo! <?php echo $persona_asignada; ?> ha sido asignado para el arreglo de la solicitid #<?php echo $id_sol_garantia; ?></h1>
+		<?php } ?>
+	  
+  <p>Puedes hacerle seguimiento a las solicitudes en la sección de “Panel de control”</p>
+  <p><a href="{site_url}main/admin_dashboard">Ir a Panel de control</a></p>	  
+  </div>
 </div>
-
-</body>

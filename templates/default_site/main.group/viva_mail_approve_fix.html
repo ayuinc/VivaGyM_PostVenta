@@ -1,0 +1,58 @@
+{embed="includes/header"}
+{embed="includes/carga" }
+
+<?php
+$id_sol_garantia="{segment_3}";
+$id_cliente="{segment_4}";
+$paso="2";
+
+$resulta=mysql_query("SELECT * FROM exp_freeform_form_entries_2 WHERE entry_id=$id_sol_garantia");
+$obtena=mysql_fetch_row($resulta);
+echo "<br>problema ".$tit_problema = $obtena[15];
+
+$result=mysql_query("SELECT * FROM exp_freeform_form_entries_4 WHERE form_field_5=$id_cliente 
+						and form_field_19=2 and form_field_18=$id_sol_garantia");
+$obten=mysql_fetch_row($result);
+echo "<br>paso accion ".$acc = $obten[19];
+
+// leer email cuando lo tomas de ee no funca
+	$result_email=mysql_query("SELECT * FROM exp_members WHERE member_id=$id_cliente");
+	$obten_email=mysql_fetch_row($result_email);
+	echo "<br>mail ".$screen_name = $obten_email[3];
+	echo "<br>dir ".$dir = $obten_email[9];
+
+
+if ($acc=="Aprobada"){
+
+
+} elseif ($acc=="Rechazada"){ 
+
+
+};
+// Gianfranco usar el if anterior para el envio de correo a esta vista le llegan los parametros por url y lee lo necesario para el correo
+?>
+
+
+
+<!-- EN ESTA PARTE CAMBIAR EL "19" por {last_segment}-->
+{exp:get_post_vars parse="inward"}
+		{exp:user:stats dynamic="off"
+					  member_id="{segment_4}"}
+		{exp:mandrillapp:send_email_viva_approve_fix 
+		  to='{email}'
+		  name='{screen_name}'
+		  from="admin@gym.com"
+		  acc="{post_aprobar_paso}"
+		  id_sol_garantia="{post_id_sol_garantia}"
+		  comentarios="{post_comentarios}" }
+		{/exp:mandrillapp:send_email_viva_approve_fix}
+		{/exp:user:stats}   
+
+{post_aprobar_paso} - {post_id_sol_garantia} - {post_comentarios}
+{/exp:get_post_vars}
+
+<body>
+<script type="text/javascript">
+//window.location="{site_url}main/admin_dashboard";
+</script>
+</body>
