@@ -1,5 +1,8 @@
 {embed="includes/header"}
 
+
+<body>
+
 {exp:user:stats dynamic="off" member_id="{segment_4}"}
 	{exp:mandrillapp:send_email_viva_cierre 
 	  to="{email_propietario}"
@@ -9,7 +12,6 @@
 	  }
 	{/exp:mandrillapp:send_email_viva_cierre}  
 {/exp:user:stats}
-<body>
-
-
 </body>
+
+{embed="includes/footer"}
