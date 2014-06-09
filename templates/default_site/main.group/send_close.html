@@ -1,9 +1,8 @@
 {embed="includes/header"}
 
-
 <body>
 
-{exp:user:stats dynamic="off" member_id="{segment_4}"}
+{exp:user:stats dynamic="off" member_id="{segment_5}"}
 	{exp:mandrillapp:send_email_viva_cierre 
 	  to="{email_propietario}"
 	  name="{nombre_propietario}"
@@ -14,3 +13,8 @@
 </body>
 
 {embed="includes/footer"}
+<script type="text/javascript">
+
+window.location="viva_close/{segment_3}/{segment_4}/{segment_5}/{segment_6}";
+</script>
+</body>
