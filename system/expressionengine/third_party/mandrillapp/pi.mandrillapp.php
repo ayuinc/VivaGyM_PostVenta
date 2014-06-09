@@ -164,7 +164,7 @@ Atentamente';
 		return "";
 	}
 	
-	function send_email_viva_cierre(){
+	function send_email_viva_cierre(){ //dos veces
 		global $TMPL;
 		$this->EE =& get_instance(); // EEv2 syntax
 		$TMPL = $this->EE->TMPL;
@@ -230,7 +230,7 @@ Atentamente';
 '	;
 	}
 
-	function send_email_viva_approve_fix(){
+	function send_email_viva_approve_fix(){ //no llega
 		global $TMPL;
 		$this->EE =& get_instance(); // EEv2 syntax
 		$TMPL = $this->EE->TMPL;
