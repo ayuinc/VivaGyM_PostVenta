@@ -1,0 +1,149 @@
+<div class="col-md-3 col-sm-3">
+
+	<script type="text/javascript">
+	  function SwitchHiddenDiv(){
+	    var evento = document.getElementById("SelectedType").options[document.getElementById("SelectedType").selectedIndex].value;
+	    switch (evento){
+	      case 'si': 
+	    document.getElementById('casilla').style.display="none";
+	    break;
+	      case 'no':
+	    document.getElementById('casilla').style.display="block";
+	    break;
+	      default:
+	    alert("Seleccione una opción");
+	    }
+	  }
+	</script>
+
+	<?php $id_sol_garantia="{embed:entrada}"; ?>
+
+	{exp:freeform:entries form_id="4" search:id_sol_garantia="{embed:entrada}" search:orden_tramite="2" limit="1" status="open" }
+		<!-- {freeform:field:accion_ticket}-{freeform:field:id_sol_garantia}-
+		{freeform:field:id_cliente}-{freeform:field:orden_tramite} -->
+
+		{if freeform:field:orden_tramite=='2'}
+			<?php $paso_dos=1; ?>
+			<div class="panel">
+		    <div class="panel-heading bg-danger">
+		      <div class="panel-title text-muted">
+		        Acción pendiente
+		      </div>
+		    </div>
+		    <div class="panel-body">
+		      <p>¿Procede la visita de inspección?</p>
+		      <form method="post" enctype="multipart/form-data" name="frm" id="frm" action="/?/main/viva_approve_sol">
+		        <div class="form-group">
+		          <select name="aprobar_paso" id='SelectedType' onchange="SwitchHiddenDiv()" class="form-control select-override input-sm option-select">
+		            <option value="" selected="selected">Selecciona una opción</option>
+		            <option value="si">Sí</option>
+		            <option value="no">No</option>
+		          </select>
+		        </div>
+
+		        <div class="form-group" id="casilla" style="display:none;">
+				      <textarea name="comentarios" id="" rows="4" class="form-control" placeholder="En caso No proceda la inpección por favor detallar las razones, este texto sera enviado en un correo al usuario."></textarea>
+				      <p class="help-block text-right text-warning">Máximo 250 caracteres</p>
+				    </div>
+
+		        <div class="text-left button-submit">
+		        	<input type="hidden" name="id_cliente" value="{freeform:field:id_cliente}" >
+				      <input type="hidden" name="id_sol_garantia" value="{embed:entrada}" >
+				      <input type="hidden" name="persona_asignada_gym" value="{screen_name}" />
+				      <input type="hidden" name="XID" value="{XID_HASH}" />
+				      <input type="submit" class="btn uppercase btn-success" name="submit" value="Procesar" />
+		        </div>
+		      </form>
+		    </div>
+		  </div>
+		{/if}
+
+	{/exp:freeform:entries}
+
+
+	{exp:freeform:entries form_id="4" search:id_sol_garantia="{embed:entrada}" search:orden_tramite="6" limit="1" status="open" }
+		<!-- {freeform:field:accion_ticket}-{freeform:field:id_sol_garantia}-
+		{freeform:field:id_cliente}-{freeform:field:orden_tramite} -->
+
+		{if freeform:field:orden_tramite=='6'}
+			<?php $paso_seis=1; ?>
+			<div class="panel">
+		    <div class="panel-heading bg-danger">
+		      <div class="panel-title text-muted">
+		        Acción pendiente
+		      </div>
+		    </div>
+		    <div class="panel-body">
+		      <p>¿Procede el arreglo de este caso?</p>
+		      <form method="post" enctype="multipart/form-data" name="frm" id="frm" action="/?/main/viva_approve_fix">
+		        <div class="form-group">
+		          <select name="aprobar_paso" id='SelectedType' onchange="SwitchHiddenDiv()" class="form-control select-override input-sm option-select">
+		            <option value="" selected="selected">Selecciona una opción</option>
+		            <option value="si">Sí</option>
+		            <option value="no">No</option>
+		          </select>
+		        </div>
+
+		        <div class="form-group" id="casilla" style="display:none;">
+				      <textarea name="comentarios" id="" rows="4" class="form-control" placeholder="En caso No proceda la inpección por favor detallar las razones, este texto sera enviado en un correo al usuario."></textarea>
+				      <p class="help-block text-right text-warning">Máximo 250 caracteres</p>
+				    </div>
+
+		        <div class="text-left button-submit">
+		        	<input type="hidden" name="id_cliente" value="{freeform:field:id_cliente}" >
+				      <input type="hidden" name="id_sol_garantia" value="{embed:entrada}" >
+				      <input type="hidden" name="persona_asignada_gym" value="{screen_name}" />
+				      <input type="hidden" name="XID" value="{XID_HASH}" />
+				      <input type="submit" class="btn uppercase btn-success" name="submit" value="Procesar" />
+		        </div>
+		      </form>
+		    </div>
+		  </div>
+		{/if}
+
+	{/exp:freeform:entries}
+
+	{exp:freeform:entries form_id="4" search:id_sol_garantia="{embed:entrada}" search:orden_tramite="10" limit="1" status="open" }
+		<!-- {freeform:field:accion_ticket}-{freeform:field:id_sol_garantia}-
+		{freeform:field:id_cliente}-{freeform:field:orden_tramite} --> 
+
+		{if freeform:field:orden_tramite=='10'}
+			<?php $paso_diez=1; ?>
+			<div class="panel">
+		    <div class="panel-heading bg-danger">
+		      <div class="panel-title text-muted">
+		        Acción pendiente
+		      </div>
+		    </div>
+		    <div class="panel-body">
+		      <p>¿Desea cerrar el caso?</p>
+		      <form method="post" enctype="multipart/form-data" name="frm" id="frm" action="/?/main/viva_close">
+
+		        <div class="text-left button-submit">
+		        	<input type="hidden" name="id_cliente" value="{freeform:field:id_cliente}" >
+				      <input type="hidden" name="id_sol_garantia" value="{embed:entrada}" >
+				      <input type="hidden" name="entry_id" value="{freeform:entry_id}" >
+				      <input type="hidden" name="XID" value="{XID_HASH}" />
+				      <input type="submit" class="btn uppercase btn-success" name="submit" value="Procesar" />
+		        </div>
+		      </form>
+		    </div>
+		  </div>
+		{/if}
+
+	{/exp:freeform:entries}
+
+	<?php if(($paso_dos==0) and ($paso_seis==0) and ($paso_diez==0)) {?>
+ 			<div class="panel">
+		    <div class="panel-heading bg-danger">
+		      <div class="panel-title text-muted">
+		        Acción pendiente
+		      </div>
+		    </div>
+		    <div class="panel-body">
+		      <p>No tiene acción pendiente</p>
+		    </div>
+		  </div>
+	<?php } ?>
+
+</div>

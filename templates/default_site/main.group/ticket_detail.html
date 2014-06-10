@@ -6,7 +6,7 @@
 
 <div class="row">
     
-    {exp:freeform:entries form_id="2" entry_id="{segment_3}" limit="1" status="open|closed" }
+  {exp:freeform:entries form_id="2" entry_id="{segment_3}" limit="1" status="open|closed" }
 
     <div class="col-md-9 col-sm-9">
       <div class="panel p-14 box-shadow" >
@@ -80,17 +80,15 @@
                       {/case}
 
                       {case value="9"}<!-- inspector viva 9 -->
-                        {embed="includes/pasos_insp" entrada="{segment_3}"}
+                      
                       {/case}
 
                       {case value="10"}<!-- personal GyM que ejecuta el arreglo  10 -->
-                        {embed="includes/pasos_cons" entrada="{segment_3}"}
+                        
                       {/case}
                       
                     {/exp:switchee}
-                    {/exp:member:custom_profile_data}
-
-                
+                {/exp:member:custom_profile_data}
 
               </div>
             </div>
@@ -99,34 +97,27 @@
       </div>
     </div>
 
-    <div class="col-md-3 col-sm-3">
-      <div class="panel">
-        <div class="panel-heading bg-danger">
-          <div class="panel-title text-muted">
-            Acción pendiente
-          </div>
-        </div>
-        <div class="panel-body">
-          <p>¿Procede la visita de inspección?</p>
-          <form>
-            <div class="form-group">
-              <select name="" class="form-control select-override input-sm option-select">
-                <option value="default" selected="selected">Selecciona una opción</option>
-                <option value="Si" >Si</option>
-                <option value="No" >No</option>
-              </select>
-            </div>
-            <div class="text-left button-submit">
-              <button type="submit" class="btn uppercase btn-success">Procesar</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
+    {exp:member:custom_profile_data}
+      {exp:switchee variable = "{group_id}" parse="inward"}
+        
+        {case value="7"}<!-- admin viva 7 -->
+          {embed="includes/sidebar_viva" entrada="{segment_3}"}
+        {/case}
 
-    {/exp:freeform:entries}
+        {case value="8"}<!-- admin GyM 8 -->
+          {embed="includes/sidebar_gym" entrada="{segment_3}"}
+        {/case}
 
-  </div>
-  
+        {case value="9"}<!-- inspector viva 9 -->
+          {embed="includes/sidebar_insp" entrada="{segment_3}"}
+        {/case}
 
-                
+        {case value="10"}<!-- personal GyM que ejecuta el arreglo  10 -->
+          {embed="includes/sidebar_cons" entrada="{segment_3}"}
+        {/case}
+        
+      {/exp:switchee}
+    {/exp:member:custom_profile_data}
+
+  {/exp:freeform:entries}
+</div>

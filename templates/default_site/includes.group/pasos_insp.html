@@ -1,8 +1,8 @@
 ﻿<?php $id_sol_garantia="{embed:entrada}"; ?>
 
-<table class="table table-hover table-striped mt-14">
-  <thead class="uppercase medium">
-    <tr>
+<table class="table table-hover table-striped">
+    <thead>
+      <tr class="medium">
       <td>Actividad</td>
       <td>Estatus</td>
       <td>Día / Hora</td>
@@ -11,6 +11,7 @@
     </tr>
   </thead> <!-- hacer otro include con los detalles del ticket {embed="includes/detalles_ticket" }-->
   <tbody>
+    
     <?php
       $query_long  = "SELECT * FROM exp_freeform_form_entries_4 where form_field_18=$id_sol_garantia and form_field_19=5 ";
       $result_long = mysql_query($query_long);
@@ -72,10 +73,10 @@
           <td><?php echo $file;?></td>
         </tr>
 
-      </tbody>
+      
 
       <?php } ?>
 
     <?php } ; ?>
-
+</tbody>
 </table>

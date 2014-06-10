@@ -12,9 +12,9 @@ $tit_problema = $obten[15];
   $screen_name = $obten_email[3];
   $dir = $obten_email[9]; ?>
 
-<table class="table table-hover table-striped mt-14">
-  <thead class="uppercase medium">
-    <tr>
+<table class="table table-hover table-striped">
+    <thead>
+      <tr class="medium">
       <td>Actividad</td>
       <td>Estatus</td>
       <td>Día / Hora</td>
@@ -42,16 +42,16 @@ $tit_problema = $obten[15];
         
         <td><?php $paso=$proy_long['form_field_19']; ?>
 
-          <?php if($paso==2){ echo $proy_long['form_field_27']; } ?>
+          <?php if($paso==2){ echo "Su solicitud de inspección ha sido ".$proy_long['form_field_27']; } ?>
 
-          <?php if($paso==3){ echo $proy_long['form_field_25']; } ?>
+          <?php if($paso==3){ echo "Inspección agendada para ".$proy_long['form_field_25']; } ?>
 
           <?php $asig=$proy_long['form_field_27']; if($paso==4){ 
             if (empty($asig)) { ?>
 
             <!-- <a href="{site_url}main/<?php echo "gym_assign_insp?id_sol_garantia=".$id_sol_garantia."&paso=4&id_cliente=".$id_cliente; ?>" class="btn btn-sm small btn-default">Asignar Inspector</a>  -->
 
-            <form method="post" enctype="multipart/form-data" name="frm" id="frm" action="/?/main/gym_write_insp" class="p-14">
+            <!-- <form method="post" enctype="multipart/form-data" name="frm" id="frm" action="/?/main/gym_write_insp" class="p-14">
 
               <div class="form-group">
                 <select name="persona_asignada" id="" class="form-control input-sm select-override">
@@ -67,22 +67,23 @@ $tit_problema = $obten[15];
                 <input type="hidden" name="paso" value="4" />
                 <input type="hidden" name="persona_asignada_gym" value="{screen_name}" />
                 <input type="submit" class="btn btn-sm btn-warning small" value="Procesar">
-            </form>
+            </form> -->
 
-          <?php } else { echo $asig; } } ?> 
+          <?php } else { echo "Inspector ".$asig; } } ?> 
 
           <?php $file=$proy_long['form_field_28'];
-           if($paso==5){ ?> <!-- <a href="#" class="btn btn-sm btn-warning small">Ver reporte</a> --> <?php } ?>
+           $fecha_re=$proy_long['form_field_25']; ?>
+          <?php if($paso==5){ if (!empty($fecha_re)) { echo "Inspección realizada el ".$proy_long['form_field_25'];} } ?>
 
-          <?php if($paso==6){ echo $proy_long['form_field_27']; } ?>
+          <?php if($paso==6){ echo "Su arreglo ha sido ".$proy_long['form_field_27']; } ?>
 
-          <?php if($paso==7){ echo $proy_long['form_field_25']; } ?>
+          <?php if($paso==7){ echo "Arreglo agendado para ".$proy_long['form_field_25']; } ?>
 
           <?php $asigb=$proy_long['form_field_27']; if($paso==8){ 
             if (empty($asigb)) { ?> 
             <!-- <a href="{site_url}main/<?php echo "gym_assign_insp?id_sol_garantia=".$id_sol_garantia."&paso=8&id_cliente=".$id_cliente; ?>" class="btn btn-sm small btn-default">Asignar Personal</a> -->
 
-            <form method="post" enctype="multipart/form-data" name="frm" id="frm" action="/?/main/gym_write_insp" class="p-14">
+            <!-- <form method="post" enctype="multipart/form-data" name="frm" id="frm" action="/?/main/gym_write_insp" class="p-14">
 
               <div class="form-group">
                 <select name="persona_asignada" id="" class="form-control input-lg select-override">
@@ -97,18 +98,22 @@ $tit_problema = $obten[15];
                 <input type="hidden" name="XID" value="{XID_HASH}" />
                 <input type="hidden" name="paso" value="8" /> 
                 <input type="submit" class="btn btn-sm btn-warning small" value="Procesar">
-            </form>
+            </form> -->
 
-            <?php } else { echo $asigb; } } ?>
+            <?php } else { echo "Constructor ".$asigb; } } ?>
 
-          <?php if($paso==9){ ?> <!-- <a href="#" class="btn btn-sm btn-warning small">Ver reporte</a> --> <?php } ?>
+          <?php $fecha_nueve=$proy_long['form_field_25']; if($paso==9){ 
+            if (empty($fecha_nueve)) {  } else { echo "Arreglo realizado el ".$fecha_nueve; } } ?> 
+
+          <?php $estatus=$proy_long['form_field_27']; if($paso==10){ 
+            if ($estatus=="Cerrado") { ?> Cerrado <?php } else { } } ?> 
 
         </td>
         <td><?php echo $file;?></td>
       </tr>
 
-    </tbody>
+    
 
     <?php } ; ?>
-
+</tbody>
 </table>

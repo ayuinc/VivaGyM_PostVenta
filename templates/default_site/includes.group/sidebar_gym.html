@@ -1,0 +1,93 @@
+<div class="col-md-3 col-sm-3">
+
+	<?php $id_sol_garantia="{embed:entrada}"; ?>
+
+	{exp:freeform:entries form_id="4" search:id_sol_garantia="{embed:entrada}" search:orden_tramite="4" limit="1" status="open" }
+		<!-- {freeform:field:accion_ticket}-{freeform:field:id_sol_garantia}-
+		{freeform:field:id_cliente}-{freeform:field:orden_tramite} -->
+
+		{if freeform:field:orden_tramite=='4'}
+			<?php $paso_cuatro="1"; ?>
+			<div class="panel">
+		    <div class="panel-heading bg-danger">
+		      <div class="panel-title text-muted">
+		        Acción pendiente
+		      </div>
+		    </div>
+		    <div class="panel-body">
+		      <p>¿Cuál inspector será asignado a este caso?</p>
+		      <form method="post" enctype="multipart/form-data" name="frm" id="frm" action="/?/main/gym_write_insp">
+		        <div class="form-group">
+		          <select name="persona_asignada" id="" class="form-control input-sm select-override">
+                  <option value="">Seleccione</option>
+                  <option value="Inspector 1">Inspector 1</option>
+                  <option value="Inspector 2">Inspector 2</option>
+                </select>
+		        </div>
+
+		        <div class="text-left button-submit">
+		        	<input type="hidden" name="id_cliente" value="{freeform:field:id_cliente}" >
+				      <input type="hidden" name="id_sol_garantia" value="{embed:entrada}" >
+				      <input type="hidden" name="persona_asignada_gym" value="{screen_name}" />
+				      <input type="hidden" name="XID" value="{XID_HASH}" />
+				      <input type="hidden" name="paso" value="4" />
+				      <input type="submit" class="btn uppercase btn-success" name="submit" value="Procesar" />
+		        </div>
+		      </form>
+		    </div>
+		  </div>
+		{/if}
+
+	{/exp:freeform:entries}
+
+	{exp:freeform:entries form_id="4" search:id_sol_garantia="{embed:entrada}" search:orden_tramite="8" limit="1" status="open" }
+		<!-- {freeform:field:accion_ticket}-{freeform:field:id_sol_garantia}-
+		{freeform:field:id_cliente}-{freeform:field:orden_tramite} -->
+
+		{if freeform:field:orden_tramite=='8'}
+			<?php $paso_ocho="1"; ?>
+			<div class="panel">
+		    <div class="panel-heading bg-danger">
+		      <div class="panel-title text-muted">
+		        Acción pendiente
+		      </div>
+		    </div>
+		    <div class="panel-body">
+		      <p>¿Cuál agente será asignado a este caso?</p>
+		      <form method="post" enctype="multipart/form-data" name="frm" id="frm" action="/?/main/gym_write_insp">
+		        <div class="form-group">
+		          <select name="persona_asignada" id="" class="form-control input-sm select-override">
+                  <option value="">Seleccione</option>
+                  <option value="Constructor 1">Constructor 1</option>
+                  <option value="Constructor 2">Constructor 2</option>
+                </select>
+		        </div>
+
+		        <div class="text-left button-submit">
+		        	<input type="hidden" name="id_cliente" value="{freeform:field:id_cliente}" >
+				      <input type="hidden" name="id_sol_garantia" value="{embed:entrada}" >
+				      <input type="hidden" name="XID" value="{XID_HASH}" />
+				      <input type="hidden" name="paso" value="8" />
+				      <input type="submit" class="btn uppercase btn-success" name="submit" value="Procesar" />
+		        </div>
+		      </form>
+		    </div>
+		  </div>
+		{/if}
+
+	{/exp:freeform:entries}
+
+	<?php if(($paso_cuatro==0) and ($paso_ocho==0)) {?>
+ 			<div class="panel">
+		    <div class="panel-heading bg-danger">
+		      <div class="panel-title text-muted">
+		        Acción pendiente
+		      </div>
+		    </div>
+		    <div class="panel-body">
+		      <p>No tiene acción pendiente</p>
+		    </div>
+		  </div>
+	<?php } ?>
+
+</div>

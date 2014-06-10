@@ -1,4 +1,4 @@
-{exp:freeform:entries form_id="2" orderby="entry_id" sort="desc" search:etapa_solicitud="{embed:filtro}" status="open|closed" limit="30" paginate="both" }
+{exp:freeform:entries form_id="2" orderby="entry_id" sort="desc" search:etapa_solicitud="{embed:filtro}" status="open|closed" limit="20" paginate="bottom" }
 <?php $estatus_ticket="{freeform:status}"; ?>
 <tr>
   <td><?php echo $id_sol_garantia="{freeform:entry_id}"; ?></td>
@@ -68,4 +68,17 @@
     <a href="{site_url}main/ticket_detail/{freeform:entry_id}" class="small text-danger underline">
           Ver detalle</a></td>
 </tr>
+
+  {if freeform:no_results}<p>Sin solicitudes pendientes.</p>{/if}
+ 
+  {if freeform:total_pages > 1}
+    {freeform:paginate}
+      Página {freeform:current_page}
+      de {freeform:total_pages}
+      páginas &nbsp;
+      {freeform:pagination_links}
+    {/freeform:paginate}
+  {/if}
+
+    
 {/exp:freeform:entries}
