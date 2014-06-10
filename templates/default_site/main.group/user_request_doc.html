@@ -12,8 +12,9 @@
 	     complejo_propietario= "{complejo_depa}"
 	     torre_propietario= "{torre_depa}"
 	     departamento_propietario= "{cod_depa}"
-	     documento = {freeform:field:documento_solicitado}
-	{/exp:mandrillapp:send_email_request_doc}  
+	     documento = "{freeform:field:documento_solicitado}"
+	   {/exp:mandrillapp:send_email_request_doc}  
+   {/exp:freeform:entries}
 {/exp:user:stats}
 
 
