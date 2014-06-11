@@ -109,7 +109,19 @@ $tit_problema = $obten[15];
             if ($estatus=="Cerrado") { ?> Cerrado <?php } else { } } ?> 
 
         </td>
-        <td><?php echo $file;?></td>
+        <td>
+          <?php if($paso==5){ ?>
+            {exp:freeform:entries form_id="4" search:id_sol_garantia="{embed:entrada}" search:orden_tramite="5"  limit="1" status="open|closed" } 
+            <a target="_blank" href="{site_url}informes_viva/{freeform:field:informe_inspeccion}" >Ver reporte</a>
+            {/exp:freeform:entries}
+          <?php } ?>
+
+          <?php if($paso==9){ ?>
+            {exp:freeform:entries form_id="4" search:id_sol_garantia="{embed:entrada}" search:orden_tramite="9"  limit="1" status="open|closed" } 
+            <a target="_blank" href="{site_url}informes_viva/{freeform:field:informe_inspeccion}" >Ver reporte</a>
+            {/exp:freeform:entries}
+          <?php } ?>
+        </td>
       </tr>
 
     

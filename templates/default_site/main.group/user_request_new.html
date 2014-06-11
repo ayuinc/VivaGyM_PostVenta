@@ -1,23 +1,20 @@
 {embed="includes/header"}
 
-<SCRIPT type="text/javascript">
-
+<script type="text/javascript">
   function SwitchHiddenDiv(){
     var evento = document.getElementById("SelectedType").options[document.getElementById("SelectedType").selectedIndex].value;
-  switch (evento){
-    case 'no': 
-  document.getElementById('casilla').style.display="none";
-  break;
-    case 'si':
-  document.getElementById('casilla').style.display="block";
-  break;
-    default:
-  alert("Unknown type");
+    switch (evento){
+      case 'no': 
+    document.getElementById('casilla').style.display="none";
+    break;
+      case 'si':
+    document.getElementById('casilla').style.display="block";
+    break;
+      default:
+    alert("Unknown type");
+    }
   }
-
-  }
-
-</SCRIPT>
+</script>
   
 {embed="includes/bredcrumbs"}  
   
@@ -127,6 +124,7 @@
             <input type="hidden" name="etapa_solicitud" value="1" >
               {exp:member:custom_profile_data}
               <input type="hidden" name="departamento_en_consulta" value="{cod_depa}" >
+              <input type="hidden" name="last_name" value="{nombre_propietario} {ap_pat} {ap_mat}" >
               {/exp:member:custom_profile_data}
               <input type="hidden" name="email" value="{email}" >
               <input type="hidden" name="id_cliente" value="{member_id}" >

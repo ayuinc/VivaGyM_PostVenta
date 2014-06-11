@@ -2,6 +2,7 @@
 
 <!--{group_id}
 <script type="text/javascript" src="{site_url}lib/viva_dashboard.js"></script>-->
+<?php $ordenar=$_POST['ordenar']; ?>
 
 {embed="includes/bredcrumb_admin" }
 
@@ -14,13 +15,20 @@
               <h4 class="uppercase medium"><i class="icon-docs"></i> Solicitudes</h4>
             </div>
             <div class="col-sm-3 col-sm-offset-3">
-              <!-- <form>
+              <form method="post" enctype="multipart/form-data" action="/?/main/admin_dashboard">
                 <div class="form-group">
-                  <select name="" id="" class="select-override form-control">
+                  <select name="ordenar" id="" class="select-override form-control">
                     <option value="">Ordenar por</option>
+                    <option value="entry_id" <?php if($ordenar=="entry_id"){echo "selected";} ?> >Nro. ticket</option>
+                    <option value="entry_date" <?php if($ordenar=="entry_date"){echo "selected";} ?> >Fecha</option>
+                    <option value="departamento_en_consulta" <?php if($ordenar=="departamento_en_consulta"){echo "selected";} ?>>Departamento</option>
+                    <option value="tipo_de_problema" <?php if($ordenar=="tipo_de_problema"){echo "selected";} ?>>Tipo de problema</option>
+                    <option value="last_name" <?php if($ordenar=="last_name"){echo "selected";} ?>>Propietario</option>
                   </select>
+                  <input type="hidden" name="XID" value="{XID_HASH}" />
+                  <input type="submit" class="btn uppercase btn-success" name="submit" value="Ordenar" />
                 </div>
-              </form> -->
+              </form>
             </div>
           </div>
           <hr class="m-0">
@@ -50,19 +58,19 @@
                     {exp:switchee variable = "{group_id}" parse="inward"}
                       
                       {case value="7"}<!-- admin viva 7 -->
-                        {embed="main/lista_admin" filtro="1|2|3|4|5|6|7|8|9|10|11"}
+                        {embed="main/lista_admin" filtro="1|2|3|4|5|6|7|8|9|10|11" ordenar="<?php echo $ordenar; ?>"}
                       {/case}
 
                       {case value="8"}<!-- admin GyM 8 -->
-                        {embed="main/lista_admin" filtro="1|2|3|4|5|6|7|8|9|10|11"}
+                        {embed="main/lista_admin" filtro="1|2|3|4|5|6|7|8|9|10|11" ordenar="<?php echo $ordenar; ?>"}
                       {/case}
 
                       {case value="9"}<!-- inspector viva 9 -->
-                        {embed="main/lista_admin" filtro="5"}
+                        {embed="main/lista_admin" filtro="5" ordenar="<?php echo $ordenar; ?>"}
                       {/case}
 
                       {case value="10"}<!-- personal GyM que ejecuta el arreglo  10 -->
-                        {embed="main/lista_admin" filtro="8"}
+                        {embed="main/lista_admin" filtro="8" ordenar="<?php echo $ordenar; ?>"}
                       {/case}
                       
                     {/exp:switchee}

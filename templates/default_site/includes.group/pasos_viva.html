@@ -143,7 +143,28 @@ $tit_problema = $obten[15];
             <?php } else { echo $procedec; } } ?>
 
         </td>
-        <td><?php echo $file;?></td>
+        <td>
+
+          <?php if($paso==5){ ?>
+            {exp:freeform:entries form_id="4" search:id_sol_garantia="{embed:entrada}" search:orden_tramite="5"  limit="1" status="open|closed" } 
+            <?php $archivo_cinco="{freeform:field:informe_inspeccion}";  
+              if(empty($archivo_cinco)) {  ?>
+              <a target="_blank" href="{site_url}informes_viva/{freeform:field:informe_inspeccion}" >Ver reporte</a>
+              <?php }  ?>
+            {/exp:freeform:entries}
+          <?php } ?>
+
+          <?php if($paso==9){ $archivo_nueve="{freeform:field:informe_inspeccion}";  
+            if(empty($archivo_nueve)) { ?>
+
+              {exp:freeform:entries form_id="4" search:id_sol_garantia="{embed:entrada}" search:orden_tramite="9"  limit="1" status="open|closed" } 
+              <a target="_blank" href="{site_url}informes_viva/{freeform:field:informe_inspeccion}" >Ver reporte</a>
+              {/exp:freeform:entries}
+              <?php } 
+          } ?>
+
+          <!-- <a target="_blank" href="{site_url}informes_viva/<?php echo $file;?>" >Ver</a>
+          <?php echo $file;?> --></td>
       </tr>
 
     
