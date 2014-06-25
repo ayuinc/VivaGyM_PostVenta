@@ -62,7 +62,14 @@ if($cliente_ausente=="si"){
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-
+  		<h1>
+  			{exp:get_post_vars parse="inward"}
+				Email_propietario: {email_propietario}
+				Nombre_propietario: {nombre_propietario}
+				Screen Name: {screen_name}
+				email: {email}
+			{/exp:get_post_vars}
+		</h1>	
   		<h1>¡Listo! El informe de arreglo de la solicitud #<?php echo $id_sol_garantia; ?> ha sido ingresado</h1>
 
 	  <p>Puedes hacerle seguimiento a las solicitudes en la sección de “Panel de control”</p>
