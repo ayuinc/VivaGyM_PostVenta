@@ -15,8 +15,6 @@
 		      </div>
 		    </div>
 		    <div class="panel-body">
-		      <p>Ingresar su informe</p>
-
 		      {embed="includes/form_insp" 
               id_sol_garantia="{embed:entrada}"
               paso="5"
@@ -29,7 +27,32 @@
 
 	{/exp:freeform:entries}
 
-	<?php if($paso_cinco==0) {?>
+	{exp:freeform:entries form_id="4" search:id_sol_garantia="{embed:entrada}" search:orden_tramite="9" limit="1" status="open" }
+		<!-- {freeform:field:accion_ticket}-{freeform:field:id_sol_garantia}-
+		{freeform:field:id_cliente}-{freeform:field:orden_tramite} -->
+
+		{if freeform:field:orden_tramite=='9'}
+			<?php $paso_nueve="1"; ?>
+			<div class="panel">
+		    <div class="panel-heading bg-danger">
+		      <div class="panel-title text-muted">
+		        Acción pendiente
+		      </div>
+		    </div>
+		    <div class="panel-body">
+		      {embed="includes/form_cons" 
+              id_sol_garantia="{embed:entrada}"
+              paso="9"
+              id_cliente="{freeform:field:id_cliente}"
+              entry_id="{freeform:entry_id}" }
+
+		    </div>
+		  </div>
+		{/if}
+
+	{/exp:freeform:entries}
+
+	<?php if(($paso_cinco==0) and ($paso_nueve==0)){?>
  			<div class="panel">
 		    <div class="panel-heading bg-danger">
 		      <div class="panel-title text-muted">
@@ -41,5 +64,37 @@
 		    </div>
 		  </div>
 	<?php } ?>
+
+	{exp:freeform:entries form_id="4" search:id_sol_garantia="{embed:entrada}" search:orden_tramite="3" limit="1" status="closed"}
+		{if freeform:field:dueno_atiende_ticket=='no'}
+			<div class="panel">
+		    <div class="panel-heading bg-danger">
+		      <div class="panel-title text-muted">Contacto inspección</div>
+		    </div>
+		    <div class="panel-body">
+		      <p><li>Relación: {freeform:field:relacion_dueno_departamento}</li>
+		          <li>Nombre: {freeform:field:nombre_encargado_atencion}</li>
+		          <li>Email: {freeform:field:email_encargado_atencion}</li>
+		          <li>Teléfono: {freeform:field:celular_encargado_atencion}</li></p>
+		    </div>
+			</div>
+		{/if}
+	{/exp:freeform:entries}
+
+	{exp:freeform:entries form_id="4" search:id_sol_garantia="{embed:entrada}" search:orden_tramite="7" limit="1" status="closed"}
+		{if freeform:field:dueno_atiende_ticket=='no'}
+			<div class="panel">
+		    <div class="panel-heading bg-danger">
+		      <div class="panel-title text-muted">Contacto arreglo</div>
+		    </div>
+		    <div class="panel-body">
+		      <p><li>Relación: {freeform:field:relacion_dueno_departamento}</li>
+		          <li>Nombre: {freeform:field:nombre_encargado_atencion}</li>
+		          <li>Email: {freeform:field:email_encargado_atencion}</li>
+		          <li>Teléfono: {freeform:field:celular_encargado_atencion}</li></p>
+		    </div>
+			</div>
+		{/if}
+	{/exp:freeform:entries}
 
 </div>

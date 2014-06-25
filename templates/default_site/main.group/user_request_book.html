@@ -1,17 +1,12 @@
 {embed="includes/header" }
+{exp:generar_fechas tipo_cal="insp"}
 
-<?php $id_sol_garantia="{segment_3}";
-$site_url="{site_url}"; ?>
+<?php $id_sol_garantia="{segment_3}"; $site_url="{site_url}"; ?>
 
 <script src='{site_url}lib/jquery.min.js'></script>
 <script src='{site_url}lib/jquery-ui.custom.min.js'></script>
 <script src='{site_url}fullcalendar/fullcalendar.min.js'></script>
-
-<?php //include("settings_script.php"); ?>
-
 <script>
-  
-  //var $id_sol_garantia=43;
 
   var $id_sol = <?php echo json_encode($id_sol_garantia);?>
 
@@ -51,7 +46,7 @@ $site_url="{site_url}"; ?>
           editable: false,
           hiddenDays: [0, 6],
 
-          events: "http://162.243.222.54/json-fechas.php?id_sol_garantia="+$id_sol,
+          events: "http://162.243.222.54/fullcalendar/new_fechas_insp.php?id_sol_garantia="+$id_sol,
 
         });
       } else {
@@ -89,7 +84,7 @@ $site_url="{site_url}"; ?>
           editable: false,
           hiddenDays: [0, 6],
 
-          events: "http://162.243.222.54/json-fechas.php?id_sol_garantia="+$id_sol,
+          events: "http://162.243.222.54/fullcalendar/new_fechas_insp.php?id_sol_garantia="+$id_sol,
 
         });
       }
@@ -118,6 +113,9 @@ $id_cliente="{member_id}";
     </div>
     <div class="col-sm-1"></div>
   </div>
+
+  {embed="includes/ver_reagenda" entrada="{segment_3}" paso="3"}
+
   <div class="row">
     <div class="col-sm-1"></div>
     <div class="col-sm-6">
@@ -130,7 +128,7 @@ $id_cliente="{member_id}";
             <div class="col-sm-6 text-right">
               <div>
                 <small>
-                  <span class="bold">Horarios de arreglos</span><br>
+                  <span class="bold">Horarios de inspección</span><br>
                   9:00 am - 2:00 pm de lunes a viernes
                 </small>
               </div>
@@ -155,26 +153,42 @@ $id_cliente="{member_id}";
           <div class="form-group pt-14">
             <small>Asegúrate que puedes estar en tu departamento en la fecha y hora que agendas tu cita. Te enviaremos una notificación y un correo el día anterior para recordarte.</small>
           </div>
+
+          {exp:freeform:entries form_id="4" search:id_sol_garantia="{segment_3}" search:orden_tramite="3" limit="1" status="open|closed"}
+          <?php  $rel=strtolower("{freeform:field:relacion_dueno_departamento}"); $due="{freeform:field:dueno_atiende_ticket}";?>
+
           <div class="form-group">
-            <small>Asigna a alguien para coordinar la inspección <a data-toggle="collapse" href="#form-collapse" class="underline">aquí</a></small>
+            <?php 
+            if($due=="no"){ ?>
+              <small>Edite los datos de la persona responsable de la inspección.</small> 
+            <?php }
+            else{ ?>
+              <small>Asigna a alguien para coordinar el arreglo <a data-toggle="collapse" href="#form-collapse" class="underline">aquí</a></small> 
+            <?php } ?>
 
           </div>
-          <div id="form-collapse" class="collapse">
+
+          <div id="form-collapse" <?php if($due=="no"){}else{ echo "class='collapse'";} ?>>
             <div class="form-group">
+              
               <select name="relacion_dueno_departamento" class="form-control select-override">
-                <option value="Familiar">Familiar</option>
-                <option value="Amigo">Amigo</option>
+                <option value="">Seleccione</option>
+                <option value="Familiar" <?php if($rel=="familiar"){echo 'selected="selected"';} ?>>Familiar</option>
+                <option value="Amigo" <?php if($rel=="amigo"){echo 'selected="selected"';} ?>>Amigo</option>
               </select>
             </div>
             <div class="form-group">
-              <input type="text" placeholder="Nombre" name="nombre_encargado_atencion" class=" form-control">
+              <input type="text" placeholder="Nombre" name="nombre_encargado_atencion" class=" form-control" 
+              value="{freeform:field:nombre_encargado_atencion}">
             </div>
             <div class="form-group">
-              <input type="text" placeholder="Celular" name="celular_encargado_atencion" class=" form-control">
+              <input type="text" placeholder="Celular" name="celular_encargado_atencion" class=" form-control" value="{freeform:field:celular_encargado_atencion}">
             </div>
             <div class="form-group">
-              <input type="email" placeholder="Correo electrónico" name="email_encargado_atencion" class=" form-control">
+              <input type="email" placeholder="Correo electrónico" name="email_encargado_atencion" class=" form-control" value="{freeform:field:email_encargado_atencion}">
             </div>
+            {/exp:freeform:entries}
+
         </div>
               <input type="hidden" name="XID" value="{XID_HASH}" /> 
               <input type="hidden" placeholder="id_cliente" name="id_cliente" class=" form-control input-lg" value="<?php echo $id_cliente; ?>">

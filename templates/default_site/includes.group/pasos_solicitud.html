@@ -41,35 +41,41 @@
                         elseif ($edit_time>0) {echo date('d-m-Y', $edit_time); }  ?></td> <!-- fecha  -->
 
         <td><?php $paso=$proy_long['form_field_19']; $fecha_insp=$proy_long['form_field_27']; ?>
-          <?php if (!empty($fecha_insp)) { if($paso==2){ echo "Su solicitud de inspección ha sido ".$proy_long['form_field_27']; } } ?>
+          <?php if (!empty($fecha_insp)) { if($paso==2){ echo "Su solicitud de inspección ha sido ".strtoupper($proy_long['form_field_27']); } } ?>
 
-          <?php $fecha=$proy_long['form_field_25']; 
+           <?php $fecha_re=$proy_long['form_field_25']; 
           if($paso==3){ 
-                if (empty($fecha)) { ?> 
-                <!-- <a href="{site_url}main/<?php echo "user_request_book/".$id_sol_garantia; ?>" 
-              class="btn btn-sm btn-warning small">Agendar</a> -->
-               <?php } 
-          else { echo "Inspección agendada para ".$fecha; ?> 
-          <!--<a href="{site_url}index.php/main/<?php echo "user_cancel_book/".$id_sol_garantia; ?>" 
-          class="btn btn-sm btn-warning small">Cancelar</a>--><?php } 
-              }; ?>
+            if (!empty($fecha_re)) { $reagenda_c=$proy_long['form_field_32'];
+              if ($reagenda_c==0) { echo "Inspección agendada para ".$fecha_re;}
+              if ($reagenda_c==1) { echo "Inspección agendada para ".$fecha_re;}
+              if ($reagenda_c==2) { echo "Inspección reagendada para ".$fecha_re;}
+              if ($reagenda_c>2) { echo "Inspección reagendada para ".$fecha_re;}
+              if ($reagenda_c<3) {  ?>
+              <a href="{site_url}main/<?php echo "user_request_book/".$id_sol_garantia; ?>" >Reagendar</a><?php 
+              } 
+            }
+            else {  }
+          } ?>
 
           <?php $fecha_re=$proy_long['form_field_25']; ?>
           <?php if($paso==5){ if (!empty($fecha_re)) { echo "Inspección realizada el ".$proy_long['form_field_25'];} } ?>
 
           <?php $approving=$proy_long['form_field_27']; ?>
-          <?php if($paso==6){ if (!empty($approving)) { echo "Su arreglo ha sido ".$proy_long['form_field_27']; } } ?>
+          <?php if($paso==6){ if (!empty($approving)) { echo "Su arreglo ha sido ".strtoupper($proy_long['form_field_27']); } } ?>
 
           <?php $fecha_siete=$proy_long['form_field_25']; 
           if($paso==7){ 
-                if (empty($fecha_siete)) { ?> 
-                <!-- <a href="{site_url}main/<?php echo "user_request_fixing/".$id_sol_garantia; ?>" 
-          class="btn btn-sm btn-warning small">Agendar</a>  -->
-          <?php } 
-          else { echo "Arreglo agendado para ".$fecha_siete; ?>
-          <!--<a href="{site_url}index.php/main/<?php echo "user_request_book/".$id_sol_garantia; ?>" 
-          class="btn btn-sm btn-warning small">Cancelar</a>--><?php }
-              } ?> 
+                if (!empty($fecha_siete)) { $reagenda=$proy_long['form_field_32'];
+                  if ($reagenda==0) { echo "Arreglo agendado para ".$fecha_siete;}
+                  if ($reagenda==1) { echo "Arreglo agendado para ".$fecha_siete;}
+                  if ($reagenda==2) { echo "Arreglo reagendado para ".$fecha_siete;}
+                  if ($reagenda>2) { echo "Arreglo reagendado para ".$fecha_siete;}
+                  if ($reagenda<3) {  ?>
+                  <a href="{site_url}main/<?php echo "user_request_fixing/".$id_sol_garantia; ?>" >Reagendar</a><?php 
+                  } 
+                }
+                else {  }
+          } ?> 
 
           <?php $fecha_nueve=$proy_long['form_field_25']; if($paso==9){ 
             if (empty($fecha_nueve)) {  } else { echo "Arreglo realizado el ".$fecha_nueve; } } ?> 

@@ -35,6 +35,12 @@
                   {exp:user:stats member_id="{freeform:field:id_cliente}"}
                   {nombre_propietario} {ap_pat} {ap_mat}{/exp:user:stats}
                 </li>
+
+                <li class="mb-7"><strong>Fecha entrega del dpto.</strong><br>
+                  {exp:user:stats member_id="{freeform:field:id_cliente}"}
+                  {fecha_entrega} {/exp:user:stats}
+                </li>
+
                 <li class="mb-7"><strong>Departamento</strong><br>
                   {exp:user:stats member_id="{freeform:field:id_cliente}"}{cod_depa}{/exp:user:stats}
                 </li>
@@ -47,7 +53,7 @@
             <div class="col-sm-4">
               <h5 class="light uppercase">Datos del responsable</h5>
               <ul class="list-unstyled">
-                <li class="mb-7"><strong>Fecha</strong><br>{freeform:entry_date format="%j %F %Y"}</li>
+                <li class="mb-7"><strong>Fecha de solicitud</strong><br>{freeform:entry_date format="%j %F %Y"}</li>
                 <li class="mb-7"><strong>Responsable Viva</strong><br>{freeform:field:persona_asignada_gym}</li>
                 <li class="mb-7"><strong>Responsable GyM</strong><br>{freeform:field:persona_asignada_viva}</li>
                 <li class="mb-7"><strong>Inspector</strong><br>{freeform:field:inspector_asignado}</li>
@@ -55,6 +61,7 @@
               </ul>
             </div>
           </div>
+
           <div class="row mt-21">
             <div class="col-sm-12">
               <div class="descripcion p-14 box-shadow">
@@ -64,35 +71,51 @@
               </div>
             </div>
           </div>
+
           <div class="row">
             <div class="col-sm-12">
               <div class="table-responsive">
 
                 {exp:member:custom_profile_data}
-                    {exp:switchee variable = "{group_id}" parse="inward"}
-                      
-                      {case value="7"}<!-- admin viva 7 -->
-                        {embed="includes/pasos_viva" entrada="{segment_3}"}
-                      {/case}
+                  {exp:switchee variable = "{group_id}" parse="inward"}
+                    
+                    {case value="7"}<!-- admin viva 7 -->
+                      {embed="includes/pasos_viva" entrada="{segment_3}"}
+                    {/case}
 
-                      {case value="8"}<!-- admin GyM 8 -->
-                        {embed="includes/pasos_gym" entrada="{segment_3}"}
-                      {/case}
+                    {case value="8"}<!-- admin GyM 8 -->
+                      {embed="includes/pasos_gym" entrada="{segment_3}"}
+                    {/case}
 
-                      {case value="9"}<!-- inspector viva 9 -->
-                      
-                      {/case}
+                    {case value="9"}<!-- inspector viva 9 -->
+                    
+                    {/case}
 
-                      {case value="10"}<!-- personal GyM que ejecuta el arreglo  10 -->
-                        
-                      {/case}
+                    {case value="10"}<!-- personal GyM que ejecuta el arreglo  10 -->
                       
-                    {/exp:switchee}
+                    {/case}
+                    
+                  {/exp:switchee}
                 {/exp:member:custom_profile_data}
 
               </div>
             </div>
           </div>
+
+          <div class="row mt-21">
+            <div class="col-sm-12">
+              <div class="descripcion p-14 box-shadow">
+                <h5 class="light uppercase">Comentarios</h5>
+                <hr class="double">
+                <!-- <p>{freeform:field:comentarios_garantia}</p> -->
+
+                {embed="includes/admin_comentarios" entrada="{segment_3}"}
+
+
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>

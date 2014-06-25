@@ -5,19 +5,26 @@
   restrict_edit_to_author="no"
   return="main/user_close/{embed:id_sol_garantia}/{embed:paso}/{embed:id_cliente}/{embed:entry_id}"
   allow_status_edit="yes" 
-}
+} 
   <div class="form-group">
-    {freeform:field:informe_inspeccion}
-    </div>
+    El responsable se encuentra en el inmueble
+    <select name="cliente_ausente" class="form-control select-override input-sm option-select">
+      <option value="si">Sí</option>
+      <option value="no">No</option>
+    </select>
+  </div>
 
   <div class="form-group">
-    <p>-</p>
-    <textarea name="comentarios" id="" rows="4" class="form-control" placeholder="Ingrese comentarios adicionales acerca de la inspección."></textarea>
+    <p>Ingresar su informe de arreglo</p>
+    {freeform:field:informe_inspeccion}
+  </div>
+
+  <div class="form-group"><br>
+    <textarea name="comentarios" id="" rows="4" class="form-control" placeholder="Ingrese comentarios adicionales acerca de la inspección.">{freeform:edit_data:comentarios}</textarea>
     <p class="help-block text-right text-warning">Máximo 250 caracteres</p>
   </div>
   
   <div class="text-left button-submit">
-    <input type="hidden" name="status" value="closed" >
     <input type="hidden" name="id_cliente" value="{embed:id_cliente}" >
     <input type="hidden" name="id_sol_garantia" value="{embed:id_sol_garantia}" >
     <input type="hidden" name="paso" value="{embed:paso}" >

@@ -18,7 +18,7 @@ $lang = array(
 'Mostrar smilies en entradas.',
 
 'invalid_email_address' => 
-'No enviastes una direccion de correo valida',
+'No enviaste una direccion de correo valida',
 
 'disallowed_screen_chars' => 
 'Nombre de Pantalla contiene caracteres ilegales',
@@ -72,7 +72,7 @@ $lang = array(
 'Debes llenar todos los campos',
 
 'invalid_existing_un_pw' => 
-'El nombre de usuario y password existente que enviastes no son validos',
+'El nombre de usuario o password que ingresaste no son validos.',
 
 'unpw_updated' => 
 'Tus preferencias han sido actualizadas. Ahora puede iniciar tu sesion.',
@@ -426,7 +426,7 @@ $lang = array(
 'Debes confirmar tu contraseña para completar esta accion.',
 
 'invalid_pw' => 
-'La contraseña que enviastes no es valida.',
+'La contraseña que enviaste no es valida.',
 
 'mbr_delete_blurb' => 
 'Estas seguro que deseas borrar tu cuenta? Todas las entradas, mensajes, comentarios y otro contenido asociado con tu cuenta tambien sera borrado.',

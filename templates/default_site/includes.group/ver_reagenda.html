@@ -1,0 +1,41 @@
+<?php $id_sol_garantia="{embed:entrada}"; ?>
+{exp:freeform:entries form_id="4" search:id_sol_garantia="{embed:entrada}" search:orden_tramite="{embed:paso}" limit="1" status="closed" }
+			<!-- {freeform:field:accion_ticket}-{freeform:field:id_sol_garantia}-
+			{freeform:field:id_cliente}-{freeform:field:orden_tramite} -->
+
+	{if freeform:field:orden_tramite=='3'}
+		<div class="row">
+		  <div class="col-sm-1"></div>
+		    <div class="col-sm-10">
+				
+					<ol class="breadcrumb">
+					<?php $veces="{freeform:field:reasignar_agenda}"; 
+					if ($veces!=0){echo "Usted ha agendado su visita de inspección {freeform:field:reasignar_agenda} "; 
+					if ($veces>1){echo "veces.";}; 
+					if ($veces==1){echo "vez.";}
+					} ?> 
+					Recuerde que solo puede reagendar la visita 2 veces como máximo.
+					</ol>
+		    </div>
+		  <div class="col-sm-1"></div>
+		</div>
+	{/if}
+
+	{if freeform:field:orden_tramite=='7'}
+		<div class="row">
+		  <div class="col-sm-1"></div>
+		    <div class="col-sm-10">
+				
+					<ol class="breadcrumb">
+					<?php $veces="{freeform:field:reasignar_agenda}"; 
+					if ($veces!=0){echo "Usted ha agendado su visita de inspección {freeform:field:reasignar_agenda} "; 
+					if ($veces>1){echo "veces.";}
+					if ($veces==1){echo "vez.";}
+					} ?> 
+					Recuerde que solo puede reagendar la visita 2 veces como máximo.
+					</ol>
+		    </div>
+		  <div class="col-sm-1"></div>
+		</div>
+	{/if}
+{/exp:freeform:entries}

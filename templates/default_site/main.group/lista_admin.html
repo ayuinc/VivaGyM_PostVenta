@@ -1,9 +1,18 @@
 
-{exp:freeform:entries form_id="2" orderby="{embed:ordenar}" sort="asc" search:etapa_solicitud="{embed:filtro}" status="open|closed" limit="20" paginate="bottom" }
+{exp:freeform:entries form_id="2" orderby="{embed:ordenar}" sort="desc" search:etapa_solicitud="{embed:filtro}" status="open|closed" limit="20" paginate="bottom" }
 <?php $estatus_ticket="{freeform:status}"; ?>
 <tr>
   <td><?php echo $id_sol_garantia="{freeform:entry_id}"; ?></td>
+
   <td>{freeform:entry_date format="%d-%m-%Y a %g:%i %a"}</td>
+
+  <td>
+      <?php $caso_inactivo="{freeform:field:caso_inactivo}";
+      if ($caso_inactivo==1){ ?> <img src="{site_url}images/bandera-roja.png" width="16" height="16" > <?php }?>
+
+      <?php $prioridad="{freeform:field:prioridad}";
+      if ($prioridad==1){ ?> <img src="{site_url}images/estrella_dorada.png" width="16" height="16" > <?php }?>
+  </td>
   <td>
     {freeform:field:last_name}
     <!-- {exp:user:stats member_id="{freeform:field:id_cliente}"}

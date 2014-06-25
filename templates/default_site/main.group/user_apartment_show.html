@@ -1,5 +1,36 @@
 {embed="includes/header" }
 
+<?php
+
+function compararFechas($primera, $segunda)
+ {
+  $valoresPrimera = explode ("-", $primera);   
+  $valoresSegunda = explode ("-", $segunda); 
+
+  $diaPrimera    = $valoresPrimera[0];  
+  $mesPrimera  = $valoresPrimera[1];  
+  $anyoPrimera   = $valoresPrimera[2]; 
+
+  $diaSegunda   = $valoresSegunda[0];  
+  $mesSegunda = $valoresSegunda[1];  
+  $anyoSegunda  = $valoresSegunda[2];
+
+  $diasPrimeraJuliano = gregoriantojd($mesPrimera, $diaPrimera, $anyoPrimera);  
+  $diasSegundaJuliano = gregoriantojd($mesSegunda, $diaSegunda, $anyoSegunda);     
+
+  if(!checkdate($mesPrimera, $diaPrimera, $anyoPrimera)){
+    // "La fecha ".$primera." no es válida";
+    return 0;
+  }elseif(!checkdate($mesSegunda, $diaSegunda, $anyoSegunda)){
+    // "La fecha ".$segunda." no es válida";
+    return 0;
+  }else{
+    return  ($diasPrimeraJuliano-$diasSegundaJuliano);
+  } 
+
+}
+
+ ?>
   {embed="includes/bredcrumbs"}
   
   <div class="row">
@@ -17,11 +48,24 @@
         <div class="panel-body p-0">
           <h4 class="light">Información</h4>
           <ul class="list-unstyled">
-            <li class="mb-7"><strong>Complejo:</strong> <br>Los Parques de San Martín de Porres</li>
-            <li class="mb-7"><strong>Torre:</strong> <br>B</li>
-            <li class="mb-7"><strong>Dpto:</strong> <br>396</li>
-            <li class="mb-7"><strong>Dirección:</strong> <br>Av. 10 de Junio s/n Cdra.8 - San Martín de Porres</li>
-            <li class="mb-7"><strong>Fecha de entrega:</strong> <br>22/12/2013</li>
+
+          {exp:user:stats}
+            <li class="mb-7"><strong>Complejo:</strong> <br>{complejo_depa}</li>
+            <li class="mb-7"><strong>Torre:</strong> <br>{torre_depa}</li>
+            <li class="mb-7"><strong>Dpto:</strong> <br>{cod_depa}</li>
+            <li class="mb-7"><strong>Dirección:</strong> <br>{dir_depa}</li> 
+            <li class="mb-7"><strong>Fecha de entrega:</strong> <br>{fecha_entrega}</li>
+            <?php $fecha_dato="{fecha_entrega}";
+            $fecha_actual=date('d-m-Y');
+
+            $dias_pass=substr(compararFechas($fecha_dato,$fecha_actual), 1);;
+            if ($dias_pass<182){echo "Garantia de acabados vigente<br>Garantia de instalaciones vigente<br>";}
+            if (($dias_pass>=182) and ($dias_pass<365)){echo "";}
+            if ($dias_pass<=1825){echo "Garantia de estructura vigente";}
+            if ($dias_pass>1825){echo "Fuera de garantia";}
+            ?>
+          {/exp:user:stats}
+
           </ul>
           <hr class="double">
           <h4 class="light">Manual de uso</h4>

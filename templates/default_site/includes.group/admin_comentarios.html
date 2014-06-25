@@ -1,0 +1,153 @@
+<?php 
+$date = date_create();
+$fecha_act_unix=date_timestamp_get($date);
+
+$hoy = date('d-m-Y');
+?>
+
+{exp:member:custom_profile_data}
+  {exp:switchee variable = "{group_id}" parse="inward"}
+    
+    {case value="7"}<!-- admin viva 7 -->
+
+	    {exp:freeform:edit form_name="atencion_por_garantia" entry_id="{embed:entrada}" 
+			restrict_edit_to_author="no" return="main/ticket_detail/{embed:entrada}"  }
+			  <p>Comentarios Viva</p>
+			  <textarea name="comentarios_garantia" id="" rows="4" class="form-control" placeholder="Ingrese comentarios adicionales.">{freeform:edit_data:comentarios_garantia}</textarea>
+			  Fecha: {freeform:edit_data:edit_date format="%j-%m-%Y"}
+			  <input type="hidden" name="edit_date" value="<?php echo $fecha_act_unix; ?>" />
+			  <input type="submit" name="submit" value="Submit" />
+			{/exp:freeform:edit}
+
+			{exp:freeform:entries form_id="2" entry_id="{embed:entrada}" limit="1"}
+				{if freeform:field:comentario_gym!=''}
+					<hr class="double">
+				  <p>Comentarios GyM</p>
+				  {freeform:field:comentario_gym}<br>
+				  Fecha: {freeform:field:fecha_comentario_gym}
+			  {/if}
+			{/exp:freeform:entries}
+
+			{exp:freeform:entries form_id="4" search:id_sol_garantia="{embed:entrada}" search:orden_tramite="5" limit="1" status="closed" }
+			{if freeform:field:orden_tramite=='5'}
+				<hr class="double">
+			  <p>Comentarios inspección</p>
+			  {freeform:field:comentarios}<br>
+			  Fecha: {freeform:edit_date format="%j-%m-%Y"}
+			{/if}
+			{/exp:freeform:entries}
+
+			{exp:freeform:entries form_id="4" search:id_sol_garantia="{embed:entrada}" search:orden_tramite="9" limit="1" status="closed" }
+			  {if freeform:field:orden_tramite=='9'}
+			  <hr class="double">
+			  <p>Comentarios arreglo</p>
+			  {freeform:field:comentarios}<br>
+			  Fecha: {freeform:edit_date format="%j-%m-%Y"}
+			{/if}
+			{/exp:freeform:entries}
+
+    {/case}
+
+    {case value="8"}<!-- admin GyM 8 -->
+
+	    {exp:freeform:entries form_id="2" entry_id="{embed:entrada}" limit="1"}
+	    	{if freeform:field:comentarios_garantia!=''}
+				  <p>Comentarios Viva</p>
+				  {freeform:field:comentarios_garantia}<br>
+				  Fecha: {freeform:edit_date format="%j-%m-%Y"}
+				  <hr class="double">
+			  {/if}
+			{/exp:freeform:entries}
+
+			{exp:freeform:edit form_name="atencion_por_garantia" entry_id="{embed:entrada}" 
+			restrict_edit_to_author="no" return="main/ticket_detail/{embed:entrada}"  }
+			  <p>Comentarios GyM</p>
+			  <textarea name="comentario_gym" id="" rows="4" class="form-control" placeholder="Ingrese comentarios adicionales.">{freeform:edit_data:comentario_gym}</textarea>
+			  Fecha: {freeform:edit_data:fecha_comentario_gym}
+			  <input type="hidden" name="fecha_comentario_gym" value="<?php echo $hoy; ?>" />
+			  <input type="submit" name="submit" value="Submit" />
+			{/exp:freeform:edit}
+
+			{exp:freeform:entries form_id="4" search:id_sol_garantia="{embed:entrada}" search:orden_tramite="5" limit="1" status="closed" }
+			{if freeform:field:orden_tramite=='5'}
+				<hr class="double">
+			  <p>Comentarios inspección</p>
+			  {freeform:field:comentarios}<br>
+			  Fecha: {freeform:edit_date format="%j-%m-%Y"}
+			{/if}
+			{/exp:freeform:entries}
+
+			{exp:freeform:entries form_id="4" search:id_sol_garantia="{embed:entrada}" search:orden_tramite="9" limit="1" status="closed" }
+			  {if freeform:field:orden_tramite=='9'}
+			  <hr class="double">
+			  <p>Comentarios arreglo</p>
+			  {freeform:field:comentarios}<br>
+			  Fecha: {freeform:edit_date format="%j-%m-%Y"}
+			{/if}
+			{/exp:freeform:entries}
+
+    {/case}
+
+    {case value="9"}<!-- inspector viva 9 -->
+
+    	{exp:freeform:entries form_id="2" entry_id="{embed:entrada}" limit="1"}
+	    	{if freeform:field:comentarios_garantia!=''}
+				  <p>Comentarios Viva</p>
+				  {freeform:field:comentarios_garantia}<br>
+				  Fecha: {freeform:edit_date format="%j-%m-%Y"}
+				  <hr class="double">
+			  {/if}
+			{/exp:freeform:entries}
+
+			{exp:freeform:entries form_id="2" entry_id="{embed:entrada}" limit="1"}
+				{if freeform:field:comentario_gym!=''}
+				  <p>Comentarios GyM</p>
+				  {freeform:field:comentario_gym}<br>
+				  Fecha: {freeform:field:fecha_comentario_gym}
+				  <hr class="double">
+			  {/if}
+			{/exp:freeform:entries}
+
+			{exp:freeform:entries form_id="4" search:id_sol_garantia="{embed:entrada}" search:orden_tramite="5" limit="1" status="open|closed" }
+			{if freeform:field:orden_tramite=='5'}
+
+					{exp:freeform:edit form_name="detalles_ticket" entry_id="{freeform:entry_id}"
+					restrict_edit_to_author="no" return="main/ticket_detail/{freeform:field:id_sol_garantia}"  }
+				  <p>Comentarios inspección</p>
+				  <textarea name="comentarios" id="" rows="4" class="form-control" placeholder="Ingrese comentarios adicionales.">{freeform:edit_data:comentarios}</textarea>
+				  Fecha: {freeform:edit_data:edit_date format="%j-%m-%Y"}
+				  <input type="hidden" name="edit_date" value="<?php echo $fecha_act_unix; ?>" />
+				  <input type="submit" name="submit" value="Submit" />
+				{/exp:freeform:edit}
+
+				<hr class="double">
+			{/if}
+			{/exp:freeform:entries}
+
+			{exp:freeform:entries form_id="4" search:id_sol_garantia="{embed:entrada}" search:orden_tramite="9" limit="1" status="open|closed" }
+			{if freeform:field:orden_tramite=='5'}
+
+					{exp:freeform:edit form_name="detalles_ticket" entry_id="{freeform:entry_id}"
+					restrict_edit_to_author="no" return="main/ticket_detail/{freeform:field:id_sol_garantia}"  }
+				  <p>Comentarios arreglo</p>
+				  <textarea name="comentarios" id="" rows="4" class="form-control" placeholder="Ingrese comentarios adicionales.">{freeform:edit_data:comentarios}</textarea>
+				  Fecha: {freeform:edit_data:edit_date format="%j-%m-%Y"}
+				  <input type="hidden" name="edit_date" value="<?php echo $fecha_act_unix; ?>" />
+				  <input type="submit" name="submit" value="Submit" />
+				{/exp:freeform:edit}
+
+				<hr class="double">
+			{/if}
+			{/exp:freeform:entries}
+
+
+    {/case}
+
+    {case value="10"}<!-- personal GyM que ejecuta el arreglo  10 filtro="8"-->
+
+    {/case}
+    
+  {/exp:switchee}
+{/exp:member:custom_profile_data}
+
+

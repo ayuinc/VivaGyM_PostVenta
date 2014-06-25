@@ -12,21 +12,25 @@ $celular_encargado_atencion=$_POST['celular_encargado_atencion'];
 $email_encargado_atencion=$_POST['email_encargado_atencion'];
 $ip=$_SERVER["REMOTE_ADDR"];
 
-// leer email cuando lo tomas de ee no funca
-	$result_email=mysql_query("SELECT * FROM exp_members WHERE member_id=$id_cliente");
-	$obten_email=mysql_fetch_row($result_email);
-	$screen_name = $obten_email[3];
-	$dir = $obten_email[9];
-
 $date = date_create();
 $entry_date=date_timestamp_get($date);
 
-if ($relacion_dueno_departamento=0){
+$fecha_explode = explode("-", $fecha_atencion_ticket); // dividir la fecha de llegada para restar 1 a las visitas
+$dia_consulta=$fecha_explode[0];
+$mes_consulta=$fecha_explode[1];
+
+	$result_ev=mysql_query("SELECT * FROM eventos WHERE dia_evento=$dia_consulta and mes_evento=$mes_consulta ");
+  $obten_ev=mysql_fetch_row($result_ev);
+  $id_dia_consulta = $obten_ev[0];
+  $cant_evento = $obten_ev[7];
+  $sumar_evento=$cant_evento+1;
+  $sqlUpdate_ev = mysql_query("UPDATE eventos SET cant_evento = $sumar_evento WHERE id_evento = $id_dia_consulta ");
+
+if ($relacion_dueno_departamento==""){
 	$dueno_atiende_ticket="si";
 	} else {
 	$dueno_atiende_ticket="no";
 	}
-
 $resultado=mysql_query("insert into exp_freeform_form_entries_4 
 (site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19) 
 values ('1','$id_cliente','y','$ip','','open','$id_cliente','GyM Asignar Inspector','$id_sol_garantia','4')");
@@ -34,6 +38,13 @@ values ('1','$id_cliente','y','$ip','','open','$id_cliente','GyM Asignar Inspect
 $resultadob=mysql_query("insert into exp_freeform_form_entries_4 
 (site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19) 
 values ('1','$id_cliente','y','$ip','','open','$id_cliente','Realizar Inspección','$id_sol_garantia','5')");
+
+// lectura de nro de veces de reagendado
+$result_reagenda=mysql_query("SELECT * FROM exp_freeform_form_entries_4 
+	WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 3 ");
+$obten_reagenda=mysql_fetch_row($result_reagenda);
+$cont_reagenda = $obten_reagenda[22];
+$cont_reagenda_mas = $cont_reagenda+1;
 
 $sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_4 
 SET status = 'closed',
@@ -44,11 +55,13 @@ form_field_22 = '$nombre_encargado_atencion',
 form_field_23 = '$celular_encargado_atencion',
 form_field_24 = '$email_encargado_atencion',
 form_field_25 = '$fecha_atencion_ticket',
-form_field_26 = '$hora_atencion_ticket'
+form_field_26 = '$hora_atencion_ticket',
+form_field_32 = '$cont_reagenda_mas'
 WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 3 ");
 
 $sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_2 
-	SET form_field_12 = '4'
+	SET form_field_12 = '4',
+	edit_date = '$entry_date'
 	WHERE entry_id = $id_sol_garantia ");
 
 ?>

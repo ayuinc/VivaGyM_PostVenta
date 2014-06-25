@@ -27,7 +27,8 @@ $config['doc_url'] = "http://ellislab.com/expressionengine/user-guide/";
 $config['is_system_on'] = "y";
 $config['allow_extensions'] = 'y';
 $config['cookie_prefix'] = '';
-$config['cookie_httponly'] = 'y';  
+$config['cookie_httponly'] = 'y';
+//$config['disable_csrf_protection'] = 'y'; 
 
 
 /*
@@ -142,6 +143,7 @@ $config['cache_path'] = '';
 |
 */
 $config['encryption_key'] = '';
+//$config['disable_csrf_protection'] = 'y';
 
 
 /*

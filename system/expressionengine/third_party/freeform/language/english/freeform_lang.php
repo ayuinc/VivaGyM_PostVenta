@@ -1995,7 +1995,7 @@ to the module's control panel in the ExpressionEngine Control Panel",
 "Unable to find a post variable called user file.",
 
 'upload_file_exceeds_limit' =>
-"The uploaded file exceeds the maximum allowed size in your PHP configuration file.",
+"El archivo cargado excede el tamaño máximo permitido.",
 
 'upload_file_exceeds_form_limit' =>
 "The uploaded file exceeds the maximum size allowed by the submission form.",
@@ -2016,7 +2016,7 @@ to the module's control panel in the ExpressionEngine Control Panel",
 "You did not select a file to upload.",
 
 'upload_invalid_filetype' =>
-"The filetype you are attempting to upload is not allowed.",
+"El tipo de archivo que esta tratando de cargar no esta permitido.",
 
 'upload_invalid_filesize' =>
 "The file you are attempting to upload is larger than the permitted size.",

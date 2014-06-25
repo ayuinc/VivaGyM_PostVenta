@@ -1,0 +1,26 @@
+
+{exp:user:users group_id="6"  orderby="{embed:ordenar_user}" sort="asc" limit="20" paginate="bottom" }
+  <?php //$estatus_ticket="{freeform:status}"; ?>
+  <tr>
+    <td>{member_id}</td>
+    <td>{screen_name}</td>
+    <td>{nombre_propietario}</td>
+    <td>{ap_pat} {ap_mat}</td>
+    <td>{complejo_depa}</td>
+    <td>{torre_depa}</td>
+    <td>{cod_depa}</td>
+    <td>{t_fijo}</td>
+    <td>{t_cel}</td>
+    <td>{email_propietario}</td>
+    <td>{fecha_entrega}</td>
+    <!-- <td><a href="{site_url}main/ticket_detail/" class="small text-danger underline">Ver detalle</a></td> -->
+  </tr>
+
+    {if user_no_results}<p>No se encuentran resultados.</p>{/if}
+   
+    {user_paginate}
+      <li>Página {user_current_page} de {user_total_pages} paginas
+      {user_pagination_links}</li>
+    {/user_paginate}
+  
+{/exp:user:users}

@@ -1,0 +1,78 @@
+
+{exp:freeform:entries form_id="3" orderby="{embed:ordenar_doc}" sort="desc" status="open|closed" limit="20" paginate="bottom" }
+<?php $estatus_ticket="{freeform:status}"; ?>
+<tr>
+  <td><?php echo $id_sol_doc="{freeform:entry_id}"; ?></td>
+
+  <td>{freeform:entry_date format="%d-%m-%Y a %g:%i %a"}</td>
+
+  <td>
+    <?php $tiempo_ingreso="{freeform:entry_date}"; $tiempo_edicion="{freeform:edit_date}"; 
+      $resta=$tiempo_ingreso-$tiempo_edicion; 
+      if ($resta>=345600){ ?> <img src="{site_url}images/bandera-roja.png" width="16" height="16" > <?php }?>
+  </td>
+
+  <td>
+    {exp:user:stats member_id="{freeform:field:id_cliente}"}
+      {nombre_propietario}
+    {/exp:user:stats}
+
+  </td>
+  <td>{exp:user:stats member_id="{freeform:field:id_cliente}"}
+      {complejo_depa}
+      {/exp:user:stats}</td>
+
+  <td>{exp:user:stats member_id="{freeform:field:id_cliente}"}
+      {torre_depa}
+      {/exp:user:stats}</td>
+
+  <td>{exp:user:stats member_id="{freeform:field:id_cliente}"}
+      {cod_depa}
+      {/exp:user:stats}</td>
+  <td>
+    <?php $var_est="{freeform:status}";
+        switch ($var_est) {
+          case "open":
+              echo "<span class='label label-default'>Abierto</span>";
+              break;
+          case "closed":
+              echo "<span class='label label-default'>Cerrado</span>";
+              break;
+          case "pending":
+              echo "<span class='label label-default'>Pendiente</span>";
+              break;
+      }; ?>
+
+  </td>
+  <td>{freeform:field:documento_solicitado}</td>
+  <td></td>
+  <td>{freeform:field:email}</td>
+
+  <td>
+    <!-- <a href="{site_url}main/doc_close/{freeform:entry_id}" class="small text-danger underline">Cerrar</a> -->
+    <?php if($var_est=="open"){ ?>
+      {exp:freeform:edit
+        form_name="solicitud_de_documentos"
+        entry_id="{freeform:entry_id}"
+        restrict_edit_to_author="no"
+        return="main/admin_documentos_lista"
+        allow_status_edit="yes" }      
+        <input type="hidden" name="status" value="closed" >
+        <input type="submit" class="" name="submit" value="Cerrar" />
+      {/exp:freeform:edit}
+    <?php } ?>
+  </td>
+</tr>
+
+  {if freeform:no_results}<p>Sin solicitudes pendientes.</p>{/if}
+ 
+  {if freeform:total_pages > 1}
+    {freeform:paginate}
+      Página {freeform:current_page}
+      de {freeform:total_pages}
+      páginas &nbsp;
+      {freeform:pagination_links}
+    {/freeform:paginate}
+  {/if}
+  
+{/exp:freeform:entries}

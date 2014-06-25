@@ -41,6 +41,10 @@ $sqlUpdateb = mysql_query("UPDATE exp_freeform_form_entries_2
 SET status = 'closed'
 WHERE entry_id = $id_sol_garantia ");
 
+$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_4 
+SET form_field_32 = '4'
+WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 3 ");
+
 /*
 $sub="Cita de Inspección Agendada - Viva GyM";
   echo "<br> correo ".$txt_mail="Estimado/a $screen_name<p>

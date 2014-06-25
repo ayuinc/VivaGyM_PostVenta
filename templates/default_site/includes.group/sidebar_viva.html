@@ -46,6 +46,14 @@
 				      <p class="help-block text-right text-warning">Máximo 250 caracteres</p>
 				    </div>
 
+				    <p>Prioridad del caso</p>
+		        <div class="form-group">
+		          <select name="prioridad" class="form-control select-override input-sm option-select">
+		            <option value="0" >Normal</option>
+		            <option value="1" >Prioritario</option>
+		          </select>
+		        </div>
+
 		        <div class="text-left button-submit">
 		        	<input type="hidden" name="id_cliente" value="{freeform:field:id_cliente}" >
 				      <input type="hidden" name="id_sol_garantia" value="{embed:entrada}" >
@@ -62,9 +70,6 @@
 
 
 	{exp:freeform:entries form_id="4" search:id_sol_garantia="{embed:entrada}" search:orden_tramite="6" limit="1" status="open" }
-		<!-- {freeform:field:accion_ticket}-{freeform:field:id_sol_garantia}-
-		{freeform:field:id_cliente}-{freeform:field:orden_tramite} -->
-
 		{if freeform:field:orden_tramite=='6'}
 			<?php $paso_seis=1; ?>
 			<div class="panel">
@@ -85,7 +90,7 @@
 		        </div>
 
 		        <div class="form-group" id="casilla" style="display:none;">
-				      <textarea name="comentarios" id="" rows="4" class="form-control" placeholder="En caso No proceda la inpección por favor detallar las razones, este texto sera enviado en un correo al usuario."></textarea>
+				      <textarea name="comentarios" id="" rows="4" class="form-control" placeholder="En caso No proceda el arreglo por favor detallar las razones, este texto sera enviado en un correo al usuario."></textarea>
 				      <p class="help-block text-right text-warning">Máximo 250 caracteres</p>
 				    </div>
 
@@ -100,7 +105,6 @@
 		    </div>
 		  </div>
 		{/if}
-
 	{/exp:freeform:entries}
 
 	{exp:freeform:entries form_id="4" search:id_sol_garantia="{embed:entrada}" search:orden_tramite="10" limit="1" status="open" }
@@ -134,16 +138,110 @@
 	{/exp:freeform:entries}
 
 	<?php if(($paso_dos==0) and ($paso_seis==0) and ($paso_diez==0)) {?>
- 			<div class="panel">
+		<div class="panel">
+	    <div class="panel-heading bg-danger">
+	      <div class="panel-title text-muted">
+	        Acción pendiente
+	      </div>
+	    </div>
+	    <div class="panel-body">
+	      <p>No tiene acción pendiente</p>
+	    </div>
+	  </div>
+	<?php } ?>
+
+		<!-- edicion de la prioridad y comentarios -->
+		<!-- <div class="panel"> 
+	    <div class="panel-heading bg-danger">
+	      <div class="panel-title text-muted">
+	        Prioridad del caso
+	      </div>
+	    </div>
+	    <div class="panel-body">
+		     {exp:freeform:edit form_id="2" entry_id="{embed:entrada}"
+					  restrict_edit_to_author="no" return="main/ticket_detail/{embed:entrada}" allow_status_edit="yes" }
+	        <div class="form-group">
+	        	<?php $prioridad="{freeform:edit_data:prioridad}"; ?>
+	          <select name="prioridad" class="form-control select-override input-sm option-select">
+	            <option value="" >Selecciona una opción</option>
+	            <option value="0" <?php if($prioridad==0){echo "selected";} ?>>Normal</option>
+	            <option value="1" <?php if($prioridad==1){echo "selected";} ?>>Prioritario</option>
+	          </select>
+	        </div>
+
+          <div class="form-group">
+          	Comentarios adicionales
+				    <textarea name="comentarios_garantia" id="" rows="4" class="form-control" placeholder="Ingrese comentarios adicionales.">{freeform:edit_data:comentarios_garantia}</textarea>
+				    <p class="help-block text-right text-warning">Máximo 250 caracteres</p>
+				  </div>
+
+	        <div class="text-left button-submit">
+			      <input type="submit" class="btn uppercase btn-success" name="submit" value="Procesar" />
+	        </div>
+	      {/exp:freeform:edit}
+	    </div>
+	  </div> -->
+
+	<!-- {exp:freeform:entries form_id="4" search:id_sol_garantia="{embed:entrada}" search:orden_tramite="5" limit="1" status="closed" }
+		{if freeform:field:orden_tramite=='5'}
+			<div class="panel">
 		    <div class="panel-heading bg-danger">
 		      <div class="panel-title text-muted">
-		        Acción pendiente
+		        Comentarios inspección
 		      </div>
 		    </div>
 		    <div class="panel-body">
-		      <p>No tiene acción pendiente</p>
+		    	<textarea name="comentarios" id="" rows="4" class="form-control" placeholder="Ingrese comentarios adicionales.">{freeform:field:comentarios}</textarea>
 		    </div>
 		  </div>
-	<?php } ?>
+		{/if}
+	{/exp:freeform:entries}
+
+	{exp:freeform:entries form_id="4" search:id_sol_garantia="{embed:entrada}" search:orden_tramite="9" limit="1" status="closed" }
+		{if freeform:field:orden_tramite=='9'}
+			<div class="panel">
+		    <div class="panel-heading bg-danger">
+		      <div class="panel-title text-muted">
+		        Comentarios arreglo
+		      </div>
+		    </div>
+		    <div class="panel-body">
+		    	<textarea name="comentarios" id="" rows="4" class="form-control" placeholder="Ingrese comentarios adicionales.">{freeform:field:comentarios}</textarea>
+		    </div>
+		  </div>
+		{/if}
+	{/exp:freeform:entries} -->
+
+	{exp:freeform:entries form_id="4" search:id_sol_garantia="{embed:entrada}" search:orden_tramite="3" limit="1" status="closed"}
+		{if freeform:field:dueno_atiende_ticket=='no'}
+			<div class="panel">
+		    <div class="panel-heading bg-danger">
+		      <div class="panel-title text-muted">Contacto inspección</div>
+		    </div>
+		    <div class="panel-body">
+		      <p><li>Relación: {freeform:field:relacion_dueno_departamento}</li>
+		          <li>Nombre: {freeform:field:nombre_encargado_atencion}</li>
+		          <li>Email: {freeform:field:email_encargado_atencion}</li>
+		          <li>Teléfono: {freeform:field:celular_encargado_atencion}</li></p>
+		    </div>
+			</div>
+		{/if}
+	{/exp:freeform:entries}
+
+	{exp:freeform:entries form_id="4" search:id_sol_garantia="{embed:entrada}" search:orden_tramite="7" limit="1" status="closed"}
+		{if freeform:field:dueno_atiende_ticket=='no'}
+			<div class="panel">
+		    <div class="panel-heading bg-danger">
+		      <div class="panel-title text-muted">Contacto arreglo</div>
+		    </div>
+		    <div class="panel-body">
+		      <p><li>Relación: {freeform:field:relacion_dueno_departamento}</li>
+		          <li>Nombre: {freeform:field:nombre_encargado_atencion}</li>
+		          <li>Email: {freeform:field:email_encargado_atencion}</li>
+		          <li>Teléfono: {freeform:field:celular_encargado_atencion}</li></p>
+		    </div>
+			</div>
+		{/if}
+	{/exp:freeform:entries}
 
 </div>

@@ -1,0 +1,87 @@
+{embed="includes/header" }
+
+<!--{group_id}
+<script type="text/javascript" src="{site_url}lib/viva_dashboard.js"></script>-->
+<?php $ordenar_user=$_POST['ordenar_user']; ?>
+
+{embed="includes/menu_admin" }
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="panel bg-white">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-sm-6">
+            <h4 class="uppercase medium"><i class="icon-docs"></i> Lista de usuarios</h4>
+          </div>
+          <div class="col-sm-3 col-sm-offset-3">
+            <form method="post" enctype="multipart/form-data" action="/?/main/admin_lista_usuarios">
+              <div class="form-group">
+                <select name="ordenar_user" id="" class="select-override form-control">
+                  <option value="">Ordenar por</option>
+                  <option value="screen_name" <?php if($ordenar_user=="screen_name"){echo "selected";} ?> >Usuario</option>
+                  <option value="nombre_propietario" <?php if($ordenar_user=="nombre_propietario"){echo "selected";} ?> >Nombre</option>
+                  <option value="ap_pat" <?php if($ordenar_user=="ap_pat"){echo "selected";} ?>>Apellidos</option>
+                  <option value="complejo_depa" <?php if($ordenar_user=="complejo_depa"){echo "selected";} ?>>Complejo</option>
+                  <option value="torre_depa" <?php if($ordenar_user=="torre_depa"){echo "selected";} ?>>Torre</option>
+                  <option value="cod_depa" <?php if($ordenar_user=="cod_depa"){echo "selected";} ?>>Departamento</option>
+                </select>
+                <input type="hidden" name="XID" value="{XID_HASH}" />
+                <input type="submit" class="btn uppercase btn-success" name="submit" value="Ordenar" />
+              </div>
+            </form>
+          </div>
+        </div>
+        <hr class="m-0">
+      </div>
+      <div class="panel-body">
+        <div class="table-responsive"> <!-- selector de sesion para muestra de lista-->
+
+          <table class="table table-hover table-striped">
+            <thead>
+              <tr class="medium">
+                <td>No.</td>
+                <td>Usuario</td>
+                <td>Nombre</td>
+                <td>Apellidos</td>
+                <td>Complejo</td>
+                <td>Torre</td>
+                <td>Dpto.</td>
+                <td>Teléfono</td>
+                <td>Celular</td>
+                <td>Email</td>
+                <td>Fecha entrega</td>
+              </tr>
+            </thead>
+            <tbody> <!-- search:etapa_solicitud="2" -->
+
+              {exp:member:custom_profile_data}
+                {exp:switchee variable = "{group_id}" parse="inward"}
+                  
+                  {case value="7"}<!-- admin viva 7 -->
+                    {embed="main/lista_user" ordenar_user="<?php echo $ordenar_user; ?>"}
+                  {/case}
+
+                  {case value="8"}<!-- admin GyM 8 -->
+                    {embed="main/lista_user" ordenar_user="<?php echo $ordenar_user; ?>"}
+                  {/case}
+
+                  {case value="9"}<!-- inspector viva 9 -->
+                    
+                  {/case}
+
+                  {case value="10"}<!-- personal GyM que ejecuta el arreglo  10 -->
+                    
+                  {/case}
+                  
+                {/exp:switchee}
+              {/exp:member:custom_profile_data}
+
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

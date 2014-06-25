@@ -90,4 +90,36 @@
 		  </div>
 	<?php } ?>
 
+	{exp:freeform:entries form_id="4" search:id_sol_garantia="{embed:entrada}" search:orden_tramite="3" limit="1" status="closed"}
+		{if freeform:field:dueno_atiende_ticket=='no'}
+			<div class="panel">
+		    <div class="panel-heading bg-danger">
+		      <div class="panel-title text-muted">Contacto inspección</div>
+		    </div>
+		    <div class="panel-body">
+		      <p><li>Relación: {freeform:field:relacion_dueno_departamento}</li>
+		          <li>Nombre: {freeform:field:nombre_encargado_atencion}</li>
+		          <li>Email: {freeform:field:email_encargado_atencion}</li>
+		          <li>Teléfono: {freeform:field:celular_encargado_atencion}</li></p>
+		    </div>
+			</div>
+		{/if}
+	{/exp:freeform:entries}
+
+	{exp:freeform:entries form_id="4" search:id_sol_garantia="{embed:entrada}" search:orden_tramite="7" limit="1" status="closed"}
+		{if freeform:field:dueno_atiende_ticket=='no'}
+			<div class="panel">
+		    <div class="panel-heading bg-danger">
+		      <div class="panel-title text-muted">Contacto arreglo</div>
+		    </div>
+		    <div class="panel-body">
+		      <p><li>Relación: {freeform:field:relacion_dueno_departamento}</li>
+		          <li>Nombre: {freeform:field:nombre_encargado_atencion}</li>
+		          <li>Email: {freeform:field:email_encargado_atencion}</li>
+		          <li>Teléfono: {freeform:field:celular_encargado_atencion}</li></p>
+		    </div>
+			</div>
+		{/if}
+	{/exp:freeform:entries}
+
 </div>

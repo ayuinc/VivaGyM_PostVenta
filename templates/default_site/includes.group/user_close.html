@@ -1,0 +1,71 @@
+{embed="includes/header" }
+
+<?php
+
+$id_sol_garantia="{segment_3}";
+$paso="{segment_4}";
+$id_cliente="{segment_5}";
+$entry_id="{segment_6}";
+
+/**/
+$result=mysql_query("SELECT * FROM exp_freeform_form_entries_2 WHERE entry_id=$id_sol_garantia");
+$obten=mysql_fetch_row($result);
+$id_cliente = $obten[2];
+$tit_problema = $obten[15]; 
+
+$ip=$_SERVER["REMOTE_ADDR"];
+
+$date = date_create();
+$entry_date=date_timestamp_get($date);
+
+$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_2 SET edit_date = '$entry_date' WHERE entry_id = $id_sol_garantia ");
+
+/*
+$sqlUpdatea = mysql_query("UPDATE exp_freeform_form_entries_2 
+SET status = 'closed'
+WHERE entry_id = $id_sol_garantia ");*/
+
+$result_aus=mysql_query("SELECT * FROM exp_freeform_form_entries_4 
+	WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 9 ");
+$obten_aus=mysql_fetch_row($result_aus);
+$cliente_ausente = $obten_aus[23];
+
+if($cliente_ausente=="si"){
+	$resultadof=mysql_query("insert into exp_freeform_form_entries_4 
+	(site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19) 
+	values ('1','$id_cliente','y','$ip','','open','$id_cliente','Cerrar el caso','$id_sol_garantia','10')");
+
+	$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_4 
+	SET form_field_27 = 'Cerrado',
+	entry_date = '$entry_date',
+	status = 'closed'
+	WHERE form_field_18 = $id_sol_garantia AND form_field_19 = $paso ");
+
+	$prev_paso=($id_paso-1);
+
+	$resultc=mysql_query("SELECT * FROM exp_freeform_form_entries_4 WHERE entry_id=$prev_paso");
+	$obtenc=mysql_fetch_row($resultc);
+	$archivo = $obtenc[20]; //foto
+
+	$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_2 
+		SET form_field_12 = '9'
+		WHERE entry_id = $id_sol_garantia ");
+
+	$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_4 
+	SET form_field_32 = '4'
+	WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 7 ");
+
+	$sqlUpdate_c = mysql_query("UPDATE exp_freeform_form_entries_4 
+	SET status = 'closed' WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 9 ");
+}
+?>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+
+  		<h1>¡Listo! El informe de arreglo de la solicitid #<?php echo $id_sol_garantia; ?> ha sido ingresado</h1>
+
+	  <p>Puedes hacerle seguimiento a las solicitudes en la sección de “Panel de control”</p>
+	  <p><a href="{site_url}main/admin_dashboard">Ir a Panel de control</a></p>	  
+  </div>
+</div>

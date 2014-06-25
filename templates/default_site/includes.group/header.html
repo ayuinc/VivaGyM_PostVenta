@@ -51,15 +51,15 @@
                   {exp:member:custom_profile_data}
                     {exp:switchee variable = "{member_group}" parse="inward"}
                         {case value="user_dep"}
-                          <h5 class="thin mb-0">Bienvenido, <span class="medium">{nombre_propietario}</span></h5>
+                          <h5 class="thin mb-0">Bienvenido/a, <span class="medium">{nombre_propietario}</span></h5>
+                          <a href="{site_url}main/cambio_de_clave/3">Cambio de clave</a> | <a href="{path='logout'}">Salir</a>
                         {/case}
                         {case default="Yes"}
-                          <h5 class="thin mb-0">Bienvenido, <span class="medium">{screen_name}</span></h5>
+                          <h5 class="thin mb-0">Bienvenido/a, <span class="medium">{screen_name}</span></h5>
+                          <a href="{path='logout'}">Salir</a>
                         {/case}
                     {/exp:switchee}
-                  {/exp:member:custom_profile_data}
-
-                  <a href="{path='logout'}">Salir</a>
+                  {/exp:member:custom_profile_data}   
                 </div>
 
                 {exp:member:custom_profile_data}

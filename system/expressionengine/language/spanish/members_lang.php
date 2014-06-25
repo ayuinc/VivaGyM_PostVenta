@@ -63,10 +63,10 @@ $lang = array(
 "La ruta que has enviado no es valida.",
 
 "invalid_path_description" =>
-"La siguiente ruta que enviastes no es valida:",
+"La siguiente ruta que enviaste no es valida:",
 
 "not_writable_path" =>
-"La ruta que enviastes no tiene permisos de escritura. Por favor asegura que los permisos del archivo estan establecidos como 777.",
+"La ruta que enviaste no tiene permisos de escritura. Por favor asegura que los permisos del archivo estan establecidos como 777.",
 
 "include_in_memberlist" =>
 "Incluir Miembro en el Listado de Miembros del Sitio?",

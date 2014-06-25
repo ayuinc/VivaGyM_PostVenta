@@ -42,105 +42,42 @@ $tit_problema = $obten[15];
         elseif ($edit_time>0) {echo date('d-m-Y G:i a', $edit_time); }  ?></td>
         <td><?php $paso=$proy_long['form_field_19']; ?>
 
-            <?php $procede=$proy_long['form_field_27']; if($paso==2){ 
-            if (empty($procede)) { ?> 
-            <!--<a href="{site_url}main/<?php echo "viva_preview_sol?id_sol_garantia=".$id_sol_garantia."&paso=2&entry_id=".$entry_id; ?>" class="btn btn-sm btn-warning small">Ver detalles</a>-->
+          <?php $procede=$proy_long['form_field_27']; if($paso==2){ 
+          if (empty($procede)) { ?> 
+          <?php } else { echo "La solicitud de inspección ha sido ".strtoupper($procede); } } ?> 
 
-            <!-- <form method="post" enctype="multipart/form-data" name="frm" id="frm" action="/?/main/viva_approve_sol" class="p-14">
-              <div class="form-group">
-                <div class="row">
-                  <div class="col-sm-6">
-                    <p class="text-center pt-14">Procede la inpección?</p>
-                  </div>
-                  <div class="col-sm-6">
-                    <select name="aprobar_paso" id="" class="form-control input-sm select-override">
-                      <option value="">Seleccione</option>
-                      <option value="si">Sí</option>
-                      <option value="no">No</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
+          <?php $fecha=$proy_long['form_field_25']; 
+          if($paso==3){ 
+                if (empty($fecha)) { } 
+                else { echo "Inspección agendada para ".$fecha; }  
+          }; ?>
 
-              <div class="form-group">
-                <textarea name="comentarios" id="" rows="2" class="form-control" placeholder="En caso No proceda la inpección por favor detallar las razones, este texto sera enviado en un correo al usuario."></textarea>
-                <p class="help-block text-right text-warning">Máximo 250 caracteres</p>
-              </div>
+          <?php $insp_cuatro=$proy_long['form_field_27']; 
+          if($paso==4){
+            if (empty($insp_cuatro)) { echo "Por asignar";} 
+            else { echo "Inspector ".$insp_cuatro; } 
+          } ?>
 
-                <input type="hidden" name="id_cliente" value="<?php echo $id_cliente; ?>" >
-                <input type="hidden" name="dir" value="<?php echo $dir; ?>" >
-                <input type="hidden" name="id_sol_garantia" value="<?php echo $id_sol_garantia; ?>" >
-                <input type="hidden" name="persona_asignada_gym" value="{screen_name}" />
-                <input type="hidden" name="XID" value="{XID_HASH}" />
-                <input type="submit" class="btn btn-sm uppercase btn-success" name="submit" value="Procesar" />
-
-            </form> -->
-
-            <?php } else { echo "Su solicitud de inspección ha sido ".$procede; } } ?> 
-
-          <?php if($paso==3){ echo "Inspección agendada para ".$proy_long['form_field_25']; } ?>
-
-          <?php if($paso==4){ echo "Inspector ".$proy_long['form_field_27']; } ?>
-
-          <?php $file=$proy_long['form_field_28'];
-           $fecha_re=$proy_long['form_field_25']; ?>
+          <?php $fecha_re=$proy_long['form_field_25']; ?>
           <?php if($paso==5){ if (!empty($fecha_re)) { echo "Inspección realizada el ".$proy_long['form_field_25'];} } ?>
 
-          <?php $procedeb=$proy_long['form_field_27']; if($paso==6){ 
-            if (empty($procedeb)) { ?> 
-            <!-- <a href="{site_url}main/<?php echo "viva_preview_fix?id_sol_garantia=".$id_sol_garantia."&paso=6&entry_id=".$entry_id; ?>" class="btn btn-sm small btn-default">Ver detalles</a>  -->
+          <?php $approving=$proy_long['form_field_27']; ?>
+          <?php if($paso==6){ if (!empty($approving)) { echo "Su arreglo ha sido ".strtoupper($proy_long['form_field_27']); } } ?>
 
-            <!-- <form method="post" enctype="multipart/form-data" name="frm" id="frm" action="/?/main/viva_approve_fix" class="p-14">
+          <?php $fecha_siete=$proy_long['form_field_25']; 
+          if($paso==7){ 
+            if (empty($fecha_siete)) { } 
+            else { echo "Arreglo agendado para ".$fecha_siete; }
+          } ?> 
 
-              <div class="form-group">
-                <div class="row">
-                  <div class="col-sm-6">
-                    <p class="text-center pt-14">Procede la reparación?</p>
-                  </div>
-                  <div class="col-sm-6">
-                    <select name="aprobar_paso" id="" class="form-control input-lg select-override">
-                      <option value="">Seleccione</option>
-                      <option value="si">Sí</option>
-                      <option value="no">No</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-              <div class="form-group">
-                <textarea name="comentarios" id="" rows="7" class="form-control" placeholder="En caso No proceda la reparación por favor detallar las razones, este texto sera enviado en un correo al usuario."></textarea>
-                <p class="help-block text-right text-warning">Máximo 250 caracteres</p>
-              </div>
-
-              <input type="hidden" name="id_cliente" value="<?php echo $id_cliente; ?>" >
-              <input type="hidden" name="dir" value="<?php echo $dir; ?>" >
-              <input type="hidden" name="id_sol_garantia" value="<?php echo $id_sol_garantia; ?>" >
-              <input type="hidden" name="XID" value="{XID_HASH}" />
-              <input type="submit" class="btn btn-lg uppercase btn-success" name="submit" value="Procesar" />
-            </form> -->
-
-            <?php } else { echo "Su arreglo ha sido ".$procedeb; } } ?>
-
-          <?php if($paso==7){ echo "Arreglo agendado para ".$proy_long['form_field_25']; } ?>
-
-          <?php if($paso==8){ echo "Constructor ".$proy_long['form_field_27']; } ?>
+          <?php $asigb=$proy_long['form_field_27']; if($paso==8){ 
+            if (empty($asigb)) { echo "Por asignar"; } else { echo "Constructor ".$asigb; } } ?>
 
           <?php $fecha_nueve=$proy_long['form_field_25']; if($paso==9){ 
-            if (empty($fecha_nueve)) {  } else { echo "Arreglo realizado el ".$fecha_nueve; } } ?> 
+            if (empty($fecha_nueve)) { } else { echo "Arreglo realizado el ".$fecha_nueve; } } ?> 
 
           <?php $procedec=$proy_long['form_field_27']; if($paso==10){ 
-            if (empty($procedeb)) { ?> 
-            <!-- <a href="{site_url}main/<?php echo "viva_close/".$id_sol_garantia."/10/".$id_cliente."/".$entry_id; ?>" class="btn btn-sm btn-warning small">Cerrar</a> -->
-
-            <!-- <form method="post" enctype="multipart/form-data" name="frm" id="frm" action="/?/main/viva_close">
-
-              <input type="hidden" name="id_cliente" value="<?php echo $id_cliente; ?>" >
-              <input type="hidden" name="id_sol_garantia" value="<?php echo $id_sol_garantia; ?>" >
-              <input type="hidden" name="entry_id" value="<?php echo $entry_id; ?>" >
-              <input type="hidden" name="XID" value="{XID_HASH}" />
-              <input type="submit" class="btn btn-sm btn-warning small" name="submit" value="Procesar" />
-            </form>  -->
-
-            <?php } else { echo $procedec; } } ?>
+            if (empty($procedeb)) { } else { echo $procedec; } } ?>
 
         </td>
         <td>
@@ -148,20 +85,20 @@ $tit_problema = $obten[15];
           <?php if($paso==5){ ?>
             {exp:freeform:entries form_id="4" search:id_sol_garantia="{embed:entrada}" search:orden_tramite="5"  limit="1" status="open|closed" } 
             <?php $archivo_cinco="{freeform:field:informe_inspeccion}";  
-              if(empty($archivo_cinco)) {  ?>
+              if(!empty($archivo_cinco)) {  ?>
               <a target="_blank" href="{site_url}informes_viva/{freeform:field:informe_inspeccion}" >Ver reporte</a>
               <?php }  ?>
             {/exp:freeform:entries}
           <?php } ?>
 
-          <?php if($paso==9){ $archivo_nueve="{freeform:field:informe_inspeccion}";  
-            if(empty($archivo_nueve)) { ?>
-
-              {exp:freeform:entries form_id="4" search:id_sol_garantia="{embed:entrada}" search:orden_tramite="9"  limit="1" status="open|closed" } 
+          <?php if($paso==9){ ?>
+            {exp:freeform:entries form_id="4" search:id_sol_garantia="{embed:entrada}" search:orden_tramite="9"  limit="1" status="open|closed" } 
+            <?php $archivo_nueve="{freeform:field:informe_inspeccion}";  
+              if(!empty($archivo_nueve)) {  ?>
               <a target="_blank" href="{site_url}informes_viva/{freeform:field:informe_inspeccion}" >Ver reporte</a>
-              {/exp:freeform:entries}
-              <?php } 
-          } ?>
+              <?php }  ?>
+            {/exp:freeform:entries}
+          <?php } ?>
 
           <!-- <a target="_blank" href="{site_url}informes_viva/<?php echo $file;?>" >Ver</a>
           <?php echo $file;?> --></td>
