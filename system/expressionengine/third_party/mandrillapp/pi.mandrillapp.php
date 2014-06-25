@@ -109,7 +109,117 @@ class Mandrillapp {
 </div>
 </div>';
 	}
+	function send_email_user_close(){
+		global $TMPL;
+		$this->EE =& get_instance(); // EEv2 syntax
+		$TMPL = $this->EE->TMPL;
+
+ 		require_once 'mailchimp-mandrill-api-php/src/Mandrill.php'; 
+ 		$mandrill = new Mandrill('Svqgcw575OLrORu2WiD09g');
+ 		
+ 		$to= $TMPL->fetch_param('to');
+ 		$name= $TMPL->fetch_param('name');
+ 		$subject= "Ingreso de nueva solicitud.";
+ 		$from= $TMPL->fetch_param('from');
+ 		$dias=  $TMPL->fetch_param('dias');
+ 		$member_id = $TMPL->fetch_param('member_id');
+ 		//$text = $TMPL->tagdata;
+ 		$text = 'Estimado/a '.$name.'<p>
+Gracias por enviar su solicitud de requerimientos por el portal de posventa en línea de Viva GyM. <p>
+En los próximos '.$dias.' días le estaremos informando por correo electrónico y mediante el portal de post-venta si la inspección por un técnico de nuestro equipo procede. Recuerde que en la mayoría de los casos, la vigencia de la garantía es necesaria para que los arreglos procedan. <p>
+Usted puede hacerle seguimiento a su solicitud <a href="http://162.243.222.54/main/user_dashboard/'.$member_id.'"> aquí.</a><p>
+Esperamos servirle de la mejor manera durante este proceso. No olvide revisar el Manual del Propietario para cuidar de su departamento todos los días.<p>
+Atentamente';
+ 		
+ 		/*'html' => '<p>FELICIDADES!!!</p><p>Ganaste el tema'.$topic.' ve a nuestro menú de temas y sigue participando</p>',*/
+ 		$message = array(
+ 		    'subject' => $subject,
+ 		    'from_email' => $from,
+ 		    'html' => $text,
+ 		    'to' => array(array('email' => $to, 'name' => $name)),
+ 		    'merge_vars' => array(array(
+	 		        'rcpt' => 'recipient1@domain.com',
+	 		        'vars' =>
+	 		        array(
+	 		            array(
+	 		                'name' => 'FIRSTNAME',
+	 		                'content' => 'Recipient 1 first name'),
+	 		            array(
+	 		                'name' => 'LASTNAME',
+	 		                'content' => 'Last name')
+	 		    ))));
+
+ 		$template_name = 'test';
+
+ 		$template_content = array(
+ 		    array(
+ 		        'name' => 'main',
+ 		        'content' => 'Hi *|FIRSTNAME|* *|LASTNAME|*, thanks for signing up.'),
+ 		    array(
+ 		        'name' => 'footer',
+ 		        'content' => 'Copyright 2012.')
+
+ 		);
+		$mandrill->messages->sendTemplate($template_name, $template_content, $message);
+		return "";
+	}
+	function send_email_write_proc(){
 		
+		global $TMPL;
+		$this->EE =& get_instance(); // EEv2 syntax
+		$TMPL = $this->EE->TMPL;
+
+ 		require_once 'mailchimp-mandrill-api-php/src/Mandrill.php'; 
+ 		$mandrill = new Mandrill('Svqgcw575OLrORu2WiD09g');
+ 		
+ 		$to= $TMPL->fetch_param('to');
+ 		$name= $TMPL->fetch_param('name');
+ 		$subject= "SUBJECT PENDIENTE";
+ 		$from= $TMPL->fetch_param('from');
+ 		$id_sol_garantia =  $TMPL->fetch_param('id_sol_garantia');
+ 		$result_aus=mysql_query("SELECT * FROM exp_freeform_form_entries_4 WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 5 ");
+		$obten_aus=mysql_fetch_row($result_aus);
+		$cliente_ausente = $obten_aus[23];
+
+		if($cliente_ausente = "no"){
+ 		//$text = $TMPL->tagdata;
+	 		$text = 'Estimado/a Administrador Viva<p>
+	Le informamos que el ejecutor '.$name.' trató de realizar la visita de inspección o arreglo respectiva al caso '.$id_sol_garantia.'. El cliente o responsable no estuvo presente en su hogar al momento de la cita acordada y no se pudo realizar la visita.<p>
+	Sistema de posventa en línea                                                                                                                     Viva GyM';
+	 		
+	 		/*'html' => '<p>FELICIDADES!!!</p><p>Ganaste el tema'.$topic.' ve a nuestro menú de temas y sigue participando</p>',*/
+	 		$message = array(
+	 		    'subject' => $subject,
+	 		    'from_email' => $from,
+	 		    'html' => $text,
+	 		    'to' => array(array('email' => $to, 'name' => $name)),
+	 		    'merge_vars' => array(array(
+		 		        'rcpt' => 'recipient1@domain.com',
+		 		        'vars' =>
+		 		        array(
+		 		            array(
+		 		                'name' => 'FIRSTNAME',
+		 		                'content' => 'Recipient 1 first name'),
+		 		            array(
+		 		                'name' => 'LASTNAME',
+		 		                'content' => 'Last name')
+		 		    ))));
+
+	 		$template_name = 'test';
+
+	 		$template_content = array(
+	 		    array(
+	 		        'name' => 'main',
+	 		        'content' => 'Hi *|FIRSTNAME|* *|LASTNAME|*, thanks for signing up.'),
+	 		    array(
+	 		        'name' => 'footer',
+	 		        'content' => 'Copyright 2012.')
+
+	 		);
+			$mandrill->messages->sendTemplate($template_name, $template_content, $message);
+		}
+		return "";
+	}
 	function send_email_confirm_solicitud(){
 		global $TMPL;
 		$this->EE =& get_instance(); // EEv2 syntax

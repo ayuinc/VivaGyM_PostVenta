@@ -39,14 +39,14 @@ if($cliente_ausente=="si"){
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-	  <h1>
-  			{exp:get_post_vars parse="inward"}
-				Email_propietario: {email_propietario}
-				Nombre_propietario: {nombre_propietario}
-				Screen Name: {screen_name}
-				email: {email}
-			{/exp:get_post_vars}
-		</h1>	  	
+	{exp:user:stats}
+		{exp:mandrillapp:send_email_write_proc
+		  to="{email}" <!-- Colocar el email de un administrador viva-->
+		  name="{screen_name}"
+		  from="admin@gym.com"
+		  id_sol_garantia="{segment_3}"}
+		{/exp:mandrillapp:send_email_write_proc}  
+	{/exp:user:stats}  	
   	  <h1>¡Listo! El informe de inspección de la solicitud #<?php echo $id_sol_garantia; ?> ha sido ingresado</h1>
 	  <p>Puedes hacerle seguimiento a las solicitudes en la sección de “Panel de control”</p>
 	  <p><a href="{site_url}main/admin_dashboard">Ir a Panel de control</a></p>	  
