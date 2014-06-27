@@ -6,9 +6,11 @@
 	    switch (evento){
 	      case 'si': 
 	    document.getElementById('casilla').style.display="none";
+	    document.getElementById('casillon').style.display="block";
 	    break;
 	      case 'no':
 	    document.getElementById('casilla').style.display="block";
+	    document.getElementById('casillon').style.display="none";
 	    break;
 	      default:
 	    alert("Seleccione una opción");
@@ -46,8 +48,8 @@
 				      <p class="help-block text-right text-warning">Máximo 250 caracteres</p>
 				    </div>
 
-				    <p>¿Cual es la prioridad del caso?</p>
-		        <div class="form-group">
+		        <div class="form-group" id="casillon" style="display:none;">
+		        	<p>¿Cual es la prioridad del caso?</p>
 		          <select name="prioridad" class="form-control select-override input-sm option-select">
 		            <option value="0" >Normal</option>
 		            <option value="1" >Prioritario</option>

@@ -9,7 +9,7 @@
     </tr>
   </thead>
   <tbody>
-	{exp:freeform:entries form_id="6" search:id_sol_garantia="{embed:entrada}" sort="desc" status="open|closed" limit="20" }
+	{exp:freeform:entries form_id="6" search:id_sol_garantia="{embed:entrada}" orderby="entry_date" sort="asc" status="open|closed" limit="20" }
 	<tr>
 	  <td>{freeform:author}</td>
 	  <td>{freeform:field:comentarios_garantia}</td>
