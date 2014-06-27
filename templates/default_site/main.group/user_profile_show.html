@@ -10,12 +10,12 @@
     <div class="col-md-6 col-sm-9">
       <div class="panel p-14">
         <!--<form id="user-profile-form">-->
-              {exp:user:stats}
-              {exp:user:edit 
-              	return='main/user_profile_show/{member_id}' 
-              	group_id="6" 
-              	form:id="user-profile-form" 
-              }        
+        {exp:user:stats}
+        {exp:user:edit 
+        	return='main/user_profile_show/{member_id}' 
+        	group_id="6" 
+        	form:id="user-profile-form" 
+        }        
           <div class="panel-heading bg-white p-0">
             <div class="panel-title mb-14">
               <div class="clearfix">
@@ -61,6 +61,9 @@
                 <div class="form-group">
                   <label for="">E-mail</label>
                   <input type="text" class="form-control input-blank input-sm" name="email_propietario" placeholder="{email_propietario}" value="{email_propietario}">
+                  {if email_propietario!=''}<!-- plugin para actualizar el mail region -->
+                  {exp:update_email member_id="{member_id}"}
+                  {/if}
                 </div>
 
                 <div class="form-group">
@@ -119,7 +122,7 @@
 
             </div>
           </div>
-        {/exp:user:edit}
+          {/exp:user:edit}
         {/exp:user:stats}  
         <!--</form>-->
       </div>

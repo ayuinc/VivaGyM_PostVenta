@@ -1,17 +1,14 @@
 	{embed="includes/header" }
 <?php 
-
+$fecha_atencion_ticket=date('d-m-Y');
 $id_sol_garantia="{segment_3}";
 $paso="{segment_4}";
 $id_cliente="{segment_5}";
 $entry_id="{segment_6}";
-
 $ip=$_SERVER["REMOTE_ADDR"];
-
 $date = date_create();
 $entry_date=date_timestamp_get($date);
 
-// leer el estado del paso si cliente_ausente es on no ejecutar el siguiente paso y enviar un correo al admin 
 $result_aus=mysql_query("SELECT * FROM exp_freeform_form_entries_4 
 	WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 5 ");
 $obten_aus=mysql_fetch_row($result_aus);
@@ -21,7 +18,6 @@ if($cliente_ausente=="si"){
 	$resultadoc=mysql_query("insert into exp_freeform_form_entries_4 
 	(site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19,form_field_27,form_field_29) 
 	values ('1','$id_cliente','y','$ip','','open','$id_cliente','Procesar Informe de Inspección','$id_sol_garantia','6','','$comentarios')");
-
 	$sqlUpdate_a = mysql_query("UPDATE exp_freeform_form_entries_2 
 		SET form_field_12 = '6', edit_date = '$entry_date' WHERE entry_id = $id_sol_garantia ");
 
@@ -29,26 +25,47 @@ if($cliente_ausente=="si"){
 	SET status = 'closed', form_field_32 = '4' WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 3 ");
 
 	$sqlUpdate_c = mysql_query("UPDATE exp_freeform_form_entries_4 
-	SET status = 'closed' WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 5 ");
-}elseif($cliente_ausente=="no"){ // colocar el plugin de envio de correos
-
-}
-
+	SET status = 'closed',form_field_25 = '$fecha_atencion_ticket' WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 5 ");
 ?>
-
-
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-	{exp:user:stats}
-		{exp:mandrillapp:send_email_write_proc
-		  to="{email}" <!-- Colocar el email de un administrador viva-->
-		  name="{screen_name}"
-		  from="admin@gym.com"
-		  id_sol_garantia="{segment_3}"}
-		{/exp:mandrillapp:send_email_write_proc}  
-	{/exp:user:stats}  	
-  	  <h1>¡Listo! El informe de inspección de la solicitud #<?php echo $id_sol_garantia; ?> ha sido ingresado</h1>
+  	<h1>¡Listo! El informe de inspección de la solicitud #<?php echo $id_sol_garantia; ?> ha sido ingresado</h1>
 	  <p>Puedes hacerle seguimiento a las solicitudes en la sección de “Panel de control”</p>
 	  <p><a href="{site_url}main/admin_dashboard">Ir a Panel de control</a></p>	  
   </div>
 </div>
+<?php
+}elseif($cliente_ausente=="no"){ // colocar el plugin de envio de correos 
+
+	$sqlUpdate_c = mysql_query("UPDATE exp_freeform_form_entries_4 
+		SET entry_date = '0', edit_date = '0', status = 'open', form_field_25 = '' 
+		WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 3 "); // volver el paso 3 a 0 eliminar las fechas
+
+	$sqlUpdate_a = mysql_query("UPDATE exp_freeform_form_entries_2 
+			SET form_field_12 = '4' WHERE entry_id = $id_sol_garantia ");
+
+	$query="DELETE FROM exp_freeform_form_entries_4 WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 4";
+	$resultborrar=mysql_query($query);
+
+	$queryb="DELETE FROM exp_freeform_form_entries_4 WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 5";
+	$resultborrarb=mysql_query($queryb);
+
+?>
+	{exp:user:stats member_id="{segment_5}"}
+		{exp:mandrillapp:send_email_write_proc
+		  to="jmoron82@hotmail.com" <!-- to="{email}" Colocar el email de un administrador viva-->
+		  name="{screen_name}"
+		  from="admin@gym.com"
+		  id_sol_garantia="{segment_3}"}
+		{/exp:mandrillapp:send_email_write_proc}  
+	{/exp:user:stats}
+	<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+  	<h1>Se ha enviado un correo al cliente del caso #<?php echo $id_sol_garantia; ?>, el caso esta pendiente de inspección.</h1>
+	  <p>Puedes hacerle seguimiento a las solicitudes en la sección de “Panel de control”</p>
+	  <p><a href="{site_url}main/admin_dashboard">Ir a Panel de control</a></p>	  
+  </div>
+</div>
+<?php 
+}
+?>

@@ -3,14 +3,6 @@
 
 		  echo json_encode(array(
 			            array(
-			                'id' => 182,
-			                'title' => "27-06-2014",
-			                'start' => "2014-06-27",
-			                'color' => "#78BE20", 
-			                'textColor' => "black",
-			                'url' => "$site_url/main/user_request_fixing/$id_sol_garantia/27-06-2014"
-			              ),
-			            array(
 			                'id' => 185,
 			                'title' => "30-06-2014",
 			                'start' => "2014-06-30",

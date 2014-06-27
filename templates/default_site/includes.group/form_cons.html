@@ -1,4 +1,21 @@
 ﻿<?php $fecha_atencion_ticket=date('d-m-Y'); ?>
+
+<script type="text/javascript">
+    function SwitchHiddenDiv(){
+      var evento = document.getElementById("SelectedType").options[document.getElementById("SelectedType").selectedIndex].value;
+      switch (evento){
+        case 'no': 
+      document.getElementById('casilla').style.display="none";
+      break;
+        case 'si':
+      document.getElementById('casilla').style.display="block";
+      break;
+        default:
+      alert("Seleccione una opción");
+      }
+    }
+  </script>
+
 {exp:freeform:edit
   form_name="detalles_ticket"
   entry_id="{embed:entry_id}"
@@ -8,28 +25,22 @@
 } 
   <div class="form-group">
     El responsable se encuentra en el inmueble
-    <select name="cliente_ausente" class="form-control select-override input-sm option-select">
+    <select name="cliente_ausente" id='SelectedType' onchange="SwitchHiddenDiv()" class="form-control select-override input-sm option-select">
       <option value="si">Sí</option>
       <option value="no">No</option>
     </select>
   </div>
 
-  <div class="form-group">
+  <div class="form-group" id="casilla" style="display:block;">
     <p>Ingresar su informe de arreglo</p>
     {freeform:field:informe_inspeccion}
-  </div>
-
-  <div class="form-group"><br>
-    <textarea name="comentarios" id="" rows="4" class="form-control" placeholder="Ingrese comentarios adicionales acerca de la inspección.">{freeform:edit_data:comentarios}</textarea>
-    <p class="help-block text-right text-warning">Máximo 250 caracteres</p>
-  </div>
+  </div><br>
   
   <div class="text-left button-submit">
     <input type="hidden" name="id_cliente" value="{embed:id_cliente}" >
     <input type="hidden" name="id_sol_garantia" value="{embed:id_sol_garantia}" >
     <input type="hidden" name="paso" value="{embed:paso}" >
-    <input type="hidden" name="fecha_atencion_ticket" value="<?php echo $fecha_atencion_ticket; ?>" >
-    <input type="submit" class="btn uppercase btn-success" name="submit" value="Subir" />
+    <input type="submit" class="btn uppercase btn-success" name="submit" value="Procesar" />
   </div>
 
 {/exp:freeform:edit}

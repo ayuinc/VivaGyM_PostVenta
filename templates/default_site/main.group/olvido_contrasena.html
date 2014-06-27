@@ -1,0 +1,41 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{site_name}</title>
+    <link rel="stylesheet" type="text/css" href="http://162.243.222.54/stylesheets/viva.css" media="screen" />
+
+    <!-- FAVICON -->
+  <link rel="shortcut icon" href="img/favicon.ico">
+
+   <!-- WebFonts  -->
+  <script type="text/javascript" src="//use.typekit.net/jfc4vgc.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+  </head>
+  <body>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <h1>Recuperar contraseña</h1>
+    <p>Ingrese el correo registrado y le enviaremos las instrucciones para recuperar su contraseña.</p>
+
+    {exp:user:forgot_password}
+ 
+<p>
+    <label for="email">
+        Email Address <span class="required">*</span>
+    </label>
+    <input type="text" name="email" id="email" />
+</p>
+<p>
+    <input type="submit" name="submit" value="Submit" />
+</p>
+ 
+{/exp:user:forgot_password}
+
+  </div>
+</div>
+
+</body>

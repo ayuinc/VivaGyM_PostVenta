@@ -1,18 +1,10 @@
-{embed="includes/header" }
-
 {exp:member:custom_profile_data}
-
-{exp:switchee variable = "{member_group}" parse="inward"}
-    
+	{exp:switchee variable = "{member_group}" parse="inward"}
     {case value="user_dep"}
-        <script type="text/javascript"> window.location="{site_url}main/cambio_de_clave"; </script> <!-- dueño de departamento -->
+      <script type="text/javascript"> window.location="{site_url}main/cambio_de_clave"; </script> <!-- dueño de departamento -->
     {/case}
-    
     {case default="Yes"}
-        <script type="text/javascript"> window.location="{site_url}main/admin_dashboard"; </script><!-- todos los admin -->
+      <script type="text/javascript"> window.location="{site_url}main/admin_dashboard"; </script><!-- todos los admin -->
     {/case}
-  
-{/exp:switchee}
-
+	{/exp:switchee}
 {/exp:member:custom_profile_data}
-<!--<script type="text/javascript"> window.location="user_gym"; </script> -->

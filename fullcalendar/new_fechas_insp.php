@@ -3,28 +3,12 @@
 
 		  echo json_encode(array(
 			            array(
-			                'id' => 181,
-			                'title' => "26-06-2014",
-			                'start' => "2014-06-26",
-			                'color' => "#78BE20", 
-			                'textColor' => "black",
-			                'url' => "$site_url/main/user_request_book/$id_sol_garantia/26-06-2014"
-			              ),
-			            array(
 			                'id' => 187,
 			                'title' => "01-07-2014",
 			                'start' => "2014-07-01",
 			                'color' => "#78BE20", 
 			                'textColor' => "black",
 			                'url' => "$site_url/main/user_request_book/$id_sol_garantia/01-07-2014"
-			              ),
-			            array(
-			                'id' => 189,
-			                'title' => "03-07-2014",
-			                'start' => "2014-07-03",
-			                'color' => "#78BE20", 
-			                'textColor' => "black",
-			                'url' => "$site_url/main/user_request_book/$id_sol_garantia/03-07-2014"
 			              ),
 			            array(
 			                'id' => 194,
