@@ -126,7 +126,7 @@ class Mandrillapp {
 		$obten_aus=mysql_fetch_row($result_aus);
 		$cliente_ausente = $obten_aus[23];
  		//$text = $TMPL->tagdata;
- 		if($cliente_ausente = "no"){
+ 		if($cliente_ausente == "no"){
  		$text = 'Estimado/a '.$name.'.<p>
  		<br>
  		Le informamos que el inspector de su caso '.$id_sol_garantia.' ha visitado su departamento pero no pudo realizar la inspección por no encontrarse nadie en el departamento.<p>
@@ -192,7 +192,7 @@ class Mandrillapp {
 		$obten_aus=mysql_fetch_row($result_aus);
 		$cliente_ausente = $obten_aus[23];
 
-		if($cliente_ausente = "no"){
+		if($cliente_ausente == "no"){
  		//$text = $TMPL->tagdata;
 	 		$text = 'Estimado/a '.$name.',<p>
 	 		<br>
