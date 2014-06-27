@@ -57,8 +57,8 @@ if($cliente_ausente=="si"){
 
 	{exp:user:stats member_id="{segment_5}"}
 		{exp:mandrillapp:send_email_write_proc
-		  to="jmoron82@hotmail.com" <!-- to="{email}" Colocar el email de un administrador viva-->
-		  name="{screen_name}"
+		  to="{email_propietario}" <!-- to="{email}" Colocar el email de un administrador viva-->
+		  name="{nombre_propietario}"
 		  from="admin@gym.com"
 		  id_sol_garantia="{segment_3}"}
 		{/exp:mandrillapp:send_email_write_proc}  
