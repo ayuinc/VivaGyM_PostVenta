@@ -129,9 +129,9 @@ class Mandrillapp {
  		if($cliente_ausente = "no"){
  		$text = 'Estimado/a '.$name.'.<p>
  		<br>
- 		Le informamos que el inspector de su caso #XXX ha visitado su departamento pero no pudo realizar la inspección por no encontrarse nadie en el departamento.<p>
+ 		Le informamos que el inspector de su caso '.$id_sol_garantia.' ha visitado su departamento pero no pudo realizar la inspección por no encontrarse nadie en el departamento.<p>
 		<br>
-		Por esta razón usted debe ingresar nuevamente a nuestra plataforma de servicio posventa y agendar nuevamente su visita de inspección.<p>
+		Por esta razón usted debe ingresar nuevamente a nuestra plataforma de servicio posventa y agendar nuevamente su visita de inspección <a href="http://162.243.222.54/main/user_request_show/'.$id_sol_garantia.'">aquí.</a><p>
 		<br>
 		Muchas gracias,<p>
 		<br>
@@ -168,8 +168,11 @@ class Mandrillapp {
 
  		);
 		$mandrill->messages->sendTemplate($template_name, $template_content, $message);
+		return "Nombre:".$name."Email:".$to;
 		}
-		return "";
+		else{
+			return "";
+		}
 	}
 	function send_email_write_proc(){
 		
@@ -193,9 +196,9 @@ class Mandrillapp {
  		//$text = $TMPL->tagdata;
 	 		$text = 'Estimado/a '.$name.',<p>
 	 		<br>
-			Le informamos que la persona responsable por realizar el arreglo de su caso #XXX ha visitado su departamento pero no pudo realizar el trabajo por no encontrarse nadie en el departamento.<p>
+			Le informamos que la persona responsable por realizar el arreglo de su caso '.$id_sol_garantia.' ha visitado su departamento pero no pudo realizar el trabajo por no encontrarse nadie en el departamento.<p>
 			<br>
-			Por esta razón usted debe ingresar nuevamente a nuestra plataforma de servicio posventa y agendar nuevamente su visita de arreglo.<p>
+			Por esta razón usted debe ingresar nuevamente a nuestra plataforma de servicio posventa y agendar nuevamente su visita de arreglo <a href="http://162.243.222.54/main/user_request_show/'.$id_sol_garantia.'">aquí.</a><p>
 			<br>
 			Muchas gracias,<p>
 			Atentamente,<p>
@@ -231,8 +234,11 @@ class Mandrillapp {
 
 	 		);
 			$mandrill->messages->sendTemplate($template_name, $template_content, $message);
+			return "Nombre:".$name."Email:".$to;
 		}
-		return "";
+		else{
+			return "";
+		}
 	}
 	function send_email_confirm_solicitud(){
 		global $TMPL;
