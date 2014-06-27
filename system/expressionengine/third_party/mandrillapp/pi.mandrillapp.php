@@ -119,7 +119,7 @@ class Mandrillapp {
  		
  		$to= $TMPL->fetch_param('to');
  		$name= $TMPL->fetch_param('name');
- 		$subject= "SUBJECT PENDIENTE";
+ 		$subject= "No se pudo realizar el arreglo";
  		$from= $TMPL->fetch_param('from');
  		$id_sol_garantia =  $TMPL->fetch_param('id_sol_garantia');
  		$result_aus=mysql_query("SELECT * FROM exp_freeform_form_entries_4 WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 9 ");http://162.243.222.54/main/user_dashboard/51
@@ -127,11 +127,16 @@ class Mandrillapp {
 		$cliente_ausente = $obten_aus[23];
  		//$text = $TMPL->tagdata;
  		if($cliente_ausente = "no"){
- 		$text = 'Estimado/a '.$name.'<p>
-		Le escribimos para informarle que su visita respectiva a su solicitud de requrimiento por garantía número '.$id_sol_garantia.' no se pudo concretar debido a su ausencia. Los representantes de GyM se acercaron a su hogar el día de su cita y no encontraron al responsable de recibirlos para proceder con el requrimiento pendiente.<p>
-		Por favor proceda a reagenda su cita en nuestro portal de posventa en línea ingresando a su cuenta a través del siguiente <a href="http://162.243.222.54/main/user_request_show/'.$id_sol_garantia.'">link.</a><p>
-		Recuerde que esta es la última oportunidad que tiene de reagendar su cita. Si es que tuviese una emergencia el día programado para la visita por favor comuníquese a nuestro Call Center de Atención al Cliente al 206-7270.<p>
-		Quedamos como siempre a su disposición si tiene alguna consulta.<p>';
+ 		$text = 'Estimado/a '.$name.'.<p>
+ 		<br>
+ 		Le informamos que el inspector de su caso #XXX ha visitado su departamento pero no pudo realizar la inspección por no encontrarse nadie en el departamento.<p>
+		<br>
+		Por esta razón usted debe ingresar nuevamente a nuestra plataforma de servicio posventa y agendar nuevamente su visita de inspección.<p>
+		<br>
+		Muchas gracias,<p>
+		<br>
+		Atentamente,<p>
+		Servicio de posventa Viva GyM';
  		
  		/*'html' => '<p>FELICIDADES!!!</p><p>Ganaste el tema'.$topic.' ve a nuestro menú de temas y sigue participando</p>',*/
  		$message = array(
@@ -177,7 +182,7 @@ class Mandrillapp {
  		
  		$to= $TMPL->fetch_param('to');
  		$name= $TMPL->fetch_param('name');
- 		$subject= "SUBJECT PENDIENTE";
+ 		$subject= "No se pudo realizar la inspección";
  		$from= $TMPL->fetch_param('from');
  		$id_sol_garantia =  $TMPL->fetch_param('id_sol_garantia');
  		$result_aus=mysql_query("SELECT * FROM exp_freeform_form_entries_4 WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 5 ");
@@ -186,9 +191,15 @@ class Mandrillapp {
 
 		if($cliente_ausente = "no"){
  		//$text = $TMPL->tagdata;
-	 		$text = 'Estimado/a Administrador Viva<p>
-	Le informamos que el ejecutor '.$name.' trató de realizar la visita de inspección o arreglo respectiva al caso '.$id_sol_garantia.'. El cliente o responsable no estuvo presente en su hogar al momento de la cita acordada y no se pudo realizar la visita.<p>
-	Sistema de posventa en línea                                                                                                                     Viva GyM';
+	 		$text = 'Estimado/a '.$name.',<p>
+	 		<br>
+			Le informamos que la persona responsable por realizar el arreglo de su caso #XXX ha visitado su departamento pero no pudo realizar el trabajo por no encontrarse nadie en el departamento.<p>
+			<br>
+			Por esta razón usted debe ingresar nuevamente a nuestra plataforma de servicio posventa y agendar nuevamente su visita de arreglo.<p>
+			<br>
+			Muchas gracias,<p>
+			Atentamente,<p>
+			Servicio de posventa Viva GyM';
 	 		
 	 		/*'html' => '<p>FELICIDADES!!!</p><p>Ganaste el tema'.$topic.' ve a nuestro menú de temas y sigue participando</p>',*/
 	 		$message = array(
