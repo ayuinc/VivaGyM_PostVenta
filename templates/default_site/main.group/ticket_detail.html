@@ -81,17 +81,22 @@
 
                         <li class="mb-7"><strong>Responsable Viva</strong><br>
                           {if freeform:edit_data:persona_asignada_viva =="" }Por asignar{if:else}
-                          <div class="form-group">
-                          <!-- <input type="text" class="form-control input-blank input-sm" name="persona_asignada_viva" value="{freeform:edit_data:persona_asignada_viva}"> -->
+                            <div class="form-group">
+                            <!-- <input type="text" class="form-control input-blank input-sm" name="persona_asignada_viva" value="{freeform:edit_data:persona_asignada_viva}"> -->
 
-                          <?php $p_viva="{freeform:edit_data:persona_asignada_viva}"; ?>
-                          <select name="persona_asignada_viva" id="" class="form-control input-sm select-override">
-                            <option value="">Seleccione</option>
-                            {exp:user:users group_id="7"}
-                              <option value="{member_id}" <?php if($p_viva=="{member_id}"){echo "selected";} ?> >{member_id}</option>
-                            {/exp:user:users}
-                          </select>
-                          </div>{/if}</li> 
+                            <?php $p_viva="{freeform:edit_data:persona_asignada_viva}"; ?>
+
+                            {embed="main/select_per" p_viva="<?php echo $p_viva; ?>" grupo="7" var_name="persona_asignada_viva"}
+
+                            <select name="persona_asignada_viva" id="" class="form-control input-sm select-override">
+                              <option value="">Seleccione</option>
+                              {exp:user:users group_id="7"}
+                                <option value="{member_id}" <?php if($p_viva=="{member_id}"){echo "selected";} ?> >{member_id}</option>
+                              {/exp:user:users}
+                            </select>
+                            </div>
+                          {/if}
+                        </li> 
 
                         <li class="mb-7"><strong>Responsable GyM</strong><br>
                           {freeform:edit_data:persona_asignada_gym}
