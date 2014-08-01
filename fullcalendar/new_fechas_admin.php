@@ -2,150 +2,6 @@
 
 		  echo json_encode(array(
 		            array(
-		                'id' => 125,
-		                'title' => "01-05-2014 / #: 0",
-		                'start' => "2014-05-01",
-		                'color' => "#78BE20", 
-		                'textColor' => "black",
-		                'url' => "$site_url/main/admin_detalle_dia/01-05-2014"
-		              ),
-		            array(
-		                'id' => 126,
-		                'title' => "02-05-2014 / #: 0",
-		                'start' => "2014-05-02",
-		                'color' => "#78BE20", 
-		                'textColor' => "black",
-		                'url' => "$site_url/main/admin_detalle_dia/02-05-2014"
-		              ),
-		            array(
-		                'id' => 129,
-		                'title' => "05-05-2014 / #: 0",
-		                'start' => "2014-05-05",
-		                'color' => "#78BE20", 
-		                'textColor' => "black",
-		                'url' => "$site_url/main/admin_detalle_dia/05-05-2014"
-		              ),
-		            array(
-		                'id' => 130,
-		                'title' => "06-05-2014 / #: 0",
-		                'start' => "2014-05-06",
-		                'color' => "#78BE20", 
-		                'textColor' => "black",
-		                'url' => "$site_url/main/admin_detalle_dia/06-05-2014"
-		              ),
-		            array(
-		                'id' => 132,
-		                'title' => "08-05-2014 / #: 0",
-		                'start' => "2014-05-08",
-		                'color' => "#78BE20", 
-		                'textColor' => "black",
-		                'url' => "$site_url/main/admin_detalle_dia/08-05-2014"
-		              ),
-		            array(
-		                'id' => 133,
-		                'title' => "09-05-2014 / #: 0",
-		                'start' => "2014-05-09",
-		                'color' => "#78BE20", 
-		                'textColor' => "black",
-		                'url' => "$site_url/main/admin_detalle_dia/09-05-2014"
-		              ),
-		            array(
-		                'id' => 136,
-		                'title' => "12-05-2014 / #: 0",
-		                'start' => "2014-05-12",
-		                'color' => "#78BE20", 
-		                'textColor' => "black",
-		                'url' => "$site_url/main/admin_detalle_dia/12-05-2014"
-		              ),
-		            array(
-		                'id' => 137,
-		                'title' => "13-05-2014 / #: 0",
-		                'start' => "2014-05-13",
-		                'color' => "#78BE20", 
-		                'textColor' => "black",
-		                'url' => "$site_url/main/admin_detalle_dia/13-05-2014"
-		              ),
-		            array(
-		                'id' => 139,
-		                'title' => "15-05-2014 / #: 0",
-		                'start' => "2014-05-15",
-		                'color' => "#78BE20", 
-		                'textColor' => "black",
-		                'url' => "$site_url/main/admin_detalle_dia/15-05-2014"
-		              ),
-		            array(
-		                'id' => 140,
-		                'title' => "16-05-2014 / #: 0",
-		                'start' => "2014-05-16",
-		                'color' => "#78BE20", 
-		                'textColor' => "black",
-		                'url' => "$site_url/main/admin_detalle_dia/16-05-2014"
-		              ),
-		            array(
-		                'id' => 143,
-		                'title' => "19-05-2014 / #: 0",
-		                'start' => "2014-05-19",
-		                'color' => "#78BE20", 
-		                'textColor' => "black",
-		                'url' => "$site_url/main/admin_detalle_dia/19-05-2014"
-		              ),
-		            array(
-		                'id' => 144,
-		                'title' => "20-05-2014 / #: 0",
-		                'start' => "2014-05-20",
-		                'color' => "#78BE20", 
-		                'textColor' => "black",
-		                'url' => "$site_url/main/admin_detalle_dia/20-05-2014"
-		              ),
-		            array(
-		                'id' => 146,
-		                'title' => "22-05-2014 / #: 0",
-		                'start' => "2014-05-22",
-		                'color' => "#78BE20", 
-		                'textColor' => "black",
-		                'url' => "$site_url/main/admin_detalle_dia/22-05-2014"
-		              ),
-		            array(
-		                'id' => 147,
-		                'title' => "23-05-2014 / #: 0",
-		                'start' => "2014-05-23",
-		                'color' => "#78BE20", 
-		                'textColor' => "black",
-		                'url' => "$site_url/main/admin_detalle_dia/23-05-2014"
-		              ),
-		            array(
-		                'id' => 150,
-		                'title' => "26-05-2014 / #: 0",
-		                'start' => "2014-05-26",
-		                'color' => "#78BE20", 
-		                'textColor' => "black",
-		                'url' => "$site_url/main/admin_detalle_dia/26-05-2014"
-		              ),
-		            array(
-		                'id' => 151,
-		                'title' => "27-05-2014 / #: 0",
-		                'start' => "2014-05-27",
-		                'color' => "#78BE20", 
-		                'textColor' => "black",
-		                'url' => "$site_url/main/admin_detalle_dia/27-05-2014"
-		              ),
-		            array(
-		                'id' => 153,
-		                'title' => "29-05-2014 / #: 0",
-		                'start' => "2014-05-29",
-		                'color' => "#78BE20", 
-		                'textColor' => "black",
-		                'url' => "$site_url/main/admin_detalle_dia/29-05-2014"
-		              ),
-		            array(
-		                'id' => 154,
-		                'title' => "30-05-2014 / #: 0",
-		                'start' => "2014-05-30",
-		                'color' => "#78BE20", 
-		                'textColor' => "black",
-		                'url' => "$site_url/main/admin_detalle_dia/30-05-2014"
-		              ),
-		            array(
 		                'id' => 157,
 		                'title' => "02-06-2014 / #: 0",
 		                'start' => "2014-06-02",
@@ -171,7 +27,7 @@
 		              ),
 		            array(
 		                'id' => 161,
-		                'title' => "06-06-2014 / #: 1",
+		                'title' => "06-06-2014 / #: 0",
 		                'start' => "2014-06-06",
 		                'color' => "#78BE20", 
 		                'textColor' => "black",
@@ -187,7 +43,7 @@
 		              ),
 		            array(
 		                'id' => 165,
-		                'title' => "10-06-2014 / #: 4",
+		                'title' => "10-06-2014 / #: 0",
 		                'start' => "2014-06-10",
 		                'color' => "#78BE20", 
 		                'textColor' => "black",
@@ -195,7 +51,7 @@
 		              ),
 		            array(
 		                'id' => 167,
-		                'title' => "12-06-2014 / #: 2",
+		                'title' => "12-06-2014 / #: 0",
 		                'start' => "2014-06-12",
 		                'color' => "#78BE20", 
 		                'textColor' => "black",
@@ -203,7 +59,7 @@
 		              ),
 		            array(
 		                'id' => 168,
-		                'title' => "13-06-2014 / #: 3",
+		                'title' => "13-06-2014 / #: 0",
 		                'start' => "2014-06-13",
 		                'color' => "#78BE20", 
 		                'textColor' => "black",
@@ -211,7 +67,7 @@
 		              ),
 		            array(
 		                'id' => 171,
-		                'title' => "16-06-2014 / #: 5",
+		                'title' => "16-06-2014 / #: 0",
 		                'start' => "2014-06-16",
 		                'color' => "#78BE20", 
 		                'textColor' => "black",
@@ -219,7 +75,7 @@
 		              ),
 		            array(
 		                'id' => 172,
-		                'title' => "17-06-2014 / #: 12",
+		                'title' => "17-06-2014 / #: 0",
 		                'start' => "2014-06-17",
 		                'color' => "#78BE20", 
 		                'textColor' => "black",
@@ -227,7 +83,7 @@
 		              ),
 		            array(
 		                'id' => 174,
-		                'title' => "19-06-2014 / #: 3",
+		                'title' => "19-06-2014 / #: 0",
 		                'start' => "2014-06-19",
 		                'color' => "#78BE20", 
 		                'textColor' => "black",
@@ -235,7 +91,7 @@
 		              ),
 		            array(
 		                'id' => 175,
-		                'title' => "20-06-2014 / #: 6",
+		                'title' => "20-06-2014 / #: 0",
 		                'start' => "2014-06-20",
 		                'color' => "#78BE20", 
 		                'textColor' => "black",
@@ -243,7 +99,7 @@
 		              ),
 		            array(
 		                'id' => 178,
-		                'title' => "23-06-2014 / #: 2",
+		                'title' => "23-06-2014 / #: 0",
 		                'start' => "2014-06-23",
 		                'color' => "#78BE20", 
 		                'textColor' => "black",
@@ -251,7 +107,7 @@
 		              ),
 		            array(
 		                'id' => 179,
-		                'title' => "24-06-2014 / #: 3",
+		                'title' => "24-06-2014 / #: 0",
 		                'start' => "2014-06-24",
 		                'color' => "#78BE20", 
 		                'textColor' => "black",
@@ -259,7 +115,7 @@
 		              ),
 		            array(
 		                'id' => 181,
-		                'title' => "26-06-2014 / #: 5",
+		                'title' => "26-06-2014 / #: 0",
 		                'start' => "2014-06-26",
 		                'color' => "#78BE20", 
 		                'textColor' => "black",
@@ -267,7 +123,7 @@
 		              ),
 		            array(
 		                'id' => 182,
-		                'title' => "27-06-2014 / #: 6",
+		                'title' => "27-06-2014 / #: 0",
 		                'start' => "2014-06-27",
 		                'color' => "#78BE20", 
 		                'textColor' => "black",
@@ -283,7 +139,7 @@
 		              ),
 		            array(
 		                'id' => 187,
-		                'title' => "01-07-2014 / #: 1",
+		                'title' => "01-07-2014 / #: 0",
 		                'start' => "2014-07-01",
 		                'color' => "#78BE20", 
 		                'textColor' => "black",
@@ -291,7 +147,7 @@
 		              ),
 		            array(
 		                'id' => 189,
-		                'title' => "03-07-2014 / #: 5",
+		                'title' => "03-07-2014 / #: 0",
 		                'start' => "2014-07-03",
 		                'color' => "#78BE20", 
 		                'textColor' => "black",
@@ -299,7 +155,7 @@
 		              ),
 		            array(
 		                'id' => 190,
-		                'title' => "04-07-2014 / #: 6",
+		                'title' => "04-07-2014 / #: 0",
 		                'start' => "2014-07-04",
 		                'color' => "#78BE20", 
 		                'textColor' => "black",
@@ -307,7 +163,7 @@
 		              ),
 		            array(
 		                'id' => 193,
-		                'title' => "07-07-2014 / #: 1",
+		                'title' => "07-07-2014 / #: 0",
 		                'start' => "2014-07-07",
 		                'color' => "#78BE20", 
 		                'textColor' => "black",
@@ -315,7 +171,7 @@
 		              ),
 		            array(
 		                'id' => 194,
-		                'title' => "08-07-2014 / #: 2",
+		                'title' => "08-07-2014 / #: 0",
 		                'start' => "2014-07-08",
 		                'color' => "#78BE20", 
 		                'textColor' => "black",
@@ -323,7 +179,7 @@
 		              ),
 		            array(
 		                'id' => 196,
-		                'title' => "10-07-2014 / #: 2",
+		                'title' => "10-07-2014 / #: 0",
 		                'start' => "2014-07-10",
 		                'color' => "#78BE20", 
 		                'textColor' => "black",
@@ -331,7 +187,7 @@
 		              ),
 		            array(
 		                'id' => 197,
-		                'title' => "11-07-2014 / #: 6",
+		                'title' => "11-07-2014 / #: 0",
 		                'start' => "2014-07-11",
 		                'color' => "#78BE20", 
 		                'textColor' => "black",
@@ -387,7 +243,7 @@
 		              ),
 		            array(
 		                'id' => 210,
-		                'title' => "24-07-2014 / #: 0",
+		                'title' => "24-07-2014 / #: 1",
 		                'start' => "2014-07-24",
 		                'color' => "#78BE20", 
 		                'textColor' => "black",
@@ -416,6 +272,150 @@
 		                'color' => "#78BE20", 
 		                'textColor' => "black",
 		                'url' => "$site_url/main/admin_detalle_dia/29-07-2014"
+		              ),
+		            array(
+		                'id' => 217,
+		                'title' => "31-07-2014 / #: 7",
+		                'start' => "2014-07-31",
+		                'color' => "#78BE20", 
+		                'textColor' => "black",
+		                'url' => "$site_url/main/admin_detalle_dia/31-07-2014"
+		              ),
+		            array(
+		                'id' => 218,
+		                'title' => "01-08-2014 / #: 6",
+		                'start' => "2014-08-01",
+		                'color' => "#78BE20", 
+		                'textColor' => "black",
+		                'url' => "$site_url/main/admin_detalle_dia/01-08-2014"
+		              ),
+		            array(
+		                'id' => 221,
+		                'title' => "04-08-2014 / #: 0",
+		                'start' => "2014-08-04",
+		                'color' => "#78BE20", 
+		                'textColor' => "black",
+		                'url' => "$site_url/main/admin_detalle_dia/04-08-2014"
+		              ),
+		            array(
+		                'id' => 222,
+		                'title' => "05-08-2014 / #: 5",
+		                'start' => "2014-08-05",
+		                'color' => "#78BE20", 
+		                'textColor' => "black",
+		                'url' => "$site_url/main/admin_detalle_dia/05-08-2014"
+		              ),
+		            array(
+		                'id' => 224,
+		                'title' => "07-08-2014 / #: 0",
+		                'start' => "2014-08-07",
+		                'color' => "#78BE20", 
+		                'textColor' => "black",
+		                'url' => "$site_url/main/admin_detalle_dia/07-08-2014"
+		              ),
+		            array(
+		                'id' => 225,
+		                'title' => "08-08-2014 / #: 0",
+		                'start' => "2014-08-08",
+		                'color' => "#78BE20", 
+		                'textColor' => "black",
+		                'url' => "$site_url/main/admin_detalle_dia/08-08-2014"
+		              ),
+		            array(
+		                'id' => 228,
+		                'title' => "11-08-2014 / #: 0",
+		                'start' => "2014-08-11",
+		                'color' => "#78BE20", 
+		                'textColor' => "black",
+		                'url' => "$site_url/main/admin_detalle_dia/11-08-2014"
+		              ),
+		            array(
+		                'id' => 229,
+		                'title' => "12-08-2014 / #: 0",
+		                'start' => "2014-08-12",
+		                'color' => "#78BE20", 
+		                'textColor' => "black",
+		                'url' => "$site_url/main/admin_detalle_dia/12-08-2014"
+		              ),
+		            array(
+		                'id' => 231,
+		                'title' => "14-08-2014 / #: 0",
+		                'start' => "2014-08-14",
+		                'color' => "#78BE20", 
+		                'textColor' => "black",
+		                'url' => "$site_url/main/admin_detalle_dia/14-08-2014"
+		              ),
+		            array(
+		                'id' => 232,
+		                'title' => "15-08-2014 / #: 0",
+		                'start' => "2014-08-15",
+		                'color' => "#78BE20", 
+		                'textColor' => "black",
+		                'url' => "$site_url/main/admin_detalle_dia/15-08-2014"
+		              ),
+		            array(
+		                'id' => 235,
+		                'title' => "18-08-2014 / #: 0",
+		                'start' => "2014-08-18",
+		                'color' => "#78BE20", 
+		                'textColor' => "black",
+		                'url' => "$site_url/main/admin_detalle_dia/18-08-2014"
+		              ),
+		            array(
+		                'id' => 236,
+		                'title' => "19-08-2014 / #: 0",
+		                'start' => "2014-08-19",
+		                'color' => "#78BE20", 
+		                'textColor' => "black",
+		                'url' => "$site_url/main/admin_detalle_dia/19-08-2014"
+		              ),
+		            array(
+		                'id' => 238,
+		                'title' => "21-08-2014 / #: 0",
+		                'start' => "2014-08-21",
+		                'color' => "#78BE20", 
+		                'textColor' => "black",
+		                'url' => "$site_url/main/admin_detalle_dia/21-08-2014"
+		              ),
+		            array(
+		                'id' => 239,
+		                'title' => "22-08-2014 / #: 0",
+		                'start' => "2014-08-22",
+		                'color' => "#78BE20", 
+		                'textColor' => "black",
+		                'url' => "$site_url/main/admin_detalle_dia/22-08-2014"
+		              ),
+		            array(
+		                'id' => 242,
+		                'title' => "25-08-2014 / #: 0",
+		                'start' => "2014-08-25",
+		                'color' => "#78BE20", 
+		                'textColor' => "black",
+		                'url' => "$site_url/main/admin_detalle_dia/25-08-2014"
+		              ),
+		            array(
+		                'id' => 243,
+		                'title' => "26-08-2014 / #: 0",
+		                'start' => "2014-08-26",
+		                'color' => "#78BE20", 
+		                'textColor' => "black",
+		                'url' => "$site_url/main/admin_detalle_dia/26-08-2014"
+		              ),
+		            array(
+		                'id' => 245,
+		                'title' => "28-08-2014 / #: 0",
+		                'start' => "2014-08-28",
+		                'color' => "#78BE20", 
+		                'textColor' => "black",
+		                'url' => "$site_url/main/admin_detalle_dia/28-08-2014"
+		              ),
+		            array(
+		                'id' => 246,
+		                'title' => "29-08-2014 / #: 0",
+		                'start' => "2014-08-29",
+		                'color' => "#78BE20", 
+		                'textColor' => "black",
+		                'url' => "$site_url/main/admin_detalle_dia/29-08-2014"
 		              ),
 		  
 		  ));

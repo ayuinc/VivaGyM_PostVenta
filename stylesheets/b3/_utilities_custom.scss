@@ -346,15 +346,13 @@
 
 // Form overrides 
 .select-override {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+  @include user-select(none);
   position: relative;
   text-indent: 1px;
   text-overflow: "";
   &.form-control {
-    line-height: 28px;
-    background: white url(http://162.243.222.54/images/arrow-down.svg) no-repeat 98%;
+    line-height: 24px;
+    // background: white url(http://162.243.222.54/images/arrow-down.svg) no-repeat 98%;
   }
 }
 

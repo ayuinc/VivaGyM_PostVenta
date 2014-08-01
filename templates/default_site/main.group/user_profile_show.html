@@ -20,9 +20,8 @@
             <div class="panel-title mb-14">
               <div class="clearfix">
                 <div class="col-sm-6 pl-0 col-xs-6">
-                  <h4 class="uppercase medium">
-                    <i class="icon-user"></i> Mi perfil
-                  </h4>
+                  <h4 class="uppercase medium"><i class="icon-user"></i> Mi perfil </h4>
+                    <a href="{site_url}main/cambio_de_clave/pwd" class="small text-danger underline">Cambiar contraseña</a>
                 </div>
                 <div class="col-sm-6 col-xs-6">                  
                     <a href="#" class="text-info block pt-14 edit-form-trigger lowercase not-underline icon-pencil text-right"></a>
@@ -44,22 +43,22 @@
               <div class="col-sm-5">
                 <h4 class="mt-0">Datos del propietario</h4>
                 <div class="form-group">
-                  <label for="">Nombre</label>
+                  <label for="">Nombre:</label>
                   <input type="text" class="form-control input-blank input-sm" name="nombre_propietario" placeholder="{nombre_propietario}" value="{nombre_propietario}">
                 </div>
 
                 <div class="form-group">
-                  <label for="">Apellido paterno</label>
+                  <label for="">Apellido paterno:</label>
                   <input type="text" class="form-control input-blank input-sm" name="ap_pat" placeholder="{ap_pat}" value="{ap_pat}">
                 </div>
 
                 <div class="form-group">
-                  <label for="">Apellido materno</label>
+                  <label for="">Apellido materno:</label>
                   <input type="text" class="form-control input-blank input-sm" name="ap_mat" placeholder="{ap_mat}" value="{ap_mat}">
                 </div>
 
                 <div class="form-group">
-                  <label for="">E-mail</label>
+                  <label for="">E-mail:</label>
                   <input type="text" class="form-control input-blank input-sm" name="email_propietario" placeholder="{email_propietario}" value="{email_propietario}">
                   {if email_propietario!=''}<!-- plugin para actualizar el mail region -->
                   {exp:update_email member_id="{member_id}"}
@@ -67,22 +66,22 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="">Télf. celular</label>
+                  <label for="">Télf. celular:</label>
                   <input type="text" class="form-control input-blank input-sm" name="t_cel" placeholder="{t_cel}" value="{t_cel}">
                 </div>
 
                 <div class="form-group">
-                  <label for="">Télf. oficina</label>
+                  <label for="">Télf. oficina:</label>
                   <input type="text" class="form-control input-blank input-sm" name="t_ofic" placeholder="{t_ofic}" value="{t_ofic}">
                 </div>
 
                 <div class="form-group">
-                  <label for="">Télf. fijo</label>
+                  <label for="">Télf. fijo:</label>
                   <input type="text" class="form-control input-blank input-sm" name="t_fijo" placeholder="{t_fijo}" value="{t_fijo}">
                 </div>
 
                 <div class="form-group">
-                  <label for="">Télf. conyugue</label>
+                  <label for="">Télf. conyuge:</label>
                   <input type="text" class="form-control input-blank input-sm" name="t_conyu" placeholder="{t_conyu}" value="{t_conyu}">
                 </div>
 
@@ -91,31 +90,31 @@
               <div class="col-sm-5">
                 <h4 class="mt-0">Datos del inquilino</h4>
                 <div class="form-group">
-                  <label for="">Nombre</label>
+                  <label for="">Nombre:</label>
                   <input type="text" class="form-control input-blank input-sm" name="nombre_inq" placeholder="{nombre_inq}" value="{nombre_inq}">
                 </div>
 
                 <div class="form-group">
-                  <label for="">Apellido paterno</label>
+                  <label for="">Apellido paterno:</label>
                   <input type="text" class="form-control input-blank input-sm" name="ap_pat_inq" placeholder="{ap_pat_inq}" value="{ap_pat_inq}">
                 </div>
 
                 <div class="form-group">
-                  <label for="">Apellido materno</label>
+                  <label for="">Apellido materno:</label>
                   <input type="text" class="form-control input-blank input-sm" name="ap_mat_inq" placeholder="{ap_mat_inq}" value="{ap_mat_inq}">
                 </div>
 
                 <div class="form-group">
-                  <label for="">E-mail</label>
+                  <label for="">E-mail:</label>
                   <input type="text" class="form-control input-blank input-sm" name="email_inquilino" placeholder="{email_inquilino}" value="{email_inquilino}">
                 </div>
                 <div class="form-group">
-                  <label for="">Télf. celular</label>
+                  <label for="">Télf. celular:</label>
                   <input type="text" class="form-control input-blank input-sm" name="telf_cel_inq" placeholder="{telf_cel_inq}" value="{telf_cel_inq}">
                 </div>   
 
                 <div class="form-group">
-                  <label for="">Télf. fijo</label>
+                  <label for="">Télf. fijo:</label>
                   <input type="text" class="form-control input-blank input-sm" name="telf_inq" placeholder="{telf_inq}" value="{telf_inq}">
                 </div>  
               </div>

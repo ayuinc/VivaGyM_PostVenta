@@ -1,26 +1,54 @@
 
-{exp:user:users group_id="6"  orderby="{embed:ordenar_user}" sort="asc" limit="20" paginate="bottom" }
+{exp:user:users group_id="6"  sort="asc" limit="20" paginate="bottom"
+  search:nombre_propietario="%{embed:nombre}%" 
+  search:ap_pat="%{embed:ap_pat}%"
+  search:ap_mat="%{embed:ap_mat}%"
+  search:cod_depa="{embed:nro_depa}"
+  search:sigla_complejo="{embed:complejo}"
+   }
   <?php //$estatus_ticket="{freeform:status}"; ?>
   <tr>
     <td>{member_id}</td>
     <td>{screen_name}</td>
     <td>{nombre_propietario}</td>
     <td>{ap_pat} {ap_mat}</td>
-    <td>{complejo_depa}</td>
+    <td>{sigla_complejo}</td>
     <td>{torre_depa}</td>
     <td>{cod_depa}</td>
     <td>{t_fijo}</td>
     <td>{t_cel}</td>
     <td>{email_propietario}</td>
     <td>{fecha_entrega}</td>
-    <!-- <td><a href="{site_url}main/ticket_detail/" class="small text-danger underline">Ver detalle</a></td> -->
+    <td>
+      <form method="post" enctype="multipart/form-data" action="/?/main/create_caso_admin">
+        <input type="hidden" name="id_cliente" value="{member_id}" >
+        <input type="hidden" name="XID" value="{XID_HASH}" />
+        <button type="submit" class="" name="submit">Crear ticket</button>
+      </form>
+    </td>
   </tr>
 
-    {if user_no_results}<p>No se encuentran resultados.</p>{/if}
+    {if user_no_results}<h6>No se encuentran resultados.</h6>{/if}
    
     {user_paginate}
-      <li>Página {user_current_page} de {user_total_pages} paginas
-      {user_pagination_links}</li>
+      
+      {user_pagination_links}
+        <div class="clearfix mb-14 mt-7">
+          <ul class="pagination pagination-sm m-0 pull-right">
+            {previous_page}
+              <li><a href="{pagination_url}" class="page-previous">&lt;&lt;</a></li>
+            {/previous_page}
+
+            {page}
+              <li class="{if current_page}active{/if}"><a href="{pagination_url}" class="page-{pagination_page_number}">{pagination_page_number}</a></li>
+            {/page}
+
+            {next_page}
+              <li><a href="{pagination_url}" class="page-next">&gt;&gt;</a></li>
+            {/next_page}
+          </ul>
+        </div>
+        {/user_pagination_links}
     {/user_paginate}
   
 {/exp:user:users}

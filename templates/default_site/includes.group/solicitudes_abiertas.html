@@ -2,13 +2,12 @@
  
   <thead class="uppercase medium">
 {exp:freeform:entries
-    form_id="2"
-    orderby="entry_id"
-    sort="desc"
-    limit="1" status="open|closed"
-    paginate="top"
-    search:author_id="{last_segment}"
-}    
+  form_id="2"
+  orderby="entry_id"
+  sort="desc"
+  limit="1" status="open|closed"
+  paginate="top"
+  search:id_cliente="{last_segment}" }    
     <tr>
       <td>Casos</td>
       <td>Tipo de problema</td>
@@ -21,13 +20,12 @@
   <tbody>
 
 {exp:freeform:entries
-    form_id="2"
-    orderby="entry_id"
-    sort="desc"
-    limit="10" status="open|closed"
-    paginate="top"
-    search:author_id="{last_segment}"
-}
+  form_id="2"
+  orderby="entry_id"
+  sort="desc"
+  limit="10" status="open|closed"
+  paginate="top"
+  search:id_cliente="{last_segment}" }
     <tr>
       <td><?php echo $id_sol_garantia="{freeform:entry_id}"; ?></td>
       <td>{freeform:field:tipo_de_problema}</td>

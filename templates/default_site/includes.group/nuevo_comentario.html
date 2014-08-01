@@ -23,6 +23,7 @@
 {exp:freeform:form form_name="comentarios_ticket" restrict_edit_to_author="no" return="main/ticket_detail/{embed:entrada}"  }
   <textarea name="comentarios_garantia" id="" rows="2" class="form-control" placeholder="Escribe tus comentarios aqui."></textarea>
   <input type="hidden" name="id_comentarista" value="{member_id}" />
-  <input type="hidden" name="id_sol_garantia" value="{embed:entrada}" />
-  <input type="submit" name="submit" value="Enviar" />
+  <input type="hidden" name="id_sol_garantia" value="{embed:entrada}" /><br>
+  <input type="submit" name="submit" value="Enviar" class="btn btn-sm btn-default" />
+
 {/exp:freeform:form}

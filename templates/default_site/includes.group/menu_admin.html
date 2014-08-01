@@ -1,11 +1,55 @@
-<ol class="breadcrumb">
+<!-- <ol class="breadcrumb">
 
 		<li><a href="{site_url}main/admin_dashboard">Panel de control</a></li>
 
-		<li><a href="{site_url}main/admin_calendario">Calendario</a></li>
+ 		<li><a href="{site_url}main/admin_calendario">Calendario</a></li>
 
 		<li><a href="{site_url}main/admin_lista_usuarios">Usuarios</a></li>
 
 		<li><a href="{site_url}main/admin_documentos_lista">Solicitud documentos</a></li>
 
-</ol>
+</ol> -->
+<div class="clearfix mb-21">
+	<ul class="list-unstyled nav-admin box-shadow border-rounded">
+		{exp:member:custom_profile_data}
+		  {exp:switchee variable = "{group_id}" parse="inward"}
+		    {case value="7"}<!-- admin viva 7 -->
+					<li>
+						<a href="{site_url}main/admin_dashboard" class="{if segment_2=='admin_dashboard'}active{/if}">Solicitud de garantia</a>
+					</li>
+					<!-- <li>
+						<a href="{site_url}main/admin_calendario" class="{if segment_2=='admin_calendario'}active{/if}">Calendario</a>
+					</li>
+					<li>
+						<a href="{site_url}main/admin_lista_usuarios" class="{if segment_2=='admin_lista_usuarios'}active{/if}">Usuarios</a>
+					</li> -->
+					<li>
+						<a href="{site_url}main/admin_documentos_lista" class="{if segment_2=='admin_documentos_lista'}active{/if}">Solicitud documentos</a>
+					</li>
+		    {/case}
+
+		    {case value="8"}<!-- admin GyM 8 -->
+					<li>
+						<a href="{site_url}main/admin_dashboard" class="{if segment_2=='admin_dashboard'}active{/if}">Solicitud de garantia</a>
+					</li>
+					<!-- <li>
+						<a href="{site_url}main/admin_calendario" class="{if segment_2=='admin_calendario'}active{/if}">Calendario</a>
+					</li> -->
+					<li>
+						<a href="{site_url}main/admin_lista_agentes" class="{if segment_2=='admin_lista_agentes'}active{/if}">Agentes</a>
+					</li>
+		    {/case}
+
+		    {case value="9"}<!-- inspector viva 9 -->
+		    {/case}
+
+		    {case value="10"}<!-- personal GyM que ejecuta el arreglo  10 -->
+		    {/case}
+		  {/exp:switchee}
+		{/exp:member:custom_profile_data}
+
+		<!-- <li>
+			<a href="{site_url}main/admin_cambio_clave" class="{if segment_2=='admin_cambio_clave'}active{/if}">Cambio de clave</a>
+		</li> -->
+	</ul>
+</div>

@@ -31,7 +31,6 @@ $config['cookie_httponly'] = 'y';
 //$config['disable_csrf_protection'] = 'y'; 
 $config['cp_session_ttl'] = 30000;
 
-
 /*
 |--------------------------------------------------------------------------
 | URI PROTOCOL

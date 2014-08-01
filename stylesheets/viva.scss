@@ -26,6 +26,7 @@
 @import "b3/_input-groups.scss";
 @import "b3/_navbar.scss";
 @import "b3/_navs.scss";
+@import "b3/_pagination.scss";
 @import "b3/_panels.scss";
 @import "b3/_badges.scss";
 @import "b3/_labels.scss";
@@ -37,7 +38,8 @@
 @import "b3/_close.scss";
 
 // Templates
-@import "app/_users.scss"; 
+@import "app/_users.scss";
+@import "app/_admin.scss"; 
 @import "app/_fullcalendar_rails.scss";
 
 
@@ -67,4 +69,3 @@
 // @import "animate/rotate-out";
 // @import "animate/sliders";
 // @import "animate/specials";
-

@@ -774,7 +774,7 @@ class Member_auth extends Member {
 
 		// Build success message
 		$data = array(
-			'title' 	=> lang('mbr_passwd_email_sent'),
+			'title' 	=> "Recuperar contraseña",
 			'heading'	=> lang('thank_you'),
 			'content'	=> lang('forgotten_email_sent'),
 			'link'		=> array($return, $site_name)
@@ -962,9 +962,9 @@ class Member_auth extends Member {
 
 		// Build the success message that we'll show to the user.
 		$data = array(
-			'title' 	=> lang('mbr_password_changed'),
-			'heading'	=> lang('mbr_password_changed'),
-			'content'	=> lang('mbr_successfully_changed_password'),
+			'title' 	=> "Recuperar contraseña",
+			'heading'	=> "Recuperar contraseña",
+			'content'	=> "Ha cambiado su contraseña correctamante.",
 			'link'		=> array($return, $site_name), // The link to show them. In the form of (URL, Name)
 			'redirect'	=> $return, // Redirect them to this URL...
 			'rate' => '5' // ...after 5 seconds.

@@ -1,4 +1,6 @@
 {embed="includes/header" }
+<script type="text/javascript" src="{site_url}lib/vendor/bootstrapValidator.js"></script>
+<script type="text/javascript" src="{site_url}lib/user_request_files.js"></script>
 
 <?php
 
@@ -68,9 +70,9 @@ function compararFechas($primera, $segunda)
 
           </ul>
           <hr class="double">
-          <h4 class="light">Manual de uso</h4>
+          <h4 class="light">Manual de propietario</h4>
           <p>Descarga el manual de uso para saber como cuidar de tu departamento todos los días</p>
-          <a target="_blank" href="{site_url}images/LPDA_II_RI_y_Junta_Propietarios.pdf" class="btn btn-default btn-sm">Descargar PDF</a>
+          <a target="_blank" href="{site_url}images/manual_propietario.pdf" class="btn btn-default btn-sm">Descargar PDF</a>
           <hr class="double">
           <h4 class="light">Garantía</h4>
           <p>Descarga la política de garantía de VivaGyM para conocer qué arreglos están cubiertos</p>
@@ -86,7 +88,7 @@ function compararFechas($primera, $segunda)
           <h4 class="light">Documentos</h4>
           <p>Para obtener los planos de tu depa o una copia de tu contrato, completa el siguiente formulario:</p>
 
-            {exp:freeform:form form_id="3" return="main/user_request_doc" }
+            {exp:freeform:form form_id="3" return="main/user_request_doc" form:id="user-request-files-form"}
 
               <div class="row">
                 <div class="col-sm-6">
@@ -100,7 +102,8 @@ function compararFechas($primera, $segunda)
 
                   </div>
                   <div class="form-group">
-                    <input type="text" class="form-control" name="email" placeholder="Email para envío">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" name="email_encargado_atencion" placeholder="Email para envío">
                   </div>
                   {exp:member:custom_profile_data}
                   <input type="hidden" name="departamento_en_consulta" value="{cod_depa}" >

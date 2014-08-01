@@ -1,10 +1,21 @@
-	{embed="includes/header" }
+{embed="includes/header" }
+
+{exp:confirm_sol:insp_write_proc 
+	id_sol_garantia="{segment_3}" 
+	paso="{segment_4}"
+	id_cliente="{segment_5}"
+	entry_id="{segment_6}"
+}
+{/exp:confirm_sol:insp_write_proc}
+
 <?php 
 $fecha_atencion_ticket=date('d-m-Y');
+
 $id_sol_garantia="{segment_3}";
 $paso="{segment_4}";
 $id_cliente="{segment_5}";
 $entry_id="{segment_6}";
+
 $ip=$_SERVER["REMOTE_ADDR"];
 $date = date_create();
 $entry_date=date_timestamp_get($date);
@@ -15,45 +26,28 @@ $obten_aus=mysql_fetch_row($result_aus);
 $cliente_ausente = $obten_aus[23];
 
 if($cliente_ausente=="si"){
-	$resultadoc=mysql_query("insert into exp_freeform_form_entries_4 
-	(site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19,form_field_27,form_field_29) 
-	values ('1','$id_cliente','y','$ip','','open','$id_cliente','Procesar Informe de Inspección','$id_sol_garantia','6','','$comentarios')");
-	$sqlUpdate_a = mysql_query("UPDATE exp_freeform_form_entries_2 
-		SET form_field_12 = '6', edit_date = '$entry_date' WHERE entry_id = $id_sol_garantia ");
 
-	$sqlUpdate_b = mysql_query("UPDATE exp_freeform_form_entries_4 
-	SET status = 'closed', form_field_32 = '4' WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 3 ");
-
-	$sqlUpdate_c = mysql_query("UPDATE exp_freeform_form_entries_4 
-	SET status = 'closed',form_field_25 = '$fecha_atencion_ticket' WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 5 ");
 ?>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
   	<h1>¡Listo! El informe de inspección de la solicitud #<?php echo $id_sol_garantia; ?> ha sido ingresado</h1>
+  	<p>{embed="main/datos_user" user_id="<?php echo $id_cliente; ?>" }</p>
 	  <p>Puedes hacerle seguimiento a las solicitudes en la sección de “Panel de control”</p>
 	  <p><a href="{site_url}main/admin_dashboard">Ir a Panel de control</a></p>	  
   </div>
 </div>
+
 <?php
-}elseif($cliente_ausente=="no"){ // colocar el plugin de envio de correos 
-
-	$sqlUpdate_c = mysql_query("UPDATE exp_freeform_form_entries_4 
-		SET entry_date = '0', edit_date = '0', status = 'open', form_field_25 = '' 
-		WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 3 "); // volver el paso 3 a 0 eliminar las fechas
-
-	$sqlUpdate_a = mysql_query("UPDATE exp_freeform_form_entries_2 
-			SET form_field_12 = '4' WHERE entry_id = $id_sol_garantia ");
-
-	$query="DELETE FROM exp_freeform_form_entries_4 WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 4";
-	$resultborrar=mysql_query($query);
-
-	$queryb="DELETE FROM exp_freeform_form_entries_4 WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 5";
-	$resultborrarb=mysql_query($queryb);
+}else{ // colocar el plugin de envio de correos 
 
 ?>
-{exp:member:custom_profile_data}
-{exp:generar_comentario member_id="{member_id}" id_sol_garantia="{segment_3}" proceso="insp"}
-{/exp:member:custom_profile_data}
+<!-- enviar al plugin siempre acc="no" para q funcione -->
+{exp:freeform:entries form_id="4" search:id_sol_garantia="{segment_3}" search:orden_tramite="5" limit="1" status="open|closed" }
+		{exp:member:custom_profile_data}
+			{exp:generar_comentario member_id="{member_id}" id_sol_garantia="{segment_3}" 
+			texto="La persona encargada no se encontraba en el inmueble para la inspección." acc="{freeform:field:cliente_ausente}" }
+		{/exp:member:custom_profile_data}
+{/exp:freeform:entries}
 
 	{exp:user:stats member_id="{segment_5}"}
 		{exp:mandrillapp:send_email_write_proc
@@ -66,7 +60,8 @@ if($cliente_ausente=="si"){
 
 	<div class="row">
   <div class="col-md-6 col-md-offset-3">
-  	<h1>Se ha enviado un correo al cliente del caso #<?php echo $id_sol_garantia; ?>, el caso esta pendiente de inspección.</h1>
+  	<h1>¡Listo! Se ha notificado al cliente que la visita de inspección no pudo se realizada, el cliente deberá agendar nuevamente la visita de inspección.</h1>
+  	<p>{embed="main/datos_user" user_id="<?php echo $id_cliente; ?>" }</p>
 	  <p>Puedes hacerle seguimiento a las solicitudes en la sección de “Panel de control”</p>
 	  <p><a href="{site_url}main/admin_dashboard">Ir a Panel de control</a></p>	  
   </div>

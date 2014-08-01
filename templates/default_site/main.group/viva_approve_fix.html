@@ -1,80 +1,20 @@
 {embed="includes/header"}
 
+{exp:get_post_vars parse="inward"}
+	{exp:confirm_sol:viva_approve_fix 
+		id_sol_garantia="{post_id_sol_garantia}" 
+		id_cliente="{post_id_cliente}"
+		acc="{post_aprobar_paso}"
+		paso="6"
+		dir="{post_dir}"
+		comentarios="{post_comentarios}"
+	}
+	{/exp:confirm_sol:viva_approve_fix}
+{/exp:get_post_vars}
+
 <?php
 $id_sol_garantia=$_POST['id_sol_garantia'];
-$id_cliente=$_POST['id_cliente'];
 $acc=$_POST['aprobar_paso'];
-$paso="6";
-$dir=$_POST['dir'];
-$comentarios=$_POST['comentarios'];
-
-$result=mysql_query("SELECT * FROM exp_freeform_form_entries_2 WHERE entry_id=$id_sol_garantia");
-$obten=mysql_fetch_row($result);
-$id_cliente = $obten[2];
-$tit_problema = $obten[15];
-
-// leer email cuando lo tomas de ee no funca
-	$result_email=mysql_query("SELECT * FROM exp_members WHERE member_id=$id_cliente");
-	$obten_email=mysql_fetch_row($result_email);
-	$screen_name = $obten_email[3];
-	$dir = $obten_email[9];
-
-$ant_paso=$paso-1;
-
-$prox_paso=$paso+1;
-
-if($paso=="2") { $mensaje="Agendar Inspección";};
-
-if($paso=="6") { $mensaje="Agendar Arreglo";};
-
-$ip=$_SERVER["REMOTE_ADDR"];
-
-$date = date_create();
-$entry_date=date_timestamp_get($date);
-
-$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_2 SET edit_date = '$entry_date' WHERE entry_id = $id_sol_garantia ");
-
-$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_4 
-SET status = 'closed'
-WHERE form_field_18 = $id_sol_garantia AND form_field_19 = $paso ");
-
-if ($acc=="si"){
-
-	$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_4 
-	SET form_field_27 = 'Aprobado',
-	entry_date = '$entry_date',
-	form_field_29 = '$comentarios'
-	WHERE form_field_18 = $id_sol_garantia AND form_field_19 = $paso ");
-
-	$resultado=mysql_query("insert into exp_freeform_form_entries_4 
-	(site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19) 
-	values ('1','$id_cliente','y','$ip','','open','$id_cliente','$mensaje','$id_sol_garantia','$prox_paso')");
-
-	// caso si pasas el ticket a "Inspección pendiente" sino lo cierras
-	$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_2 
-	SET form_field_12 = '7'
-	WHERE entry_id = $id_sol_garantia ");
-
-} elseif ($acc=="no"){ 
-
-	$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_4 
-	SET form_field_27 = 'Rechazado',
-	status = 'closed',
-	entry_date = '$entry_date',
-	form_field_29 = '$comentarios'
-	WHERE form_field_18 = $id_sol_garantia AND form_field_19 = $paso ");
-
-	// caso si pasas el ticket a "Inspección pendiente" sino lo cierras
-	$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_2 
-	SET form_field_12 = '10',
-	status = 'closed'
-	WHERE entry_id = $id_sol_garantia ");
-
-	$resultadog=mysql_query("insert into exp_freeform_form_entries_4 
-	(site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19,form_field_27) 
-	values ('1','$id_cliente','y','$ip','$entry_date','closed','$id_cliente','Cerrar el caso','$id_sol_garantia','10','Cerrado')");
-
-}
 
 ?>
 
@@ -91,7 +31,6 @@ if ($acc=="si"){
 	{/exp:user:stats}   
 {/exp:get_post_vars}
 
-
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
   	<?php 
@@ -100,6 +39,10 @@ if ($acc=="si"){
   	<?php } else { ?> 
   		<h1>¡Listo! El arreglo para la solicitud #<?php echo $id_sol_garantia; ?> ha sido RECHAZADO</h1>
   	<?php } ?>
+  	<p>
+  		{exp:get_post_vars parse="inward"}
+  			{embed="main/datos_user" user_id="{post_id_cliente}" }
+  		{/exp:get_post_vars}</p>
 	  <p>Puedes hacerle seguimiento a las solicitudes en la sección de “Panel de control”</p>
 	  <p><a href="{site_url}main/admin_dashboard">Ir a Panel de control</a></p>	  
   </div>

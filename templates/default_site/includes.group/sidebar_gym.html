@@ -1,8 +1,29 @@
 <div class="col-md-3 col-sm-3">
 
+<script language="javascript">
+function validar(frm){
+if(frm.persona_asignada.value==""){mensaje1("Agente",frm.persona_asignada);return false;}
+// if(frm.contra.value==""){mensaje1("Contraseña",frm.contra);return false;}
+return true;
+}
+
+function mensaje1(campo,obj)
+{
+msg="Por favor seleccionar una opción para el campo: "+campo+".";
+alert(msg);
+obj.focus();
+}
+
+function mensaje2(campo, obj, cant) {
+msg = "El campo "+campo+" no debe contener caracteres especiales y como minimo " + cant + " caracteres";
+alert(msg);
+obj.focus();
+}
+</script>
+
 	<?php $id_sol_garantia="{embed:entrada}"; ?>
 
-	{exp:freeform:entries form_id="4" search:id_sol_garantia="{embed:entrada}" search:orden_tramite="4" limit="1" status="open" }
+	{exp:freeform:entries form_id="4" search:id_sol_garantia="{embed:entrada}" search:orden_tramite="4" limit="1" status="open"}
 		<!-- {freeform:field:accion_ticket}-{freeform:field:id_sol_garantia}-
 		{freeform:field:id_cliente}-{freeform:field:orden_tramite} -->
 
@@ -15,14 +36,15 @@
 		      </div>
 		    </div>
 		    <div class="panel-body">
-		      <p>¿Cuál inspector será asignado a este caso?</p>
-		      <form method="post" enctype="multipart/form-data" name="frm" id="frm" action="/?/main/gym_write_insp">
+		      <p>¿Cuál agente será asignado a este caso para la inspeccion?</p>
+		      <form method="post" enctype="multipart/form-data" name="frm" id="frm" onSubmit="return validar(this)" action="/?/main/gym_write_insp">
 		        <div class="form-group">
 		          <select name="persona_asignada" id="" class="form-control input-sm select-override">
-                  <option value="">Seleccione</option>
-                  <option value="Inspector 1">Inspector 1</option>
-                  <option value="Inspector 2">Inspector 2</option>
-                </select>
+		          	<option value="">Seleccione</option>
+		          	{exp:user:users group_id="9" search:rol="inspector" }
+		          		<option value="{screen_name}">{screen_name}</option>
+		          	{/exp:user:users}
+              </select>
 		        </div>
 
 		        <div class="text-left button-submit">
@@ -53,14 +75,15 @@
 		      </div>
 		    </div>
 		    <div class="panel-body">
-		      <p>¿Cuál agente será asignado a este caso?</p>
-		      <form method="post" enctype="multipart/form-data" name="frm" id="frm" action="/?/main/gym_write_insp">
+		      <p>¿Cuál agente será asignado a este caso para el arreglo?</p>
+		      <form method="post" enctype="multipart/form-data" name="frm" id="frm" onSubmit="return validar(this)" action="/?/main/gym_write_insp">
 		        <div class="form-group">
 		          <select name="persona_asignada" id="" class="form-control input-sm select-override">
-                  <option value="">Seleccione</option>
-                  <option value="Constructor 1">Constructor 1</option>
-                  <option value="Constructor 2">Constructor 2</option>
-                </select>
+                <option value="">Seleccione</option>
+		          	{exp:user:users group_id="9" search:rol="ejecutor" }
+		          		<option value="{screen_name}">{screen_name}</option>
+		          	{/exp:user:users}
+              </select>
 		        </div>
 
 		        <div class="text-left button-submit">
@@ -89,37 +112,5 @@
 		    </div>
 		  </div>
 	<?php } ?>
-
-	<!-- {exp:freeform:entries form_id="4" search:id_sol_garantia="{embed:entrada}" search:orden_tramite="3" limit="1" status="closed"}
-		{if freeform:field:dueno_atiende_ticket=='no'}
-			<div class="panel">
-		    <div class="panel-heading bg-danger">
-		      <div class="panel-title text-muted">Contacto inspección</div>
-		    </div>
-		    <div class="panel-body">
-		      <p><li>Relación: {freeform:field:relacion_dueno_departamento}</li>
-		          <li>Nombre: {freeform:field:nombre_encargado_atencion}</li>
-		          <li>Email: {freeform:field:email_encargado_atencion}</li>
-		          <li>Teléfono: {freeform:field:celular_encargado_atencion}</li></p>
-		    </div>
-			</div>
-		{/if}
-	{/exp:freeform:entries}
-
-	{exp:freeform:entries form_id="4" search:id_sol_garantia="{embed:entrada}" search:orden_tramite="7" limit="1" status="closed"}
-		{if freeform:field:dueno_atiende_ticket=='no'}
-			<div class="panel">
-		    <div class="panel-heading bg-danger">
-		      <div class="panel-title text-muted">Contacto arreglo</div>
-		    </div>
-		    <div class="panel-body">
-		      <p><li>Relación: {freeform:field:relacion_dueno_departamento}</li>
-		          <li>Nombre: {freeform:field:nombre_encargado_atencion}</li>
-		          <li>Email: {freeform:field:email_encargado_atencion}</li>
-		          <li>Teléfono: {freeform:field:celular_encargado_atencion}</li></p>
-		    </div>
-			</div>
-		{/if}
-	{/exp:freeform:entries} -->
 
 </div>

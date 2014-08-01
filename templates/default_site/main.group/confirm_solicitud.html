@@ -1,9 +1,12 @@
 {embed="includes/header"}
 <?php $id_cliente="{member_id}"; ?>
 
-{exp:confirm_sol}
+{exp:confirm_sol:confirm_sol 
+	id_cliente="{member_id}" 
+	rol="cli" }
+{/exp:confirm_sol:confirm_sol}
 
-{exp:user:stats}
+{exp:user:stats member_id="{post_id_cliente}"}
 	{exp:mandrillapp:send_email_confirm_solicitud
 	  to="{email_propietario}"
 	  name="{nombre_propietario}"

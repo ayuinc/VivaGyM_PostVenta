@@ -19,15 +19,17 @@ $email_encargado_atencion=$_POST['email_encargado_atencion'];
 $ip=$_SERVER["REMOTE_ADDR"];
 
 $date = date_create();
-$entry_date=date_timestamp_get($date);
+$entry_date=date_timestamp_get($date);	
 
-$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_2 SET edit_date = '$entry_date' WHERE entry_id = $id_sol_garantia ");
+$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_2 SET edit_date = '$entry_date' WHERE entry_id = $id_sol_garantia");
 
-$fecha_explode = explode("-", $fecha_atencion_ticket); // dividir la fecha de llegada para restar 1 a las visitas
+// dividir la fecha de llegada para sumar 1 a las visitas. revisar por q graba mal
+$fecha_explode = explode("-", $fecha_atencion_ticket); 
 $dia_consulta=$fecha_explode[0];
 $mes_consulta=$fecha_explode[1];
+$anio_consulta=$fecha_explode[2];
 
-	$result_ev=mysql_query("SELECT * FROM eventos WHERE dia_evento=$dia_consulta and mes_evento=$mes_consulta ");
+	$result_ev=mysql_query("SELECT * FROM eventos WHERE dia_evento=$dia_consulta and mes_evento=$mes_consulta and anio_evento=$anio_consulta");
   $obten_ev=mysql_fetch_row($result_ev);
   $id_dia_consulta = $obten_ev[0];
   $cant_evento = $obten_ev[7];
@@ -90,14 +92,27 @@ $sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_2
 	{/exp:user:stats}
 {/exp:get_post_vars}
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-	  <h1>Gracias por agendar su visita de arreglo</h1>
-	  <p>Puedes hacerle seguimiento a tu solicitud en la sección de “Mis Solicitudes”</p>
-	  <!--{post_id_sol_garantia}-->
-	  <p><a href="{site_url}main/user_dashboard/{member_id}">Ir a Mis Solicitudes</a></p>	  
-  </div>
-</div>
-
+{exp:member:custom_profile_data}
+  {exp:switchee variable = "{member_group}" parse="inward"}
+      {case value="user_dep"}
+	      <div class="row">
+				  <div class="col-md-6 col-md-offset-3">
+					  <h1>Gracias por agendar su visita de arreglo</h1>
+					  <p>Puedes hacerle seguimiento a tu solicitud en la sección de “Mis Solicitudes”</p>
+					  <p><a href="{site_url}main/user_dashboard/{member_id}">Ir a Mis Solicitudes</a></p>	  
+				  </div>
+				</div>
+      {/case}
+      {case default="Yes"}
+	      <div class="row">
+				  <div class="col-md-6 col-md-offset-3">
+					  <h1>Gracias por agendar su visita de arreglo</h1>
+					  <p>Puedes hacerle seguimiento a tu solicitud en la sección de “Mis Solicitudes”</p>
+					  <p><a href="{site_url}main/admin_dashboard">Ir a Mis Solicitudes</a></p>	  
+				  </div>
+				</div>
+      {/case}
+  {/exp:switchee}
+{/exp:member:custom_profile_data} 
 
 {embed="includes/footer"}

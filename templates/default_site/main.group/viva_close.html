@@ -1,47 +1,15 @@
 {embed="includes/header"}
 
-<?php
+{exp:get_post_vars parse="inward"}
+	{exp:confirm_sol:viva_close 
+		id_sol_garantia="{post_id_sol_garantia}" 
+		id_cliente="{post_id_cliente}"
+		paso="10"
+		entry_id="{post_entry_id}"
+	}
+	{/exp:confirm_sol:viva_close}
+{/exp:get_post_vars}
 
-$id_sol_garantia=$_POST['id_sol_garantia'];
-$id_cliente=$_POST['id_cliente'];
-$paso="10";
-$entry_id=$_POST['entry_id'];
-
-$ip=$_SERVER["REMOTE_ADDR"];
-
-$date = date_create();
-$entry_date=date_timestamp_get($date);
-
-$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_2 SET edit_date = '$entry_date' WHERE entry_id = $id_sol_garantia ");
-
-$sqlUpdatea = mysql_query("UPDATE exp_freeform_form_entries_2 
-SET status = 'closed'
-WHERE entry_id = $id_sol_garantia ");
-
-
-$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_4 
-SET form_field_27 = 'Cerrado',
-entry_date = '$entry_date',
-status = 'closed'
-WHERE form_field_18 = $id_sol_garantia AND form_field_19 = $paso ");
-
-$prev_paso=($id_paso-1);
-
-$resultc=mysql_query("SELECT * FROM exp_freeform_form_entries_4 WHERE entry_id=$prev_paso");
-$obtenc=mysql_fetch_row($resultc);
-$archivo = $obtenc[20]; //foto
-
-$resultado=mysql_query("insert into exp_freeform_form_entries_4 
-(site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19) 
-values ('1','$id_cliente','y','$ip','','open','$id_cliente','Completar encuesta de satisfacción','$id_sol_garantia','11')");
-
-// caso si pasas el ticket a "Inspección pendiente" sino lo cierras
-$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_2 
-SET form_field_12 = '10',
-status = 'closed'
-WHERE entry_id = $id_sol_garantia ");
-
-?>
 {exp:get_post_vars parse="inward"}
 	{exp:user:stats dynamic="off" member_id="{post_id_cliente}"}
 		{exp:mandrillapp:send_email_viva_cierre 

@@ -5,16 +5,37 @@
       var evento = document.getElementById("SelectedType").options[document.getElementById("SelectedType").selectedIndex].value;
       switch (evento){
         case 'no': 
-      document.getElementById('casilla').style.display="none";
+      document.getElementById('casilla').style.display="block";
       break;
         case 'si':
       document.getElementById('casilla').style.display="block";
       break;
-        default:
-      alert("Seleccione una opción");
+        case '':
+        document.getElementById('casilla').style.display="none";
+      break;
       }
     }
   </script>
+  <script language="javascript">
+    function validar(frm){
+    if(frm.cliente_ausente.value==""){mensaje1("Responsable",frm.cliente_ausente);return false;}
+    // if(frm.contra.value==""){mensaje1("Contraseña",frm.contra);return false;}
+    return true;
+    }
+
+    function mensaje1(campo,obj)
+    {
+    msg="Por favor seleccionar una opción para el campo: "+campo+".";
+    alert(msg);
+    obj.focus();
+    }
+
+    function mensaje2(campo, obj, cant) {
+    msg = "El campo "+campo+" no debe contener caracteres especiales y como minimo " + cant + " caracteres";
+    alert(msg);
+    obj.focus();
+    }
+    </script>
 
 {exp:freeform:edit
   form_name="detalles_ticket"
@@ -22,18 +43,25 @@
   restrict_edit_to_author="no"
   return="main/user_close/{embed:id_sol_garantia}/{embed:paso}/{embed:id_cliente}/{embed:entry_id}"
   allow_status_edit="yes" 
+  form:id="frm"
+  form:onSubmit="return validar(this)"
 } 
   <div class="form-group">
-    El responsable se encuentra en el inmueble
+    ¿ El responsable se encuentra en el departamento para el arreglo ?
     <select name="cliente_ausente" id='SelectedType' onchange="SwitchHiddenDiv()" class="form-control select-override input-sm option-select">
+      <option value="">Seleccione</option>
       <option value="si">Sí</option>
       <option value="no">No</option>
     </select>
   </div>
 
-  <div class="form-group" id="casilla" style="display:block;">
+  <div class="form-group" id="casilla" style="display:none;">
     <p>Ingresar su informe de arreglo</p>
-    {freeform:field:informe_inspeccion}
+    <div class="fileinput fileinput-new" data-provides="fileinput">
+      <span class="btn btn-default btn-file"><span class="fileinput-new">Seleccionar</span><span class="fileinput-exists">Cambiar</span><input type="file" name="informe_inspeccion[]" multiple></span>
+      <span class="fileinput-filename"></span>
+      <a href="#" class="close fileinput-exists" data-dismiss="fileinput" style="float: none">&times;</a>
+    </div>
   </div><br>
   
   <div class="text-left button-submit">

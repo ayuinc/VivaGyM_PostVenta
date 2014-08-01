@@ -26,7 +26,7 @@
       <div class="row mt-35-100">
         <div class="col-md-8">
           <h4 class="m-0 text-muted book text-left">La mejor atención de</h4>
-          <h3 class="m-0 text-muted text-left">Posventa en Línea</h3>
+          <h3 class="m-0 text-muted text-left">Post-venta en línea</h3>
 
           <!-- {exp:member:login_form return="{site_url}main/user_select" form_class="form-inline mt-14" } 
 
@@ -44,28 +44,6 @@
           {exp:authenticate:login_form auth_type="username" username_field="username" return="{site_url}main/user_select" 
           class="form-inline mt-14"}
             
-            {if total_global_errors > 0}
-            <div class="errors">
-              <h4 class="m-0 text-muted book text-left">Errores de autenticación</h4>
-              <ul class="bullets">
-              {global_errors}
-                <li>{error}</li>
-              {/global_errors}
-              </ul>
-            </div>
-            {/if}
-              
-            {if total_field_errors > 0}
-            <div class="errors">
-              <h4 class="m-0 text-muted book text-left">Errores en los campos</h4>
-              <ul class="bullets">
-              {field_errors param1="123"}
-                <li>{error}</li>
-              {/field_errors}
-              </ul>
-            </div>
-            {/if}
-
             <div class="form-group">
               <input type="text" name="username" id="username" class="input-lg form-control" >
             </div>
@@ -74,6 +52,28 @@
             </div>
 
             <input type="submit" class="btn btn-lg btn-success uppercase form-control" name="submit" value="Ingresar">
+
+            {if total_global_errors > 0}
+            <div class="errors">
+              <h5 class="text-muted book text-left">Errores de autenticación:</h5>
+              <ul class="list-unstyled text-muted small">
+              {global_errors}
+                <li class="icon-warning"> {error}</li>
+              {/global_errors}
+              </ul>
+            </div>
+            {/if}
+              
+            {if total_field_errors > 0}
+            <div class="errors">
+              <h5 class="text-muted book text-left">Errores en los campos:</h5>
+              <ul class="list-unstyled text-muted small">
+              {field_errors param1="123"}
+                <li class="icon-warning"> {error}</li>
+              {/field_errors}
+              </ul>
+            </div>
+            {/if}
             
           {/exp:authenticate:login_form}
 
@@ -83,8 +83,8 @@
         <div class="col-md-7 text-left text-muted light">
           <ul class="list-unstyled mt-14">
             <!-- <li><a href="{path='member/forgot_password'}">Olvidé mi usuario</a></li> -->
-            <li><a href="{path='member/forgot'}">¿Olvidaste tu contraseña?</a></li>
-            <!-- <li><a href="{site_url}main/olvido_contrasena">¿Olvidaste tu contraseña?</a></li> -->
+            <!-- <li><a href="{path='member/forgot'}">¿Olvidaste tu contraseña?</a></li>-->
+            <li><a href="{site_url}main/olvido_contrasena">¿Olvidaste tu contraseña?</a></li> 
           </ul>
         </div>
       </div>

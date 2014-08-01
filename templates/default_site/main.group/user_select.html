@@ -1,10 +1,21 @@
 {exp:member:custom_profile_data}
-	{exp:switchee variable = "{member_group}" parse="inward"}
+  {exp:switchee variable = "{member_group}" parse="inward"}
     {case value="user_dep"}
-      <script type="text/javascript"> window.location="{site_url}main/cambio_de_clave"; </script> <!-- dueño de departamento -->
+      {exp:member:custom_profile_data}
+
+        {if act_datos=="0"}
+          <script type="text/javascript">window.location="{site_url}main/cambio_de_clave"; </script>
+        {/if}
+
+        {if act_datos=="1"}
+          <script type="text/javascript">window.location="{site_url}main/user_dashboard/{member_id}";</script>
+        {/if}
+
+      {/exp:member:custom_profile_data}
+
     {/case}
     {case default="Yes"}
-      <script type="text/javascript"> window.location="{site_url}main/admin_dashboard"; </script><!-- todos los admin -->
+      <script type="text/javascript">window.location="{site_url}main/admin_dashboard"; </script><!-- todos los admin -->
     {/case}
-	{/exp:switchee}
+  {/exp:switchee}
 {/exp:member:custom_profile_data}

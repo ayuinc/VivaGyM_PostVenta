@@ -3,76 +3,76 @@
 
 		  echo json_encode(array(
 			            array(
-			                'id' => 185,
-			                'title' => "30-06-2014",
-			                'start' => "2014-06-30",
+			                'id' => 218,
+			                'title' => "01-08-2014",
+			                'start' => "2014-08-01",
 			                'color' => "#78BE20", 
 			                'textColor' => "black",
-			                'url' => "$site_url/main/user_request_fixing/$id_sol_garantia/30-06-2014"
+			                'url' => "$site_url/main/user_request_fixing/$id_sol_garantia/01-08-2014"
 			              ),
 			            array(
-			                'id' => 190,
-			                'title' => "04-07-2014",
-			                'start' => "2014-07-04",
+			                'id' => 221,
+			                'title' => "04-08-2014",
+			                'start' => "2014-08-04",
 			                'color' => "#78BE20", 
 			                'textColor' => "black",
-			                'url' => "$site_url/main/user_request_fixing/$id_sol_garantia/04-07-2014"
+			                'url' => "$site_url/main/user_request_fixing/$id_sol_garantia/04-08-2014"
 			              ),
 			            array(
-			                'id' => 193,
-			                'title' => "07-07-2014",
-			                'start' => "2014-07-07",
+			                'id' => 225,
+			                'title' => "08-08-2014",
+			                'start' => "2014-08-08",
 			                'color' => "#78BE20", 
 			                'textColor' => "black",
-			                'url' => "$site_url/main/user_request_fixing/$id_sol_garantia/07-07-2014"
+			                'url' => "$site_url/main/user_request_fixing/$id_sol_garantia/08-08-2014"
 			              ),
 			            array(
-			                'id' => 197,
-			                'title' => "11-07-2014",
-			                'start' => "2014-07-11",
+			                'id' => 228,
+			                'title' => "11-08-2014",
+			                'start' => "2014-08-11",
 			                'color' => "#78BE20", 
 			                'textColor' => "black",
-			                'url' => "$site_url/main/user_request_fixing/$id_sol_garantia/11-07-2014"
+			                'url' => "$site_url/main/user_request_fixing/$id_sol_garantia/11-08-2014"
 			              ),
 			            array(
-			                'id' => 200,
-			                'title' => "14-07-2014",
-			                'start' => "2014-07-14",
+			                'id' => 232,
+			                'title' => "15-08-2014",
+			                'start' => "2014-08-15",
 			                'color' => "#78BE20", 
 			                'textColor' => "black",
-			                'url' => "$site_url/main/user_request_fixing/$id_sol_garantia/14-07-2014"
+			                'url' => "$site_url/main/user_request_fixing/$id_sol_garantia/15-08-2014"
 			              ),
 			            array(
-			                'id' => 204,
-			                'title' => "18-07-2014",
-			                'start' => "2014-07-18",
+			                'id' => 235,
+			                'title' => "18-08-2014",
+			                'start' => "2014-08-18",
 			                'color' => "#78BE20", 
 			                'textColor' => "black",
-			                'url' => "$site_url/main/user_request_fixing/$id_sol_garantia/18-07-2014"
+			                'url' => "$site_url/main/user_request_fixing/$id_sol_garantia/18-08-2014"
 			              ),
 			            array(
-			                'id' => 207,
-			                'title' => "21-07-2014",
-			                'start' => "2014-07-21",
+			                'id' => 239,
+			                'title' => "22-08-2014",
+			                'start' => "2014-08-22",
 			                'color' => "#78BE20", 
 			                'textColor' => "black",
-			                'url' => "$site_url/main/user_request_fixing/$id_sol_garantia/21-07-2014"
+			                'url' => "$site_url/main/user_request_fixing/$id_sol_garantia/22-08-2014"
 			              ),
 			            array(
-			                'id' => 211,
-			                'title' => "25-07-2014",
-			                'start' => "2014-07-25",
+			                'id' => 242,
+			                'title' => "25-08-2014",
+			                'start' => "2014-08-25",
 			                'color' => "#78BE20", 
 			                'textColor' => "black",
-			                'url' => "$site_url/main/user_request_fixing/$id_sol_garantia/25-07-2014"
+			                'url' => "$site_url/main/user_request_fixing/$id_sol_garantia/25-08-2014"
 			              ),
 			            array(
-			                'id' => 214,
-			                'title' => "28-07-2014",
-			                'start' => "2014-07-28",
+			                'id' => 246,
+			                'title' => "29-08-2014",
+			                'start' => "2014-08-29",
 			                'color' => "#78BE20", 
 			                'textColor' => "black",
-			                'url' => "$site_url/main/user_request_fixing/$id_sol_garantia/28-07-2014"
+			                'url' => "$site_url/main/user_request_fixing/$id_sol_garantia/29-08-2014"
 			              ),
 		  
 		  ));

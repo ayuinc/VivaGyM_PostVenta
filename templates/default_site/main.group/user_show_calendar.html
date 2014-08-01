@@ -21,27 +21,20 @@ $site_url="{site_url}"; ?>
   $(document).ready(function() {
   
     $('#calendar').fullCalendar({
-    
       editable: false,
-
       weekends: false,
-
       monthNames: ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" ], 
-     monthNamesShort: ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
-     dayNames: [ 'Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-     dayNamesShort: [ 'Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-
-     buttonText: {
-      today: 'Hoy',
-      month: 'Mes',
-      week: 'Semana',
-      day: 'Día'
-       },
-
+      monthNamesShort: ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
+      dayNames: [ 'Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+      dayNamesShort: [ 'Dom', 'Lun', 'Mar', 'Miér', 'Jue', 'Vie', 'Sáb'],
+      buttonText: {
+        today: 'Hoy',
+        month: 'Mes',
+        week: 'Semana',
+        day: 'Día'
+      },
       events: "http://162.243.222.54/json-fechas.php?id_sol_garantia="+$id_sol,
-      
     });
-    
   });
 
 

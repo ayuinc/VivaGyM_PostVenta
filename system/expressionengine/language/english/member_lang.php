@@ -922,10 +922,10 @@ We reserve the right to remove, edit, or move any messages for any reason.',
 'You must confirm your new password.',
 
 'mbr_password_changed' =>
-'Password Successfully Changed',
+'Ha cambiado su contraseña correctamante.',
 
 'mbr_successfully_changed_password' =>
-'You have successfully changed your password.  Please login using your new password.',
+'Ha cambiado su contraseña correctamante. Por favor ingrese con su nueva contraseña.',
 
 
 

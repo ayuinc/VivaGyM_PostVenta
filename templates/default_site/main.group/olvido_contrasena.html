@@ -1,41 +1,71 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html>
   <head>
     <meta charset="utf-8" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{site_name}</title>
+
+    <title>Recupere su Acceso</title>
     <link rel="stylesheet" type="text/css" href="http://162.243.222.54/stylesheets/viva.css" media="screen" />
+    
+    <script type="text/javascript" src="http://162.243.222.54/lib/b3/jquery-2_1_1.js"></script>
+    <script type="text/javascript" src="http://162.243.222.54/lib/b3/tab.js"></script>
+    <script type="text/javascript" src="http://162.243.222.54/lib/b3/transition.js"></script>
+    <script type="text/javascript" src="http://162.243.222.54/lib/b3/collapse.js"></script>
+    <script type="text/javascript" src="http://162.243.222.54/lib/vendor/fileinput.js"></script>
 
     <!-- FAVICON -->
-  <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="shortcut icon" href="http://162.243.222.54/img/favicon.ico">
 
-   <!-- WebFonts  -->
-  <script type="text/javascript" src="//use.typekit.net/jfc4vgc.js"></script>
-  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    <!-- WebFonts  -->
+    <script type="text/javascript" src="//use.typekit.net/jfc4vgc.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
   </head>
   <body>
+  <header class="bg-inverse text-muted">
+    <div class="container-fluid pt-7 pb-7">
+      <div class="row">
+        <div class="col-md-4">
+          <a href="http://162.243.222.54/index.php/main/user_select"><img src="http://162.243.222.54//images/logo-viva.png" style="width:120px; height: auto;"></a>
+        </div>
+        <div class="col-md-8 hidden-xs">
+          <div class="row">
+            <div class="col-xs-11 col-md-11 col-sm-11 text-right">
+            </div>
+            <div class="col-xs-1 col-md-1 col-sm-1">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="container-fluid pt-35 pb-35 mh-630">
+  
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-6">
+      <h2>Recuperar contraseña</h2>
+      <p>Ingrese el correo registrado y le enviaremos las instrucciones para recuperar su contraseña.</p>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <h1>Recuperar contraseña</h1>
-    <p>Ingrese el correo registrado y le enviaremos las instrucciones para recuperar su contraseña.</p>
-
-    {exp:user:forgot_password}
- 
-<p>
-    <label for="email">
-        Email Address <span class="required">*</span>
-    </label>
-    <input type="text" name="email" id="email" />
-</p>
-<p>
-    <input type="submit" name="submit" value="Submit" />
-</p>
- 
-{/exp:user:forgot_password}
-
+      {exp:user:forgot_password
+        password_reset_template="main/reset_password"
+        password_reset_email_subject="Password Reset Request"
+        return="main/"
+      }
+        <p>
+        <label for="email">Correo electronico <span class="required">*</span></label>
+        <input type="text" name="email" id="email" class="input-lg form-control" />
+        </p>
+        <div class="row">
+          <div class="col-sm-3">
+          <p><input type="submit" name="submit" value="Enviar" class="btn btn-lg btn-success uppercase form-control"/></p>
+          </div>
+        </div>
+      {/exp:user:forgot_password}
+    </div>
   </div>
-</div>
-
+  <div class="col-md-3">
+  </div>
 </body>

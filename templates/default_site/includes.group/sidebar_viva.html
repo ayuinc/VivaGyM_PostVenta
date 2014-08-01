@@ -4,20 +4,46 @@
 	  function SwitchHiddenDiv(){
 	    var evento = document.getElementById("SelectedType").options[document.getElementById("SelectedType").selectedIndex].value;
 	    switch (evento){
-	      case 'si': 
+	      case 'si-gar': 
 	    document.getElementById('casilla').style.display="none";
 	    document.getElementById('casillon').style.display="block";
 	    break;
-	      case 'no':
+	    	case 'si-exc': 
+	    document.getElementById('casilla').style.display="none";
+	    document.getElementById('casillon').style.display="block";
+	    break;
+	      case 'no-fmant':
 	    document.getElementById('casilla').style.display="block";
 	    document.getElementById('casillon').style.display="none";
 	    break;
-	      default:
-	    alert("Seleccione una opción");
+	      case 'no-fgar':
+	    document.getElementById('casilla').style.display="block";
+	    document.getElementById('casillon').style.display="none";
+	    break;
+
 	    }
 	  }
 	</script>
+	<script language="javascript">
+		function validar(frm){
+		if(frm.aprobar_paso.value==""){mensaje1("Aprobar procedimiento",frm.aprobar_paso);return false;}
+		// if(frm.contra.value==""){mensaje1("Contraseña",frm.contra);return false;}
+		return true;
+		}
 
+		function mensaje1(campo,obj)
+		{
+		msg="Por favor seleccionar una opción para el campo: "+campo+".";
+		alert(msg);
+		obj.focus();
+		}
+
+		function mensaje2(campo, obj, cant) {
+		msg = "El campo "+campo+" no debe contener caracteres especiales y como minimo " + cant + " caracteres";
+		alert(msg);
+		obj.focus();
+		}
+		</script>
 	<?php $id_sol_garantia="{embed:entrada}"; ?>
 
 	{exp:freeform:entries form_id="4" search:id_sol_garantia="{embed:entrada}" search:orden_tramite="2" limit="1" status="open" }
@@ -34,12 +60,14 @@
 		    </div>
 		    <div class="panel-body">
 		      <p>¿Procede la visita de inspección?</p>
-		      <form method="post" enctype="multipart/form-data" name="frm" id="frm" action="/?/main/viva_approve_sol">
+		      <form method="post" enctype="multipart/form-data" name="frm" id="frm" onSubmit="return validar(this)" action="/?/main/viva_approve_sol">
 		        <div class="form-group">
 		          <select name="aprobar_paso" id='SelectedType' onchange="SwitchHiddenDiv()" class="form-control select-override input-sm option-select">
 		            <option value="" selected="selected">Selecciona una opción</option>
-		            <option value="si">Sí</option>
-		            <option value="no">No</option>
+		            <option value="si-gar">Procede - Por garantía</option>
+		            <option value="si-exc">Procede - Por excepción</option>
+		            <option value="no-fmant">No procede - Falta mantenimiento</option>
+		            <option value="no-fgar">No procede - Falta de garantía</option>
 		          </select>
 		        </div>
 
@@ -82,7 +110,7 @@
 		    </div>
 		    <div class="panel-body">
 		      <p>¿Procede el arreglo de este caso?</p>
-		      <form method="post" enctype="multipart/form-data" name="frm" id="frm" action="/?/main/viva_approve_fix">
+		      <form method="post" enctype="multipart/form-data" name="frm" id="frm" onSubmit="return validar(this)" action="/?/main/viva_approve_fix">
 		        <div class="form-group">
 		          <select name="aprobar_paso" id='SelectedType' onchange="SwitchHiddenDiv()" class="form-control select-override input-sm option-select">
 		            <option value="" selected="selected">Selecciona una opción</option>
@@ -139,7 +167,135 @@
 
 	{/exp:freeform:entries}
 
-	<?php if(($paso_dos==0) and ($paso_seis==0) and ($paso_diez==0)) {?>
+	{exp:freeform:entries form_id="4" search:id_sol_garantia="{embed:entrada}" search:orden_tramite="3" limit="1" status="open" }
+		<!-- {freeform:field:accion_ticket}-{freeform:field:id_sol_garantia}-
+		{freeform:field:id_cliente}-{freeform:field:orden_tramite} --> 
+
+		{if freeform:field:orden_tramite=='3'}
+			<?php $paso_tres=1; ?>
+			<div class="panel">
+		    <div class="panel-heading bg-danger">
+		      <div class="panel-title text-muted">
+		        Acción pendiente
+		      </div>
+		    </div>
+		    <div class="panel-body">
+		      <p>Agendar visita de inspeccion</p>
+		      <form method="post" enctype="multipart/form-data" name="frm" id="frm" action="/?/main/guardar_3er_paso">
+
+		      	<div class="form-group">
+		      		<input type="text" class="form-control" placeholder="DD/MM/AAAA" name="fecha_atencion_ticket">
+				    </div>
+
+				    <div class="form-group">
+		      		<small>Asigna a alguien para coordinar el arreglo <a data-toggle="collapse" href="#form-collapse" class="underline">aquí</a></small> 
+				    </div>
+
+				    <div id="form-collapse" class="collapse">
+					    <div class="form-group">
+			      		<small>Relacion con el dueño del departamento</small> 
+	              <select name="relacion_dueno_departamento" class="form-control select-override">
+	                <option value="">Seleccione</option>
+	                <option value="Familiar" <?php if($rel=="familiar"){echo 'selected="selected"';} ?>>Familiar</option>
+	                <option value="Amigo" <?php if($rel=="amigo"){echo 'selected="selected"';} ?>>Amigo</option>
+	              </select>
+					    </div>
+
+					    <div class="form-group">
+			      		<small>Nombre del encargado de la atención</small> 
+	              <input type="text" placeholder="Nombre" name="nombre_encargado_atencion" class=" form-control" 
+	              value="{freeform:field:nombre_encargado_atencion}">
+					    </div>
+
+					    <div class="form-group">
+			      		<small>Celular del encargado de la atención</small> 
+	              <input type="text" placeholder="Celular" name="celular_encargado_atencion" class=" form-control" value="{freeform:field:celular_encargado_atencion}">
+					    </div>
+
+					    <div class="form-group">
+			      		<small>Correo electrónico del encargado de la atención</small> 
+	              <input type="email" placeholder="Correo electrónico" name="email_encargado_atencion" class=" form-control" value="{freeform:field:email_encargado_atencion}">
+					    </div>
+					  </div>
+
+		        <div class="text-left button-submit">
+		        	<input type="hidden" name="id_cliente" value="{freeform:field:id_cliente}" >
+				      <input type="hidden" name="id_sol_garantia" value="{embed:entrada}" >
+				      <input type="hidden" name="entry_id" value="{freeform:entry_id}" >
+				      <input type="hidden" name="orden_tramite" value="2">
+				      <input type="hidden" name="XID" value="{XID_HASH}" />
+				      <input type="submit" class="btn uppercase btn-success" name="submit" value="Agendar" />
+
+		        </div>
+		      </form>
+		    </div>
+		  </div>
+		{/if}
+
+	{/exp:freeform:entries}
+
+	{exp:freeform:entries form_id="4" search:id_sol_garantia="{embed:entrada}" search:orden_tramite="7" limit="1" status="open" }
+		<!-- {freeform:field:accion_ticket}-{freeform:field:id_sol_garantia}-
+		{freeform:field:id_cliente}-{freeform:field:orden_tramite} --> 
+
+		{if freeform:field:orden_tramite=='7'}
+			<?php $paso_siete=1; ?>
+			<div class="panel">
+		    <div class="panel-heading bg-danger">
+		      <div class="panel-title text-muted">
+		        Acción pendiente
+		      </div>
+		    </div>
+		    <div class="panel-body">
+		      <p>Agendar visita de arreglo</p>
+		      <form method="post" enctype="multipart/form-data" name="frm" id="frm" action="/?/main/guardar_4to_paso">
+
+		      	<div class="form-group">
+		      		<input type="text" class="form-control" placeholder="DD/MM/AAAA" name="fecha_atencion_ticket">
+				    </div>
+
+				    <div class="form-group">
+		      		<small>Relacion con el dueño del departamento</small> 
+              <select name="relacion_dueno_departamento" class="form-control select-override">
+                <option value="">Seleccione</option>
+                <option value="Familiar" <?php if($rel=="familiar"){echo 'selected="selected"';} ?>>Familiar</option>
+                <option value="Amigo" <?php if($rel=="amigo"){echo 'selected="selected"';} ?>>Amigo</option>
+              </select>
+				    </div>
+
+				    <div class="form-group">
+		      		<small>Nombre del encargado de la atención</small> 
+              <input type="text" placeholder="Nombre" name="nombre_encargado_atencion" class=" form-control" 
+              value="{freeform:field:nombre_encargado_atencion}">
+				    </div>
+
+				    <div class="form-group">
+		      		<small>Celular del encargado de la atención</small> 
+              <input type="text" placeholder="Celular" name="celular_encargado_atencion" class=" form-control" value="{freeform:field:celular_encargado_atencion}">
+				    </div>
+
+				    <div class="form-group">
+		      		<small>Correo electrónico del encargado de la atención</small> 
+              <input type="email" placeholder="Correo electrónico" name="email_encargado_atencion" class=" form-control" value="{freeform:field:email_encargado_atencion}">
+				    </div>
+
+		        <div class="text-left button-submit">
+		        	<input type="hidden" name="id_cliente" value="{freeform:field:id_cliente}" >
+				      <input type="hidden" name="id_sol_garantia" value="{embed:entrada}" >
+				      <input type="hidden" name="entry_id" value="{freeform:entry_id}" >
+				      <input type="hidden" name="orden_tramite" value="7">
+				      <input type="hidden" name="XID" value="{XID_HASH}" />
+				      <input type="submit" class="btn uppercase btn-success" name="submit" value="Agendar" />
+
+		        </div>
+		      </form>
+		    </div>
+		  </div>
+		{/if}
+
+	{/exp:freeform:entries} 
+
+	<?php if(($paso_dos==0) and ($paso_seis==0) and ($paso_diez==0) and ($paso_tres==0) and ($paso_siete==0)) {?>
 		<div class="panel">
 	    <div class="panel-heading bg-danger">
 	      <div class="panel-title text-muted">

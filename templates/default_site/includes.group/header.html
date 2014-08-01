@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html>
   <head>
     <meta charset="utf-8" />
@@ -46,16 +46,17 @@
             </div>
             <div class="col-md-8 hidden-xs col-sm-8">
               <div class="row">
-                <div class="col-xs-11 col-md-11 col-sm-11 text-right">
 
                   {exp:member:custom_profile_data}
                     {exp:switchee variable = "{member_group}" parse="inward"}
                         {case value="user_dep"}
+                         <div class="col-xs-11 col-md-11 col-sm-11 text-right">
                           <h5 class="thin mb-0">Bienvenido/a, <span class="medium">{nombre_propietario}</span></h5>
-                          <a href="{site_url}main/cambio_de_clave/3">Cambio de clave</a> | <a href="{path='logout'}">Salir</a>
+                          <a href="{path='logout'}">Salir</a>
                         {/case}
                         {case default="Yes"}
-                          <h5 class="thin mb-0">Bienvenido/a, <span class="medium">{screen_name}</span></h5>
+                          <div class="col-xs-12 col-md-12 col-sm-12 text-right">
+                          <h5 class="thin mb-0">Bienvenido/a, <a href="{site_url}main/admin_profile_edit">{screen_name}</a></h5>
                           <a href="{path='logout'}">Salir</a>
                         {/case}
                     {/exp:switchee}

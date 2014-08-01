@@ -1,6 +1,27 @@
 {embed="includes/header" }
 {exp:generar_fechas tipo_cal="insp"}
 
+<script language="javascript">
+function validar(frm){
+if(frm.fecha_atencion_ticket.value==""){mensaje1("Fecha de Atención",frm.fecha_atencion_ticket);return false;}
+// if(frm.contra.value==""){mensaje1("Contraseña",frm.contra);return false;}
+return true;
+}
+
+function mensaje1(campo,obj)
+{
+msg="Por favor seleccionar una opción para el campo: "+campo+".";
+alert(msg);
+obj.focus();
+}
+
+function mensaje2(campo, obj, cant) {
+msg = "El campo "+campo+" no debe contener caracteres especiales y como minimo " + cant + " caracteres";
+alert(msg);
+obj.focus();
+}
+</script>
+
 <?php $id_sol_garantia="{segment_3}"; $site_url="{site_url}"; ?>
 
 <script src='{site_url}lib/jquery.min.js'></script>
@@ -143,7 +164,7 @@ $id_cliente="{member_id}";
     <div class="col-sm-4">
       <div class="box-shadow border-rounded bg-white p-14">
 
-        <form method="post" enctype="multipart/form-data" name="frm" id="frm" action="/?/main/guardar_3er_paso" >
+        <form method="post" enctype="multipart/form-data" name="frm" id="frm" onSubmit="return validar(this)" action="/?/main/guardar_3er_paso" >
 
           <label for="">Fecha seleccionada:</label>
           <div class="input-group">
@@ -170,7 +191,7 @@ $id_cliente="{member_id}";
 
           <div id="form-collapse" <?php if($due=="no"){}else{ echo "class='collapse'";} ?>>
             <div class="form-group">
-              
+              <small>Relacion con el dueño del departamento</small> 
               <select name="relacion_dueno_departamento" class="form-control select-override">
                 <option value="">Seleccione</option>
                 <option value="Familiar" <?php if($rel=="familiar"){echo 'selected="selected"';} ?>>Familiar</option>
@@ -178,13 +199,16 @@ $id_cliente="{member_id}";
               </select>
             </div>
             <div class="form-group">
+              <small>Nombre del encargado de la atención</small> 
               <input type="text" placeholder="Nombre" name="nombre_encargado_atencion" class=" form-control" 
               value="{freeform:field:nombre_encargado_atencion}">
             </div>
             <div class="form-group">
+              <small>Celular del encargado de la atención</small> 
               <input type="text" placeholder="Celular" name="celular_encargado_atencion" class=" form-control" value="{freeform:field:celular_encargado_atencion}">
             </div>
             <div class="form-group">
+              <small>Correo electrónico del encargado de la atención</small> 
               <input type="email" placeholder="Correo electrónico" name="email_encargado_atencion" class=" form-control" value="{freeform:field:email_encargado_atencion}">
             </div>
             {/exp:freeform:entries}
