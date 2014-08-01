@@ -1,23 +1,34 @@
-NSM Morphine theme addon for EE 2.0
-===================================
+VivaGyM_PostVenta
+======
 
-This addon is intended to extended the default ExpressionEngine 2.0 theme with new styles specifically for addon development. It's still in heavy development and likely to change.
+Desarrollo del sistema de post-venta para grupo VivaGyM
 
-Note: Activating the accessory won't add a new tab to the control panel footer.
 
-Installation & Activation
--------------------------
+###Angular-App
+An AngularJS app for rendering calendars for VivaGym
 
-1. Download the master branch and extract the zip to your desktop. 
-2. Rename the folder to `nsm_morphine_theme` and drop it in the `/system/expressionengine/thirdparty/` directory of your ExpressionEngine install
-4. Move, copy or symlink `/themes/third_party/nsm_morphine` into `/themes/third_party/`
-5. Activate the accessory for all pages and all member groups
 
-For developers
-==============
+###Installation
 
-If you want to display the CP module page and custom field tests update the following class values in `upd.nsm_morphine_theme.php` before installing:
+Note: you need Node, NPM, and Bower to install this app. Also, this only works
+if your in the angular directory.
 
-	static $has_cp_backend = TRUE;
-	static $has_publish_fields = TRUE;
-	static $has_tabs = TRUE;
+``console
+bower install
+npm install
+```
+
+###Servers and Testing
+
+Grunt serve will automatically start the angular server for development and run
+your test in the background.
+
+```console
+grunt serve
+```
+
+Or, if you just want to run your tests
+
+```console
+grunt test
+```
