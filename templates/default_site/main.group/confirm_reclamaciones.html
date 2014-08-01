@@ -1,0 +1,22 @@
+{embed="includes/header"}
+<?php $id_cliente="{member_id}"; ?>
+
+{exp:user:stats}
+	{exp:mandrillapp:send_email_libro_reclamaciones
+	  to="{email_propietario}"
+	  name="{nombre_propietario}"
+	  subject="Recepción de Reclamos Viva GyM"
+	  from="admin@gym.com"
+	  member_id="{member_id}"}
+	{/exp:mandrillapp:send_email_libro_reclamaciones}  
+{/exp:user:stats}
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+	  <h1>Hemos registrado su reclamo</h1>
+	  <p>Vamos a revisar su reclamo y nos comunicaremos con usted en un plazo maximo de 30 dias.</p>
+	  <p><a href="{site_url}main/user_dashboard/{member_id}">Ir a Mis Solicitudes</a></p>	  
+  </div>
+</div>
+
+{embed="includes/footer"}

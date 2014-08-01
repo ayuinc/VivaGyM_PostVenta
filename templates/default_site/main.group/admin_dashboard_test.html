@@ -1,0 +1,266 @@
+{embed="includes/header" }
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+
+<script>
+$(function() {
+
+$.datepicker.regional['es'] = {
+              closeText: 'Cerrar',
+              prevText: '&#x3c;Ant',
+              nextText: 'Sig&#x3e;',
+              currentText: 'Hoy',
+              monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio',
+              'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+              monthNamesShort: ['Ene','Feb','Mar','Abr','May','Jun',
+              'Jul','Ago','Sep','Oct','Nov','Dic'],
+              dayNames: ['Domingo','Lunes','Martes','Mi&eacute;rcoles','Jueves','Viernes','S&aacute;bado'],
+              dayNamesShort: ['Dom','Lun','Mar','Mi&eacute;','Juv','Vie','S&aacute;b'],
+              dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','S&aacute;'],
+              weekHeader: 'Sm',
+              dateFormat: 'dd-mm-yy',
+              firstDay: 1,
+              isRTL: false,
+              showMonthAfterYear: false,
+              yearSuffix: ''};
+$.datepicker.setDefaults($.datepicker.regional['es']);
+
+$( "#datepicker" ).datepicker(
+  { dateFormat: "dd-mm-yy", beforeShowDay: $.datepicker.noWeekends} 
+);
+
+$( "#datepicker2" ).datepicker(
+  { dateFormat: "dd-mm-yy", beforeShowDay: $.datepicker.noWeekends} 
+);
+
+});
+</script>
+
+<?php 
+$ordenar=$_POST['ordenar']; if($ordenar==""){ $ordenar="entry_id";} 
+$pri=$_POST['pri']; 
+$cas=$_POST['cas'];
+$etapa=$_POST['etapa'];
+$tipo=$_POST['tipo'];
+$complejo=$_POST['complejo']; 
+$fecha_inicio=$_POST['fecha_inicio'];
+$fecha_fin=$_POST['fecha_fin'];
+
+//{embed="includes/menu_admin" }
+
+?>
+
+{exp:actividad_sol}
+
+<div class="row">
+  <div class="col-md-3">
+    
+    <div class="bg-white border-rounded box-shadow p-14">
+      <h6>Buscar por no. de caso:</h6>
+      <form method="post" enctype="multipart/form-data" action="/?/main/redir_caso">
+        <div class="input-group">
+          <input type="text" class="form-control" name="caso_id" placeholder="Nro. de caso" >          
+          <input type="hidden" name="XID" value="{XID_HASH}" />
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="submit" name="submit">Buscar</button>
+          </span>
+        </div><!-- /input-group -->
+      </form>
+      <hr>
+      <h6>Filtrar por:</h6>
+      <form method="post" enctype="multipart/form-data" action="/?/main/admin_dashboard">
+        <div class="form-group">
+          <select name="pri" id="" class="select-override form-control">
+            <option value="">Prioridad</option>
+            <option value="0" <?php if($pri=="0"){echo "selected";} ?>>Normal</option>
+            <option value="1" <?php if($pri=="1"){echo "selected";} ?>>Prioritario</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <select name="cas" id="" class="select-override form-control">
+            <option value="">Activo o inactivo</option>
+            <option value="0" <?php if($cas=="0"){echo "selected";} ?>>Caso activo</option>
+            <option value="1" <?php if($cas=="1"){echo "selected";} ?>>Caso inactivo</option>
+          </select>
+        </div>
+        {exp:member:custom_profile_data}
+          {exp:switchee variable = "{group_id}" parse="inward"}
+            {case value="7"}<!-- admin viva 7 -->
+              <div class="form-group">
+                <select name="etapa" id="" class="select-override form-control">
+                  <option value="">Etapa de solicitud</option>
+                  <option value="1|2" <?php if($etapa=="1|2"){echo "selected";} ?>>Solicitud en revisión</option>
+                  <option value="3|4|5" <?php if($etapa=="3|4|5"){echo "selected";} ?>>Inspección pendiente</option>
+                  <option value="6" <?php if($etapa=="6"){echo "selected";} ?>>Informe en revisión</option>
+                  <option value="7|8|9" <?php if($etapa=="7|8|9"){echo "selected";} ?>>Arreglo pendiente</option>
+                  <option value="10|11" <?php if($etapa=="10|11"){echo "selected";} ?>>Caso cerrado</option>
+                </select>
+              </div>
+            {/case}
+            {case value="8"}<!-- admin GyM 8  etapas 3 a 11-->
+              <div class="form-group">
+                <select name="etapa" id="" class="select-override form-control">
+                  <option value="3|4|5|6|7|8|9|10|11">Etapa solicitud</option>
+                  <option value="3|4|5" <?php if($etapa=="3|4|5"){echo "selected";} ?>>Inspección pendiente</option>
+                  <option value="6" <?php if($etapa=="6"){echo "selected";} ?>>Informe en revisión</option>
+                  <option value="7|8|9" <?php if($etapa=="7|8|9"){echo "selected";} ?>>Arreglo pendiente</option>
+                  <option value="10|11" <?php if($etapa=="10|11"){echo "selected";} ?>>Caso cerrado</option>
+                </select>
+              </div>
+            {/case}
+            {case value="9"}<!-- inspector viva 9 -->
+            {/case}
+            {case value="10"}<!-- personal GyM que ejecuta el arreglo  10 filtro="8"-->
+            {/case} 
+          {/exp:switchee}
+        {/exp:member:custom_profile_data}
+
+        <!-- <select name="complejo" id="" class="select-override form-control">
+          <option value="">Complejo</option>
+          {exp:freeform:entries form_id="8" sort="desc" status="open|closed"}
+          <option value="{freeform:field:sigla_complejo}" <?php if($complejo=="{freeform:field:sigla_complejo}"){echo "selected";} ?> >{freeform:field:sigla_complejo}</option>
+          {/exp:freeform:entries}
+        </select>
+        <p></p> -->
+          
+        <div class="form-group">
+          <select name="tipo" id="" class="select-override form-control">
+            <option value="">Tipo de problema</option>
+            <option value="Pisos" <?php if($tipo=="Pisos"){echo "selected";} ?> >Pisos</option>
+            <option value="Paredes" <?php if($tipo=="Paredes"){echo "selected";} ?> >Paredes</option>
+            <option value="Instalaciones eléctricas" <?php if($tipo=="Instalaciones eléctricas"){echo "selected";} ?> >Instalaciones eléctricas</option>
+            <option value="Instalaciones sanitarias" <?php if($tipo=="Instalaciones sanitarias"){echo "selected";} ?> >Instalaciones sanitarias</option>
+            <option value="Carpintería metálica" <?php if($tipo=="Carpintería metálica"){echo "selected";} ?> >Carpintería metálica</option>
+            <option value="Carpintería de madera" <?php if($tipo=="Carpintería de madera"){echo "selected";} ?> >Carpintería de madera</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <input type="text" class="form-control" id="datepicker" name="fecha_inicio" placeholder="Desde" value="<?php echo $fecha_inicio; ?>" />
+        </div>
+
+        <div class="form-group">
+          <input type="text" class="form-control" id="datepicker2" name="fecha_fin" placeholder="Hasta" value="<?php echo $fecha_fin; ?>">
+        </div>
+
+        <div class="form-group">
+          <input type="hidden" name="ordenar" value="<?php echo $ordenar; ?>" />
+          <input type="hidden" name="XID" value="{XID_HASH}" />
+          <input type="submit" class="btn btn-success" name="submit" value="Filtrar" />
+           | <a href="{site_url}main/admin_dashboard" class="small">Limpiar filtros</a>
+        </div>
+      </form>
+     <!--  <hr>
+      <h6>Ordenar por:</h6>
+      <form method="post" enctype="multipart/form-data" action="/?/main/admin_dashboard">
+        <div class="form-group">
+          <select name="ordenar" id="" class="select-override form-control">
+            <option value="">Seleccione</option>
+            <option value="entry_id" <?php if($ordenar=="entry_id"){echo "selected";} ?> >Nro. ticket</option>
+            <option value="entry_date" <?php if($ordenar=="entry_date"){echo "selected";} ?> >Fecha</option>
+            <option value="caso_inactivo" <?php if($ordenar=="caso_inactivo"){echo "selected";} ?> >Caso inactivo</option>
+            <option value="departamento_en_consulta" <?php if($ordenar=="departamento_en_consulta"){echo "selected";} ?>>Departamento</option>
+            <option value="tipo_de_problema" <?php if($ordenar=="tipo_de_problema"){echo "selected";} ?>>Tipo de problema</option>
+            <option value="etapa_solicitud" <?php if($ordenar=="etapa_solicitud"){echo "selected";} ?>>Etapa solicitud</option>
+            <option value="prioridad" <?php if($ordenar=="prioridad"){echo "selected";} ?>>Prioridad</option>
+            <option value="last_name" <?php if($ordenar=="last_name"){echo "selected";} ?>>Propietario</option>
+          </select>
+        </div>
+        <input type="hidden" name="pri" value="<?php echo $pri; ?>" />
+        <input type="hidden" name="cas" value="<?php echo $cas; ?>" />
+        <input type="hidden" name="etapa" value="<?php echo $etapa; ?>" />
+        <input type="hidden" name="tipo" value="<?php echo $tipo; ?>" />
+        <input type="hidden" name="complejo" value="<?php echo $complejo; ?>" />
+        <input type="hidden" name="fecha_inicio" value="<?php echo $fecha_inicio; ?>" />
+        <input type="hidden" name="fecha_fin" value="<?php echo $fecha_fin; ?>" />
+        <input type="hidden" name="XID" value="{XID_HASH}" />
+        <input type="submit" class="btn btn-success" name="submit" value="Ordenar" />
+      </form> -->
+    </div>
+  </div>
+  <div class="col-sm-9">
+    <div class="panel bg-white box-shadow">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-sm-6">
+            <h4 class="uppercase medium"><i class="icon-docs"></i> Solicitudes por garantia</h4>
+          </div>
+        </div>
+      <hr class="m-0">
+      </div>
+      <div class="panel-body pt-0">
+        <div class="table-responsive"> <!-- selector de sesion para muestra de lista-->
+          {if segment_3 == "no_case"}
+            <ol class="breadcrumb"> El caso solicitado no existe por favor ingrese otro Nro. de caso. 
+              <a href="{site_url}main/admin_dashboard">Regresar</a>
+            </ol>
+          {if:else}
+            <table class="table table-hover">
+              <thead>
+                <tr class="light uppercase">
+                  <td>Caso</td>
+                  <td>Fecha</td>
+                  <td></td>
+                  <td>Propietario</td>
+                  <td>Complejo</td>
+                  <td>Torre</td>
+                  <td>Dpto.</td>
+                  <td>Etapa</td>
+                  <td>Problema</td>
+                  <td></td>
+                </tr>
+              </thead>
+              <tbody> <!-- search:etapa_solicitud="2" -->
+              {exp:member:custom_profile_data}
+                {exp:switchee variable = "{group_id}" parse="inward"}
+                  {case value="7"}<!-- admin viva 7 -->
+                    {embed="main/lista_admin_test" ordenar="<?php echo $ordenar; ?>" 
+                      pri="<?php echo $pri; ?>" 
+                      cas="<?php echo $cas; ?>"
+                      etapa="<?php echo $etapa; ?>"
+                      tipo="<?php echo $tipo; ?>"
+                      complejo="<?php echo $complejo; ?>"
+                      fecha_inicio="<?php echo $fecha_inicio; ?>"
+                      fecha_fin="<?php echo $fecha_fin; ?>"
+                    }
+                  {/case}
+
+                  {case value="8"}<!-- admin GyM 8  etapas 3 a 11-->
+                    {embed="main/lista_admin_test" ordenar="<?php echo $ordenar; ?>"
+                    pri="<?php echo $pri; ?>" 
+                    cas="<?php echo $cas; ?>"
+                    etapa="<?php echo $etapa; ?>"
+                    tipo="<?php echo $tipo; ?>"
+                    complejo="<?php echo $complejo; ?>"
+                    fecha_inicio="<?php echo $fecha_inicio; ?>"
+                    fecha_fin="<?php echo $fecha_fin; ?>"
+                  }
+                  {/case}
+
+                  {case value="9"}<!-- inspector viva 9 -->
+                    {embed="main/lista_admin_test" ordenar="<?php echo $ordenar; ?>"
+                    pri="<?php echo $pri; ?>" 
+                    cas="<?php echo $cas; ?>"
+                    etapa="5|8"
+                    tipo="<?php echo $tipo; ?>"
+                    complejo="<?php echo $complejo; ?>"
+                    fecha_inicio="<?php echo $fecha_inicio; ?>"
+                    fecha_fin="<?php echo $fecha_fin; ?>"
+                  }
+                  {/case}
+                  {case value="10"}<!-- personal GyM que ejecuta el arreglo  10 filtro="8"-->
+                    {embed="main/lista_admin_test" filtro="" ordenar="<?php echo $ordenar; ?>"}
+                  {/case}
+                {/exp:switchee}
+              {/exp:member:custom_profile_data}
+             </tbody>
+            </table>
+          {/if}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

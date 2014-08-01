@@ -1,0 +1,16 @@
+
+<?php echo $dir="{exp:get_post_vars parse='inward'}
+	{exp:export_excel 
+	carpeta='./reportes/' 
+	nombre_file='lista_' 
+	exportacion='{post_exportacion}'
+	pri='{post_pri}'
+	cas='{post_cas}'
+	etapa='{post_etapa}'
+	tipo='{post_tipo}'
+	complejo='{post_complejo}'
+	fecha_inicio='{post_fecha_inicio}'
+	fecha_fin='{post_fecha_fin}'
+	}
+{/exp:get_post_vars}"; 
+?>

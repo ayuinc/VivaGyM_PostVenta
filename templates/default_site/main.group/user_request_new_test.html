@@ -1,0 +1,192 @@
+{embed="includes/header"}
+
+<script type="text/javascript">
+  function SwitchHiddenDiv(){
+    var evento = document.getElementById("SelectedType").options[document.getElementById("SelectedType").selectedIndex].value;
+    switch (evento){
+      case 'no': 
+    document.getElementById('casilla').style.display="none";
+    break;
+      case 'si':
+    document.getElementById('casilla').style.display="block";
+    break;
+      default:
+    alert("Unknown type");
+    }
+  }
+
+  $(document).ready(function() {
+
+    var fup = document.getElementById('flUpload');
+    var fileName = fup.value;
+    var ext = fileName.substring(fileName.lastIndexOf('.') + 1);
+
+     $("#flUpload").change(function () 
+     { 
+
+       var iSize = ($("#flUpload")[0].files[0].size / 1024); 
+       if (iSize / 1024 > 1) 
+       { 
+          if (((iSize / 1024) / 1024) > 1) 
+          { 
+              iSize = (Math.round(((iSize / 1024) / 1024) * 100) / 100);
+              $("#lblSize").html( "Peso del archivo actual: " + iSize + "Gb.");
+              if (iSize > 1)
+                {document.getElementById('grupo_boton').style.display="none";
+                  document.getElementById('lblSize').style.display="block";}
+              else
+                {document.getElementById('grupo_boton').style.display="block";
+                  document.getElementById('lblSize').style.display="block";}
+          }
+          else
+          { 
+              iSize = (Math.round((iSize / 1024) * 100) / 100)
+
+              $("#lblSize").html( "Peso del archivo actual: " + iSize + "Mb.");
+              if (iSize > 2){
+                document.getElementById('grupo_boton').style.display="none";
+                document.getElementById('lblSize').style.display="block";
+                document.getElementById('lbltype').style.display="block";
+              }
+
+              else
+                {document.getElementById('grupo_boton').style.display="block";
+                  document.getElementById('lblSize').style.display="block";}
+          } 
+       } 
+       else 
+       {
+          iSize = (Math.round(iSize * 100) / 100)
+          $("#lblSize").html( "Peso del archivo actual: " + iSize  + "Kb.");
+          document.getElementById('grupo_boton').style.display="block";
+          document.getElementById('lblSize').style.display="block";
+       }    
+    }); 
+  });
+
+function mostrar_div()
+  {
+  document.getElementById('grupo_boton').style.display="block";
+  document.getElementById('lblSize').style.display="none";
+  }
+
+</script>
+  
+{embed="includes/bredcrumbs"}  
+  
+
+{exp:freeform:form
+    form_name="atencion_por_garantia"
+    return="main/confirm_solicitud"
+}
+
+  <div class="row">
+    <div class="col-md-3">
+      {embed="includes/user_dashboard_aside" seccion="1"}
+    </div>
+
+    <div class="col-md-6">
+      
+      <div class="bg-white border-rounded box-shadow p-14">
+        <h4 class="uppercase medium mb-0">Nueva solicitud</h4>
+        <small>Requerimiento de atención por garantía</small>
+        <hr>
+        <form action="">
+          <div class="row">
+            <div class="col-md-7">
+              <p>Tipo de Problema</p>
+              <div class="form-group">
+                <select name="tipo_de_problema" class="select-override form-control">
+                  <option value="">Seleccione</option>
+                  <option value="Pisos">Pisos</option>
+                  <option value="Paredes">Paredes</option>
+                  <option value="Instalaciones eléctricas">Instalaciones eléctricas</option>
+                  <option value="Instalaciones sanitarias">Instalaciones sanitarias</option>
+                  <option value="Carpintería metálica">Carpintería metálica</option>
+                  <option value="Carpintería de madera">Carpintería de madera</option>
+                </select>
+
+              </div>
+            </div>
+            <div class="col-md-5">
+              <!--<div class="form-group">
+                <select name="ubicacion" id="nueva-solicitud-select" class="form-control select-override">
+                  <option value="">Ubicación</option>
+                  <option value="Techos">Techos</option>
+                  <option value="Paredes">Paredes</option>
+                  <option value="Pasillos">Pasillos</option>
+                  <option value="Puertas">Puertas</option>
+                  <option value="Ventanas">Ventanas</option>
+                </select>
+              </div>-->
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <textarea name="descripcion_problema" class="form-control" rows="4" placeholder="Describe aquí el problema. Por favor se lo más específico posible detallando lo ocurrido."></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mt-14">
+            <div class="col-sm-12">
+              <p>Adjuntar foto: Max. 2mb.</p>
+              <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                <div class="form-control" data-trigger="fileinput">
+                  <span class="fileinput-filename"></span>
+                </div>
+                <span class="input-group-addon btn btn-default btn-file">
+                  <span class="fileinput-new">Seleccionar</span>
+                  <span class="fileinput-exists">Cambiar</span>
+                  <input type="file" name="foto_problema[]" id="flUpload">
+                </span>
+                <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput" onClick="mostrar_div()">Quitar</a>
+              </div>
+              <small id="lblSize"></small><!-- <small id="lbltype"></small> -->
+            </div>
+          </div>
+
+          <div class="row mt-14">
+            <div class="col-md-7">
+              <p>¿El daño involucra a otro departamento?</p>
+              <div class="form-group">
+                <select name="dano_otro_departamento" id='SelectedType' onchange="SwitchHiddenDiv()" 
+                class="select-override form-control">
+                  <option value="no" >No</option>
+                  <option value="si" >Sí</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-14" id="casilla" style="display:none;">
+            <div class="col-md-9">
+              <p>¿Qué departamento?</p>
+              <div class="form-group" >
+                <input type="text" placeholder="Número del departamento" name="nro_otro_departamento_afectado" class="form-control">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group" id="grupo_boton" style="display:block;">
+
+            <input type="hidden" name="etapa_solicitud" value="1" >
+              {exp:member:custom_profile_data}
+              <input type="hidden" name="departamento_en_consulta" value="{cod_depa}" >
+              <input type="hidden" name="last_name" value="{nombre_propietario} {ap_pat} {ap_mat}" >
+              <input type="hidden" name="sigla_complejo" value="{sigla_complejo}" >
+              {/exp:member:custom_profile_data}
+              <input type="hidden" name="email" value="{email}" >
+              <input type="hidden" name="id_cliente" value="{member_id}" >
+              <input type="submit" name="submit" class="btn uppercase btn-success" value="Procesar">
+
+          </div>
+
+        </form>
+      </div>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+  
+{/exp:freeform:form}
+{embed="includes/footer"}

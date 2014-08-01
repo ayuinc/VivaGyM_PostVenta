@@ -1,0 +1,20 @@
+
+{exp:freeform:entries form_id="4" sort="desc" 
+search:fecha_atencion_ticket="{embed:fecha}" 
+search:orden_tramite="3|7"
+status="open|closed" limit="10" }
+
+	{exp:user:stats member_id="{freeform:field:id_cliente}" }
+		{exp:mandrillapp:send_recordatorio 
+		  to="{email_propietario}"
+		  name="{nombre_propietario}"
+		  from="admin@gym.com"
+		  subject="Recordatorio"
+		  id_reclamo="{freeform:field:id_sol_garantia}"
+		  fecha_date="{freeform:field:fecha_atencion_ticket}"
+		  proceso="{freeform:field:orden_tramite}"
+			}
+		{/exp:mandrillapp:send_recordatorio}  
+	{/exp:user:stats}
+		
+{/exp:freeform:entries}

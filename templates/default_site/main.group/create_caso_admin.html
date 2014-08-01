@@ -1,0 +1,160 @@
+{embed="includes/header" }
+
+<script src="{site_url}lib/validar_archivo.js"></script>
+
+<script type="text/javascript">
+  function SwitchHiddenDiv(){
+    var evento = document.getElementById("SelectedType").options[document.getElementById("SelectedType").selectedIndex].value;
+    switch (evento){
+      case 'no': 
+    document.getElementById('casilla').style.display="none";
+    break;
+      case 'si':
+    document.getElementById('casilla').style.display="block";
+    break;
+      default:
+    alert("Unknown type");
+    }
+  }
+
+</script>
+
+<script language="javascript">
+  function validar(frm){
+  if(frm.tipo_de_problema.value==""){mensaje1("Tipo de problema",frm.tipo_de_problema);return false;}
+  if(frm.descripcion_problema.value==""){mensaje1("Descripción del problema",frm.descripcion_problema);return false;}
+  // if(frm.contra.value==""){mensaje1("Contraseña",frm.contra);return false;}
+  return true;
+  }
+
+  function mensaje1(campo,obj)
+  {
+  msg="Por favor seleccionar una opción para el campo: "+campo+".";
+  alert(msg);
+  obj.focus();
+  }
+
+  function mensaje2(campo, obj, cant) {
+  msg = "El campo "+campo+" no debe contener caracteres especiales y como minimo " + cant + " caracteres";
+  alert(msg);
+  obj.focus();
+  }
+</script>
+
+{embed="includes/menu_admin" }
+
+<div class="row">
+  <div class="col-md-3">
+
+  </div>
+
+  <div class="col-sm-6">
+    <div class="bg-white border-rounded box-shadow p-14">
+        <h4 class="uppercase medium mb-0">Nueva solicitud</h4>
+        <small>Requerimiento de atención por garantía</small>
+        <hr>
+        
+        {exp:get_post_vars parse="inward"}
+          {exp:user:stats member_id="{post_id_cliente}" }
+
+            {exp:freeform:form 
+            form_name="atencion_por_garantia" 
+            return="main/confirm_solicitud_admin/{post_id_cliente}"   
+            form:id="frm"
+            form:onSubmit="return validar(this)"}
+
+              <div class="row">
+                <div class="col-md-7">
+                  <p>Tipo de Problema:</p>
+                  <div class="form-group">
+                    <select name="tipo_de_problema" class="select-override form-control">
+                      <option value="Pisos">Pisos</option>
+                      <option value="Paredes">Paredes</option>
+                      <option value="Instalaciones eléctricas">Instalaciones eléctricas</option>
+                      <option value="Instalaciones sanitarias">Instalaciones sanitarias</option>
+                      <option value="Carpintería metálica">Carpintería metálica</option>
+                      <option value="Carpintería de madera">Carpintería de madera</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-5">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <textarea name="descripcion_problema" class="form-control" rows="4" placeholder="Describe aquí el problema. Por favor se lo más específico posible detallando lo ocurrido." required></textarea>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row mt-14">
+                <div class="col-sm-12">
+                  <p>Adjuntar foto: Max. 2mb.</p>
+                  <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                    <div class="form-control" data-trigger="fileinput">
+                      <span class="fileinput-filename"></span>
+                    </div>
+                    <span class="input-group-addon btn btn-default btn-file">
+                      <span class="fileinput-new">Seleccionar</span>
+                      <span class="fileinput-exists">Cambiar</span>
+                      <input type="file" name="foto_problema[]" id="flUpload">
+                    </span>
+                    <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput" onClick="mostrar_div()">Quitar</a>
+                  </div>
+                  <small id="lblSize"></small><small id="lbltype"></small>
+                </div>
+              </div>
+
+              <div class="row mt-14">
+                <div class="col-md-7">
+                  <p>¿El daño involucra a otro departamento?</p>
+                  <div class="form-group">
+                    <select name="dano_otro_departamento" id='SelectedType' onchange="SwitchHiddenDiv()" 
+                    class="select-override form-control">
+                      <option value="no" >No</option>
+                      <option value="si" >Sí</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="row mt-14" id="casilla" style="display:none;">
+                <div class="col-md-7">
+                  <p>¿Qué departamento?</p>
+                  <div class="form-group" >
+                    <input type="text" placeholder="Número del departamento" name="nro_otro_departamento_afectado" class="form-control">
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group" >
+                  <input type="hidden" name="etapa_solicitud" value="1" >
+                  <input type="text" name="departamento_en_consulta" value="{cod_depa}" >
+                  <input type="text" name="last_name" value="{nombre_propietario} {ap_pat} {ap_mat}" >
+                  <input type="text" name="sigla_complejo" value="{sigla_complejo}" >
+                  <input type="text" name="email" value="{email_propietario}" >
+              </div>
+
+              <div class="row mt-14" id="casillon" >
+                <div class="col-md-7">
+                  <div class="form-group" >
+                  <p>¿Cual es la prioridad del caso?</p>
+                  <select name="prioridad" class="form-control select-override input-sm option-select">
+                    <option value="0" >Normal</option>
+                    <option value="1" >Prioritario</option>
+                  </select>
+                  </div>
+                </div>
+              </div>
+                
+              <div class="form-group" >          
+                  <input type="hidden" name="id_cliente" value="{post_id_cliente}" >
+                  <input type="submit" name="submit" class="btn uppercase btn-success" value="Procesar" id="grupo_boton">
+              </div>
+                
+            {/exp:freeform:form}
+          {/exp:user:stats}
+        {/exp:get_post_vars}
+      </div>
+  </div>
+</div>

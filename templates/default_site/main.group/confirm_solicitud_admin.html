@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>{site_name}</title>
+    <link rel="stylesheet" type="text/css" href="{site_url}stylesheets/viva.css" media="screen" />
+    
+    <script type="text/javascript" src="{site_url}lib/b3/jquery-2_1_1.js"></script>
+    <script type="text/javascript" src="{site_url}lib/b3/tab.js"></script>
+    <script type="text/javascript" src="{site_url}lib/b3/transition.js"></script>
+    <script type="text/javascript" src="{site_url}lib/b3/collapse.js"></script>
+    <script type="text/javascript" src="{site_url}lib/b3/tooltip.js"></script>
+    <script type="text/javascript" src="{site_url}lib/b3/z_popover.js"></script>
+    <script type="text/javascript" src="{site_url}lib/vendor/fileinput.js"></script>
+    <script type="text/javascript" src="{site_url}lib/header.js"></script>
+
+    <!-- FAVICON -->
+    <link rel="shortcut icon" href="img/favicon.ico">
+
+    <!-- WebFonts  -->
+    <script type="text/javascript" src="//use.typekit.net/jfc4vgc.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+  </head>
+  <body>
+
+	<header class="bg-inverse text-muted">
+	  <div class="container-fluid pt-7 pb-7">
+	    <div class="row">
+	      <div class="col-md-4 col-sm-4">
+	        <a href="{site_url}main/admin_dashboard"><img src="{site_url}/images/logo-viva.png" style="width:120px; height: auto;"></a><!-- admin viva -->
+	      </div>
+	      <div class="col-md-8 hidden-xs col-sm-8">
+	        <div class="row">
+	        	{exp:user:stats member_id="{member_id}" }
+	        	{/exp:user:stats}
+
+	          {exp:member:custom_profile_data}
+	            {exp:switchee variable = "{member_group}" parse="inward"}
+	                {case value="user_dep"}
+	                 <div class="col-xs-11 col-md-11 col-sm-11 text-right">
+	                  <h5 class="thin mb-0">Bienvenido/a, <span class="medium">{nombre_propietario}</span></h5>
+	                  <a href="{path='logout'}">Salir</a>
+	                {/case}
+	                {case default="Yes"}
+	                  <div class="col-xs-12 col-md-12 col-sm-12 text-right">
+	                  <h5 class="thin mb-0">Bienvenido/a, <span class="medium">{screen_name}</span></h5>
+	                  <a href="{path='logout'}">Salir</a>
+	                {/case}
+	            {/exp:switchee}
+	          {/exp:member:custom_profile_data}   
+	        </div>
+
+	          {exp:member:custom_profile_data}
+	            {exp:switchee variable = "{member_group}" parse="inward"}
+	              {case value="user_dep"}
+
+	                <div class="col-xs-1 col-md-1 col-sm-1 pt-7">
+	                  {exp:user:stats}
+	                    {exp:freeform:entries form_id="4" orderby="orden_tramite" sort="desc" status="open" limit="1" search:id_cliente="{member_id}"}
+	                      {if freeform:count == 0}
+	                        <a href="#" id="user-notifications" data-container="body" data-toggle="popover" data-title="Notificaciones" class="active">
+	                          <span><i class="icon-bell"></i></span>
+	                        </a>
+	                      {/if}
+	                      {if freeform:count > 0}
+	                        <a href="#" id="user-notifications" data-container="body" data-toggle="popover" data-title="Notificaciones">
+	                          <span><i class="icon-bell"></i></span>
+	                        </a>
+	                      {/if}
+	                    {/exp:freeform:entries}
+	                  {/exp:user:stats}
+	                  <div class="notifications-popover-content" style="display: none;">
+	                    <div class="list-group">
+	                      {embed="test/test_notificaciones_3"}
+	                    </div>
+	                  </div>
+	                </div>
+	              {/case}
+	              {case default="Yes"}
+	              {/case}
+	            {/exp:switchee}
+	          {/exp:member:custom_profile_data}
+
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	</header>
+
+<div class="container-fluid pt-35 pb-35 mh-630">
+<?php $id_cliente="{member_id}"; ?>
+
+{exp:confirm_sol id_cliente="{segment_3}" rol="adm" admin_id="{member_id}"}
+
+{exp:user:stats member_id="{segment_3}"}
+	{exp:mandrillapp:send_email_confirm_solicitud
+	  to="{email_propietario}"
+	  name="{nombre_propietario}"
+	  subject="Recepción de Solicitud de Requerimientos Viva GyM"
+	  from="admin@gym.com"
+	  dias="4"
+	  member_id="{member_id}"}
+	{/exp:mandrillapp:send_email_confirm_solicitud}  
+{/exp:user:stats}
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+	  <h1>Gracias por ingresar una nueva solicitud</h1>
+	  <p>La nueva solicitud esta listada en el Panel de control.</p>
+	  <p>{embed="main/datos_user" user_id="{segment_3}" }</p>
+	  <p><a href="{site_url}main/admin_dashboard">Ir al Panel de Control</a></p>	  
+  </div>
+</div>
+
+{embed="includes/footer"}

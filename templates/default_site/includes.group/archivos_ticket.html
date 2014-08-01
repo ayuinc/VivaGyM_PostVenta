@@ -1,0 +1,52 @@
+<?php $id_sol_garantia="{embed:entrada}"; ?>
+
+<div class="row">
+  <div class="col-sm-6">
+    <p>Inspección</p>
+    {exp:freeform:entries form_id="4" search:id_sol_garantia="{embed:entrada}" search:orden_tramite="5"  limit="1" status="open|closed" }
+      {if freeform:field:informe_inspeccion!=''}
+        <table class="table table-hover table-striped">
+          <thead>
+              <tr class="medium">
+              <td>Nro.</td>
+              <td>Archivo</td>
+            </tr>
+          </thead>
+          <tbody>
+            {exp:explode separator=" " string="{freeform:field:informe_inspeccion}"}
+              <tr>
+                <td>{exp_count}</td>
+                <td><a target="_blank" href="{site_url}informes_viva/{exp_value}">{exp_value}</a></td>
+              </tr>         
+              {/exp:explode}
+            {/if}
+        {/exp:freeform:entries}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col-sm-6">
+    <p>Arreglo</p>
+    {exp:freeform:entries form_id="4" search:id_sol_garantia="{embed:entrada}" search:orden_tramite="9"  limit="1" status="open|closed" }
+      {if freeform:field:informe_inspeccion!=''}
+        <table class="table table-hover table-striped">
+          <thead>
+              <tr class="medium">
+              <td>Nro.</td>
+              <td>Archivo</td>
+            </tr>
+          </thead>
+          <tbody>
+            {exp:explode separator=" " string="{freeform:field:informe_inspeccion}"}
+              <tr>
+                <td>{exp_count}</td>
+                <td><a target="_blank" href="{site_url}informes_viva/{exp_value}">{exp_value}</a></td>
+              </tr>         
+              {/exp:explode}
+            {/if}
+        {/exp:freeform:entries}
+      </tbody>
+    </table>
+  </div>
+</div>
+

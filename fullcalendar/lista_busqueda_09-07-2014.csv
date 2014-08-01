@@ -1,0 +1,9 @@
+Lista de casos - Fecha de generacion del archivo: 09-07-2014
+"Nro. de Caso","Fecha ingreso","Hora","Cliente","Tipo de problema","Descripcion problema","Departamento en consulta","Otro dep. afectado","Email cliente","Complejo","Responsable Viva","Responsable GyM","Agente inspeccion","Agente arreglo"
+"290","07-07-2014","09:59 am","Julio Cesar Castillo Corrales","Carpintería de madera","novena prueba de comentarios","401","","jcmoron82@gmail.com","LP SMP","Administrador Viva","Admin GyM","Inspector 2","Constructor 2"
+"291","07-07-2014","10:15 am","Julio Cesar Castillo Corrales","Carpintería metálica","prueba del user close no debe mandar comentario doble ","401","","jcmoron82@gmail.com","LP SMP","Administrador Viva","Admin GyM","Inspector 2","Constructor 2"
+"292","07-07-2014","12:10 pm","Julio Cesar Castillo Morón","Carpintería metálica","prueba de estilo al tr","401","","jcmoron82@gmail.com","LP SMP","Administrador Viva","","",""
+"293","07-07-2014","12:34 pm","Julio Cesar Castillo Morón","Instalaciones sanitarias","dejar solo paso de gym_user pendiente en paso 8 para probar los filtros","401","","jcmoron82@gmail.com","LP SMP","Administrador Viva","Admin GyM","Inspector 2","Constructor 2"
+"294","07-07-2014","14:04 pm","Cliente Diaz Satisfecho","Carpintería de madera","PRUEBA NO SHOW","305","","rodulfojprieto@gmail.com","JP MAG","Amelia","Admin GyM","Inspector 2",""
+"295","07-07-2014","14:22 pm","Julio Cesar Castillo Morón","Instalaciones sanitarias","verificar que no hay impresiones en el plugin","401","","jcmoron82@gmail.com","LP SMP","Administrador Viva","Admin GyM","Inspector 2","Constructor 2"
+"296","07-07-2014","17:32 pm","Julio Cesar Castillo Morón","Instalaciones sanitarias","prueba de color coding","401","","jcmoron82@gmail.com","LP SMP","","","",""

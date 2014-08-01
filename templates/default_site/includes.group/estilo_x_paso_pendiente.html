@@ -1,0 +1,44 @@
+
+{exp:member:custom_profile_data}
+  {exp:switchee variable = "{group_id}" parse="inward"}
+    {case value="7"}
+    	{exp:freeform:entries form_id="4" search:id_sol_garantia="{embed:entrada}" search:orden_tramite="2" limit="1" status="open" }
+				{if freeform:status=='open'}
+					style="background-color:#FFDEAD;"
+				{/if}
+			{/exp:freeform:entries}
+			{exp:freeform:entries form_id="4" search:id_sol_garantia="{embed:entrada}" search:orden_tramite="6" limit="1" status="open" }
+				{if freeform:status=='open'}
+					style="background-color:#FFDEAD;"
+				{/if}
+			{/exp:freeform:entries}
+			{exp:freeform:entries form_id="4" search:id_sol_garantia="{embed:entrada}" search:orden_tramite="10" limit="1" status="open" }
+				{if freeform:status=='open'}
+					style="background-color:#FFDEAD;"
+				{/if}
+			{/exp:freeform:entries}
+
+    {/case}
+
+    {case value="8"}
+			{exp:freeform:entries form_id="4" search:id_sol_garantia="{embed:entrada}" search:orden_tramite="4" limit="1" status="open" }
+				{if freeform:status=='open'}
+					style="background-color:#FFDEAD;"
+				{/if}
+			{/exp:freeform:entries}
+			{exp:freeform:entries form_id="4" search:id_sol_garantia="{embed:entrada}" search:orden_tramite="8" limit="1" status="open" }
+				{if freeform:status=='open'}
+					style="background-color:#FFDEAD;"
+				{/if}
+			{/exp:freeform:entries}
+    {/case}
+
+    {case value="9"}
+
+    {/case}
+
+    {case value="10"}
+
+    {/case}
+  {/exp:switchee}
+{/exp:member:custom_profile_data}

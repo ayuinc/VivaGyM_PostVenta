@@ -1,0 +1,91 @@
+
+<div class="bg-white border-rounded box-shadow p-14">
+  <p>Buscador</p>
+  <form method="post" enctype="multipart/form-data" action="/?/main/redir_caso">
+      <input type="text" class="form-control" name="caso_id" placeholder="Nro. de caso">
+      <p></p>
+      <input type="hidden" name="XID" value="{XID_HASH}" />
+      <input type="submit" class="btn uppercase btn-success" name="submit" value="Buscar" />
+  </form>
+
+  <hr class="double">
+
+  <form method="post" enctype="multipart/form-data" action="/?/main/admin_dashboard">
+
+      <select name="cas" id="" class="select-override form-control">
+        <option value="">Filtrar por actividad</option>
+        <option value="0" <?php if($cas=="0"){echo "selected";} ?>>Caso activo</option>
+        <option value="1" <?php if($cas=="1"){echo "selected";} ?>>Caso inactivo</option>
+      </select>
+      <p></p>
+
+      <select name="pri" id="" class="select-override form-control">
+        <option value="">Filtrar por prioridad</option>
+        <option value="0" <?php if($pri=="0"){echo "selected";} ?>>Normal</option>
+        <option value="1" <?php if($pri=="1"){echo "selected";} ?>>Prioridad</option>
+      </select>
+      <p></p>
+
+      {exp:member:custom_profile_data}
+        {exp:switchee variable = "{group_id}" parse="inward"}
+          
+          {case value="7"}<!-- admin viva 7 -->
+            <select name="etapa" id="" class="select-override form-control">
+              <option value="">Etapa solicitud</option>
+              <option value="1|2" <?php if($etapa=="1"){echo "selected";} ?>>Solicitud en revisión</option>
+              <option value="3|4|5" <?php if($etapa=="3"){echo "selected";} ?>>Inspección pendiente</option>
+              <option value="6" <?php if($etapa=="6"){echo "selected";} ?>>Informe en revisión</option>
+              <option value="7|8|9" <?php if($etapa=="7"){echo "selected";} ?>>Arreglo pendiente</option>
+              <option value="10|11" <?php if($etapa=="10"){echo "selected";} ?>>Caso cerrado</option>
+            </select>
+            <p></p>
+          {/case}
+
+          {case value="8"}<!-- admin GyM 8  etapas 3 a 11-->
+            <select name="etapa" id="" class="select-override form-control">
+              <option value="3|4|5|6|7|8|9|10|11">Etapa solicitud</option>
+              <option value="3|4|5" <?php if($etapa=="3"){echo "selected";} ?>>Inspección pendiente</option>
+              <option value="6" <?php if($etapa=="6"){echo "selected";} ?>>Informe en revisión</option>
+              <option value="7|8|9" <?php if($etapa=="7"){echo "selected";} ?>>Arreglo pendiente</option>
+              <option value="10|11" <?php if($etapa=="10"){echo "selected";} ?>>Caso cerrado</option>
+            </select>
+            <p></p>
+          {/case}
+
+          {case value="9"}<!-- inspector viva 9 -->
+          {/case}
+          
+          {case value="10"}<!-- personal GyM que ejecuta el arreglo  10 filtro="8"-->
+          {/case} 
+        {/exp:switchee}
+      {/exp:member:custom_profile_data}
+
+      <select name="tipo" id="" class="select-override form-control">
+        <option value="">Tipo de problema</option>
+        <option value="Pisos" <?php if($tipo=="Pisos"){echo "selected";} ?> >Pisos</option>
+        <option value="Paredes" <?php if($tipo=="Paredes"){echo "selected";} ?> >Paredes</option>
+        <option value="Instalaciones eléctricas" <?php if($tipo=="Instalaciones eléctricas"){echo "selected";} ?> >Instalaciones eléctricas</option>
+        <option value="Instalaciones sanitarias" <?php if($tipo=="Instalaciones sanitarias"){echo "selected";} ?> >Instalaciones sanitarias</option>
+        <option value="Carpintería metálica" <?php if($tipo=="Carpintería metálica"){echo "selected";} ?> >Carpintería metálica</option>
+        <option value="Carpintería de madera" <?php if($tipo=="Carpintería de madera"){echo "selected";} ?> >Carpintería de madera</option>
+      </select>
+      <p></p>
+
+      <select name="ordenar" id="" class="select-override form-control">
+        <option value="">Ordenar por</option>
+        <option value="entry_id" <?php if($ordenar=="entry_id"){echo "selected";} ?> >Nro. ticket</option>
+        <option value="entry_date" <?php if($ordenar=="entry_date"){echo "selected";} ?> >Fecha</option>
+        <!-- <option value="caso_inactivo" <?php if($ordenar=="caso_inactivo"){echo "selected";} ?> >Caso inactivo</option> -->
+        <option value="departamento_en_consulta" <?php if($ordenar=="departamento_en_consulta"){echo "selected";} ?>>Departamento</option>
+        <option value="tipo_de_problema" <?php if($ordenar=="tipo_de_problema"){echo "selected";} ?>>Tipo de problema</option>
+        <option value="etapa_solicitud" <?php if($ordenar=="etapa_solicitud"){echo "selected";} ?>>Etapa solicitud</option>
+        <!-- <option value="prioridad" <?php if($ordenar=="prioridad"){echo "selected";} ?>>Prioridad</option> -->
+        <option value="last_name" <?php if($ordenar=="last_name"){echo "selected";} ?>>Propietario</option>
+      </select>
+      <p></p>
+
+      <input type="hidden" name="XID" value="{XID_HASH}" />
+      <input type="submit" class="btn uppercase btn-success" name="submit" value="Enviar" />
+
+    </form>
+</div>

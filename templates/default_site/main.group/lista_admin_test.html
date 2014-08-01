@@ -1,0 +1,184 @@
+{exp:freeform:entries form_id="2" orderby="{embed:ordenar}" sort="desc" 
+  search:prioridad="{embed:pri}" 
+  search:caso_inactivo="{embed:cas}"
+  search:etapa_solicitud="{embed:etapa}"
+  search:tipo_de_problema="{embed:tipo}"
+  search:sigla_complejo="{embed:complejo}"
+  date_range_start="{embed:fecha_inicio}"
+  date_range_end="{embed:fecha_fin}"
+  status="open|closed" limit="20" paginate="top" 
+}
+
+<?php $estatus_ticket="{freeform:status}";  $contador_comp="{freeform:count}"; ?>
+
+<tr {embed="includes/estilo_x_paso_pendiente" entrada="{freeform:entry_id}" } >
+
+  <td><?php echo $id_sol_garantia="{freeform:entry_id}"; ?></td>
+  <td>{freeform:entry_date format="%d-%m-%Y"}</td>
+  <td>
+    <?php $caso_inactivo="{freeform:field:caso_inactivo}";
+    if ($caso_inactivo==1){ ?> <img src="{site_url}images/bandera-roja.png" width="16" height="16" > <?php }?>
+    <?php $prioridad="{freeform:field:prioridad}";
+    if ($prioridad==1){ ?> <img src="{site_url}images/estrella_dorada.png" width="16" height="16" > <?php }?>
+  </td>
+  <td>{freeform:field:last_name}</td>
+  <td>
+    {exp:user:stats member_id="{freeform:field:id_cliente}"}
+    {sigla_complejo}
+    {/exp:user:stats}
+  </td>
+  <td>
+    {exp:user:stats member_id="{freeform:field:id_cliente}"}
+    {torre_depa}
+    {/exp:user:stats}
+  </td>
+  <td>
+    {exp:user:stats member_id="{freeform:field:id_cliente}"}
+    {cod_depa}
+    {/exp:user:stats}
+  </td>
+  <td>
+    {exp:member:custom_profile_data}
+    <?php $id_grupo="{group_id}"; ?>
+    {/exp:member:custom_profile_data}
+    <?php echo $var_est="{freeform:field:etapa_solicitud}"; 
+      switch ($var_est) {
+        case "1":
+          switch ($id_grupo) {
+            case "7":
+              echo "<span class='label label-danger'>Solicitud en revisión</span>";
+            break;
+            case "8":
+              echo "<span class='label label-default'>Solicitud en revisión</span>";
+            break;
+            case "9":
+              echo "<span class='label label-default'>Solicitud en revisión</span>";
+            break;
+            }
+          break;
+        case "2":
+          switch ($id_grupo) {
+            case "7":
+              echo "<span class='label label-danger'>Solicitud en revisión</span>";
+            break;
+            case "8":
+              echo "<span class='label label-default'>Solicitud en revisión</span>";
+            break;
+            case "9":
+              echo "<span class='label label-default'>Solicitud en revisión</span>";
+            break;
+            }
+          break;
+        case "3":
+          echo "<span class='label label-default'>Inspección pendiente</span>";
+          break;
+        case "4":
+          switch ($id_grupo) {
+            case "7":
+              echo "<span class='label label-default'>Inspección pendiente</span>";
+            break;
+            case "8":
+              $result_48=mysql_query("SELECT * FROM exp_freeform_form_entries_4 WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 4 ");
+              $obten_48=mysql_fetch_row($result_48); $estatus_48 = $obten_48[7];
+              if($estatus_48=="open"){echo "<span class='label label-danger'>Inspección pendiente</span>";}
+              else{echo "<span class='label label-default'>Inspección pendiente</span>";}
+            break;
+            case "9":
+              echo "<span class='label label-default'>Inspección pendiente</span>";
+            break;
+            }
+          break;
+        case "5":
+          echo "<span class='label label-default'>Inspección pendiente</span>";
+          break;
+        case "6":
+          switch ($id_grupo) {
+            case "7":
+              echo "<span class='label label-danger'>Informe en revisión</span>";
+            break;
+            case "8":
+              echo "<span class='label label-default'>Informe en revisión</span>";
+            break;
+            case "9":
+              echo "<span class='label label-default'>Informe en revisión</span>";
+            break;
+            }
+          break;
+        case "7":
+          echo "<span class='label label-default'>Arreglo pendiente</span>";
+          break;
+        case "8":
+          switch ($id_grupo) {
+            case "7":
+              echo "<span class='label label-default'>Arreglo pendiente</span>";
+            break;
+            case "8":
+              echo "<span class='label label-danger'>Arreglo pendiente</span>";
+            break;
+            case "9":
+              echo "<span class='label label-default'>Arreglo pendiente</span>";
+            break;
+            }
+          break;
+        case "9":
+          switch ($id_grupo) {
+            case "7":
+              echo "<span class='label label-danger'>Arreglo pendiente</span>";
+            break;
+            case "8":
+              echo "<span class='label label-default'>Arreglo pendiente</span>";
+            break;
+            case "9":
+              echo "<span class='label label-default'>Arreglo pendiente</span>";
+            break;
+            }
+          break;
+        case "10":
+          echo "<span class='label label-default'>Caso cerrado</span>";
+          break;
+        case "11":
+          echo "<span class='label label-default'>Caso cerrado</span>";
+          break;
+      }; 
+    ?>
+  </td>
+  <td>{freeform:field:tipo_de_problema}</td>
+  <td><a href="{site_url}main/ticket_detail/{freeform:entry_id}" class="small text-danger underline">Ver</a></td>
+</tr>
+
+  {if freeform:no_results}<h6>Sin solicitudes pendientes.</h6>{/if}
+
+  {if freeform:total_pages > 1}
+    {freeform:paginate}
+      <!-- Página {freeform:current_page}
+      de {freeform:total_pages}
+      páginas &nbsp; -->
+      {freeform:pagination_links}
+        <div class="clearfix mb-14 mt-7">
+          <ul class="pagination pagination-sm m-0 pull-right">
+            {previous_page}
+              <li><a href="{pagination_url}" class="page-previous">&lt;&lt;</a></li>
+            {/previous_page}
+            
+            <!-- {first_page}
+              <li><a href="{pagination_url}" class="page-first">1</a></li>
+            {/first_page} -->
+
+            {page}
+              <li class="{if current_page}active{/if}"><a href="{pagination_url}" class="page-{pagination_page_number}">{pagination_page_number}</a></li>
+            {/page}
+
+            {next_page}
+              <li><a href="{pagination_url}" class="page-next">&gt;&gt;</a></li>
+            {/next_page}
+
+            <!-- {last_page}
+              <li><a href="{pagination_url}" class="page-last">Última pág.</a></li>
+            {/last_page} -->
+          </ul>
+        </div>
+      {/freeform:pagination_links}
+    {/freeform:paginate}
+  {/if}
+
+{/exp:freeform:entries}

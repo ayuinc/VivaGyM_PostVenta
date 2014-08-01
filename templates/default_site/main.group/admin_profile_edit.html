@@ -1,0 +1,106 @@
+{embed="includes/header" }
+
+{embed="includes/menu_admin" }
+
+<script type="text/javascript" src="{site_url}lib/user_profile_show.js"></script>
+
+  <div class="row">
+    <div class="col-md-3 hidden-xs col-sm-3 hidden-sm">
+      
+    </div>
+    <div class="col-md-6 col-sm-9">
+      <div class="panel p-14">
+        <!--<form id="user-profile-form">-->
+        {exp:user:edit 
+        	return='main/admin_profile_edit' 
+        	group_id="7|8|9" 
+        	form:id="user-profile-form" 
+        }        
+          <div class="panel-heading bg-white p-0">
+            <div class="panel-title mb-14">
+              <div class="clearfix">
+                <div class="col-sm-6 pl-0 col-xs-6">
+                  <h4 class="uppercase medium"><i class="icon-user"></i> Mi perfil </h4>
+                    <a href="{site_url}main/admin_cambio_clave" class="small text-danger underline">Cambiar contraseña</a>
+                </div>
+                <div class="col-sm-6 col-xs-6">                  
+                    <a href="#" class="text-info block pt-14 edit-form-trigger lowercase not-underline icon-pencil text-right"></a>
+                  <div class="mt-7 hidden submit-form text-right">
+                    <!-- <a href="#" class="text-danger small edit-form-cancel hidden">Cancelar</a> --> 
+                    <input type="submit" class="btn btn-sm btn-default" value="Guardar">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr class="m-0">
+          </div>
+          <div class="panel-body p-0">
+            <div class="row mt-14">
+              <div class="col-sm-2">
+                <img src="{site_url}images/user.jpg" alt="" class="img-responsive img-thumbnail">
+              </div>
+
+              <div class="col-sm-9">
+                <!-- <h4 class="mt-0">Datos del propietario</h4> -->
+
+                <div class="form-group">
+                  <label for="">Usuario:</label>
+                  <input type="text" class="form-control input-blank input-sm" name="username" placeholder="{username}" value="{username}">
+                </div>
+
+                <div class="form-group">
+                  <label for="">Nombre:</label>
+                  <input type="text" class="form-control input-blank input-sm" name="screen_name" placeholder="{screen_name}" value="{screen_name}">
+                </div>
+
+                <div class="form-group">
+                  <label for="">Apellido paterno:</label>
+                  <input type="text" class="form-control input-blank input-sm" name="ap_pat" placeholder="{ap_pat}" value="{ap_pat}">
+                </div>
+
+                <div class="form-group">
+                  <label for="">Apellido materno:</label>
+                  <input type="text" class="form-control input-blank input-sm" name="ap_mat" placeholder="{ap_mat}" value="{ap_mat}">
+                </div>
+
+                <div class="form-group">
+                  <label for="">E-mail:</label>
+                  <input type="text" class="form-control input-blank input-sm" name="email" placeholder="{email}" value="{email}">
+                  {if email_propietario!=''}<!-- plugin para actualizar el mail region -->
+                  {exp:update_email member_id="{member_id}"}
+                  {/if}
+                </div>
+
+                <div class="form-group">
+                  <label for="">Télf. celular:</label>
+                  <input type="text" class="form-control input-blank input-sm" name="t_cel" placeholder="{t_cel}" value="{t_cel}">
+                </div>
+
+                <div class="form-group">
+                  <label for="">Télf. oficina:</label>
+                  <input type="text" class="form-control input-blank input-sm" name="t_ofic" placeholder="{t_ofic}" value="{t_ofic}">
+                </div>
+
+                <div class="form-group">
+                  <label for="">Télf. fijo:</label>
+                  <input type="text" class="form-control input-blank input-sm" name="t_fijo" placeholder="{t_fijo}" value="{t_fijo}">
+                </div>
+
+                <div class="form-group">
+                  <label for="">Télf. conyuge:</label>
+                  <input type="text" class="form-control input-blank input-sm" name="t_conyu" placeholder="{t_conyu}" value="{t_conyu}">
+                </div>
+              </div>
+
+            </div>
+          </div>
+          {/exp:user:edit} 
+        <!--</form>-->
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-3">
+      
+    </div>
+  </div>
+  
+{embed="includes/footer"}

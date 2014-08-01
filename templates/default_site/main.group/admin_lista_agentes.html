@@ -1,0 +1,176 @@
+{embed="includes/header" }
+
+<!--{group_id}
+<script type="text/javascript" src="{site_url}lib/viva_dashboard.js"></script>-->
+
+<script type="text/javascript" src="{site_url}lib/vendor/bootstrapValidator.js"></script>
+<script type="text/javascript" src="{site_url}lib/gym_write_agente.js"></script>
+
+<?php
+$screen_name=$_POST['screen_name'];
+$ap_pat=$_POST['ap_pat'];
+$ap_mat=$_POST['ap_mat'];
+$rol=$_POST['rol'];
+?>
+
+{embed="includes/menu_admin" }
+
+<div class="row">
+  <div class="col-sm-3">
+    <div class="bg-white border-rounded box-shadow p-14">
+
+      <h6>Ingresar Agente:</h6>
+      {exp:user:register admin_register="yes" group_id="9" return="main/admin_lista_agentes" form:id="gym_write_agente"}
+
+        <div class="form-group">
+          <input type="text" class="form-control" name="username" placeholder="Usuario"/>
+        </div>
+
+        <div class="form-group">
+          <input type="text" class="form-control" name="screen_name" placeholder="Nombre"/>
+        </div>
+
+        <div class="form-group">
+          <input type="text" class="form-control" name="ap_pat" placeholder="Apellido paterno"/>
+        </div>
+
+        <div class="form-group">
+          <input type="text" class="form-control" name="ap_mat" placeholder="Apellido materno"/>
+        </div>
+
+        <div class="form-group">
+          <input type="text" class="form-control" name="email" placeholder="Email"/>
+        </div>
+
+        <div class="form-group">
+          <input type="text" class="form-control" name="dni" placeholder="DNI"/>
+        </div>
+
+        <div class="form-group">
+          <input type="password" class="form-control" name="password" placeholder="Contraseña"/>
+        </div>
+
+        <div class="form-group">
+          <input type="password" class="form-control" name="password_confirm" placeholder="Confirmar contraseña"/>
+        </div>
+
+        <div class="form-group">
+          <select name="rol" id="" class="select-override form-control">
+            <option value="">Rol del agente</option>
+            <option value="inspector" >Inspector</option>
+            <option value="ejecutor" >Ejecutor</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <input type="hidden" name="accept_terms" value="y" checked/>
+          <input type="submit" class="btn btn-success" name="submit" value="Agregar" />
+        </div>
+      {/exp:user:register}
+
+    </div>
+  </div>
+
+  <div class="col-sm-9">
+    <div class="panel bg-white">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-sm-3">
+            <h4 class="uppercase medium"><i class="icon-docs"></i> Lista de agentes</h4>
+          </div>
+
+          <div class="col-sm-9">
+            <div class="row">
+              <form method="post" enctype="multipart/form-data" action="/?/main/admin_lista_agentes">
+                <div class="col-sm-2">
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="screen_name" placeholder="Nombre" value="<?php echo $screen_name; ?>">
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="ap_pat" placeholder="Apellido Paterno" value="<?php echo $ap_pat; ?>">
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="ap_mat" placeholder="Apellido Materno" value="<?php echo $ap_mat; ?>">
+                  </div>
+                </div>
+
+                <div class="col-sm-2">
+                  <div class="form-group">
+                    <select name="rol" id="" class="select-override form-control">
+                      <option value="">Rol</option>
+                      <option value="inspector" <?php if($rol=="inspector"){echo "selected";} ?>>Inspector</option>
+                      <option value="ejecutor" <?php if($rol=="ejecutor"){echo "selected";} ?>>Ejecutor</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-sm-2">
+                  <div class="form-group">
+                    <input type="hidden" name="XID" value="{XID_HASH}" />
+                    <button type="submit" class="btn btn-success form-control" name="submit">Buscar</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <hr class="m-0">
+      </div>
+      <div class="panel-body pt-0">
+        <div class="table-responsive"> <!-- selector de sesion para muestra de lista-->
+
+          <table class="table table-hover table-striped">
+            <thead>
+              <tr class="light uppercase">
+                <td>ID</td>
+                <td>Usuario</td>
+                <td>Nombre</td>
+                <td>Ap. paterno</td>
+                <td>Ap. materno</td>
+                <!-- <td>DNI</td>
+                <td>Teléfono</td> -->
+                <td>Celular</td>
+                <td>Email</td>
+                <td>Rol</td>
+                <td></td>
+              </tr>
+            </thead>
+            <tbody> <!-- search:etapa_solicitud="2" -->
+
+              {exp:member:custom_profile_data}
+                {exp:switchee variable = "{group_id}" parse="inward"}
+
+                  {case value="7"}<!-- admin GyM 8 -->
+                  {/case}
+
+                  {case value="8"}<!-- admin viva 7 -->
+                    {embed="main/lista_agentes"
+                    screen_name="<?php echo $screen_name; ?>" 
+                    ap_pat="<?php echo $ap_pat; ?>"
+                    ap_mat="<?php echo $ap_mat; ?>"
+                    rol="<?php echo $rol; ?>" }
+                  {/case}
+
+                  {case value="9"}<!-- inspector viva 9 -->
+                    
+                  {/case}
+
+                  {case value="10"}<!-- personal GyM que ejecuta el arreglo  10 -->
+                    
+                  {/case}
+                  
+                {/exp:switchee}
+              {/exp:member:custom_profile_data}
+
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

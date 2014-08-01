@@ -1,0 +1,16 @@
+{embed="includes/header" }
+
+<?php $caso_id=$_POST['caso_id']; ?>
+
+{exp:get_post_vars parse="inward"}
+  {exp:freeform:entries form_id="2" entry_id="{post_caso_id}" status="open|closed" }
+
+    {if count > 0}
+      <script type="text/javascript"> window.location="{site_url}main/ticket_detail/{post_caso_id}"; </script>
+    {/if}
+    
+    {if freeform:no_results}
+      <script type="text/javascript"> window.location="{site_url}main/admin_dashboard/no_case"; </script>
+    {/if}
+  {/exp:freeform:entries}
+{/exp:get_post_vars}

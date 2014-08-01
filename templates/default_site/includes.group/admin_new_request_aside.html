@@ -1,0 +1,17 @@
+
+<h4 class="medium">Nueva solicitud</h4>
+<p>Ingresar una solicitud para el cliente</p>
+<form method="post" enctype="multipart/form-data" name="frm" id="frm" onSubmit="return validar(this)" action="/?/main/create_caso_admin">
+	<div class="form-group">
+	  <select name="id_cliente" id="" class="form-control input-sm select-override">
+	  	<option value="">Seleccione</option>
+	  	{exp:user:users group_id="6"}
+	  		<option value="{member_id}">{screen_name} {ap_pat}</option>
+	  	{/exp:user:users}
+	  </select>
+	</div>
+	<div class="text-left button-submit">
+    <input type="hidden" name="XID" value="{XID_HASH}" />
+    <input type="submit" class="btn uppercase btn-success" name="submit" value="Crear solicitud" />
+  </div>
+</form>

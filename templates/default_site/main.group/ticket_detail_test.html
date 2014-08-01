@@ -1,0 +1,262 @@
+{embed="includes/header" }
+<script type="text/javascript" src="{site_url}lib/user_profile_show.js"></script>
+  
+  {embed="includes/bredcrumb_admin" }
+
+  <div class="row">
+
+    <div class="col-md-9 col-sm-9">
+      <div class="panel p-14">
+        {exp:member:custom_profile_data}
+          {exp:switchee variable = "{member_group}" parse="inward"}
+            {case value="admin_viva"}
+
+              {exp:freeform:edit
+                form_name="atencion_por_garantia"
+                entry_id="{segment_3}"
+                restrict_edit_to_author="no"
+                return="main/ticket_detail/{segment_3}"
+                allow_status_edit="yes" 
+                form:id="user-profile-form" }
+
+                <div class="panel-heading bg-white p-0">
+                  <div class="panel-title mb-14">
+                    <div class="clearfix">
+                      <div class="col-sm-6 pl-0 col-xs-6">
+                        <h2 class="medium m-0">No. de caso:</span> {segment_3}</h2>
+                      </div>
+                      <div class="col-sm-6 col-xs-6">                  
+                          <a href="#" class="text-info block pt-14 edit-form-trigger lowercase not-underline icon-pencil text-right"></a>
+                        <div class="mt-7 hidden submit-form text-right">
+                          <a href="#" class="text-danger small edit-form-cancel hidden">Cancelar</a>
+                          <input type="submit" class="btn btn-sm btn-default" value="Guardar">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <hr class="m-0">
+                </div>
+
+                <div class="panel-body p-0">
+                  <div class="row mt-14">
+
+                    <div class="col-sm-4">
+                      <?php $archivo="{freeform:edit_data:foto_problema}"; ?>
+                      <!-- FOTO DUMMY -->
+                      <?php if(empty($archivo)) { ?>
+                      <img src="{site_url}images/request_placeholder.png" alt="" class="img-responsive img-thumbnail">
+                      <?php } else { ?>
+                      {exp:ce_img:single src="{site_url}fotos_problemas/{freeform:edit_data:foto_problema}" max="340" cache_dir="ceimage" attributes='class="img-responsive img-thumbnail" alt="Foto problema" title="Foto problema"'}
+                      <?php } ?>
+                    </div>
+
+                    <div class="col-sm-4">
+                      <h5 class="light uppercase">Datos del propietario</h5>
+                      <ul class="list-unstyled">
+                        {embed="main/datos_user" user_id="{freeform:edit_data:id_cliente}" }
+
+                        <li class="mb-7"><strong>Tipo de problema</strong><br><?php $var="{freeform:edit_data:tipo_de_problema}"; ?>
+                          <select name="tipo_de_problema" id="mySelect" class="select-override form-control input-sm" disabled>
+                            <option value="Pisos" <?php if($var=="Pisos"){echo "selected";}?> >Pisos</option>
+                            <option value="Paredes" <?php if($var=="Paredes"){echo "selected";}?>>Paredes</option>
+                            <option value="Instalaciones eléctricas" <?php if($var=="Instalaciones eléctricas"){echo "selected";}?>>Instalaciones eléctricas</option>
+                            <option value="Instalaciones sanitarias" <?php if($var=="Instalaciones sanitarias"){echo "selected";}?>>Instalaciones sanitarias</option>
+                            <option value="Carpintería metálica" <?php if($var=="Carpintería metálica"){echo "selected";}?>>Carpintería metálica</option>
+                            <option value="Carpintería de madera" <?php if($var=="Carpintería de madera"){echo "selected";}?>>Carpintería de madera</option>
+                          </select>
+                        </li>
+
+                        <li class="mb-7"><strong>Otro dep. afectado</strong><br>
+                          <input type="text" class="form-control input-blank input-sm" name="nro_otro_departamento_afectado" value="{freeform:edit_data:nro_otro_departamento_afectado}"></li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="col-sm-4">
+                      <h5 class="light uppercase">Datos del responsable</h5>
+                      <ul class="list-unstyled">
+                        <li class="mb-7"><strong>Fecha de solicitud</strong><br>{freeform:edit_data:entry_date format="%j %F %Y"}</li>
+
+                        <li class="mb-7"><strong>Responsable Viva</strong><br>
+                          {if freeform:edit_data:persona_asignada_gym =="" }Por asignar{if:else}
+                          <input type="text" class="form-control input-blank input-sm" name="persona_asignada_gym" value="{freeform:edit_data:persona_asignada_gym}">{/if}</li> 
+
+                        <li class="mb-7"><strong>Responsable GyM</strong><br>
+                        {if freeform:edit_data:persona_asignada_viva =="" }Por asignar{if:else}
+                          <input type="text" class="form-control input-blank input-sm" name="persona_asignada_viva" value="{freeform:edit_data:persona_asignada_viva}">{/if}</li>
+
+                        <li class="mb-7"><strong>Agente inspección</strong><br>
+                        {if freeform:edit_data:inspector_asignado =="" }Por asignar{if:else}
+                          <input type="text" class="form-control input-blank input-sm" name="inspector_asignado"
+                          value="{freeform:edit_data:inspector_asignado}">{/if}</li>
+                        
+                        <li class="mb-7"><strong>Agente construcción</strong><br>
+                        {if freeform:edit_data:constructor_asignado =="" }Por asignar{if:else}
+                          <input type="text" class="form-control input-blank input-sm" name="constructor_asignado"
+                          value="{freeform:edit_data:constructor_asignado}">{/if}</li>
+                      </ul>
+                    </div>
+
+                  </div>
+                </div>
+                <div class="row mt-21">
+                  <div class="col-sm-12">
+                    <div class="descripcion p-14 box-shadow">
+                      <h5 class="light uppercase">Descripción</h5>
+                      <hr class="double">
+                      <p>{freeform:edit_data:descripcion_problema}</p>
+                    </div>
+                  </div>
+                </div>
+              {/exp:freeform:edit}
+              <!--</form>-->
+            {/case}
+            {case default="Yes"}
+              {exp:freeform:entries form_id="2" entry_id="{segment_3}" limit="1" status="open|closed" } 
+                <div class="panel-heading bg-white p-0">
+                    <div class="panel-title mb-14">
+                      <div class="clearfix">
+                        <div class="col-sm-6 pl-0 col-xs-6">
+                          <h2 class="medium m-0">No. de caso:</span> {segment_3}</h2>
+                        </div>
+                      </div>
+                    </div>
+                    <hr class="m-0">
+                  </div>
+
+                  <div class="panel-body p-0">
+                    <div class="row mt-14">
+
+                      <div class="col-sm-4">
+                        <?php $archivo="{freeform:field:foto_problema}"; ?>
+                        <!-- FOTO DUMMY -->
+                        <?php if(empty($archivo)) { ?>
+                        <img src="{site_url}images/request_placeholder.png" alt="" class="img-responsive img-thumbnail">
+                        <?php } else { ?>
+                        {exp:ce_img:single src="{site_url}fotos_problemas/{freeform:field:foto_problema}" max="340" cache_dir="ceimage" attributes='class="img-responsive img-thumbnail" alt="Foto problema" title="Foto problema"'}
+                        <?php } ?>
+                      </div>
+
+                      <div class="col-sm-4">
+                        <h5 class="light uppercase">Datos del propietario</h5>
+                        <ul class="list-unstyled">
+                          {embed="main/datos_user" user_id="{freeform:field:id_cliente}" }
+                          
+                          <li class="mb-7"><strong>Tipo de problema</strong><br>{freeform:field:tipo_de_problema}</li>
+
+                          <li class="mb-7"><strong>Otro dep. afectado</strong><br>{freeform:field:nro_otro_departamento_afectado}</li>
+                        </ul>
+                      </div>
+                      <div class="col-sm-4">
+                        <h5 class="light uppercase">Datos del responsable</h5>
+                        <ul class="list-unstyled">
+                          <li class="mb-7"><strong>Fecha de solicitud</strong><br>{freeform:entry_date format="%j %F %Y"}</li>
+
+                          <li class="mb-7"><strong>Responsable Viva</strong><br>{freeform:field:persona_asignada_gym}
+                            {if freeform:field:persona_asignada_gym =="" }Por asignar{/if}</li> 
+
+                          <li class="mb-7"><strong>Responsable GyM</strong><br>{freeform:field:persona_asignada_viva}
+                          {if freeform:field:persona_asignada_viva =="" }Por asignar{/if}</li>
+
+                          <li class="mb-7"><strong>Agente inspección</strong><br>{freeform:field:inspector_asignado}
+                          {if freeform:field:inspector_asignado =="" }Por asignar{/if}</li>
+                          
+                          <li class="mb-7"><strong>Agente construcción</strong><br>{freeform:field:constructor_asignado}
+                          {if freeform:field:constructor_asignado =="" }Por asignar{/if}</li>
+                        </ul>
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="row mt-21">
+                    <div class="col-sm-12">
+                      <div class="descripcion p-14 box-shadow">
+                        <h5 class="light uppercase">Descripción</h5>
+                        <hr class="double">
+                        <p>{freeform:edit_data:descripcion_problema}</p>
+                      </div>
+                    </div>
+                </div>
+              {/exp:freeform:entries}
+            {/case}
+          {/exp:switchee}
+        {/exp:member:custom_profile_data} 
+
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="table-responsive">
+
+              {exp:member:custom_profile_data}
+                {exp:switchee variable = "{group_id}" parse="inward"}
+                  
+                  {case value="7"}<!-- admin viva 7 -->
+                    {embed="includes/pasos_viva" entrada="{segment_3}"}
+                  {/case}
+
+                  {case value="8"}<!-- admin GyM 8 -->
+                    {embed="includes/pasos_gym" entrada="{segment_3}"}
+                  {/case}
+
+                  {case value="9"}<!-- inspector viva 9 -->
+                  
+                  {/case}
+
+                  {case value="10"}<!-- personal GyM que ejecuta el arreglo  10 -->
+                    
+                  {/case}
+                  
+                {/exp:switchee}
+              {/exp:member:custom_profile_data}
+
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-21">
+          <div class="col-sm-12">
+            <div class="descripcion p-14 box-shadow">
+              <h5 class="light uppercase">Archivos</h5>
+              <hr class="double">
+              {embed="includes/archivos_ticket" entrada="{segment_3}"}
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-21">
+          <div class="col-sm-12">
+            <div class="descripcion p-14 box-shadow">
+              <h5 class="light uppercase">Notas</h5>
+              <hr class="double">
+              <!-- <p>{freeform:field:comentarios_garantia}</p> -->
+              {embed="includes/nuevo_comentario" entrada="{segment_3}"}
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  {exp:member:custom_profile_data}
+    {exp:switchee variable = "{group_id}" parse="inward"}
+      
+      {case value="7"}<!-- admin viva 7 -->
+        {embed="includes/sidebar_viva" entrada="{segment_3}"}
+      {/case}
+
+      {case value="8"}<!-- admin GyM 8 -->
+        {embed="includes/sidebar_gym" entrada="{segment_3}"}
+      {/case}
+
+      {case value="9"}<!-- inspector viva 9 -->
+        {embed="includes/sidebar_insp" entrada="{segment_3}"}
+      {/case}
+
+      {case value="10"}<!-- personal GyM que ejecuta el arreglo  10 -->
+        {embed="includes/sidebar_cons" entrada="{segment_3}"}
+      {/case}
+      
+    {/exp:switchee}
+  {/exp:member:custom_profile_data}
+
+</div>

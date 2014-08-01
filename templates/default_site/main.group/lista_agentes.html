@@ -1,0 +1,52 @@
+
+{exp:user:users group_id="9"  sort="asc" limit="20" paginate="top"
+  search:screen_name="%{embed:screen_name}%" 
+  search:ap_pat="%{embed:ap_pat}%"
+  search:ap_mat="%{embed:ap_mat}%"
+  search:rol="{embed:rol}"
+   }
+  <?php //$estatus_ticket="{freeform:status}"; ?>
+  <tr>
+    <td>{member_id}</td>
+    <td>{username}</td>
+    <td>{screen_name}</td>
+    <td>{ap_pat}</td>
+    <td>{ap_mat}</td>
+    <!-- <td>{dni}</td>
+    <td>{t_fijo}</td> -->
+    <td>{t_cel}</td>
+    <td>{email}</td>
+    <td>{rol}</td>
+    <td>
+      <form method="post" enctype="multipart/form-data" action="/?/main/edit_agente">
+        <input type="hidden" name="id_agente" value="{member_id}" >
+        <input type="hidden" name="XID" value="{XID_HASH}" />
+        <button type="submit" class="" name="submit">Editar</button>
+      </form>
+    </td>
+  </tr>
+
+    {if user_no_results}<h6>No se encuentran resultados.</h6>{/if}
+   
+    {user_paginate}
+      
+      {user_pagination_links}
+        <div class="clearfix mb-14 mt-7">
+          <ul class="pagination pagination-sm m-0 pull-right">
+            {previous_page}
+              <li><a href="{pagination_url}" class="page-previous">&lt;&lt;</a></li>
+            {/previous_page}
+
+            {page}
+              <li class="{if current_page}active{/if}"><a href="{pagination_url}" class="page-{pagination_page_number}">{pagination_page_number}</a></li>
+            {/page}
+
+            {next_page}
+              <li><a href="{pagination_url}" class="page-next">&gt;&gt;</a></li>
+            {/next_page}
+          </ul>
+        </div>
+        {/user_pagination_links}
+    {/user_paginate}
+  
+{/exp:user:users}
