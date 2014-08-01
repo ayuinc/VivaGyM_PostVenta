@@ -87,7 +87,7 @@
 		        <div class="text-left button-submit">
 		        	<input type="hidden" name="id_cliente" value="{freeform:field:id_cliente}" >
 				      <input type="hidden" name="id_sol_garantia" value="{embed:entrada}" >
-				      <input type="hidden" name="persona_asignada_gym" value="{screen_name}" />
+				      <input type="hidden" name="persona_asignada_viva" value="{member_id}" />
 				      <input type="hidden" name="XID" value="{XID_HASH}" />
 				      <input type="submit" class="btn uppercase btn-success" name="submit" value="Procesar" />
 		        </div>
@@ -97,7 +97,6 @@
 		{/if}
 
 	{/exp:freeform:entries}
-
 
 	{exp:freeform:entries form_id="4" search:id_sol_garantia="{embed:entrada}" search:orden_tramite="6" limit="1" status="open" }
 		{if freeform:field:orden_tramite=='6'}
@@ -127,7 +126,6 @@
 		        <div class="text-left button-submit">
 		        	<input type="hidden" name="id_cliente" value="{freeform:field:id_cliente}" >
 				      <input type="hidden" name="id_sol_garantia" value="{embed:entrada}" >
-				      <input type="hidden" name="persona_asignada_gym" value="{screen_name}" />
 				      <input type="hidden" name="XID" value="{XID_HASH}" />
 				      <input type="submit" class="btn uppercase btn-success" name="submit" value="Procesar" />
 		        </div>

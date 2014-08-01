@@ -80,15 +80,15 @@
                         <li class="mb-7"><strong>Fecha de solicitud</strong><br>{freeform:edit_data:entry_date format="%j %F %Y"}</li>
 
                         <li class="mb-7"><strong>Responsable Viva</strong><br>
-                          {if freeform:edit_data:persona_asignada_gym =="" }Por asignar{if:else}
+                          {if freeform:edit_data:persona_asignada_viva =="" }Por asignar{if:else}
                           <div class="form-group">
-                          <input type="text" class="form-control input-blank input-sm" name="persona_asignada_gym" value="{freeform:edit_data:persona_asignada_gym}">
+                          <input type="text" class="form-control input-blank input-sm" name="persona_asignada_viva" value="{freeform:edit_data:persona_asignada_viva}">
                           </div>{/if}</li> 
 
                         <li class="mb-7"><strong>Responsable GyM</strong><br>
-                        {if freeform:edit_data:persona_asignada_viva =="" }Por asignar{if:else}
+                        {if freeform:edit_data:persona_asignada_gym =="" }Por asignar{if:else}
                         <div class="form-group">
-                          <input type="text" class="form-control input-blank input-sm" name="persona_asignada_viva" value="{freeform:edit_data:persona_asignada_viva}">
+                          <input type="text" class="form-control input-blank input-sm" name="persona_asignada_gym" value="{freeform:edit_data:persona_asignada_gym}">
                         </div>{/if}</li>
 
                         <li class="mb-7"><strong>Agente inspección</strong><br>
