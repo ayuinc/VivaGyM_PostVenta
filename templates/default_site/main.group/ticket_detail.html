@@ -82,27 +82,59 @@
                         <li class="mb-7"><strong>Responsable Viva</strong><br>
                           {if freeform:edit_data:persona_asignada_viva =="" }Por asignar{if:else}
                           <div class="form-group">
-                          <input type="text" class="form-control input-blank input-sm" name="persona_asignada_viva" value="{freeform:edit_data:persona_asignada_viva}">
+                          <!-- <input type="text" class="form-control input-blank input-sm" name="persona_asignada_viva" value="{freeform:edit_data:persona_asignada_viva}"> -->
+
+                          <?php $p_viva="{freeform:edit_data:persona_asignada_viva}"; ?>
+                          <select name="persona_asignada_viva" id="" class="form-control input-sm select-override">
+                            <option value="">Seleccione</option>
+                            {exp:user:users group_id="7"}
+                              <option value="{member_id}" <?php if($p_viva=="{member_id}"){echo "selected";} ?> >{screen_name}</option>
+                            {/exp:user:users}
+                          </select>
                           </div>{/if}</li> 
 
                         <li class="mb-7"><strong>Responsable GyM</strong><br>
                         {if freeform:edit_data:persona_asignada_gym =="" }Por asignar{if:else}
                         <div class="form-group">
-                          <input type="text" class="form-control input-blank input-sm" name="persona_asignada_gym" value="{freeform:edit_data:persona_asignada_gym}">
+                          <!-- <input type="text" class="form-control input-blank input-sm" name="persona_asignada_gym" value="{freeform:edit_data:persona_asignada_gym}"> -->
+
+                          <?php $p_gym="{freeform:edit_data:persona_asignada_gym}"; ?>
+                          <select name="persona_asignada_gym" id="" class="form-control input-sm select-override">
+                            <option value="">Seleccione</option>
+                            {exp:user:users group_id="8"}
+                              <option value="{member_id}" <?php if($p_gym=="{member_id}"){echo "selected";} ?> >{screen_name}</option>
+                            {/exp:user:users}
+                          </select>
                         </div>{/if}</li>
 
                         <li class="mb-7"><strong>Agente inspección</strong><br>
                         {if freeform:edit_data:inspector_asignado =="" }Por asignar{if:else}
                         <div class="form-group">
-                          <input type="text" class="form-control input-blank input-sm" name="inspector_asignado"
-                          value="{freeform:edit_data:inspector_asignado}">
+                          <!-- <input type="text" class="form-control input-blank input-sm" name="inspector_asignado"
+                          value="{freeform:edit_data:inspector_asignado}"> -->
+
+                          <?php $p_insp="{freeform:edit_data:inspector_asignado}"; ?>
+                          <select name="inspector_asignado" id="" class="form-control input-sm select-override">
+                            <option value="">Seleccione</option>
+                            {exp:user:users group_id="9" search:rol="inspector" }
+                              <option value="{member_id}" <?php if($p_insp=="{member_id}"){echo "selected";} ?> >{screen_name}</option>
+                            {/exp:user:users}
+                          </select>
                         </div>{/if}</li>
                         
                         <li class="mb-7"><strong>Agente construcción</strong><br>
                         {if freeform:edit_data:constructor_asignado =="" }Por asignar{if:else}
                         <div class="form-group">
-                          <input type="text" class="form-control input-blank input-sm" name="constructor_asignado"
-                          value="{freeform:edit_data:constructor_asignado}">
+                          <!-- <input type="text" class="form-control input-blank input-sm" name="constructor_asignado"
+                          value="{freeform:edit_data:constructor_asignado}"> -->
+
+                          <?php $p_eje="{freeform:edit_data:constructor_asignado}"; ?>
+                          <select name="constructor_asignado" id="" class="form-control input-sm select-override">
+                            <option value="">Seleccione</option>
+                            {exp:user:users group_id="9" search:rol="ejecutor" }
+                              <option value="{member_id}" <?php if($p_eje=="{member_id}"){echo "selected";} ?> >{screen_name}</option>
+                            {/exp:user:users}
+                          </select>
                         </div>{/if}</li>
                       </ul>
                     </div>
