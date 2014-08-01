@@ -79,7 +79,7 @@
                       <ul class="list-unstyled">
                         <li class="mb-7"><strong>Fecha de solicitud</strong><br>{freeform:edit_data:entry_date format="%j %F %Y"}</li>
 
-                        <li class="mb-7"><strong>Responsable Viva</strong><br>
+                        <li class="mb-7"><strong>Responsable Viva</strong>
                           {if freeform:edit_data:persona_asignada_viva =="" }Por asignar{if:else}
                             <div class="form-group">
                             {embed="includes/select_per" p_find="{freeform:edit_data:persona_asignada_viva}" grupo="7" var_name="persona_asignada_viva"}
@@ -87,7 +87,7 @@
                           {/if}
                         </li> 
 
-                        <li class="mb-7"><strong>Responsable GyM</strong><br>
+                        <li class="mb-7"><strong>Responsable GyM</strong>
                           {if freeform:edit_data:persona_asignada_gym =="" }Por asignar{if:else}
                             <div class="form-group">
                               {embed="includes/select_per" p_find="{freeform:edit_data:persona_asignada_gym}" grupo="8" var_name="persona_asignada_gym"}
@@ -95,7 +95,7 @@
                           {/if}
                         </li>
 
-                        <li class="mb-7"><strong>Agente inspección</strong><br>
+                        <li class="mb-7"><strong>Agente inspección</strong>
                           {if freeform:edit_data:inspector_asignado =="" }Por asignar{if:else}
                             <div class="form-group">
                               {embed="includes/select_per" p_find="{freeform:edit_data:inspector_asignado}" grupo="9" var_name="inspector_asignado" rol="inspector"}
@@ -103,7 +103,7 @@
                           {/if}
                         </li>
                         
-                        <li class="mb-7"><strong>Agente construcción</strong><br>
+                        <li class="mb-7"><strong>Agente construcción</strong>
                           {if freeform:edit_data:constructor_asignado =="" }Por asignar{if:else}
                             <div class="form-group">
                               {embed="includes/select_per" p_find="{freeform:edit_data:constructor_asignado}" grupo="9" var_name="constructor_asignado" rol="ejecutor"}
