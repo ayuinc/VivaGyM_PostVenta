@@ -2,6 +2,7 @@
 
 <script src="{site_url}lib/validar_archivo.js"></script>
 
+<!-- ocultar div -->
 <script type="text/javascript">
   function SwitchHiddenDiv(){
     var evento = document.getElementById("SelectedType").options[document.getElementById("SelectedType").selectedIndex].value;
@@ -17,8 +18,9 @@
     }
   }
 
-</script>
+</script><!-- fin ocultar div -->
 
+<!-- validar campos -->
 <script language="javascript">
   function validar(frm){
   if(frm.tipo_de_problema.value==""){mensaje1("Tipo de problema",frm.tipo_de_problema);return false;}
@@ -40,6 +42,7 @@
   obj.focus();
   }
 </script>
+<!-- fin validar campos -->
 
 {embed="includes/menu_admin" }
 
