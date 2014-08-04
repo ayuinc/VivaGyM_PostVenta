@@ -1,5 +1,4 @@
-﻿<?php $p_find="{embed:p_find}"; ?>
-<select name="{embed:var_name}" id="mySelect" class="select-override form-control input-sm">
+﻿<select name="{embed:var_name}" class="select-override form-control input-sm"><?php $p_find="{embed:p_find}"; ?>
   <option value="">Seleccione</option>
   {exp:user:users group_id="{embed:grupo}" search:rol="{embed:rol}"}
     <option value="{member_id}" <?php if($p_find=="{member_id}"){echo "selected";} ?> >{screen_name}</option>
