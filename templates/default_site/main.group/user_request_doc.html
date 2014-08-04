@@ -6,6 +6,7 @@
 	   	 to="jmoron82@hotmail.com"
 	     email_propietario="{email_propietario}"
 	     email_alt="{freeform:field:email_encargado_atencion}"
+	     name="Administrador Viva"
 	     nombre_propietario="{nombre_propietario}"
 	     apellido_propietario="{ap_pat}"
 	     telefono_propietario= "{t_cel} / {t_ofic}"
@@ -13,21 +14,18 @@
 	     torre_propietario= "{torre_depa}"
 	     departamento_propietario= "{cod_depa}"
 	     documento = "{freeform:field:documento_solicitado}"
+	     tipo="admin"
+	   {/exp:mandrillapp:send_email_request_doc} 
+
+	   {exp:mandrillapp:send_email_request_doc
+	   	 to="{email_propietario}"
+	     name="{nombre_propietario}"
+	     documento = "{freeform:field:documento_solicitado}"
+	     tipo="cli"
 	   {/exp:mandrillapp:send_email_request_doc} 
 
    {/exp:freeform:entries}
 {/exp:user:stats}
-
-
-envio a cliente {email_propietario} - {freeform:field:documento_solicitado}
-
-	    {exp:mandrillapp:send_email_request_doc_user
-	   	 para="jcmoron82@gmail.com"
-	     name="{nombre_propietario}"
-	     documento = "{freeform:field:documento_solicitado}"
-	   {/exp:mandrillapp:send_email_request_doc_user} 
-
-
 
 <div class="container-fluid pt-35 pb-35 mh-630">
 <div class="row">

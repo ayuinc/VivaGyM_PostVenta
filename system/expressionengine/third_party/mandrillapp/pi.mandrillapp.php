@@ -51,12 +51,13 @@ class Mandrillapp {
 	$departamento_propietario= $TMPL->fetch_param('departamento_propietario');
 	$documento =  $TMPL->fetch_param('documento');
 	$to= $TMPL->fetch_param('to');
-	$name= "Administrador Viva";
+	$name= $TMPL->fetch_param('name');
 	$subject= "Solicitud de documento.";
 	$from= "admin@gym.com";
+	$tipo= $TMPL->fetch_param('tipo');
 	//$text = $TMPL->tagdata;
 	
-	$text = "<!doctype html>
+	if($tipo=="admin"){$text = "<!doctype html>
 	<html>
 	  <head>
 	    <meta charset='utf-8' />
@@ -114,7 +115,60 @@ class Mandrillapp {
 				</tr>
 			</table>
 		</body>
-	</html>";
+	</html>"};
+
+	if($tipo=="cli"){$text = "<!doctype html>
+	<html>
+	  <head>
+	    <meta charset='utf-8' />
+	    <title>Viva GyM</title>
+	  </head>
+		<body style='margin: 0px; background-color: #f1f1f1; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color: #898989;' bgcolor='#f1f1f1'>
+			<table align='center' width='90%' style='width:90%; margin-left: auto; margin-right: auto;'>
+				<tr style='background-color: #f1f1f1;' bgcolor='#f1f1f1'>
+					<td><p><br></p>
+					</td>
+				</tr>
+				<tr style='background-color: #ffffff;' bgcolor='#ffffff'>
+					<td>
+
+						<div style='background-color: #ffffff;'>
+							<table align='center' width='90%' style='width:90%; margin-left: auto; margin-right: auto;'>
+								<tr>
+									<td><br></td>
+								</tr>
+								<tr>
+									<td align='right'><img src='http://162.243.222.54/images/logo-viva.png' style='width:100px; height: auto;'>
+									</td>
+								</tr>
+								<tr>
+								<td align='left'><h3>Estimado/a ".$name."</h3>
+									<span>La siguiente solicitud de documento ha sido procesada a través del portal de posventa.<p>
+									<br>
+									Documento solicitado:".$documento."<p>
+									<br>
+									**No responder. Correo automático enviado desde el Portal de posventa Viva GyM**<br></span>
+									<p>
+								</td>
+							</tr>
+							<tr>
+									<td><br></td>
+								</tr>
+							</table>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td align='center'><p></p>
+						<span style='font-size: 12px;'>2014 Viva GyM Servicio de posventa, todos los derechos reservados.</span><br>
+						<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
+					</td>
+				</tr>
+			</table>
+		</body>
+	</html>"};
+
+
 
 	/*'html' => '<p>FELICIDADES!!!</p><p>Ganaste el tema'.$topic.' ve a nuestro menú de temas y sigue participando</p>',*/
 	$message = array(
