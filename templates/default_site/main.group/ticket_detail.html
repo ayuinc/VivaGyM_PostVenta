@@ -58,7 +58,7 @@
 
                         <li class="mb-7"><strong>Tipo de problema</strong><br><?php $var="{freeform:edit_data:tipo_de_problema}"; ?>
                           
-                          <div class="" id="tipo_problema_select" style="display:none;">
+                          <div class="form-group" id="tipo_problema_select" style="display:none;">
                             <select name="tipo_de_problema" id="mySelect" class="select-override form-control input-sm">
                               <option value="Pisos" <?php if($var=="Pisos"){echo "selected";}?> >Pisos</option>
                               <option value="Paredes" <?php if($var=="Paredes"){echo "selected";}?>>Paredes</option>
@@ -69,7 +69,7 @@
                             </select>
                           </div>
 
-                          <div class="" id="tipo_problema_txt" style="display:block;">
+                          <div class="form-group" id="tipo_problema_txt" style="display:block;">
                             {freeform:edit_data:tipo_de_problema}
                           </div>
 
@@ -86,35 +86,55 @@
                       <ul class="list-unstyled">
                         <li class="mb-7"><strong>Fecha de solicitud</strong><br>{freeform:edit_data:entry_date format="%j %F %Y"}</li>
 
-                        <li class="mb-7"><strong>Responsable Viva</strong>
+                        <li class="mb-7"><strong>Responsable Viva</strong><br>
                           {if freeform:edit_data:persona_asignada_viva =="" }Por asignar{if:else}
-                            <div class="form-group">
+                            <div class="form-group" id="persona_asignada_viva" style="display:none;">
                             {embed="includes/select_per" p_find="{freeform:edit_data:persona_asignada_viva}" grupo="7" var_name="persona_asignada_viva"}
                             </div>
+
+                            <div class="form-group" id="persona_asignada_viva_txt" style="display:block;">
+                            {freeform:edit_data:persona_asignada_viva}
+                            </div>
+
                           {/if}
                         </li> 
 
-                        <li class="mb-7"><strong>Responsable GyM</strong>
+                        <li class="mb-7"><strong>Responsable GyM</strong><br>
                           {if freeform:edit_data:persona_asignada_gym =="" }Por asignar{if:else}
-                            <div class="form-group">
+                            <div class="form-group" id="persona_asignada_gym" style="display:none;">
                               {embed="includes/select_per" p_find="{freeform:edit_data:persona_asignada_gym}" grupo="8" var_name="persona_asignada_gym"}
                             </div>
+
+                            <div class="form-group" id="persona_asignada_gym_txt" style="display:block;">
+                            {freeform:edit_data:persona_asignada_gym}
+                            </div>
+
                           {/if}
                         </li>
 
-                        <li class="mb-7"><strong>Agente inspección</strong>
+                        <li class="mb-7"><strong>Agente inspección</strong><br>
                           {if freeform:edit_data:inspector_asignado =="" }Por asignar{if:else}
-                            <div class="form-group">
+                            <div class="form-group" id="inspector_asignado" style="display:none;">
                               {embed="includes/select_per" p_find="{freeform:edit_data:inspector_asignado}" grupo="9" var_name="inspector_asignado" rol="inspector"}
                             </div>
+
+                            <div class="form-group" id="inspector_asignado_txt" style="display:block;">
+                            {freeform:edit_data:inspector_asignado}
+                            </div>
+
                           {/if}
                         </li>
                         
-                        <li class="mb-7"><strong>Agente construcción</strong>
+                        <li class="mb-7"><strong>Agente construcción</strong><br>
                           {if freeform:edit_data:constructor_asignado =="" }Por asignar{if:else}
-                            <div class="form-group">
+                            <div class="form-group" id="constructor_asignado" style="display:none;">
                               {embed="includes/select_per" p_find="{freeform:edit_data:constructor_asignado}" grupo="9" var_name="constructor_asignado" rol="ejecutor"}
                             </div>
+
+                            <div class="form-group" id="constructor_asignado_txt" style="display:block;">
+                            {freeform:edit_data:constructor_asignado}
+                            </div>
+                            
                           {/if}
                         </li>
                       </ul>
