@@ -119,14 +119,14 @@
           <div class="form-group">
 
             <input type="hidden" name="etapa_solicitud" value="1" >
-              {exp:member:custom_profile_data}
-              <input type="hidden" name="departamento_en_consulta" value="{cod_depa}" >
-              <input type="hidden" name="last_name" value="{nombre_propietario} {ap_pat} {ap_mat}" >
-              <input type="hidden" name="sigla_complejo" value="{sigla_complejo}" >
-              {/exp:member:custom_profile_data}
-              <input type="hidden" name="email" value="{email}" >
-              <input type="hidden" name="id_cliente" value="{member_id}" >
-              <input type="submit" name="submit" class="btn uppercase btn-success" value="Procesar" id="grupo_boton">
+            {exp:member:custom_profile_data}
+            <input type="hidden" name="departamento_en_consulta" value="{cod_depa}" >
+            <input type="hidden" name="last_name" value="{nombre_propietario} {ap_pat} {ap_mat}" >
+            <input type="hidden" name="sigla_complejo" value="{sigla_complejo}" >
+            {/exp:member:custom_profile_data}
+            <input type="hidden" name="email" value="{email}" >
+            <input type="hidden" name="id_cliente" value="{member_id}" >
+            <input type="submit" name="submit" class="btn uppercase btn-success" value="Procesar" id="grupo_boton">
 
           </div>
         {/exp:freeform:form}

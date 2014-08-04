@@ -5,9 +5,7 @@
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
 
-<!-- <script type="text/javascript" src="{site_url}lib/vendor/bootstrapValidator.js"></script>
-<script type="text/javascript" src="{site_url}lib/find_caso.js"></script> -->
-
+<!-- configuracion del calendario -->
 <script>
 $(function() {
 
@@ -41,7 +39,9 @@ $( "#datepicker2" ).datepicker(
 
 });
 </script>
+<!-- fin configuracion del calendario -->
 
+<!-- parametros para las busquedas -->
 <?php 
 $ordenar=$_POST['ordenar']; if($ordenar==""){ $ordenar="entry_id";} 
 $pri=$_POST['pri']; 
@@ -55,44 +55,30 @@ $fecha_fin=$_POST['fecha_fin'];
 if((!empty($pri)) or (!empty($cas)) or (!empty($etapa)) or (!empty($tipo)) or (!empty($fecha_inicio)) or (!empty($fecha_fin)))
   {$exportacion="busqueda";}else{$exportacion="completa";}
 ?>
+<!-- end parametros para las busquedas -->
 {embed="includes/menu_admin" }
-{exp:actividad_sol}
+{exp:actividad_sol} <!-- plugin para actualzar el status de fecha de ultima actualizacion -->
 
 <div class="row">
   <div class="col-md-3">
     
     <div class="bg-white border-rounded box-shadow p-14">
-      {exp:member:custom_profile_data}
-        {exp:switchee variable = "{group_id}" parse="inward"}
-          {case value="7"}
+      {exp:member:custom_profile_data} <!-- el buscador por caso se muestra en que sesion -->
+        {exp:switchee variable = "{member_group}" parse="inward"}
+          {case value="admin_viva"}
             <h6>Buscar por no. de caso:</h6>
-            <!-- <form method="post" enctype="multipart/form-data" action="/?/main/redir_caso" id="find_caso" >
-              <div class="row">
-                <div class="col-md-8">
-                  <div class="form-group">
-                  <input type="text" class="form-control" name="caso_id" placeholder="Nro. de caso" required>
-                  </div>
-                </div> 
-                <div class="col-md-3">        
-                    <input type="hidden" name="XID" value="{XID_HASH}" />
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="submit" name="submit">Buscar</button>
-                    </span>
-                </div> 
+            <form method="post" enctype="multipart/form-data" action="/?/main/redir_caso">
+              <div class="input-group">
+                <input type="text" class="form-control" name="caso_id" placeholder="Nro. de caso" required>          
+                <input type="hidden" name="XID" value="{XID_HASH}" />
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="submit" name="submit">Buscar</button>
+                </span>
               </div>
-            </form> -->
-            <form method="post" enctype="multipart/form-data" action="/?/main/redir_caso">
-              <div class="input-group">
-                <input type="text" class="form-control" name="caso_id" placeholder="Nro. de caso" required>          
-                <input type="hidden" name="XID" value="{XID_HASH}" />
-                <span class="input-group-btn">
-                  <button class="btn btn-default" type="submit" name="submit">Buscar</button>
-                </span>
-              </div><!-- /input-group -->
             </form>
             <hr>
           {/case}
-          {case value="8"}<!-- inspector viva 9 -->
+          {case value="admin_gym"}
             <h6>Buscar por no. de caso:</h6>
             <form method="post" enctype="multipart/form-data" action="/?/main/redir_caso">
               <div class="input-group">
@@ -105,12 +91,12 @@ if((!empty($pri)) or (!empty($cas)) or (!empty($etapa)) or (!empty($tipo)) or (!
             </form>
             <hr>
           {/case}
-          {case value="9"}<!-- personal GyM que ejecuta el arreglo  10 filtro="8"-->
+          {case value="insp_viva"}<!-- personal GyM que ejecuta el arreglo  10 filtro="8"-->
           {/case
-          {case value="10"}<!-- personal GyM que ejecuta el arreglo  10 filtro="8"-->
+          {case value="user_gym"}<!-- personal GyM que ejecuta el arreglo  10 filtro="8"-->
           {/case} 
         {/exp:switchee}
-      {/exp:member:custom_profile_data}
+      {/exp:member:custom_profile_data} <!-- fin el buscador por caso se muestra en que sesion -->
 
       <h6>Filtrar por:</h6>
       <form method="post" enctype="multipart/form-data" action="/?/main/admin_dashboard">
@@ -128,9 +114,9 @@ if((!empty($pri)) or (!empty($cas)) or (!empty($etapa)) or (!empty($tipo)) or (!
             <option value="1" <?php if($cas=="1"){echo "selected";} ?>>Caso inactivo</option>
           </select>
         </div>
-        {exp:member:custom_profile_data}
-          {exp:switchee variable = "{group_id}" parse="inward"}
-            {case value="7"}<!-- admin viva 7 -->
+        {exp:member:custom_profile_data} <!-- diferencia la sesion para los parametros de busqueda -->
+          {exp:switchee variable = "{member_group}" parse="inward"}
+            {case value="admin_viva"}<!-- admin viva 7 -->
               <div class="form-group">
                 <select name="etapa" id="" class="select-override form-control">
                   <option value="">Etapa de solicitud</option>
@@ -142,10 +128,10 @@ if((!empty($pri)) or (!empty($cas)) or (!empty($etapa)) or (!empty($tipo)) or (!
                 </select>
               </div>
             {/case}
-            {case value="8"}<!-- admin GyM 8  etapas 3 a 11-->
+            {case value="admin_gym"}<!-- admin GyM 8  etapas 3 a 11-->
               <div class="form-group">
                 <select name="etapa" id="" class="select-override form-control">
-                  <option value="3|4|5|6|7|8|9|10|11">Etapa solicitud</option>
+                  <option value="3|4|5|6|7|8|9|10|11">Etapa de solicitud</option>
                   <option value="3|4|5" <?php if($etapa=="3|4|5"){echo "selected";} ?>>Inspección pendiente</option>
                   <option value="6" <?php if($etapa=="6"){echo "selected";} ?>>Informe en revisión</option>
                   <option value="7|8|9" <?php if($etapa=="7|8|9"){echo "selected";} ?>>Arreglo pendiente</option>
@@ -153,13 +139,14 @@ if((!empty($pri)) or (!empty($cas)) or (!empty($etapa)) or (!empty($tipo)) or (!
                 </select>
               </div>
             {/case}
-            {case value="9"}<!-- inspector viva 9 -->
+            {case value="insp_viva"}<!-- inspector viva 9 -->
             {/case}
-            {case value="10"}<!-- personal GyM que ejecuta el arreglo  10 filtro="8"-->
+            {case value="user_gym"}<!-- personal GyM que ejecuta el arreglo  10 filtro="8"-->
             {/case} 
           {/exp:switchee}
-        {/exp:member:custom_profile_data}
+        {/exp:member:custom_profile_data} <!-- diferencia la sesion para los parametros de busqueda -->
 
+        <!-- filtrar por complejo, no borrar -->
         <!-- <select name="complejo" id="" class="select-override form-control">
           <option value="">Complejo</option>
           {exp:freeform:entries form_id="8" sort="desc" status="open|closed"}
@@ -223,11 +210,11 @@ if((!empty($pri)) or (!empty($cas)) or (!empty($etapa)) or (!empty($tipo)) or (!
       </form> -->
     </div>
     <p>
-    <div class="bg-white border-rounded box-shadow p-14">
+    <div class="bg-white border-rounded box-shadow p-14"> <!-- crear ticket para el usuario --> 
       {embed="includes/admin_new_request_aside"}
-    </div>
+    </div> <!-- fin crear ticket para el usuario -->
   </div>
-  <div class="col-sm-9">
+  <div class="col-sm-9"> <!-- listado de entradas de "Atencion por Garantia" -->
     <div class="panel bg-white box-shadow">
       <div class="panel-heading">
         <div class="row">
@@ -236,18 +223,11 @@ if((!empty($pri)) or (!empty($cas)) or (!empty($etapa)) or (!empty($tipo)) or (!
           </div>
           <div class="col-sm-3 text-right">
 
-            {exp:member:custom_profile_data}
+            {exp:member:custom_profile_data} <!-- mostrar etapas del caso por sesion  -->
               {exp:switchee variable = "{member_group}" parse="inward"}
 
                 {case value="admin_viva"}
                   <form method="post" enctype="multipart/form-data" action="/?/main/exportar" target="_blank">
-                    <!-- <div class="col-sm-3">
-                      <select name="exportacion" class="form-control select-override input-sm option-select">
-                        <option value="">Seleccione</option>
-                        <option value="completa">Exportar todo</option>
-                        <option value="busqueda">Exportar busqueda</option>
-                      </select>
-                    </div> -->
                       <input type="hidden" name="exportacion" value="<?php echo $exportacion; ?>" />
                       <input type="hidden" name="pri" value="<?php echo $pri; ?>" />
                       <input type="hidden" name="cas" value="<?php echo $cas; ?>" />
@@ -292,10 +272,11 @@ if((!empty($pri)) or (!empty($cas)) or (!empty($etapa)) or (!empty($tipo)) or (!
                 {/case}
 
               {/exp:switchee}
-            {/exp:member:custom_profile_data} 
+            {/exp:member:custom_profile_data} <!-- fin mostrar etapas del caso por sesion  --> 
 
           </div>
         </div>
+        <!-- mostrar etiquetas de busqueda -->
         <?php if($exportacion=="busqueda"){ ?>
           <div class="row">
             <div class="col-sm-4 ">
@@ -339,6 +320,7 @@ if((!empty($pri)) or (!empty($cas)) or (!empty($etapa)) or (!empty($tipo)) or (!
             </div> 
           </div>
         <?php } ?>
+        <!-- fin mostrar etiquetas de busqueda -->
       <hr class="m-0">
       </div>
       <div class="panel-body pt-0">
@@ -414,5 +396,5 @@ if((!empty($pri)) or (!empty($cas)) or (!empty($etapa)) or (!empty($tipo)) or (!
 
       </div>
     </div>
-  </div>
+  </div> <!-- fin listado de entradas de "Atencion por Garantia" -->
 </div>
