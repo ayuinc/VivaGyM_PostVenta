@@ -163,7 +163,7 @@ class Mandrillapp {
 	$from= "admin@gym.com";
 	//$text = $TMPL->tagdata;
 	
-	$text = "<!doctype html>
+	echo $text = "<!doctype html>
 	<html>
 	  <head>
 	    <meta charset='utf-8' />
