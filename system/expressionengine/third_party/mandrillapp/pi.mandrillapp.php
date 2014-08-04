@@ -167,7 +167,7 @@ class Mandrillapp {
 	$mandrill = new Mandrill('Svqgcw575OLrORu2WiD09g');
 	$name= $TMPL->fetch_param('nombre_propietario');
 	$documento =  $TMPL->fetch_param('documento');
-	echo "<br>to cl ".$to= $TMPL->fetch_param('to');
+	echo "<br>to cl ".$to= $TMPL->fetch_param('para');
 	$subject= "Solicitud de documento.";
 	$from= "admin@gym.com";
 	//$text = $TMPL->tagdata;
