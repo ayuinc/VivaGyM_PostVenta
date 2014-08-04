@@ -174,7 +174,7 @@ class Mandrillapp {
  		//$text = $TMPL->tagdata;
  		if($cliente_ausente == "no"){
 
-		$text = "<!doctype html>
+		echo $text = "<!doctype html>
 	<html>
 	  <head>
 	    <meta charset='utf-8' />
