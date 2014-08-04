@@ -87,32 +87,28 @@
                         <li class="mb-7"><strong>Fecha de solicitud</strong><br>{freeform:edit_data:entry_date format="%j %F %Y"}</li>
 
                         <li class="mb-7"><strong>Responsable Viva</strong>
-                          {if freeform:edit_data:persona_asignada_viva =="" }<br>Por asignar{if:else}
-                          <div class="form-group" id="persona_asignada_viva" style="display:none;">{embed="includes/select_per" p_find="{freeform:edit_data:persona_asignada_viva}" grupo="7" var_name="persona_asignada_viva"}
+                          {if freeform:edit_data:persona_asignada_viva =="" }<br>Por asignar{if:else}<div class="form-group" id="persona_asignada_viva" style="display:none;">{embed="includes/select_per" p_find="{freeform:edit_data:persona_asignada_viva}" grupo="7" var_name="persona_asignada_viva"}
                           </div>
                           <div class="" id="persona_asignada_viva_txt" style="display:block;">{embed="includes/nombre_per" p_find="{freeform:edit_data:persona_asignada_viva}"}</div>
                           {/if}
                         </li> 
 
                         <li class="mb-7"><strong>Responsable GyM</strong>
-                          {if freeform:edit_data:persona_asignada_gym =="" }<br>Por asignar{if:else}
-                          <div class="form-group" id="persona_asignada_gym" style="display:none;">{embed="includes/select_per" p_find="{freeform:edit_data:persona_asignada_gym}" grupo="8" var_name="persona_asignada_gym"}
+                          {if freeform:edit_data:persona_asignada_gym =="" }<br>Por asignar{if:else}<div class="form-group" id="persona_asignada_gym" style="display:none;">{embed="includes/select_per" p_find="{freeform:edit_data:persona_asignada_gym}" grupo="8" var_name="persona_asignada_gym"}
                           </div>
                           <div class="" id="persona_asignada_gym_txt" style="display:block;">{embed="includes/nombre_per" p_find="{freeform:edit_data:persona_asignada_gym}"}</div>
                           {/if}
                         </li>
 
                         <li class="mb-7"><strong>Agente inspección</strong>
-                          {if freeform:edit_data:inspector_asignado =="" }<br>Por asignar{if:else}
-                          <div class="form-group" id="inspector_asignado" style="display:none;">{embed="includes/select_per" p_find="{freeform:edit_data:inspector_asignado}" grupo="9" var_name="inspector_asignado" rol="inspector"}
+                          {if freeform:edit_data:inspector_asignado =="" }<br>Por asignar{if:else}<div class="form-group" id="inspector_asignado" style="display:none;">{embed="includes/select_per" p_find="{freeform:edit_data:inspector_asignado}" grupo="9" var_name="inspector_asignado" rol="inspector"}
                           </div>
                           <div class="" id="inspector_asignado_txt" style="display:block;">{embed="includes/nombre_per" p_find="{freeform:edit_data:inspector_asignado}"}</div>
                           {/if}
                         </li>
                         
                         <li class="mb-7"><strong>Agente construcción</strong>
-                          {if freeform:edit_data:constructor_asignado =="" }<br>Por asignar{if:else}
-                          <div class="form-group" id="constructor_asignado" style="display:none;">{embed="includes/select_per" p_find="{freeform:edit_data:constructor_asignado}" grupo="9" var_name="constructor_asignado" rol="ejecutor"}
+                          {if freeform:edit_data:constructor_asignado =="" }<br>Por asignar{if:else}<div class="form-group" id="constructor_asignado" style="display:none;">{embed="includes/select_per" p_find="{freeform:edit_data:constructor_asignado}" grupo="9" var_name="constructor_asignado" rol="ejecutor"}
                           </div>
                           <div class="" id="constructor_asignado_txt" style="display:block;">{embed="includes/nombre_per" p_find="{freeform:edit_data:constructor_asignado}"}</div>
                           {/if}
