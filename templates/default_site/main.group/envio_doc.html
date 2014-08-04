@@ -1,21 +1,7 @@
---
-{embed:cliente}
 
-{exp:freeform:entries form_id="3" orderby="entry_id" sort="desc" search:id_cliente="{embed:cliente}" status="open" limit="1" }
-{freeform:field:documento_solicitado}
-
-{exp:user:stats}
-    {exp:mandrillapp:send_email_request_doc
-      email_propietario="{email_propietario}"
-      nombre_propietario="{nombre_propietario}"
-      apellido_propietario="{ap_pat}"
-      telefono_propietario= "{t_cel}/{t_ofic}"
-      complejo_propietario= "{complejo_depa}"
-      torre_propietario= "{torre_depa}"
-      departamento_propietario= "{cod_depa}"
-      documento = "{freeform:field:documento_solicitado}"
-    {/exp:mandrillapp:send_email_request_doc}  
-{/exp:user:stats} 
-
-
-{/exp:freeform:entries}
+{exp:mandrillapp:send_email_request_doc
+ to="{embed:to}"
+ name="{embed:name}"
+ documento = "{embed:documento}"
+ tipo="{embed:tipo}"
+{/exp:mandrillapp:send_email_request_doc} 

@@ -17,13 +17,12 @@
 	     tipo="admin"
 	   {/exp:mandrillapp:send_email_request_doc} 
 
-	   {exp:mandrillapp:send_email_request_doc
-	   	 to="{email_propietario}"
-	     name="{nombre_propietario}"
-	     documento = "{freeform:field:documento_solicitado}"
-	     tipo="cli"
-	   {/exp:mandrillapp:send_email_request_doc} 
-
+	   {embed="main/envio_doc" 
+	   to="{email_propietario}" 
+	   name="{nombre_propietario}" 
+	   documento = "{freeform:field:documento_solicitado}"
+	   tipo="cli"
+	 		}
    {/exp:freeform:entries}
 {/exp:user:stats}
 

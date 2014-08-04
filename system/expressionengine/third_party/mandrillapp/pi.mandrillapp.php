@@ -52,7 +52,6 @@ class Mandrillapp {
 		$documento =  $TMPL->fetch_param('documento');
 		$to= $TMPL->fetch_param('to');
 		$name= $TMPL->fetch_param('name');
-		$subject= "Solicitud de documento.";
 		$from= "admin@gym.com";
 		$tipo= $TMPL->fetch_param('tipo');
 		//$text = $TMPL->tagdata;
@@ -63,7 +62,7 @@ class Mandrillapp {
 	 			$obten=mysql_fetch_row($result);
 	 			$tit_problema = $obten[15];
 
-	 			$subject = " Arreglo procede.";
+	 			$subject = "Solicitud de documento.";
 
 				$text = "<!doctype html>
 				<html>
@@ -157,7 +156,7 @@ class Mandrillapp {
 	 		}
 	 		else if($tipo == "cli"){
 
-	 			$subject=" Arreglo no procede.";
+	 			$subject="Solicitud de documento.";
 	 			$text = "<!doctype html>
 				<html>
 				  <head>
