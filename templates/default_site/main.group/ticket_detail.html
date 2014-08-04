@@ -185,25 +185,25 @@
 
                         <li class="mb-7"><strong>Responsable Viva</strong><br>
                           {if freeform:field:persona_asignada_viva =="" }Por asignar{if:else}
-                          {freeform:field:persona_asignada_viva}
+                            <div class="" id="persona_asignada_viva" style="display:block;">{embed="includes/nombre_per" p_find="{freeform:field:persona_asignada_viva}"}</div>
                           {/if}
                         </li>
 
                         <li class="mb-7"><strong>Responsable GyM</strong><br>
                           {if freeform:field:persona_asignada_gym =="" }Por asignar{if:else}
-                          {freeform:field:persona_asignada_gym}
+                            <div class="" id="persona_asignada_gym" style="display:block;">{embed="includes/nombre_per" p_find="{freeform:field:persona_asignada_gym}"}</div>
                           {/if}
                         </li>
 
                         <li class="mb-7"><strong>Agente inspección</strong><br>
                           {if freeform:field:inspector_asignado =="" }Por asignar{if:else}
-                          {freeform:field:inspector_asignado}
+                            <div class="" id="inspector_asignado" style="display:block;">{embed="includes/nombre_per" p_find="{freeform:field:inspector_asignado}"}</div>
                           {/if}
                         </li>
                         
                         <li class="mb-7"><strong>Agente construcción</strong><br>
                           {if freeform:field:constructor_asignado =="" }Por asignar{if:else}
-                          {freeform:field:constructor_asignado}
+                            <div class="" id="constructor_asignado" style="display:block;">{embed="includes/nombre_per" p_find="{freeform:field:constructor_asignado}"}</div>
                           {/if}
                         </li>
 
