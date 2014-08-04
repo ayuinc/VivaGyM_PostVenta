@@ -195,17 +195,38 @@
                       <ul class="list-unstyled">
                         <li class="mb-7"><strong>Fecha de solicitud</strong><br>{freeform:entry_date format="%j %F %Y"}</li>
 
-                        <li class="mb-7"><strong>Responsable Viva</strong><br>{freeform:field:persona_asignada_gym}
-                          {if freeform:field:persona_asignada_gym =="" }Por asignar{/if}</li> 
+                        <li class="mb-7"><strong>Responsable Viva</strong><br>
+                          {if freeform:field:persona_asignada_viva =="" }Por asignar{if:else}
+                            <div class="form-group" id="persona_asignada_viva" style="display:block;">
+                            {embed="includes/nombre_per" p_find="{freeform:field:persona_asignada_viva}"}
+                            </div>
+                          {/if}
+                        </li>
 
-                        <li class="mb-7"><strong>Responsable GyM</strong><br>{freeform:field:persona_asignada_viva}
-                        {if freeform:field:persona_asignada_viva =="" }Por asignar{/if}</li>
+                        <li class="mb-7"><strong>Responsable GyM</strong><br>
+                          {if freeform:field:persona_asignada_gym =="" }Por asignar{if:else}
+                            <div class="form-group" id="persona_asignada_gym" style="display:block;">
+                            {embed="includes/nombre_per" p_find="{freeform:field:persona_asignada_gym}"}
+                            </div>
+                          {/if}
+                        </li>
 
-                        <li class="mb-7"><strong>Agente inspección</strong><br>{freeform:field:inspector_asignado}
-                        {if freeform:field:inspector_asignado =="" }Por asignar{/if}</li>
+                        <li class="mb-7"><strong>Agente inspección</strong><br>
+                          {if freeform:field:inspector_asignado =="" }Por asignar{if:else}
+                            <div class="form-group" id="inspector_asignado" style="display:block;">
+                            {embed="includes/nombre_per" p_find="{freeform:field:inspector_asignado}"}
+                            </div>
+                          {/if}
+                        </li>
                         
-                        <li class="mb-7"><strong>Agente construcción</strong><br>{freeform:field:constructor_asignado}
-                        {if freeform:field:constructor_asignado =="" }Por asignar{/if}</li>
+                        <li class="mb-7"><strong>Agente construcción</strong><br>
+                          {if freeform:field:constructor_asignado =="" }Por asignar{if:else}
+                            <div class="form-group" id="constructor_asignado" style="display:block;">
+                            {embed="includes/nombre_per" p_find="{freeform:field:constructor_asignado}"}
+                            </div>
+                          {/if}
+                        </li>
+
                       </ul>
                     </div>
 
