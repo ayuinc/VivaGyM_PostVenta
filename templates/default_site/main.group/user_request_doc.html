@@ -1,20 +1,29 @@
 {embed="includes/header"}
 
 {exp:user:stats}
-   {exp:freeform:entries  parse="inward" form_id="3" orderby="entry_id" sort="desc" search:id_cliente="{member_id}" status="open" limit="1" }
-	   {exp:mandrillapp:send_email_request_doc
-	   	 to="nelly.vasquez@gym.com.pe"
-	     email_propietario="{email_propietario}"
-	     email_alt="{freeform:field:email_encargado_atencion}"
-	     nombre_propietario="{nombre_propietario}"
-	     apellido_propietario="{ap_pat}"
-	     telefono_propietario= "{t_cel} / {t_ofic}"
-	     complejo_propietario= "{complejo_depa}"
-	     torre_propietario= "{torre_depa}"
-	     departamento_propietario= "{cod_depa}"
-	     documento = "{freeform:field:documento_solicitado}"
-	   {/exp:mandrillapp:send_email_request_doc}  
-   {/exp:freeform:entries}
+  {exp:freeform:entries  parse="inward" form_id="3" orderby="entry_id" sort="desc" search:id_cliente="{member_id}" status="open" limit="1" }
+   {exp:mandrillapp:send_email_request_doc
+   	 to="nelly.vasquez@gym.com.pe"
+     email_propietario="{email_propietario}"
+     email_alt="{freeform:field:email_encargado_atencion}"
+     nombre_propietario="{nombre_propietario}"
+     apellido_propietario="{ap_pat}"
+     telefono_propietario= "{t_cel} / {t_ofic}"
+     complejo_propietario= "{complejo_depa}"
+     torre_propietario= "{torre_depa}"
+     departamento_propietario= "{cod_depa}"
+     documento = "{freeform:field:documento_solicitado}"
+   {/exp:mandrillapp:send_email_request_doc}  
+  {/exp:freeform:entries}
+
+  {exp:freeform:entries  parse="inward" form_id="3" orderby="entry_id" sort="desc" search:id_cliente="{member_id}" status="open" limit="1" }
+   {exp:mandrillapp:send_email_request_doc_user
+   	 to="{email_propietario}"
+     nombre_propietario="{nombre_propietario}"
+     documento = "{freeform:field:documento_solicitado}"
+   {/exp:mandrillapp:send_email_request_doc}  
+  {/exp:freeform:entries}
+
 {/exp:user:stats}
 
 {embed="includes/footer"}
