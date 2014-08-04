@@ -91,7 +91,7 @@
                           <div class="form-group" id="persona_asignada_viva" style="display:none;">
                           {embed="includes/select_per" p_find="{freeform:edit_data:persona_asignada_viva}" grupo="7" var_name="persona_asignada_viva"}
                           </div>
-                          <div class="form-group" id="persona_asignada_viva_txt" style="display:block;">
+                          <div class="" id="persona_asignada_viva_txt" style="display:block;">
                           {embed="includes/nombre_per" p_find="{freeform:edit_data:persona_asignada_viva}"}
                           </div>
                           {/if}
@@ -102,7 +102,7 @@
                           <div class="form-group" id="persona_asignada_gym" style="display:none;">
                           {embed="includes/select_per" p_find="{freeform:edit_data:persona_asignada_gym}" grupo="8" var_name="persona_asignada_gym"}
                           </div>
-                          <div class="form-group" id="persona_asignada_gym_txt" style="display:block;">
+                          <div class="" id="persona_asignada_gym_txt" style="display:block;">
                           {embed="includes/nombre_per" p_find="{freeform:edit_data:persona_asignada_gym}"}
                           </div>
                           {/if}
@@ -113,7 +113,7 @@
                           <div class="form-group" id="inspector_asignado" style="display:none;">
                           {embed="includes/select_per" p_find="{freeform:edit_data:inspector_asignado}" grupo="9" var_name="inspector_asignado" rol="inspector"}
                           </div>
-                          <div class="form-group" id="inspector_asignado_txt" style="display:block;">
+                          <div class="" id="inspector_asignado_txt" style="display:block;">
                           {embed="includes/nombre_per" p_find="{freeform:edit_data:inspector_asignado}"}
                           </div>
                           {/if}
@@ -124,7 +124,7 @@
                           <div class="form-group" id="constructor_asignado" style="display:none;">
                           {embed="includes/select_per" p_find="{freeform:edit_data:constructor_asignado}" grupo="9" var_name="constructor_asignado" rol="ejecutor"}
                           </div>
-                          <div class="form-group" id="constructor_asignado_txt" style="display:block;">
+                          <div class="" id="constructor_asignado_txt" style="display:block;">
                           {embed="includes/nombre_per" p_find="{freeform:edit_data:constructor_asignado}"}
                           </div>
                           {/if}
@@ -189,7 +189,7 @@
 
                         <li class="mb-7"><strong>Responsable Viva</strong><br>
                           {if freeform:field:persona_asignada_viva =="" }Por asignar{if:else}
-                            <div class="form-group" id="persona_asignada_viva" style="display:block;">
+                            <div class="" id="persona_asignada_viva" style="display:block;">
                             {embed="includes/nombre_per" p_find="{freeform:field:persona_asignada_viva}"}
                             </div>
                           {/if}
@@ -197,7 +197,7 @@
 
                         <li class="mb-7"><strong>Responsable GyM</strong><br>
                           {if freeform:field:persona_asignada_gym =="" }Por asignar{if:else}
-                            <div class="form-group" id="persona_asignada_gym" style="display:block;">
+                            <div class="" id="persona_asignada_gym" style="display:block;">
                             {embed="includes/nombre_per" p_find="{freeform:field:persona_asignada_gym}"}
                             </div>
                           {/if}
@@ -205,7 +205,7 @@
 
                         <li class="mb-7"><strong>Agente inspección</strong><br>
                           {if freeform:field:inspector_asignado =="" }Por asignar{if:else}
-                            <div class="form-group" id="inspector_asignado" style="display:block;">
+                            <div class="" id="inspector_asignado" style="display:block;">
                             {embed="includes/nombre_per" p_find="{freeform:field:inspector_asignado}"}
                             </div>
                           {/if}
@@ -213,7 +213,7 @@
                         
                         <li class="mb-7"><strong>Agente construcción</strong><br>
                           {if freeform:field:constructor_asignado =="" }Por asignar{if:else}
-                            <div class="form-group" id="constructor_asignado" style="display:block;">
+                            <div class="" id="constructor_asignado" style="display:block;">
                             {embed="includes/nombre_per" p_find="{freeform:field:constructor_asignado}"}
                             </div>
                           {/if}
