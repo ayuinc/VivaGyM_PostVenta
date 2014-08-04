@@ -35,287 +35,212 @@ class Mandrillapp {
 	}
 
 	function send_email_request_doc(){
-	global $TMPL;
-	$this->EE =& get_instance(); // EEv2 syntax
-	$TMPL = $this->EE->TMPL;
-
-	require_once 'mailchimp-mandrill-api-php/src/Mandrill.php'; 
-	$mandrill = new Mandrill('Svqgcw575OLrORu2WiD09g');
-	$email_propietario= $TMPL->fetch_param('email_propietario');
-	$email_alt= $TMPL->fetch_param('email_alt');
-	$nombre_propietario= $TMPL->fetch_param('nombre_propietario');
-	$apellido_propietario= $TMPL->fetch_param('apellido_propietario');
-	$telefono_propietario= $TMPL->fetch_param('telefono_propietario');
-	$complejo_propietario= $TMPL->fetch_param('complejo_propietario');
-	$torre_propietario= $TMPL->fetch_param('torre_propietario');
-	$departamento_propietario= $TMPL->fetch_param('departamento_propietario');
-	$documento =  $TMPL->fetch_param('documento');
-	$to= $TMPL->fetch_param('to');
-	$name= $TMPL->fetch_param('name');
-	$subject= "Solicitud de documento.";
-	$from= "admin@gym.com";
-	$tipo= $TMPL->fetch_param('tipo');
-	//$text = $TMPL->tagdata;
-	
-	if($tipo=="admin"){$text = "<!doctype html>
-	<html>
-	  <head>
-	    <meta charset='utf-8' />
-	    <title>Viva GyM</title>
-	  </head>
-		<body style='margin: 0px; background-color: #f1f1f1; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color: #898989;' bgcolor='#f1f1f1'>
-			<table align='center' width='90%' style='width:90%; margin-left: auto; margin-right: auto;'>
-				<tr style='background-color: #f1f1f1;' bgcolor='#f1f1f1'>
-					<td><p><br></p>
-					</td>
-				</tr>
-				<tr style='background-color: #ffffff;' bgcolor='#ffffff'>
-					<td>
-
-						<div style='background-color: #ffffff;'>
-							<table align='center' width='90%' style='width:90%; margin-left: auto; margin-right: auto;'>
-								<tr>
-									<td><br></td>
-								</tr>
-								<tr>
-									<td align='right'><img src='http://162.243.222.54/images/logo-viva.png' style='width:100px; height: auto;'>
-									</td>
-								</tr>
-								<tr>
-								<td align='left'><h3>Estimado/a Administrador Viva</h3>
-									<span>La siguiente solicitud de documento ha sido procesada a través del portal de posventa.<p>
-									<br>
-									Documento solicitado:".$documento."<p>
-									Datos del propietario:<p>
-									Nombre: ".$nombre_propietario."<p>
-									Apellido: ".$apellido_propietario."<p>
-									e-mail: ".$email_propietario."<p>
-									e-mail alternativo: ".$email_alt."<p>
-									Teléfono: ".$telefono_propietario."<p>
-									Complejo: ".$complejo_propietario."<p>
-									Torre: ".$torre_propietario."<p>
-									Departamento: ".$departamento_propietario."<p>
-									<br>
-									**No responder. Correo automático enviado desde el Portal de posventa Viva GyM**<br></span>
-									<p>
-								</td>
-							</tr>
-							<tr>
-									<td><br></td>
-								</tr>
-							</table>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td align='center'><p></p>
-						<span style='font-size: 12px;'>2014 Viva GyM Servicio de posventa, todos los derechos reservados.</span><br>
-						<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
-					</td>
-				</tr>
-			</table>
-		</body>
-	</html>"};
-
-	if($tipo=="cli"){$text = "<!doctype html>
-	<html>
-	  <head>
-	    <meta charset='utf-8' />
-	    <title>Viva GyM</title>
-	  </head>
-		<body style='margin: 0px; background-color: #f1f1f1; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color: #898989;' bgcolor='#f1f1f1'>
-			<table align='center' width='90%' style='width:90%; margin-left: auto; margin-right: auto;'>
-				<tr style='background-color: #f1f1f1;' bgcolor='#f1f1f1'>
-					<td><p><br></p>
-					</td>
-				</tr>
-				<tr style='background-color: #ffffff;' bgcolor='#ffffff'>
-					<td>
-
-						<div style='background-color: #ffffff;'>
-							<table align='center' width='90%' style='width:90%; margin-left: auto; margin-right: auto;'>
-								<tr>
-									<td><br></td>
-								</tr>
-								<tr>
-									<td align='right'><img src='http://162.243.222.54/images/logo-viva.png' style='width:100px; height: auto;'>
-									</td>
-								</tr>
-								<tr>
-								<td align='left'><h3>Estimado/a ".$name."</h3>
-									<span>La siguiente solicitud de documento ha sido procesada a través del portal de posventa.<p>
-									<br>
-									Documento solicitado:".$documento."<p>
-									<br>
-									**No responder. Correo automático enviado desde el Portal de posventa Viva GyM**<br></span>
-									<p>
-								</td>
-							</tr>
-							<tr>
-									<td><br></td>
-								</tr>
-							</table>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td align='center'><p></p>
-						<span style='font-size: 12px;'>2014 Viva GyM Servicio de posventa, todos los derechos reservados.</span><br>
-						<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
-					</td>
-				</tr>
-			</table>
-		</body>
-	</html>"};
-
-
-
-	/*'html' => '<p>FELICIDADES!!!</p><p>Ganaste el tema'.$topic.' ve a nuestro menú de temas y sigue participando</p>',*/
-	$message = array(
-	    'subject' => $subject,
-	    'from_email' => $from,
-	    'html' => $text,
-	    'to' => array(array('email' => $to, 'name' => $name)),
-	    'merge_vars' => array(array(
-		        'rcpt' => 'recipient1@domain.com',
-		        'vars' =>
-		        array(
-		            array(
-		                'name' => 'FIRSTNAME',
-		                'content' => 'Recipient 1 first name'),
-		            array(
-		                'name' => 'LASTNAME',
-		                'content' => 'Last name')
-		    ))));
-
-	$template_name = 'test';
-
-	$template_content = array(
-	    array(
-	        'name' => 'main',
-	        'content' => 'Hi *|FIRSTNAME|* *|LASTNAME|*, thanks for signing up.'),
-	    array(
-	        'name' => 'footer',
-	        'content' => 'Copyright 2012.')
-
-	);
-	$mandrill->messages->sendTemplate($template_name, $template_content, $message);
-	return '
-<div class="container-fluid pt-35 pb-35 mh-630">
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-	  <h1>Gracias por su solicitud de documentos</h1>
-	  <p>Le enviaremos su documento en menos de 24 horas.</p>
-	  <p><a href="{site_url}main/user_apartment_show/{member_id}">Ir a mi departamento</a></p>	  
-  </div>
-</div>
-</div>';
-	}
-
-
-	function send_email_request_doc_user(){
 		global $TMPL;
 		$this->EE =& get_instance(); // EEv2 syntax
 		$TMPL = $this->EE->TMPL;
 
- 		require_once 'mailchimp-mandrill-api-php/src/Mandrill.php'; 
- 		$mandrill = new Mandrill('Svqgcw575OLrORu2WiD09g');
- 		
- 		$to= $TMPL->fetch_param('para');
- 		$name= $TMPL->fetch_param('name');
- 		$subject= "Solicitud de documento.";
- 		$from= "admin@gym.com";
- 		//$text = $TMPL->tagdata;
- 		if($cliente_ausente == "no"){
+		require_once 'mailchimp-mandrill-api-php/src/Mandrill.php'; 
+		$mandrill = new Mandrill('Svqgcw575OLrORu2WiD09g');
+		$email_propietario= $TMPL->fetch_param('email_propietario');
+		$email_alt= $TMPL->fetch_param('email_alt');
+		$nombre_propietario= $TMPL->fetch_param('nombre_propietario');
+		$apellido_propietario= $TMPL->fetch_param('apellido_propietario');
+		$telefono_propietario= $TMPL->fetch_param('telefono_propietario');
+		$complejo_propietario= $TMPL->fetch_param('complejo_propietario');
+		$torre_propietario= $TMPL->fetch_param('torre_propietario');
+		$departamento_propietario= $TMPL->fetch_param('departamento_propietario');
+		$documento =  $TMPL->fetch_param('documento');
+		$to= $TMPL->fetch_param('to');
+		$name= $TMPL->fetch_param('name');
+		$subject= "Solicitud de documento.";
+		$from= "admin@gym.com";
+		$tipo= $TMPL->fetch_param('tipo');
+		//$text = $TMPL->tagdata;
 
-		echo $text = "<!doctype html>
-	<html>
-	  <head>
-	    <meta charset='utf-8' />
-	    <title>Viva GyM</title>
-	  </head>
-		<body style='margin: 0px; background-color: #f1f1f1; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color: #898989;' bgcolor='#f1f1f1'>
-			<table align='center' width='90%' style='width:90%; margin-left: auto; margin-right: auto;'>
-				<tr style='background-color: #f1f1f1;' bgcolor='#f1f1f1'>
-					<td><p><br></p>
-					</td>
-				</tr>
-				<tr style='background-color: #ffffff;' bgcolor='#ffffff'>
-					<td>
+		if ($tipo == "admin"){
 
-						<div style='background-color: #ffffff;'>
-							<table align='center' width='90%' style='width:90%; margin-left: auto; margin-right: auto;'>
-								<tr>
-									<td><br></td>
-								</tr>
-								<tr>
-									<td align='right'><img src='http://162.243.222.54/images/logo-viva.png' style='width:100px; height: auto;'>
-									</td>
-								</tr>
-								<tr>
-								<td align='left'><h3>Estimado/a ".$name."</h3>
-									<span>Le informamos que el agente de su caso ".$id_sol_garantia." ha visitado su departamento pero no pudo realizar el arreglo por no encontrarse nadie en el departamento.<p>
-									<br>
-									Por esta razón usted debe ingresar nuevamente a nuestra plataforma de servicio posventa y agendar nuevamente su visita de arreglo <a href='http://162.243.222.54/main/user_request_show/".$id_sol_garantia."'>aquí</a>.<p>
-									<br>
-									Muchas gracias,<p>
-									<br>
-									Atentamente</span>
-									<p>
+	 			$result=mysql_query("SELECT * FROM exp_freeform_form_entries_2 WHERE entry_id=$id_sol_garantia");
+	 			$obten=mysql_fetch_row($result);
+	 			$tit_problema = $obten[15];
+
+	 			$subject = " Arreglo procede.";
+
+				$text = "<!doctype html>
+				<html>
+				  <head>
+				    <meta charset='utf-8' />
+				    <title>Viva GyM</title>
+				  </head>
+					<body style='margin: 0px; background-color: #f1f1f1; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color: #898989;' bgcolor='#f1f1f1'>
+						<table align='center' width='90%' style='width:90%; margin-left: auto; margin-right: auto;'>
+							<tr style='background-color: #f1f1f1;' bgcolor='#f1f1f1'>
+								<td><p><br></p>
+								</td>
+							</tr>
+							<tr style='background-color: #ffffff;' bgcolor='#ffffff'>
+								<td>
+
+									<div style='background-color: #ffffff;'>
+										<table align='center' width='90%' style='width:90%; margin-left: auto; margin-right: auto;'>
+											<tr>
+												<td><br></td>
+											</tr>
+											<tr>
+												<td align='right'><img src='http://162.243.222.54/images/logo-viva.png' style='width:100px; height: auto;'>
+												</td>
+											</tr>
+											<tr>
+											<td align='left'><h3>Estimado/a Administrador Viva</h3>
+												<span>La siguiente solicitud de documento ha sido procesada a través del portal de posventa.<p>
+												<br>
+												Documento solicitado:".$documento."<p>
+												Datos del propietario:<p>
+												Nombre: ".$nombre_propietario."<p>
+												Apellido: ".$apellido_propietario."<p>
+												e-mail: ".$email_propietario."<p>
+												e-mail alternativo: ".$email_alt."<p>
+												Teléfono: ".$telefono_propietario."<p>
+												Complejo: ".$complejo_propietario."<p>
+												Torre: ".$torre_propietario."<p>
+												Departamento: ".$departamento_propietario."<p>
+												<br>
+												**No responder. Correo automático enviado desde el Portal de posventa Viva GyM**<br></span>
+												<p>
+											</td>
+										</tr>
+										<tr>
+												<td><br></td>
+											</tr>
+										</table>
+									</div>
 								</td>
 							</tr>
 							<tr>
-									<td><br></td>
-								</tr>
-							</table>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td align='center'><p></p>
-						<span style='font-size: 12px;'>2014 Viva GyM Servicio de posventa, todos los derechos reservados.</span><br>
-						<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
-					</td>
-				</tr>
-			</table>
-		</body>
-	</html>";
- 		
- 		/*'html' => '<p>FELICIDADES!!!</p><p>Ganaste el tema'.$topic.' ve a nuestro menú de temas y sigue participando</p>',*/
- 		$message = array(
- 		    'subject' => $subject,
- 		    'from_email' => $from,
- 		    'html' => $text,
- 		    'to' => array(array('email' => $to, 'name' => $name)),
- 		    'merge_vars' => array(array(
-	 		        'rcpt' => 'recipient1@domain.com',
-	 		        'vars' =>
-	 		        array(
-	 		            array(
-	 		                'name' => 'FIRSTNAME',
-	 		                'content' => 'Recipient 1 first name'),
-	 		            array(
-	 		                'name' => 'LASTNAME',
-	 		                'content' => 'Last name')
-	 		    ))));
+								<td align='center'><p></p>
+									<span style='font-size: 12px;'>2014 Viva GyM Servicio de posventa, todos los derechos reservados.</span><br>
+									<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
+								</td>
+							</tr>
+						</table>
+					</body>
+				</html>";
+		  		$message = array(
+		  		    'subject' => $subject,
+		  		    'from_email' => $from,
+		  		    'html' => $text,
+		  		    'to' => array(array('email' => $to, 'name' => $name)),
+		  		    'merge_vars' => array(array(
+		 	 		        'rcpt' => 'recipient1@domain.com',
+		 	 		        'vars' =>
+		 	 		        array(
+		 	 		            array(
+		 	 		                'name' => 'FIRSTNAME',
+		 	 		                'content' => 'Recipient 1 first name'),
+		 	 		            array(
+		 	 		                'name' => 'LASTNAME',
+		 	 		                'content' => 'Last name')
+		 	 		    ))));
 
- 		$template_name = 'test';
+		  		$template_name = 'test';
 
- 		$template_content = array(
- 		    array(
- 		        'name' => 'main',
- 		        'content' => 'Hi *|FIRSTNAME|* *|LASTNAME|*, thanks for signing up.'),
- 		    array(
- 		        'name' => 'footer',
- 		        'content' => 'Copyright 2012.')
+		  		$template_content = array(
+		  		    array(
+		  		        'name' => 'main',
+		  		        'content' => 'Hi *|FIRSTNAME|* *|LASTNAME|*, thanks for signing up.'),
+		  		    array(
+		  		        'name' => 'footer',
+		  		        'content' => 'Copyright 2012.')
 
- 		);
-		$mandrill->messages->sendTemplate($template_name, $template_content, $message);
-		return "";
-		}
-		else{
-			return "";
-		}
+		  		);
+		 		$mandrill->messages->sendTemplate($template_name, $template_content, $message);
+		 		return "";
+	 		}
+	 		else if($tipo == "cli"){
+
+	 			$subject=" Arreglo no procede.";
+	 			$text = "<!doctype html>
+				<html>
+				  <head>
+				    <meta charset='utf-8' />
+				    <title>Viva GyM</title>
+				  </head>
+					<body style='margin: 0px; background-color: #f1f1f1; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color: #898989;' bgcolor='#f1f1f1'>
+						<table align='center' width='90%' style='width:90%; margin-left: auto; margin-right: auto;'>
+							<tr style='background-color: #f1f1f1;' bgcolor='#f1f1f1'>
+								<td><p><br></p>
+								</td>
+							</tr>
+							<tr style='background-color: #ffffff;' bgcolor='#ffffff'>
+								<td>
+
+									<div style='background-color: #ffffff;'>
+										<table align='center' width='90%' style='width:90%; margin-left: auto; margin-right: auto;'>
+											<tr>
+												<td><br></td>
+											</tr>
+											<tr>
+												<td align='right'><img src='http://162.243.222.54/images/logo-viva.png' style='width:100px; height: auto;'>
+												</td>
+											</tr>
+											<tr>
+											<td align='left'><h3>Estimado/a ".$name."</h3>
+												<span>La siguiente solicitud de documento ha sido procesada a través del portal de posventa.<p>
+												<br>
+												Documento solicitado:".$documento."<p>
+
+												<br>
+												**No responder. Correo automático enviado desde el Portal de posventa Viva GyM**<br></span>
+												<p>
+											</td>
+										</tr>
+										<tr>
+												<td><br></td>
+											</tr>
+										</table>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td align='center'><p></p>
+									<span style='font-size: 12px;'>2014 Viva GyM Servicio de posventa, todos los derechos reservados.</span><br>
+									<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
+								</td>
+							</tr>
+						</table>
+					</body>
+				</html>";
+
+	 			$message = array(
+		  		    'subject' => $subject,
+		  		    'from_email' => $from,
+		  		    'html' => $text,
+		  		    'to' => array(array('email' => $to, 'name' => $name)),
+		  		    'merge_vars' => array(array(
+		 	 		        'rcpt' => 'recipient1@domain.com',
+		 	 		        'vars' =>
+		 	 		        array(
+		 	 		            array(
+		 	 		                'name' => 'FIRSTNAME',
+		 	 		                'content' => 'Recipient 1 first name'),
+		 	 		            array(
+		 	 		                'name' => 'LASTNAME',
+		 	 		                'content' => 'Last name')
+		 	 		    ))));
+
+		  		$template_name = 'test';
+
+		  		$template_content = array(
+		  		    array(
+		  		        'name' => 'main',
+		  		        'content' => 'Hi *|FIRSTNAME|* *|LASTNAME|*, thanks for signing up.'),
+		  		    array(
+		  		        'name' => 'footer',
+		  		        'content' => 'Copyright 2012.')
+
+		  		);
+		 		$mandrill->messages->sendTemplate($template_name, $template_content, $message);
+		 		return "";
+	 		}
 	}
 
 
