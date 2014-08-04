@@ -50,7 +50,7 @@ class Mandrillapp {
 	$torre_propietario= $TMPL->fetch_param('torre_propietario');
 	$departamento_propietario= $TMPL->fetch_param('departamento_propietario');
 	$documento =  $TMPL->fetch_param('documento');
-	$to= $TMPL->fetch_param('to');
+	echo "<br>to ad ".$to= $TMPL->fetch_param('to');
 	$name= "Administrador Viva";
 	$subject= "Solicitud de documento.";
 	$from= "admin@gym.com";
@@ -167,7 +167,7 @@ class Mandrillapp {
 	$mandrill = new Mandrill('Svqgcw575OLrORu2WiD09g');
 	$name= $TMPL->fetch_param('nombre_propietario');
 	$documento =  $TMPL->fetch_param('documento');
-	$to= $TMPL->fetch_param('to');
+	echo "<br>to cl ".$to= $TMPL->fetch_param('to');
 	$subject= "Solicitud de documento.";
 	$from= "admin@gym.com";
 	//$text = $TMPL->tagdata;
