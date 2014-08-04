@@ -20,10 +20,10 @@
 
 
 {exp:user:stats}
-   {exp:freeform:entries  parse="inward" form_id="3" orderby="entry_id" sort="desc" search:id_cliente="{member_id}" status="open" limit="1" }{email_propietario} - {freeform:field:documento_solicitado}
+   {exp:freeform:entries  parse="inward" form_id="3" orderby="entry_id" sort="desc" search:id_cliente="{member_id}" status="open" limit="1" }envio a cliente {email_propietario} - {freeform:field:documento_solicitado}
 
 	    {exp:mandrillapp:send_email_request_doc_user
-	   	 para="{email_propietario}"
+	   	 para="jcmoron82@gmail.com"
 	     name="{nombre_propietario}"
 	     documento = "{freeform:field:documento_solicitado}"
 	   {/exp:mandrillapp:send_email_request_doc_user} 
