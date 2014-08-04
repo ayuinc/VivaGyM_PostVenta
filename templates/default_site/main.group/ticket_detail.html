@@ -87,19 +87,20 @@
                         <li class="mb-7"><strong>Fecha de solicitud</strong><br>{freeform:edit_data:entry_date format="%j %F %Y"}</li>
 
                         <li class="mb-7"><strong>Responsable Viva</strong>
-                          <?php $per_viva="{freeform:edit_data:persona_asignada_viva}"; ?>
-                          <?php if(empty($per_viva)){echo "Por asignar";}else {?>
-                          <div class="form-group" id="persona_asignada_viva" style="display:none;">
-                            {embed="includes/select_per" p_find="{freeform:edit_data:persona_asignada_viva}" grupo="7" var_name="persona_asignada_viva"}
-                          </div>
+                          {if freeform:edit_data:persona_asignada_viva =="" }<br>Por asignar{if:else}a
                           <div id="persona_asignada_viva_txt" style="display:block;">{embed="includes/nombre_per" p_find="{freeform:edit_data:persona_asignada_viva}"}</div>
-                          <?php };?>
 
+                          <div class="form-group" id="persona_asignada_viva" style="display:none;">b
+                            {embed="includes/select_per" p_find="{freeform:edit_data:persona_asignada_viva}" grupo="7" var_name="persona_asignada_viva" rol=""}
+                          </div>
+                          
+                          {/if}
                         </li> 
 
                         <li class="mb-7"><strong>Responsable GyM</strong>
                           {if freeform:edit_data:persona_asignada_gym =="" }<br>Por asignar{if:else}
-                          <div class="form-group" id="persona_asignada_gym" style="display:none;">{embed="includes/select_per" p_find="{freeform:edit_data:persona_asignada_gym}" grupo="8" var_name="persona_asignada_gym"}
+                          <div class="form-group" id="persona_asignada_gym" style="display:none;">
+                            {embed="includes/select_per" p_find="{freeform:edit_data:persona_asignada_gym}" grupo="8" var_name="persona_asignada_gym" rol}
                           </div>
                           <div id="persona_asignada_gym_txt" style="display:block;">{embed="includes/nombre_per" p_find="{freeform:edit_data:persona_asignada_gym}"}</div>
                           {/if}
