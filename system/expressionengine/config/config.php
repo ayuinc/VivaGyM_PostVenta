@@ -8,6 +8,9 @@ $config['sc_public_certificate'] = "";
 $config['sc_private_key'] = "";
 $config['sc_paypal_certificate'] = "";
 $config['sc_temp_path'] = "/tmp";
+$base_url = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "http");
+$base_url .= "://".$_SERVER['HTTP_HOST'];
+
 /*
 |--------------------------------------------------------------------------
 | ExpressionEngine Config Items
@@ -22,7 +25,7 @@ $config['sc_temp_path'] = "/tmp";
 $config['app_version'] = '281';
 $config['license_number'] = "5343-3237-2705-9088";
 $config['debug'] = '1';
-$config['cp_url'] = 'http://162.243.222.54/admin.php';
+$config['cp_url'] = $base_url . 'admin.php';
 $config['doc_url'] = "http://ellislab.com/expressionengine/user-guide/";
 $config['is_system_on'] = "y";
 $config['allow_extensions'] = 'y';
@@ -30,6 +33,23 @@ $config['cookie_prefix'] = '';
 $config['cookie_httponly'] = 'y';
 //$config['disable_csrf_protection'] = 'y'; 
 $config['cp_session_ttl'] = 30000;
+
+//------------------------------STUFF ADDED--------------------------
+
+$config['site_url'] = $base_url . '/'; 
+$config['server_path'] = FCPATH;
+$config['site_index'] = '';
+$config['theme_folder_url'] = $config['site_url']."/themes/";
+$config['theme_folder_path'] = $config['server_path']."/themes/";
+$config['save_tmpl_files'] = "y";
+// $config['tmpl_file_basepath'] = $config['server_path']."/templates/";
+// $config['avatar_url'] = $base_url."/uploads/system/avatars/";
+// $config['avatar_path'] = $config['server_path']."/uploads/system/avatars/";
+// $config['photo_url'] = $base_url."/uploads/system/member_photos/";
+// $config['photo_path'] = $config['server_path']."/uploads/system/member_photos/";
+// $config['sig_img_url'] = $base_url."/uploads/system/signature_attachments/";
+// $config['sig_img_path'] = $config['server_path']."/uploads/system/signature_attachments/";
+// $config['prv_msg_upload_path'] = $config['server_path']."/uploads/system/pm_attachments/";
 
 /*
 |--------------------------------------------------------------------------
