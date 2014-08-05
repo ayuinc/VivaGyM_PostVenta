@@ -1643,7 +1643,7 @@ Atentamente</span>
 														</tr>
 														<tr>
 														<td align='left'><h3>Estimado/a Administrador Viva</h3>
-															<span>El usuario indicado ha registrado un reclamo.<p>
+															<span><br>El siguiente usuario ha registrado un reclamo:<p>
 															Nombre: ".$nombre_propietario."<p>
 															Apellido: ".$apellido_propietario."<p>
 															e-mail: ".$email_propietario."<p>
@@ -1652,6 +1652,7 @@ Atentamente</span>
 															Torre: ".$torre_propietario."<p>
 															Departamento: ".$departamento_propietario."<p>
 															Fecha de registro: ".$fecha_date."<p>
+															Número de reclamo: ".$id_reclamo."<p>
 															Reclamo: ".$mensaje."<p>
 															Vamos a revisar su reclamo y nos comunicaremos con usted en un plazo maximo de 30 dias.<p>
 															Quedamos como siempre a su disposición si tiene alguna consulta o solicitud adicional puede llamar a nuestro Call Center de Atención al Cliente al 206-7270.<p>
