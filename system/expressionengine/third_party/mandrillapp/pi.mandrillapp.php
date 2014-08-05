@@ -1584,6 +1584,130 @@ Atentamente</span>
 		return "";
 	}
 
+	function send_email_libro_reclamaciones_admin(){
+		global $TMPL;
+		$this->EE =& get_instance(); // EEv2 syntax
+		$TMPL = $this->EE->TMPL;
+
+		require_once 'mailchimp-mandrill-api-php/src/Mandrill.php'; 
+		$mandrill = new Mandrill('Svqgcw575OLrORu2WiD09g');
+		
+		$to= $TMPL->fetch_param('to');
+		$name= $TMPL->fetch_param('name');
+		$subject= $TMPL->fetch_param('subject');
+		$from= $TMPL->fetch_param('from');
+		$member_id= $TMPL->fetch_param('member_id');
+
+		$email_propietario= $TMPL->fetch_param('email_propietario');
+		$nombre_propietario= $TMPL->fetch_param('nombre_propietario');
+		$apellido_propietario= $TMPL->fetch_param('apellido_propietario');
+		$telefono_propietario= $TMPL->fetch_param('telefono_propietario');
+		$complejo_propietario= $TMPL->fetch_param('complejo_propietario');
+		$torre_propietario= $TMPL->fetch_param('torre_propietario');
+		$departamento_propietario= $TMPL->fetch_param('departamento_propietario');
+
+		$rs = mysql_query("SELECT MAX(entry_id) AS id FROM exp_freeform_form_entries_9 where form_field_5 = $member_id");
+			if ($row = mysql_fetch_row($rs)) { $id_reclamo = $row[0]; }
+
+		$result_ev=mysql_query("SELECT * FROM exp_freeform_form_entries_9 WHERE entry_id=$id_reclamo and form_field_5 = $member_id");
+	  $obten_ev=mysql_fetch_row($result_ev);
+	  $fecha_registro = $obten_ev[5];
+	  $fecha_date=gmdate("d-m-Y", $fecha_registro);
+	  $mensaje = $obten_ev[9];
+
+		//$text = $TMPL->tagdata;
+
+		$text = "<!doctype html>
+							<html>
+							  <head>
+							    <meta charset='utf-8' />
+							    <title>Viva GyM</title>
+							  </head>
+								<body style='margin: 0px; background-color: #f1f1f1; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color: #898989;' bgcolor='#f1f1f1'>
+									<table align='center' width='90%' style='width:90%; margin-left: auto; margin-right: auto;'>
+										<tr style='background-color: #f1f1f1;' bgcolor='#f1f1f1'>
+											<td><p><br></p>
+											</td>
+										</tr>
+										<tr style='background-color: #ffffff;' bgcolor='#ffffff'>
+											<td>
+
+												<div style='background-color: #ffffff;'>
+													<table align='center' width='90%' style='width:90%; margin-left: auto; margin-right: auto;'>
+														<tr>
+															<td><br></td>
+														</tr>
+														<tr>
+															<td align='right'><img src='http://162.243.222.54/images/logo-viva.png' style='width:100px; height: auto;'>
+															</td>
+														</tr>
+														<tr>
+														<td align='left'><h3>Estimado/a Administrador Viva</h3>
+															<span>El usuario indicado ha registrado un reclamo.<p>
+															Nombre: ".$nombre_propietario."<p>
+															Apellido: ".$apellido_propietario."<p>
+															e-mail: ".$email_propietario."<p>
+															Teléfono: ".$telefono_propietario."<p>
+															Complejo: ".$complejo_propietario."<p>
+															Torre: ".$torre_propietario."<p>
+															Departamento: ".$departamento_propietario."<p>
+															Fecha de registro: ".$fecha_date."<p>
+															Reclamo: ".$mensaje."<p>
+															Vamos a revisar su reclamo y nos comunicaremos con usted en un plazo maximo de 30 dias.<p>
+															Quedamos como siempre a su disposición si tiene alguna consulta o solicitud adicional puede llamar a nuestro Call Center de Atención al Cliente al 206-7270.<p>
+															Atentamente</span>
+															<p>
+														</td>
+													</tr>
+													<tr>
+															<td><br></td>
+														</tr>
+													</table>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td align='center'><p></p>
+												<span style='font-size: 12px;'>2014 Viva GyM Servicio de posventa, todos los derechos reservados.</span><br>
+												<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
+											</td>
+										</tr>
+									</table>
+								</body>
+							</html>";
+
+		$message = array(
+		    'subject' => $subject,
+		    'from_email' => $from,
+		    'html' => $text,
+		    'to' => array(array('email' => $to, 'name' => $name)),
+		    'merge_vars' => array(array(
+ 		        'rcpt' => 'recipient1@domain.com',
+ 		        'vars' =>
+ 		        array(
+ 		            array(
+ 		                'name' => 'FIRSTNAME',
+ 		                'content' => 'Recipient 1 first name'),
+ 		            array(
+ 		                'name' => 'LASTNAME',
+ 		                'content' => 'Last name')
+ 		    ))));
+
+		$template_name = 'test';
+
+		$template_content = array(
+		    array(
+		        'name' => 'main',
+		        'content' => 'Hi *|FIRSTNAME|* *|LASTNAME|*, thanks for signing up.'),
+		    array(
+		        'name' => 'footer',
+		        'content' => 'Copyright 2012.')
+
+		);
+		$mandrill->messages->sendTemplate($template_name, $template_content, $message);
+		return "";
+	}
+
 	function send_recordatorio(){
 		global $TMPL;
 		$this->EE =& get_instance(); // EEv2 syntax
