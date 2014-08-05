@@ -1,0 +1,29 @@
+{embed="includes/header"}
+<?php $id_cliente="{member_id}"; ?>
+
+{exp:user:stats}
+	{exp:mandrillapp:send_email_libro_reclamaciones_admin
+	  to="nelly.vasquez@gym.com.pe"
+	  name="{nombre_propietario}"
+	  subject="Recepción de Reclamos Viva GyM"
+	  from="admin@gym.com"
+	  email_propietario="{email_propietario}"
+    nombre_propietario="{nombre_propietario}"
+    apellido_propietario="{ap_pat}"
+    telefono_propietario= "{t_cel} / {t_ofic}"
+    complejo_propietario= "{complejo_depa}"
+    torre_propietario= "{torre_depa}"
+    departamento_propietario= "{cod_depa}"
+	  member_id="{member_id}"}
+	{/exp:mandrillapp:send_email_libro_reclamaciones_admin}  
+{/exp:user:stats}
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+	  <h1>Hemos registrado su reclamo</h1>
+	  <p>Vamos a revisar su reclamo y nos comunicaremos con usted en un plazo maximo de 30 dias.</p>
+	  <p><a href="{site_url}main/user_dashboard/{member_id}">Ir a Mis Solicitudes</a></p>	  
+  </div>
+</div>
+
+{embed="includes/footer"}
