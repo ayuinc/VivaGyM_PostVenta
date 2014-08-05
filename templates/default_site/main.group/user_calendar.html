@@ -1,0 +1,128 @@
+{embed="includes/header" }
+<script type="text/javascript" src="{site_url}lib/vendor/bootstrapValidator.js"></script>
+<script type="text/javascript" src="{site_url}lib/user_request_files.js"></script>
+
+<?php
+
+function compararFechas($primera, $segunda)
+ {
+  $valoresPrimera = explode ("-", $primera);   
+  $valoresSegunda = explode ("-", $segunda); 
+
+  $diaPrimera    = $valoresPrimera[0];  
+  $mesPrimera  = $valoresPrimera[1];  
+  $anyoPrimera   = $valoresPrimera[2]; 
+
+  $diaSegunda   = $valoresSegunda[0];  
+  $mesSegunda = $valoresSegunda[1];  
+  $anyoSegunda  = $valoresSegunda[2];
+
+  $diasPrimeraJuliano = gregoriantojd($mesPrimera, $diaPrimera, $anyoPrimera);  
+  $diasSegundaJuliano = gregoriantojd($mesSegunda, $diaSegunda, $anyoSegunda);     
+
+  if(!checkdate($mesPrimera, $diaPrimera, $anyoPrimera)){
+    // "La fecha ".$primera." no es válida";
+    return 0;
+  }elseif(!checkdate($mesSegunda, $diaSegunda, $anyoSegunda)){
+    // "La fecha ".$segunda." no es válida";
+    return 0;
+  }else{
+    return  ($diasPrimeraJuliano-$diasSegundaJuliano);
+  } 
+
+}
+
+ ?>
+  {embed="includes/bredcrumbs"}
+  
+  <div class="row">
+    <div class="col-md-3">
+      {embed="includes/user_dashboard_aside" seccion="2"}
+    </div>
+    <div class="col-md-6">
+      <div class="panel p-14">
+        <div class="panel-heading bg-white p-0">
+          <div class="panel-title mb-14">
+            <h4 class="uppercase medium"><i class="icon-house"></i> Mi departamento</h4>
+          </div>
+          <hr class="m-0">
+        </div>
+        <div class="panel-body p-0">
+          <h4 class="light">Información</h4>
+          <ul class="list-unstyled">
+
+          {exp:user:stats}
+            <li class="mb-7"><strong>Complejo:</strong> <br>{complejo_depa}</li>
+            <li class="mb-7"><strong>Torre:</strong> <br>{torre_depa}</li>
+            <li class="mb-7"><strong>Dpto:</strong> <br>{cod_depa}</li>
+            <li class="mb-7"><strong>Dirección:</strong> <br>{dir_depa}</li> 
+            <li class="mb-7"><strong>Fecha de entrega:</strong> <br>{fecha_entrega}</li>
+            <?php $fecha_dato="{fecha_entrega}";
+            $fecha_actual=date('d-m-Y');
+
+            $dias_pass=substr(compararFechas($fecha_dato,$fecha_actual), 1);;
+            if ($dias_pass<182){echo "Garantia de acabados vigente<br>Garantia de instalaciones vigente<br>";}
+            if (($dias_pass>=182) and ($dias_pass<365)){echo "";}
+            if ($dias_pass<=1825){echo "Garantia de estructura vigente";}
+            if ($dias_pass>1825){echo "Fuera de garantia";}
+            ?>
+          {/exp:user:stats}
+
+          </ul>
+          <hr class="double">
+          <h4 class="light">Manual de propietario</h4>
+          <p>Descarga el manual de uso para saber como cuidar de tu departamento todos los días</p>
+          <a target="_blank" href="{site_url}images/manual_propietario.pdf" class="btn btn-default btn-sm">Descargar PDF</a>
+          <hr class="double">
+          <h4 class="light">Garantía</h4>
+          <p>Descarga la política de garantía de VivaGyM para conocer qué arreglos están cubiertos</p>
+          <a target="_blank" href="{site_url}images/resultados_viva_gym_3t2013.pdf" class="btn btn-default btn-sm">Descargar PDF</a>
+          <em class="block mt-14">Te recordamos algunos periodos</em>
+          <ul class="list-unstyled">
+            <li class="mb-7"><strong>Acabados:</strong> <br>6 meses</li>
+            <li class="mb-7"><strong>Instalaciones:</strong> <br>6 meses</li>
+            <li class="mb-7"><strong>Estructura:</strong> <br>5 años</li>
+          </ul>
+          <hr class="double">
+
+          <h4 class="light">Documentos</h4>
+          <p>Para obtener los planos de tu depa o una copia de tu contrato, completa el siguiente formulario:</p>
+
+            {exp:freeform:form form_id="3" return="main/user_request_doc" form:id="user-request-files-form"}
+
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+
+                    <select name="documento_solicitado" id="" class="form-control select-override">
+                      <option value="">Documento</option>
+                      <option value="Planos">Planos</option>
+                      <option value="Contratos">Contratos</option>
+                    </select>
+
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" name="email_encargado_atencion" placeholder="Email para envío">
+                  </div>
+                  {exp:member:custom_profile_data}
+                  <input type="hidden" name="departamento_en_consulta" value="{cod_depa}" >
+                  {/exp:member:custom_profile_data}
+
+                  <input type="hidden" name="id_cliente" value="{member_id}" >
+                  <button type="submit" class="btn btn-sm btn-success">Enviar</button>
+
+                </div>
+              </div>
+
+            {/exp:freeform:form}
+
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      {embed="includes/user_new_request_aside"}
+    </div>
+  </div>
+
+{embed="includes/footer"}
