@@ -13,7 +13,7 @@ app.controller('UserCalendarCtrl', ['$scope', '$window', '$location', 'VivaCalen
   });
 
   $scope.eventSource = {
-    url: 'http://162.243.222.54/fullcalendar/new_fechas_insp.php'
+    url: '/fullcalendar/new_fechas_insp.php'
   };
 
   $scope.eventSources = [$scope.eventSource];
