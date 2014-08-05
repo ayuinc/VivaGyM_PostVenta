@@ -210,21 +210,21 @@ if((!empty($pri)) or (!empty($cas)) or (!empty($etapa)) or (!empty($tipo)) or (!
       </form> -->
     </div>
     <p>
-    <div class="bg-white border-rounded box-shadow p-14"> <!-- crear ticket para el usuario -->
-      {exp:member:custom_profile_data} <!-- diferencia la sesion para la creacion del ticket -->
-          {exp:switchee variable = "{member_group}" parse="inward"}
-            {case value="admin_viva"}<!-- admin viva 7 -->
-              {embed="includes/admin_new_request_aside"}
-            {/case}
-            {case value="admin_gym"}<!-- admin GyM 8  etapas 3 a 11-->
-            {/case}
-            {case value="insp_viva"}<!-- inspector viva 9 -->
-            {/case}
-            {case value="user_gym"}<!-- personal GyM que ejecuta el arreglo  10 filtro="8"-->
-            {/case} 
-          {/exp:switchee}
-        {/exp:member:custom_profile_data} <!-- diferencia la sesion para la creacion del ticket -->
-    </div> <!-- fin crear ticket para el usuario -->
+    {exp:member:custom_profile_data} <!-- diferencia la sesion para la creacion del ticket -->
+        {exp:switchee variable = "{member_group}" parse="inward"}
+          {case value="admin_viva"}<!-- admin viva 7 -->
+          <div class="bg-white border-rounded box-shadow p-14"> <!-- crear ticket para el usuario -->
+            {embed="includes/admin_new_request_aside"}
+          </div> <!-- fin crear ticket para el usuario -->
+          {/case}
+          {case value="admin_gym"}<!-- admin GyM 8  etapas 3 a 11-->
+          {/case}
+          {case value="insp_viva"}<!-- inspector viva 9 -->
+          {/case}
+          {case value="user_gym"}<!-- personal GyM que ejecuta el arreglo  10 filtro="8"-->
+          {/case} 
+        {/exp:switchee}
+      {/exp:member:custom_profile_data} <!-- diferencia la sesion para la creacion del ticket -->   
   </div>
   <div class="col-sm-9"> <!-- listado de entradas de "Atencion por Garantia" -->
     <div class="panel bg-white box-shadow">

@@ -24,13 +24,9 @@
 		    </div>
 		  </div>
 		{/if}
-
 	{/exp:freeform:entries}
 
 	{exp:freeform:entries form_id="4" search:id_sol_garantia="{embed:entrada}" search:orden_tramite="9" limit="1" status="open" }
-		<!-- {freeform:field:accion_ticket}-{freeform:field:id_sol_garantia}-
-		{freeform:field:id_cliente}-{freeform:field:orden_tramite} -->
-
 		{if freeform:field:orden_tramite=='9'}
 			<?php $paso_nueve="1"; ?>
 			<div class="panel">
@@ -45,7 +41,6 @@
               paso="9"
               id_cliente="{freeform:field:id_cliente}"
               entry_id="{freeform:entry_id}" }
-
 		    </div>
 		  </div>
 		{/if}
