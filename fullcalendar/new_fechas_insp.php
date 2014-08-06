@@ -3,14 +3,6 @@
 
 		  echo json_encode(array(
 			            array(
-			                'id' => 222,
-			                'title' => "05-08-2014",
-			                'start' => "2014-08-05",
-			                'color' => "#78BE20", 
-			                'textColor' => "black",
-			                'url' => "$site_url/main/user_request_book/$id_sol_garantia/05-08-2014"
-			              ),
-			            array(
 			                'id' => 224,
 			                'title' => "07-08-2014",
 			                'start' => "2014-08-07",
@@ -65,6 +57,78 @@
 			                'color' => "#78BE20", 
 			                'textColor' => "black",
 			                'url' => "$site_url/main/user_request_book/$id_sol_garantia/28-08-2014"
+			              ),
+			            array(
+			                'id' => 250,
+			                'title' => "02-09-2014",
+			                'start' => "2014-09-02",
+			                'color' => "#78BE20", 
+			                'textColor' => "black",
+			                'url' => "$site_url/main/user_request_book/$id_sol_garantia/02-09-2014"
+			              ),
+			            array(
+			                'id' => 252,
+			                'title' => "04-09-2014",
+			                'start' => "2014-09-04",
+			                'color' => "#78BE20", 
+			                'textColor' => "black",
+			                'url' => "$site_url/main/user_request_book/$id_sol_garantia/04-09-2014"
+			              ),
+			            array(
+			                'id' => 257,
+			                'title' => "09-09-2014",
+			                'start' => "2014-09-09",
+			                'color' => "#78BE20", 
+			                'textColor' => "black",
+			                'url' => "$site_url/main/user_request_book/$id_sol_garantia/09-09-2014"
+			              ),
+			            array(
+			                'id' => 259,
+			                'title' => "11-09-2014",
+			                'start' => "2014-09-11",
+			                'color' => "#78BE20", 
+			                'textColor' => "black",
+			                'url' => "$site_url/main/user_request_book/$id_sol_garantia/11-09-2014"
+			              ),
+			            array(
+			                'id' => 264,
+			                'title' => "16-09-2014",
+			                'start' => "2014-09-16",
+			                'color' => "#78BE20", 
+			                'textColor' => "black",
+			                'url' => "$site_url/main/user_request_book/$id_sol_garantia/16-09-2014"
+			              ),
+			            array(
+			                'id' => 266,
+			                'title' => "18-09-2014",
+			                'start' => "2014-09-18",
+			                'color' => "#78BE20", 
+			                'textColor' => "black",
+			                'url' => "$site_url/main/user_request_book/$id_sol_garantia/18-09-2014"
+			              ),
+			            array(
+			                'id' => 271,
+			                'title' => "23-09-2014",
+			                'start' => "2014-09-23",
+			                'color' => "#78BE20", 
+			                'textColor' => "black",
+			                'url' => "$site_url/main/user_request_book/$id_sol_garantia/23-09-2014"
+			              ),
+			            array(
+			                'id' => 273,
+			                'title' => "25-09-2014",
+			                'start' => "2014-09-25",
+			                'color' => "#78BE20", 
+			                'textColor' => "black",
+			                'url' => "$site_url/main/user_request_book/$id_sol_garantia/25-09-2014"
+			              ),
+			            array(
+			                'id' => 278,
+			                'title' => "30-09-2014",
+			                'start' => "2014-09-30",
+			                'color' => "#78BE20", 
+			                'textColor' => "black",
+			                'url' => "$site_url/main/user_request_book/$id_sol_garantia/30-09-2014"
 			              ),
 		  
 		  ));

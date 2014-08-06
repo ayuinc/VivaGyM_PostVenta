@@ -20,11 +20,11 @@ $persona_asignada=$_POST['persona_asignada'];
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
 	<?php if($paso=="4") { ?> 
-	<h1>¡Listo! El Inspector <?php echo $persona_asignada; ?> ha sido asignado a la solicitud #<?php echo $id_sol_garantia; ?></h1>
+	<h1>¡Listo! El Inspector {embed="includes/nombre_per" p_find="<?php echo $persona_asignada; ?>"} ha sido asignado a la solicitud #<?php echo $id_sol_garantia; ?></h1>
 		<?php } ?>
 
 	<?php if($paso=="8") { ?> 
-	<h1>¡Listo! El ejecutor <?php echo $persona_asignada; ?> ha sido asignado para el arreglo de la solicitud #<?php echo $id_sol_garantia; ?></h1>
+	<h1>¡Listo! El ejecutor {embed="includes/nombre_per" p_find="<?php echo $persona_asignada; ?>"} ha sido asignado para el arreglo de la solicitud #<?php echo $id_sol_garantia; ?></h1>
 		<?php } ?>
   <p>
 		{exp:get_post_vars parse="inward"}

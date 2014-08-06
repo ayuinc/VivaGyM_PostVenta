@@ -1,0 +1,9 @@
+<?php $id_sol_garantia="{embed:entrada}"; ?>
+
+{exp:freeform:entries form_id="4" search:id_sol_garantia="{embed:entrada}" search:orden_tramite="{embed:orden_tramite}"  limit="1" status="open|closed" }
+  {if freeform:field:informe_inspeccion!=''}
+    {exp:explode separator=" " string="{freeform:field:informe_inspeccion}"}
+      <a target="_blank" href="{site_url}informes_viva/{exp_value}">Ver reporte {exp_count}</a><br>
+    {/exp:explode}
+  {/if}
+{/exp:freeform:entries}

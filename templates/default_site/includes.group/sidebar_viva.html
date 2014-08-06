@@ -253,29 +253,35 @@
 				    </div>
 
 				    <div class="form-group">
-		      		<small>Relacion con el dueño del departamento</small> 
-              <select name="relacion_dueno_departamento" class="form-control select-override">
-                <option value="">Seleccione</option>
-                <option value="Familiar" <?php if($rel=="familiar"){echo 'selected="selected"';} ?>>Familiar</option>
-                <option value="Amigo" <?php if($rel=="amigo"){echo 'selected="selected"';} ?>>Amigo</option>
-              </select>
+		      		<small>Asigna a alguien para coordinar el arreglo <a data-toggle="collapse" href="#form-collapse" class="underline">aquí</a></small> 
 				    </div>
 
-				    <div class="form-group">
-		      		<small>Nombre del encargado de la atención</small> 
-              <input type="text" placeholder="Nombre" name="nombre_encargado_atencion" class=" form-control" 
-              value="{freeform:field:nombre_encargado_atencion}">
-				    </div>
+				    <div id="form-collapse" class="collapse">
+				    	<div class="form-group">
+			      		<small>Relacion con el dueño del departamento</small> 
+	              <select name="relacion_dueno_departamento" class="form-control select-override">
+	                <option value="">Seleccione</option>
+	                <option value="Familiar" <?php if($rel=="familiar"){echo 'selected="selected"';} ?>>Familiar</option>
+	                <option value="Amigo" <?php if($rel=="amigo"){echo 'selected="selected"';} ?>>Amigo</option>
+	              </select>
+					    </div>
 
-				    <div class="form-group">
-		      		<small>Celular del encargado de la atención</small> 
-              <input type="text" placeholder="Celular" name="celular_encargado_atencion" class=" form-control" value="{freeform:field:celular_encargado_atencion}">
-				    </div>
+					    <div class="form-group">
+			      		<small>Nombre del encargado de la atención</small> 
+	              <input type="text" placeholder="Nombre" name="nombre_encargado_atencion" class=" form-control" 
+	              value="{freeform:field:nombre_encargado_atencion}">
+					    </div>
 
-				    <div class="form-group">
-		      		<small>Correo electrónico del encargado de la atención</small> 
-              <input type="email" placeholder="Correo electrónico" name="email_encargado_atencion" class=" form-control" value="{freeform:field:email_encargado_atencion}">
-				    </div>
+					    <div class="form-group">
+			      		<small>Celular del encargado de la atención</small> 
+	              <input type="text" placeholder="Celular" name="celular_encargado_atencion" class=" form-control" value="{freeform:field:celular_encargado_atencion}">
+					    </div>
+
+					    <div class="form-group">
+			      		<small>Correo electrónico del encargado de la atención</small> 
+	              <input type="email" placeholder="Correo electrónico" name="email_encargado_atencion" class=" form-control" value="{freeform:field:email_encargado_atencion}">
+					    </div>
+					  </div>
 
 		        <div class="text-left button-submit">
 		        	<input type="hidden" name="id_cliente" value="{freeform:field:id_cliente}" >

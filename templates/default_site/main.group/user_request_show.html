@@ -34,7 +34,7 @@
               <ul class="list-unstyled">
                 <li class="mb-7"><strong>Tipo de problema</strong><br>{freeform:field:tipo_de_problema}</li>
                 <li class="mb-7"><strong>Fecha</strong><br>{freeform:entry_date format="%j %F %Y"}</li>
-                <li class="mb-7"><strong>Responsable</strong><br>{freeform:field:persona_asignada_gym}</li>
+                <li class="mb-7"><strong>Responsable</strong><br>{embed="includes/nombre_per" p_find="{freeform:field:persona_asignada_viva}"}</li>
               </ul>
             </div>
             <div class="col-sm-6">

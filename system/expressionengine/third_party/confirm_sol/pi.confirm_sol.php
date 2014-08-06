@@ -127,19 +127,13 @@ class confirm_sol
 
 			// caso si pasas el ticket a "Inspección pendiente" sino lo cierras
 			$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_2 
-			SET form_field_12 = '11',
-			status = 'closed',
-			form_field_46 = '$txt_acc',
-			form_field_14 = '$persona_asignada_gym'
+			SET form_field_12 = '10', status = 'closed', form_field_46 = '$txt_acc', form_field_14 = '$persona_asignada_gym'
 			WHERE entry_id = $id_sol_garantia ");
 
 			$resultadog=mysql_query("insert into exp_freeform_form_entries_4 
 			(site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19,form_field_27) 
-			values ('1','$id_cliente','y','$ip','$entry_date','closed','$id_cliente','Cerrar el caso','$id_sol_garantia','10','Cerrado')");
+			values ('1','$id_cliente','y','$ip','$entry_date','open','$id_cliente','Cerrar el caso','$id_sol_garantia','10','')");
 
-			$resultadoh=mysql_query("insert into exp_freeform_form_entries_4 
-			(site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19,form_field_27) 
-			values ('1','$id_cliente','y','$ip','$entry_date','open','$id_cliente','Completar encuesta de satisfacción','$id_sol_garantia','11','')");
 		}
   } // fin viva_approve_sol
 
@@ -247,16 +241,12 @@ class confirm_sol
 
 		if($paso=="8") {
 			$texto_paso="Realizar Arreglo";
-			$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_2 
-				SET form_field_12 = '9',
-				form_field_31 = '$persona_asignada'
+			$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_2 SET form_field_12 = '9', form_field_31 = '$persona_asignada'
 				WHERE entry_id = $id_sol_garantia ");
 		}
 
 		$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_4 
-		SET status = 'closed',
-		entry_date = '$entry_date',
-		form_field_27 = '$mensaje_asig'
+		SET status = 'closed',entry_date = '$entry_date', form_field_27 = '$persona_asignada'
 		WHERE form_field_18 = $id_sol_garantia AND form_field_19 = $paso ");
 
 	} // fin gym_write_insp
@@ -321,7 +311,7 @@ class confirm_sol
 				WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 3 "); // volver el paso 3 a 0 eliminar las fechas
 
 			$sqlUpdate_a = mysql_query("UPDATE exp_freeform_form_entries_2 
-					SET form_field_12 = '4' WHERE entry_id = $id_sol_garantia ");
+					SET form_field_12 = '4', form_field_30 = '' WHERE entry_id = $id_sol_garantia ");
 
 			$query="DELETE FROM exp_freeform_form_entries_4 WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 4";
 			$resultborrar=mysql_query($query);
@@ -399,17 +389,13 @@ class confirm_sol
 
 			// caso si pasas el ticket a "Inspección pendiente" sino lo cierras
 			$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_2 
-			SET form_field_12 = '11',
-			status = 'closed'
+			SET form_field_12 = '10', status = 'closed'
 			WHERE entry_id = $id_sol_garantia ");
 
 			$resultadog=mysql_query("insert into exp_freeform_form_entries_4 
 			(site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19,form_field_27) 
-			values ('1','$id_cliente','y','$ip','$entry_date','closed','$id_cliente','Cerrar el caso','$id_sol_garantia','10','Cerrado')");
+			values ('1','$id_cliente','y','$ip','$entry_date','open','$id_cliente','Cerrar el caso','$id_sol_garantia','10','')");
 
-			$resultadoh=mysql_query("insert into exp_freeform_form_entries_4 
-			(site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19,form_field_27) 
-			values ('1','$id_cliente','y','$ip','$entry_date','open','$id_cliente','Completar encuesta de satisfacción','$id_sol_garantia','11','')");
 		}
 	} // fin viva_approve_fix
 
@@ -487,7 +473,7 @@ class confirm_sol
 				SET entry_date = '0', edit_date = '0', status = 'open', form_field_25 = '' 
 				WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 7 "); // volver el paso 3 a 0 eliminar las fechas
 
-			$sqlUpdate_a = mysql_query("UPDATE exp_freeform_form_entries_2 SET form_field_12 = '7' WHERE entry_id = $id_sol_garantia ");
+			$sqlUpdate_a = mysql_query("UPDATE exp_freeform_form_entries_2 SET form_field_12 = '7', form_field_31 = '' WHERE entry_id = $id_sol_garantia ");
 
 			$query="DELETE FROM exp_freeform_form_entries_4 WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 8";
 			$resultborrar=mysql_query($query);
@@ -532,6 +518,10 @@ class confirm_sol
 		// caso si pasas el ticket a "Inspección pendiente" sino lo cierras
 		$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_2 
 		SET form_field_12 = '11', status = 'closed' WHERE entry_id = $id_sol_garantia ");
+
+		$resultadoh=mysql_query("insert into exp_freeform_form_entries_4 
+			(site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19,form_field_27) 
+			values ('1','$id_cliente','y','$ip','$entry_date','open','$id_cliente','Completar encuesta de satisfacción','$id_sol_garantia','11','')");
 
 	}
 

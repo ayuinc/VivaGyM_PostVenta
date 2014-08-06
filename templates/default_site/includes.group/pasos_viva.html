@@ -46,17 +46,27 @@ $tit_problema = $obten[15];
           if (empty($procede)) { ?> 
           <?php } else { echo "La solicitud de inspección ha sido ".strtoupper($procede); } } ?> 
 
-          <?php $fecha=$proy_long['form_field_25']; 
+          <?php $fecha_re=$proy_long['form_field_25']; 
           if($paso==3){ 
-                if (empty($fecha)) { } 
-                else { echo "Inspección agendada para ".$fecha; }  
-          }; ?>
-
-          <?php $insp_cuatro=$proy_long['form_field_27']; 
-          if($paso==4){
-            if (empty($insp_cuatro)) { echo "";} 
-            else { echo "Agente ".$insp_cuatro; } 
+            if (!empty($fecha_re)) { $reagenda_c=$proy_long['form_field_32'];
+              if ($reagenda_c==0) { echo "Inspección agendada para ".$fecha_re;}
+              if ($reagenda_c==1) { echo "Inspección agendada para ".$fecha_re;}
+              if ($reagenda_c==2) { echo "Inspección reagendada para ".$fecha_re;}
+              if ($reagenda_c>2) { echo "Inspección reagendada para ".$fecha_re;}
+              if ($reagenda_c<3) {  ?>
+              <!-- <a href="{site_url}main/<?php echo "user_request_book/".$id_sol_garantia; ?>" >Reagendar</a> -->
+              <?php 
+              } 
+            }
+            else {  }
           } ?>
+
+          <?php $insp_cuatro=$proy_long['form_field_27']; if($paso==4){ 
+            if (empty($insp_cuatro)) { echo ""; } else { echo "Agente asignado: "; ?>
+            {exp:freeform:entries form_id="2" entry_id="{segment_3}" limit="1" status="open|closed" }
+            {embed="includes/nombre_per" p_find="{freeform:field:inspector_asignado}"} 
+            {/exp:freeform:entries}
+            <?php } } ?>
 
           <?php $fecha_re=$proy_long['form_field_25']; ?>
           <?php if($paso==5){ if (!empty($fecha_re)) { echo "Inspección realizada el ".$proy_long['form_field_25'];} } ?>
@@ -66,12 +76,25 @@ $tit_problema = $obten[15];
 
           <?php $fecha_siete=$proy_long['form_field_25']; 
           if($paso==7){ 
-            if (empty($fecha_siete)) { } 
-            else { echo "Arreglo agendado para ".$fecha_siete; }
-          } ?> 
+                if (!empty($fecha_siete)) { $reagenda=$proy_long['form_field_32'];
+                  if ($reagenda==0) { echo "Arreglo agendado para ".$fecha_siete;}
+                  if ($reagenda==1) { echo "Arreglo agendado para ".$fecha_siete;}
+                  if ($reagenda==2) { echo "Arreglo reagendado para ".$fecha_siete;}
+                  if ($reagenda>2) { echo "Arreglo reagendado para ".$fecha_siete;}
+                  if ($reagenda<3) {  ?>
+                  <!-- <a href="{site_url}main/<?php echo "user_request_fixing/".$id_sol_garantia; ?>" >Reagendar</a> -->
+                  <?php 
+                  } 
+                }
+                else {  }
+          } ?>
 
           <?php $asigb=$proy_long['form_field_27']; if($paso==8){ 
-            if (empty($asigb)) { echo ""; } else { echo "Agente ".$asigb; } } ?>
+            if (empty($asigb)) { echo ""; } else { echo "Agente asignado: "; ?>
+            {exp:freeform:entries form_id="2" entry_id="{segment_3}" limit="1" status="open|closed" }
+            {embed="includes/nombre_per" p_find="{freeform:field:constructor_asignado}"} 
+            {/exp:freeform:entries}
+            <?php } } ?>
 
           <?php $fecha_nueve=$proy_long['form_field_25']; if($paso==9){ 
             if (empty($fecha_nueve)) { } else { echo "Arreglo realizado el ".$fecha_nueve; } } ?> 
@@ -80,24 +103,14 @@ $tit_problema = $obten[15];
             if (empty($procedeb)) { } else { echo $procedec; } } ?>
 
         </td>
-<!--         <td>
+        <td>
           <?php if($paso==5){ ?>
-            {exp:freeform:entries form_id="4" search:id_sol_garantia="{embed:entrada}" search:orden_tramite="5"  limit="1" status="open|closed" } 
-            <?php $archivo_cinco="{freeform:field:informe_inspeccion}";  
-              if(!empty($archivo_cinco)) {  ?>
-              <a target="_blank" href="{site_url}informes_viva/{freeform:field:informe_inspeccion}" >Ver reporte</a>
-              <?php }  ?>
-            {/exp:freeform:entries}
+            {embed="includes/archivos_ticket_lista" orden_tramite="5" entrada="{embed:entrada}"}
           <?php } ?>
 
           <?php if($paso==9){ ?>
-            {exp:freeform:entries form_id="4" search:id_sol_garantia="{embed:entrada}" search:orden_tramite="9"  limit="1" status="open|closed" } 
-            <?php $archivo_nueve="{freeform:field:informe_inspeccion}";  
-              if(!empty($archivo_nueve)) {  ?>
-              <a target="_blank" href="{site_url}informes_viva/{freeform:field:informe_inspeccion}" >Ver reporte</a>
-              <?php }  ?>
-            {/exp:freeform:entries}
-          <?php } ?> </td> -->
+            {embed="includes/archivos_ticket_lista" orden_tramite="9" entrada="{embed:entrada}"}
+          <?php } ?> </td>
       </tr>
 
     

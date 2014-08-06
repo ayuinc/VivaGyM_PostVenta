@@ -1,5 +1,16 @@
 {embed="includes/header" }
 
+{exp:member:custom_profile_data} <!-- actualizar la pagina cada 10 minutos de acuerdo a la sesion -->
+  {exp:switchee variable = "{member_group}" parse="inward"}
+    {case value="admin_viva"}
+      <meta content="600" http-equiv="REFRESH"> </meta>
+    {/case}
+    {case value="admin_gym"}
+      <meta content="600" http-equiv="REFRESH"> </meta>
+    {/case}
+  {/exp:switchee}
+{/exp:member:custom_profile_data} <!-- actualizar la pagina cada 10 minutos de acuerdo a la sesion -->
+
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
 
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
