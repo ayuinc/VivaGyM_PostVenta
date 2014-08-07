@@ -21,10 +21,6 @@ $plugin_info = array(
 
 class Mandrillapp {
 
-	function __construct() {
-  	$site_url="http://162.243.222.54";
-  }
-
 	function usage()
 	{
 		ob_start(); 
@@ -87,7 +83,7 @@ class Mandrillapp {
 												<td><br></td>
 											</tr>
 											<tr>
-												<td align='right'><img src='$site_url/images/logo-viva.png' style='width:100px; height: auto;'>
+												<td align='right'><img src='http://162.243.222.54/images/logo-viva.png' style='width:100px; height: auto;'>
 												</td>
 											</tr>
 											<tr>
@@ -119,7 +115,7 @@ class Mandrillapp {
 							<tr>
 								<td align='center'><p></p>
 									<span style='font-size: 12px;'>2014 Viva GyM Servicio de posventa, todos los derechos reservados.</span><br>
-									<img src='$site_url/images/logo-plomo.png' style='width:80px; height: auto;'>
+									<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
 								</td>
 							</tr>
 						</table>
@@ -180,7 +176,7 @@ class Mandrillapp {
 												<td><br></td>
 											</tr>
 											<tr>
-												<td align='right'><img src='$site_url/images/logo-viva.png' style='width:100px; height: auto;'>
+												<td align='right'><img src='http://162.243.222.54/images/logo-viva.png' style='width:100px; height: auto;'>
 												</td>
 											</tr>
 											<tr>
@@ -204,7 +200,7 @@ class Mandrillapp {
 							<tr>
 								<td align='center'><p></p>
 									<span style='font-size: 12px;'>2014 Viva GyM Servicio de posventa, todos los derechos reservados.</span><br>
-									<img src='$site_url/images/logo-plomo.png' style='width:80px; height: auto;'>
+									<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
 								</td>
 							</tr>
 						</table>
@@ -266,7 +262,7 @@ class Mandrillapp {
  		$subject= "No se pudo realizar el arreglo";
  		$from= $TMPL->fetch_param('from');
  		$id_sol_garantia =  $TMPL->fetch_param('id_sol_garantia');
- 		$result_aus=mysql_query("SELECT * FROM exp_freeform_form_entries_4 WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 9 ");$site_url/main/user_dashboard/51
+ 		$result_aus=mysql_query("SELECT * FROM exp_freeform_form_entries_4 WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 9 ");http://162.243.222.54/main/user_dashboard/51
 		$obten_aus=mysql_fetch_row($result_aus);
 		$cliente_ausente = $obten_aus[23];
  		//$text = $TMPL->tagdata;
@@ -293,14 +289,14 @@ class Mandrillapp {
 									<td><br></td>
 								</tr>
 								<tr>
-									<td align='right'><img src='$site_url/images/logo-viva.png' style='width:100px; height: auto;'>
+									<td align='right'><img src='http://162.243.222.54/images/logo-viva.png' style='width:100px; height: auto;'>
 									</td>
 								</tr>
 								<tr>
 								<td align='left'><h3>Estimado/a ".$name."</h3>
 									<span style='color: #898989;'>Le informamos que el agente de su caso ".$id_sol_garantia." ha visitado su departamento pero no pudo realizar el arreglo por no encontrarse nadie en el departamento.<p></span>
 									<br>
-									<span style='color: #898989;'>Por esta razón usted debe ingresar nuevamente a nuestra plataforma de servicio posventa y agendar nuevamente su visita de arreglo <a href='$site_url/main/user_request_show/".$id_sol_garantia."'>aquí</a>.<p>
+									<span style='color: #898989;'>Por esta razón usted debe ingresar nuevamente a nuestra plataforma de servicio posventa y agendar nuevamente su visita de arreglo <a href='http://162.243.222.54/main/user_request_show/".$id_sol_garantia."'>aquí</a>.<p>
 									<br>
 									Muchas gracias,<p>
 									<br>
@@ -318,7 +314,7 @@ class Mandrillapp {
 				<tr>
 					<td align='center'><p></p>
 						<span style='font-size: 12px;'>2014 Viva GyM Servicio de posventa, todos los derechos reservados.</span><br>
-						<img src='$site_url/images/logo-plomo.png' style='width:80px; height: auto;'>
+						<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
 					</td>
 				</tr>
 			</table>
@@ -403,14 +399,14 @@ class Mandrillapp {
 									<td><br></td>
 								</tr>
 								<tr>
-									<td align='right'><img src='$site_url/images/logo-viva.png' style='width:100px; height: auto;'>
+									<td align='right'><img src='http://162.243.222.54/images/logo-viva.png' style='width:100px; height: auto;'>
 									</td>
 								</tr>
 								<tr>
 								<td align='left'><h3>Estimado/a ".$name."</h3>
 									<span style='color: #898989;'>Le informamos que la persona responsable por realizar la inspeccion de su caso ".$id_sol_garantia." ha visitado su departamento pero no pudo realizar la inspección por no encontrarse nadie en el departamento.<p></span>
 									<br>
-									<span style='color: #898989;'>Por esta razón usted debe ingresar nuevamente a nuestra plataforma de servicio posventa y agendar nuevamente su visita de inspección <a href='$site_url/main/user_request_show/".$id_sol_garantia."'>aquí</a>.<p>
+									<span style='color: #898989;'>Por esta razón usted debe ingresar nuevamente a nuestra plataforma de servicio posventa y agendar nuevamente su visita de inspección <a href='http://162.243.222.54/main/user_request_show/".$id_sol_garantia."'>aquí</a>.<p>
 									<br>
 									Muchas gracias,<p>
 									Atentamente</span>
@@ -427,7 +423,7 @@ class Mandrillapp {
 				<tr>
 					<td align='center'><p></p>
 						<span style='font-size: 12px;'>2014 Viva GyM Servicio de posventa, todos los derechos reservados.</span><br>
-						<img src='$site_url/images/logo-plomo.png' style='width:80px; height: auto;'>
+						<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
 					</td>
 				</tr>
 			</table>
@@ -507,14 +503,14 @@ class Mandrillapp {
 									<td><br></td>
 								</tr>
 								<tr>
-									<td align='right'><img src='$site_url/images/logo-viva.png' style='width:100px; height: auto;'>
+									<td align='right'><img src='http://162.243.222.54/images/logo-viva.png' style='width:100px; height: auto;'>
 									</td>
 								</tr>
 								<tr>
 								<td align='left'><h3>Estimado/a ".$name."</h3>
 									<span style='color: #898989;'>Gracias por enviar su solicitud de requerimientos por el portal de posventa en línea de Viva GyM. <p>
 En los próximos $dias días le estaremos informando por correo electrónico y mediante el portal de post-venta si la inspección por un técnico de nuestro equipo procede. Recuerde que en la mayoría de los casos, la vigencia de la garantía es necesaria para que los arreglos procedan. <p></span>
-<span style='color: #898989;'>Usted puede hacerle seguimiento a su solicitud <a href='$site_url/main/user_dashboard/".$member_id."'> aquí</a>.<p>
+<span style='color: #898989;'>Usted puede hacerle seguimiento a su solicitud <a href='http://162.243.222.54/main/user_dashboard/".$member_id."'> aquí</a>.<p>
 Esperamos servirle de la mejor manera durante este proceso. No olvide revisar el Manual del Propietario para cuidar de su departamento todos los días.<p>
 Atentamente</span>
 									<p>
@@ -530,7 +526,7 @@ Atentamente</span>
 				<tr>
 					<td align='center'><p></p>
 						<span style='font-size: 12px;'>2014 Viva GyM Servicio de posventa, todos los derechos reservados.</span><br>
-						<img src='$site_url/images/logo-plomo.png' style='width:80px; height: auto;'>
+						<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
 					</td>
 				</tr>
 			</table>
@@ -608,14 +604,14 @@ Atentamente</span>
 									<td><br></td>
 								</tr>
 								<tr>
-									<td align='right'><img src='$site_url/images/logo-viva.png' style='width:100px; height: auto;'>
+									<td align='right'><img src='http://162.243.222.54/images/logo-viva.png' style='width:100px; height: auto;'>
 									</td>
 								</tr>
 								<tr>
 								<td align='left'><h3>Estimado/a ".$name."</h3>
 									<span style='color: #898989;'>Gracias por culminar el proceso de atención de su solicitud número: ".$id_sol_garantia.".
  		Adjunto encontrará el reporte del arreglo realizado por GyM.<p>
- 		Aprovechamos para recordarle que en el Manual del Propietario otorgado al momento de la entrega de su departamento se especifica el correcto uso y mantenimiento preventivo que se le debe realizar a sus instalaciones a fin de evitar que estas fallen por el propio uso que provoca el desgaste natural.  Puede encontrar el Manual en nuestro portal de post-venta en línea.</span><a href='$site_url/images/manual_propietario.pdf'>Manual de Usuario</a>.</span><p>
+ 		Aprovechamos para recordarle que en el Manual del Propietario otorgado al momento de la entrega de su departamento se especifica el correcto uso y mantenimiento preventivo que se le debe realizar a sus instalaciones a fin de evitar que estas fallen por el propio uso que provoca el desgaste natural.  Puede encontrar el Manual en nuestro portal de post-venta en línea.</span><a href='http://162.243.222.54/images/manual_propietario.pdf'>Manual de Usuario</a>.</span><p>
  		<span style='color: #898989;'>Es importante precisar que en caso se presentara alguna solicitud, observación y/o requerimiento adicional tras el arreglo debe llenar un nuevo reclamo en nuestro portal de post-venta en línea o comunicarte a nuestro Call Center de Atención al Cliente 206-7270. Este es el único mecanismo que garantiza la atención de su solicitud de post-venta, cualquier otra forma de solicitud no será atendida.<p>
  		Quedamos como siempre a su disposición si tiene alguna consulta o solicitud adicional.<p>
  		Llene nuestra encuesta de satisfaccion en el siguiente link: <a href=''>Encuesta</a>
@@ -633,7 +629,7 @@ Atentamente</span>
 				<tr>
 					<td align='center'><p></p>
 						<span style='font-size: 12px;'>2014 Viva GyM Servicio de posventa, todos los derechos reservados.</span><br>
-						<img src='$site_url/images/logo-plomo.png' style='width:80px; height: auto;'>
+						<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
 					</td>
 				</tr>
 			</table>
@@ -721,14 +717,14 @@ Atentamente</span>
 									<td><br></td>
 								</tr>
 								<tr>
-									<td align='right'><img src='$site_url/images/logo-viva.png' style='width:100px; height: auto;'>
+									<td align='right'><img src='http://162.243.222.54/images/logo-viva.png' style='width:100px; height: auto;'>
 									</td>
 								</tr>
 								<tr>
 								<td align='left'><h3>Estimado/a ".$name."</h3>
 									<span style='color: #898989;'>Gracias por culminar el proceso de atención de su solicitud número: ".$id_sol_garantia.".
  		Adjunto encontrará el reporte del arreglo realizado por GyM.<p>
- 		Aprovechamos para recordarle que en el Manual del Propietario otorgado al momento de la entrega de su departamento se especifica el correcto uso y mantenimiento preventivo que se le debe realizar a sus instalaciones a fin de evitar que estas fallen por el propio uso que provoca el desgaste natural.  Puede encontrar el Manual en nuestro portal de post-venta en línea. <a href='$site_url/images/manual_propietario.pdf'>Manual de Usuario</a>.</span><p>
+ 		Aprovechamos para recordarle que en el Manual del Propietario otorgado al momento de la entrega de su departamento se especifica el correcto uso y mantenimiento preventivo que se le debe realizar a sus instalaciones a fin de evitar que estas fallen por el propio uso que provoca el desgaste natural.  Puede encontrar el Manual en nuestro portal de post-venta en línea. <a href='http://162.243.222.54/images/manual_propietario.pdf'>Manual de Usuario</a>.</span><p>
  		<span style='color: #898989;'>Es importante precisar que en caso se presentara alguna solicitud, observación y/o requerimiento adicional tras el arreglo debe llenar un nuevo reclamo en nuestro portal de post-venta en línea o comunicarte a nuestro Call Center de Atención al Cliente 206-7270. Este es el único mecanismo que garantiza la atención de su solicitud de post-venta, cualquier otra forma de solicitud no será atendida.<p>
  		Quedamos como siempre a su disposición si tiene alguna consulta o solicitud adicional.<p>
  		Atentamente</span>
@@ -745,7 +741,7 @@ Atentamente</span>
 				<tr>
 					<td align='center'><p></p>
 						<span style='font-size: 12px;'>2014 Viva GyM Servicio de posventa, todos los derechos reservados.</span><br>
-						<img src='$site_url/images/logo-plomo.png' style='width:80px; height: auto;'>
+						<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
 					</td>
 				</tr>
 			</table>
@@ -838,12 +834,12 @@ Atentamente</span>
 											<td><br></td>
 										</tr>
 										<tr>
-											<td align='right'><img src='$site_url/images/logo-viva.png' style='width:100px; height: auto;'>
+											<td align='right'><img src='http://162.243.222.54/images/logo-viva.png' style='width:100px; height: auto;'>
 											</td>
 										</tr>
 										<tr>
 										<td align='left'><h3>Estimado/a ".$name."</h3>
-											<span style='color: #898989;'>Tras analizar su solicitud de requerimiento número ".$id_sol_garantia." le confirmamos que se ha determinado que el arreglo reportado: ".$tit_problema.", procede. Para que se acerque un especialista a arreglar el daño debe agendar una cita ingresando a nuestro portal de post-venta en línea <a href='$site_url/main/user_request_show/".$id_sol_garantia."'>aquí</a>.</span><p>
+											<span style='color: #898989;'>Tras analizar su solicitud de requerimiento número ".$id_sol_garantia." le confirmamos que se ha determinado que el arreglo reportado: ".$tit_problema.", procede. Para que se acerque un especialista a arreglar el daño debe agendar una cita ingresando a nuestro portal de post-venta en línea <a href='http://162.243.222.54/main/user_request_show/".$id_sol_garantia."'>aquí</a>.</span><p>
 							 <span style='color: #898989;'>Es importante precisar que en caso se presentara alguna solicitud, observación y/o requerimiento adicional tras el arreglo debe llenar un nuevo reclamo en nuestro portal de post-venta en línea o comunicarte a nuestro Call Center de Atención al Cliente 206-7270. Este es el único mecanismo que garantiza la atención de su solicitud de post-venta, cualquier otra forma de solicitud no será atendida.<p>
 							 Atentamente</span>
 											<p>
@@ -859,7 +855,7 @@ Atentamente</span>
 						<tr>
 							<td align='center'><p></p>
 								<span style='font-size: 12px;'>2014 Viva GyM Servicio de posventa, todos los derechos reservados.</span><br>
-								<img src='$site_url/images/logo-plomo.png' style='width:80px; height: auto;'>
+								<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
 							</td>
 						</tr>
 					</table>
@@ -920,13 +916,13 @@ Atentamente</span>
 											<td><br></td>
 										</tr>
 										<tr>
-											<td align='right'><img src='$site_url/images/logo-viva.png' style='width:100px; height: auto;'>
+											<td align='right'><img src='http://162.243.222.54/images/logo-viva.png' style='width:100px; height: auto;'>
 											</td>
 										</tr>
 										<tr>
 										<td align='left'><h3>Estimado/a ".$name."</h3>
 											<span style='color: #898989;'>Tras analizar su solicitud de requerimiento número ".$id_sol_garantia." le informamos que los especialistas de GyM han determinado que su arreglo no procede. La razón de esta decisión es: ".$comentarios.".</span><p>
- 			<span style='color: #898989;'>Aprovechamos para recordarle que en el Manual del Propietario otorgado al momento de la entrega de su departamento se especifica el correcto uso y mantenimiento preventivo que se le debe realizar a sus instalaciones a fin de evitar que estas fallen por el propio uso que provoca el desgaste natural.  Puede encontrar el Manual en nuestro portal de post-venta en línea. <a href='$site_url/images/manual_propietario.pdf'>Manual de Usuario</a>.<p>
+ 			<span style='color: #898989;'>Aprovechamos para recordarle que en el Manual del Propietario otorgado al momento de la entrega de su departamento se especifica el correcto uso y mantenimiento preventivo que se le debe realizar a sus instalaciones a fin de evitar que estas fallen por el propio uso que provoca el desgaste natural.  Puede encontrar el Manual en nuestro portal de post-venta en línea. <a href='http://162.243.222.54/images/manual_propietario.pdf'>Manual de Usuario</a>.<p>
  			Quedamos como siempre a su disposición si tiene alguna consulta o solicitud adicional puede llamar a nuestro Call Center de Atención al Cliente al 206-7270.<p>
  			Atentamente</span>
 											<p>
@@ -942,7 +938,7 @@ Atentamente</span>
 						<tr>
 							<td align='center'><p></p>
 								<span style='font-size: 12px;'>2014 Viva GyM Servicio de posventa, todos los derechos reservados.</span><br>
-								<img src='$site_url/images/logo-plomo.png' style='width:80px; height: auto;'>
+								<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
 							</td>
 						</tr>
 					</table>
@@ -1026,13 +1022,13 @@ Atentamente</span>
 														<td><br></td>
 													</tr>
 													<tr>
-														<td align='right'><img src='$site_url/images/logo-viva.png' style='width:100px; height: auto;'>
+														<td align='right'><img src='http://162.243.222.54/images/logo-viva.png' style='width:100px; height: auto;'>
 														</td>
 													</tr>
 													<tr>
 													<td align='left'><h3>Estimado/a ".$name."</h3>
 														<span style='color: #898989;'>Tras analizar su solicitud de requerimiento número ".$id_sol_garantia.", le confirmamos que se realizará la inspección del daño reportado 
-				".$tit_problema." a través del sistema de post-venta en línea de Viva GyM. Para proceder con la inspección debe agendar su cita en nuestro portal de posventa en línea. Por favor agende su visita <a href='$site_url/main/user_request_show/".$id_sol_garantia."'>aquí</a>. Ahí deberá seleccionar un horario en el que con seguridad usted o alguien más se encontrará en su hogar para que reciba al especialista que inspeccionará el problema.<p>
+				".$tit_problema." a través del sistema de post-venta en línea de Viva GyM. Para proceder con la inspección debe agendar su cita en nuestro portal de posventa en línea. Por favor agende su visita <a href='http://162.243.222.54/main/user_request_show/".$id_sol_garantia."'>aquí</a>. Ahí deberá seleccionar un horario en el que con seguridad usted o alguien más se encontrará en su hogar para que reciba al especialista que inspeccionará el problema.<p>
 			Quedamos como siempre a su disposición si tiene alguna consulta o solicitud adicional puede llamar a nuestro Call Center de Atención al Cliente al 206-7270.<p>
 			Atentamente</span>
 														<p>
@@ -1048,7 +1044,7 @@ Atentamente</span>
 									<tr>
 										<td align='center'><p></p>
 											<span style='font-size: 12px;'>2014 Viva GyM Servicio de posventa, todos los derechos reservados.</span><br>
-											<img src='$site_url/images/logo-plomo.png' style='width:80px; height: auto;'>
+											<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
 										</td>
 									</tr>
 								</table>
@@ -1113,14 +1109,14 @@ Atentamente</span>
 																	<td><br></td>
 																</tr>
 																<tr>
-																	<td align='right'><img src='$site_url/images/logo-viva.png' style='width:100px; height: auto;'>
+																	<td align='right'><img src='http://162.243.222.54/images/logo-viva.png' style='width:100px; height: auto;'>
 																	</td>
 																</tr>
 																<tr>
 																<td align='left'><h3>Estimado/a ".$name."</h3>
 																	<span style='color: #898989;'>Tras analizar su solicitud de requerimiento número ".$id_sol_garantia.", le confirmamos que se ha determinado que su requerimiento es improcedente debido a: ".$comentarios.".<p>
 				Por esta razón no corresponde enviar a un especialista a verificar el problema.
-			Aprovechamos para recordarle que en el Manual del Propietario otorgado al momento de la entrega de su departamento se especifica el correcto uso y mantenimiento preventivo que se le debe realizar a sus instalaciones a fin de evitar que estas fallen por el propio uso que provoca el desgaste natural.  Puede encontrar el Manual en nuestro portal de post-venta en línea. </span><a href='$site_url/images/manual_propietario.pdf'>Manual de Usuario</a>.<p>
+			Aprovechamos para recordarle que en el Manual del Propietario otorgado al momento de la entrega de su departamento se especifica el correcto uso y mantenimiento preventivo que se le debe realizar a sus instalaciones a fin de evitar que estas fallen por el propio uso que provoca el desgaste natural.  Puede encontrar el Manual en nuestro portal de post-venta en línea. </span><a href='http://162.243.222.54/images/manual_propietario.pdf'>Manual de Usuario</a>.<p>
 			<span style='color: #898989;'>Quedamos como siempre a su disposición si tiene alguna consulta o solicitud adicional puede llamar a nuestro Call Center de Atención al Cliente al 206-7270.<p>
 			Atentamente</span>
 																	<p>
@@ -1136,7 +1132,7 @@ Atentamente</span>
 												<tr>
 													<td align='center'><p></p>
 														<span style='font-size: 12px;'>2014 Viva GyM Servicio de posventa, todos los derechos reservados.</span><br>
-														<img src='$site_url/images/logo-plomo.png' style='width:80px; height: auto;'>
+														<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
 													</td>
 												</tr>
 											</table>
@@ -1213,7 +1209,7 @@ Atentamente</span>
 																	<td><br></td>
 																</tr>
 																<tr>
-																	<td align='right'><img src='$site_url/images/logo-viva.png' style='width:100px; height: auto;'>
+																	<td align='right'><img src='http://162.243.222.54/images/logo-viva.png' style='width:100px; height: auto;'>
 																	</td>
 																</tr>
 																<tr>
@@ -1239,7 +1235,7 @@ Atentamente</span>
 												<tr>
 													<td align='center'><p></p>
 														<span style='font-size: 12px;'>2014 Viva GyM Servicio de posventa, todos los derechos reservados.</span><br>
-														<img src='$site_url/images/logo-plomo.png' style='width:80px; height: auto;'>
+														<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
 													</td>
 												</tr>
 											</table>
@@ -1316,7 +1312,7 @@ Atentamente</span>
 															<td><br></td>
 														</tr>
 														<tr>
-															<td align='right'><img src='$site_url/images/logo-viva.png' style='width:100px; height: auto;'>
+															<td align='right'><img src='http://162.243.222.54/images/logo-viva.png' style='width:100px; height: auto;'>
 															</td>
 														</tr>
 														<tr>
@@ -1342,7 +1338,7 @@ Atentamente</span>
 										<tr>
 											<td align='center'><p></p>
 												<span style='font-size: 12px;'>2014 Viva GyM Servicio de posventa, todos los derechos reservados.</span><br>
-												<img src='$site_url/images/logo-plomo.png' style='width:80px; height: auto;'>
+												<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
 											</td>
 										</tr>
 									</table>
@@ -1416,7 +1412,7 @@ Atentamente</span>
 													<td><br></td>
 												</tr>
 												<tr>
-													<td align='right'><img src='$site_url/images/logo-viva.png' style='width:100px; height: auto;'>
+													<td align='right'><img src='http://162.243.222.54/images/logo-viva.png' style='width:100px; height: auto;'>
 													</td>
 												</tr>
 												<tr>
@@ -1437,7 +1433,7 @@ Atentamente</span>
 								<tr>
 									<td align='center'><p></p>
 										<span style='font-size: 12px;'>2014 Viva GyM Servicio de posventa, todos los derechos reservados.</span><br>
-										<img src='$site_url/images/logo-plomo.png' style='width:80px; height: auto;'>
+										<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
 									</td>
 								</tr>
 							</table>
@@ -1522,7 +1518,7 @@ Atentamente</span>
 															<td><br></td>
 														</tr>
 														<tr>
-															<td align='right'><img src='$site_url/images/logo-viva.png' style='width:100px; height: auto;'>
+															<td align='right'><img src='http://162.243.222.54/images/logo-viva.png' style='width:100px; height: auto;'>
 															</td>
 														</tr>
 														<tr>
@@ -1547,7 +1543,7 @@ Atentamente</span>
 										<tr>
 											<td align='center'><p></p>
 												<span style='font-size: 12px;'>2014 Viva GyM Servicio de posventa, todos los derechos reservados.</span><br>
-												<img src='$site_url/images/logo-plomo.png' style='width:80px; height: auto;'>
+												<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
 											</td>
 										</tr>
 									</table>
@@ -1640,7 +1636,7 @@ Atentamente</span>
 															<td><br></td>
 														</tr>
 														<tr>
-															<td align='right'><img src='$site_url/images/logo-viva.png' style='width:100px; height: auto;'>
+															<td align='right'><img src='http://162.243.222.54/images/logo-viva.png' style='width:100px; height: auto;'>
 															</td>
 														</tr>
 														<tr>
@@ -1672,7 +1668,7 @@ Atentamente</span>
 										<tr>
 											<td align='center'><p></p>
 												<span style='font-size: 12px;'>2014 Viva GyM Servicio de posventa, todos los derechos reservados.</span><br>
-												<img src='$site_url/images/logo-plomo.png' style='width:80px; height: auto;'>
+												<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
 											</td>
 										</tr>
 									</table>
@@ -1759,7 +1755,7 @@ Atentamente</span>
 															<td><br></td>
 														</tr>
 														<tr>
-															<td align='right'><img src='$site_url/images/logo-viva.png' style='width:100px; height: auto;'>
+															<td align='right'><img src='http://162.243.222.54/images/logo-viva.png' style='width:100px; height: auto;'>
 															</td>
 														</tr>
 														<tr>
@@ -1782,7 +1778,7 @@ Atentamente</span>
 										<tr>
 											<td align='center'><p></p>
 												<span style='font-size: 12px;'>2014 Viva GyM Servicio de posventa, todos los derechos reservados.</span><br>
-												<img src='$site_url/images/logo-plomo.png' style='width:80px; height: auto;'>
+												<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
 											</td>
 										</tr>
 									</table>
