@@ -475,7 +475,7 @@ class Mandrillapp {
  		require_once 'mailchimp-mandrill-api-php/src/Mandrill.php'; 
  		$mandrill = new Mandrill('Svqgcw575OLrORu2WiD09g');
  		
- 		$to= $TMPL->fetch_param('to');
+ 		echo $to= $TMPL->fetch_param('to');
  		$name= $TMPL->fetch_param('name');
  		$subject= "Recepción de Solicitud de Requerimientos Viva GyM";
  		$from= $TMPL->fetch_param('from');
