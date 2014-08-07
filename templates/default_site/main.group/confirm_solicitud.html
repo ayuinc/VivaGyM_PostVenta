@@ -9,9 +9,8 @@
 {exp:member:custom_profile_data}
 {member_id}
 	{exp:user:stats member_id="{member_id}"}
-	{email_propietario}
 		{exp:mandrillapp:send_email_confirm_solicitud
-		  to="jcmoron82@gmail.com"
+		  to="{email_propietario}"
 		  name="{nombre_propietario}"
 		  from="admin@gym.com"
 		  dias="4"
