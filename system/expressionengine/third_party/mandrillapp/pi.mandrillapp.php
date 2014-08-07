@@ -475,15 +475,13 @@ class Mandrillapp {
  		require_once 'mailchimp-mandrill-api-php/src/Mandrill.php'; 
  		$mandrill = new Mandrill('Svqgcw575OLrORu2WiD09g');
  		
- 		// leer los datos del member de acuerdo al id
- 		echo "id cl: ".$id_cliente = $TMPL->fetch_param('id_cliente');
-
- 		 $to= $TMPL->fetch_param('to');
+ 		// leer los datos del member de acuerdo
+ 		echo $to= $TMPL->fetch_param('to');
  		$name= $TMPL->fetch_param('name');
  		$subject= "Recepción de Solicitud de Requerimientos Viva GyM";
  		$from= $TMPL->fetch_param('from');
  		$dias=  $TMPL->fetch_param('dias');
- 		
+ 		$id_cliente = $TMPL->fetch_param('id_cliente');
 
  		echo $text = "<!doctype html>
 	<html>
