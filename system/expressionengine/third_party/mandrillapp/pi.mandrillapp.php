@@ -482,11 +482,57 @@ class Mandrillapp {
  		$member_id = $TMPL->fetch_param('member_id');
  		//$text = $TMPL->tagdata;
 
- 		$text = "send_email_confirm_solicitud";
+ 		$text = "<!doctype html>
+	<html>
+	  <head>
+	    <meta charset='utf-8' />
+	    <title>Viva GyM</title>
+	  </head>
+		<body style='margin: 0px; background-color: #f1f1f1; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color: #898989;' bgcolor='#f1f1f1'>
+			<table align='center' width='90%' style='width:90%; margin-left: auto; margin-right: auto;'>
+				<tr style='background-color: #f1f1f1;' bgcolor='#f1f1f1'>
+					<td><p><br></p>
+					</td>
+				</tr>
+				<tr style='background-color: #ffffff;' bgcolor='#ffffff'>
+					<td>
 
- 		
- 		$cuerpo=$header_mail.$text.$footer_mail;
- 		/*'html' => '<p>FELICIDADES!!!</p><p>Ganaste el tema'.$topic.' ve a nuestro menú de temas y sigue participando</p>',*/
+						<div style='background-color: #ffffff;'>
+							<table align='center' width='90%' style='width:90%; margin-left: auto; margin-right: auto;'>
+								<tr>
+									<td><br></td>
+								</tr>
+								<tr>
+									<td align='right'><img src='http://162.243.222.54/images/logo-viva.png' style='width:100px; height: auto;'>
+									</td>
+								</tr>
+								<tr>
+								<td align='left'><h3>Estimado/a ".$name."</h3>
+									<span style='color: #898989;'>Gracias por enviar su solicitud de requerimientos por el portal de posventa en línea de Viva GyM. <p>
+En los próximos $dias días le estaremos informando por correo electrónico y mediante el portal de post-venta si la inspección por un técnico de nuestro equipo procede. Recuerde que en la mayoría de los casos, la vigencia de la garantía es necesaria para que los arreglos procedan. <p></span>
+<span style='color: #898989;'>Usted puede hacerle seguimiento a su solicitud <a href='http://162.243.222.54/main/user_dashboard/".$member_id."'> aquí</a>.</span><p>
+<span style='color: #898989;'>Esperamos servirle de la mejor manera durante este proceso. No olvide revisar el Manual del Propietario para cuidar de su departamento todos los días.<p>
+Atentamente</span>
+									<p>
+								</td>
+							</tr>
+							<tr>
+									<td><br></td>
+								</tr>
+							</table>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td align='center'><p></p>
+						<span style='font-size: 12px;'>2014 Viva GyM Servicio de posventa, todos los derechos reservados.</span><br>
+						<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
+					</td>
+				</tr>
+			</table>
+		</body>
+	</html>";
+
  		$message = array(
  		    'subject' => $subject,
  		    'from_email' => $from,
@@ -508,7 +554,7 @@ class Mandrillapp {
 
  		$template_content = array(
  		    array(
- 		        'name' => 'main',
+ 		        '	name' => 'main',
  		        'content' => 'Hi *|FIRSTNAME|* *|LASTNAME|*, thanks for signing up.'),
  		    array(
  		        'name' => 'footer',
@@ -516,8 +562,9 @@ class Mandrillapp {
 
  		);
 		$mandrill->messages->sendTemplate($template_name, $template_content, $message);
-		return "";
+		return '';
 	}
+	
 
 	function send_email_cerrar_caso(){
 		global $TMPL;
