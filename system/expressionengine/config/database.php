@@ -5,7 +5,7 @@ $active_record = TRUE;
 
 $db['expressionengine']['hostname'] = 'localhost';
 $db['expressionengine']['username'] = 'root';
-$db['expressionengine']['password'] = 'root';
+$db['expressionengine']['password'] = 'postventa2014';
 $db['expressionengine']['database'] = 'gym';
 $db['expressionengine']['dbdriver'] = 'mysql';
 $db['expressionengine']['pconnect'] = FALSE;
