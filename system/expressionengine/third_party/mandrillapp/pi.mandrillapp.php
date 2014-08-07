@@ -480,7 +480,7 @@ class Mandrillapp {
  		$subject= "Recepción de Solicitud de Requerimientos Viva GyM";
  		$from= $TMPL->fetch_param('from');
  		$dias=  $TMPL->fetch_param('dias');
- 		$member_id = $TMPL->fetch_param('member_id');
+ 		$id_cliente = $TMPL->fetch_param('id_cliente');
 
  		echo $text = "<!doctype html>
 	<html>
