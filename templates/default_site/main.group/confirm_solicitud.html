@@ -1,5 +1,5 @@
 {embed="includes/header"}
-<?php $id_cliente="{member_id}"; ?>
+<?php echo $id_cliente="{member_id}"; ?>
 
 {exp:confirm_sol:confirm_sol 
 	id_cliente="{member_id}" 
@@ -7,7 +7,7 @@
 {/exp:confirm_sol:confirm_sol}
 
 
-	{exp:user:stats member_id="{member_id}" parse="inward"}
+	{exp:user:stats member_id="{segment_3}"}
 	{nombre_propietario}
 		{exp:mandrillapp:send_email_confirm_solicitud
 		  to="{email_propietario}"
