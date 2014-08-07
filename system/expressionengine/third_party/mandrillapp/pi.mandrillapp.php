@@ -482,7 +482,7 @@ class Mandrillapp {
  		$dias=  $TMPL->fetch_param('dias');
  		$member_id = $TMPL->fetch_param('member_id');
 
- 		echo $text = "<!doctype html>
+ 		$text = "<!doctype html>
 	<html>
 	  <head>
 	    <meta charset='utf-8' />
