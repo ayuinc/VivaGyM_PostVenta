@@ -466,6 +466,7 @@ class Mandrillapp {
 			return "";
 		}
 	}
+
 	function send_email_confirm_solicitud(){
 		global $TMPL;
 		$this->EE =& get_instance(); // EEv2 syntax
@@ -480,9 +481,8 @@ class Mandrillapp {
  		$from= $TMPL->fetch_param('from');
  		$dias=  $TMPL->fetch_param('dias');
  		$member_id = $TMPL->fetch_param('member_id');
- 		//$text = $TMPL->tagdata;
 
- 		$text = "<!doctype html>
+ 		echo $text = "<!doctype html>
 	<html>
 	  <head>
 	    <meta charset='utf-8' />
@@ -564,7 +564,7 @@ Atentamente</span>
 	 		$mandrill->messages->sendTemplate($template_name, $template_content, $message);
 	 		return "";
 	}
-	
+
 
 	function send_email_cerrar_caso(){
 		global $TMPL;
