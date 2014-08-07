@@ -21,10 +21,6 @@ $plugin_info = array(
 
 class Mandrillapp {
 
-	function __construct() {
-  	$site_url="http://162.243.222.54";
-  }
-
 	function usage()
 	{
 		ob_start(); 
@@ -87,7 +83,7 @@ class Mandrillapp {
 												<td><br></td>
 											</tr>
 											<tr>
-												<td align='right'><img src='$site_url/images/logo-viva.png' style='width:100px; height: auto;'>
+												<td align='right'><img src='http://162.243.222.54/images/logo-viva.png' style='width:100px; height: auto;'>
 												</td>
 											</tr>
 											<tr>
@@ -119,7 +115,7 @@ class Mandrillapp {
 							<tr>
 								<td align='center'><p></p>
 									<span style='font-size: 12px;'>2014 Viva GyM Servicio de posventa, todos los derechos reservados.</span><br>
-									<img src='$site_url/images/logo-plomo.png' style='width:80px; height: auto;'>
+									<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
 								</td>
 							</tr>
 						</table>
