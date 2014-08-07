@@ -399,7 +399,81 @@ class confirm_sol
 		}
 	} // fin viva_approve_fix
 
+	public function gym_assign_ejecutor() // funcion para escribir el paso de asignar ejecutor
+  {
+  	global $TMPL;
+		$this->EE =& get_instance(); // EEv2 syntax
+		$TMPL = $this->EE->TMPL;
 
+		$id_cliente= $TMPL->fetch_param('id_cliente');
+		$relacion_dueno_departamento= $TMPL->fetch_param('relacion_dueno_departamento');
+		$fecha_atencion_ticket= $TMPL->fetch_param('fecha_atencion_ticket');
+		$hora_atencion_ticket= $TMPL->fetch_param('hora_atencion_ticket');
+		$id_sol_garantia= $TMPL->fetch_param('id_sol_garantia');
+		$nombre_encargado_atencion= $TMPL->fetch_param('nombre_encargado_atencion');
+		$celular_encargado_atencion= $TMPL->fetch_param('celular_encargado_atencion');
+		$email_encargado_atencion= $TMPL->fetch_param('email_encargado_atencion');
+
+		$ip=$_SERVER["REMOTE_ADDR"];
+		$date = date_create();
+		$entry_date=date_timestamp_get($date);	
+
+		$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_2 SET edit_date = '$entry_date' WHERE entry_id = $id_sol_garantia");
+
+		// dividir la fecha de llegada para sumar 1 a las visitas. revisar por q graba mal
+		$fecha_explode = explode("-", $fecha_atencion_ticket); 
+		$dia_consulta=$fecha_explode[0];
+		$mes_consulta=$fecha_explode[1];
+		$anio_consulta=$fecha_explode[2];
+
+			$result_ev=mysql_query("SELECT * FROM eventos WHERE dia_evento=$dia_consulta and mes_evento=$mes_consulta and anio_evento=$anio_consulta");
+		  $obten_ev=mysql_fetch_row($result_ev);
+		  $id_dia_consulta = $obten_ev[0];
+		  $cant_evento = $obten_ev[7];
+		  $sumar_evento=$cant_evento+1;
+		  $sqlUpdate_ev = mysql_query("UPDATE eventos SET cant_evento = $sumar_evento WHERE id_evento = $id_dia_consulta ");
+
+		if ($relacion_dueno_departamento==""){
+			$dueno_atiende_ticket="si";
+			} else {
+			$dueno_atiende_ticket="no";
+			}
+
+		$resultado=mysql_query("insert into exp_freeform_form_entries_4 
+		(site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19,
+			form_field_20,form_field_21,form_field_22,form_field_23,form_field_24,form_field_25,form_field_26) 
+		values ('1','$id_cliente','y','$ip','','open','$id_cliente','GyM Asignar Ejecutor','$id_sol_garantia','8'
+			,'$dueno_atiende_ticket','$relacion_dueno_departamento','$nombre_encargado_atencion','$celular_encargado_atencion','$email_encargado_atencion','$fecha_atencion_ticket','$hora_atencion_ticket')"); 
+
+		$resultado=mysql_query("insert into exp_freeform_form_entries_4 
+		(site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19) 
+		values ('1','$id_cliente','y','$ip','','open','$id_cliente','Realizar Arreglo','$id_sol_garantia','9')"); 
+
+		// lectura de nro de veces de reagendado
+		$result_reagenda=mysql_query("SELECT * FROM exp_freeform_form_entries_4 
+			WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 7 ");
+		$obten_reagenda=mysql_fetch_row($result_reagenda);
+		$cont_reagenda = $obten_reagenda[22];
+		$cont_reagenda_mas = $cont_reagenda+1;
+
+		$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_4 
+		SET status = 'closed',
+		entry_date = '$entry_date',
+		form_field_20 = '$dueno_atiende_ticket',
+		form_field_21 = '$relacion_dueno_departamento',
+		form_field_22 = '$nombre_encargado_atencion',
+		form_field_23 = '$celular_encargado_atencion',
+		form_field_24 = '$email_encargado_atencion',
+		form_field_25 = '$fecha_atencion_ticket',
+		form_field_26 = '$hora_atencion_ticket',
+		form_field_32 = '$cont_reagenda_mas'
+		WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 7");
+
+		$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_2 
+			SET form_field_12 = '8'
+			WHERE entry_id = $id_sol_garantia ");
+		
+	} // fin gym_assign_ejecutor
 
 	public function user_close() // funcion para generar los pasos en el form "Detalles ticket"
   {
