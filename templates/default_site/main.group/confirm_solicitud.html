@@ -6,16 +6,14 @@
 	rol="cli" }
 {/exp:confirm_sol:confirm_sol}
 
-{exp:member:custom_profile_data}
-	{exp:mandrillapp:send_email_confirm_solicitud
-		  to="{email_propietario}"
-		  name="{nombre_propietario}"
-		  from="admin@gym.com"
-		  dias="4"
-		  id_cliente="{member_id}"
-		}
-		{/exp:mandrillapp:send_email_confirm_solicitud}  
-{/exp:member:custom_profile_data}
+
+{exp:mandrillapp:send_email_confirm_solicitud
+	  from="admin@gym.com"
+	  dias="4"
+	  id_cliente="{member_id}"
+	}
+{/exp:mandrillapp:send_email_confirm_solicitud}  
+
 
 
 <div class="row">
