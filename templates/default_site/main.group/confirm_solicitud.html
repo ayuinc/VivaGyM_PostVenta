@@ -6,8 +6,7 @@
 	rol="cli" }
 {/exp:confirm_sol:confirm_sol}
 
-{exp:member:custom_profile_data}
-{member_id}
+
 	{exp:user:stats member_id="{member_id}"}
 	{email_propietario}
 		{exp:mandrillapp:send_email_confirm_solicitud
@@ -18,7 +17,7 @@
 		  member_id="{member_id}"}
 		{/exp:mandrillapp:send_email_confirm_solicitud}  
 	{/exp:user:stats}
-{/exp:member:custom_profile_data} 
+
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
