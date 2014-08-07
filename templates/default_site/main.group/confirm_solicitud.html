@@ -7,6 +7,7 @@
 {/exp:confirm_sol:confirm_sol}
 
 {exp:user:stats member_id="{post_id_cliente}"}
+{email_propietario}
 	{exp:mandrillapp:send_email_confirm_solicitud
 	  to="{email_propietario}"
 	  name="{nombre_propietario}"

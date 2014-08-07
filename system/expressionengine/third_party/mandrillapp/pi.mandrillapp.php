@@ -534,35 +534,35 @@ Atentamente</span>
 	</html>";
 
  		$message = array(
- 		    'subject' => $subject,
- 		    'from_email' => $from,
- 		    'html' => $text,
- 		    'to' => array(array('email' => $to, 'name' => $name)),
- 		    'merge_vars' => array(array(
-	 		        'rcpt' => 'recipient1@domain.com',
-	 		        'vars' =>
-	 		        array(
-	 		            array(
-	 		                'name' => 'FIRSTNAME',
-	 		                'content' => 'Recipient 1 first name'),
-	 		            array(
-	 		                'name' => 'LASTNAME',
-	 		                'content' => 'Last name')
-	 		    ))));
+	  		    'subject' => $subject,
+	  		    'from_email' => $from,
+	  		    'html' => $text,
+	  		    'to' => array(array('email' => $to, 'name' => $name)),
+	  		    'merge_vars' => array(array(
+	 	 		        'rcpt' => 'recipient1@domain.com',
+	 	 		        'vars' =>
+	 	 		        array(
+	 	 		            array(
+	 	 		                'name' => 'FIRSTNAME',
+	 	 		                'content' => 'Recipient 1 first name'),
+	 	 		            array(
+	 	 		                'name' => 'LASTNAME',
+	 	 		                'content' => 'Last name')
+	 	 		    ))));
 
- 		$template_name = 'test';
+	  		$template_name = 'test';
 
- 		$template_content = array(
- 		    array(
- 		        '	name' => 'main',
- 		        'content' => 'Hi *|FIRSTNAME|* *|LASTNAME|*, thanks for signing up.'),
- 		    array(
- 		        'name' => 'footer',
- 		        'content' => 'Copyright 2012.')
+	  		$template_content = array(
+	  		    array(
+	  		        'name' => 'main',
+	  		        'content' => 'Hi *|FIRSTNAME|* *|LASTNAME|*, thanks for signing up.'),
+	  		    array(
+	  		        'name' => 'footer',
+	  		        'content' => 'Copyright 2012.')
 
- 		);
-		$mandrill->messages->sendTemplate($template_name, $template_content, $message);
-		return '';
+	  		);
+	 		$mandrill->messages->sendTemplate($template_name, $template_content, $message);
+	 		return "";
 	}
 	
 
