@@ -248,7 +248,6 @@ class Mandrillapp {
 	 		}
 	}
 
-
 	function send_email_user_close(){
 		global $TMPL;
 		$this->EE =& get_instance(); // EEv2 syntax
@@ -262,10 +261,10 @@ class Mandrillapp {
  		$subject= "No se pudo realizar el arreglo";
  		$from= $TMPL->fetch_param('from');
  		$id_sol_garantia =  $TMPL->fetch_param('id_sol_garantia');
- 		$result_aus=mysql_query("SELECT * FROM exp_freeform_form_entries_4 WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 9 ");http://162.243.222.54/main/user_dashboard/51
+ 		$result_aus=mysql_query("SELECT * FROM exp_freeform_form_entries_4 WHERE form_field_18 = $id_sol_garantia 
+ 			AND form_field_19 = 9 ");
 		$obten_aus=mysql_fetch_row($result_aus);
 		$cliente_ausente = $obten_aus[23];
- 		//$text = $TMPL->tagdata;
  		if($cliente_ausente == "no"){
 
 		$text = "<!doctype html>
@@ -777,16 +776,7 @@ Atentamente</span>
 
  		);
 		$mandrill->messages->sendTemplate($template_name, $template_content, $message);
-		return '
-				<div class="row">
-				  <div class="col-md-6 col-md-offset-3">
-
-				  		<h1>¡Listo! El caso de la solicitud #.'.$id_sol_garantia.' ha sido CERRADO</h1>
-
-					  <p>Puedes hacerle seguimiento a las solicitudes en la sección de “Panel de control”</p>
-					  <p><a href="{site_url}main/admin_dashboard">Ir a Panel de control</a></p>	  
-				  </div>
-				</div>'	;
+		return ''	;
 	}
 
 	function send_email_viva_approve_fix(){ //no llega
