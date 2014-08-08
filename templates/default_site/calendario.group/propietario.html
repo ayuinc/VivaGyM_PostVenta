@@ -1,7 +1,7 @@
 {if segment_3=="inspecciones"}
-    {exp:endpoint:obtener_eventos tipo_evento="1"}
+    {exp:endpoint:obtener_eventos tipo_evento="1" member_id="1"}
 {if:elseif segment_3=="arreglos"}
-    {exp:endpoint:obtener_eventos tipo_evento="2"}
+    {exp:endpoint:obtener_eventos tipo_evento="2" member_id="1"}
 {if:else}
 {error: true}
 {/if}
