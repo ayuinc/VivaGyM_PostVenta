@@ -12,8 +12,11 @@ class endpoint
         $this->EE =& get_instance(); // EEv2 syntax
         $TMPL = $this->EE->TMPL;
 
-        $query = ee()->db
-                    ->get_where('exp_eventos_calendario');
+        $tipo_evento = ee()->TMPL->fetch_param('tipo_evento');
+        ee()->db->where('id_event_type',$tipo_evento);
+        $query = ee()->db->get('exp_eventos_calendario');
+
+        $response = array();
 
         return json_encode($query->result());
     }
