@@ -4,13 +4,13 @@ VivaGyM_PostVenta
 Desarrollo del sistema de post-venta para grupo VivaGyM
 
 
-###Angular-App
+##Angular-App
 An AngularJS app for rendering calendars for VivaGym
 
 
 ###Installation
 
-##Local
+####Local Machine
 Note: you need Node, NPM, and Bower to install this app. Also, this only works
 if your in the angular directory.
 
@@ -19,7 +19,7 @@ npm install
 bower install
 ```
 
-##Ubuntu Server
+####Ubuntu Server
 
 Ubuntu does not have the latest version of Node needed for all the node
 packages. You'll need to go around apt-get by using nvm instead. First run these
@@ -102,7 +102,52 @@ npm install -g bower
 bower install
 ```
 
-###Development Servers and Testing
+##Development Servers and Testing
+
+###Set up
+
+For integration testing, you need to set up Apache to take www.vivagym.dev for
+development. Here's how you set it up:
+
+First, add these snippets of code to your their respective files, replacing for
+the path to your copy of VivaGym
+
+In /etc/apache2/extra/httpd-vhosts.conf
+
+```
+<VirtualHost *:80>
+    ServerName vivagym.dev
+    ServerAlias www.vivagym.dev
+    DocumentRoot "path to vivagym"
+
+    <Directory "path to vivagym">
+        Options Indexes FollowSymLinks
+        Allow From All
+        AllowOverride All
+    </Directory>
+</VirtualHost>
+```
+
+In /etc/apache2/httpd.conf
+
+```
+127.0.0.1       vivagym.dev
+127.0.0.1       www.vivagym.dev
+```
+
+Uncomment out this line in /etc/apache2/httpd.conf
+
+```
+Include /private/etc/apache2/extra/httpd-vhosts.conf
+```
+
+Then restart Apache
+
+```
+sudo apachectl restart
+```
+
+###Grunt Server
 
 Grunt serve will automatically start the angular server for development and run
 your test in the background.
@@ -111,7 +156,7 @@ your test in the background.
 grunt serve
 ```
 
-Or, if you just want to run your tests
+To just run just your tests:
 
 ```console
 grunt test
