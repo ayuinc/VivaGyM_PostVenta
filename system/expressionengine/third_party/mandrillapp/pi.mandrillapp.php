@@ -21,8 +21,6 @@ $plugin_info = array(
 
 class Mandrillapp {
 
-	
-
 	function usage()
 	{
 		ob_start(); 
@@ -90,7 +88,7 @@ class Mandrillapp {
 											</tr>
 											<tr>
 											<td align='left'><h3>Estimado/a Administrador Viva</h3>
-												<span>La siguiente solicitud de documento ha sido procesada a través del portal de posventa.<p>
+												<span style='color: #898989;'>La siguiente solicitud de documento ha sido procesada a través del portal de posventa.<p>
 												<br>
 												Documento solicitado:".$documento."<p>
 												Datos del propietario:<p>
@@ -183,7 +181,7 @@ class Mandrillapp {
 											</tr>
 											<tr>
 											<td align='left'><h3>Estimado/a ".$name."</h3>
-												<span>La siguiente solicitud de documento ha sido procesada a través del portal de posventa.<p>
+												<span style='color: #898989;'>La siguiente solicitud de documento ha sido procesada a través del portal de posventa.<p>
 												<br>
 												Documento solicitado:".$documento."<p>
 
@@ -296,9 +294,9 @@ class Mandrillapp {
 								</tr>
 								<tr>
 								<td align='left'><h3>Estimado/a ".$name."</h3>
-									<span>Le informamos que el agente de su caso ".$id_sol_garantia." ha visitado su departamento pero no pudo realizar el arreglo por no encontrarse nadie en el departamento.<p>
+									<span style='color: #898989;'>Le informamos que el agente de su caso ".$id_sol_garantia." ha visitado su departamento pero no pudo realizar el arreglo por no encontrarse nadie en el departamento.<p></span>
 									<br>
-									Por esta razón usted debe ingresar nuevamente a nuestra plataforma de servicio posventa y agendar nuevamente su visita de arreglo <a href='http://162.243.222.54/main/user_request_show/".$id_sol_garantia."'>aquí</a>.<p>
+									<span style='color: #898989;'>Por esta razón usted debe ingresar nuevamente a nuestra plataforma de servicio posventa y agendar nuevamente su visita de arreglo <a href='http://162.243.222.54/main/user_request_show/".$id_sol_garantia."'>aquí</a>.<p>
 									<br>
 									Muchas gracias,<p>
 									<br>
@@ -406,9 +404,9 @@ class Mandrillapp {
 								</tr>
 								<tr>
 								<td align='left'><h3>Estimado/a ".$name."</h3>
-									<span>Le informamos que la persona responsable por realizar la inspeccion de su caso ".$id_sol_garantia." ha visitado su departamento pero no pudo realizar la inspección por no encontrarse nadie en el departamento.<p>
+									<span style='color: #898989;'>Le informamos que la persona responsable por realizar la inspeccion de su caso ".$id_sol_garantia." ha visitado su departamento pero no pudo realizar la inspección por no encontrarse nadie en el departamento.<p></span>
 									<br>
-									Por esta razón usted debe ingresar nuevamente a nuestra plataforma de servicio posventa y agendar nuevamente su visita de inspección <a href='http://162.243.222.54/main/user_request_show/".$id_sol_garantia."'>aquí</a>.<p>
+									<span style='color: #898989;'>Por esta razón usted debe ingresar nuevamente a nuestra plataforma de servicio posventa y agendar nuevamente su visita de inspección <a href='http://162.243.222.54/main/user_request_show/".$id_sol_garantia."'>aquí</a>.<p>
 									<br>
 									Muchas gracias,<p>
 									Atentamente</span>
@@ -468,6 +466,7 @@ class Mandrillapp {
 			return "";
 		}
 	}
+
 	function send_email_confirm_solicitud(){
 		global $TMPL;
 		$this->EE =& get_instance(); // EEv2 syntax
@@ -476,13 +475,13 @@ class Mandrillapp {
  		require_once 'mailchimp-mandrill-api-php/src/Mandrill.php'; 
  		$mandrill = new Mandrill('Svqgcw575OLrORu2WiD09g');
  		
+ 		// leer los datos del member de acuerdo
  		$to= $TMPL->fetch_param('to');
  		$name= $TMPL->fetch_param('name');
- 		$subject= "Ingreso de nueva solicitud.";
+ 		$subject= "Recepción de Solicitud de Requerimientos Viva GyM";
  		$from= $TMPL->fetch_param('from');
  		$dias=  $TMPL->fetch_param('dias');
- 		$member_id = $TMPL->fetch_param('member_id');
- 		//$text = $TMPL->tagdata;
+ 		$id_cliente = $TMPL->fetch_param('id_cliente');
 
  		$text = "<!doctype html>
 	<html>
@@ -510,10 +509,10 @@ class Mandrillapp {
 								</tr>
 								<tr>
 								<td align='left'><h3>Estimado/a ".$name."</h3>
-									<span>Gracias por enviar su solicitud de requerimientos por el portal de posventa en línea de Viva GyM. <p>
-En los próximos $dias días le estaremos informando por correo electrónico y mediante el portal de post-venta si la inspección por un técnico de nuestro equipo procede. Recuerde que en la mayoría de los casos, la vigencia de la garantía es necesaria para que los arreglos procedan. <p>
-Usted puede hacerle seguimiento a su solicitud <a href='http://162.243.222.54/main/user_dashboard/".$member_id."'> aquí</a>.<p>
-Esperamos servirle de la mejor manera durante este proceso. No olvide revisar el Manual del Propietario para cuidar de su departamento todos los días.<p>
+									<span style='color: #898989;'>Gracias por enviar su solicitud de requerimientos por el portal de posventa en línea de Viva GyM. <p>
+En los próximos $dias días le estaremos informando por correo electrónico y mediante el portal de post-venta si la inspección por un técnico de nuestro equipo procede. Recuerde que en la mayoría de los casos, la vigencia de la garantía es necesaria para que los arreglos procedan. <p></span>
+<span style='color: #898989;'>Usted puede hacerle seguimiento a su solicitud <a href='http://162.243.222.54/main/user_dashboard/".$member_id."'> aquí</a>.</span><p>
+<span style='color: #898989;'>Esperamos servirle de la mejor manera durante este proceso. No olvide revisar el Manual del Propietario para cuidar de su departamento todos los días.<p>
 Atentamente</span>
 									<p>
 								</td>
@@ -535,40 +534,38 @@ Atentamente</span>
 		</body>
 	</html>";
 
- 		
- 		$cuerpo=$header_mail.$text.$footer_mail;
- 		/*'html' => '<p>FELICIDADES!!!</p><p>Ganaste el tema'.$topic.' ve a nuestro menú de temas y sigue participando</p>',*/
  		$message = array(
- 		    'subject' => $subject,
- 		    'from_email' => $from,
- 		    'html' => $text,
- 		    'to' => array(array('email' => $to, 'name' => $name)),
- 		    'merge_vars' => array(array(
-	 		        'rcpt' => 'recipient1@domain.com',
-	 		        'vars' =>
-	 		        array(
-	 		            array(
-	 		                'name' => 'FIRSTNAME',
-	 		                'content' => 'Recipient 1 first name'),
-	 		            array(
-	 		                'name' => 'LASTNAME',
-	 		                'content' => 'Last name')
-	 		    ))));
+	  		    'subject' => $subject,
+	  		    'from_email' => $from,
+	  		    'html' => $text,
+	  		    'to' => array(array('email' => $to, 'name' => $name)),
+	  		    'merge_vars' => array(array(
+	 	 		        'rcpt' => 'recipient1@domain.com',
+	 	 		        'vars' =>
+	 	 		        array(
+	 	 		            array(
+	 	 		                'name' => 'FIRSTNAME',
+	 	 		                'content' => 'Recipient 1 first name'),
+	 	 		            array(
+	 	 		                'name' => 'LASTNAME',
+	 	 		                'content' => 'Last name')
+	 	 		    ))));
 
- 		$template_name = 'test';
+	  		$template_name = 'test';
 
- 		$template_content = array(
- 		    array(
- 		        'name' => 'main',
- 		        'content' => 'Hi *|FIRSTNAME|* *|LASTNAME|*, thanks for signing up.'),
- 		    array(
- 		        'name' => 'footer',
- 		        'content' => 'Copyright 2012.')
+	  		$template_content = array(
+	  		    array(
+	  		        'name' => 'main',
+	  		        'content' => 'Hi *|FIRSTNAME|* *|LASTNAME|*, thanks for signing up.'),
+	  		    array(
+	  		        'name' => 'footer',
+	  		        'content' => 'Copyright 2012.')
 
- 		);
-		$mandrill->messages->sendTemplate($template_name, $template_content, $message);
-		return "";
+	  		);
+	 		$mandrill->messages->sendTemplate($template_name, $template_content, $message);
+	 		return "";
 	}
+
 
 	function send_email_cerrar_caso(){
 		global $TMPL;
@@ -611,10 +608,10 @@ Atentamente</span>
 								</tr>
 								<tr>
 								<td align='left'><h3>Estimado/a ".$name."</h3>
-									<span>Gracias por culminar el proceso de atención de su solicitud número: ".$id_sol_garantia.".
+									<span style='color: #898989;'>Gracias por culminar el proceso de atención de su solicitud número: ".$id_sol_garantia.".
  		Adjunto encontrará el reporte del arreglo realizado por GyM.<p>
- 		Aprovechamos para recordarle que en el Manual del Propietario otorgado al momento de la entrega de su departamento se especifica el correcto uso y mantenimiento preventivo que se le debe realizar a sus instalaciones a fin de evitar que estas fallen por el propio uso que provoca el desgaste natural.  Puede encontrar el Manual en nuestro portal de post-venta en línea. Link a Manual.<p>
- 		Es importante precisar que en caso se presentara alguna solicitud, observación y/o requerimiento adicional tras el arreglo debe llenar un nuevo reclamo en nuestro portal de post-venta en línea o comunicarte a nuestro Call Center de Atención al Cliente 206-7270. Este es el único mecanismo que garantiza la atención de su solicitud de post-venta, cualquier otra forma de solicitud no será atendida.<p>
+ 		Aprovechamos para recordarle que en el Manual del Propietario otorgado al momento de la entrega de su departamento se especifica el correcto uso y mantenimiento preventivo que se le debe realizar a sus instalaciones a fin de evitar que estas fallen por el propio uso que provoca el desgaste natural.  Puede encontrar el Manual en nuestro portal de post-venta en línea.</span><a href='http://162.243.222.54/images/manual_propietario.pdf'>Manual de Usuario</a>.</span><p>
+ 		<span style='color: #898989;'>Es importante precisar que en caso se presentara alguna solicitud, observación y/o requerimiento adicional tras el arreglo debe llenar un nuevo reclamo en nuestro portal de post-venta en línea o comunicarte a nuestro Call Center de Atención al Cliente 206-7270. Este es el único mecanismo que garantiza la atención de su solicitud de post-venta, cualquier otra forma de solicitud no será atendida.<p>
  		Quedamos como siempre a su disposición si tiene alguna consulta o solicitud adicional.<p>
  		Llene nuestra encuesta de satisfaccion en el siguiente link: <a href=''>Encuesta</a>
  		Atentamente</span>
@@ -724,10 +721,10 @@ Atentamente</span>
 								</tr>
 								<tr>
 								<td align='left'><h3>Estimado/a ".$name."</h3>
-									<span>Gracias por culminar el proceso de atención de su solicitud número: ".$id_sol_garantia.".
+									<span style='color: #898989;'>Gracias por culminar el proceso de atención de su solicitud número: ".$id_sol_garantia.".
  		Adjunto encontrará el reporte del arreglo realizado por GyM.<p>
- 		Aprovechamos para recordarle que en el Manual del Propietario otorgado al momento de la entrega de su departamento se especifica el correcto uso y mantenimiento preventivo que se le debe realizar a sus instalaciones a fin de evitar que estas fallen por el propio uso que provoca el desgaste natural.  Puede encontrar el Manual en nuestro portal de post-venta en línea. Link a Manual.<p>
- 		Es importante precisar que en caso se presentara alguna solicitud, observación y/o requerimiento adicional tras el arreglo debe llenar un nuevo reclamo en nuestro portal de post-venta en línea o comunicarte a nuestro Call Center de Atención al Cliente 206-7270. Este es el único mecanismo que garantiza la atención de su solicitud de post-venta, cualquier otra forma de solicitud no será atendida.<p>
+ 		Aprovechamos para recordarle que en el Manual del Propietario otorgado al momento de la entrega de su departamento se especifica el correcto uso y mantenimiento preventivo que se le debe realizar a sus instalaciones a fin de evitar que estas fallen por el propio uso que provoca el desgaste natural.  Puede encontrar el Manual en nuestro portal de post-venta en línea. <a href='http://162.243.222.54/images/manual_propietario.pdf'>Manual de Usuario</a>.</span><p>
+ 		<span style='color: #898989;'>Es importante precisar que en caso se presentara alguna solicitud, observación y/o requerimiento adicional tras el arreglo debe llenar un nuevo reclamo en nuestro portal de post-venta en línea o comunicarte a nuestro Call Center de Atención al Cliente 206-7270. Este es el único mecanismo que garantiza la atención de su solicitud de post-venta, cualquier otra forma de solicitud no será atendida.<p>
  		Quedamos como siempre a su disposición si tiene alguna consulta o solicitud adicional.<p>
  		Atentamente</span>
 									<p>
@@ -841,8 +838,8 @@ Atentamente</span>
 										</tr>
 										<tr>
 										<td align='left'><h3>Estimado/a ".$name."</h3>
-											<span>Tras analizar su solicitud de requerimiento número ".$id_sol_garantia." le confirmamos que se ha determinado que el arreglo reportado: ".$tit_problema.", procede. Para que se acerque un especialista a arreglar el daño debe agendar una cita ingresando a nuestro portal de post-venta en línea <a href='http://162.243.222.54/main/user_request_show/".$id_sol_garantia."'>aquí</a>.<p>
-							 Es importante precisar que en caso se presentara alguna solicitud, observación y/o requerimiento adicional tras el arreglo debe llenar un nuevo reclamo en nuestro portal de post-venta en línea o comunicarte a nuestro Call Center de Atención al Cliente 206-7270. Este es el único mecanismo que garantiza la atención de su solicitud de post-venta, cualquier otra forma de solicitud no será atendida.<p>
+											<span style='color: #898989;'>Tras analizar su solicitud de requerimiento número ".$id_sol_garantia." le confirmamos que se ha determinado que el arreglo reportado: ".$tit_problema.", procede. Para que se acerque un especialista a arreglar el daño debe agendar una cita ingresando a nuestro portal de post-venta en línea <a href='http://162.243.222.54/main/user_request_show/".$id_sol_garantia."'>aquí</a>.</span><p>
+							 <span style='color: #898989;'>Es importante precisar que en caso se presentara alguna solicitud, observación y/o requerimiento adicional tras el arreglo debe llenar un nuevo reclamo en nuestro portal de post-venta en línea o comunicarte a nuestro Call Center de Atención al Cliente 206-7270. Este es el único mecanismo que garantiza la atención de su solicitud de post-venta, cualquier otra forma de solicitud no será atendida.<p>
 							 Atentamente</span>
 											<p>
 										</td>
@@ -923,8 +920,8 @@ Atentamente</span>
 										</tr>
 										<tr>
 										<td align='left'><h3>Estimado/a ".$name."</h3>
-											<span>Tras analizar su solicitud de requerimiento número ".$id_sol_garantia." le informamos que los especialistas de GyM han determinado que su arreglo no procede. La razón de esta decisión es: ".$comentarios.".<p>
- 			Aprovechamos para recordarle que en el Manual del Propietario otorgado al momento de la entrega de su departamento se especifica el correcto uso y mantenimiento preventivo que se le debe realizar a sus instalaciones a fin de evitar que estas fallen por el propio uso que provoca el desgaste natural.  Puede encontrar el Manual en nuestro portal de post-venta en línea. Link a Manual.<p>
+											<span style='color: #898989;'>Tras analizar su solicitud de requerimiento número ".$id_sol_garantia." le informamos que los especialistas de GyM han determinado que su arreglo no procede. La razón de esta decisión es: ".$comentarios.".</span><p>
+ 			<span style='color: #898989;'>Aprovechamos para recordarle que en el Manual del Propietario otorgado al momento de la entrega de su departamento se especifica el correcto uso y mantenimiento preventivo que se le debe realizar a sus instalaciones a fin de evitar que estas fallen por el propio uso que provoca el desgaste natural.  Puede encontrar el Manual en nuestro portal de post-venta en línea. <a href='http://162.243.222.54/images/manual_propietario.pdf'>Manual de Usuario</a>.<p>
  			Quedamos como siempre a su disposición si tiene alguna consulta o solicitud adicional puede llamar a nuestro Call Center de Atención al Cliente al 206-7270.<p>
  			Atentamente</span>
 											<p>
@@ -1029,7 +1026,7 @@ Atentamente</span>
 													</tr>
 													<tr>
 													<td align='left'><h3>Estimado/a ".$name."</h3>
-														<span>Tras analizar su solicitud de requerimiento número ".$id_sol_garantia.", le confirmamos que se realizará la inspección del daño reportado 
+														<span style='color: #898989;'>Tras analizar su solicitud de requerimiento número ".$id_sol_garantia.", le confirmamos que se realizará la inspección del daño reportado 
 				".$tit_problema." a través del sistema de post-venta en línea de Viva GyM. Para proceder con la inspección debe agendar su cita en nuestro portal de posventa en línea. Por favor agende su visita <a href='http://162.243.222.54/main/user_request_show/".$id_sol_garantia."'>aquí</a>. Ahí deberá seleccionar un horario en el que con seguridad usted o alguien más se encontrará en su hogar para que reciba al especialista que inspeccionará el problema.<p>
 			Quedamos como siempre a su disposición si tiene alguna consulta o solicitud adicional puede llamar a nuestro Call Center de Atención al Cliente al 206-7270.<p>
 			Atentamente</span>
@@ -1116,10 +1113,10 @@ Atentamente</span>
 																</tr>
 																<tr>
 																<td align='left'><h3>Estimado/a ".$name."</h3>
-																	<span>Tras analizar su solicitud de requerimiento número ".$id_sol_garantia.", le confirmamos que se ha determinado que su requerimiento es improcedente debido a: ".$comentarios.".<p>
+																	<span style='color: #898989;'>Tras analizar su solicitud de requerimiento número ".$id_sol_garantia.", le confirmamos que se ha determinado que su requerimiento es improcedente debido a: ".$comentarios.".<p>
 				Por esta razón no corresponde enviar a un especialista a verificar el problema.
-			Aprovechamos para recordarle que en el Manual del Propietario otorgado al momento de la entrega de su departamento se especifica el correcto uso y mantenimiento preventivo que se le debe realizar a sus instalaciones a fin de evitar que estas fallen por el propio uso que provoca el desgaste natural.  Puede encontrar el Manual en nuestro portal de post-venta en línea. Link a Manual.<p>
-			Quedamos como siempre a su disposición si tiene alguna consulta o solicitud adicional puede llamar a nuestro Call Center de Atención al Cliente al 206-7270.<p>
+			Aprovechamos para recordarle que en el Manual del Propietario otorgado al momento de la entrega de su departamento se especifica el correcto uso y mantenimiento preventivo que se le debe realizar a sus instalaciones a fin de evitar que estas fallen por el propio uso que provoca el desgaste natural.  Puede encontrar el Manual en nuestro portal de post-venta en línea. </span><a href='http://162.243.222.54/images/manual_propietario.pdf'>Manual de Usuario</a>.<p>
+			<span style='color: #898989;'>Quedamos como siempre a su disposición si tiene alguna consulta o solicitud adicional puede llamar a nuestro Call Center de Atención al Cliente al 206-7270.<p>
 			Atentamente</span>
 																	<p>
 																</td>
@@ -1216,7 +1213,7 @@ Atentamente</span>
 																</tr>
 																<tr>
 																<td align='left'><h3>Estimado/a ".$name."</h3>
-																	<span>Muchas gracias por agendar su cita de inspección en el  el portal de post-venta en línea de Viva GyM. Su inspección se realizará según la siguiente información:<p>
+																	<span style='color: #898989;'>Muchas gracias por agendar su cita de inspección en el  el portal de post-venta en línea de Viva GyM. Su inspección se realizará según la siguiente información:<p>
 																 		Número de solicitud: ".$id_sol_garantia."<p>
 																 		Fecha de Inspección: ".$fecha_atencion_ticket."<p>
 																 		Horario de Inspección: 9:00 am - 2:00 pm de lunes a viernes<p>
@@ -1319,7 +1316,7 @@ Atentamente</span>
 														</tr>
 														<tr>
 														<td align='left'><h3>Estimado/a ".$name."</h3>
-															<span>Muchas gracias por agendar su arreglo en el portal de post-venta en línea de Viva GyM. Su arreglo se realizará según la siguiente información:<p>
+															<span style='color: #898989;'>Muchas gracias por agendar su arreglo en el portal de post-venta en línea de Viva GyM. Su arreglo se realizará según la siguiente información:<p>
 		Número de solicitud: ".$id_sol_garantia."<p>
 		Fecha de arreglo: ".$fecha_atencion_ticket."<p>
 		Horario de arreglo: 9:00 am - 2:00 pm de lunes a viernes<p>
@@ -1419,7 +1416,7 @@ Atentamente</span>
 												</tr>
 												<tr>
 												<td align='left'><h3>Estimado/a ".$name."</h3>
-													<span>Gracias por registrarse en el portal de post-venta en línea de Viva GyM. Por favor tome nota de su usuario y clave para poder ingresar al portal a hacer todas sus solicitudes de post-venta. A través de nuestro portal podrá acceder al manual del propietario, reportar daños, agendar citas de inspección y arreglos, solicitar documentos, hacer reclamaciones y estar al día sobre novedades de Viva GyM.<p>
+													<span style='color: #898989;'>Gracias por registrarse en el portal de post-venta en línea de Viva GyM. Por favor tome nota de su usuario y clave para poder ingresar al portal a hacer todas sus solicitudes de post-venta. A través de nuestro portal podrá acceder al manual del propietario, reportar daños, agendar citas de inspección y arreglos, solicitar documentos, hacer reclamaciones y estar al día sobre novedades de Viva GyM.<p>
 				Esperamos servirle de la mejor manera.<p>
 				Atentamente</span>
 													<p>
@@ -1525,7 +1522,7 @@ Atentamente</span>
 														</tr>
 														<tr>
 														<td align='left'><h3>Estimado/a ".$name."</h3>
-															<span>Hemos registrado su reclamo.<p>
+															<span style='color: #898989;'>Hemos registrado su reclamo.<p>
 															Número de reclamo: ".$id_reclamo."<p>
 															Fecha de registro: ".$fecha_date."<p>
 															Reclamo: ".$mensaje."<p>
@@ -1643,7 +1640,7 @@ Atentamente</span>
 														</tr>
 														<tr>
 														<td align='left'><h3>Estimado/a Administrador Viva</h3>
-															<span><br>El siguiente usuario ha registrado un reclamo:<p>
+															<span style='color: #898989;'><br>El siguiente usuario ha registrado un reclamo:<p>
 															Nombre: ".$nombre_propietario."<p>
 															Apellido: ".$apellido_propietario."<p>
 															e-mail: ".$email_propietario."<p>

@@ -6,7 +6,11 @@
 	rol="cli" }
 {/exp:confirm_sol:confirm_sol}
 
-{exp:user:stats member_id="{post_id_cliente}"}
+{exp:member:custom_profile_data}
+
+{/exp:member:custom_profile_data}
+
+{exp:user:stats}
 	{exp:mandrillapp:send_email_confirm_solicitud
 	  to="{email_propietario}"
 	  name="{nombre_propietario}"
