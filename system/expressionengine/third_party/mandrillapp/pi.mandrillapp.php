@@ -248,7 +248,6 @@ class Mandrillapp {
 	 		}
 	}
 
-
 	function send_email_user_close(){
 		global $TMPL;
 		$this->EE =& get_instance(); // EEv2 syntax
@@ -262,10 +261,10 @@ class Mandrillapp {
  		$subject= "No se pudo realizar el arreglo";
  		$from= $TMPL->fetch_param('from');
  		$id_sol_garantia =  $TMPL->fetch_param('id_sol_garantia');
- 		$result_aus=mysql_query("SELECT * FROM exp_freeform_form_entries_4 WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 9 ");http://162.243.222.54/main/user_dashboard/51
+ 		$result_aus=mysql_query("SELECT * FROM exp_freeform_form_entries_4 WHERE form_field_18 = $id_sol_garantia 
+ 			AND form_field_19 = 9 ");
 		$obten_aus=mysql_fetch_row($result_aus);
 		$cliente_ausente = $obten_aus[23];
- 		//$text = $TMPL->tagdata;
  		if($cliente_ausente == "no"){
 
 		$text = "<!doctype html>
@@ -777,16 +776,7 @@ Atentamente</span>
 
  		);
 		$mandrill->messages->sendTemplate($template_name, $template_content, $message);
-		return '
-				<div class="row">
-				  <div class="col-md-6 col-md-offset-3">
-
-				  		<h1>¡Listo! El caso de la solicitud #.'.$id_sol_garantia.' ha sido CERRADO</h1>
-
-					  <p>Puedes hacerle seguimiento a las solicitudes en la sección de “Panel de control”</p>
-					  <p><a href="{site_url}main/admin_dashboard">Ir a Panel de control</a></p>	  
-				  </div>
-				</div>'	;
+		return ''	;
 	}
 
 	function send_email_viva_approve_fix(){ //no llega
@@ -1115,7 +1105,7 @@ Atentamente</span>
 																<td align='left'><h3>Estimado/a ".$name."</h3>
 																	<span style='color: #898989;'>Tras analizar su solicitud de requerimiento número ".$id_sol_garantia.", le confirmamos que se ha determinado que su requerimiento es improcedente debido a: ".$comentarios.".<p>
 				Por esta razón no corresponde enviar a un especialista a verificar el problema.
-			Aprovechamos para recordarle que en el Manual del Propietario otorgado al momento de la entrega de su departamento se especifica el correcto uso y mantenimiento preventivo que se le debe realizar a sus instalaciones a fin de evitar que estas fallen por el propio uso que provoca el desgaste natural.  Puede encontrar el Manual en nuestro portal de post-venta en línea. </span><a href='http://162.243.222.54/images/manual_propietario.pdf'>Manual de Usuario</a>.<p>
+			Aprovechamos para recordarle que en el Manual del Propietario otorgado al momento de la entrega de su departamento se especifica el correcto uso y mantenimiento preventivo que se le debe realizar a sus instalaciones a fin de evitar que estas fallen por el propio uso que provoca el desgaste natural.  Puede encontrar el Manual en nuestro portal de post-venta en línea. <a href='http://162.243.222.54/images/manual_propietario.pdf'>Manual de Usuario</a>.</span><p>
 			<span style='color: #898989;'>Quedamos como siempre a su disposición si tiene alguna consulta o solicitud adicional puede llamar a nuestro Call Center de Atención al Cliente al 206-7270.<p>
 			Atentamente</span>
 																	<p>
