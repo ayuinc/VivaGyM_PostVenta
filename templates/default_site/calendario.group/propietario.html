@@ -1,1 +1,7 @@
-{exp:endpoint:inspecciones}
+{if segment_3=="inspecciones"}
+    {exp:endpoint:inspecciones tipo_evento="1"}
+{if:elseif segment_3=="arreglos"}
+    {exp:endpoint:inspecciones tipo_evento="2"}
+{if:else}
+{error: true}
+{/if}

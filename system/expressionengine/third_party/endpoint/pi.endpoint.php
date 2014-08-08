@@ -12,11 +12,13 @@ class endpoint
         $this->EE =& get_instance(); // EEv2 syntax
         $TMPL = $this->EE->TMPL;
 
-        ee()->db->distinct('marca');
-        ee()->db->select('marca');
-        $query = ee()->db->get_where('exp_freeform_form_entries_4', array('form_field_19' => 3));
+        $tipo_evento = ee()->TMPL->fetch_param('tipo_evento');
+        ee()->db->where('id_event_type',$tipo_evento);
+        $query = ee()->db->get('exp_eventos_calendario');
 
-        return $query->result();
+        $response = array();
+
+        return json_encode($query->result());
     }
 }
 
