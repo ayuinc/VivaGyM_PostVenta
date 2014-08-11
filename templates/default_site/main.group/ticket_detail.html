@@ -42,15 +42,7 @@
                   <div class="row mt-14">
 
                     <div class="col-sm-4">
-                      <?php $archivo="{freeform:edit_data:foto_problema}"; ?>
-                      <!-- FOTO DUMMY -->
-                      <?php if(empty($archivo)) { ?>
-                      <img src="{site_url}images/request_placeholder.png" alt="" class="img-responsive img-thumbnail">
-                      <?php } else { ?>
-
-                      <img src="{site_url}fotos_problemas/<?php echo str_replace(' ', '_', $archivo); ?>" alt="" class="img-responsive img-thumbnail">
-
-                      <?php } ?>
+                      {embed="main/ver_foto" caso="{segment_3}"}
                     </div>
 
                     <div class="col-sm-4">

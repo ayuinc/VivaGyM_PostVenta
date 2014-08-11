@@ -1,0 +1,10 @@
+{exp:freeform:entries form_id="2" entry_id="{embed:caso}" limit="1" status="open|closed" }
+
+  <?php $archivo="{freeform:field:foto_problema}"; ?>
+  <?php if(empty($archivo)) { ?>
+  <img src="{site_url}images/request_placeholder.png" alt="" class="img-responsive img-thumbnail">
+  <?php } else { ?>
+  <img src="{site_url}fotos_problemas/{freeform:field:foto_problema}" alt="" class="img-responsive img-thumbnail">
+  <?php } ?>
+            
+{/exp:freeform:entries}
