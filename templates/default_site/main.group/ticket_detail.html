@@ -47,7 +47,9 @@
                       <?php if(empty($archivo)) { ?>
                       <img src="{site_url}images/request_placeholder.png" alt="" class="img-responsive img-thumbnail">
                       <?php } else { ?>
-                      {exp:ce_img:single src="{site_url}fotos_problemas/{freeform:edit_data:foto_problema}" max="340" cache_dir="ceimage" attributes='class="img-responsive img-thumbnail" alt="Foto problema" title="Foto problema"'}
+
+                      <img src="{site_url}fotos_problemas/<?php echo str_replace(' ', '_', $archivo); ?>" alt="" class="img-responsive img-thumbnail">
+
                       <?php } ?>
                     </div>
 
