@@ -12,6 +12,12 @@ app.controller('UserCalendarCtrl', ['$scope', '$window', '$location', 'VivaCalen
     }
   });
 
-  $scope.eventSources = [Event.availableInspections];
-  console.log(Event.availableInspections);
+  Event.unbookedEvents()
+    .then(function(data) {
+      console.log(data); 
+    }, function() {
+      console.log("error");
+    });
+
+  //$scope.eventSources = [Event.availableInspections];
 }]);
