@@ -11,12 +11,13 @@ An AngularJS app for rendering calendars for VivaGym
 ###Installation
 
 ####Local Machine
-Note: you need Node, NPM, and Bower to install this app. Also, this only works
+Note: you need Node, NPM, Bower, and PhantomJS to install this app. Also, this only works
 if your in the angular directory.
 
 ```console
 npm install
 bower install
+npm install -g phantomjs
 ```
 
 ####Ubuntu Server
