@@ -12,10 +12,6 @@ app.controller('UserCalendarCtrl', ['$scope', '$window', '$location', 'VivaCalen
     }
   });
 
-  //$scope.eventSource = {
-    //url: 'http://162.243.222.54/calendario/propietario/inspecciones'
-  //};
-
-  //$scope.eventSources = [$scope.eventSource];
   $scope.eventSources = [Event.availableInspections];
+  console.log(Event.availableInspections);
 }]);
