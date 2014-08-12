@@ -11,13 +11,11 @@ app.service('Event', ['$http', '$q', function($http, $q) {
 
   inspectionUrl = 'http://162.243.222.54/calendario/propietario/inspecciones';
 
-  this.eventSource = {
-    inspection: getJson(inspectionUrl)
+  this.availableInspections = getJson(inspectionUrl);
       //get json
       //remove those with cliente_id
       //format the date
       //display only unique
-  };
 
   function getJson(url) {
     defer = $q.defer();
