@@ -13,5 +13,5 @@ app.controller('UserCalendarCtrl', ['$scope', '$window', '$location', 'VivaCalen
   });
 
   $scope.eventSources = [Event.availableInspections];
-  console.log(Event.availableInspections);
+  console.log($scope.eventSources)
 }]);
