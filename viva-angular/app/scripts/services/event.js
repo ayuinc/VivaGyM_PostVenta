@@ -27,7 +27,7 @@ app.service('Event', ['$http', '$q', function($http, $q) {
         return $http.get(url);
       })
       .then(function(json) {
-        console.log(json);
+        return json.resultados;
       });
 
     defer.resolve(url);
