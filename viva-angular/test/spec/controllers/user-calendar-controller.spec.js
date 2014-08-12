@@ -4,16 +4,18 @@ describe('Controller: UserCalendarCtrl', function() {
 
   var controller,
     mockScope,
-    VivaCalendar;
+    VivaCalendar,
+    Event;
 
   beforeEach(module('vivaAngularApp', 'ui.calendar'));
 
-  beforeEach(inject(function($controller, $rootScope, _VivaCalendar_) {
+  beforeEach(inject(function($controller, $rootScope, _VivaCalendar_, _Event_) {
     mockScope = $rootScope.$new();
     controller = $controller('UserCalendarCtrl', {
       $scope: mockScope
     });
     VivaCalendar = _VivaCalendar_;
+    Event = _Event_;
   }));
 
   describe('Calendar resize based on width', function() {

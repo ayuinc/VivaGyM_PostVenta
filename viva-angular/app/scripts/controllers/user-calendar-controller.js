@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('UserCalendarCtrl', ['$scope', '$window', '$location', 'VivaCalendar', function($scope, $window, $location, VivaCalendar) {
+app.controller('UserCalendarCtrl', ['$scope', '$window', '$location', 'VivaCalendar', 'Event', function($scope, $window, $location, VivaCalendar, Event) {
 
   $scope.width = $window.innerWidth;
 
@@ -12,9 +12,10 @@ app.controller('UserCalendarCtrl', ['$scope', '$window', '$location', 'VivaCalen
     }
   });
 
-  $scope.eventSource = {
-    url: 'http://162.243.222.54/calendario/propietario/inspecciones'
-  };
+  //$scope.eventSource = {
+    //url: 'http://162.243.222.54/calendario/propietario/inspecciones'
+  //};
 
-  $scope.eventSources = [$scope.eventSource];
+  //$scope.eventSources = [$scope.eventSource];
+  $scope.eventSources = Event.eventSource.inspection();
 }]);

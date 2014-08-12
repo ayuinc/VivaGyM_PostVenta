@@ -27,6 +27,18 @@ module.exports = function(config) {
       'test/spec/**/*.js'
     ],
 
+    //reporters: ['coverage'],
+
+    //preprocessors: {
+      //'app/scripts/*.js': ['coverage'],
+      //'app/scripts/**/*.js': ['coverage']
+    //},
+
+    //coverageReporter: {
+      //type : 'html',
+      //dir : 'coverage/'
+    //},
+
     // list of files / patterns to exclude
     exclude: [],
 
@@ -58,9 +70,9 @@ module.exports = function(config) {
     singleRun: false,
 
     plugins : [
-      //'karma-chrome-launcher',
+      'karma-jasmine',
       'karma-phantomjs-launcher',
-      'karma-jasmine'
+      'karma-coverage'
     ]
   });
 };
