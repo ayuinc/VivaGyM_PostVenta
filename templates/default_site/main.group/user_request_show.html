@@ -26,7 +26,6 @@
               <?php if(empty($archivo)) { ?>
               <img src="{site_url}images/request_placeholder.png" alt="" class="img-responsive img-thumbnail">
               <?php } else { ?>
-              <!-- FOTO DUMMY -->
               <img src="{site_url}fotos_problemas/{freeform:field:foto_problema}" alt="" class="img-responsive img-thumbnail">
               <?php } ?>
             </div>
@@ -34,7 +33,10 @@
               <ul class="list-unstyled">
                 <li class="mb-7"><strong>Tipo de problema</strong><br>{freeform:field:tipo_de_problema}</li>
                 <li class="mb-7"><strong>Fecha</strong><br>{freeform:entry_date format="%j %F %Y"}</li>
-                <li class="mb-7"><strong>Responsable</strong><br>{embed="includes/nombre_per" p_find="{freeform:field:persona_asignada_viva}"}</li>
+                <li class="mb-7"><strong>Responsable</strong><br>
+                  <?php $resp="{freeform:field:persona_asignada_viva}"; ?>
+                  <?php if(empty($resp)) { ?>Por asignar<?php } else { ?>
+                  {embed="includes/nombre_per" p_find="{freeform:field:persona_asignada_viva}"}<?php } ?></li>
               </ul>
             </div>
             <div class="col-sm-6">
