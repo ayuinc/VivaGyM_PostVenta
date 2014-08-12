@@ -19,7 +19,9 @@ app.service('Event', ['$http', '$q', function($http, $q) {
         return $http.get(url);
       })
       .then(function(json) {
-        return json.resultados;
+        _.chain(json.resultados)
+          .remove(function(event) { return event.cliente_id == "" })
+          .value();
       });
 
     defer.resolve(url);
