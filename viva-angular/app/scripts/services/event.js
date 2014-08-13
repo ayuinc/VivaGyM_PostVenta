@@ -11,40 +11,18 @@ app.service('Event', ['$http', '$q', function($http, $q) {
 
   inspectionUrl = 'http://162.243.222.54/calendario/propietario/inspecciones';
 
-  function getJson(url) {
-    defer = $q.defer();
-
-    defer.promise
-      .then(function(url) {
-        return $http.get(url);
-      })
-      .then(function(json) {
-        _.chain(json.data.resultados)
-          .remove(function(event) { return event.cliente_id == "" })
-          .value();
-      });
-
-    defer.resolve(url);
+  return {
+    unbookedInspections: function() {
+      return $http.get(inspectionUrl)
+        .then(function(response){
+    	  if(typeof response.data === 'object') {
+	    return response.data;
+          } else {
+            return $q.reject(response.data);
+	  }
+        }, function(response){
+	  return $q.reject(response.data);
+	});
+    }
   }
-
-  this.availableInspections = getJson(inspectionUrl);
-      //get json
-      //remove those with cliente_id
-      //format the date
-      //display only unique
-
-
-  //getJson = function(url) {
-    //deferred = $q.defer();
-
-    //$http.get(url)
-      //.success(function(data) {
-        //deferred.resolve(data);
-      //})
-      //.error(function(data) {
-        //deferred.reject(data);
-      //});
-
-    //return deferred.promise;
-  //};
 }]);
