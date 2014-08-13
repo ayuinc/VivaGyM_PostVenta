@@ -14,6 +14,7 @@ app.service('Event', ['$http', '$q', function($http, $q) {
   var getJson = function(calendar_url) {
     $http.get(calendar_url)
       .success(function(data) {
+        console.log(data);
         return data;
       });
   };
