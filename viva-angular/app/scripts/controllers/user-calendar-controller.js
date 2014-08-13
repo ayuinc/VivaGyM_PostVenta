@@ -18,10 +18,10 @@ app.controller('UserCalendarCtrl', ['$scope', '$http', '$window', 'VivaCalendar'
     .success(function(data) {
       console.log(data);
       $scope.events = data;
+      $scope.eventSources = [$scope.events];
     });
 
 
-  $scope.eventSources = [$scope.events]
 
   //Event.unbookedInspections()
     //.then(function(data) {
