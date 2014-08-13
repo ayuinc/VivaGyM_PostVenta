@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('UserCalendarCtrl', ['$scope', '$window', '$location', 'VivaCalendar', 'Event', function($scope, $window, $location, VivaCalendar, Event) {
+app.controller('UserCalendarCtrl', ['$scope', '$http', '$window', 'VivaCalendar', 'Event', function($scope, $http, $window, VivaCalendar, Event) {
 
   $scope.width = $window.innerWidth;
 
@@ -12,7 +12,14 @@ app.controller('UserCalendarCtrl', ['$scope', '$window', '$location', 'VivaCalen
     }
   });
 
-  $scope.events = Event.unbookedInspections();
+  var inspectionUrl = 'http://162.243.222.54/calendario/propietario/inspecciones';
+
+  $http.get(inspectionUrl)
+    .success(function(data) {
+      console.log(data);
+      $scope.events = data;
+    });
+
 
   $scope.eventSources = [$scope.events]
 
