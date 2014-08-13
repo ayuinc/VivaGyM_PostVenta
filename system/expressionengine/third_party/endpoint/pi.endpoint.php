@@ -49,6 +49,8 @@ class endpoint
         ee()->db->where('encargado_id', $member_id);
         $query = ee()->db->get('exp_calendario_eventos');
 
+        $response = array();
+
         foreach ($query->result() as $key => $value) {
             $aux = array(
                 'id' => $value->id,
