@@ -18,7 +18,10 @@ app.controller('UserCalendarCtrl', ['$scope', '$http', '$window', 'VivaCalendar'
     .success(function(data) {
       console.log(data);
       $scope.events = data;
-      $scope.$apply.eventSources = [$scope.events];
+      $scope.eventSources = [$scope.events];
+      $scope.renderCalender = function(calendar) {
+            calendar.fullCalendar('render');
+          };
     });
 
 
