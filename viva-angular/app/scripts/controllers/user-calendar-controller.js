@@ -14,14 +14,17 @@ app.controller('UserCalendarCtrl', ['$scope', '$http', '$window', 'VivaCalendar'
 
   var inspectionUrl = 'http://162.243.222.54/calendario/propietario/inspecciones';
 
+  $scope.events = [];
+  $scope.eventSources = [];
+
   $http.get(inspectionUrl)
     .success(function(data) {
       console.log(data);
       $scope.events = data;
       $scope.eventSources = [$scope.events];
-      $scope.renderCalender = function(calendar) {
-            calendar.fullCalendar('render');
-          };
+      //$scope.renderCalender = function(calendar) {
+            //calendar.fullCalendar('render');
+          //};
     });
 
 
