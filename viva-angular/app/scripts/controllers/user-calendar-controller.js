@@ -12,7 +12,7 @@ app.controller('UserCalendarCtrl', ['$scope', '$window', '$location', 'VivaCalen
     }
   });
 
-  $scope.events = Event.unbookedInspections;
+  $scope.events = Event.unbookedInspections();
 
   //Event.unbookedInspections()
     //.then(function(data) {

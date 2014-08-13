@@ -19,7 +19,9 @@ app.service('Event', ['$http', '$q', function($http, $q) {
       });
   };
 
-  this.unbookedInspections = getJson(inspectionUrl);
+  this.unbookedInspections = function() {
+    getJson(inspectionUrl);
+  };
 
 
   //return {
