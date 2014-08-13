@@ -1,5 +1,6 @@
-{embed="includes/header" }
 
+<script type="text/javascript" src="{site_url}lib/vendor/bootstrapValidator.js"></script>
+<script type="text/javascript" src="{site_url}lib/user_password_change.js"></script>
 
 {exp:member:custom_profile_data}
 <?php $act_datos="{act_datos}"; ?>
@@ -8,8 +9,7 @@
 <?php $segment="{segment_3}"; ?>
 
 <?php if($act_datos==0) { ?>
-<script type="text/javascript" src="{site_url}lib/vendor/bootstrapValidator.js"></script>
-<script type="text/javascript" src="{site_url}lib/user_password_change.js"></script>
+
 	{exp:user:edit override_return="main/user_setup" form:id="user-password-change-form" }
 		<div class="row">
 			<div class="col-sm-4"></div>
@@ -41,8 +41,6 @@
 	{embed="includes/footer"}
 
 <?php } elseif($segment==pwd) { ?>
-<script type="text/javascript" src="{site_url}lib/vendor/bootstrapValidator.js"></script>
-<script type="text/javascript" src="{site_url}lib/user_password_change.js"></script>
 	{exp:member:custom_profile_data}
 		{exp:user:edit override_return="main/user_dashboard/{member_id}" form:id="user-password-change-form" }
 			<div class="row">
@@ -54,15 +52,15 @@
 						<form>
               <div class="form-group">
                 <label class="light" for="password_alt">Ingresa tu nueva clave</label>
-                <input type="password" name="password" class="form-control">
+                <input type="password" name="password" class="form-control" >
               </div>
               <div class="form-group">
                 <label class="light" for="password_confirm_alt">Confirma tu nueva clave</label>
-                <input type="password" name="password_confirm" class="form-control">
+                <input type="password" name="password_confirm" class="form-control" >
               </div>
               <div class="form-group">
                 <label class="text-warning" for="current_password_alt">Ingresa tu clave actual</label>
-                <input type="password" name="current_password" class="form-control">
+                <input type="password" name="current_password" class="form-control" >
               </div>
               <input type="hidden" name="act_datos" value="1">
               <button type="submit" class="btn btn-success uppercase form-control" value="Actualizar">Actualizar</button>
