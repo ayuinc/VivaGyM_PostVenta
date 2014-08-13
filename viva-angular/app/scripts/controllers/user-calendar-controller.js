@@ -14,6 +14,8 @@ app.controller('UserCalendarCtrl', ['$scope', '$window', '$location', 'VivaCalen
 
   $scope.events = Event.unbookedInspections();
 
+  $scope.eventSources = [$scope.events]
+
   //Event.unbookedInspections()
     //.then(function(data) {
       //console.log(data); 
