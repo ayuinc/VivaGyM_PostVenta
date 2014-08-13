@@ -236,15 +236,7 @@ class Mandrillapp {
 
 		  		);
 		 		$mandrill->messages->sendTemplate($template_name, $template_content, $message);
-		 		return '<div class="container-fluid pt-35 pb-35 mh-630">
-									<div class="row">
-									  <div class="col-md-6 col-md-offset-3">
-									    <h1>Gracias por su solicitud de documentos</h1>
-									    <p>Le enviaremos su documento en menos de 24 horas.</p>
-									    <p><a href="{site_url}main/user_apartment_show/{member_id}">Ir a mi departamento</a></p>    
-									  </div>
-									</div>
-									</div>';
+		 		return '';
 	 		}
 	}
 
