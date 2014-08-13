@@ -60,7 +60,7 @@ class Mandrillapp {
 	 			$obten=mysql_fetch_row($result);
 	 			$tit_problema = $obten[15];
 
-	 			$subject = "Solicitud de documento.";
+	 			$subject = "Solicitud de documento";
 
 				$text = "<!doctype html>
 				<html>
@@ -101,7 +101,7 @@ class Mandrillapp {
 												Torre: ".$torre_propietario."<p>
 												Departamento: ".$departamento_propietario."<p>
 												<br>
-												**No responder. Correo automático enviado desde el Portal de posventa Viva GyM**<br></span>
+												**No responder. Correo automático enviado desde el Portal de post-venta Viva GyM**<br></span>
 												<p>
 											</td>
 										</tr>
@@ -114,7 +114,7 @@ class Mandrillapp {
 							</tr>
 							<tr>
 								<td align='center'><p></p>
-									<span style='font-size: 12px;'>2014 Viva GyM Servicio de posventa, todos los derechos reservados.</span><br>
+									<span style='font-size: 12px;'>2014 Viva GyM Servicio de post-venta, todos los derechos reservados.</span><br>
 									<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
 								</td>
 							</tr>
@@ -181,12 +181,12 @@ class Mandrillapp {
 											</tr>
 											<tr>
 											<td align='left'><h3>Estimado/a ".$name."</h3>
-												<span style='color: #898989;'>La siguiente solicitud de documento ha sido procesada a través del portal de posventa.<p>
+												<span style='color: #898989;'>La siguiente solicitud de documento ha sido procesada a través del portal de post-venta.<p>
 												<br>
 												Documento solicitado:".$documento."<p>
 
 												<br>
-												**No responder. Correo automático enviado desde el Portal de posventa Viva GyM**<br></span>
+												**No responder. Correo automático enviado desde el Portal de post-venta Viva GyM**<br></span>
 												<p>
 											</td>
 										</tr>
@@ -199,7 +199,7 @@ class Mandrillapp {
 							</tr>
 							<tr>
 								<td align='center'><p></p>
-									<span style='font-size: 12px;'>2014 Viva GyM Servicio de posventa, todos los derechos reservados.</span><br>
+									<span style='font-size: 12px;'>2014 Viva GyM Servicio de post-venta, todos los derechos reservados.</span><br>
 									<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
 								</td>
 							</tr>
@@ -285,13 +285,13 @@ class Mandrillapp {
 								</tr>
 								<tr>
 								<td align='left'><h3>Estimado/a ".$name."</h3>
-									<span style='color: #898989;'>Le informamos que el agente de su caso ".$id_sol_garantia." ha visitado su departamento pero no pudo realizar el arreglo por no encontrarse nadie en el departamento.<p></span>
+									<span style='color: #898989;'>Te informamos que nuestro equipo de post-venta se acercó a tu departamento en la fecha y dentro de los horarios programados. Lamentablemente no se pudo efectuar la atención a tu requerimiento debido a que no se encontró a la persona designada como responsable en la propiedad.<p>
+									No te olvides programar una nueva fecha para atender tu requerimiento dentro de los próximos siete (07) días; de lo contrario, tu solicitud quedará sin efecto.<p></span>
 									<br>
-									<span style='color: #898989;'>Por esta razón usted debe ingresar nuevamente a nuestra plataforma de servicio posventa y agendar nuevamente su visita de arreglo <a href='http://162.243.222.54/main/user_request_show/".$id_sol_garantia."'>aquí</a>.<p>
-									<br>
-									Muchas gracias,<p>
-									<br>
-									Atentamente</span>
+									<span style='color: #898989;'>Programa una nueva fecha para atenderte <a href='http://162.243.222.54/main/user_request_show/".$id_sol_garantia."'>aquí</a>.<p>
+									Recuerda que estamos para servirte de la mejor manera. Cualquier consulta o solicitud adicional  puedes comunicarte con nosotros llamando al 206-7270 ó a nuestro correo vivagym_atencionalcliente@gym.com.pe .
+									<p>Atentamente,</span>
+									<span style='color: #898989;'>El equipo de post-venta de Viva GyM.</span>
 									<p>
 								</td>
 							</tr>
@@ -304,7 +304,7 @@ class Mandrillapp {
 				</tr>
 				<tr>
 					<td align='center'><p></p>
-						<span style='font-size: 12px;'>2014 Viva GyM Servicio de posventa, todos los derechos reservados.</span><br>
+						<span style='font-size: 12px;'>2014 Viva GyM Servicio de post-venta, todos los derechos reservados.</span><br>
 						<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
 					</td>
 				</tr>
@@ -395,12 +395,14 @@ class Mandrillapp {
 								</tr>
 								<tr>
 								<td align='left'><h3>Estimado/a ".$name."</h3>
-									<span style='color: #898989;'>Le informamos que la persona responsable por realizar la inspeccion de su caso ".$id_sol_garantia." ha visitado su departamento pero no pudo realizar la inspección por no encontrarse nadie en el departamento.<p></span>
+									<span style='color: #898989;'>Te informamos que nuestro equipo de post-venta se acercó a tu departamento en la fecha y dentro de los horarios programados. Lamentablemente no se pudo efectuar la inspección técnica debido a que no se encontró a la persona designada como responsable en la propiedad.</span>
+									<span style='color: #898989;'>No te olvides programar una nueva inspección dentro de los próximos siete (07) días; de lo contrario, tu solicitud quedará sin efecto.</span>
 									<br>
-									<span style='color: #898989;'>Por esta razón usted debe ingresar nuevamente a nuestra plataforma de servicio posventa y agendar nuevamente su visita de inspección <a href='http://162.243.222.54/main/user_request_show/".$id_sol_garantia."'>aquí</a>.<p>
+									<span style='color: #898989;'>Programa una nueva inspección <a href='http://162.243.222.54/main/user_request_show/".$id_sol_garantia."'>aquí</a>.<p>
 									<br>
-									Muchas gracias,<p>
-									Atentamente</span>
+									<span style='color: #898989;'>Recuerda que estamos para servirte de la mejor manera. Cualquier consulta o solicitud adicional  puedes comunicarte con nosotros llamando al 206-7270 ó a nuestro correo vivagym_atencionalcliente@gym.com.pe<p>
+									Atentamente,</span>
+									<span style='color: #898989;'>El equipo de post-venta de Viva GyM.</span>
 									<p>
 								</td>
 							</tr>
@@ -413,7 +415,7 @@ class Mandrillapp {
 				</tr>
 				<tr>
 					<td align='center'><p></p>
-						<span style='font-size: 12px;'>2014 Viva GyM Servicio de posventa, todos los derechos reservados.</span><br>
+						<span style='font-size: 12px;'>2014 Viva GyM Servicio de post-venta, todos los derechos reservados.</span><br>
 						<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
 					</td>
 				</tr>
@@ -469,7 +471,7 @@ class Mandrillapp {
  		// leer los datos del member de acuerdo
  		$to= $TMPL->fetch_param('to');
  		$name= $TMPL->fetch_param('name');
- 		$subject= "Recepción de Solicitud de Requerimientos Viva GyM";
+ 		$subject= "Ingreso de nueva solicitud";
  		$from= $TMPL->fetch_param('from');
  		$dias=  $TMPL->fetch_param('dias');
  		$id_cliente = $TMPL->fetch_param('id_cliente');
@@ -500,11 +502,12 @@ class Mandrillapp {
 								</tr>
 								<tr>
 								<td align='left'><h3>Estimado/a ".$name."</h3>
-									<span style='color: #898989;'>Gracias por enviar su solicitud de requerimientos por el portal de posventa en línea de Viva GyM. <p>
-En los próximos $dias días le estaremos informando por correo electrónico y mediante el portal de post-venta si la inspección por un técnico de nuestro equipo procede. Recuerde que en la mayoría de los casos, la vigencia de la garantía es necesaria para que los arreglos procedan. <p></span>
-<span style='color: #898989;'>Usted puede hacerle seguimiento a su solicitud <a href='http://162.243.222.54/main/user_dashboard/".$member_id."'> aquí</a>.</span><p>
-<span style='color: #898989;'>Esperamos servirle de la mejor manera durante este proceso. No olvide revisar el Manual del Propietario para cuidar de su departamento todos los días.<p>
-Atentamente</span>
+									<span style='color: #898989;'>Gracias por ingresar tu solicitud de requerimiento a través del portal de post-venta de Viva GyM. <p>
+En los próximos $dias días te estaremos informando a través de nuestro portal y/o SMS si la inspección técnica procede.<p></span>
+<span style='color: #898989;'>Puedes hacerle seguimiento a tu solicitud <a href='http://162.243.222.54/main/user_dashboard/".$member_id."'> aquí</a>.</span><p>
+<span style='color: #898989;'>Recuerda que estamos para servirte de la mejor manera. Cualquier consulta o solicitud adicional  puedes comunicarte con nosotros llamando al 206-7270 ó a nuestro correo vivagym_atencionalcliente@gym.com.pe.<p>
+Atentamente,</span>
+<span style='color: #898989;'>El equipo de post-venta de Viva GyM..</span>
 									<p>
 								</td>
 							</tr>
@@ -517,7 +520,7 @@ Atentamente</span>
 				</tr>
 				<tr>
 					<td align='center'><p></p>
-						<span style='font-size: 12px;'>2014 Viva GyM Servicio de posventa, todos los derechos reservados.</span><br>
+						<span style='font-size: 12px;'>2014 Viva GyM Servicio de post-venta, todos los derechos reservados.</span><br>
 						<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
 					</td>
 				</tr>
@@ -599,13 +602,11 @@ Atentamente</span>
 								</tr>
 								<tr>
 								<td align='left'><h3>Estimado/a ".$name."</h3>
-									<span style='color: #898989;'>Gracias por culminar el proceso de atención de su solicitud número: ".$id_sol_garantia.".
- 		Adjunto encontrará el reporte del arreglo realizado por GyM.<p>
- 		Aprovechamos para recordarle que en el Manual del Propietario otorgado al momento de la entrega de su departamento se especifica el correcto uso y mantenimiento preventivo que se le debe realizar a sus instalaciones a fin de evitar que estas fallen por el propio uso que provoca el desgaste natural.  Puede encontrar el Manual en nuestro portal de post-venta en línea.</span><a href='http://162.243.222.54/images/manual_propietario.pdf'>Manual de Usuario</a>.</span><p>
- 		<span style='color: #898989;'>Es importante precisar que en caso se presentara alguna solicitud, observación y/o requerimiento adicional tras el arreglo debe llenar un nuevo reclamo en nuestro portal de post-venta en línea o comunicarte a nuestro Call Center de Atención al Cliente 206-7270. Este es el único mecanismo que garantiza la atención de su solicitud de post-venta, cualquier otra forma de solicitud no será atendida.<p>
- 		Quedamos como siempre a su disposición si tiene alguna consulta o solicitud adicional.<p>
- 		Llene nuestra encuesta de satisfaccion en el siguiente link: <a href=''>Encuesta</a>
- 		Atentamente</span>
+									<span style='color: #898989;'>Nos es grato comunicarte que el proceso de atención a tu solicitud N° : ".$id_sol_garantia." ha concluido.</span><p>
+									<span style='color: #898989;'>Podrás encontrar toda la información acerca de tu caso <a href='http://162.243.222.54/main/user_request_show/".$id_sol_garantia."'>aquí</a> o ingresando a nuestro portal a través de tu sesión.</span>
+ 		<span style='color: #898989;'>Recuerda que estamos para servirte de la mejor manera. Cualquier consulta o solicitud adicional  puedes comunicarte con nosotros llamando al 206-7270 ó a nuestro correo vivagym_atencionalcliente@gym.com.pe <p>
+ 		Atentamente,</span>
+ 		<span style='color: #898989;'>El equipo de post-venta de Viva GyM.</span>
 									<p>
 								</td>
 							</tr>
@@ -618,7 +619,7 @@ Atentamente</span>
 				</tr>
 				<tr>
 					<td align='center'><p></p>
-						<span style='font-size: 12px;'>2014 Viva GyM Servicio de posventa, todos los derechos reservados.</span><br>
+						<span style='font-size: 12px;'>2014 Viva GyM Servicio de post-venta, todos los derechos reservados.</span><br>
 						<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
 					</td>
 				</tr>
@@ -712,7 +713,7 @@ Atentamente</span>
 								</tr>
 								<tr>
 								<td align='left'><h3>Estimado/a ".$name."</h3>
-									<span style='color: #898989;'>Gracias por culminar el proceso de atención de su solicitud número: ".$id_sol_garantia.".
+									<span style='color: #898989;'>Gracias por culminar el proceso de atención de su solicitud N° : ".$id_sol_garantia.".
  		Adjunto encontrará el reporte del arreglo realizado por GyM.<p>
  		Aprovechamos para recordarle que en el Manual del Propietario otorgado al momento de la entrega de su departamento se especifica el correcto uso y mantenimiento preventivo que se le debe realizar a sus instalaciones a fin de evitar que estas fallen por el propio uso que provoca el desgaste natural.  Puede encontrar el Manual en nuestro portal de post-venta en línea. <a href='http://162.243.222.54/images/manual_propietario.pdf'>Manual de Usuario</a>.</span><p>
  		<span style='color: #898989;'>Es importante precisar que en caso se presentara alguna solicitud, observación y/o requerimiento adicional tras el arreglo debe llenar un nuevo reclamo en nuestro portal de post-venta en línea o comunicarte a nuestro Call Center de Atención al Cliente 206-7270. Este es el único mecanismo que garantiza la atención de su solicitud de post-venta, cualquier otra forma de solicitud no será atendida.<p>
@@ -730,7 +731,7 @@ Atentamente</span>
 				</tr>
 				<tr>
 					<td align='center'><p></p>
-						<span style='font-size: 12px;'>2014 Viva GyM Servicio de posventa, todos los derechos reservados.</span><br>
+						<span style='font-size: 12px;'>2014 Viva GyM Servicio de post-venta, todos los derechos reservados.</span><br>
 						<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
 					</td>
 				</tr>
@@ -792,7 +793,7 @@ Atentamente</span>
  			$obten=mysql_fetch_row($result);
  			$tit_problema = $obten[15];
 
- 			$subject = " Arreglo procede.";
+ 			$subject = "Arreglo procede";
 
 			$text = "<!doctype html>
 			<html>
@@ -820,10 +821,10 @@ Atentamente</span>
 										</tr>
 										<tr>
 										<td align='left'><h3>Estimado/a ".$name."</h3>
-											<span style='color: #898989;'>Tras analizar su solicitud de requerimiento número ".$id_sol_garantia." le confirmamos que se ha determinado que el arreglo reportado: ".$tit_problema.", procede. Para que se acerque un especialista a arreglar el daño debe agendar una cita ingresando a nuestro portal de post-venta en línea <a href='http://162.243.222.54/main/user_request_show/".$id_sol_garantia."'>aquí</a>.</span><p>
-							 <span style='color: #898989;'>Es importante precisar que en caso se presentara alguna solicitud, observación y/o requerimiento adicional tras el arreglo debe llenar un nuevo reclamo en nuestro portal de post-venta en línea o comunicarte a nuestro Call Center de Atención al Cliente 206-7270. Este es el único mecanismo que garantiza la atención de su solicitud de post-venta, cualquier otra forma de solicitud no será atendida.<p>
-							 Atentamente</span>
-											<p>
+											<span style='color: #898989;'>En relación a tu solicitud ".$id_sol_garantia." nos es grato informarte que tu requerimiento ha sido declarado como procedente. Por favor ingresa <a href='http://162.243.222.54/main/user_request_show/".$id_sol_garantia."'>aquí</a> y programa una fecha para la atención.</span><p>
+							 <span style='color: #898989;'>Recuerda que estamos para servirte de la mejor manera. Cualquier consulta o solicitud adicional  puedes comunicarte con nosotros llamando al 206-7270 ó a nuestro correo vivagym_atencionalcliente@gym.com.pe<p>
+							 Atentamente,</span>
+							 <span style='color: #898989;'>El equipo de post-venta de Viva GyM.</span>
 										</td>
 									</tr>
 									<tr>
@@ -835,7 +836,7 @@ Atentamente</span>
 						</tr>
 						<tr>
 							<td align='center'><p></p>
-								<span style='font-size: 12px;'>2014 Viva GyM Servicio de posventa, todos los derechos reservados.</span><br>
+								<span style='font-size: 12px;'>2014 Viva GyM Servicio de post-venta, todos los derechos reservados.</span><br>
 								<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
 							</td>
 						</tr>
@@ -875,7 +876,7 @@ Atentamente</span>
  		}
  		else if($acc == "no"){
 
- 			$subject=" Arreglo no procede.";
+ 			$subject=" Arreglo no procede";
  			$text = "<!doctype html>
 			<html>
 			  <head>
@@ -902,10 +903,10 @@ Atentamente</span>
 										</tr>
 										<tr>
 										<td align='left'><h3>Estimado/a ".$name."</h3>
-											<span style='color: #898989;'>Tras analizar su solicitud de requerimiento número ".$id_sol_garantia." le informamos que los especialistas de GyM han determinado que su arreglo no procede. La razón de esta decisión es: ".$comentarios.".</span><p>
- 			<span style='color: #898989;'>Aprovechamos para recordarle que en el Manual del Propietario otorgado al momento de la entrega de su departamento se especifica el correcto uso y mantenimiento preventivo que se le debe realizar a sus instalaciones a fin de evitar que estas fallen por el propio uso que provoca el desgaste natural.  Puede encontrar el Manual en nuestro portal de post-venta en línea. <a href='http://162.243.222.54/images/manual_propietario.pdf'>Manual de Usuario</a>.<p>
- 			Quedamos como siempre a su disposición si tiene alguna consulta o solicitud adicional puede llamar a nuestro Call Center de Atención al Cliente al 206-7270.<p>
- 			Atentamente</span>
+											<span style='color: #898989;'>En relación a tu solicitud N° ".$id_sol_garantia.". Lamentamos informarte que luego de haber efectuado la inspección correspondiente se ha determinado que tu requerimiento no es procedente debido a: ".$comentarios.".</span><p>
+ 			<span style='color: #898989;'>Recuerda que estamos para servirte de la mejor manera. Cualquier consulta o solicitud adicional  puedes comunicarte con nosotros llamando al 206-7270 ó a nuestro correo vivagym_atencionalcliente@gym.com.pe .<p>
+ 			Atentamente,</span>
+ 			<span style='color: #898989;'>El equipo de post-venta de Viva GyM.</span>
 											<p>
 										</td>
 									</tr>
@@ -918,7 +919,7 @@ Atentamente</span>
 						</tr>
 						<tr>
 							<td align='center'><p></p>
-								<span style='font-size: 12px;'>2014 Viva GyM Servicio de posventa, todos los derechos reservados.</span><br>
+								<span style='font-size: 12px;'>2014 Viva GyM Servicio de post-venta, todos los derechos reservados.</span><br>
 								<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
 							</td>
 						</tr>
@@ -1008,10 +1009,11 @@ Atentamente</span>
 													</tr>
 													<tr>
 													<td align='left'><h3>Estimado/a ".$name."</h3>
-														<span style='color: #898989;'>Tras analizar su solicitud de requerimiento número ".$id_sol_garantia.", le confirmamos que se realizará la inspección del daño reportado 
-				".$tit_problema." a través del sistema de post-venta en línea de Viva GyM. Para proceder con la inspección debe agendar su cita en nuestro portal de posventa en línea. Por favor agende su visita <a href='http://162.243.222.54/main/user_request_show/".$id_sol_garantia."'>aquí</a>. Ahí deberá seleccionar un horario en el que con seguridad usted o alguien más se encontrará en su hogar para que reciba al especialista que inspeccionará el problema.<p>
-			Quedamos como siempre a su disposición si tiene alguna consulta o solicitud adicional puede llamar a nuestro Call Center de Atención al Cliente al 206-7270.<p>
-			Atentamente</span>
+														<span style='color: #898989;'>En relación a tu solicitud ".$id_sol_garantia.", nos es grato comunicarte que procederemos con la inspección técnica de tu departamento.
+														 Para proceder con la inspección, debesprogramar una cita a través de nuestro portal <a href='http://162.243.222.54/main/user_request_show/".$id_sol_garantia."'>aquí</a>. De lo contrario, comunícate con nosotros llamándonos al 206-7270 ó a nuestro correo vivagym_atencionalcliente@gym.com.pe<p>
+			Recuerda que estamos para servirte de la mejor manera. Cualquier consulta o solicitud adicional  puedes comunicarte con nosotros llamando al 206-7270 óa nuestro correo vivagym_atencionalcliente@gym.com.pe<p>
+			Atentamente,</span>
+			<span style='color: #898989;'>El equipo de post-venta de Viva GyM.</span>
 														<p>
 													</td>
 												</tr>
@@ -1024,7 +1026,7 @@ Atentamente</span>
 									</tr>
 									<tr>
 										<td align='center'><p></p>
-											<span style='font-size: 12px;'>2014 Viva GyM Servicio de posventa, todos los derechos reservados.</span><br>
+											<span style='font-size: 12px;'>2014 Viva GyM Servicio de post-venta, todos los derechos reservados.</span><br>
 											<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
 										</td>
 									</tr>
@@ -1095,11 +1097,10 @@ Atentamente</span>
 																</tr>
 																<tr>
 																<td align='left'><h3>Estimado/a ".$name."</h3>
-																	<span style='color: #898989;'>Tras analizar su solicitud de requerimiento número ".$id_sol_garantia.", le confirmamos que se ha determinado que su requerimiento es improcedente debido a: ".$comentarios.".<p>
-				Por esta razón no corresponde enviar a un especialista a verificar el problema.
-			Aprovechamos para recordarle que en el Manual del Propietario otorgado al momento de la entrega de su departamento se especifica el correcto uso y mantenimiento preventivo que se le debe realizar a sus instalaciones a fin de evitar que estas fallen por el propio uso que provoca el desgaste natural.  Puede encontrar el Manual en nuestro portal de post-venta en línea. <a href='http://162.243.222.54/images/manual_propietario.pdf'>Manual de Usuario</a>.</span><p>
-			<span style='color: #898989;'>Quedamos como siempre a su disposición si tiene alguna consulta o solicitud adicional puede llamar a nuestro Call Center de Atención al Cliente al 206-7270.<p>
-			Atentamente</span>
+																	<span style='color: #898989;'>En relación a tu solicitud ".$id_sol_garantia.", lamentamos informarte que turequerimiento no procede debido a: ".$comentarios.".<p></span>
+																	<span style='color: #898989;'>Recuerda que estamos para servirte de la mejor manera. Cualquier consulta o solicitud adicional  puedes comunicarte con nosotros llamando al 206-7270 ó a nuestro correo vivagym_atencionalcliente@gym.com.pe<p>
+																	Atentamente,</span>
+																	<span style='color: #898989;'>El equipo de post-venta de Viva GyM.</span>
 																	<p>
 																</td>
 															</tr>
@@ -1112,7 +1113,7 @@ Atentamente</span>
 												</tr>
 												<tr>
 													<td align='center'><p></p>
-														<span style='font-size: 12px;'>2014 Viva GyM Servicio de posventa, todos los derechos reservados.</span><br>
+														<span style='font-size: 12px;'>2014 Viva GyM Servicio de post-venta, todos los derechos reservados.</span><br>
 														<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
 													</td>
 												</tr>
@@ -1163,7 +1164,7 @@ Atentamente</span>
  		
  		$to= $TMPL->fetch_param('to');
  		$name= $TMPL->fetch_param('name');
- 		$subject= $TMPL->fetch_param('subject');
+ 		$subject= "Visita de inspección agendada";
  		$from= $TMPL->fetch_param('from');
  		$id_sol_garantia = $TMPL->fetch_param('id_sol_garantia');
  		$fecha_atencion_ticket = $TMPL->fetch_param('fecha_atencion_ticket');
@@ -1195,14 +1196,14 @@ Atentamente</span>
 																</tr>
 																<tr>
 																<td align='left'><h3>Estimado/a ".$name."</h3>
-																	<span style='color: #898989;'>Muchas gracias por agendar su cita de inspección en el  el portal de post-venta en línea de Viva GyM. Su inspección se realizará según la siguiente información:<p>
+																	<span style='color: #898989;'>Gracias por programar tu cita de inspección a través de nuestro portal. La inspección se realizará de acuerdo a la siguiente información:<p>
 																 		Número de solicitud: ".$id_sol_garantia."<p>
 																 		Fecha de Inspección: ".$fecha_atencion_ticket."<p>
 																 		Horario de Inspección: 9:00 am - 2:00 pm de lunes a viernes<p>
-																 		Recuerde que usted o alguien responsable de su departamento debe estar presente en el momento de la inspección.  En caso no pueda estar presente deberá reagendar su cita en el portal de post-venta de Viva GyM con al menos 24 horas de anticipación a la misma. Si tiene una emergencia el mismo día de la cita y no podrá estar presente por favor comuníquese al 206-7270.<p>
-																 		Recuerde que si reagenda su cita deberá pasar nuevamente por todo el proceso. Tiene, además, un máximo de dos oportunidades para reagendar su cita.<p>
-																 		Quedamos como siempre a su disposición si tiene alguna consulta o solicitud adicional puede llamar a nuestro Call Center de Atención al Cliente al 206-7270.<p>
-																 		Atentamente</span>
+																 		Recuerda que la persona designada como responsable debe estar presente el tiempo que dure la inspección. De lo contrario, deberás reprogramar una nueva inspección de acuerdo a la disponibilidad.<p>
+																 		Recuerda que estamos para servirte de la mejor manera. Cualquier consulta o solicitud adicional  puedes comunicarte con nosotros llamando al 206-7270 ó a nuestro correo vivagym_atencionalcliente@gym.com.pe<p>
+																 		Atentamente,</span>
+																 		<span style='color: #898989;'>El equipo de post-venta de Viva GyM.</span>
 																	<p>
 																</td>
 															</tr>
@@ -1215,7 +1216,7 @@ Atentamente</span>
 												</tr>
 												<tr>
 													<td align='center'><p></p>
-														<span style='font-size: 12px;'>2014 Viva GyM Servicio de posventa, todos los derechos reservados.</span><br>
+														<span style='font-size: 12px;'>2014 Viva GyM Servicio de post-venta, todos los derechos reservados.</span><br>
 														<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
 													</td>
 												</tr>
@@ -1266,7 +1267,7 @@ Atentamente</span>
 		
 		$to= $TMPL->fetch_param('to');
 		$name= $TMPL->fetch_param('name');
-		$subject= "Visita de arreglo agendada.";
+		$subject= "Visita de arreglo agendada";
 		$from= $TMPL->fetch_param('from');
 		$id_sol_garantia = $TMPL->fetch_param('id_sol_garantia');
 		$fecha_atencion_ticket = $TMPL->fetch_param('fecha_atencion_ticket');
@@ -1298,14 +1299,14 @@ Atentamente</span>
 														</tr>
 														<tr>
 														<td align='left'><h3>Estimado/a ".$name."</h3>
-															<span style='color: #898989;'>Muchas gracias por agendar su arreglo en el portal de post-venta en línea de Viva GyM. Su arreglo se realizará según la siguiente información:<p>
+															<span style='color: #898989;'>Gracias por haber programadola fecha para atender tu requerimientoa través de nuestro portal. Tu requerimiento será atendido de acuerdo a la siguiente información:<p>
 		Número de solicitud: ".$id_sol_garantia."<p>
-		Fecha de arreglo: ".$fecha_atencion_ticket."<p>
+		Fecha programada para la atención: ".$fecha_atencion_ticket."<p>
 		Horario de arreglo: 9:00 am - 2:00 pm de lunes a viernes<p>
-		Recuerde que usted o alguien responsable de su departamento debe estar presente en el momento de el arreglo.  En caso no pueda estar presente deberá reagendar su cita en el portal de post-venta de Viva GyM con al menos 24 horas de anticipación a la misma. Si tiene una emergencia el mismo día de la cita y no podrá estar presente por favor comuníquese al 206-7270.
-		Recuerde que si reagenda su cita deberá pasar nuevamente por todo el proceso. Tiene, además, un máximo de dos oportunidades para reagendar su cita. <p>
-		Quedamos como siempre a su disposición si tiene alguna consulta o solicitud adicional puede llamar a nuestro Call Center de Atención al Cliente al 206-7270.<p>
-		Atentamente</span>
+		Recuerda que la persona designada como responsable debe estar presente el tiempo que dure la atención. De lo contrario, deberás programar una nueva fecha para atender tu requerimiento de acuerdo a la disponibilidad.<p>
+		Recuerda que estamos para servirte de la mejor manera. Cualquier consulta o solicitud adicional  puedes comunicarte con nosotros llamando al 206-7270 ó a nuestro correo vivagym_atencionalcliente@gym.com.pe <p>
+		Atentamente,</span>
+		<span style='color: #898989;'>El equipo de post-venta de Viva GyM.</span>
 															<p>
 														</td>
 													</tr>
@@ -1318,7 +1319,7 @@ Atentamente</span>
 										</tr>
 										<tr>
 											<td align='center'><p></p>
-												<span style='font-size: 12px;'>2014 Viva GyM Servicio de posventa, todos los derechos reservados.</span><br>
+												<span style='font-size: 12px;'>2014 Viva GyM Servicio de post-venta, todos los derechos reservados.</span><br>
 												<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
 											</td>
 										</tr>
@@ -1413,7 +1414,7 @@ Atentamente</span>
 								</tr>
 								<tr>
 									<td align='center'><p></p>
-										<span style='font-size: 12px;'>2014 Viva GyM Servicio de posventa, todos los derechos reservados.</span><br>
+										<span style='font-size: 12px;'>2014 Viva GyM Servicio de post-venta, todos los derechos reservados.</span><br>
 										<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
 									</td>
 								</tr>
@@ -1510,7 +1511,8 @@ Atentamente</span>
 															Reclamo: ".$mensaje."<p>
 															Vamos a revisar su reclamo y nos comunicaremos con usted en un plazo maximo de 30 dias.<p>
 															Quedamos como siempre a su disposición si tiene alguna consulta o solicitud adicional puede llamar a nuestro Call Center de Atención al Cliente al 206-7270.<p>
-															Atentamente</span>
+															Atentamente,</span>
+																<span style='color: #898989;'>El equipo de post-venta de Viva GyM.</span>
 															<p>
 														</td>
 													</tr>
@@ -1523,7 +1525,7 @@ Atentamente</span>
 										</tr>
 										<tr>
 											<td align='center'><p></p>
-												<span style='font-size: 12px;'>2014 Viva GyM Servicio de posventa, todos los derechos reservados.</span><br>
+												<span style='font-size: 12px;'>2014 Viva GyM Servicio de post-venta, todos los derechos reservados.</span><br>
 												<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
 											</td>
 										</tr>
@@ -1648,7 +1650,7 @@ Atentamente</span>
 										</tr>
 										<tr>
 											<td align='center'><p></p>
-												<span style='font-size: 12px;'>2014 Viva GyM Servicio de posventa, todos los derechos reservados.</span><br>
+												<span style='font-size: 12px;'>2014 Viva GyM Servicio de post-venta, todos los derechos reservados.</span><br>
 												<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
 											</td>
 										</tr>
@@ -1758,7 +1760,7 @@ Atentamente</span>
 										</tr>
 										<tr>
 											<td align='center'><p></p>
-												<span style='font-size: 12px;'>2014 Viva GyM Servicio de posventa, todos los derechos reservados.</span><br>
+												<span style='font-size: 12px;'>2014 Viva GyM Servicio de post-venta, todos los derechos reservados.</span><br>
 												<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
 											</td>
 										</tr>
