@@ -23,7 +23,7 @@ app.controller('UserCalendarCtrl', ['$scope', '$http', '$window', 'VivaCalendar'
       $scope.events = data;
       $scope.eventSources = [$scope.events];
       $scope.renderCalender = function(calendar) {
-            calendar.fullCalendar('render');
+            calendar.fullCalendar('rerenderEvents');
           };
     });
 
