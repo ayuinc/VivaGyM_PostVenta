@@ -372,7 +372,7 @@ class Mandrillapp {
  		$id_sol_garantia =  $TMPL->fetch_param('id_sol_garantia');
  		$result_aus=mysql_query("SELECT * FROM exp_freeform_form_entries_4 WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 5 ");
 		$obten_aus=mysql_fetch_row($result_aus);
-		echo "<br>plugin ausente ".$cliente_ausente = $obten_aus[23];
+		$cliente_ausente = $obten_aus[23];
 
 		if($cliente_ausente == ""){
  		//$text = $TMPL->tagdata;	 		
