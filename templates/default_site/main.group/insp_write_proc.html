@@ -20,8 +20,7 @@ $ip=$_SERVER["REMOTE_ADDR"];
 $date = date_create();
 $entry_date=date_timestamp_get($date);
 
-$result_aus=mysql_query("SELECT * FROM exp_freeform_form_entries_4 
-	WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 5 ");
+$result_aus=mysql_query("SELECT * FROM exp_freeform_form_entries_4 WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 5 ");
 $obten_aus=mysql_fetch_row($result_aus);
 $cliente_ausente = $obten_aus[23];
 
@@ -38,15 +37,17 @@ if($cliente_ausente=="si"){
 </div>
 
 <?php
-}else{ // colocar el plugin de envio de correos 
+};
+
+if($cliente_ausente==""){ // colocar el plugin de envio de correos 
 
 ?>
 <!-- enviar al plugin siempre acc="no" para q funcione -->
 {exp:freeform:entries form_id="4" search:id_sol_garantia="{segment_3}" search:orden_tramite="5" limit="1" status="open|closed" }
-		{exp:member:custom_profile_data}
-			{exp:generar_comentario member_id="{member_id}" id_sol_garantia="{segment_3}" 
-			texto="La persona encargada no se encontraba en el inmueble para la inspección." acc="{freeform:field:cliente_ausente}" }
-		{/exp:member:custom_profile_data}
+	{exp:member:custom_profile_data}
+		{exp:generar_comentario member_id="{member_id}" id_sol_garantia="{segment_3}" 
+		texto="La persona encargada no se encontraba en el inmueble para la inspección." acc="{freeform:field:cliente_ausente}" }
+	{/exp:member:custom_profile_data}
 {/exp:freeform:entries}
 
 	{exp:user:stats member_id="{segment_5}"}
