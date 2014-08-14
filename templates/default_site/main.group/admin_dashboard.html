@@ -63,7 +63,7 @@ $complejo=$_POST['complejo'];
 $fecha_inicio=$_POST['fecha_inicio'];
 $fecha_fin=$_POST['fecha_fin'];
 
-if((!empty($pri)) or (!empty($cas)) or (!empty($etapa)) or (!empty($tipo)) or (!empty($fecha_inicio)) or (!empty($fecha_fin)))
+if(($pri!="") or ($cas!="") or (!empty($etapa)) or (!empty($tipo)) or (!empty($fecha_inicio)) or (!empty($fecha_fin)))
   {$exportacion="busqueda";}else{$exportacion="completa";}
 ?>
 <!-- end parametros para las busquedas -->
