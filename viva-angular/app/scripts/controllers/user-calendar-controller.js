@@ -12,30 +12,7 @@ app.controller('UserCalendarCtrl', ['$scope', '$http', '$window', 'VivaCalendar'
     }
   });
 
-  var inspectionUrl = 'http://162.243.222.54/calendario/propietario/inspecciones';
+  $scope.eventSource = 'http://162.243.222.54/calendario/propietario/inspecciones';
 
-  $scope.events = [];
-  $scope.eventSources = [];
-  $scope.renderCalender = function(calendar) {
-        calendar.fullCalendar('rerenderEvents');
-      };
-
-  $http.get(inspectionUrl)
-    .success(function(data) {
-      console.log(data);
-      $scope.events = data;
-      $scope.eventSources = [$scope.events];
-      $scope.$apply.renderCalender = function(calendar) {
-            calendar.fullCalendar('rerenderEvents');
-          };
-    });
-
-
-
-  //Event.unbookedInspections()
-    //.then(function(data) {
-      //console.log(data); 
-    //}, function() {
-      //console.log("error");
-    //});
+  $scope.eventSources = [$scope.eventSource];
 }]);
