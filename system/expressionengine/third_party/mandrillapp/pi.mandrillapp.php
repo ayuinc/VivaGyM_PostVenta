@@ -253,19 +253,15 @@ class Mandrillapp {
 		$this->EE =& get_instance(); // EEv2 syntax
 		$TMPL = $this->EE->TMPL;
 
- 		require_once 'mailchimp-mandrill-api-php/src/Mandrill.php'; 
- 		$mandrill = new Mandrill('Svqgcw575OLrORu2WiD09g');
- 		
- 		$to= $TMPL->fetch_param('to');
- 		$name= $TMPL->fetch_param('name');
- 		$subject= "No se pudo realizar el arreglo";
- 		$from= $TMPL->fetch_param('from');
- 		$id_sol_garantia =  $TMPL->fetch_param('id_sol_garantia');
- 		$result_aus=mysql_query("SELECT * FROM exp_freeform_form_entries_4 WHERE form_field_18 = $id_sol_garantia 
- 			AND form_field_19 = 9 ");
-		$obten_aus=mysql_fetch_row($result_aus);
-		$cliente_ausente = $obten_aus[23];
- 		if($cliente_ausente == ""){
+		require_once 'mailchimp-mandrill-api-php/src/Mandrill.php'; 
+		$mandrill = new Mandrill('Svqgcw575OLrORu2WiD09g');
+		
+		$to= $TMPL->fetch_param('to');
+		$name= $TMPL->fetch_param('name');
+		$subject= "No se pudo realizar el arreglo";
+		$from= $TMPL->fetch_param('from');
+		$id_sol_garantia = $TMPL->fetch_param('id_sol_garantia');
+		//$text = $TMPL->tagdata;
 
 		$text = "<!doctype html>
 	<html>
@@ -319,43 +315,41 @@ class Mandrillapp {
 			</table>
 		</body>
 	</html>";
- 		
- 		/*'html' => '<p>FELICIDADES!!!</p><p>Ganaste el tema'.$topic.' ve a nuestro menú de temas y sigue participando</p>',*/
- 		$message = array(
- 		    'subject' => $subject,
- 		    'from_email' => $from,
- 		    'html' => $text,
- 		    'to' => array(array('email' => $to, 'name' => $name)),
- 		    'merge_vars' => array(array(
-	 		        'rcpt' => 'recipient1@domain.com',
-	 		        'vars' =>
-	 		        array(
-	 		            array(
-	 		                'name' => 'FIRSTNAME',
-	 		                'content' => 'Recipient 1 first name'),
-	 		            array(
-	 		                'name' => 'LASTNAME',
-	 		                'content' => 'Last name')
-	 		    ))));
 
- 		$template_name = 'test';
+		$message = array(
+		    'subject' => $subject,
+		    'from_email' => $from,
+		    'html' => $text,
+		    'to' => array(array('email' => $to, 'name' => $name)),
+		    'merge_vars' => array(array(
+ 		        'rcpt' => 'recipient1@domain.com',
+ 		        'vars' =>
+ 		        array(
+ 		            array(
+ 		                'name' => 'FIRSTNAME',
+ 		                'content' => 'Recipient 1 first name'),
+ 		            array(
+ 		                'name' => 'LASTNAME',
+ 		                'content' => 'Last name')
+ 		    ))));
 
- 		$template_content = array(
- 		    array(
- 		        'name' => 'main',
- 		        'content' => 'Hi *|FIRSTNAME|* *|LASTNAME|*, thanks for signing up.'),
- 		    array(
- 		        'name' => 'footer',
- 		        'content' => 'Copyright 2012.')
+		$template_name = 'test';
 
- 		);
+		$template_content = array(
+		    array(
+		        'name' => 'main',
+		        'content' => 'Hi *|FIRSTNAME|* *|LASTNAME|*, thanks for signing up.'),
+		    array(
+		        'name' => 'footer',
+		        'content' => 'Copyright 2012.')
+
+		);
 		$mandrill->messages->sendTemplate($template_name, $template_content, $message);
 		return "";
-		}
-		else{
-			return "";
-		}
 	}
+
+		
+
 	function send_email_write_proc(){
 		
 		global $TMPL;
