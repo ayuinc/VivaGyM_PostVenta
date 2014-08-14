@@ -30,7 +30,9 @@ if($cliente_ausente=="si"){
   </div>
 </div>
 <?php
-}else{ // colocar el plugin de envio de correos
+};
+
+if($cliente_ausente==""){ // colocar el plugin de envio de correos 
 
 ?>
 {exp:member:custom_profile_data}
