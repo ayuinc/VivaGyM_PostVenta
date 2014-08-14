@@ -236,7 +236,15 @@ class Mandrillapp {
 
 		  		);
 		 		$mandrill->messages->sendTemplate($template_name, $template_content, $message);
-		 		return '';
+		 		return '<div class="container-fluid pt-35 pb-35 mh-630">
+									<div class="row">
+									  <div class="col-md-6 col-md-offset-3">
+									    <h1>Gracias por ingresar tu solicitud de documentos</h1>
+									    <p>Nos comunicaremos contigo a la brevedad.</p>
+									    <p><a href="{site_url}main/user_apartment_show/{member_id}">Ir a mi departamento</a></p>    
+									  </div>
+									</div>
+								</div>';
 	 		}
 	}
 
@@ -474,7 +482,7 @@ class Mandrillapp {
  		$subject= "Ingreso de nueva solicitud";
  		$from= $TMPL->fetch_param('from');
  		$dias=  $TMPL->fetch_param('dias');
- 		$id_cliente = $TMPL->fetch_param('id_cliente');
+ 		$member_id = $TMPL->fetch_param('member_id');
 
  		$text = "<!doctype html>
 	<html>
@@ -1010,7 +1018,7 @@ Atentamente,</span>
 													<tr>
 													<td align='left'><h3>Estimado/a ".$name."</h3>
 														<span style='color: #898989;'>En relación a tu solicitud ".$id_sol_garantia.", nos es grato comunicarte que procederemos con la inspección técnica de tu departamento.
-														 Para proceder con la inspección, debesprogramar una cita a través de nuestro portal <a href='http://162.243.222.54/main/user_request_show/".$id_sol_garantia."'>aquí</a>. De lo contrario, comunícate con nosotros llamándonos al 206-7270 ó a nuestro correo vivagym_atencionalcliente@gym.com.pe<p>
+														 Para proceder con la inspección, debes programar una cita a través de nuestro portal <a href='http://162.243.222.54/main/user_request_show/".$id_sol_garantia."'>aquí</a>. De lo contrario, comunícate con nosotros llamándonos al 206-7270 ó a nuestro correo vivagym_atencionalcliente@gym.com.pe<p>
 			Recuerda que estamos para servirte de la mejor manera. Cualquier consulta o solicitud adicional  puedes comunicarte con nosotros llamando al 206-7270 óa nuestro correo vivagym_atencionalcliente@gym.com.pe<p>
 			Atentamente,</span>
 			<span style='color: #898989;'>El equipo de post-venta de Viva GyM.</span>
