@@ -10,7 +10,6 @@
 
 <?php 
 $fecha_atencion_ticket=date('d-m-Y');
-
 $id_sol_garantia="{segment_3}";
 $paso="{segment_4}";
 $id_cliente="{segment_5}";
@@ -39,10 +38,9 @@ if($cliente_ausente=="si"){
 <?php
 };
 
-if($cliente_ausente==""){ // colocar el plugin de envio de correos 
+if($cliente_ausente==""){
 
 ?>
-<!-- enviar al plugin siempre acc="no" para q funcione -->
 	{exp:member:custom_profile_data}
 		{exp:generar_comentario member_id="{member_id}" id_sol_garantia="{segment_3}" 
 		texto="La persona encargada no se encontraba en el inmueble para la inspección." acc="no" }
@@ -50,7 +48,7 @@ if($cliente_ausente==""){ // colocar el plugin de envio de correos
 
 	{exp:user:stats member_id="{segment_5}"}
 		{exp:mandrillapp:send_email_write_proc
-		  to="{email_propietario}" <!-- to="{email}" Colocar el email de un administrador viva-->
+		  to="{email_propietario}"
 		  name="{nombre_propietario}"
 		  from="admin@gym.com"
 		  id_sol_garantia="{segment_3}"}

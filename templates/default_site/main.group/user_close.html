@@ -1,14 +1,12 @@
 {embed="includes/header" }
 
-{exp:get_post_vars parse="inward"}
-	{exp:confirm_sol:user_close 
-		id_sol_garantia="{segment_3}" 
-		paso="{segment_4}"
-		id_cliente="{segment_5}"
-		entry_id="{segment_6}"
-	}
-	{/exp:confirm_sol:user_close}
-{/exp:get_post_vars}
+{exp:confirm_sol:user_close 
+	id_sol_garantia="{segment_3}" 
+	paso="{segment_4}"
+	id_cliente="{segment_5}"
+	entry_id="{segment_6}"
+}
+{/exp:confirm_sol:user_close}
 
 <?php
 $fecha_atencion_ticket=date('d-m-Y');
@@ -18,6 +16,7 @@ $id_cliente="{segment_5}";
 $result_aus=mysql_query("SELECT * FROM exp_freeform_form_entries_4 WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 9 ");
 $obten_aus=mysql_fetch_row($result_aus);
 $cliente_ausente = $obten_aus[23];
+
 if($cliente_ausente=="si"){
 	
 ?>
@@ -32,22 +31,23 @@ if($cliente_ausente=="si"){
 <?php
 };
 
-if($cliente_ausente==""){ // colocar el plugin de envio de correos 
+if($cliente_ausente==""){
 
 ?>
-{exp:member:custom_profile_data}
-	{exp:generar_comentario member_id="{member_id}" id_sol_garantia="{segment_3}" 
-	texto="La persona encargada no se encontraba en el inmueble para el arreglo." acc="no" }
-{/exp:member:custom_profile_data}
 
-{exp:user:stats member_id="{segment_5}"}
-	{exp:mandrillapp:send_email_user_close
-	  to="{email_propietario}"
-	  name="{nombre_propietario}"
-	  from="admin@gym.com"
-	  id_sol_garantia="{segment_3}"}
-	{/exp:mandrillapp:send_email_user_close}  
-{/exp:user:stats}
+{exp:member:custom_profile_data}
+		{exp:generar_comentario member_id="{member_id}" id_sol_garantia="{segment_3}" 
+		texto="La persona encargada no se encontraba en el inmueble para el arreglo." acc="no" }
+	{/exp:member:custom_profile_data}
+
+	{exp:user:stats member_id="{segment_5}"}
+		{exp:mandrillapp:send_email_user_close_one
+		  to="{email_propietario}"
+		  name="{nombre_propietario}"
+		  from="admin@gym.com"
+		  id_sol_garantia="{segment_3}"}
+		{/exp:mandrillapp:send_email_user_close_one}  
+	{/exp:user:stats}
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">

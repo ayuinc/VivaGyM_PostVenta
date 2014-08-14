@@ -248,112 +248,6 @@ class Mandrillapp {
 	 		}
 	}
 
-	function send_email_user_close(){
-		global $TMPL;
-		$this->EE =& get_instance(); // EEv2 syntax
-		$TMPL = $this->EE->TMPL;
-
- 		require_once 'mailchimp-mandrill-api-php/src/Mandrill.php'; 
- 		$mandrill = new Mandrill('Svqgcw575OLrORu2WiD09g');
- 		
- 		$to= $TMPL->fetch_param('to');
- 		$name= $TMPL->fetch_param('name');
- 		$subject= "No se pudo realizar el arreglo";
- 		$from= $TMPL->fetch_param('from');
- 		$id_sol_garantia =  $TMPL->fetch_param('id_sol_garantia');
- 		$result_aus=mysql_query("SELECT * FROM exp_freeform_form_entries_4 WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 9 ");
-		$obten_aus=mysql_fetch_row($result_aus);
-		$cliente_ausente = $obten_aus[23];
- 		if($cliente_ausente == ""){
-
-		$text = "<!doctype html>
-	<html>
-	  <head>
-	    <meta charset='utf-8' />
-	    <title>Viva GyM</title>
-	  </head>
-		<body style='margin: 0px; background-color: #f1f1f1; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color: #898989;' bgcolor='#f1f1f1'>
-			<table align='center' width='90%' style='width:90%; margin-left: auto; margin-right: auto;'>
-				<tr style='background-color: #f1f1f1;' bgcolor='#f1f1f1'>
-					<td><p><br></p>
-					</td>
-				</tr>
-				<tr style='background-color: #ffffff;' bgcolor='#ffffff'>
-					<td>
-
-						<div style='background-color: #ffffff;'>
-							<table align='center' width='90%' style='width:90%; margin-left: auto; margin-right: auto;'>
-								<tr>
-									<td><br></td>
-								</tr>
-								<tr>
-									<td align='right'><img src='http://162.243.222.54/images/logo-viva.png' style='width:100px; height: auto;'>
-									</td>
-								</tr>
-								<tr>
-								<td align='left'><h3>Estimado/a ".$name."</h3>
-									<span style='color: #898989;'>Te informamos que nuestro equipo de post-venta se acercó a tu departamento en la fecha y dentro de los horarios programados. Lamentablemente no se pudo efectuar la atención a tu requerimiento debido a que no se encontró a la persona designada como responsable en la propiedad.<p>
-									No te olvides programar una nueva fecha para atender tu requerimiento dentro de los próximos siete (07) días; de lo contrario, tu solicitud quedará sin efecto.</span><p>
-									<span style='color: #898989;'>Programa una nueva fecha para atenderte <a href='http://162.243.222.54/main/user_request_show/".$id_sol_garantia."'>aquí</a>.<p>
-									Recuerda que estamos para servirte de la mejor manera. Cualquier consulta o solicitud adicional  puedes comunicarte con nosotros llamando al 206-7270 ó a nuestro correo vivagym_atencionalcliente@gym.com.pe .
-									<p>Atentamente,</span>
-									<span style='color: #898989;'>El equipo de post-venta de Viva GyM.</span>
-									<p>
-								</td>
-							</tr>
-							<tr>
-									<td><br></td>
-								</tr>
-							</table>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td align='center'><p></p>
-						<span style='font-size: 12px;'>2014 Viva GyM Servicio de post-venta, todos los derechos reservados.</span><br>
-						<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
-					</td>
-				</tr>
-			</table>
-		</body>
-	</html>";
- 		
- 		/*'html' => '<p>FELICIDADES!!!</p><p>Ganaste el tema'.$topic.' ve a nuestro menú de temas y sigue participando</p>',*/
- 		$message = array(
- 		    'subject' => $subject,
- 		    'from_email' => $from,
- 		    'html' => $text,
- 		    'to' => array(array('email' => $to, 'name' => $name)),
- 		    'merge_vars' => array(array(
-	 		        'rcpt' => 'recipient1@domain.com',
-	 		        'vars' =>
-	 		        array(
-	 		            array(
-	 		                'name' => 'FIRSTNAME',
-	 		                'content' => 'Recipient 1 first name'),
-	 		            array(
-	 		                'name' => 'LASTNAME',
-	 		                'content' => 'Last name')
-	 		    ))));
-
- 		$template_name = 'test';
-
- 		$template_content = array(
- 		    array(
- 		        'name' => 'main',
- 		        'content' => 'Hi *|FIRSTNAME|* *|LASTNAME|*, thanks for signing up.'),
- 		    array(
- 		        'name' => 'footer',
- 		        'content' => 'Copyright 2012.')
-
- 		);
-		$mandrill->messages->sendTemplate($template_name, $template_content, $message);
-		return "";
-		}
-		else{
-			return "";
-		}
-	}
 	function send_email_write_proc(){
 		
 		global $TMPL;
@@ -372,8 +266,7 @@ class Mandrillapp {
 		$obten_aus=mysql_fetch_row($result_aus);
 		$cliente_ausente = $obten_aus[23];
 
-		if($cliente_ausente == ""){
- 		//$text = $TMPL->tagdata;	 		
+		if($cliente_ausente == ""){	
 
 	 		$text = "<!doctype html>
 	<html>
@@ -406,6 +299,115 @@ class Mandrillapp {
 									<span style='color: #898989;'>Programa una nueva inspección <a href='http://162.243.222.54/main/user_request_show/".$id_sol_garantia."'>aquí</a>.<p>
 									<span style='color: #898989;'>Recuerda que estamos para servirte de la mejor manera. Cualquier consulta o solicitud adicional  puedes comunicarte con nosotros llamando al 206-7270 ó a nuestro correo vivagym_atencionalcliente@gym.com.pe<p>
 									Atentamente,</span>
+									<span style='color: #898989;'>El equipo de post-venta de Viva GyM.</span>
+									<p>
+								</td>
+							</tr>
+							<tr>
+									<td><br></td>
+								</tr>
+							</table>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td align='center'><p></p>
+						<span style='font-size: 12px;'>2014 Viva GyM Servicio de post-venta, todos los derechos reservados.</span><br>
+						<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
+					</td>
+				</tr>
+			</table>
+		</body>
+	</html>";
+
+	 		/*'html' => '<p>FELICIDADES!!!</p><p>Ganaste el tema'.$topic.' ve a nuestro menú de temas y sigue participando</p>',*/
+	 		$message = array(
+	 		    'subject' => $subject,
+	 		    'from_email' => $from,
+	 		    'html' => $text,
+	 		    'to' => array(array('email' => $to, 'name' => $name)),
+	 		    'merge_vars' => array(array(
+		 		        'rcpt' => 'recipient1@domain.com',
+		 		        'vars' =>
+		 		        array(
+		 		            array(
+		 		                'name' => 'FIRSTNAME',
+		 		                'content' => 'Recipient 1 first name'),
+		 		            array(
+		 		                'name' => 'LASTNAME',
+		 		                'content' => 'Last name')
+		 		    ))));
+
+	 		$template_name = 'test';
+
+	 		$template_content = array(
+	 		    array(
+	 		        'name' => 'main',
+	 		        'content' => 'Hi *|FIRSTNAME|* *|LASTNAME|*, thanks for signing up.'),
+	 		    array(
+	 		        'name' => 'footer',
+	 		        'content' => 'Copyright 2012.')
+
+	 		);
+			$mandrill->messages->sendTemplate($template_name, $template_content, $message);
+			return "";
+		}
+		else{
+			return "";
+		}
+	}
+
+	function send_email_user_close_one(){
+		
+		global $TMPL;
+		$this->EE =& get_instance(); // EEv2 syntax
+		$TMPL = $this->EE->TMPL;
+
+ 		require_once 'mailchimp-mandrill-api-php/src/Mandrill.php'; 
+ 		$mandrill = new Mandrill('Svqgcw575OLrORu2WiD09g');
+ 		
+ 		$to= $TMPL->fetch_param('to');
+ 		$name= $TMPL->fetch_param('name');
+ 		$subject= "No se pudo realizar el arreglo";
+ 		$from= $TMPL->fetch_param('from');
+ 		$id_sol_garantia =  $TMPL->fetch_param('id_sol_garantia');
+ 		$result_aus=mysql_query("SELECT * FROM exp_freeform_form_entries_4 WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 9 ");
+		$obten_aus=mysql_fetch_row($result_aus);
+		$cliente_ausente = $obten_aus[23];
+
+		if($cliente_ausente == ""){	
+
+	 		$text = "<!doctype html>
+	<html>
+	  <head>
+	    <meta charset='utf-8' />
+	    <title>Viva GyM</title>
+	  </head>
+		<body style='margin: 0px; background-color: #f1f1f1; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color: #898989;' bgcolor='#f1f1f1'>
+			<table align='center' width='90%' style='width:90%; margin-left: auto; margin-right: auto;'>
+				<tr style='background-color: #f1f1f1;' bgcolor='#f1f1f1'>
+					<td><p><br></p>
+					</td>
+				</tr>
+				<tr style='background-color: #ffffff;' bgcolor='#ffffff'>
+					<td>
+
+						<div style='background-color: #ffffff;'>
+							<table align='center' width='90%' style='width:90%; margin-left: auto; margin-right: auto;'>
+								<tr>
+									<td><br></td>
+								</tr>
+								<tr>
+									<td align='right'><img src='http://162.243.222.54/images/logo-viva.png' style='width:100px; height: auto;'>
+									</td>
+								</tr>
+								<tr>
+								<td align='left'><h3>Estimado/a ".$name."</h3>
+									<span style='color: #898989;'>Te informamos que nuestro equipo de post-venta se acercó a tu departamento en la fecha y dentro de los horarios programados. Lamentablemente no se pudo efectuar la atención a tu requerimiento debido a que no se encontró a la persona designada como responsable en la propiedad.<p>
+									No te olvides programar una nueva fecha para atender tu requerimiento dentro de los próximos siete (07) días; de lo contrario, tu solicitud quedará sin efecto.</span><p>
+									<span style='color: #898989;'>Programa una nueva fecha para atenderte <a href='http://162.243.222.54/main/user_request_show/".$id_sol_garantia."'>aquí</a>.<p>
+									Recuerda que estamos para servirte de la mejor manera. Cualquier consulta o solicitud adicional  puedes comunicarte con nosotros llamando al 206-7270 ó a nuestro correo vivagym_atencionalcliente@gym.com.pe .
+									<p>Atentamente,</span>
 									<span style='color: #898989;'>El equipo de post-venta de Viva GyM.</span>
 									<p>
 								</td>
