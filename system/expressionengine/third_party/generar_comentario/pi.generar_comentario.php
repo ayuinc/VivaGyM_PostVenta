@@ -9,7 +9,7 @@ class generar_comentario
 		$member_id= $TMPL->fetch_param('member_id');
 		$id_sol_garantia= $TMPL->fetch_param('id_sol_garantia');
 		$texto= $TMPL->fetch_param('texto');
-		echo "acc : ".$acc= $TMPL->fetch_param('acc');
+		$acc= $TMPL->fetch_param('acc');
 
 		$ip=$_SERVER["REMOTE_ADDR"];
 		$date = date_create();

@@ -404,10 +404,8 @@ class Mandrillapp {
 								<tr>
 								<td align='left'><h3>Estimado/a ".$name."</h3>
 									<span style='color: #898989;'>Te informamos que nuestro equipo de post-venta se acercó a tu departamento en la fecha y dentro de los horarios programados. Lamentablemente no se pudo efectuar la inspección técnica debido a que no se encontró a la persona designada como responsable en la propiedad.</span><p>
-									<span style='color: #898989;'>No te olvides programar una nueva inspección dentro de los próximos siete (07) días; de lo contrario, tu solicitud quedará sin efecto.</span>
-									<br>
+									<span style='color: #898989;'>No te olvides programar una nueva inspección dentro de los próximos siete (07) días; de lo contrario, tu solicitud quedará sin efecto.</span><p>
 									<span style='color: #898989;'>Programa una nueva inspección <a href='http://162.243.222.54/main/user_request_show/".$id_sol_garantia."'>aquí</a>.<p>
-									<br>
 									<span style='color: #898989;'>Recuerda que estamos para servirte de la mejor manera. Cualquier consulta o solicitud adicional  puedes comunicarte con nosotros llamando al 206-7270 ó a nuestro correo vivagym_atencionalcliente@gym.com.pe<p>
 									Atentamente,</span>
 									<span style='color: #898989;'>El equipo de post-venta de Viva GyM.</span>

@@ -43,12 +43,10 @@ if($cliente_ausente==""){ // colocar el plugin de envio de correos
 
 ?>
 <!-- enviar al plugin siempre acc="no" para q funcione -->
-
 	{exp:member:custom_profile_data}
 		{exp:generar_comentario member_id="{member_id}" id_sol_garantia="{segment_3}" 
 		texto="La persona encargada no se encontraba en el inmueble para la inspección." acc="no" }
 	{/exp:member:custom_profile_data}
-
 
 	{exp:user:stats member_id="{segment_5}"}
 		{exp:mandrillapp:send_email_write_proc
