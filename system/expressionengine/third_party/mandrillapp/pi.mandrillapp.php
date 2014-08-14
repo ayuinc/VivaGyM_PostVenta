@@ -261,11 +261,10 @@ class Mandrillapp {
  		$subject= "No se pudo realizar el arreglo";
  		$from= $TMPL->fetch_param('from');
  		$id_sol_garantia =  $TMPL->fetch_param('id_sol_garantia');
- 		$result_aus=mysql_query("SELECT * FROM exp_freeform_form_entries_4 WHERE form_field_18 = $id_sol_garantia 
- 			AND form_field_19 = 9 ");
+ 		$result_aus=mysql_query("SELECT * FROM exp_freeform_form_entries_4 WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 9 ");
 		$obten_aus=mysql_fetch_row($result_aus);
 		$cliente_ausente = $obten_aus[23];
- 		if($cliente_ausente == "no"){
+ 		if($cliente_ausente == ""){
 
 		$text = "<!doctype html>
 	<html>
