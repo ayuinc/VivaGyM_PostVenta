@@ -47,12 +47,12 @@ if($cliente_ausente==""){
 	{/exp:member:custom_profile_data}
 
 	{exp:user:stats member_id="{segment_5}"}
-		{exp:mandrillapp:send_email_user_close_one
+		{exp:mandrillapp:send_email_user_close
 		  to="{email_propietario}"
 		  name="{nombre_propietario}"
 		  from="admin@gym.com"
 		  id_sol_garantia="{segment_3}"}
-		{/exp:mandrillapp:send_email_user_close_one}  
+		{/exp:mandrillapp:send_email_user_close}  
 	{/exp:user:stats}
 
 	<div class="row">
