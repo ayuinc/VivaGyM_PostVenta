@@ -55,8 +55,8 @@ $( "#datepicker2" ).datepicker(
 <!-- parametros para las busquedas -->
 <?php 
 $ordenar=$_POST['ordenar']; if($ordenar==""){ $ordenar="entry_id";} 
-echo "pri : ".$pri=$_POST['pri']; 
-echo "cas : ".$cas=$_POST['cas'];
+$pri=$_POST['pri']; 
+$cas=$_POST['cas'];
 $etapa=$_POST['etapa'];
 $tipo=$_POST['tipo'];
 $complejo=$_POST['complejo']; 
@@ -337,7 +337,7 @@ if(($pri!="") or ($cas!="") or (!empty($etapa)) or (!empty($tipo)) or (!empty($f
             if(!empty($tipo)){echo " <span class='label label-default'>Tipo de problema: $tipo</span>";}
             //$complejo
             if(!empty($fecha_inicio)){echo " <span class='label label-default'>Fecha inicio: $fecha_inicio</span>";}
-            if(!empty($fecha_fin)){echo " <span class='label label-default'>Fecha inicio: $fecha_fin</span>";}  
+            if(!empty($fecha_fin)){echo " <span class='label label-default'>Fecha fin: $fecha_fin</span>";}  
             ?>
             <p>
             </div> 
