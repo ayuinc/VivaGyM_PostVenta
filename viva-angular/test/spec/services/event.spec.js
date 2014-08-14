@@ -10,10 +10,14 @@ describe('Service: Event', function() {
     Event = _Event_;
   }));
 
-  describe('', function () {
+  describe('URLs', function () {
 
-    it('', function () {
-      expect().toBeDefined(true);
+    it('will return inspeccion url', function () {
+      expect(Event.inspeccionesUrl).toBeDefined(true);
+    });
+
+    it('will return arregles url', function () {
+      expect(Event.arreglosUrl).toBeDefined(true);
     });
   });
 });
