@@ -287,7 +287,6 @@ class confirm_sol
 
 		}else{ // colocar el plugin de envio de correos 
 
-		echo $txt_no="La persona encargada no se encontraba en el inmueble para el inspección.";
 		//obtener la fecha anteriormente asignada y restarle 1 por q se ha anulado esa fecha
 
 			$result_fec=mysql_query("SELECT * FROM exp_freeform_form_entries_4 WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 3 ");
