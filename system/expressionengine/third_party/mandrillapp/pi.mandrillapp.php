@@ -372,7 +372,7 @@ class Mandrillapp {
  		$id_sol_garantia =  $TMPL->fetch_param('id_sol_garantia');
  		$result_aus=mysql_query("SELECT * FROM exp_freeform_form_entries_4 WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 5 ");
 		$obten_aus=mysql_fetch_row($result_aus);
-		$cliente_ausente = $obten_aus[23];
+		echo "<br>plugin ausente ".$cliente_ausente = $obten_aus[23];
 
 		if($cliente_ausente == "no"){
  		//$text = $TMPL->tagdata;	 		
@@ -1017,7 +1017,7 @@ Atentamente,</span>
 													</tr>
 													<tr>
 													<td align='left'><h3>Estimado/a ".$name."</h3>
-														<span style='color: #898989;'>En relación a tu solicitud ".$id_sol_garantia.", nos es grato comunicarte que procederemos con la inspección técnica de tu departamento.
+														<span style='color: #898989;'>En relación a tu solicitud ".$id_sol_garantia.", nos es grato comunicarte que procederemos con la inspección técnica de tu departamento.<p>
 														 Para proceder con la inspección, debes programar una cita a través de nuestro portal <a href='http://162.243.222.54/main/user_request_show/".$id_sol_garantia."'>aquí</a>. De lo contrario, comunícate con nosotros llamándonos al 206-7270 ó a nuestro correo vivagym_atencionalcliente@gym.com.pe<p>
 			Recuerda que estamos para servirte de la mejor manera. Cualquier consulta o solicitud adicional  puedes comunicarte con nosotros llamando al 206-7270 óa nuestro correo vivagym_atencionalcliente@gym.com.pe<p>
 			Atentamente,</span>
@@ -1105,7 +1105,7 @@ Atentamente,</span>
 																</tr>
 																<tr>
 																<td align='left'><h3>Estimado/a ".$name."</h3>
-																	<span style='color: #898989;'>En relación a tu solicitud ".$id_sol_garantia.", lamentamos informarte que turequerimiento no procede debido a: ".$comentarios.".<p></span>
+																	<span style='color: #898989;'>En relación a tu solicitud ".$id_sol_garantia.", lamentamos informarte que tu requerimiento no procede debido a: ".$comentarios.".<p></span>
 																	<span style='color: #898989;'>Recuerda que estamos para servirte de la mejor manera. Cualquier consulta o solicitud adicional  puedes comunicarte con nosotros llamando al 206-7270 ó a nuestro correo vivagym_atencionalcliente@gym.com.pe<p>
 																	Atentamente,</span>
 																	<span style='color: #898989;'>El equipo de post-venta de Viva GyM.</span>
