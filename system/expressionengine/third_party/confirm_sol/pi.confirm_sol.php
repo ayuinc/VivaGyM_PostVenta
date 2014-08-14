@@ -287,6 +287,7 @@ class confirm_sol
 
 		}else{ // colocar el plugin de envio de correos 
 
+		$txt_no="La persona encargada no se encontraba en el inmueble para el inspección.";
 		//obtener la fecha anteriormente asignada y restarle 1 por q se ha anulado esa fecha
 
 			$result_fec=mysql_query("SELECT * FROM exp_freeform_form_entries_4 WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 3 ");
@@ -524,7 +525,7 @@ class confirm_sol
 			$sqlUpdate_f = mysql_query("UPDATE exp_freeform_form_entries_4 
 			SET status = 'closed',form_field_25 = '$fecha_atencion_ticket' WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 9 ");
 
-		}elseif($cliente_ausente=="no"){ // colocar el plugin de envio de correos
+		}else{ // colocar el plugin de envio de correos
 
 		//obtener la fecha anteriormente asignada y restarle 1 por q se ha anulado esa fecha
 
