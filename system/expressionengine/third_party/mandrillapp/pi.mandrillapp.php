@@ -374,7 +374,7 @@ class Mandrillapp {
 		$obten_aus=mysql_fetch_row($result_aus);
 		echo "<br>plugin ausente ".$cliente_ausente = $obten_aus[23];
 
-		if($cliente_ausente == "no"){
+		if($cliente_ausente == ""){
  		//$text = $TMPL->tagdata;	 		
 
 	 		$text = "<!doctype html>
