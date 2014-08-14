@@ -12,7 +12,7 @@ app.controller('UserCalendarCtrl', ['$scope', '$http', '$window', 'VivaCalendar'
     }
   });
 
-  $scope.eventSource = 'http://162.243.222.54/calendario/propietario/inspecciones';
+  $scope.eventSource = Event.inspeccionesUrl;
 
   $scope.eventSources = [$scope.eventSource];
 }]);
