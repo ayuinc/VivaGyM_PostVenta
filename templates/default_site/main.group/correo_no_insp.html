@@ -9,12 +9,7 @@
     }
     {/exp:mandrillapp:send_email_write_proc} 
 
-    {exp:member:custom_profile_data}
-    usuario admin {usuario_id}
-      {exp:generar_comentario member_id="{usuario_id}" id_sol_garantia="{segment_3}" 
-      texto="La persona encargada no se encontraba en el inmueble para la inspección." acc="no" }
-      {/exp:generar_comentario}
-    {/exp:member:custom_profile_data}
+
   {/exp:user:stats}
 
 <div class="row">
@@ -25,3 +20,9 @@
     <p><a href="{site_url}main/admin_dashboard">Ir a Panel de control</a></p>   
   </div>
 </div>
+{exp:member:custom_profile_data}
+    usuario admin {usuario_id}
+      {exp:generar_comentario member_id="{usuario_id}" id_sol_garantia="{segment_3}" 
+      texto="La persona encargada no se encontraba en el inmueble para la inspección." acc="no" }
+      {/exp:generar_comentario}
+    {/exp:member:custom_profile_data}
