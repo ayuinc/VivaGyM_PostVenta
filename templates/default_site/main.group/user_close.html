@@ -42,7 +42,7 @@ if($cliente_ausente=="si"){
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-  	{exp:user:stats member_id="{segment_5}"}
+  	{exp:user:stats member_id="{segment_5}" parse="inward"}
 			{exp:mandrillapp:send_email_user_close
 			  to="{email_propietario}" <!-- to="{email}" Colocar el email de un administrador viva-->
 			  name="{nombre_propietario}"
