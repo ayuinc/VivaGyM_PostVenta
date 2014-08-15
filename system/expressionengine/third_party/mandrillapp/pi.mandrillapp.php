@@ -358,8 +358,6 @@ class Mandrillapp {
 		return "";
 	}
 
-		
-
 	function send_email_write_proc(){
 		
 		global $TMPL;
@@ -381,7 +379,7 @@ class Mandrillapp {
 		$date = date_create();
 		$entry_date=date_timestamp_get($date);
 
-		$admin_id= $TMPL->fetch_param('admin_id');
+		echo "<br>admin id: ".$admin_id= $TMPL->fetch_param('admin_id');
 		$cliente_id= $TMPL->fetch_param('cliente_id');
 
 		$resultadoc=mysql_query("insert into exp_freeform_form_entries_6 

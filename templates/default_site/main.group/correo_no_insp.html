@@ -1,5 +1,5 @@
 {embed="includes/header" }
-<?php $admin_id="{member_id}"; ?>
+<?php echo "member : ".$admin_id="{member_id}"; ?>
 
   {exp:user:stats member_id="{segment_5}"}
     {exp:mandrillapp:send_email_write_proc
