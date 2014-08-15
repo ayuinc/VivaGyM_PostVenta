@@ -16,7 +16,7 @@
 
 		{exp:user:stats member_id="{segment_5}" parse="inward"}
 			{exp:mandrillapp:send_email_write_proc
-			  to="{email_propietario}" <!-- to="{email}" Colocar el email de un administrador viva-->
+			  to="{email_propietario}"
 			  name="{nombre_propietario}"
 			  from="admin@gym.com"
 			  id_sol_garantia="{segment_3}"}
