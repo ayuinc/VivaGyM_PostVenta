@@ -10,12 +10,32 @@
     {/exp:mandrillapp:send_email_write_proc}  
   {/exp:user:stats}
 
+{exp:member:custom_profile_data}
+<?php 
+$member_id="{member_id}";
+$id_sol_garantia="{segment_3}";
+$paso="{segment_4}";
+$id_cliente="{segment_5}";
+$entry_id="{segment_6}";
 
-  {exp:member:custom_profile_data}
+$texto="La persona encargada no se encontraba en el inmueble para la inspección."
+
+$ip=$_SERVER["REMOTE_ADDR"];
+$date = date_create();
+$entry_date=date_timestamp_get($date);
+
+$resultadoc=mysql_query("insert into exp_freeform_form_entries_6 
+      (site_id,author_id,complete,ip_address,entry_date,status,form_field_18,form_field_34,form_field_40) 
+      values ('1','$member_id','y','$ip','$entry_date','open','$id_sol_garantia','$texto','$id_cliente')");
+
+?>
+{/exp:member:custom_profile_data}
+
+<!--   {exp:member:custom_profile_data}
     {exp:generar_comentario member_id="{member_id}" id_sol_garantia="{segment_3}" 
-    texto="La persona encargada no se encontraba en el inmueble para la inspección." acc="no" 
+    texto="La persona encargada no se encontraba en el inmueble para la inspección." acc="no" }
     {/exp:generar_comentario}
-  {/exp:member:custom_profile_data}
+  {/exp:member:custom_profile_data} -->
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
