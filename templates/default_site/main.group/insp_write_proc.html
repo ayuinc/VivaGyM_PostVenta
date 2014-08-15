@@ -1,5 +1,43 @@
 {embed="includes/header" }
 
+{exp:freeform:entries form_id="4" search:id_sol_garantia="{segment_3}" search:orden_tramite="5" limit="1" status="open|closed" }
+	{if freeform:field:cliente_ausente=="si"}
+
+		<div class="row">
+		  <div class="col-md-6 col-md-offset-3">
+		  	<h1>¡Listo! El informe de inspección de la solicitud #{segment_3} ha sido ingresado</h1>
+		  	<p>{embed="main/datos_user" user_id="{segment_5}" }</p>
+			  <p>Puedes hacerle seguimiento a las solicitudes en la sección de “Panel de control”</p>
+			  <p><a href="{site_url}main/admin_dashboard">Ir a Panel de control</a></p>	  
+		  </div>
+		</div>
+
+	{if:else}
+
+		{exp:user:stats member_id="{segment_5}" parse="inward"}
+			{exp:mandrillapp:send_email_write_proc
+			  to="{email_propietario}" <!-- to="{email}" Colocar el email de un administrador viva-->
+			  name="{nombre_propietario}"
+			  from="admin@gym.com"
+			  id_sol_garantia="{segment_3}"}
+			{/exp:mandrillapp:send_email_write_proc}  
+		{/exp:user:stats}
+
+		{exp:generar_comentario member_id="{member_id}" id_sol_garantia="{segment_3}" 
+		texto="La persona encargada no se encontraba en el inmueble para la inspección." acc="{freeform:field:cliente_ausente}" }
+
+		<div class="row">
+		  <div class="col-md-6 col-md-offset-3">
+		  	<h1>¡Listo! Se ha notificado al cliente que la visita de inspección no pudo se realizada, el cliente deberá agendar nuevamente la visita de inspección.</h1>
+		  	<p>{embed="main/datos_user" user_id="{segment_5}" }</p>
+			  <p>Puedes hacerle seguimiento a las solicitudes en la sección de “Panel de control”</p>
+			  <p><a href="{site_url}main/admin_dashboard">Ir a Panel de control</a></p>	  
+		  </div>
+		</div>
+
+	{/if}
+{/exp:freeform:entries}
+
 {exp:confirm_sol:insp_write_proc 
 	id_sol_garantia="{segment_3}" 
 	paso="{segment_4}"
@@ -7,65 +45,3 @@
 	entry_id="{segment_6}"
 }
 {/exp:confirm_sol:insp_write_proc}
-
-<?php 
-$fecha_atencion_ticket=date('d-m-Y');
-
-$id_sol_garantia="{segment_3}";
-$paso="{segment_4}";
-$id_cliente="{segment_5}";
-$entry_id="{segment_6}";
-
-$ip=$_SERVER["REMOTE_ADDR"];
-$date = date_create();
-$entry_date=date_timestamp_get($date);
-
-$result_aus=mysql_query("SELECT * FROM exp_freeform_form_entries_4 
-	WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 5 ");
-$obten_aus=mysql_fetch_row($result_aus);
-$cliente_ausente = $obten_aus[23];
-
-if($cliente_ausente=="si"){
-
-?>
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-  	<h1>¡Listo! El informe de inspección de la solicitud #<?php echo $id_sol_garantia; ?> ha sido ingresado</h1>
-  	<p>{embed="main/datos_user" user_id="<?php echo $id_cliente; ?>" }</p>
-	  <p>Puedes hacerle seguimiento a las solicitudes en la sección de “Panel de control”</p>
-	  <p><a href="{site_url}main/admin_dashboard">Ir a Panel de control</a></p>	  
-  </div>
-</div>
-
-<?php
-}else{ // colocar el plugin de envio de correos 
-
-?>
-<!-- enviar al plugin siempre acc="no" para q funcione -->
-{exp:freeform:entries form_id="4" search:id_sol_garantia="{segment_3}" search:orden_tramite="5" limit="1" status="open|closed" }
-		{exp:member:custom_profile_data}
-			{exp:generar_comentario member_id="{member_id}" id_sol_garantia="{segment_3}" 
-			texto="La persona encargada no se encontraba en el inmueble para la inspección." acc="{freeform:field:cliente_ausente}" }
-		{/exp:member:custom_profile_data}
-{/exp:freeform:entries}
-
-	{exp:user:stats member_id="{segment_5}" parse="inward"}
-		{exp:mandrillapp:send_email_write_proc
-		  to="{email_propietario}" <!-- to="{email}" Colocar el email de un administrador viva-->
-		  name="{nombre_propietario}"
-		  from="admin@gym.com"
-		  id_sol_garantia="{segment_3}"}
-		{/exp:mandrillapp:send_email_write_proc}  
-	{/exp:user:stats}
-
-	<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-  	<h1>¡Listo! Se ha notificado al cliente que la visita de inspección no pudo se realizada, el cliente deberá agendar nuevamente la visita de inspección.</h1>
-  	<p>{embed="main/datos_user" user_id="<?php echo $id_cliente; ?>" }</p>
-	  <p>Puedes hacerle seguimiento a las solicitudes en la sección de “Panel de control”</p>
-	  <p><a href="{site_url}main/admin_dashboard">Ir a Panel de control</a></p>	  
-  </div>
-</div>
-<?php 
-}
-?>
