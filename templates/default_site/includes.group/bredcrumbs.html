@@ -2,9 +2,9 @@
   <ol class="breadcrumb">
     <li><a href="{site_url}main/user_dashboard/{member_id}">Panel de control</a></li>
     
-    <!-- {if segment_2=='user_dashboard'}
+    {if segment_2=='user_dashboard'}
 		<li class="active">Mis solicitudes</li>
-		{/if} -->
+		{/if}
 		
 		{if segment_2=='user_apartment_show'}
 		<li class="active">Mi departamento</li>
@@ -19,7 +19,7 @@
 		{/if}	
 		
 		{if segment_2=='user_request_show'}
-		<li><a href="{site_url}main/user_dashboard/{member_id}">Mis solicitudes</a></li>
+<!-- 		<li><a href="{site_url}main/user_dashboard/{member_id}">Mis solicitudes</a></li> -->
 		<li class="active">Solicitud #{last_segment}</li>
 		{/if}			
 		
