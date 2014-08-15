@@ -49,7 +49,7 @@ if($cliente_ausente=="si"){
 		{/exp:member:custom_profile_data}
 {/exp:freeform:entries}
 
-	{exp:user:stats member_id="{segment_5}"}
+	{exp:user:stats member_id="{segment_5}" parse="inward"}
 		{exp:mandrillapp:send_email_write_proc
 		  to="{email_propietario}" <!-- to="{email}" Colocar el email de un administrador viva-->
 		  name="{nombre_propietario}"
