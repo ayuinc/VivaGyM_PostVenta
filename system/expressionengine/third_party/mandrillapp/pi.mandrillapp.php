@@ -1298,7 +1298,7 @@ Atentamente,</span>
 														</tr>
 														<tr>
 														<td align='left'><h3>Estimado/a ".$name."</h3>
-															<span style='color: #898989;'>Gracias por haber programadola fecha para atender tu requerimientoa través de nuestro portal. Tu requerimiento será atendido de acuerdo a la siguiente información:<p>
+															<span style='color: #898989;'>Gracias por haber programado la fecha para atender tu requerimiento a través de nuestro portal. Tu requerimiento será atendido de acuerdo a la siguiente información:<p>
 		Número de solicitud: ".$id_sol_garantia."<p>
 		Fecha programada para la atención: ".$fecha_atencion_ticket."<p>
 		Horario de arreglo: 9:00 am - 2:00 pm de lunes a viernes<p>
