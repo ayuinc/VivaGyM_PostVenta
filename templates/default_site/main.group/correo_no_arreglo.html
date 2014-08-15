@@ -1,4 +1,5 @@
 {embed="includes/header" }
+<?php $admin_id="{member_id}"; ?>
 
   {exp:user:stats member_id="{segment_5}"}
     {exp:mandrillapp:send_email_user_close
@@ -6,7 +7,7 @@
       name="{nombre_propietario}"
       from="admin@gym.com"
       admin_id="{member_id}"
-      cliente_id="{segment_5}"
+      admin_id="<?php echo $admin_id; ?>"
       id_sol_garantia="{segment_3}"
     }
     {/exp:mandrillapp:send_email_user_close}  
