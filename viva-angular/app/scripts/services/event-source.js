@@ -3,7 +3,7 @@
 app.factory('EventSource', function() {
 
   var baseUrl,
-    inspeccionesUrl,
+    inspeccionesUrl = {},
     arreglosUrl = {};
 
   baseUrl = 'http://162.243.222.54/calendario';
