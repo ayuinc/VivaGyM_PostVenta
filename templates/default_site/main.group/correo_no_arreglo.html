@@ -1,10 +1,4 @@
 {embed="includes/header" }
-<!-- 
-  {exp:member:custom_profile_data}
-    {exp:generar_comentario member_id="{member_id}" id_sol_garantia="{segment_3}" 
-    texto="La persona encargada no se encontraba en el inmueble para el arreglo." acc="no" }
-    {/exp:generar_comentario}
-  {/exp:member:custom_profile_data} -->
 
   {exp:user:stats member_id="{segment_5}"}
     {exp:mandrillapp:send_email_user_close

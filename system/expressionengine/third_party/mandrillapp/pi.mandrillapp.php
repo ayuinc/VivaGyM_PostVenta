@@ -268,7 +268,7 @@ class Mandrillapp {
 
 		$resultadoc=mysql_query("insert into exp_freeform_form_entries_6 
 			(site_id,author_id,complete,ip_address,entry_date,status,form_field_18,form_field_34,form_field_40) 
-			values ('1','$member_id','y','$ip','$entry_date','open','$id_sol_garantia','La persona encargada no se encontraba en el inmueble para el arreglo.','$cliente_id')");
+			values ('1','$admin_id','y','$ip','$entry_date','open','$id_sol_garantia','La persona encargada no se encontraba en el inmueble para el arreglo.','$cliente_id')");
 
 		$text = "<!doctype html>
 	<html>
@@ -380,7 +380,7 @@ class Mandrillapp {
 
 		$resultadoc=mysql_query("insert into exp_freeform_form_entries_6 
 			(site_id,author_id,complete,ip_address,entry_date,status,form_field_18,form_field_34,form_field_40) 
-			values ('1','$member_id','y','$ip','$entry_date','open','$id_sol_garantia','La persona encargada no se encontraba en el inmueble para la inspeccion.','$cliente_id')");
+			values ('1','$admin_id','y','$ip','$entry_date','open','$id_sol_garantia','La persona encargada no se encontraba en el inmueble para la inspeccion.','$cliente_id')");
 
 		if($cliente_ausente == ""){
  		//$text = $TMPL->tagdata;	 		
