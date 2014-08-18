@@ -5,17 +5,17 @@ describe('Controller: UserCalendarCtrl', function() {
   var controller,
     mockScope,
     VivaCalendar,
-    Event;
+    EventSource;
 
   beforeEach(module('vivaAngularApp', 'ui.calendar'));
 
-  beforeEach(inject(function($controller, $rootScope, _VivaCalendar_, _Event_) {
+  beforeEach(inject(function($controller, $rootScope, _VivaCalendar_, _EventSource_) {
     mockScope = $rootScope.$new();
     controller = $controller('UserCalendarCtrl', {
       $scope: mockScope
     });
     VivaCalendar = _VivaCalendar_;
-    Event = _Event_;
+    EventSource = _EventSource_;
   }));
 
   describe('Calendar resize based on width', function() {
@@ -42,11 +42,7 @@ describe('Controller: UserCalendarCtrl', function() {
 
   describe('event sources', function(){
     it('should return event sources', function() {
-      expect(mockScope.eventSources).toEqual([mockScope.eventSource]);
-    });
-
-    it('should take event source', function(){
-      expect(mockScope.eventSource.url).toEqual('http://162.243.222.54/fullcalendar/new_fechas_insp.php');
+      expect(mockScope.eventSources).toEqual(EventSource);
     });
   });
 });

@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('UserCalendarCtrl', ['$scope', '$window', '$location', 'VivaCalendar', 'Event', function($scope, $window, $location, VivaCalendar, Event) {
+app.controller('UserCalendarCtrl', ['$scope', '$http', '$window', 'VivaCalendar', 'EventSource', function($scope, $http, $window, VivaCalendar, EventSource) {
 
   $scope.width = $window.innerWidth;
 
@@ -12,6 +12,5 @@ app.controller('UserCalendarCtrl', ['$scope', '$window', '$location', 'VivaCalen
     }
   });
 
-  $scope.eventSources = [Event.availableInspections];
-  console.log($scope.eventSources)
+  $scope.eventSources = EventSource;
 }]);
