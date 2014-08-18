@@ -22,7 +22,7 @@ class generar_comentario
 			values ('1','$member_id','y','$ip','$entry_date','open','$id_sol_garantia','$texto','$member_id')");
 			}else{}
 		}
-		$queryb="DELETE FROM exp_freeform_form_entries_6 WHERE author_id ='' "; $resultborrarb=mysql_query($queryb);
+		$queryb="DELETE FROM exp_freeform_form_entries_6 WHERE author_id ='' and form_field_18 = $id_sol_garantia"; $resultborrarb=mysql_query($queryb);
   }
 }
 ?>
