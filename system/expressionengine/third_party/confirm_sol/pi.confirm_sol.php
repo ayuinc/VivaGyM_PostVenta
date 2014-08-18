@@ -127,7 +127,7 @@ class confirm_sol
 
 			// caso si pasas el ticket a "Inspección pendiente" sino lo cierras
 			$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_2 
-			SET form_field_12 = '10', status = 'closed', form_field_46 = '$txt_acc', form_field_14 = '$persona_asignada_gym'
+			SET form_field_12 = '10', status = 'closed', form_field_46 = '$txt_acc', form_field_13 = '$persona_asignada_viva'
 			WHERE entry_id = $id_sol_garantia ");
 
 			$resultadog=mysql_query("insert into exp_freeform_form_entries_4 
