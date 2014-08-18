@@ -6,7 +6,7 @@ class generar_comentario
   	global $TMPL;
 		$this->EE =& get_instance(); // EEv2 syntax
 		$TMPL = $this->EE->TMPL;
-		$member_id= $TMPL->fetch_param('member_id');
+		$member_id= $TMPL->fetch_param('persona_id');
 		$id_sol_garantia= $TMPL->fetch_param('id_sol_garantia');
 		$texto= $TMPL->fetch_param('texto');
 		$acc= $TMPL->fetch_param('acc');
