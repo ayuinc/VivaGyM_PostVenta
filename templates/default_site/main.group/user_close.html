@@ -14,8 +14,8 @@
 
 	{if:else}
 
-	{exp:generar_comentario persona_id="{member_id}" id_sol_garantia="{segment_3}" 
-		texto="La persona encargada no se encontraba en el inmueble para el arreglo." acc="no" }
+<!-- 	{exp:generar_comentario persona_id="{member_id}" id_sol_garantia="{segment_3}" 
+		texto="La persona encargada no se encontraba en el inmueble para el arreglo." acc="no" } -->
 
 		{exp:user:stats member_id="{segment_5}" parse="inward"}
 			{exp:mandrillapp:send_email_user_close
