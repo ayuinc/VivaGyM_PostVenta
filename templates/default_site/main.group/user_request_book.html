@@ -54,7 +54,11 @@ $id_cliente="{member_id}";
             <small>Asegúrate que puedes estar en tu departamento en la fecha y hora que agendas tu cita. Te enviaremos una notificación y un correo el día anterior para recordarte.</small>
           </div>
 
-          {exp:freeform:entries form_id="4" search:id_sol_garantia="{segment_3}" search:orden_tramite="3" limit="1" status="open|closed"}
+          <div class="form-group">
+            <small>Asigna a alguien para coordinar la inspección <a data-toggle="collapse" href="#form-collapse" class="underline">aquí</a></small>
+          </div>
+
+          <!-- {exp:freeform:entries form_id="4" search:id_sol_garantia="{segment_3}" search:orden_tramite="3" limit="1" status="open|closed"}
           <?php  $rel=strtolower("{freeform:field:relacion_dueno_departamento}"); $due="{freeform:field:dueno_atiende_ticket}";?>
 
           <div class="form-group">
@@ -66,31 +70,31 @@ $id_cliente="{member_id}";
               <small>Asigna a alguien para coordinar el arreglo <a data-toggle="collapse" href="#form-collapse" class="underline">aquí</a></small> 
             <?php } ?>
 
-          </div>
+          </div> -->
 
-          <div id="form-collapse" <?php if($due=="no"){}else{ echo "class='collapse'";} ?>>
+          <!-- <div id="form-collapse" <?php if($due=="no"){}else{ echo "class='collapse'";} ?>> -->
+          <div id="form-collapse" class="collapse">
             <div class="form-group">
               <small>Relacion con el dueño del departamento</small> 
               <select name="relacion_dueno_departamento" class="form-control select-override">
                 <option value="">Seleccione</option>
-                <option value="Familiar" <?php if($rel=="familiar"){echo 'selected="selected"';} ?>>Familiar</option>
-                <option value="Amigo" <?php if($rel=="amigo"){echo 'selected="selected"';} ?>>Amigo</option>
+                <option value="Familiar" >Familiar</option>
+                <option value="Amigo" >Amigo</option>
               </select>
             </div>
             <div class="form-group">
               <small>Nombre del encargado de la atención</small> 
-              <input type="text" placeholder="Nombre" name="nombre_encargado_atencion" class=" form-control" 
-              value="{freeform:field:nombre_encargado_atencion}">
+              <input type="text" placeholder="Nombre" name="nombre_encargado_atencion" class=" form-control" >
             </div>
             <div class="form-group">
               <small>Celular del encargado de la atención</small> 
-              <input type="text" placeholder="Celular" name="celular_encargado_atencion" class=" form-control" value="{freeform:field:celular_encargado_atencion}">
+              <input type="text" placeholder="Celular" name="celular_encargado_atencion" class=" form-control" >
             </div>
             <div class="form-group">
               <small>Correo electrónico del encargado de la atención</small> 
-              <input type="email" placeholder="Correo electrónico" name="email_encargado_atencion" class=" form-control" value="{freeform:field:email_encargado_atencion}">
+              <input type="email" placeholder="Correo electrónico" name="email_encargado_atencion" class=" form-control" >
             </div>
-            {/exp:freeform:entries}
+            <!-- {/exp:freeform:entries} -->
 
         </div>
               <input type="hidden" name="XID" value="{XID_HASH}" /> 
