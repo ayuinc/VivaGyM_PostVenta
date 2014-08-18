@@ -1,43 +1,47 @@
 {embed="includes/header" }
 
 {exp:freeform:entries form_id="4" search:id_sol_garantia="{segment_3}" search:orden_tramite="9" limit="1" status="open|closed" }
-	{if freeform:field:cliente_ausente=="si"}
+	{exp:switchee variable = "{freeform:field:cliente_ausente}" parse="inward"}
+    {case value="si"}
 
-		<div class="row">
-		  <div class="col-md-6 col-md-offset-3">
-		  	<h1>¡Listo! El informe de arreglo de la solicitud #{segment_3} ha sido ingresado</h1>
-		  	<p>{embed="main/datos_user" user_id="{segment_5}" }</p>
-			  <p>Puedes hacerle seguimiento a las solicitudes en la sección de “Panel de control”</p>
-			  <p><a href="{site_url}main/admin_dashboard">Ir a Panel de control</a></p>	  
-		  </div>
-		</div>
+	    <div class="row">
+			  <div class="col-md-6 col-md-offset-3">
+			  	<h1>¡Listo! El informe de arreglo de la solicitud #{segment_3} ha sido ingresado</h1>
+			  	<p>{embed="main/datos_user" user_id="{segment_5}" }</p>
+				  <p>Puedes hacerle seguimiento a las solicitudes en la sección de “Panel de control”</p>
+				  <p><a href="{site_url}main/admin_dashboard">Ir a Panel de control</a></p>	  
+			  </div>
+			</div>
 
-	{if:else}
+    {/case}
+    {case value="no"}
 
-		{exp:member:custom_profile_data}
-			{exp:generar_comentario persona_id="{member_id}" id_sol_garantia="{segment_3}" 
-			texto="La persona encargada no se encontraba en el inmueble para el arreglo." acc="no" }
-		{/exp:member:custom_profile_data}
+	    {exp:member:custom_profile_data}
+				{exp:generar_comentario persona_id="{member_id}" id_sol_garantia="{segment_3}" 
+				texto="La persona encargada no se encontraba en el inmueble para el arreglo." acc="no" }
+			{/exp:member:custom_profile_data}
 
-		{exp:user:stats member_id="{segment_5}" parse="inward"}
-			{exp:mandrillapp:send_email_user_close
-			  to="{email_propietario}"
-			  name="{nombre_propietario}"
-			  from="admin@gym.com"
-			  id_sol_garantia="{segment_3}"}
-			{/exp:mandrillapp:send_email_user_close}  
-		{/exp:user:stats}
+			{exp:user:stats member_id="{segment_5}" parse="inward"}
+				{exp:mandrillapp:send_email_user_close
+				  to="{email_propietario}"
+				  name="{nombre_propietario}"
+				  from="admin@gym.com"
+				  id_sol_garantia="{segment_3}"}
+				{/exp:mandrillapp:send_email_user_close}  
+			{/exp:user:stats}
 
-		<div class="row">
-		  <div class="col-md-6 col-md-offset-3">
-		  	<h1>¡Listo! Se ha notificado al cliente que la visita de arreglo no pudo ser realizada, el cliente deberá agendar nuevamente la visita de arreglo.</h1>
-		  	<p>{embed="main/datos_user" user_id="{segment_5}" }</p>
-			  <p>Puedes hacerle seguimiento a las solicitudes en la sección de “Panel de control”</p>
-			  <p><a href="{site_url}main/admin_dashboard">Ir a Panel de control</a></p>	   
-		  </div>
-		</div>
+			<div class="row">
+			  <div class="col-md-6 col-md-offset-3">
+			  	<h1>¡Listo! Se ha notificado al cliente que la visita de arreglo no pudo ser realizada, el cliente deberá agendar nuevamente la visita de arreglo.</h1>
+			  	<p>{embed="main/datos_user" user_id="{segment_5}" }</p>
+				  <p>Puedes hacerle seguimiento a las solicitudes en la sección de “Panel de control”</p>
+				  <p><a href="{site_url}main/admin_dashboard">Ir a Panel de control</a></p>	   
+			  </div>
+			</div>
 
-	{/if}
+    {/case}
+  {/exp:switchee}
+
 {/exp:freeform:entries}
 
 {exp:confirm_sol:user_close 
