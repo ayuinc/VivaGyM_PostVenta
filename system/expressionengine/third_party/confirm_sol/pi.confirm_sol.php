@@ -486,6 +486,8 @@ class confirm_sol
 		$id_cliente= $TMPL->fetch_param('id_cliente');
 		$entry_id= $TMPL->fetch_param('entry_id');
 
+		echo "admin id : ".$member_id= $TMPL->fetch_param('member_id');
+
 		$fecha_atencion_ticket=date('d-m-Y');
 
 		$result=mysql_query("SELECT * FROM exp_freeform_form_entries_2 WHERE entry_id=$id_sol_garantia");
