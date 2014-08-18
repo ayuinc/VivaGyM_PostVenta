@@ -23,8 +23,10 @@
 			{/exp:mandrillapp:send_email_write_proc}  
 		{/exp:user:stats}
 
-<!-- 		{exp:generar_comentario member_id="{member_id}" id_sol_garantia="{segment_3}" 
-		texto="La persona encargada no se encontraba en el inmueble para la inspección." acc="no" } -->
+	{exp:member:custom_profile_data}
+		{exp:generar_comentario member_id="{member_id}" id_sol_garantia="{segment_3}" 
+		texto="La persona encargada no se encontraba en el inmueble para la inspección." acc="no" }
+	{/exp:member:custom_profile_data}
 
 		<div class="row">
 		  <div class="col-md-6 col-md-offset-3">
