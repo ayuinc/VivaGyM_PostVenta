@@ -486,7 +486,7 @@ class confirm_sol
 		$id_cliente= $TMPL->fetch_param('id_cliente');
 		$entry_id= $TMPL->fetch_param('entry_id');
 
-		echo "admin id : ".$member_id= $TMPL->fetch_param('member_id');
+		// echo "admin id : ".$member_id= $TMPL->fetch_param('member_id');
 
 		$fecha_atencion_ticket=date('d-m-Y');
 

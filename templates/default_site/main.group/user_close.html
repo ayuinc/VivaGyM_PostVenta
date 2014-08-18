@@ -14,6 +14,9 @@
 
 	{if:else}
 
+	{exp:generar_comentario member_id="{member_id}" id_sol_garantia="{segment_3}" 
+		texto="La persona encargada no se encontraba en el inmueble para el arreglo." acc="no" }
+
 		{exp:user:stats member_id="{segment_5}" parse="inward"}
 			{exp:mandrillapp:send_email_user_close
 			  to="{email_propietario}"
@@ -22,9 +25,6 @@
 			  id_sol_garantia="{segment_3}"}
 			{/exp:mandrillapp:send_email_user_close}  
 		{/exp:user:stats}
-
-		{exp:generar_comentario member_id="{member_id}" id_sol_garantia="{segment_3}" 
-		texto="La persona encargada no se encontraba en el inmueble para el arreglo." acc="no" }
 
 		<div class="row">
 		  <div class="col-md-6 col-md-offset-3">
@@ -43,6 +43,5 @@
 	paso="{segment_4}"
 	id_cliente="{segment_5}"
 	entry_id="{segment_6}"
-	member_id="{member_id}"
 }
 {/exp:confirm_sol:user_close}
