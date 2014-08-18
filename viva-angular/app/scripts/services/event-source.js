@@ -6,7 +6,7 @@ app.factory('EventSource', function() {
     inspeccionesUrl = {},
     arreglosUrl = {};
 
-  baseUrl = 'http://162.243.222.54/calendario';
+  baseUrl = '/calendario';
 
   inspeccionesUrl = {
     url: baseUrl + '/propietario/inspecciones'
