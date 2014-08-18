@@ -80,7 +80,7 @@ if(($pri!="") or ($cas!="") or (!empty($etapa)) or (!empty($tipo)) or (!empty($f
             <h6>Buscar por no. de caso:</h6>
             <form method="post" enctype="multipart/form-data" action="/?/main/redir_caso">
               <div class="input-group">
-                <input type="text" class="form-control" name="caso_id" placeholder="Nro. de caso" required>          
+                <input type="number" class="form-control" name="caso_id" placeholder="Nro. de caso" min="1" required>          
                 <input type="hidden" name="XID" value="{XID_HASH}" />
                 <span class="input-group-btn">
                   <button class="btn btn-default" type="submit" name="submit">Buscar</button>
