@@ -8,7 +8,7 @@ class generar_comentario
 		$TMPL = $this->EE->TMPL;
 		$member_id= $TMPL->fetch_param('member_id');
 		$id_sol_garantia= $TMPL->fetch_param('id_sol_garantia');
-		$texto= $TMPL->fetch_param('texto');
+		echo "txt : ".$texto= $TMPL->fetch_param('texto');
 		$acc= $TMPL->fetch_param('acc');
 
 		$ip=$_SERVER["REMOTE_ADDR"];
@@ -22,7 +22,7 @@ class generar_comentario
 			values ('1','$member_id','y','$ip','$entry_date','open','$id_sol_garantia','$texto','$member_id')");
 			}else{}
 		}
-		$queryb="DELETE FROM exp_freeform_form_entries_6 WHERE author_id ='' "; $resultborrarb=mysql_query($queryb);
+		// $queryb="DELETE FROM exp_freeform_form_entries_6 WHERE author_id ='' "; $resultborrarb=mysql_query($queryb);
   }
 }
 ?>
