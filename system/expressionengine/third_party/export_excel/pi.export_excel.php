@@ -138,7 +138,7 @@ class export_excel
 		$nombre_archivo=$nombre_file.$exportacion."_".$fecha_actual.".csv";
 		$this->return_data = "$file_name";
 		if ( ! write_file($file_name, $out)){echo "<br>Fallo en la generación del archivo.";}
-		else{downloadFile("/var/www/vivagymposventa/html/reportes/".$nombre_archivo);}
+		else{downloadFile("/var/www/vivatudepa.pe/html/reportes/".$nombre_archivo);}
     }
 }
 ?>
