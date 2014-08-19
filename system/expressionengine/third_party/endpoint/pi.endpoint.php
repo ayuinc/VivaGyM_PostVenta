@@ -11,7 +11,10 @@ class endpoint
         global $TMPL;
         $this->EE =& get_instance(); // EEv2 syntax
         $TMPL = $this->EE->TMPL;
+        $base_url = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "http");
+        $base_url .= "://".$_SERVER['HTTP_HOST'];
 
+        $tipo_evento = ee()->TMPL->fetch_param('tipo_evento');
         $tipo_evento = ee()->TMPL->fetch_param('tipo_evento');
 
         ee()->db->select('exp_bloques.id, exp_bloques.inicio as start, exp_bloques.final as end, exp_bloques.tipo_evento_id, COUNT(bloque_evento_id) as cantidad_eventos');
@@ -31,7 +34,8 @@ class endpoint
                     'start' => date_format(new DateTime($value->start), 'Y-m-d\TH:i:sO'),
                     'end' => date_format(new DateTime($value->end), 'Y-m-d\TH:i:sO'),
                     'tipo_evento_id' => $value->tipo_evento_id,
-                    'cantidad_eventos' => $value->cantidad_eventos
+                    'cantidad_eventos' => $value->cantidad_eventos,
+                    'url' => $base_url . '/main/user_request_fixing/' . date_format(new DateTime($value->start), 'd-m-Y')
                     );
 
                 array_push($response, $object);
@@ -68,6 +72,8 @@ class endpoint
         global $TMPL;
         $this->EE =& get_instance(); // EEv2 syntax
         $TMPL = $this->EE->TMPL;
+        $base_url = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "http");
+        $base_url .= "://".$_SERVER['HTTP_HOST'];
 
         $member_id = ee()->TMPL->fetch_param('member_id');
         ee()->db->select('id, titulo AS title, cliente_id, inicio AS start, fin AS end, tipo_evento_id, encargado_id');
@@ -84,7 +90,8 @@ class endpoint
                 'start' => date_format(new DateTime($value->start), 'Y-m-d\TH:i:sO'),
                 'end' => date_format(new DateTime($value->end), 'Y-m-d\TH:i:sO'),
                 'tipo_evento_id' => $value->tipo_evento_id,
-                'encargado_id' => $value->encargado_id
+                'encargado_id' => $value->encargado_id,
+                'url' => $base_url . '/main/user_request_fixing/' . date_format(new DateTime($value->start), 'd-m-Y')
                 );
 
             array_push($response, $aux);
