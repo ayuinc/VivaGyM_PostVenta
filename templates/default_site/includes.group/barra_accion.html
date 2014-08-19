@@ -19,11 +19,9 @@ if ($paso_insp=="open"){ ?>
   <div class="col-sm-3 text-right button">
 
     <form method="post" enctype="multipart/form-data" action="/main/user_request_book/">
-
       <input type="hidden" name="XID" value="{XID_HASH}" />
-      <input type="text" name="id_sol_garantia" value="<?php echo $id_sol_garantia; ?>">
+      <input type="hidden" name="id_sol_garantia" value="<?php echo $id_sol_garantia; ?>">
       <button type="submit" class="btn btn-sm btn-success" name="submit">Agendar ahora</button>
-
     </form>
 
   </div>
