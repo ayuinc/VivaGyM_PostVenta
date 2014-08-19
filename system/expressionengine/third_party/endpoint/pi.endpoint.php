@@ -39,7 +39,7 @@ class endpoint
             if($value->cantidad_eventos < 15) {
                 $object = array(
                     'id' => $value->id,
-                    'title' => "",
+                    'title' => "Disponible",
                     'start' => date_format(new DateTime($value->start), 'Y-m-d\TH:i:sO'),
                     'end' => date_format(new DateTime($value->end), 'Y-m-d\TH:i:sO'),
                     'tipo_evento_id' => $value->tipo_evento_id,
