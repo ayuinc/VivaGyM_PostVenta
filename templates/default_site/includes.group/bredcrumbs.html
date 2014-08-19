@@ -1,6 +1,3 @@
-<?php
-$id_sol_garantia=$_SESSION['id_sol_garantia'];
-?>
 {exp:user:stats}
   <ol class="breadcrumb">
     <li><a href="{site_url}main/user_dashboard/{member_id}">Panel de control</a></li>
@@ -23,19 +20,19 @@ $id_sol_garantia=$_SESSION['id_sol_garantia'];
 		
 		{if segment_2=='user_request_show'}
 		<li><a href="{site_url}main/user_dashboard/{member_id}">Mis solicitudes</a></li>
-		<li class="active">Solicitud #<?php echo $id_sol_garantia; ?></li>
+		<li class="active">Solicitud #{embed:ticket}</li>
 		{/if}		
 
 
 		{if segment_2=='user_request_book'}
 		<li><a href="{site_url}main/user_dashboard/{member_id}">Mis solicitudes</a></li>
-		<li class="active">Solicitud #<?php echo $id_sol_garantia; ?></li>
+		<li class="active">Solicitud #{embed:ticket}</li>
 		{/if}		
 
 		{if segment_2=='user_request_fixing'}
 		<li><a href="{site_url}main/user_dashboard/{member_id}">Mis solicitudes</a></li>
-		<li class="active">Solicitud #<?php echo $id_sol_garantia; ?></li>
+		<li class="active">Solicitud #{embed:ticket}</li>
 		{/if}	
 		
     </ol>
-{/exp:user:stats} 
+ {/exp:user:stats} 
