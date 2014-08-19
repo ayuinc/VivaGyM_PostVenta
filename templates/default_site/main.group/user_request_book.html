@@ -1,6 +1,6 @@
 {embed="includes/header" }
 
-<?php session_start(); 
+<?php 
 // $id_sol_garantia="{segment_3}"; 
 $site_url="{site_url}"; 
 $id_sol_garantia=$_SESSION['id_sol_garantia'];?>
@@ -78,12 +78,10 @@ $id_cliente="{member_id}";
               <input type="email" placeholder="Correo electrónico" name="email_encargado_atencion" class=" form-control" >
             </div>
 
-
         </div>
               <input type="hidden" name="XID" value="{XID_HASH}" /> 
               <input type="hidden" placeholder="id_cliente" name="id_cliente" class=" form-control input-lg" value="<?php echo $id_cliente; ?>">
-              <input type="text" placeholder="id_sol_garantia" name="id_sol_garantia" class=" form-control input-lg" 
-              value="<?php echo $id_sol_garantia; ?>">
+              <input type="text" name="id_sol_garantia" value="<?php echo $id_sol_garantia; ?>">
               <input type="hidden" placeholder="orden_tramite" name="orden_tramite" class=" form-control input-lg" value="2">
               <input type="submit" class="btn btn-sm btn-info" value="Agendar">
         </form>
