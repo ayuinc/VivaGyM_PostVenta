@@ -13,9 +13,18 @@ class endpoint
         $TMPL = $this->EE->TMPL;
         $base_url = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "http");
         $base_url .= "://".$_SERVER['HTTP_HOST'];
+        $url = "";
 
         $tipo_evento = ee()->TMPL->fetch_param('tipo_evento');
-        $tipo_evento = ee()->TMPL->fetch_param('tipo_evento');
+
+        if(isset($tipo_evento)) {
+            if($tipo_evento == 1) {
+                $url = $base_url . '/main/user_request_book/' . date_format(new DateTime($value->start), 'd-m-Y');
+            }
+            if($tipo_evento == 2) {
+                $url = $base_url . '/main/user_request_fixing/' . date_format(new DateTime($value->start), 'd-m-Y');
+            }
+        }
 
         ee()->db->select('exp_bloques.id, exp_bloques.inicio as start, exp_bloques.final as end, exp_bloques.tipo_evento_id, COUNT(bloque_evento_id) as cantidad_eventos');
         ee()->db->from('exp_bloques');
@@ -35,8 +44,7 @@ class endpoint
                     'end' => date_format(new DateTime($value->end), 'Y-m-d\TH:i:sO'),
                     'tipo_evento_id' => $value->tipo_evento_id,
                     'cantidad_eventos' => $value->cantidad_eventos,
-                    'url_fixing' => $base_url . '/main/user_request_fixing/' . date_format(new DateTime($value->start), 'd-m-Y'),
-                    'url_booking' => $base_url . '/main/user_request_booking/' . date_format(new DateTime($value->start), 'd-m-Y')
+                    'url' => $url
                     );
 
                 array_push($response, $object);
@@ -73,8 +81,6 @@ class endpoint
         global $TMPL;
         $this->EE =& get_instance(); // EEv2 syntax
         $TMPL = $this->EE->TMPL;
-        $base_url = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "http");
-        $base_url .= "://".$_SERVER['HTTP_HOST'];
 
         $member_id = ee()->TMPL->fetch_param('member_id');
         ee()->db->select('id, titulo AS title, cliente_id, inicio AS start, fin AS end, tipo_evento_id, encargado_id');
@@ -91,9 +97,7 @@ class endpoint
                 'start' => date_format(new DateTime($value->start), 'Y-m-d\TH:i:sO'),
                 'end' => date_format(new DateTime($value->end), 'Y-m-d\TH:i:sO'),
                 'tipo_evento_id' => $value->tipo_evento_id,
-                'encargado_id' => $value->encargado_id,
-                'url_fixing' => $base_url . '/main/user_request_fixing/' . date_format(new DateTime($value->start), 'd-m-Y'),
-                'url_booking' => $base_url . '/main/user_request_booking/' . date_format(new DateTime($value->start), 'd-m-Y')
+                'encargado_id' => $value->encargado_id
                 );
 
             array_push($response, $aux);
