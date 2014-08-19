@@ -15,7 +15,17 @@ if ($paso_insp=="open"){ ?>
     <strong>Importante:</strong> <span>Usted tiene pendiente agendar una visita de inspección</span>
   </div>
   <div class="col-sm-3 text-right button">
+
+    <form method="post" enctype="multipart/form-data" action="/main/user_request_book/">
+
+      <input type="hidden" name="XID" value="{XID_HASH}" />
+      <input type="text" name="id_sol_garantia" value="<?php echo $id_sol_garantia; ?>">
+      <button type="submit" class="btn btn-sm btn-success" name="submit">Agendar ahora</button>
+
+    </form>
+
     <a href="{site_url}main/<?php echo "user_request_book/".$id_sol_garantia; ?>" class="btn btn-sm btn-success">Agendar ahora</a>
+
   </div>
 </div>
 <?php } ?>
