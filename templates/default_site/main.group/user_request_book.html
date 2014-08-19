@@ -1,17 +1,12 @@
 {embed="includes/header" }
-{exp:generar_fechas tipo_cal="insp"}
 
 <?php session_start(); 
 // $id_sol_garantia="{segment_3}"; 
 $site_url="{site_url}"; 
 $id_sol_garantia=$_SESSION['id_sol_garantia'];?>
 
-  <div ng-controller="UserCalendarCtrl">
-    <div class="calendar" ng-model="eventSources.inspecciones" calendar="calendar" config="uiConfig.calendar" ui-calendar="uiConfig.calendar"></div>
-  </div>
-
 <?php
-$dia_sel="{segment_4}";
+$dia_sel="{segment_3}";
 $hora=$_GET['hora'];
 $id_cliente="{member_id}";
 ?>
@@ -37,7 +32,9 @@ $id_cliente="{member_id}";
           </div>
         </div>
         <div class="panel-body p-0">
-          <div id="calendar"></div>
+          <div ng-controller="UserCalendarCtrl">
+            <div class="calendar" ng-model="eventSources.inspecciones" calendar="calendar" config="uiConfig.calendar" ui-calendar="uiConfig.calendar"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -49,7 +46,7 @@ $id_cliente="{member_id}";
           <label for="">Fecha seleccionada:</label>
           <div class="input-group">
             <span class="input-group-addon"><i class="icon-calendar"></i></span>
-            <input type="text" class="form-control" placeholder="DD/MM/AAAA" name="fecha_atencion_ticket" value="<?php echo $dia_sel; ?>" required>
+            <input type="text" class="form-control" placeholder="DD-MM-AAAA" name="fecha_atencion_ticket" value="<?php echo $dia_sel; ?>" required>
           </div>
           <div class="form-group pt-14">
             <small>Asegúrate que puedes estar en tu departamento en la fecha y hora que agendas tu cita. Te enviaremos una notificación y un correo el día anterior para recordarte.</small>
