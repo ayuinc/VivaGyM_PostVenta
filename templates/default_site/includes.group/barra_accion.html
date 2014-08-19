@@ -43,7 +43,12 @@ if ($paso_arr=="open"){ ?>
     <strong>Importante:</strong> <span>Usted tiene pendiente agendar una visita de arreglo</span>
   </div>
   <div class="col-sm-3 text-right button">
-    <a href="{site_url}main/<?php echo "user_request_fixing/".$id_sol_garantia; ?>" class="btn btn-sm btn-success">Agendar ahora</a>
+    <form method="post" enctype="multipart/form-data" action="/main/user_request_fixing/">
+      <input type="hidden" name="XID" value="{XID_HASH}" />
+      <input type="hidden" name="id_sol_garantia" value="<?php echo $id_sol_garantia; ?>">
+      <button type="submit" class="btn btn-sm btn-success" name="submit">Agendar ahora</button>
+    </form>
+
   </div>
 </div>
 <?php } ?>
