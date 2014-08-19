@@ -35,7 +35,8 @@ class endpoint
                     'end' => date_format(new DateTime($value->end), 'Y-m-d\TH:i:sO'),
                     'tipo_evento_id' => $value->tipo_evento_id,
                     'cantidad_eventos' => $value->cantidad_eventos,
-                    'url' => $base_url . '/main/user_request_fixing/' . date_format(new DateTime($value->start), 'd-m-Y')
+                    'url_fixing' => $base_url . '/main/user_request_fixing/' . date_format(new DateTime($value->start), 'd-m-Y'),
+                    'url_booking' => $base_url . '/main/user_request_booking/' . date_format(new DateTime($value->start), 'd-m-Y')
                     );
 
                 array_push($response, $object);
@@ -91,7 +92,8 @@ class endpoint
                 'end' => date_format(new DateTime($value->end), 'Y-m-d\TH:i:sO'),
                 'tipo_evento_id' => $value->tipo_evento_id,
                 'encargado_id' => $value->encargado_id,
-                'url' => $base_url . '/main/user_request_fixing/' . date_format(new DateTime($value->start), 'd-m-Y')
+                'url_fixing' => $base_url . '/main/user_request_fixing/' . date_format(new DateTime($value->start), 'd-m-Y'),
+                'url_booking' => $base_url . '/main/user_request_booking/' . date_format(new DateTime($value->start), 'd-m-Y')
                 );
 
             array_push($response, $aux);
