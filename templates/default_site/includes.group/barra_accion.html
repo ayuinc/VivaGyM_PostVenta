@@ -2,6 +2,8 @@
 $id_cliente="{member_id}";
 $id_sol_garantia="{embed:id_sol_garantia}";
 
+$_SESSION['id_sol_garantia']=$id_sol_garantia;
+
 $result_cond=mysql_query("SELECT * FROM exp_freeform_form_entries_4 WHERE form_field_18=$id_sol_garantia and form_field_19='3' ");
 $obten_cond=mysql_fetch_row($result_cond);
 $paso_insp = $obten_cond[7];
