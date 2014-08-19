@@ -1,10 +1,10 @@
+{embed="includes/header" }
+{exp:generar_fechas tipo_cal="insp"}
+
 <?php session_start(); 
 // $id_sol_garantia="{segment_3}"; 
 $site_url="{site_url}"; 
 echo "var session sol ".$_SESSION['id_sol_garantia'];?>
-
-{embed="includes/header" }
-{exp:generar_fechas tipo_cal="insp"}
 
   <div ng-controller="UserCalendarCtrl">
     <div class="calendar" ng-model="eventSources.inspecciones" calendar="calendar" config="uiConfig.calendar" ui-calendar="uiConfig.calendar"></div>
