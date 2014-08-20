@@ -24,6 +24,19 @@
 	    }
 	  }
 	</script>
+		<script type="text/javascript">
+	  function SwitchHiddenDiv_com(){
+	    var evento = document.getElementById("SelectedType").options[document.getElementById("SelectedType").selectedIndex].value;
+	    switch (evento){
+	      case 'si': 
+	    document.getElementById('casilla_com').style.display="none";
+	    break;
+	      case 'no':
+	    document.getElementById('casilla_com').style.display="block";
+	    break;
+	    }
+	  }
+	</script>
 	<script language="javascript">
 		function validar(frm){
 		if(frm.aprobar_paso.value==""){mensaje1("Aprobar procedimiento",frm.aprobar_paso);return false;}
@@ -62,7 +75,7 @@
 		      <p>¿Procede la visita de inspección?</p>
 		      <form method="post" enctype="multipart/form-data" name="frm" id="frm" onSubmit="return validar(this)" action="/?/main/viva_approve_sol">
 		        <div class="form-group">
-		          <select name="aprobar_paso" id='SelectedType' onchange="SwitchHiddenDiv()" class="form-control select-override input-sm option-select">
+		          <select name="aprobar_paso" id='SelectedType' onchange="SwitchHiddenDiv()" class="form-control select-override input-sm option-select" required>
 		            <option value="" selected="selected">Selecciona una opción</option>
 		            <option value="si-gar">Procede - Por garantía</option>
 		            <option value="si-exc">Procede - Por excepción</option>
@@ -111,14 +124,14 @@
 		      <p>¿Procede el arreglo de este caso?</p>
 		      <form method="post" enctype="multipart/form-data" name="frm" id="frm" onSubmit="return validar(this)" action="/?/main/viva_approve_fix">
 		        <div class="form-group">
-		          <select name="aprobar_paso" id='SelectedType' onchange="SwitchHiddenDiv()" class="form-control select-override input-sm option-select">
+		          <select name="aprobar_paso" id='SelectedType' onchange="SwitchHiddenDiv_com()" class="form-control select-override input-sm option-select" required>
 		            <option value="" selected="selected">Selecciona una opción</option>
 		            <option value="si">Sí</option>
 		            <option value="no">No</option>
 		          </select>
 		        </div>
 
-		        <div class="form-group" id="casilla" style="display:none;">
+		        <div class="form-group" id="casilla_com" style="display:none;">
 				      <textarea name="comentarios" id="" rows="4" class="form-control" placeholder="En caso No proceda el arreglo por favor detallar las razones, este texto sera enviado en un correo al usuario."></textarea>
 				      <p class="help-block text-right text-warning">Máximo 250 caracteres</p>
 				    </div>
