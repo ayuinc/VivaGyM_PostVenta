@@ -38,7 +38,7 @@ $site_url="{site_url}"; ?>
       day: 'Día'
        },
 
-      events: "http://162.243.222.54/json-fechas.php?id_sol_garantia="+$id_sol,
+      events: "{site_url}json-fechas.php?id_sol_garantia="+$id_sol,
       
     });
     
