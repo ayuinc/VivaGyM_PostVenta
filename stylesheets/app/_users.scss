@@ -33,7 +33,8 @@ blockquote {
 #home {
   width: 100%;
   min-height: 768px;
-  background: url(http://162.243.222.54/images/home.jpg) no-repeat top center;
+
+  background: url(/images/home.jpg) no-repeat top center;
   background-size: 100%;
   @media only screen and (max-width: $screen-phone) and (max-width: $screen-tablet) {
     background-size: auto;
