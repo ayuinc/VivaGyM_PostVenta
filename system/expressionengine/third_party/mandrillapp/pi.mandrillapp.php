@@ -50,7 +50,7 @@ class Mandrillapp {
 		$documento =  $TMPL->fetch_param('documento');
 		$to= $TMPL->fetch_param('to');
 		$name= $TMPL->fetch_param('name');
-		$from= "admin@gym.com";
+		$from= "vivagym_atencionalcliente@gym.com.pe";
 		$tipo= $TMPL->fetch_param('tipo');
 		//$text = $TMPL->tagdata;
 
@@ -259,7 +259,7 @@ class Mandrillapp {
 		$to= $TMPL->fetch_param('to');
 		$name= $TMPL->fetch_param('name');
 		$subject= "No se pudo realizar el arreglo";
-		$from= $TMPL->fetch_param('from');
+		$from= "vivagym_atencionalcliente@gym.com.pe";
 		$id_sol_garantia = $TMPL->fetch_param('id_sol_garantia');
 		//$text = $TMPL->tagdata;
 
@@ -360,7 +360,7 @@ class Mandrillapp {
  		$to= $TMPL->fetch_param('to');
  		$name= $TMPL->fetch_param('name');
  		$subject= "No se pudo realizar la inspección";
- 		$from= $TMPL->fetch_param('from');
+ 		$from= "vivagym_atencionalcliente@gym.com.pe";
  		$id_sol_garantia =  $TMPL->fetch_param('id_sol_garantia');
  		$result_aus=mysql_query("SELECT * FROM exp_freeform_form_entries_4 WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 5 ");
 		$obten_aus=mysql_fetch_row($result_aus);
@@ -471,7 +471,7 @@ class Mandrillapp {
  		$to= $TMPL->fetch_param('to');
  		$name= $TMPL->fetch_param('name');
  		$subject= "Ingreso de nueva solicitud";
- 		$from= $TMPL->fetch_param('from');
+ 		$from= "vivagym_atencionalcliente@gym.com.pe";
  		$dias=  $TMPL->fetch_param('dias');
  		$member_id = $TMPL->fetch_param('member_id');
 
@@ -571,7 +571,7 @@ Atentamente,</span>
  		$to= $TMPL->fetch_param('to');
  		$name= $TMPL->fetch_param('name');
  		$subject= "Cierre de Caso";
- 		$from= $TMPL->fetch_param('from');
+ 		$from= "vivagym_atencionalcliente@gym.com.pe";
  		$id_sol_garantia = $TMPL->fetch_param('id_sol_garantia');
  		//$text = $TMPL->tagdata;
 
@@ -682,7 +682,7 @@ Atentamente,</span>
  		$to= $TMPL->fetch_param('to');
  		$name= $TMPL->fetch_param('name');
  		$subject= 'Cierre de Caso';
- 		$from= $TMPL->fetch_param('from');
+ 		$from= "vivagym_atencionalcliente@gym.com.pe";
  		$id_sol_garantia = $TMPL->fetch_param('id_sol_garantia');
  		//$text = $TMPL->tagdata;
 
@@ -781,7 +781,7 @@ Atentamente,</span>
  		
  		$to= $TMPL->fetch_param('to');
  		$name= $TMPL->fetch_param('name');
- 		$from= $TMPL->fetch_param('from');
+ 		$from= "vivagym_atencionalcliente@gym.com.pe";
  		$acc= $TMPL->fetch_param('acc');
  		$id_sol_garantia = $TMPL->fetch_param('id_sol_garantia');
  		$comentarios = $TMPL->fetch_param('comentarios');
@@ -969,7 +969,7 @@ Atentamente,</span>
  		
  		$to= $TMPL->fetch_param('to');
  		$name= $TMPL->fetch_param('name');
- 		$from= $TMPL->fetch_param('from');
+ 		$from= "vivagym_atencionalcliente@gym.com.pe";
  		$acc= $TMPL->fetch_param('acc');
  		$id_sol_garantia = $TMPL->fetch_param('id_sol_garantia');
  		$comentarios = $TMPL->fetch_param('comentarios');
@@ -1164,7 +1164,7 @@ Atentamente,</span>
  		$to= $TMPL->fetch_param('to');
  		$name= $TMPL->fetch_param('name');
  		$subject= "Visita de inspección agendada";
- 		$from= $TMPL->fetch_param('from');
+ 		$from= "vivagym_atencionalcliente@gym.com.pe";
  		$id_sol_garantia = $TMPL->fetch_param('id_sol_garantia');
  		$fecha_atencion_ticket = $TMPL->fetch_param('fecha_atencion_ticket');
  		//$text = $TMPL->tagdata;
@@ -1267,7 +1267,7 @@ Atentamente,</span>
 		$to= $TMPL->fetch_param('to');
 		$name= $TMPL->fetch_param('name');
 		$subject= "Visita de arreglo agendada";
-		$from= $TMPL->fetch_param('from');
+		$from= "vivagym_atencionalcliente@gym.com.pe";
 		$id_sol_garantia = $TMPL->fetch_param('id_sol_garantia');
 		$fecha_atencion_ticket = $TMPL->fetch_param('fecha_atencion_ticket');
 		//$text = $TMPL->tagdata;
@@ -1369,7 +1369,7 @@ Atentamente,</span>
 		$to= $TMPL->fetch_param('to');
 		$name= $TMPL->fetch_param('name');
 		$subject= $TMPL->fetch_param('subject');
-		$from= $TMPL->fetch_param('from');
+		$from= "vivagym_atencionalcliente@gym.com.pe";
 		//$text = $TMPL->tagdata;
 
 		$text = "<!doctype html>
@@ -1464,7 +1464,7 @@ Atentamente,</span>
 		$to= $TMPL->fetch_param('to');
 		$name= $TMPL->fetch_param('name');
 		$subject= $TMPL->fetch_param('subject');
-		$from= $TMPL->fetch_param('from');
+		$from= "vivagym_atencionalcliente@gym.com.pe";
 		$member_id= $TMPL->fetch_param('member_id');
 
 		$rs = mysql_query("SELECT MAX(entry_id) AS id FROM exp_freeform_form_entries_9 where form_field_5 = $member_id");
@@ -1575,7 +1575,7 @@ Atentamente,</span>
 		$to= $TMPL->fetch_param('to');
 		$name= $TMPL->fetch_param('name');
 		$subject= $TMPL->fetch_param('subject');
-		$from= $TMPL->fetch_param('from');
+		$from= "vivagym_atencionalcliente@gym.com.pe";
 		$member_id= $TMPL->fetch_param('member_id');
 
 		$email_propietario= $TMPL->fetch_param('email_propietario');
@@ -1696,16 +1696,11 @@ Atentamente,</span>
 
 		require_once 'mailchimp-mandrill-api-php/src/Mandrill.php'; 
 		$mandrill = new Mandrill('Svqgcw575OLrORu2WiD09g');
-		
-		// $to= "jcmoron82@gmail.com";
-		// $name= "Julio";
-		// $subject= "Recordatorio|";
-		// $from= "admin@gym.com";
 
 		$to= $TMPL->fetch_param('to');
 		$name= $TMPL->fetch_param('name');
 		$subject= $TMPL->fetch_param('subject');
-		$from= $TMPL->fetch_param('from');
+		$from= "vivagym_atencionalcliente@gym.com.pe";
 
 		$id_reclamo= $TMPL->fetch_param('id_reclamo');
 		$fecha_date= $TMPL->fetch_param('fecha_date');
