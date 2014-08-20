@@ -83,7 +83,7 @@ class Mandrillapp {
 												<td><br></td>
 											</tr>
 											<tr>
-												<td align='right'><img src='http://162.243.222.54/images/logo-viva.png' style='width:100px; height: auto;'>
+												<td align='right'><img src='http://vivatudepa.pe/images/logo-viva.png' style='width:100px; height: auto;'>
 												</td>
 											</tr>
 											<tr>
@@ -115,7 +115,7 @@ class Mandrillapp {
 							<tr>
 								<td align='center'><p></p>
 									<span style='font-size: 12px;'>2014 Viva GyM Servicio de post-venta, todos los derechos reservados.</span><br>
-									<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
+									<img src='http://vivatudepa.pe/images/logo-plomo.png' style='width:80px; height: auto;'>
 								</td>
 							</tr>
 						</table>
@@ -176,7 +176,7 @@ class Mandrillapp {
 												<td><br></td>
 											</tr>
 											<tr>
-												<td align='right'><img src='http://162.243.222.54/images/logo-viva.png' style='width:100px; height: auto;'>
+												<td align='right'><img src='http://vivatudepa.pe/images/logo-viva.png' style='width:100px; height: auto;'>
 												</td>
 											</tr>
 											<tr>
@@ -200,7 +200,7 @@ class Mandrillapp {
 							<tr>
 								<td align='center'><p></p>
 									<span style='font-size: 12px;'>2014 Viva GyM Servicio de post-venta, todos los derechos reservados.</span><br>
-									<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
+									<img src='http://vivatudepa.pe/images/logo-plomo.png' style='width:80px; height: auto;'>
 								</td>
 							</tr>
 						</table>
@@ -284,7 +284,7 @@ class Mandrillapp {
 									<td><br></td>
 								</tr>
 								<tr>
-									<td align='right'><img src='http://162.243.222.54/images/logo-viva.png' style='width:100px; height: auto;'>
+									<td align='right'><img src='http://vivatudepa.pe/images/logo-viva.png' style='width:100px; height: auto;'>
 									</td>
 								</tr>
 								<tr>
@@ -292,7 +292,7 @@ class Mandrillapp {
 									<span style='color: #898989;'>Te informamos que nuestro equipo de post-venta se acercó a tu departamento en la fecha y dentro de los horarios programados. Lamentablemente no se pudo efectuar la atención a tu requerimiento debido a que no se encontró a la persona designada como responsable en la propiedad.<p>
 									No te olvides programar una nueva fecha para atender tu requerimiento dentro de los próximos siete (07) días; de lo contrario, tu solicitud quedará sin efecto.<p></span>
 									<br>
-									<span style='color: #898989;'>Programa una nueva fecha para atenderte <a href='http://162.243.222.54/main/user_request_show/".$id_sol_garantia."'>aquí</a>.<p>
+									<span style='color: #898989;'>Programa una nueva fecha para atenderte <a href='http://vivatudepa.pe/main/user_request_show/".$id_sol_garantia."'>aquí</a>.<p>
 									Recuerda que estamos para servirte de la mejor manera. Cualquier consulta o solicitud adicional  puedes comunicarte con nosotros llamando al 206-7270 ó a nuestro correo vivagym_atencionalcliente@gym.com.pe .
 									<p>Atentamente,</span>
 									<span style='color: #898989;'>El equipo de post-venta de Viva GyM.</span>
@@ -309,7 +309,7 @@ class Mandrillapp {
 				<tr>
 					<td align='center'><p></p>
 						<span style='font-size: 12px;'>2014 Viva GyM Servicio de post-venta, todos los derechos reservados.</span><br>
-						<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
+						<img src='http://vivatudepa.pe/images/logo-plomo.png' style='width:80px; height: auto;'>
 					</td>
 				</tr>
 			</table>
@@ -391,14 +391,14 @@ class Mandrillapp {
 									<td><br></td>
 								</tr>
 								<tr>
-									<td align='right'><img src='http://162.243.222.54/images/logo-viva.png' style='width:100px; height: auto;'>
+									<td align='right'><img src='http://vivatudepa.pe/images/logo-viva.png' style='width:100px; height: auto;'>
 									</td>
 								</tr>
 								<tr>
 								<td align='left'><h3>Estimado/a ".$name."</h3>
 									<span style='color: #898989;'>Te informamos que nuestro equipo de post-venta se acercó a tu departamento en la fecha y dentro de los horarios programados. Lamentablemente no se pudo efectuar la inspección técnica debido a que no se encontró a la persona designada como responsable en la propiedad.</span><p>
 									<span style='color: #898989;'>No te olvides programar una nueva inspección dentro de los próximos siete (07) días; de lo contrario, tu solicitud quedará sin efecto.</span><p>
-									<span style='color: #898989;'>Programa una nueva inspección <a href='http://162.243.222.54/main/user_request_show/".$id_sol_garantia."'>aquí</a>.<p>
+									<span style='color: #898989;'>Programa una nueva inspección <a href='http://vivatudepa.pe/main/user_request_show/".$id_sol_garantia."'>aquí</a>.<p>
 									<span style='color: #898989;'>Recuerda que estamos para servirte de la mejor manera. Cualquier consulta o solicitud adicional  puedes comunicarte con nosotros llamando al 206-7270 ó a nuestro correo vivagym_atencionalcliente@gym.com.pe<p>
 									Atentamente,</span>
 									<span style='color: #898989;'>El equipo de post-venta de Viva GyM.</span>
@@ -415,7 +415,7 @@ class Mandrillapp {
 				<tr>
 					<td align='center'><p></p>
 						<span style='font-size: 12px;'>2014 Viva GyM Servicio de post-venta, todos los derechos reservados.</span><br>
-						<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
+						<img src='http://vivatudepa.pe/images/logo-plomo.png' style='width:80px; height: auto;'>
 					</td>
 				</tr>
 			</table>
@@ -496,14 +496,14 @@ class Mandrillapp {
 									<td><br></td>
 								</tr>
 								<tr>
-									<td align='right'><img src='http://162.243.222.54/images/logo-viva.png' style='width:100px; height: auto;'>
+									<td align='right'><img src='http://vivatudepa.pe/images/logo-viva.png' style='width:100px; height: auto;'>
 									</td>
 								</tr>
 								<tr>
 								<td align='left'><h3>Estimado/a ".$name."</h3>
 									<span style='color: #898989;'>Gracias por ingresar tu solicitud de requerimiento a través del portal de post-venta de Viva GyM. <p>
 En los próximos $dias días te estaremos informando a través de nuestro portal y/o SMS si la inspección técnica procede.<p></span>
-<span style='color: #898989;'>Puedes hacerle seguimiento a tu solicitud <a href='http://162.243.222.54/main/user_dashboard/".$member_id."'> aquí</a>.</span><p>
+<span style='color: #898989;'>Puedes hacerle seguimiento a tu solicitud <a href='http://vivatudepa.pe/main/user_dashboard/".$member_id."'> aquí</a>.</span><p>
 <span style='color: #898989;'>Recuerda que estamos para servirte de la mejor manera. Cualquier consulta o solicitud adicional  puedes comunicarte con nosotros llamando al 206-7270 ó a nuestro correo vivagym_atencionalcliente@gym.com.pe.<p>
 Atentamente,</span>
 <span style='color: #898989;'>El equipo de post-venta de Viva GyM..</span>
@@ -520,7 +520,7 @@ Atentamente,</span>
 				<tr>
 					<td align='center'><p></p>
 						<span style='font-size: 12px;'>2014 Viva GyM Servicio de post-venta, todos los derechos reservados.</span><br>
-						<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
+						<img src='http://vivatudepa.pe/images/logo-plomo.png' style='width:80px; height: auto;'>
 					</td>
 				</tr>
 			</table>
@@ -596,13 +596,13 @@ Atentamente,</span>
 									<td><br></td>
 								</tr>
 								<tr>
-									<td align='right'><img src='http://162.243.222.54/images/logo-viva.png' style='width:100px; height: auto;'>
+									<td align='right'><img src='http://vivatudepa.pe/images/logo-viva.png' style='width:100px; height: auto;'>
 									</td>
 								</tr>
 								<tr>
 								<td align='left'><h3>Estimado/a ".$name."</h3>
 									<span style='color: #898989;'>Nos es grato comunicarte que el proceso de atención a tu solicitud N° : ".$id_sol_garantia." ha concluido.</span><p>
-									<span style='color: #898989;'>Podrás encontrar toda la información acerca de tu caso <a href='http://162.243.222.54/main/user_request_show/".$id_sol_garantia."'>aquí</a> o ingresando a nuestro portal a través de tu sesión.</span>
+									<span style='color: #898989;'>Podrás encontrar toda la información acerca de tu caso <a href='http://vivatudepa.pe/main/user_request_show/".$id_sol_garantia."'>aquí</a> o ingresando a nuestro portal a través de tu sesión.</span>
  		<span style='color: #898989;'>Recuerda que estamos para servirte de la mejor manera. Cualquier consulta o solicitud adicional  puedes comunicarte con nosotros llamando al 206-7270 ó a nuestro correo vivagym_atencionalcliente@gym.com.pe <p>
  		Atentamente,</span>
  		<span style='color: #898989;'>El equipo de post-venta de Viva GyM.</span>
@@ -619,7 +619,7 @@ Atentamente,</span>
 				<tr>
 					<td align='center'><p></p>
 						<span style='font-size: 12px;'>2014 Viva GyM Servicio de post-venta, todos los derechos reservados.</span><br>
-						<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
+						<img src='http://vivatudepa.pe/images/logo-plomo.png' style='width:80px; height: auto;'>
 					</td>
 				</tr>
 			</table>
@@ -707,14 +707,14 @@ Atentamente,</span>
 									<td><br></td>
 								</tr>
 								<tr>
-									<td align='right'><img src='http://162.243.222.54/images/logo-viva.png' style='width:100px; height: auto;'>
+									<td align='right'><img src='http://vivatudepa.pe/images/logo-viva.png' style='width:100px; height: auto;'>
 									</td>
 								</tr>
 								<tr>
 								<td align='left'><h3>Estimado/a ".$name."</h3>
 									<span style='color: #898989;'>Gracias por culminar el proceso de atención de su solicitud N° : ".$id_sol_garantia.".
  		Adjunto encontrará el reporte del arreglo realizado por GyM.<p>
- 		Aprovechamos para recordarle que en el Manual del Propietario otorgado al momento de la entrega de su departamento se especifica el correcto uso y mantenimiento preventivo que se le debe realizar a sus instalaciones a fin de evitar que estas fallen por el propio uso que provoca el desgaste natural.  Puede encontrar el Manual en nuestro portal de post-venta en línea. <a href='http://162.243.222.54/images/manual_propietario.pdf'>Manual de Usuario</a>.</span><p>
+ 		Aprovechamos para recordarle que en el Manual del Propietario otorgado al momento de la entrega de su departamento se especifica el correcto uso y mantenimiento preventivo que se le debe realizar a sus instalaciones a fin de evitar que estas fallen por el propio uso que provoca el desgaste natural.  Puede encontrar el Manual en nuestro portal de post-venta en línea. <a href='http://vivatudepa.pe/images/manual_propietario.pdf'>Manual de Usuario</a>.</span><p>
  		<span style='color: #898989;'>Es importante precisar que en caso se presentara alguna solicitud, observación y/o requerimiento adicional tras el arreglo debe llenar un nuevo reclamo en nuestro portal de post-venta en línea o comunicarte a nuestro Call Center de Atención al Cliente 206-7270. Este es el único mecanismo que garantiza la atención de su solicitud de post-venta, cualquier otra forma de solicitud no será atendida.<p>
  		Quedamos como siempre a su disposición si tiene alguna consulta o solicitud adicional.<p>
  		Atentamente</span>
@@ -731,7 +731,7 @@ Atentamente,</span>
 				<tr>
 					<td align='center'><p></p>
 						<span style='font-size: 12px;'>2014 Viva GyM Servicio de post-venta, todos los derechos reservados.</span><br>
-						<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
+						<img src='http://vivatudepa.pe/images/logo-plomo.png' style='width:80px; height: auto;'>
 					</td>
 				</tr>
 			</table>
@@ -815,12 +815,12 @@ Atentamente,</span>
 											<td><br></td>
 										</tr>
 										<tr>
-											<td align='right'><img src='http://162.243.222.54/images/logo-viva.png' style='width:100px; height: auto;'>
+											<td align='right'><img src='http://vivatudepa.pe/images/logo-viva.png' style='width:100px; height: auto;'>
 											</td>
 										</tr>
 										<tr>
 										<td align='left'><h3>Estimado/a ".$name."</h3>
-											<span style='color: #898989;'>En relación a tu solicitud ".$id_sol_garantia." nos es grato informarte que tu requerimiento ha sido declarado como procedente. Por favor ingresa <a href='http://162.243.222.54/main/user_request_show/".$id_sol_garantia."'>aquí</a> y programa una fecha para la atención.</span><p>
+											<span style='color: #898989;'>En relación a tu solicitud ".$id_sol_garantia." nos es grato informarte que tu requerimiento ha sido declarado como procedente. Por favor ingresa <a href='http://vivatudepa.pe/main/user_request_show/".$id_sol_garantia."'>aquí</a> y programa una fecha para la atención.</span><p>
 							 <span style='color: #898989;'>Recuerda que estamos para servirte de la mejor manera. Cualquier consulta o solicitud adicional  puedes comunicarte con nosotros llamando al 206-7270 ó a nuestro correo vivagym_atencionalcliente@gym.com.pe<p>
 							 Atentamente,</span>
 							 <span style='color: #898989;'>El equipo de post-venta de Viva GyM.</span>
@@ -836,7 +836,7 @@ Atentamente,</span>
 						<tr>
 							<td align='center'><p></p>
 								<span style='font-size: 12px;'>2014 Viva GyM Servicio de post-venta, todos los derechos reservados.</span><br>
-								<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
+								<img src='http://vivatudepa.pe/images/logo-plomo.png' style='width:80px; height: auto;'>
 							</td>
 						</tr>
 					</table>
@@ -897,7 +897,7 @@ Atentamente,</span>
 											<td><br></td>
 										</tr>
 										<tr>
-											<td align='right'><img src='http://162.243.222.54/images/logo-viva.png' style='width:100px; height: auto;'>
+											<td align='right'><img src='http://vivatudepa.pe/images/logo-viva.png' style='width:100px; height: auto;'>
 											</td>
 										</tr>
 										<tr>
@@ -919,7 +919,7 @@ Atentamente,</span>
 						<tr>
 							<td align='center'><p></p>
 								<span style='font-size: 12px;'>2014 Viva GyM Servicio de post-venta, todos los derechos reservados.</span><br>
-								<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
+								<img src='http://vivatudepa.pe/images/logo-plomo.png' style='width:80px; height: auto;'>
 							</td>
 						</tr>
 					</table>
@@ -1003,13 +1003,13 @@ Atentamente,</span>
 														<td><br></td>
 													</tr>
 													<tr>
-														<td align='right'><img src='http://162.243.222.54/images/logo-viva.png' style='width:100px; height: auto;'>
+														<td align='right'><img src='http://vivatudepa.pe/images/logo-viva.png' style='width:100px; height: auto;'>
 														</td>
 													</tr>
 													<tr>
 													<td align='left'><h3>Estimado/a ".$name."</h3>
 														<span style='color: #898989;'>En relación a tu solicitud ".$id_sol_garantia.", nos es grato comunicarte que procederemos con la inspección técnica de tu departamento.<p>
-														 Para proceder con la inspección, debes programar una cita a través de nuestro portal <a href='http://162.243.222.54/main/user_request_show/".$id_sol_garantia."'>aquí</a>.<p>
+														 Para proceder con la inspección, debes programar una cita a través de nuestro portal <a href='http://vivatudepa.pe/main/user_request_show/".$id_sol_garantia."'>aquí</a>.<p>
 			Recuerda que estamos para servirte de la mejor manera. Cualquier consulta o solicitud adicional  puedes comunicarte con nosotros llamando al 206-7270 ó a nuestro correo vivagym_atencionalcliente@gym.com.pe<p>
 			Atentamente,</span>
 			<span style='color: #898989;'>El equipo de post-venta de Viva GyM.</span>
@@ -1026,7 +1026,7 @@ Atentamente,</span>
 									<tr>
 										<td align='center'><p></p>
 											<span style='font-size: 12px;'>2014 Viva GyM Servicio de post-venta, todos los derechos reservados.</span><br>
-											<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
+											<img src='http://vivatudepa.pe/images/logo-plomo.png' style='width:80px; height: auto;'>
 										</td>
 									</tr>
 								</table>
@@ -1091,7 +1091,7 @@ Atentamente,</span>
 																	<td><br></td>
 																</tr>
 																<tr>
-																	<td align='right'><img src='http://162.243.222.54/images/logo-viva.png' style='width:100px; height: auto;'>
+																	<td align='right'><img src='http://vivatudepa.pe/images/logo-viva.png' style='width:100px; height: auto;'>
 																	</td>
 																</tr>
 																<tr>
@@ -1113,7 +1113,7 @@ Atentamente,</span>
 												<tr>
 													<td align='center'><p></p>
 														<span style='font-size: 12px;'>2014 Viva GyM Servicio de post-venta, todos los derechos reservados.</span><br>
-														<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
+														<img src='http://vivatudepa.pe/images/logo-plomo.png' style='width:80px; height: auto;'>
 													</td>
 												</tr>
 											</table>
@@ -1190,7 +1190,7 @@ Atentamente,</span>
 																	<td><br></td>
 																</tr>
 																<tr>
-																	<td align='right'><img src='http://162.243.222.54/images/logo-viva.png' style='width:100px; height: auto;'>
+																	<td align='right'><img src='http://vivatudepa.pe/images/logo-viva.png' style='width:100px; height: auto;'>
 																	</td>
 																</tr>
 																<tr>
@@ -1216,7 +1216,7 @@ Atentamente,</span>
 												<tr>
 													<td align='center'><p></p>
 														<span style='font-size: 12px;'>2014 Viva GyM Servicio de post-venta, todos los derechos reservados.</span><br>
-														<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
+														<img src='http://vivatudepa.pe/images/logo-plomo.png' style='width:80px; height: auto;'>
 													</td>
 												</tr>
 											</table>
@@ -1293,7 +1293,7 @@ Atentamente,</span>
 															<td><br></td>
 														</tr>
 														<tr>
-															<td align='right'><img src='http://162.243.222.54/images/logo-viva.png' style='width:100px; height: auto;'>
+															<td align='right'><img src='http://vivatudepa.pe/images/logo-viva.png' style='width:100px; height: auto;'>
 															</td>
 														</tr>
 														<tr>
@@ -1319,7 +1319,7 @@ Atentamente,</span>
 										<tr>
 											<td align='center'><p></p>
 												<span style='font-size: 12px;'>2014 Viva GyM Servicio de post-venta, todos los derechos reservados.</span><br>
-												<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
+												<img src='http://vivatudepa.pe/images/logo-plomo.png' style='width:80px; height: auto;'>
 											</td>
 										</tr>
 									</table>
@@ -1393,7 +1393,7 @@ Atentamente,</span>
 													<td><br></td>
 												</tr>
 												<tr>
-													<td align='right'><img src='http://162.243.222.54/images/logo-viva.png' style='width:100px; height: auto;'>
+													<td align='right'><img src='http://vivatudepa.pe/images/logo-viva.png' style='width:100px; height: auto;'>
 													</td>
 												</tr>
 												<tr>
@@ -1414,7 +1414,7 @@ Atentamente,</span>
 								<tr>
 									<td align='center'><p></p>
 										<span style='font-size: 12px;'>2014 Viva GyM Servicio de post-venta, todos los derechos reservados.</span><br>
-										<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
+										<img src='http://vivatudepa.pe/images/logo-plomo.png' style='width:80px; height: auto;'>
 									</td>
 								</tr>
 							</table>
@@ -1499,7 +1499,7 @@ Atentamente,</span>
 															<td><br></td>
 														</tr>
 														<tr>
-															<td align='right'><img src='http://162.243.222.54/images/logo-viva.png' style='width:100px; height: auto;'>
+															<td align='right'><img src='http://vivatudepa.pe/images/logo-viva.png' style='width:100px; height: auto;'>
 															</td>
 														</tr>
 														<tr>
@@ -1525,7 +1525,7 @@ Atentamente,</span>
 										<tr>
 											<td align='center'><p></p>
 												<span style='font-size: 12px;'>2014 Viva GyM Servicio de post-venta, todos los derechos reservados.</span><br>
-												<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
+												<img src='http://vivatudepa.pe/images/logo-plomo.png' style='width:80px; height: auto;'>
 											</td>
 										</tr>
 									</table>
@@ -1618,7 +1618,7 @@ Atentamente,</span>
 															<td><br></td>
 														</tr>
 														<tr>
-															<td align='right'><img src='http://162.243.222.54/images/logo-viva.png' style='width:100px; height: auto;'>
+															<td align='right'><img src='http://vivatudepa.pe/images/logo-viva.png' style='width:100px; height: auto;'>
 															</td>
 														</tr>
 														<tr>
@@ -1650,7 +1650,7 @@ Atentamente,</span>
 										<tr>
 											<td align='center'><p></p>
 												<span style='font-size: 12px;'>2014 Viva GyM Servicio de post-venta, todos los derechos reservados.</span><br>
-												<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
+												<img src='http://vivatudepa.pe/images/logo-plomo.png' style='width:80px; height: auto;'>
 											</td>
 										</tr>
 									</table>
@@ -1737,7 +1737,7 @@ Atentamente,</span>
 															<td><br></td>
 														</tr>
 														<tr>
-															<td align='right'><img src='http://162.243.222.54/images/logo-viva.png' style='width:100px; height: auto;'>
+															<td align='right'><img src='http://vivatudepa.pe/images/logo-viva.png' style='width:100px; height: auto;'>
 															</td>
 														</tr>
 														<tr>
@@ -1760,7 +1760,7 @@ Atentamente,</span>
 										<tr>
 											<td align='center'><p></p>
 												<span style='font-size: 12px;'>2014 Viva GyM Servicio de post-venta, todos los derechos reservados.</span><br>
-												<img src='http://162.243.222.54/images/logo-plomo.png' style='width:80px; height: auto;'>
+												<img src='http://vivatudepa.pe/images/logo-plomo.png' style='width:80px; height: auto;'>
 											</td>
 										</tr>
 									</table>
