@@ -33,9 +33,9 @@ blockquote {
 #home {
   width: 100%;
   min-height: 768px;
-
   background: url(/images/home.jpg) no-repeat top center;
   background-size: 100%;
+  zoom:1;
   @media only screen and (max-width: $screen-phone) and (max-width: $screen-tablet) {
     background-size: auto;
   }
