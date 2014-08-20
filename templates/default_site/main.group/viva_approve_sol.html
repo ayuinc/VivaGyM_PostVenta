@@ -26,7 +26,7 @@ $persona_asignada_gym=$_POST['persona_asignada_gym'];
 {exp:get_post_vars parse="inward"}
 	{if post_acc=="no-fmant" OR post_acc=="no-fgar"}
 		{exp:member:custom_profile_data}
-			{exp:generar_comentario member_id="{member_id}" id_sol_garantia="{post_id_sol_garantia}" texto="{post_comentarios}" acc="no"}
+			{exp:generar_comentario persona_id="{member_id}" id_sol_garantia="{post_id_sol_garantia}" texto="{post_comentarios}" acc="no"}
 		{/exp:member:custom_profile_data}
 	{/if}
 {/exp:get_post_vars}
