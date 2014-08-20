@@ -17,39 +17,39 @@
         <!-- el usuerio no ve nada -->
         {if:elseif freeform:field:accion_ticket == "Procesar Solicitud de Inspección"}
         <li>
-            <p>Has creado una solicitud #{freeform:field:id_sol_garantia}.&nbsp<a href="http://162.243.222.54/main/user_request_show/{freeform:field:id_sol_garantia}"> Ver detalles.</a></p>
+            <p>Has creado una solicitud #{freeform:field:id_sol_garantia}.&nbsp<a href="{site_url}main/user_request_show/{freeform:field:id_sol_garantia}"> Ver detalles.</a></p>
         </li> 
         {if:elseif freeform:field:accion_ticket == "Agendar Inspección"}
         <li>
-            <p>Tu solicitud #{freeform:field:id_sol_garantia} ha sido aprobada para inspección.&nbsp<a href="http://162.243.222.54/main/user_request_show/{freeform:field:id_sol_garantia}">Agenda tu visita de inspección.</a></p>
+            <p>Tu solicitud #{freeform:field:id_sol_garantia} ha sido aprobada para inspección.&nbsp<a href="{site_url}main/user_request_show/{freeform:field:id_sol_garantia}">Agenda tu visita de inspección.</a></p>
         </li>
         {if:elseif freeform:field:accion_ticket == "GyM asignar inspector"}
         <!-- el usuario no ve esto-->
         {if:elseif freeform:field:accion_ticket == "Realizar inspección"}
         <li>
-            <p>Has agendado tu visita de inspección para la solictud #{freeform:field:id_sol_garantia}.&nbsp<a href="http://162.243.222.54/main/user_request_show/{freeform:field:id_sol_garantia}"> Ver detalles.</a></p>
+            <p>Has agendado tu visita de inspección para la solictud #{freeform:field:id_sol_garantia}.&nbsp<a href="{site_url}main/user_request_show/{freeform:field:id_sol_garantia}"> Ver detalles.</a></p>
         </li>
         {if:elseif freeform:field:accion_ticket == "Procesar Informe de Inspección"}
         <li>
-            <p>La inspección de tu solicitud #{freeform:field:id_sol_garantia} ha sido realizada.&nbsp <a href="http://162.243.222.54/main/user_request_show/{freeform:field:id_sol_garantia}">Ver detalles.</a></p>
+            <p>La inspección de tu solicitud #{freeform:field:id_sol_garantia} ha sido realizada.&nbsp <a href="{site_url}main/user_request_show/{freeform:field:id_sol_garantia}">Ver detalles.</a></p>
         </li>
         {if:elseif freeform:field:accion_ticket == "Agendar Arreglo"}
         <li>
-            <p>Tu solicitud #{freeform:field:id_sol_garantia} ha sido aprobada para arreglo.&nbsp <a href="http://162.243.222.54/main/user_request_show/{freeform:field:id_sol_garantia}">Agenda tu visita de arreglo</a></p>
+            <p>Tu solicitud #{freeform:field:id_sol_garantia} ha sido aprobada para arreglo.&nbsp <a href="{site_url}main/user_request_show/{freeform:field:id_sol_garantia}">Agenda tu visita de arreglo</a></p>
         </li>
         {if:elseif freeform:field:accion_ticket == "GyM asignar responsable"}
         <!-- el usuario no ve esto -->
         {if:elseif freeform:field:accion_ticket == "Realizar Arreglo"}
         <li>
-            <p>Has agendado tu visita de arreglo para la solictud #{freeform:field:id_sol_garantia}.&nbsp <a href="http://162.243.222.54/main/user_request_show/{freeform:field:id_sol_garantia}">Ver detalles.</a></p>
+            <p>Has agendado tu visita de arreglo para la solictud #{freeform:field:id_sol_garantia}.&nbsp <a href="{site_url}main/user_request_show/{freeform:field:id_sol_garantia}">Ver detalles.</a></p>
         </li>
         {if:elseif freeform:field:accion_ticket == "Cerrar el Caso"}
         <li>
-            <p>El arreglo de tu solicitud #{freeform:field:id_sol_garantia} ha sido realizado.&nbsp <a href="http://162.243.222.54/main/user_request_show/{freeform:field:id_sol_garantia}">Ver detalles.</a></p>
+            <p>El arreglo de tu solicitud #{freeform:field:id_sol_garantia} ha sido realizado.&nbsp <a href="{site_url}main/user_request_show/{freeform:field:id_sol_garantia}">Ver detalles.</a></p>
         </li>
         {if:elseif freeform:field:accion_ticket == "Completar encuesta de satisfacción"}
         <li>
-            <p>Tu solicitud #{freeform:field:id_sol_garantia} ha sido cerrada.&nbsp <a href="http://162.243.222.54/main/user_request_show/{freeform:field:id_sol_garantia}">Ver detalles.</a></p>
+            <p>Tu solicitud #{freeform:field:id_sol_garantia} ha sido cerrada.&nbsp <a href="{site_url}main/user_request_show/{freeform:field:id_sol_garantia}">Ver detalles.</a></p>
         </li>
         {if:else}
             <li>

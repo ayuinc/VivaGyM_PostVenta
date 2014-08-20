@@ -10,7 +10,7 @@ $dia_sel="{segment_3}";
 $hora=$_GET['hora'];
 $id_cliente="{member_id}";
 ?>
-{embed="includes/bredcrumbs"}
+{embed="includes/bredcrumbs" ticket="<?php echo $id_sol_garantia; ?>"}
 
   <div class="row">
     <div class="col-sm-1"></div>
@@ -49,11 +49,11 @@ $id_cliente="{member_id}";
             <input type="text" class="form-control" placeholder="DD-MM-AAAA" name="fecha_atencion_ticket" value="<?php echo $dia_sel; ?>" required>
           </div>
           <div class="form-group pt-14">
-            <small>Asegúrate que puedes estar en tu departamento en la fecha y hora que agendas tu cita. Te enviaremos una notificación y un correo el día anterior para recordarte.</small>
+            <small>Asegrate que puedes estar en tu departamento en la fecha y hora que agendas tu cita. Te enviaremos una notificacin y un correo el da anterior para recordarte.</small>
           </div>
 
           <div class="form-group">
-            <small>Asigna a alguien para coordinar la inspección <a data-toggle="collapse" href="#form-collapse" class="underline">aquí</a></small>
+            <small>Asigna a alguien para coordinar la inspeccin <a data-toggle="collapse" href="#form-collapse" class="underline">aqu</a></small>
           </div>
 
           <div id="form-collapse" class="collapse">
@@ -72,13 +72,13 @@ $id_cliente="{member_id}";
               <input type="text" placeholder="Celular" name="celular_encargado_atencion" class=" form-control" >
             </div>
             <div class="form-group">
-              <input type="email" placeholder="Correo electrónico" name="email_encargado_atencion" class=" form-control" >
+              <input type="email" placeholder="Correo electrnico" name="email_encargado_atencion" class=" form-control" >
             </div>
 
         </div>
               <input type="hidden" name="XID" value="{XID_HASH}" /> 
               <input type="hidden" placeholder="id_cliente" name="id_cliente" class=" form-control input-lg" value="<?php echo $id_cliente; ?>">
-              <input type="text" name="id_sol_garantia" value="<?php echo $id_sol_garantia; ?>">
+              <input type="hidden" name="id_sol_garantia" value="<?php echo $id_sol_garantia; ?>">
               <input type="hidden" placeholder="orden_tramite" name="orden_tramite" class=" form-control input-lg" value="4">
               <input type="submit" class="btn btn-sm btn-info" value="Agendar">
         </form>
