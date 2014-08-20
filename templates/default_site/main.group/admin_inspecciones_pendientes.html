@@ -1,12 +1,6 @@
 {embed="includes/header" }
 
-
-<!--{group_id}
-<script type="text/javascript" src="{site_url}lib/viva_dashboard.js"></script>-->
-
 {embed="includes/menu_admin" }
-
-{embed="includes/bredcrumb_admin" }
 
 <div class="row">
   <div class="col-sm-12">
@@ -24,15 +18,13 @@
       </div>
       <div class="panel-body">
 
-        Pasos pendientes para el dia {segment_3}
-
         <table class="table table-hover table-striped">
           <thead>
             <tr class="medium">
               <td>No. de Caso </td>
-              <td>Fecha</td>
-              <td></td>
               <td>Paso</td>
+              <td></td>
+              <td>Fecha seleccionada</td>
               <td>Dueño</td>
               <td>Complejo</td>
               <td>Torre</td>
@@ -42,14 +34,13 @@
             </tr>
           </thead>
           <tbody>
-            {exp:freeform:entries form_id="4" search:orden_tramite="5" limit="30" status="open" }
-            <!-- {freeform:field:accion_ticket}-{freeform:field:id_sol_garantia}-
-            {freeform:field:id_cliente}-{freeform:field:orden_tramite} -->
-            <?php $estatus_ticket="{freeform:status}"; ?>
+            {exp:freeform:entries form_id="4" search:orden_tramite="5|9" limit="30" status="open" }
+
+            <?php $estatus_ticket="{freeform:status}"; $orden="{freeform:field:orden_tramite}"; $paso_resta=$orden-2; ?>
             <tr>
               <td><?php echo $id_sol_garantia="{freeform:field:id_sol_garantia}"; ?></td>
 
-              <td>fecha</td>
+              <td>{freeform:field:accion_ticket}</td>
 
               <td><?php $tiempo_ingreso="{freeform:entry_date}"; $tiempo_edicion="{freeform:edit_date}"; 
                   $resta=$tiempo_ingreso-$tiempo_edicion; 
@@ -57,15 +48,8 @@
 
                   <?php $prioridad="{freeform:field:prioridad}";
                   if ($prioridad==1){ ?> <img src="{site_url}images/estrella_dorada.png" width="16" height="16" > <?php }?>
-
               </td>
-              <td>
-                {freeform:field:accion_ticket}
-                <!-- {exp:user:stats member_id="{freeform:field:id_cliente}"}
-                  {nombre_propietario}
-                {/exp:user:stats} -->
-
-              </td>
+              <td>{embed="includes/fecha_paso" ticket="<?php echo $id_sol_garantia; ?>" orden="<?php echo $paso_resta; ?>"}</td>
 
               <td>{exp:user:stats member_id="{freeform:field:id_cliente}"}
                   {nombre_propietario} {ap_pat} {ap_mat} 
@@ -101,7 +85,7 @@
 
               <td>
                 <a href="{site_url}main/ticket_detail/{freeform:field:id_sol_garantia}" class="small text-danger underline">
-                      Ver detalle</a></td>
+                      Ver ticket</a></td>
             </tr>
 
               {if freeform:no_results}<p>Sin solicitudes pendientes.</p>{/if}
