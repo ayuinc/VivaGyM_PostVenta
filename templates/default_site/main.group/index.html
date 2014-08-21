@@ -36,27 +36,14 @@
           <h4 class="m-0 text-muted book text-left">Nuestro servicio de atención</h4>
           <h3 class="m-0 text-muted text-left">Post-venta en línea</h3>
 
-          <!-- {exp:member:login_form return="{site_url}main/user_select" form_class="form-inline mt-14" } 
-
-            <div class="form-group">
-              <input type="text" name="username" class="input-lg form-control" >
-            </div>
-            <div class="form-group">
-              <input type="password" name="password" class="input-lg form-control" >
-            </div>
-            <input type="hidden" name="XID" value="{XID_HASH}" />
-            <input type="submit" class="btn btn-lg btn-success uppercase form-control" name="submit" value="Ingresar">
-          
-          {/exp:member:login_form} -->
-
           {exp:authenticate:login_form auth_type="username" username_field="username" return="{site_url}main/user_select" 
           class="form-inline mt-14"}
             
             <div class="form-group">
-              <input type="text" name="username" id="username" class="input-lg form-control" placeholder="Usuario">
+              <input type="text" name="username" id="username" class="input-lg form-control" placeholder="Usuario" required>
             </div>
             <div class="form-group">
-              <input type="password" name="password" id="password" type="password" class="input-lg form-control" placeholder="Contraseña">
+              <input type="password" name="password" id="password" type="password" class="input-lg form-control" placeholder="Contraseña" required>
             </div>
 
             <input type="submit" class="btn btn-lg btn-success uppercase form-control" name="submit" value="Ingresar">
@@ -108,9 +95,6 @@
   {if logged_in}
     <script type="text/javascript"> window.location="{site_url}index.php/main/user_select"; </script>
   {/if}
-
-
-<!--<a href="{path='logout'}">Log Out</a>-->
 
 </body>
 </html>

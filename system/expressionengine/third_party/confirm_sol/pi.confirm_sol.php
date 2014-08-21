@@ -40,12 +40,12 @@ class confirm_sol
 		if ($rol=="adm"){
 
 				$resultado=mysql_query("insert into exp_freeform_form_entries_4 
-				(site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19) 
-				values ('1','$admin_id','y','$ip','$entry_date','closed','$id_cliente','Ingresar Solicitud de Inspección','$id_sol_garantia','1')");
+				(site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19,form_field_47) 
+				values ('1','$admin_id','y','$ip','$entry_date','closed','$id_cliente','Ingresar Solicitud de Inspección','$id_sol_garantia','1','$admin_id')");
 
 				$resultadob=mysql_query("insert into exp_freeform_form_entries_4 
-				(site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19) 
-				values ('1','$admin_id','y','$ip','','open','$id_cliente','Procesar Solicitud de Inspección','$id_sol_garantia','2')");
+				(site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19,form_field_47) 
+				values ('1','$admin_id','y','$ip','','open','$id_cliente','Procesar Solicitud de Inspección','$id_sol_garantia','2','$admin_id')");
 
 				$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_2 SET edit_date = '$entry_date' WHERE entry_id = $id_sol_garantia ");
 		}

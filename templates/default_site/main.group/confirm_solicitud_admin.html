@@ -102,7 +102,14 @@
 <div class="container-fluid pt-35 pb-35 mh-630">
 <?php $id_cliente="{member_id}"; ?>
 
-{exp:confirm_sol id_cliente="{segment_3}" rol="adm" admin_id="{member_id}"}
+{exp:member:custom_profile_data}
+	{exp:confirm_sol:confirm_sol 
+		id_cliente="{segment_3}" 
+		rol="adm" 
+		admin_id="{member_id}" 
+	}
+	{/exp:confirm_sol:confirm_sol}
+{/exp:member:custom_profile_data}
 
 {exp:user:stats member_id="{segment_3}"}
 	{exp:mandrillapp:send_email_confirm_solicitud
