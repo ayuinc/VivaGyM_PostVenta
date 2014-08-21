@@ -16,13 +16,10 @@
     alert("Unknown type");
     }
   }
-
 </script>
   
 {embed="includes/bredcrumbs"}  
   
-
-
   <div class="row">
     <div class="col-md-3">
       {embed="includes/user_dashboard_aside" seccion="1"}
@@ -37,9 +34,7 @@
 
         {exp:freeform:form
           form_name="atencion_por_garantia"
-          return="main/confirm_solicitud"
-          form:id="frm"
-          form:onSubmit="return validar(this)"}
+          return="main/confirm_solicitud" }
 
           <div class="row">
             <div class="col-md-7">
@@ -55,18 +50,6 @@
                 </select>
 
               </div>
-            </div>
-            <div class="col-md-5">
-              <!--<div class="form-group">
-                <select name="ubicacion" id="nueva-solicitud-select" class="form-control select-override">
-                  <option value="">Ubicación</option>
-                  <option value="Techos">Techos</option>
-                  <option value="Paredes">Paredes</option>
-                  <option value="Pasillos">Pasillos</option>
-                  <option value="Puertas">Puertas</option>
-                  <option value="Ventanas">Ventanas</option>
-                </select>
-              </div>-->
             </div>
           </div>
           <div class="row">
@@ -135,5 +118,4 @@
     <div class="col-md-3"></div>
   </div>
   
-
 {embed="includes/footer"}
