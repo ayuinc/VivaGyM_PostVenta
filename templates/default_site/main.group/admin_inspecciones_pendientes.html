@@ -32,7 +32,7 @@
             </tr>
           </thead>
           <tbody>
-            {exp:freeform:entries form_id="4" search:orden_tramite="5" limit="30" status="open" }
+            {exp:freeform:entries form_id="4" search:orden_tramite="5" limit="30" status="open" orderby="entry_id"}
 
             <?php $orden="{freeform:field:orden_tramite}"; $paso_resta=$orden-2; ?>
             <tr>
