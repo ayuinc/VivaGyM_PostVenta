@@ -36,20 +36,14 @@
           <tbody>
             {exp:freeform:entries form_id="4" search:orden_tramite="5|9" limit="30" status="open" }
 
-            <?php $estatus_ticket="{freeform:status}"; $orden="{freeform:field:orden_tramite}"; $paso_resta=$orden-2; ?>
+            <?php $orden="{freeform:field:orden_tramite}"; $paso_resta=$orden-2; ?>
             <tr>
               <td><?php echo $id_sol_garantia="{freeform:field:id_sol_garantia}"; ?></td>
 
               <td>{freeform:field:accion_ticket}</td>
 
-              <td><?php $tiempo_ingreso="{freeform:entry_date}"; $tiempo_edicion="{freeform:edit_date}"; 
-                  $resta=$tiempo_ingreso-$tiempo_edicion; 
-                  if ($resta>=172800){ ?> <img src="{site_url}images/bandera-roja.png" width="16" height="16" > <?php }?>
-
-                  <?php $prioridad="{freeform:field:prioridad}";
-                  if ($prioridad==1){ ?> <img src="{site_url}images/estrella_dorada.png" width="16" height="16" > <?php }?>
-              </td>
-              <td>{embed="includes/fecha_paso" ticket="{freeform:field:id_sol_garantia}" orden="3"}</td>
+              <td></td>
+              <td>{embed="includes/fecha_paso" ticket="{freeform:field:id_sol_garantia}" orden="<?php echo $paso_resta; ?>"}</td>
 
               <td>{exp:user:stats member_id="{freeform:field:id_cliente}"}
                   {nombre_propietario} {ap_pat} {ap_mat} 
