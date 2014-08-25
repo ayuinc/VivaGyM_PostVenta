@@ -1,0 +1,10 @@
+﻿
+<?php
+$id_sol_garantia="{embed:ticket}";
+$orden="{embed:orden}";
+
+$result=mysql_query("SELECT * FROM exp_freeform_form_entries_2 WHERE entry_id=$id_sol_garantia ");
+	$obten=mysql_fetch_array($result);
+	echo $fecha = $obten['form_field_30'];
+
+?>
