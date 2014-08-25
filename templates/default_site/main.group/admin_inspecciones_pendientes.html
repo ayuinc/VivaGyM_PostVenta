@@ -49,7 +49,7 @@
                   <?php $prioridad="{freeform:field:prioridad}";
                   if ($prioridad==1){ ?> <img src="{site_url}images/estrella_dorada.png" width="16" height="16" > <?php }?>
               </td>
-              <td>{embed="includes/fecha_paso" ticket="<?php echo $id_sol_garantia; ?>" orden="<?php echo $paso_resta; ?>"}</td>
+              <td>{embed="includes/fecha_paso" ticket="{freeform:field:id_sol_garantia}" orden="3"}</td>
 
               <td>{exp:user:stats member_id="{freeform:field:id_cliente}"}
                   {nombre_propietario} {ap_pat} {ap_mat} 
