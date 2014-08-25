@@ -1,14 +1,16 @@
 <!doctype html>
-<html>
+<!--[if IE 8]> <html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
   <head>
     <meta charset="utf-8" />
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9"/>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
 
     <title>{site_name}</title>
+    
     <link rel="stylesheet" type="text/css" href="{site_url}stylesheets/viva.css" media="screen" />
     <link rel="stylesheet" href="{site_url}viva-angular/app/bower_components/fullcalendar/dist/fullcalendar.css">
-    
+
     <script type="text/javascript" src="{site_url}lib/b3/jquery-2_1_1.js"></script>
     <script type="text/javascript" src="{site_url}lib/b3/tab.js"></script>
     <script type="text/javascript" src="{site_url}lib/b3/transition.js"></script>
@@ -18,6 +20,10 @@
     <script type="text/javascript" src="{site_url}lib/vendor/fileinput.js"></script>
     <script type="text/javascript" src="{site_url}lib/header.js"></script>
     <script type="text/javascript" src="{site_url}lib/modernizr.js"></script>
+    <!--[if lt IE 9]>
+      <script type="text/javascript" src="{site_url}lib/respond.min.js"></script>
+      <script type="text/javascript" src="{site_url}lib/placeholders.min.js"></script>
+    <![endif]-->
 
     <!-- FAVICON -->
     <link rel="shortcut icon" href="img/favicon.ico">
