@@ -1,3 +1,9 @@
-﻿{exp:freeform:entries form_id="4" entry_id="{embed:ticket}" search:orden_tramite="{embed:orden}" status="closed" }
-{freeform:field:fecha_atencion_ticket}
-{/exp:freeform:entries}
+﻿
+<?php
+$id_sol_garantia="{embed:ticket}";
+
+$result=mysql_query("SELECT * FROM exp_freeform_form_entries_4 WHERE form_field_19=$id_sol_garantia and status='open' ");
+	$obten=mysql_fetch_row($result);
+	$fecha = $obten[10];
+
+?>
