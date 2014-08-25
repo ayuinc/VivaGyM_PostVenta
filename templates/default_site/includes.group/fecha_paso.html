@@ -1,9 +1,11 @@
 ﻿
 <?php
 echo $id_sol_garantia="{embed:ticket}";
+echo $orden="{embed:orden}";
 
-$result=mysql_query("SELECT * FROM exp_freeform_form_entries_4 WHERE form_field_19=$id_sol_garantia and status='open' ");
+$result=mysql_query("SELECT * FROM exp_freeform_form_entries_4 WHERE form_field_18=$id_sol_garantia and status='open' 
+	and form_field_19=$orden ");
 	$obten=mysql_fetch_row($result);
-	echo $fecha = $obten[10];
+	echo "<br> / ".$fecha = $obten[10];
 
 ?>
