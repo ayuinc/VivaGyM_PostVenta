@@ -14,7 +14,7 @@
 
   <td>
     {exp:user:stats member_id="{freeform:field:id_cliente}"}
-      {nombre_propietario}
+      {nombre_propietario} {ap_pat} {ap_mat} 
     {/exp:user:stats}
 
   </td>
@@ -46,7 +46,7 @@
   </td>
   <td>{freeform:field:documento_solicitado}</td>
   <td></td>
-  <td>{freeform:field:email}</td>
+  <td>{freeform:field:email_encargado_atencion}</td>
 
   <td>
     <!-- <a href="{site_url}main/doc_close/{freeform:entry_id}" class="small text-danger underline">Cerrar</a> -->
