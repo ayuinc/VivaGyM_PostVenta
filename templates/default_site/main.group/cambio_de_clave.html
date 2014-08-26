@@ -2,22 +2,14 @@
 <script type="text/javascript" src="{site_url}lib/vendor/bootstrapValidator.js"></script>
 <script type="text/javascript" src="{site_url}lib/user_password_change.js"></script>
 
-{exp:member:custom_profile_data}
-<?php $act_datos="{act_datos}"; ?>
-{/exp:member:custom_profile_data}
-
-<?php $segment="{segment_3}"; ?>
-
-<?php if($act_datos==0) { ?>
-
-	{exp:user:edit override_return="main/user_setup" form:id="user-password-change-form" }
+	
 		<div class="row">
 			<div class="col-sm-4"></div>
 			<div class="col-sm-4 animated bounceInDown">
 				<h3 class="text-center">Bienvenido.</h3>
 				<p>Por tu seguridad, debes cambiar tu clave antes de continuar.</p>
 				<div class="border-rounded box-shadow bg-white p-14">
-					<form>
+          {exp:user:edit override_return="main/user_setup" form:id="user-password-change-form" }
             <div class="form-group">
               <label class="light" for="password_alt">Ingresa tu nueva clave</label>
               <input type="password" name="password" class="form-control">
@@ -30,21 +22,22 @@
               <label class="text-warning" for="current_password_alt">Ingresa tu clave actual</label>
               <input type="password" name="current_password" class="form-control">
             </div>
+            <div class="form-group">
             <input type="hidden" name="act_datos" value="1">
             <button type="submit" class="btn btn-success uppercase form-control" value="Actualizar">Actualizar</button>
-          </form>
+            </div>
+          {/exp:user:edit}
 				</div>
 			</div>
 			<div class="col-sm-4"></div>
 		</div>
-	{/exp:user:edit}
-
+	
 	</div>
     <footer class="bg-inverse">
       <div class="container-fluid">
         <div class="row pt-14 pb-14 text-center">
           <div class="col-md-3 pt-7">
-            <p class="small">Copyright 2012. VivaGyM.<br>Todos los derechos reservados</p>
+            <p class="small">Copyright 2014. VivaGyM.<br>Todos los derechos reservados - Versión Beta</p>
           </div>
           <div class="col-md-3 pt-14">
             <a href="{site_url}main/libro_reclamaciones" class="text-gray">Libro de reclamaciones</a>
@@ -59,66 +52,6 @@
       </div>
     </footer>
 </html>
-
-<?php } elseif($segment==pwd) { ?>
-	{exp:member:custom_profile_data}
-		{exp:user:edit override_return="main/user_dashboard/{member_id}" form:id="user-password-change-form" }
-			<div class="row">
-				<div class="col-sm-4"></div>
-				<div class="col-sm-4 animated bounceInDown">
-					<h3 class="text-center">Cambio de clave.</h3>
-					<p>Ingrese todos los campos para cambiar su contraseña.</p>
-					<div class="border-rounded box-shadow bg-white p-14">
-						<form>
-              <div class="form-group">
-                <label class="light" for="password_alt">Ingresa tu nueva clave</label>
-                <input type="password" name="password" class="form-control">
-              </div>
-              <div class="form-group">
-                <label class="light" for="password_confirm_alt">Confirma tu nueva clave</label>
-                <input type="password" name="password_confirm" class="form-control">
-              </div>
-              <div class="form-group">
-                <label class="text-warning" for="current_password_alt">Ingresa tu clave actual</label>
-                <input type="password" name="current_password" class="form-control">
-              </div>
-              <input type="hidden" name="act_datos" value="1">
-              <button type="submit" class="btn btn-success uppercase form-control" value="Actualizar">Actualizar</button>
-            </form>
-					</div>
-				</div>
-				<div class="col-sm-4"></div>
-			</div>
-		{/exp:user:edit}
-		
-			</div>
-    <footer class="bg-inverse">
-      <div class="container-fluid">
-        <div class="row pt-14 pb-14 text-center">
-          <div class="col-md-3 pt-7">
-            <p class="small">Copyright 2012. VivaGyM.<br>Todos los derechos reservados</p>
-          </div>
-          <div class="col-md-3 pt-14">
-            <a href="{site_url}main/libro_reclamaciones" class="text-gray">Libro de reclamaciones</a>
-          </div>
-          <div class="col-md-3 pt-14">
-            <a href="{site_url}main/preguntas_frecuentes" class="uppercase text-gray">Preguntas frecuentes </a> <i class="icon-help"></i>
-          </div>
-          <div class="col-md-3 pt-14">
-            <!-- <a href="#"  class="uppercase text-gray">Emergencia </a> <i class="icon-warning"></i> -->
-          </div>
-        </div>
-      </div>
-    </footer>
-</html>
-	{/exp:member:custom_profile_data}
-<?php } else { ?>
-
-<script type="text/javascript">
-	window.location="{site_url}main/user_dashboard/{member_id}";
-</script>
-
-<?php } ?>
 
 <!--[if IE]>
 <script src="{site_url}lib/jquery-1.11.1.min.js"></script>
