@@ -32,7 +32,8 @@ $config['allow_extensions'] = 'y';
 $config['cookie_prefix'] = '';
 $config['cookie_httponly'] = 'y';
 //$config['disable_csrf_protection'] = 'y'; 
-$config['cp_session_ttl'] = 30000;
+$config['cp_session_ttl'] = 86400;
+$config['user_session_ttl'] = 86400;
 $config['template_debugging'] = 'y';
 
 //------------------------------STUFF ADDED--------------------------
