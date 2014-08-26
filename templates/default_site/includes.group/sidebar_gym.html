@@ -42,7 +42,7 @@ obj.focus();
 		          <select name="persona_asignada" id="" class="form-control input-sm select-override">
 		          	<option value="">Seleccione</option>
 		          	{exp:user:users group_id="9"}
-		          		<option value="{member_id}">{screen_name}</option>
+		          		<option value="{member_id}">{screen_name} {ap_pat}</option>
 		          	{/exp:user:users}
               </select>
 		        </div>
@@ -81,7 +81,7 @@ obj.focus();
 		          <select name="persona_asignada" id="" class="form-control input-sm select-override">
                 <option value="">Seleccione</option>
 		          	{exp:user:users group_id="9" }
-		          		<option value="{member_id}">{screen_name}</option>
+		          		<option value="{member_id}">{screen_name} {ap_pat}</option>
 		          	{/exp:user:users}
               </select>
 		        </div>
