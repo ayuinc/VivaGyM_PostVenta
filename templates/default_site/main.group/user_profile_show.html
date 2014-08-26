@@ -1,4 +1,5 @@
 {embed="includes/header" }
+<script type="text/javascript" src="{site_url}lib/vendor/bootstrapValidator.js"></script>
 <script type="text/javascript" src="{site_url}lib/user_profile_show.js"></script>
   
   {embed="includes/bredcrumbs"}
@@ -21,13 +22,13 @@
               <div class="clearfix">
                 <div class="col-sm-6 pl-0 col-xs-6">
                   <h4 class="uppercase medium"><i class="icon-user"></i> Mi perfil </h4>
-                    <a href="{site_url}main/cambio_de_clave/pwd" class="small text-danger underline">Cambiar contraseña</a>
+                    <a href="{site_url}main/cambio_de_clave" class="small text-danger underline">Cambiar contraseña</a>
                 </div>
                 <div class="col-sm-6 col-xs-6">                  
                     <a href="#" class="text-info block pt-14 edit-form-trigger lowercase not-underline icon-pencil text-right"></a>
                   <div class="mt-7 hidden submit-form text-right">
                     <!-- <a href="#" class="text-danger small edit-form-cancel hidden">Cancelar</a> --> 
-                    <input type="submit" class="btn btn-sm btn-default" value="Guardar">
+                    <button type="submit" class="btn btn-sm btn-default">Guardar</button>
                   </div>
                 </div>
               </div>
