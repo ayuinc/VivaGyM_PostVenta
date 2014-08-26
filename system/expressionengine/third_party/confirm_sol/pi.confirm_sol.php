@@ -164,6 +164,14 @@ class confirm_sol
 		$mes_consulta=$fecha_explode[1];
 		$anio_consulta=$fecha_explode[2];
 
+		$result_bloque_tiempo = mysql_query("SELECT id FROM exp_bloques WHERE YEAR(exp_bloques.start)=" . $anio_consulta . " AND DAY(exp_bloques.start)=" . $dia_consulta . "AND MONTH(exp_bloques.start)=" . $mes_consulta);
+		$bloque_tiempo = mysql_fetch_row($result_bloque_tiempo);
+		$id_bloque_tiempo = $bloque_tiempo[0];
+
+		echo $bloque_tiempo;
+
+		// $insert_bloque_usuario = "INSERT INTO exp_bloques_usuarios (usuario_id, bloque_evento_id, realizado) VALUES (" . $id_cliente . ", " . $id_bloque_tiempo . ", '')";
+
 			$result_ev=mysql_query("SELECT * FROM eventos WHERE dia_evento=$dia_consulta and mes_evento=$mes_consulta and anio_evento=$anio_consulta");
 		  $obten_ev=mysql_fetch_row($result_ev);
 		  $id_dia_consulta = $obten_ev[0];
