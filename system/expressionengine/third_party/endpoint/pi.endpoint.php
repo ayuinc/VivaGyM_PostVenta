@@ -28,26 +28,28 @@ class endpoint
 
         foreach ($query->result() as $key => $value) {
             if($value->cantidad_eventos < 15) {
-                if(isset($tipo_evento)) {
-                    if($tipo_evento == 1) {
-                        $url = $base_url . '/main/user_request_book/' . date_format(new DateTime($value->start), 'd-m-Y');
+                if(new DateTime() <= new DateTime($value->end)) {
+                    if(isset($tipo_evento)) {
+                        if($tipo_evento == 1) {
+                            $url = $base_url . '/main/user_request_book/' . date_format(new DateTime($value->start), 'd-m-Y');
+                        }
+                        if($tipo_evento == 2) {
+                            $url = $base_url . '/main/user_request_fixing/' . date_format(new DateTime($value->start), 'd-m-Y');
+                        }
                     }
-                    if($tipo_evento == 2) {
-                        $url = $base_url . '/main/user_request_fixing/' . date_format(new DateTime($value->start), 'd-m-Y');
-                    }
-                }
-                
-                $object = array(
-                    'id' => $value->id,
-                    'title' => "Disponible",
-                    'start' => date_format(new DateTime($value->start), 'Y-m-d\TH:i:sO'),
-                    'end' => date_format(new DateTime($value->end), 'Y-m-d\TH:i:sO'),
-                    'tipo_evento_id' => $value->tipo_evento_id,
-                    'cantidad_eventos' => $value->cantidad_eventos,
-                    'url' => $url
-                    );
 
-                array_push($response, $object);
+                    $object = array(
+                        'id' => $value->id,
+                        'title' => "Disponible",
+                        'start' => date_format(new DateTime($value->start), 'Y-m-d\TH:i:sO'),
+                        'end' => date_format(new DateTime($value->end), 'Y-m-d\TH:i:sO'),
+                        'tipo_evento_id' => $value->tipo_evento_id,
+                        'cantidad_eventos' => $value->cantidad_eventos,
+                        'url' => $url
+                        );
+
+                    array_push($response, $object);
+                }
             }
         }
 
