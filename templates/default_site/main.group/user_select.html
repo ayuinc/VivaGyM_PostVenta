@@ -2,13 +2,13 @@
   {exp:switchee variable = "{member_group}" parse="inward"}
     {case value="user_dep"}
       {if act_datos=="0"}
-        {redirect='{site_url}main/cambio_de_clave'}
+        {redirect='main/cambio_de_clave'}
       {if:else}
-        {redirect='{site_url}main/user_dashboard/{member_id}'}
+        {redirect='main/user_dashboard/{member_id}'}
       {/if}
     {/case}
     {case default="Yes"}
-      {redirect='{site_url}main/admin_dashboard'}
+      {redirect='main/admin_dashboard'}
     {/case}
   {/exp:switchee}
 {/exp:member:custom_profile_data}
