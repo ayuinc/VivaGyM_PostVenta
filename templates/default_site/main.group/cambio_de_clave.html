@@ -2,14 +2,14 @@
 <script type="text/javascript" src="{site_url}lib/vendor/bootstrapValidator.js"></script>
 <script type="text/javascript" src="{site_url}lib/user_password_change.js"></script>
 
-
+	
 		<div class="row">
 			<div class="col-sm-4"></div>
 			<div class="col-sm-4 animated bounceInDown">
 				<h3 class="text-center">Bienvenido.</h3>
 				<p>Por tu seguridad, debes cambiar tu clave antes de continuar.</p>
 				<div class="border-rounded box-shadow bg-white p-14">
-					<form>
+          {exp:user:edit override_return="main/user_setup" form:id="user-password-change-form" }
             <div class="form-group">
               <label class="light" for="password_alt">Ingresa tu nueva clave</label>
               <input type="password" name="password" class="form-control">
@@ -26,13 +26,12 @@
             <input type="hidden" name="act_datos" value="1">
             <button type="submit" class="btn btn-success uppercase form-control" value="Actualizar">Actualizar</button>
             </div>
-          </form>
+          {/exp:user:edit}
 				</div>
 			</div>
 			<div class="col-sm-4"></div>
 		</div>
-
-
+	
 	</div>
     <footer class="bg-inverse">
       <div class="container-fluid">
