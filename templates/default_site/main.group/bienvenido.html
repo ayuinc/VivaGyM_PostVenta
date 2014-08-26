@@ -9,7 +9,9 @@
 
 <a href="{site_url}index.php/main/nueva_solicitud">Nueva Solicitud</a><br>
 
-<a href="{path='logout'}">Log Out</a>
+{exp:user:logout return="main/index"}
+    <a href="{url}">Salir</a>
+{/exp:user:logout}
 {/if}
 {if logged_out}
         Are you a member? Please <a href="{path='member/login'}">log-in</a>.<br>

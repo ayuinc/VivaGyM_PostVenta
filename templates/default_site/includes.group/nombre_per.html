@@ -1,1 +1,3 @@
-﻿{exp:user:stats member_id="{embed:p_find}"}{screen_name}{/exp:user:stats}
+﻿{if {embed:p_find} != '0' }
+{exp:user:stats member_id="{embed:p_find}"}{screen_name}{/exp:user:stats}
+{/if}
