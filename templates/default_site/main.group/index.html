@@ -41,21 +41,28 @@
         <span class="text-left text-muted light">Versión Beta</span>
       </nav>
       <div class="row mt-35-100">
-        <div class="col-md-8">
+        <div class="col-md-10">
           <h4 class="m-0 text-muted book text-left">Nuestro servicio de atención</h4>
           <h3 class="m-0 text-muted text-left">Post-venta en línea</h3>
 
           {exp:authenticate:login_form auth_type="username" username_field="username" return="{site_url}main/user_select" 
-          class="form-inline mt-14"}
-            
-            <div class="form-group">
-              <input type="text" name="username" id="username" class="input-lg form-control" placeholder="Usuario" required>
-            </div>
-            <div class="form-group">
-              <input type="password" name="password" id="password" type="password" class="input-lg form-control" placeholder="Contraseña" required>
+          class=" mt-14"}
+            <div class="clearfix">
+              
+              <div class="form-group col-sm-4 pl-0">
+                <label for="username" class="text-muted">Usuario</label>
+                <input type="text" name="username" id="username" class="input-lg form-control" required>
+              </div>
+              <div class="form-group col-sm-4">
+                <label for="password" class="text-muted">Contraseña</label>
+                <input type="password" name="password" id="password" type="password" class="input-lg form-control" required>
+              </div>
+              <div class="col-sm-4">
+                <label class="block">&nbsp;</label>
+                <input type="submit" class="btn btn-lg btn-success uppercase" name="submit" value="Ingresar">
+              </div>
             </div>
 
-            <input type="submit" class="btn btn-lg btn-success uppercase form-control" name="submit" value="Ingresar">
 
             {if total_global_errors > 0}
             <div class="errors text-warning">

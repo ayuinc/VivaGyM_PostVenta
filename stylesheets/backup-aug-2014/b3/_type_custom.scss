@@ -1,0 +1,215 @@
+// Project Specifics
+@mixin thin {
+  font-family: $font-family-base !important;
+  font-weight: 100;
+}
+
+@mixin thin-italic {
+  font-family: $font-family-base !important;
+  font-weight: 100;
+  font-style: italic;
+}
+
+@mixin light {
+  font-family: $font-family-base !important;
+  font-weight: 300;
+}
+
+@mixin light-italic {
+  font-family: $font-family-base !important;
+  font-weight: 300;
+  font-style: italic;
+}
+
+@mixin book {
+  font-family: $font-family-base !important;
+  font-weight: 400;
+}
+
+@mixin book-italic {
+  font-family: $font-family-base !important;
+  font-weight: 400;
+  font-style: italic;
+}
+
+@mixin medium {
+  font-family: $font-family-base !important;
+  font-weight: 500;
+}
+
+@mixin bold {
+  font-family: $font-family-base !important;
+  font-weight: 700;
+}
+
+.thin {
+  @include thin;
+}
+
+.thin-italic {
+  @include thin-italic;
+}
+
+.light {
+  @include light;
+}
+
+.light-italic {
+  @include light-italic;
+}
+
+.book {
+  @include book;
+}
+
+.book-italic {
+  @include book-italic;
+}
+
+.medium {
+  @include medium;
+}
+
+.bold {
+  @include bold;
+}
+
+strong {
+  @include medium;
+}
+
+.small {
+  font-size: 12px;
+}
+
+.smaller {
+  font-size: 9px;
+}
+
+
+// Contextual emphasis
+.text-muted {
+  a {
+    color: $text-muted!important;
+    &:hover {
+      color: darken($text-muted, 21%);
+    }
+  }
+  color: $text-muted!important;
+}
+.text-gray {
+  a {
+    color: $gray!important;
+    &:hover {
+      color: darken($gray, 21%);
+    }
+  }
+  color: $gray!important;
+}
+.text-gray-light {
+  a {
+    color: $gray-light!important;
+    &:hover {
+      color: darken($gray-light, 21%);
+    }
+  }
+  color: $gray-light!important;
+}
+.text-gray-dark {
+  a {
+    color: $gray-dark!important;
+    &:hover {
+      color: darken($gray-dark, 21%);
+    }
+  }
+  color: $gray-dark!important;
+}
+.text-gray-darker {
+  a {
+    color: $gray-darker!important;
+    &:hover {
+      color: darken($gray-darker, 21%);
+    }
+  }
+  color: $gray-darker!important;
+}
+.text-primary {
+  a {
+    color: $brand-primary!important;
+    &:hover {
+      color: darken($brand-primary, 21%);
+    }
+  }
+  color: $brand-primary!important;
+}
+.text-warning {
+  a {
+    color: $state-warning-text!important;
+    &:hover {
+      color: darken($state-warning-text, 21%);
+    }
+  }
+  color: $state-warning-text!important;
+}
+.text-danger {
+  a {
+    color: $state-danger-text!important;
+    &:hover {
+      color: darken($state-danger-text, 21%);
+    }
+  }
+  color: $state-danger-text!important;
+}
+.text-success {
+  a {
+    color: $state-success-text!important;
+    &:hover {
+      color: darken($state-success-text, 21%);
+    }
+  }
+  color: $state-success-text!important;
+}
+.text-info {
+  a {
+    color: $state-info-text!important;
+    &:hover {
+      color: darken($state-info-text, 21%);
+    }
+  }
+  color: $state-info-text!important;
+}
+
+// Alignment
+.text-left {
+  text-align: left!important; 
+  @media only screen and (max-width: $screen-phone) and (max-width: $screen-tablet) {
+    text-align: center!important;
+  }
+}
+.text-right {
+  text-align: right!important; 
+  @media only screen and (max-width: $screen-phone) and (max-width: $screen-tablet) {
+    text-align: center!important;
+  }
+}
+
+
+// Text transforms
+.uppercase {
+  text-transform: uppercase;
+}
+
+.underline {
+  text-decoration: underline!important;
+}
+
+a.not-underline {
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+// Line-Heights
+.lh-0 {
+  line-height: 0px!important;
+}

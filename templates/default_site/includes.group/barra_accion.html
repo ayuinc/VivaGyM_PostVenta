@@ -21,7 +21,7 @@ if ($paso_insp=="open"){ ?>
     <form method="post" enctype="multipart/form-data" action="/main/user_request_book/">
       <input type="hidden" name="XID" value="{XID_HASH}" />
       <input type="hidden" name="id_sol_garantia" value="<?php echo $id_sol_garantia; ?>">
-      <button type="submit" class="btn btn-sm btn-success" name="submit">Agendar ahora</button>
+      <button type="submit" class="btn btn-sm btn-primary" name="submit">Agendar ahora</button>
     </form>
 
   </div>
@@ -46,7 +46,7 @@ if ($paso_arr=="open"){ ?>
     <form method="post" enctype="multipart/form-data" action="/main/user_request_fixing/">
       <input type="hidden" name="XID" value="{XID_HASH}" />
       <input type="hidden" name="id_sol_garantia" value="<?php echo $id_sol_garantia; ?>">
-      <button type="submit" class="btn btn-sm btn-success" name="submit">Agendar ahora</button>
+      <button type="submit" class="btn btn-sm btn-primary" name="submit">Agendar ahora</button>
     </form>
 
   </div>
