@@ -37,6 +37,7 @@ blockquote {
   background: url(/images/home.jpg) no-repeat top center;
   background-size: 100%;
   zoom:1;
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/home.jpg',sizingMethod='scale');
   @media only screen and (max-width: $screen-phone) and (max-width: $screen-tablet) {
     background-size: auto;
   }
