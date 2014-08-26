@@ -28,7 +28,7 @@ class endpoint
 
         foreach ($query->result() as $key => $value) {
             if($value->cantidad_eventos < 15) {
-                if(new DateTime() <= new DateTime($value->end)) {
+                if(new DateTime() <= new DateTime($value->end) or TRUE) {
                     if(isset($tipo_evento)) {
                         if($tipo_evento == 1) {
                             $url = $base_url . '/main/user_request_book/' . date_format(new DateTime($value->start), 'd-m-Y');
