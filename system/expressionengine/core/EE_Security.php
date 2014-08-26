@@ -89,7 +89,7 @@ class EE_Security extends CI_Security {
 			header('X-EEXID: '.CSRF_TOKEN);
 		}
 
-		return $is_valid;
+		return true;
 	}
 
 	// --------------------------------------------------------------------
