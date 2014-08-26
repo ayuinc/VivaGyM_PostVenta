@@ -154,6 +154,7 @@ class confirm_sol
 		$email_encargado_atencion= $TMPL->fetch_param('email_encargado_atencion');
 		$ip=$_SERVER["REMOTE_ADDR"];
 		$prox_paso=$orden_tramite+1;
+		$admin_id= $TMPL->fetch_param('admin_id');
 
 		$date = date_create();
 		$entry_date=date_timestamp_get($date);
@@ -162,6 +163,12 @@ class confirm_sol
 		$dia_consulta=$fecha_explode[0];
 		$mes_consulta=$fecha_explode[1];
 		$anio_consulta=$fecha_explode[2];
+
+		$result_bloque_tiempo = mysql_query("SELECT id FROM exp_bloques WHERE YEAR(exp_bloques.inicio)=" . $anio_consulta . " AND DAY(exp_bloques.inicio)=" . $dia_consulta . " AND MONTH(exp_bloques.inicio)=" . $mes_consulta);
+		$bloque_tiempo = mysql_fetch_row($result_bloque_tiempo);
+		$id_bloque_tiempo = $bloque_tiempo[0];
+		
+		$insert_bloque_usuario = mysql_query("INSERT INTO exp_bloques_usuarios (usuario_id, bloque_evento_id, realizado) VALUES (" . $id_cliente . ", " . $id_bloque_tiempo . ", '')");
 
 			$result_ev=mysql_query("SELECT * FROM eventos WHERE dia_evento=$dia_consulta and mes_evento=$mes_consulta and anio_evento=$anio_consulta");
 		  $obten_ev=mysql_fetch_row($result_ev);
@@ -176,12 +183,12 @@ class confirm_sol
 			$dueno_atiende_ticket="no";
 			}
 		$resultado=mysql_query("insert into exp_freeform_form_entries_4 
-		(site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19) 
-		values ('1','$id_cliente','y','$ip','','open','$id_cliente','GyM Asignar Inspector','$id_sol_garantia','4')");
+		(site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19,form_field_47) 
+		values ('1','$id_cliente','y','$ip','','open','$id_cliente','GyM Asignar Inspector','$id_sol_garantia','4','$admin_id')");
 
 		$resultadob=mysql_query("insert into exp_freeform_form_entries_4 
-		(site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19) 
-		values ('1','$id_cliente','y','$ip','','open','$id_cliente','Realizar Inspección','$id_sol_garantia','5')");
+		(site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19,form_field_47) 
+		values ('1','$id_cliente','y','$ip','','open','$id_cliente','Realizar Inspección','$id_sol_garantia','5','$admin_id')");
 
 		// lectura de nro de veces de reagendado
 		$result_reagenda=mysql_query("SELECT * FROM exp_freeform_form_entries_4 
@@ -413,6 +420,7 @@ class confirm_sol
 		$nombre_encargado_atencion= $TMPL->fetch_param('nombre_encargado_atencion');
 		$celular_encargado_atencion= $TMPL->fetch_param('celular_encargado_atencion');
 		$email_encargado_atencion= $TMPL->fetch_param('email_encargado_atencion');
+		$admin_id= $TMPL->fetch_param('admin_id');
 
 		$ip=$_SERVER["REMOTE_ADDR"];
 		$date = date_create();
@@ -441,13 +449,13 @@ class confirm_sol
 
 		$resultado=mysql_query("insert into exp_freeform_form_entries_4 
 		(site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19,
-			form_field_20,form_field_21,form_field_22,form_field_23,form_field_24,form_field_25,form_field_26) 
+			form_field_20,form_field_21,form_field_22,form_field_23,form_field_24,form_field_25,form_field_26,form_field_47) 
 		values ('1','$id_cliente','y','$ip','','open','$id_cliente','GyM Asignar Ejecutor','$id_sol_garantia','8'
-			,'$dueno_atiende_ticket','$relacion_dueno_departamento','$nombre_encargado_atencion','$celular_encargado_atencion','$email_encargado_atencion','$fecha_atencion_ticket','$hora_atencion_ticket')"); 
+			,'$dueno_atiende_ticket','$relacion_dueno_departamento','$nombre_encargado_atencion','$celular_encargado_atencion','$email_encargado_atencion','$fecha_atencion_ticket','$hora_atencion_ticket','$admin_id')"); 
 
 		$resultado=mysql_query("insert into exp_freeform_form_entries_4 
-		(site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19) 
-		values ('1','$id_cliente','y','$ip','','open','$id_cliente','Realizar Arreglo','$id_sol_garantia','9')"); 
+		(site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19,form_field_47) 
+		values ('1','$id_cliente','y','$ip','','open','$id_cliente','Realizar Arreglo','$id_sol_garantia','9','$admin_id')"); 
 
 		// lectura de nro de veces de reagendado
 		$result_reagenda=mysql_query("SELECT * FROM exp_freeform_form_entries_4 

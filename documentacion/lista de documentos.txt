@@ -1,0 +1,5 @@
+1.- Lista y descripcion de casos de uso
+2.- Diagrama de casos de uso
+3.- Diagrama de clases
+4.- Lista de correos
+5.- Diagrama de flujo

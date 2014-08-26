@@ -8,7 +8,7 @@
       <div class="panel-heading">
         <div class="row">
           <div class="col-sm-6">
-            <h4 class="uppercase medium"><i class="icon-docs"></i> Calendario inspecciones</h4>
+            <h4 class="uppercase medium"><i class="icon-docs"></i> Calendario arreglos</h4>
           </div>
           <div class="col-sm-3 col-sm-offset-3">
             
@@ -23,7 +23,7 @@
             <tr class="light uppercase">
               <td>No. de Caso </td>
               <td>Fecha seleccionada</td>
-              <td>Inspector asignado</td>
+              <td>Ejecutor asignado</td>
               <td>Dueño</td>
               <td>Complejo</td>
               <td>Torre</td>
@@ -32,7 +32,7 @@
             </tr>
           </thead>
           <tbody>
-            {exp:freeform:entries form_id="4" search:orden_tramite="5" limit="30" status="open" orderby="entry_id"}
+            {exp:freeform:entries form_id="4" search:orden_tramite="9" limit="30" status="open" orderby="entry_id"}
 
             <?php $orden="{freeform:field:orden_tramite}"; $paso_resta=$orden-2; ?>
             <tr>
@@ -40,7 +40,7 @@
 
               <td>{embed="includes/fecha_paso" ticket="{freeform:field:id_sol_garantia}" orden="<?php echo $paso_resta; ?>"}</td>
 
-              <td>{embed="includes/insp_asig" ticket="{freeform:field:id_sol_garantia}" }</td>
+              <td>{embed="includes/ejec_asig" ticket="{freeform:field:id_sol_garantia}" }</td>
 
               <td>{exp:user:stats member_id="{freeform:field:id_cliente}"}
                   {nombre_propietario} {ap_pat} {ap_mat} 

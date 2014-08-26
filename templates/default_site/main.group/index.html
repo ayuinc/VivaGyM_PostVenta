@@ -38,6 +38,7 @@
     <div class="container pt-21">
       <nav>
         <a href="#"><img src="{site_url}/images/logo-viva.png" style="width:120px; height: auto;"></a>
+        <span class="text-left text-muted light">Versión Beta</span>
       </nav>
       <div class="row mt-35-100">
         <div class="col-md-8">
@@ -57,9 +58,9 @@
             <input type="submit" class="btn btn-lg btn-success uppercase form-control" name="submit" value="Ingresar">
 
             {if total_global_errors > 0}
-            <div class="errors">
-              <h5 class="text-muted book text-left">Errores de autenticación:</h5>
-              <ul class="list-unstyled text-muted small">
+            <div class="errors text-warning">
+              <h5 class="book text-left">Errores de autenticación:</h5>
+              <ul class="list-unstyled text-warning small">
               {global_errors}
                 <li class="icon-warning"> {error}</li>
               {/global_errors}
@@ -68,9 +69,9 @@
             {/if}
               
             {if total_field_errors > 0}
-            <div class="errors">
-              <h5 class="text-muted book text-left">Errores en los campos:</h5>
-              <ul class="list-unstyled text-muted small">
+            <div class="errors text-warning">
+              <h5 class="book text-left">Errores en los campos:</h5>
+              <ul class="list-unstyled text-warning small">
               {field_errors param1="123"}
                 <li class="icon-warning"> {error}</li>
               {/field_errors}
