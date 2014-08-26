@@ -31,8 +31,10 @@ $config['is_system_on'] = "y";
 $config['allow_extensions'] = 'y';
 $config['cookie_prefix'] = '';
 $config['cookie_httponly'] = 'y';
-//$config['disable_csrf_protection'] = 'y'; 
-$config['cp_session_ttl'] = 86400;
+
+/*$config['disable_csrf_protection'] = 'y';*/
+$config['secure_forms'] = "n";
+$config['cp_session_ttl'] = 30000;
 $config['user_session_ttl'] = 86400;
 $config['template_debugging'] = 'y';
 
@@ -41,7 +43,7 @@ $config['template_debugging'] = 'y';
 $config['site_url'] = $base_url . '/'; 
 $config['server_path'] = FCPATH;
 $config['site_index'] = '';
-$config['theme_folder_url'] = $config['site_url']."/themes/";
+$config['theme_folder_url'] = $config['site_url']."themes/";
 $config['theme_folder_path'] = $config['server_path']."/themes/";
 $config['save_tmpl_files'] = "y";
 // $config['tmpl_file_basepath'] = $config['server_path']."/templates/";

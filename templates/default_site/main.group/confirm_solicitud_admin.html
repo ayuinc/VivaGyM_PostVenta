@@ -57,9 +57,7 @@
 	                {case value="user_dep"}
 	                 <div class="col-xs-11 col-md-11 col-sm-11 text-right">
 	                  <h5 class="thin mb-0">Bienvenido/a, <span class="medium">{nombre_propietario}</span></h5>
-	                  {exp:user:logout return="/"}
-	                      <a href="{url}">Salir</a>
-	                  {/exp:user:logout}
+	                  <a href="{path='logout'}">Salir</a>
 	                {/case}
 	                {case default="Yes"}
 	                  <div class="col-xs-12 col-md-12 col-sm-12 text-right">
