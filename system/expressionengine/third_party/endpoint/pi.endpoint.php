@@ -17,15 +17,6 @@ class endpoint
 
         $tipo_evento = ee()->TMPL->fetch_param('tipo_evento');
 
-        if(isset($tipo_evento)) {
-            if($tipo_evento == 1) {
-                $url = $base_url . '/main/user_request_book/' . date_format(new DateTime($value->start), 'd-m-Y');
-            }
-            if($tipo_evento == 2) {
-                $url = $base_url . '/main/user_request_fixing/' . date_format(new DateTime($value->start), 'd-m-Y');
-            }
-        }
-
         ee()->db->select('exp_bloques.id, exp_bloques.inicio as start, exp_bloques.final as end, exp_bloques.tipo_evento_id, COUNT(bloque_evento_id) as cantidad_eventos');
         ee()->db->from('exp_bloques');
         ee()->db->join('exp_bloques_usuarios', 'exp_bloques_usuarios.bloque_evento_id = exp_bloques.id');
@@ -37,6 +28,15 @@ class endpoint
 
         foreach ($query->result() as $key => $value) {
             if($value->cantidad_eventos < 15) {
+                if(isset($tipo_evento)) {
+                    if($tipo_evento == 1) {
+                        $url = $base_url . '/main/user_request_book/' . date_format(new DateTime($value->start), 'd-m-Y');
+                    }
+                    if($tipo_evento == 2) {
+                        $url = $base_url . '/main/user_request_fixing/' . date_format(new DateTime($value->start), 'd-m-Y');
+                    }
+                }
+                
                 $object = array(
                     'id' => $value->id,
                     'title' => "Disponible",
