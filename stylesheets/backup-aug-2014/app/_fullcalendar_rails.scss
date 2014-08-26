@@ -606,6 +606,162 @@ table.fc-border-separate {
   background: white;
 }
 
-.fc-event-time {
-  display : none;
-} 
+// .event-color-0 {
+//   &.event-taken {
+//     background-color: lighten($gray-light, 21%)!important;
+//     .fc-event-title {
+//       font-size: 11px;
+//       text-transform: none!important;
+//     }
+//   }
+//   background-color: white;
+//   border: 1px solid $gray-light;
+//   color: $gray-darker;
+//   &.location-item {
+//     border: none;
+//     p {
+//       &::before {
+//         content: "\f04d";
+//         margin-right: 3px;
+//         font-family: "fontawesome";
+//         color: $brand-primary;
+//       }
+//     }
+//   }
+//   .fc-event-title {    
+//     &::before {
+//       content: "\f04d";
+//       margin-right: 3px;
+//       font-family: "fontawesome";
+//       color: $brand-primary;
+//     }
+//   }
+// }
+
+// .event-color-1 {
+//   &.event-taken {
+//     background-color: lighten($gray-light, 21%)!important;
+//     .fc-event-title {
+//       font-size: 11px;
+//       text-transform: none!important;
+//     }
+//   }
+//   background-color: white;
+//   border: 1px solid $gray-light;
+//   color: $gray-darker;
+//   &.location-item {
+//     border: none;
+//     p {
+//       &::before {
+//         content: "\f04d";
+//         margin-right: 3px;
+//         font-family: "fontawesome";
+//         color: $brand-info;
+//       }
+//     }
+//   }
+//   .fc-event-title {    
+//     &::before {
+//       content: "\f04d";
+//       margin-right: 3px;
+//       font-family: "fontawesome";
+//       color: $brand-info;
+//     }
+//   }
+// }
+
+// .event-color-2 {
+//   &.event-taken {
+//     background-color: lighten($gray-light, 21%)!important;
+//     .fc-event-title {
+//       font-size: 11px;
+//       text-transform: none!important;
+//     }
+//   }
+//   background-color: white;
+//   border: 1px solid $gray-light;
+//   color: $gray-darker;
+//   &.location-item {
+//     border: none;
+//     p {
+//       &::before {
+//         content: "\f04d";
+//         margin-right: 3px;
+//         font-family: "fontawesome";
+//         color: $brand-danger;
+//       }
+//     }
+//   }
+//   .fc-event-title {    
+//     &::before {
+//       content: "\f04d";
+//       margin-right: 3px;
+//       font-family: "fontawesome";
+//       color: $brand-danger;
+//     }
+//   }
+// }
+
+// .event-color-3 {
+//   &.event-taken {
+//     background-color: lighten($gray-light, 21%)!important;
+//     .fc-event-title {
+//       font-size: 11px;
+//       text-transform: none!important;
+//     }
+//   }
+//   background-color: white;
+//   border: 1px solid $gray-light;
+//   color: $gray-darker;
+//   &.location-item {
+//     border: none;
+//     p {
+//       &::before {
+//         content: "\f04d";
+//         margin-right: 3px;
+//         font-family: "fontawesome";
+//         color: complement($brand-warning);
+//       }
+//     }
+//   }
+//   .fc-event-title {    
+//     &::before {
+//       content: "\f04d";
+//       margin-right: 3px;
+//       font-family: "fontawesome";
+//       color: complement($brand-warning);
+//     }
+//   }
+// }
+
+// .event-color-4 {
+//   &.event-taken {
+//     background-color: lighten($gray-light, 21%)!important;
+//     .fc-event-title {
+//       font-size: 11px;
+//       text-transform: none!important;
+//     }
+//   }
+//   background-color: white;
+//   border: 1px solid $gray-light;
+//   color: $gray-darker;
+//   &.location-item {
+//     border: none;
+//     p {
+//       &::before {
+//         content: "\f04d";
+//         margin-right: 3px;
+//         font-family: "fontawesome";
+//         color: $gray-light;
+//       }
+//     }
+//   }
+//   .fc-event-title {    
+//     &::before {
+//       content: "\f04d";
+//       margin-right: 3px;
+//       font-family: "fontawesome";
+//       color: $gray-light;
+//     }
+//   }
+// }

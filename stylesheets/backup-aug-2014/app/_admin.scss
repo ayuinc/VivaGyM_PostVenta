@@ -1,0 +1,30 @@
+// ADMIN 
+ul.nav-admin {
+	background: white;
+	li {
+		float: none;
+		display: inline-block;
+		a {
+			display: block;
+			padding: 7px 14px;
+			color: $gray-light;
+			&:hover,
+			&.active {
+				text-decoration: none;
+				background: $gray-lighter;
+				color: $brand-primary;
+			}
+			&:first-child {
+				border-top-left-radius: $border-radius-base;
+				border-bottom-left-radius: $border-radius-base;
+				&:hover {
+					border-top-left-radius: $border-radius-base;
+					border-bottom-left-radius: $border-radius-base;
+				}
+			}
+		}
+		&:nth-child(n+2) {
+			margin-left: -5px;
+		}
+	}
+}
