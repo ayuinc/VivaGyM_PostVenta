@@ -112,10 +112,8 @@
     
   </section>
 
-  {/if}
-
-  {if logged_in}
-    <script type="text/javascript"> window.location="{site_url}index.php/main/user_select"; </script>
+  {if:else}
+    {redirect='main/user_dashboard/{member_id}'}
   {/if}
 
 </body>
