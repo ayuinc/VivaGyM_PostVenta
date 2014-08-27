@@ -8,7 +8,7 @@
 				<h3 class="text-center">Bienvenido.</h3>
 				<p>Por tu seguridad, debes cambiar tu clave antes de continuar.</p>
 				<div class="border-rounded box-shadow bg-white p-14">
-          {exp:user:edit override_return="main/user_setup" form:id="user-password-change-form" }
+          {exp:user:edit override_return="main/user_dashboard/{member_id}" form:id="user-password-change-form" }
             <div class="form-group">
               <label class="light" for="password_alt">Ingresa tu nueva clave</label>
               <input type="password" name="password" class="form-control">
