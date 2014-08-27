@@ -1,7 +1,14 @@
 {exp:member:custom_profile_data}
-  {if act_datos=="0"}
-    {redirect='main/cambio_de_clave'}
-  {if:else}
-    {redirect='main/user_dashboard/{member_id}'}
-  {/if}
+  {exp:switchee variable = "{member_group}" parse="inward"}
+    {case value="user_dep"}
+      {if act_datos=="0"}
+        {redirect='main/cambio_de_clave'}
+      {if:else}
+        {redirect='main/user_dashboard/{member_id}'}
+      {/if}
+    {/case}
+    {case default="Yes"}
+      {redirect='main/admin_dashboard'}
+    {/case}
+  {/exp:switchee}
 {/exp:member:custom_profile_data}
