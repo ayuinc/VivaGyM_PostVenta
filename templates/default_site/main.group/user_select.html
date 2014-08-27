@@ -2,6 +2,6 @@
   {if act_datos=="1"}
     {redirect='main/user_dashboard/{member_id}'}
   {if:else}
-    {embed="includes/cambio_de_clave"}
+    {redirect='main/cambio_de_clave'}
   {/if}
 {/exp:member:custom_profile_data}
