@@ -52,8 +52,7 @@
           <h4 class="m-0 text-muted book text-left">Nuestro servicio de atención - Administración</h4>
           <h3 class="m-0 text-muted text-left">Post-venta en línea</h3>
 
-          {exp:authenticate:login_form auth_type="username" username_field="username" return="{site_url}main/user_select" 
-          class="mt-14"}
+          {exp:member:login_form return="{site_url}main/admin_dashboard" form_class="mt-14"}
             <div class="clearfix">
               
               <div class="form-group col-sm-4 pl-0">
@@ -92,7 +91,7 @@
             </div>
             {/if}
             
-          {/exp:authenticate:login_form}
+          {/exp:member:login_form}
 
         </div>
       </div>
