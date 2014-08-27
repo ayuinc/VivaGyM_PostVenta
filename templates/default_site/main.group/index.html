@@ -35,18 +35,25 @@
  {if logged_out}      
 <section id="home">
   
-    <div class="container pt-21">
-      <nav>
-        <a href="#"><img src="{site_url}/images/logo-viva.png" style="width:120px; height: auto;"></a>
-        <span class="text-left text-muted light">Versión Beta</span>
-      </nav>
+    <div class="container pt-21"> 
+      <div class="row">
+        <div class="col-md-8">
+          <nav>
+            <a href="#"><img src="{site_url}/images/logo-viva.png" style="width:120px; height: auto;"></a>
+            <span class="text-left text-muted light">Versión Beta</span>
+          </nav>
+        </div>
+        <div class="col-md-4 text-muted">
+          <!-- <a href="{site_url}main/login_admin">Ingreso de Administradores</a> -->
+        </div>
+      </div>
       <div class="row mt-35-100">
         <div class="col-md-10">
           <h4 class="m-0 text-muted book text-left">Nuestro servicio de atención</h4>
           <h3 class="m-0 text-muted text-left">Post-venta en línea</h3>
 
-          {exp:authenticate:login_form auth_type="username" username_field="username" return="{site_url}main/user_select" 
-          class=" mt-14"}
+          {exp:authenticate:login_form auth_type="username" username_field="username"  
+          class="mt-14" group_6_return="main/user_select" group_7_return="main/admin_dashboard" group_8_return="main/admin_dashboard" group_9_return="main/admin_dashboard"}
             <div class="clearfix">
               
               <div class="form-group col-sm-4 pl-0">
@@ -62,7 +69,6 @@
                 <input type="submit" class="btn btn-lg btn-success uppercase" name="submit" value="Ingresar">
               </div>
             </div>
-
 
             {if total_global_errors > 0}
             <div class="errors text-warning">
@@ -106,10 +112,8 @@
     
   </section>
 
-  {/if}
-
-  {if logged_in}
-    <script type="text/javascript"> window.location="{site_url}index.php/main/user_select"; </script>
+  {if:else}
+    {redirect='main/user_dashboard/{member_id}'}
   {/if}
 
 </body>
