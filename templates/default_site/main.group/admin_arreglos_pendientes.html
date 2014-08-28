@@ -32,13 +32,12 @@
             </tr>
           </thead>
           <tbody>
-            {exp:freeform:entries form_id="4" search:orden_tramite="9" limit="30" status="open" orderby="entry_id"}
+            {exp:freeform:entries form_id="4" search:orden_tramite="7" search:visita_realizada="0" limit="30" status="closed" orderby="fecha_atencion_ticket"}
 
-            <?php $orden="{freeform:field:orden_tramite}"; $paso_resta=$orden-2; ?>
             <tr>
-              <td><?php echo $id_sol_garantia="{freeform:field:id_sol_garantia}"; ?></td>
+              <td>{freeform:field:id_sol_garantia}</td>
 
-              <td>{embed="includes/fecha_paso" ticket="{freeform:field:id_sol_garantia}" orden="<?php echo $paso_resta; ?>"}</td>
+              <td>{freeform:field:fecha_atencion_ticket}</td>
 
               <td>{embed="includes/ejec_asig" ticket="{freeform:field:id_sol_garantia}" }</td>
 
