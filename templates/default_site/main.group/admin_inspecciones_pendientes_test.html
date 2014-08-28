@@ -20,8 +20,8 @@
         {exp:query sql="SELECT *
                 FROM exp_freeform_form_entries_2 a 
                 INNER JOIN exp_freeform_form_entries_4 d 
-                WHERE a.entry_id = d.form_field_18
-                ORDER BY d.entry_id DESC "}
+                WHERE a.entry_id = d.form_field_18 AND d.form_field_19 = '5'
+                ORDER BY d.form_field_25 DESC "}
 
                 {form_field_18} | fecha {form_field_25} | {form_field_30}<br>
         {/exp:query}
