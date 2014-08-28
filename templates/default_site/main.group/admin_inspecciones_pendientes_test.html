@@ -17,15 +17,6 @@
         <hr class="m-0">
       </div>
       <div class="panel-body">
-        {exp:query sql="SELECT *
-                FROM exp_freeform_form_entries_2 a 
-                INNER JOIN exp_freeform_form_entries_4 d 
-                WHERE a.entry_id = d.form_field_18 AND d.form_field_19 = '5'
-                ORDER BY d.form_field_25 DESC "}
-
-                {form_field_18} | fecha {form_field_25} | {form_field_30}<br>
-        {/exp:query}
-
         <table class="table table-hover table-striped">
           <thead>
             <tr class="light uppercase">
@@ -41,14 +32,13 @@
           </thead>
           <tbody>
             
-
-            {exp:freeform:entries form_id="4" search:orden_tramite="5" limit="30" status="open" orderby="entry_id"}
+            {exp:freeform:entries form_id="4" search:orden_tramite="3" search:visita_realizada="0" limit="30" status="closed" orderby="fecha_atencion_ticket"}
 
             <?php $orden="{freeform:field:orden_tramite}"; $paso_resta=$orden-2; ?>
             <tr>
               <td><?php echo $id_sol_garantia="{freeform:field:id_sol_garantia}"; ?></td>
 
-              <td>{embed="includes/fecha_paso" ticket="{freeform:field:id_sol_garantia}" orden="<?php echo $paso_resta; ?>"}</td>
+              <td>{freeform:field:fecha_atencion_ticket}</td>
 
               <td>{embed="includes/insp_asig" ticket="{freeform:field:id_sol_garantia}" }</td>
 
