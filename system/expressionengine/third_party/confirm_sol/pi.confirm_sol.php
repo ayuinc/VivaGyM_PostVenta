@@ -287,7 +287,7 @@ class confirm_sol
 				SET form_field_12 = '6', edit_date = '$entry_date' WHERE entry_id = $id_sol_garantia ");
 
 			$sqlUpdate_b = mysql_query("UPDATE exp_freeform_form_entries_4 
-			SET status = 'closed', form_field_32 = '4' WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 3 ");
+			SET status = 'closed' WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 3 ");
 
 			$sqlUpdate_c = mysql_query("UPDATE exp_freeform_form_entries_4 
 			SET status = 'closed',form_field_25 = '$fecha_atencion_ticket' WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 5 ");
@@ -526,9 +526,9 @@ class confirm_sol
 
 			$sqlUpdate_a = mysql_query("UPDATE exp_freeform_form_entries_2 SET form_field_12 = '10' WHERE entry_id = $id_sol_garantia ");
 
-			$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_4 
-			SET form_field_32 = '4'
-			WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 7 ");
+			// $sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_4 
+			// SET form_field_32 = '4'
+			// WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 7 ");
 			$sqlUpdate_c = mysql_query("UPDATE exp_freeform_form_entries_4 
 			SET status = 'closed' WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 9 ");
 
