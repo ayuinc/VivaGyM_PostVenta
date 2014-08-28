@@ -90,7 +90,6 @@ class confirm_sol
 		$entry_date=date_timestamp_get($date);
 
 		if($paso=="2") { $mensaje="Agendar Inspección";};
-		if($paso=="6") { $mensaje="Agendar Arreglo";};
 
 		$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_4 
 		SET status = 'closed'
@@ -356,7 +355,6 @@ class confirm_sol
 		$ant_paso=$paso-1;
 		$prox_paso=$paso+1;
 
-		if($paso=="2") { $mensaje="Agendar Inspección";};
 		if($paso=="6") { $mensaje="Agendar Arreglo";};
 
 		$ip=$_SERVER["REMOTE_ADDR"];
@@ -378,8 +376,8 @@ class confirm_sol
 			WHERE form_field_18 = $id_sol_garantia AND form_field_19 = $paso ");
 
 			$resultado=mysql_query("insert into exp_freeform_form_entries_4 
-			(site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19) 
-			values ('1','$id_cliente','y','$ip','','open','$id_cliente','$mensaje','$id_sol_garantia','$prox_paso')");
+			(site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19,form_field_48) 
+			values ('1','$id_cliente','y','$ip','','open','$id_cliente','$mensaje','$id_sol_garantia','$prox_paso','0')");
 
 			// caso si pasas el ticket a "Inspección pendiente" sino lo cierras
 			$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_2 
