@@ -19,9 +19,8 @@
       <div class="panel-body">
         {exp:query sql="SELECT *, form_field_25 AS fecha, form_field_30 AS inspector 
                 FROM exp_freeform_form_entries_2 a 
-                INNER JOIN exp_freeform_form_entries_4 d 
-                WHERE a.entry_id =  d.form_field_18
-                AND a.form_field_19 = '5'
+                INNER JOIN exp_freeform_form_entries_4 d using(entry_id) 
+                WHERE d.form_field_19 = '5'
                 ORDER BY d.entry_id DESC "}
 
                 {entry_id} | {fecha} | {inspector}
