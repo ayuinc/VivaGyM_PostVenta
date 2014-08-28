@@ -5,7 +5,7 @@ $result=mysql_query("SELECT * FROM exp_freeform_form_entries_2 WHERE entry_id=$i
 	$obten=mysql_fetch_array($result);
 	$insp = $obten['form_field_30'];
 
-	if ($insp=""){echo "Por asignar";}else{
+	if ($insp==""){echo "Por asignar";}else{
 		?>{embed="includes/nombre_per" p_find="<?php echo $insp; ?>"}<?php
 	}
 ?>
