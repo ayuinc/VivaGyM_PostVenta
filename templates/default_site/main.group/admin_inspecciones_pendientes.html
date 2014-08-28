@@ -37,7 +37,8 @@
             <tr>
               <td>{freeform:field:id_sol_garantia}</td>
 
-              <td>{freeform:field:fecha_atencion_ticket}</td>
+              <td>{if freeform:edit_data:fecha_atencion_ticket =="" }<br>Por asignar{if:else}
+                {freeform:field:fecha_atencion_ticket}{/if}</td>
 
               <td>{embed="includes/insp_asig" ticket="{freeform:field:id_sol_garantia}" }</td>
 
