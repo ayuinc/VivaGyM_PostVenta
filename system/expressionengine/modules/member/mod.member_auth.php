@@ -811,7 +811,7 @@ class Member_auth extends Member {
 		// Instantiate the email class
 		ee()->load->library('email');
 		ee()->email->wordwrap = true;
-		ee()->email->mailtype = html;
+		ee()->email->mailtype = 'html';
 		ee()->email->from('vivagym_atencionalcliente@gym.com.pe');
 		ee()->email->to($address);
 		ee()->email->subject($email_tit);
