@@ -818,10 +818,11 @@ class Member_auth extends Member {
 		// ee()->email->subject($email_tit);
 		// ee()->email->message($email_msg);
 
+		$this->load->library('email');
 		$this->email->to($address);
     $this->email->from('vivagym_atencionalcliente@gym.com.pe');
     $this->email->subject('Instrucciones para recuperar su contraseña');
-    $this->email->message('Hi '.$name.' Here is the info you requested.');
+    $this->email->message($email_msg);
     $this->email->send();
 
 		if ( ! ee()->email->send())
