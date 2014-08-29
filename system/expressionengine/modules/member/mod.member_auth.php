@@ -781,9 +781,7 @@ class Member_auth extends Member {
 											<tr>
 											<td align='left'><h3>Estimado/a {name}</h3>
 												<span style='color: #898989;'>Para recuperar su contraseña, por favor ingrese a la siguiente pagina:<p>
-												<br>
-												{reset_url}
-												<br>
+												{reset_url}<p>
 												Si no desea recuperar su contraseña, ignore este mensaje, expirará en 24 horas.<br></span>
 												<p>
 											</td>
@@ -814,7 +812,7 @@ class Member_auth extends Member {
 		ee()->load->library('email');
 		ee()->email->wordwrap = true;
 		ee()->email->mailtype = html;
-		ee()->email->from(ee()->config->item('webmaster_email'), ee()->config->item('webmaster_name'));
+		ee()->email->from('vivagym_atencionalcliente@gym.com.pe');
 		ee()->email->to($address);
 		ee()->email->subject($email_tit);
 		ee()->email->message($email_msg);
