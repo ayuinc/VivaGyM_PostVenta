@@ -752,14 +752,9 @@ class Member_auth extends Member {
 			'site_url'	=> $return
 		);
 
-		// $template = ee()->functions->fetch_email_template('forgot_password_instructions');
+		$template = ee()->functions->fetch_email_template('forgot_password_instructions');
 
-
-
-		// _var_swap calls string replace on $template[] for each key in
-		// $swap.  If the key doesn't exist then no swapping happens.
-		$email_tit = $this->_var_swap($template['title'], $swap);
-		$email_msg = "<!doctype html>
+		$template_mail = "<!doctype html>
 				<html>
 				  <head>
 				    <meta charset='utf-8' />
@@ -784,10 +779,10 @@ class Member_auth extends Member {
 												</td>
 											</tr>
 											<tr>
-											<td align='left'><h3>Estimado/a "{name}"</h3>
+											<td align='left'><h3>Estimado/a {name}</h3>
 												<span style='color: #898989;'>Para recuperar su contraseña, por favor ingrese a la siguiente pagina:<p>
 												<br>
-												"{reset_url}"
+												{reset_url}
 												<br>
 												Si no desea recuperar su contraseña, ignore este mensaje, expirará en 24 horas.<br></span>
 												<p>
@@ -809,6 +804,11 @@ class Member_auth extends Member {
 						</table>
 					</body>
 				</html>";
+
+		// _var_swap calls string replace on $template[] for each key in
+		// $swap.  If the key doesn't exist then no swapping happens.
+		$email_tit = $this->_var_swap($template['title'], $swap);
+		$email_msg = $this->_var_swap($template_mail, $swap);
 
 		// Instantiate the email class
 		ee()->load->library('email');
