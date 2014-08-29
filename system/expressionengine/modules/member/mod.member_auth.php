@@ -752,7 +752,7 @@ class Member_auth extends Member {
 			'site_url'	=> $return
 		);
 
-		// $template = ee()->functions->fetch_email_template('forgot_password_instructions');
+		$template = ee()->functions->fetch_email_template('forgot_password_instructions');
 
 		$template_mail = "<!doctype html>
 				<html>
