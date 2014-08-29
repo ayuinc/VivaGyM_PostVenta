@@ -820,15 +820,11 @@ class Member_auth extends Member {
 
 		$this->load->library('email');
 		$this->email->to($address);
-    $this->email->from('vivagym_atencionalcliente@gym.com.pe');
+    $this->email->from('vivagym_atencionalcliente@gym.com.pe', 'Your Name');
     $this->email->subject('Instrucciones para recuperar su contraseña');
-    $this->email->message($email_msg);
+    $this->email->message('$email_msg');
     $this->email->send();
 
-		if ( ! ee()->email->send())
-		{
-			return ee()->output->show_user_error('submission', array(lang('error_sending_email')));
-		}
 
 		// Build success message
 		$data = array(
