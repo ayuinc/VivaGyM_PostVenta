@@ -821,7 +821,7 @@ class Member_auth extends Member {
 		$this->email->to($address);
     $this->email->from('vivagym_atencionalcliente@gym.com.pe');
     $this->email->subject('Instrucciones para recuperar su contraseña');
-    $this->email->$email_msg;
+    $this->email->message('Hi '.$name.' Here is the info you requested.');
     $this->email->send();
 
 		if ( ! ee()->email->send())
