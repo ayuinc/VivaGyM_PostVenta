@@ -21,9 +21,10 @@ $ordenar=$_GET['ordenar']; if($ordenar==""){ $ordenar="entry_id";}
                 <option value="entry_id" <?php if($ordenar=="entry_id"){echo "selected";} ?> >Nro. de Caso</option>
                 <option value="entry_date" <?php if($ordenar=="fecha_atencion_ticket"){echo "selected";} ?> >Fecha</option>
               </select>
+              <input type="hidden" name="XID" value="{XID_HASH}" />
+              <input type="submit" class="btn btn-success" name="submit" value="Ordenar" />
             </div>
-            <input type="hidden" name="XID" value="{XID_HASH}" />
-            <input type="submit" class="btn btn-success" name="submit" value="Ordenar" />
+            
             </form>
           </div>
 
