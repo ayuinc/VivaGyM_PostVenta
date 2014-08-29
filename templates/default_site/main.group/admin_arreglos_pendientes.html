@@ -3,7 +3,7 @@
 {embed="includes/menu_admin" }
 
 <?php 
-$ordenar=$_GET['ordenar']; if($ordenar==""){ $ordenar="entry_id";} 
+echo $ordenar=$_POST['ordenar']; if($ordenar==""){ $ordenar="entry_id";} 
 ?>
 <div class="row">
   <div class="col-sm-12">
@@ -14,9 +14,8 @@ $ordenar=$_GET['ordenar']; if($ordenar==""){ $ordenar="entry_id";}
             <h4 class="uppercase medium"><i class="icon-docs"></i> Calendario arreglos</h4>
           </div>
 
-          <form method="get" enctype="multipart/form-data" action="/?/main/admin_arreglos_pendientes">
+          <form method="post" enctype="multipart/form-data" action="/?/main/admin_arreglos_pendientes">
             <div class="col-sm-3">
-              
               <div class="form-group">
                 <select name="ordenar" id="" class="select-override form-control">
                   <option value="">Seleccione</option>
