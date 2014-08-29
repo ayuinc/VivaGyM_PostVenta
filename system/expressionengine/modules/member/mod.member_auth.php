@@ -784,10 +784,10 @@ class Member_auth extends Member {
 												</td>
 											</tr>
 											<tr>
-											<td align='left'><h3>Estimado/a {name}</h3>
+											<td align='left'><h3>Estimado/a "{name}"</h3>
 												<span style='color: #898989;'>Para recuperar su contraseña, por favor ingrese a la siguiente pagina:<p>
 												<br>
-												{reset_url}
+												"{reset_url}"
 												<br>
 												Si no desea recuperar su contraseña, ignore este mensaje, expirará en 24 horas.<br></span>
 												<p>
