@@ -19,18 +19,16 @@
     <tr>
       <td>{freeform:field:id_sol_garantia}</td>
 
-      <td>{if freeform:edit_data:fecha_atencion_ticket =="" }<br>Por asignar{if:else}
-        {freeform:field:fecha_atencion_ticket}{/if}</td>
+      <td>{if freeform:edit_data:fecha_atencion_ticket =="" }Por asignar{if:else}{freeform:field:fecha_atencion_ticket}{/if}</td>
 
-      <td>
-        {exp:switchee variable = "{embed:tramite}" parse="inward"}
-          {case value="3"}
-            {embed="includes/insp_asig" ticket="{freeform:field:id_sol_garantia}" }
-          {/case}
-          {case value="7"}
-            {embed="includes/ejec_asig" ticket="{freeform:field:id_sol_garantia}" }
-          {/case}
-        {/exp:switchee}
+      <td>{exp:switchee variable = "{embed:tramite}" parse="inward"}
+            {case value="3"}
+              {embed="includes/insp_asig" ticket="{freeform:field:id_sol_garantia}" }
+            {/case}
+            {case value="7"}
+              {embed="includes/ejec_asig" ticket="{freeform:field:id_sol_garantia}" }
+            {/case}
+          {/exp:switchee}
       </td>
 
       <td>{exp:user:stats member_id="{freeform:field:id_cliente}"}

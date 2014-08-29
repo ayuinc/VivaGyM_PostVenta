@@ -14,8 +14,12 @@ $ordenar=$_POST['ordenar']; if($ordenar==""){ $ordenar="entry_id";}
             <h4 class="uppercase medium"><i class="icon-docs"></i> Calendario inspecciones</h4>
           </div>
 
+          <div class="col-sm-1">
+            Ordenar por:
+          </div>
+
           <form method="post" enctype="multipart/form-data" action="/?/main/admin_inspecciones_pendientes">
-            <div class="col-sm-3">Ordenar por: 
+            <div class="col-sm-2">
               <div class="form-group">
                 <select name="ordenar" id="" class="select-override form-control">
                   <option value="">Seleccione</option>
