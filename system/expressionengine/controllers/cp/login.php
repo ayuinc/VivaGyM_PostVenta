@@ -502,59 +502,7 @@ class Login extends CP_Controller {
 			'site_url'	=> $this->config->item('site_url')
 		);
 
-		// $template = $this->functions->fetch_email_template('forgot_password_instructions');
-
-		$template = "<!doctype html>
-				<html>
-				  <head>
-				    <meta charset='utf-8' />
-				    <title>Viva GyM</title>
-				  </head>
-					<body style='margin: 0px; background-color: #f1f1f1; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color: #898989;' bgcolor='#f1f1f1'>
-						<table align='center' width='90%' style='width:90%; margin-left: auto; margin-right: auto;'>
-							<tr style='background-color: #f1f1f1;' bgcolor='#f1f1f1'>
-								<td><p><br></p>
-								</td>
-							</tr>
-							<tr style='background-color: #ffffff;' bgcolor='#ffffff'>
-								<td>
-
-									<div style='background-color: #ffffff;'>
-										<table align='center' width='90%' style='width:90%; margin-left: auto; margin-right: auto;'>
-											<tr>
-												<td><br></td>
-											</tr>
-											<tr>
-												<td align='right'><img src='http://vivatudepa.pe/images/logo-viva.png' style='width:100px; height: auto;'>
-												</td>
-											</tr>
-											<tr>
-											<td align='left'><h3>Estimado/a {name}</h3>
-												<span style='color: #898989;'>Para recuperar su contraseña, por favor ingrese a la siguiente pagina:<p>
-												<br>
-												{reset_url}
-												<br>
-												Si no desea recuperar su contraseña, ignore este mensaje, expirará en 24 horas.<br></span>
-												<p>
-											</td>
-										</tr>
-										<tr>
-												<td><br></td>
-											</tr>
-										</table>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td align='center'><p></p>
-									<span style='font-size: 12px;'>2014 Viva GyM Servicio de post-venta, todos los derechos reservados.</span><br>
-									<img src='http://vivatudepa.pe/images/logo-plomo.png' style='width:80px; height: auto;'>
-								</td>
-							</tr>
-						</table>
-					</body>
-				</html>";
-
+		$template = $this->functions->fetch_email_template('forgot_password_instructions');
 		$message_title = $this->_var_swap($template['title'], $swap);
 		$message = $this->_var_swap($template['data'], $swap);
 
