@@ -807,16 +807,22 @@ class Member_auth extends Member {
 
 		// _var_swap calls string replace on $template[] for each key in
 		// $swap.  If the key doesn't exist then no swapping happens.
-		$email_tit = $this->_var_swap($template['title'], $swap);
-		$email_msg = $this->_var_swap($template_mail, $swap);
+		// $email_tit = $this->_var_swap($template['title'], $swap);
+				$email_msg = $this->_var_swap($template_mail, $swap);
 
-		// Instantiate the email class
-		ee()->load->library('email');
-		ee()->email->wordwrap = true;
-		ee()->email->from(ee()->config->item('webmaster_email'), ee()->config->item('webmaster_name'));
-		ee()->email->to($address);
-		ee()->email->subject($email_tit);
-		ee()->email->message($email_msg);
+		// // Instantiate the email class
+		// ee()->load->library('email');
+		// ee()->email->wordwrap = true;
+		// ee()->email->from(ee()->config->item('webmaster_email'), ee()->config->item('webmaster_name'));
+		// ee()->email->to($address);
+		// ee()->email->subject($email_tit);
+		// ee()->email->message($email_msg);
+
+		$this->email->to($address);
+    $this->email->from('vivagym_atencionalcliente@gym.com.pe');
+    $this->email->subject('Instrucciones para recuperar su contraseña');
+    $this->email->$email_msg;
+    $this->email->send();
 
 		if ( ! ee()->email->send())
 		{
