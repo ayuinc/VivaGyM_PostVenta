@@ -42,7 +42,7 @@
 
         <td><?php $paso=$proy_long['form_field_19']; $fecha_insp=$proy_long['form_field_27']; 
         $admin_id=$proy_long['form_field_47']; 
-        if (!empty($admin_id)) {?> {embed="includes/nombre_per" p_find="<?php echo $admin_id; ?>"}<?php }?>
+        if (!empty($admin_id)) {?> Generado por: {embed="includes/nombre_per_short" p_find="<?php echo $admin_id; ?>"}<?php }?>
 
           <?php if (!empty($fecha_insp)) { 
             if($paso==2){ echo "Su solicitud de inspección ha sido ".strtoupper($proy_long['form_field_27']); } } ?>
