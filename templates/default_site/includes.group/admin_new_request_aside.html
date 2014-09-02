@@ -1,9 +1,9 @@
 
 <h4 class="medium">Nueva solicitud</h4>
 <p>Ingresar una solicitud para el cliente</p>
-<form method="post" enctype="multipart/form-data" name="frm" id="frm" onSubmit="return validar(this)" action="/?/main/create_caso_admin">
+<form method="post" enctype="multipart/form-data" name="frm" id="frm"  action="/?/main/create_caso_admin">
 	<div class="form-group">
-	  <select name="id_cliente" id="" class="form-control input-sm select-override">
+	  <select name="id_cliente" id="" class="form-control input-sm select-override" required>
 	  	<option value="">Seleccione</option>
 	  	{exp:user:users group_id="6"}
 	  		<option value="{member_id}">{screen_name} {ap_pat} {ap_mat}</option>
