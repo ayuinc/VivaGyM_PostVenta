@@ -1,0 +1,82 @@
+
+<table class="table table-hover table-striped">
+  <thead>
+    <tr class="light uppercase">
+      <td>No. de Caso </td>
+      <td>Fecha seleccionada</td>
+      <td>Inspector asignado</td>
+      <td>Dueño</td>
+      <td>Complejo</td>
+      <td>Torre</td>
+      <td>Dpto.</td>
+      <td></td>
+    </tr>
+  </thead>
+  <tbody>
+    
+    {exp:freeform:entries form_id="4" search:orden_tramite="{embed:tramite}" search:visita_realizada="0" limit="30" status="closed" orderby="{embed:ordenar}"}
+
+    <tr>
+      <td>{freeform:field:id_sol_garantia}</td>
+
+      <td>{if freeform:edit_data:fecha_atencion_ticket =="" }Por asignar{if:else}{freeform:field:fecha_atencion_ticket}{/if}</td>
+
+      <td>{exp:switchee variable = "{embed:tramite}" parse="inward"}
+            {case value="3"}
+              {embed="includes/insp_asig" ticket="{freeform:field:id_sol_garantia}" }
+            {/case}
+            {case value="7"}
+              {embed="includes/ejec_asig" ticket="{freeform:field:id_sol_garantia}" }
+            {/case}
+          {/exp:switchee}
+      </td>
+
+      <td>{exp:user:stats member_id="{freeform:field:id_cliente}"}
+          {nombre_propietario} {ap_pat} {ap_mat} 
+          {/exp:user:stats}</td>
+
+      <td>{exp:user:stats member_id="{freeform:field:id_cliente}"}
+          {complejo_depa}
+          {/exp:user:stats}</td>
+
+      <td>{exp:user:stats member_id="{freeform:field:id_cliente}"}
+          {torre_depa}
+          {/exp:user:stats}</td>
+
+      <td>{exp:user:stats member_id="{freeform:field:id_cliente}"}
+          {cod_depa}
+          {/exp:user:stats}</td>
+
+      <td>
+        <a href="{site_url}main/ticket_detail/{freeform:field:id_sol_garantia}" class="small text-danger underline">
+              Ver ticket</a></td>
+    </tr>
+
+      {if freeform:no_results}<h6>Sin solicitudes pendientes.</h6>{/if}
+      {if freeform:total_pages > 1}
+        {freeform:paginate}
+
+          {freeform:pagination_links}
+            <div class="clearfix mb-14 mt-7">
+              <ul class="pagination pagination-sm m-0 pull-right">
+                {previous_page}
+                  <li><a href="{pagination_url}" class="page-previous">&lt;&lt;</a></li>
+                {/previous_page}
+
+                {page}
+                  <li class="{if current_page}active{/if}"><a href="{pagination_url}" class="page-{pagination_page_number}">{pagination_page_number}</a></li>
+                {/page}
+
+                {next_page}
+                  <li><a href="{pagination_url}" class="page-next">&gt;&gt;</a></li>
+                {/next_page}
+
+              </ul>
+            </div>
+          {/freeform:pagination_links}
+        {/freeform:paginate}
+      {/if}
+      
+    {/exp:freeform:entries}
+  </tbody>
+</table>

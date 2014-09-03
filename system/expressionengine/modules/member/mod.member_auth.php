@@ -754,15 +754,65 @@ class Member_auth extends Member {
 
 		$template = ee()->functions->fetch_email_template('forgot_password_instructions');
 
+		$template_mail = "<!doctype html>
+				<html>
+				  <head>
+				    <meta charset='utf-8' />
+				    <title>Viva GyM</title>
+				  </head>
+					<body style='margin: 0px; background-color: #f1f1f1; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color: #898989;' bgcolor='#f1f1f1'>
+						<table align='center' width='90%' style='width:90%; margin-left: auto; margin-right: auto;'>
+							<tr style='background-color: #f1f1f1;' bgcolor='#f1f1f1'>
+								<td><p><br></p>
+								</td>
+							</tr>
+							<tr style='background-color: #ffffff;' bgcolor='#ffffff'>
+								<td>
+
+									<div style='background-color: #ffffff;'>
+										<table align='center' width='90%' style='width:90%; margin-left: auto; margin-right: auto;'>
+											<tr>
+												<td><br></td>
+											</tr>
+											<tr>
+												<td align='right'><img src='http://vivatudepa.pe/images/logo-viva.png' style='width:100px; height: auto;'>
+												</td>
+											</tr>
+											<tr>
+											<td align='left'><h3>Estimado/a {name}</h3>
+												<span style='color: #898989;'>Para recuperar su contraseña, por favor ingrese a la siguiente pagina:<p>
+												{reset_url}<p>
+												Si no desea recuperar su contraseña, ignore este mensaje, expirará en 24 horas.<br></span>
+												<p>
+											</td>
+										</tr>
+										<tr>
+												<td><br></td>
+											</tr>
+										</table>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td align='center'><p></p>
+									<span style='font-size: 12px;'>2014 Viva GyM Servicio de post-venta, todos los derechos reservados.</span><br>
+									<img src='http://vivatudepa.pe/images/logo-plomo.png' style='width:80px; height: auto;'>
+								</td>
+							</tr>
+						</table>
+					</body>
+				</html>";
+
 		// _var_swap calls string replace on $template[] for each key in
 		// $swap.  If the key doesn't exist then no swapping happens.
 		$email_tit = $this->_var_swap($template['title'], $swap);
-		$email_msg = $this->_var_swap($template['data'], $swap);
+		$email_msg = $this->_var_swap($template_mail, $swap);
 
 		// Instantiate the email class
 		ee()->load->library('email');
 		ee()->email->wordwrap = true;
-		ee()->email->from(ee()->config->item('webmaster_email'), ee()->config->item('webmaster_name'));
+		ee()->email->mailtype = 'html';
+		ee()->email->from('vivagym_atencionalcliente@gym.com.pe');
 		ee()->email->to($address);
 		ee()->email->subject($email_tit);
 		ee()->email->message($email_msg);

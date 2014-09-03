@@ -5,6 +5,7 @@ $orden="{embed:orden}";
 
 $result=mysql_query("SELECT * FROM exp_freeform_form_entries_4 WHERE form_field_18=$id_sol_garantia and form_field_19=$orden ");
 	$obten=mysql_fetch_row($result);
-	echo $fecha = $obten[17];
+	$fecha = $obten[17];
+	if ($fecha==""){echo "Por asignar";}else{echo $fecha;}
 
 ?>

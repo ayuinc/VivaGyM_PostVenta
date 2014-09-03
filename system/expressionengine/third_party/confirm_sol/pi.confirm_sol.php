@@ -90,7 +90,6 @@ class confirm_sol
 		$entry_date=date_timestamp_get($date);
 
 		if($paso=="2") { $mensaje="Agendar Inspección";};
-		if($paso=="6") { $mensaje="Agendar Arreglo";};
 
 		$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_4 
 		SET status = 'closed'
@@ -114,8 +113,8 @@ class confirm_sol
 			WHERE entry_id = $id_sol_garantia ");
 
 			$resultado=mysql_query("insert into exp_freeform_form_entries_4 
-			(site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19) 
-			values ('1','$id_cliente','y','$ip','','open','$id_cliente','$mensaje','$id_sol_garantia','$prox_paso')");
+			(site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19,form_field_48) 
+			values ('1','$id_cliente','y','$ip','','open','$id_cliente','$mensaje','$id_sol_garantia','$prox_paso','0')");
 
 		} else{ 
 
@@ -238,7 +237,6 @@ class confirm_sol
 		$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_2 SET edit_date = '$entry_date' WHERE entry_id = $id_sol_garantia ");
 		if($paso=="4") {
 			$texto_paso="Realizar inspección";
-
 			$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_2 
 				SET form_field_12 = '5',
 				form_field_14 = '$persona_asignada_gym',
@@ -248,7 +246,9 @@ class confirm_sol
 
 		if($paso=="8") {
 			$texto_paso="Realizar Arreglo";
-			$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_2 SET form_field_12 = '9', form_field_31 = '$persona_asignada'
+			$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_2 
+				SET form_field_12 = '9',
+				form_field_31 = '$persona_asignada'
 				WHERE entry_id = $id_sol_garantia ");
 		}
 
@@ -287,7 +287,7 @@ class confirm_sol
 				SET form_field_12 = '6', edit_date = '$entry_date' WHERE entry_id = $id_sol_garantia ");
 
 			$sqlUpdate_b = mysql_query("UPDATE exp_freeform_form_entries_4 
-			SET status = 'closed' WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 3 ");
+			SET status = 'closed',form_field_48 = '1' WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 3 ");
 
 			$sqlUpdate_c = mysql_query("UPDATE exp_freeform_form_entries_4 
 			SET status = 'closed',form_field_25 = '$fecha_atencion_ticket' WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 5 ");
@@ -355,7 +355,6 @@ class confirm_sol
 		$ant_paso=$paso-1;
 		$prox_paso=$paso+1;
 
-		if($paso=="2") { $mensaje="Agendar Inspección";};
 		if($paso=="6") { $mensaje="Agendar Arreglo";};
 
 		$ip=$_SERVER["REMOTE_ADDR"];
@@ -377,8 +376,8 @@ class confirm_sol
 			WHERE form_field_18 = $id_sol_garantia AND form_field_19 = $paso ");
 
 			$resultado=mysql_query("insert into exp_freeform_form_entries_4 
-			(site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19) 
-			values ('1','$id_cliente','y','$ip','','open','$id_cliente','$mensaje','$id_sol_garantia','$prox_paso')");
+			(site_id,author_id,complete,ip_address,entry_date,status,form_field_5,form_field_17,form_field_18,form_field_19,form_field_48) 
+			values ('1','$id_cliente','y','$ip','','open','$id_cliente','$mensaje','$id_sol_garantia','$prox_paso','0')");
 
 			// caso si pasas el ticket a "Inspección pendiente" sino lo cierras
 			$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_2 
@@ -526,9 +525,10 @@ class confirm_sol
 
 			$sqlUpdate_a = mysql_query("UPDATE exp_freeform_form_entries_2 SET form_field_12 = '10' WHERE entry_id = $id_sol_garantia ");
 
-			// $sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_4 
-			// SET form_field_32 = '4'
-			// WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 7 ");
+			$sqlUpdate = mysql_query("UPDATE exp_freeform_form_entries_4 
+			SET form_field_48 = '1'
+			WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 7 ");
+
 			$sqlUpdate_c = mysql_query("UPDATE exp_freeform_form_entries_4 
 			SET status = 'closed' WHERE form_field_18 = $id_sol_garantia AND form_field_19 = 9 ");
 

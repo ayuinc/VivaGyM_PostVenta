@@ -40,8 +40,12 @@
                         if ($fecha_time>0) {echo date('d-m-Y', $fecha_time); }
                         elseif ($edit_time>0) {echo date('d-m-Y', $edit_time); }  ?></td> <!-- fecha  -->
 
-        <td><?php $paso=$proy_long['form_field_19']; $fecha_insp=$proy_long['form_field_27']; ?>
-          <?php if (!empty($fecha_insp)) { if($paso==2){ echo "Su solicitud de inspección ha sido ".strtoupper($proy_long['form_field_27']); } } ?>
+        <td><?php $paso=$proy_long['form_field_19']; $fecha_insp=$proy_long['form_field_27']; 
+        $admin_id=$proy_long['form_field_47']; 
+        if (!empty($admin_id)) {}?>
+
+          <?php if (!empty($fecha_insp)) { 
+            if($paso==2){ echo "Su solicitud de inspección ha sido ".strtoupper($proy_long['form_field_27']); } } ?>
 
            <?php $fecha_re=$proy_long['form_field_25']; 
           if($paso==3){ 
